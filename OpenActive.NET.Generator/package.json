@@ -1,0 +1,17 @@
+{
+  "name": "openactive.net.generator",
+  "version": "1.0.0",
+  "description": "OpenActive.NET data model generator",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "debug": "node --inspect-brk -i app.js"
+  },
+  "author": "Nick Evans",
+  "license": "MIT",
+  "dependencies": {
+    "@openactive/data-models": "^1.2.30",
+    "sync-request": "^6.0.0"
+  }
+}

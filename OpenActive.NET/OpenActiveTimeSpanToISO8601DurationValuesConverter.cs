@@ -1,4 +1,4 @@
-﻿namespace Schema.NET
+﻿namespace OpenActive.NET
 {
     using System;
     using System.Reflection;

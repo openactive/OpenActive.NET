@@ -32,7 +32,7 @@ namespace OpenActive.NET.Tool.Services
             var enumerations = new List<Enumeration>();
             var classes = new List<Class>();
             foreach (var schemaClass in schemaClasses
-                .Where(x => !x.IsPrimitive))
+                .Where(x => !x.IsPrimitive && !x.IsArchived && !x.IsMeta && !x.IsPending))
             {
                 if (schemaClass.IsEnum)
                 {
@@ -224,14 +224,14 @@ namespace OpenActive.NET.Tool.Services
             };
 
             var properties = schemaProperties
-                .Where(x => x.DomainIncludes.Contains(schemaClass.Id))
+                .Where(x => x.DomainIncludes.Contains(schemaClass.Id) && !x.IsArchived && !x.IsMeta && !x.IsPending)
                 .Select(x =>
                 {
                     var propertyName = GetPropertyName(x.Label);
                     return new Property()
                     {
                         Class = @class,
-                        Description = x.Comment != null ? new List<string> { x.Comment } : null,
+                        Description = x.Comment,
                         JsonName = CamelCase(propertyName),
                         Name = propertyName,
                         Types = x.RangeIncludes
@@ -240,7 +240,7 @@ namespace OpenActive.NET.Tool.Services
                                 var propertyTypeName = y.ToString().Replace("http://schema.org/", string.Empty);
                                 var propertyTypeClass = schemaClasses
                                     .FirstOrDefault(z => string.Equals(z.Label, propertyTypeName, StringComparison.OrdinalIgnoreCase));
-                                return propertyTypeClass == null;
+                                return propertyTypeClass == null || (!propertyTypeClass.IsArchived && !propertyTypeClass.IsMeta && !propertyTypeClass.IsPending);
                             })
                             .Select(y =>
                             {

@@ -1,4 +1,4 @@
-namespace OpenActive.NET.Tool.Repositories
+﻿namespace OpenActive.NET.Tool.Repositories
 {
     using System;
     using System.Collections.Generic;
@@ -8,7 +8,7 @@ namespace OpenActive.NET.Tool.Repositories
     using OpenActive.NET.Tool.Constants;
     using OpenActive.NET.Tool.Models;
 
-    public class SchemaPropertyJsonConverter : JsonConverter
+    public class OpenActiveExtensionPropertyJsonConverter : JsonConverter
     {
         public override bool CanConvert(Type objectType) => objectType == typeof(List<SchemaObject>);
 
@@ -18,8 +18,7 @@ namespace OpenActive.NET.Tool.Repositories
             {
                 var token = JToken.Load(reader);
                 var graphArray = (JArray)token["@graph"];
-                var subGraphArray = graphArray.SelectMany(x => (JArray)x["@graph"]).ToList();
-                return subGraphArray.Select(Read).Where(x => x != null).ToList();
+                return graphArray.ToList();
             }
 
             return Enumerable.Empty<SchemaObject>();
@@ -30,32 +29,29 @@ namespace OpenActive.NET.Tool.Repositories
 
         private static SchemaObject Read(JToken token)
         {
-            var commentToken = token["rdfs:comment"];
+            var commentToken = token["comment"];
             if (commentToken == null)
             {
                 return null;
             }
 
-            var supercededByToken = token["http://schema.org/supersededBy"];
+            var supercededByToken = token["supersededBy"];
             if (supercededByToken != null)
             {
                 // Ignore deprecated properties.
                 return null;
             }
 
-            var id = new Uri(token["@id"].Value<string>());
-            var types = GetTokenValues(token["@type"]).ToList();
-            var comment = token["rdfs:comment"].Value<string>();
+            var id = new Uri(token["id"].Value<string>());
+            var types = GetTokenValues(token["type"]).ToList();
+            var comment = token["comment"].Value<string>();
             var label = GetLabel(token);
-            var domainIncludes = GetTokenValues(token["http://schema.org/domainIncludes"], "@id").ToList();
-            var rangeIncludes = GetTokenValues(token["http://schema.org/rangeIncludes"], "@id").ToList();
-            var subClassOf = GetTokenValues(token["rdfs:subClassOf"], "@id").ToList();
-            var isPartOf = GetTokenValues(token["http://schema.org/isPartOf"]).FirstOrDefault();
-            var layer = isPartOf == null ?
-                LayerName.Core :
-                isPartOf.Replace("http://", string.Empty).Replace(".schema.org", string.Empty);
+            var domainIncludes = GetTokenValues(token["domainIncludes"]).Select(x => ReplacePrefix(x)).ToList();
+            var rangeIncludes = GetTokenValues(token["rangeIncludes"]).Select(x => ReplacePrefix(x)).ToList();
+            var subClassOf = GetTokenValues(token["subClassOf"]).Select(x => ReplacePrefix(x)).ToList();
+            var layer = LayerName.OpenActiveBeta;
 
-            if (types.Any(type => string.Equals(type, "rdfs:Class", StringComparison.OrdinalIgnoreCase)))
+            if (types.Any(type => string.Equals(type, "Class", StringComparison.OrdinalIgnoreCase)))
             {
                 return new SchemaClass()
                 {
@@ -67,7 +63,7 @@ namespace OpenActive.NET.Tool.Repositories
                     Types = types
                 };
             }
-            else if (types.Any(type => string.Equals(type, "rdf:Property", StringComparison.OrdinalIgnoreCase)))
+            else if (types.Any(type => string.Equals(type, "Property", StringComparison.OrdinalIgnoreCase)))
             {
                 return new SchemaProperty()
                 {
@@ -139,6 +135,17 @@ namespace OpenActive.NET.Tool.Repositories
                     }
                 }
             }
+        }
+
+        // TODO: Auto-generate from OA namespaces
+        private static Uri ReplacePrefix(string uri)
+        {
+            return new Uri(uri
+                .Replace("schema:", "http://schema.org/")
+                .Replace("pending:", "http://pending.schema.org/")
+                .Replace("skos:", "http://www.w3.org/2004/02/skos/core#")
+                .Replace("oa:", "https://openactive.io/")
+                .Replace("beta:", "https://openactive.io/ns-beta#"));
         }
     }
 }

@@ -18,4 +18,9 @@
     <PackageReference Include="Schema.NET" Version="3.6.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="models\" />
+    <Folder Include="enums\" />
+  </ItemGroup>
+
 </Project>

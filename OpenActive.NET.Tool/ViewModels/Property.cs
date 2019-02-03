@@ -6,13 +6,12 @@ namespace OpenActive.NET.Tool.ViewModels
     using System.Linq;
     using System.Text;
 
-
     [DebuggerDisplay("{Name}")]
     public class Property : ICloneable<Property>
     {
         public Class Class { get; set; }
 
-        public List<string> Description { get; set; }
+        public string Description { get; set; }
 
         public string JsonName { get; set; }
 

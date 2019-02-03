@@ -1,6 +1,5 @@
 ﻿namespace OpenActive.NET.Tool
 {
-    using System.Collections.Generic;
     using System.Text;
     using System.Xml;
 
@@ -37,16 +36,8 @@
 
         public static void AppendCommentSummary(this StringBuilder stringBuilder, int count, string value)
         {
-            stringBuilder.AppendCommentSummary(count, new List<string> { value });
-        }
-
-        public static void AppendCommentSummary(this StringBuilder stringBuilder, int count, List<string> values)
-        {
             stringBuilder.AppendIndentLine(count, "/// <summary>");
-            foreach (string value in values)
-            {
-                stringBuilder.AppendCommentLine(count, value);
-            }
+            stringBuilder.AppendCommentLine(count, value);
             stringBuilder.AppendIndentLine(count, "/// </summary>");
         }
 

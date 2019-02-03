@@ -1,16 +1,16 @@
-﻿using OpenActive.NET.Tool.Overrides;
-using OpenActive.NET.Tool.Repositories;
-using OpenActive.NET.Tool.Services;
-using OpenActive.NET.Tool.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Threading.Tasks;
-
 namespace OpenActive.NET.Tool
 {
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
+    using System.Reflection;
+    using System.Threading.Tasks;
+    using OpenActive.NET.Tool.Overrides;
+    using OpenActive.NET.Tool.Repositories;
+    using OpenActive.NET.Tool.Services;
+    using OpenActive.NET.Tool.ViewModels;
+
     public class Program
     {
         private readonly SchemaService schemaService;

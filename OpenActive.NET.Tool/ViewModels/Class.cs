@@ -5,6 +5,7 @@
     using System.Diagnostics;
     using System.Linq;
     using System.Text;
+    using OpenActive.NET.Tool.Constants;
 
     [DebuggerDisplay("{Name}")]
     public class Class : SchemaObject
@@ -25,7 +26,19 @@
 
         public Uri Id { get; set; }
 
+        public bool IsArchived => EnumerableExtensions
+            .Traverse(this, x => x.Parents)
+            .Any(x => string.Equals(x.Layer, LayerName.Archived, StringComparison.Ordinal));
+
         public bool IsCombined { get; set; }
+
+        public bool IsMeta => EnumerableExtensions
+            .Traverse(this, x => x.Parents)
+            .Any(x => string.Equals(x.Layer, LayerName.Meta, StringComparison.Ordinal));
+
+        public bool IsPending => EnumerableExtensions
+            .Traverse(this, x => x.Parents)
+            .Any(x => string.Equals(x.Layer, LayerName.Pending, StringComparison.Ordinal));
 
         public bool IsThingType => string.Equals(this.Name, "Thing", StringComparison.Ordinal);
 

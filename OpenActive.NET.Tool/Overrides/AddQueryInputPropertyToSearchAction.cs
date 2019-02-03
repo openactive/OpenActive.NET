@@ -14,7 +14,7 @@
             var property = new Property()
             {
                 Class = @class,
-                Description = new List<string> { "Gets or sets the query input search parameter." },
+                Description = "Gets or sets the query input search parameter.",
                 JsonName = "query-input",
                 Name = "QueryInput",
                 Types = new List<PropertyType>()
