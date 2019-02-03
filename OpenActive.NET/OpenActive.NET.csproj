@@ -1,7 +1,21 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard1.1</TargetFramework>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <Copyright>OpenActive</Copyright>
+    <Company>OpenActive</Company>
+    <Authors>Nick Evans</Authors>
+    <PackageLicenseUrl>https://opensource.org/licenses/MIT</PackageLicenseUrl>
+    <PackageProjectUrl>https://www.openactive.io/OpenActive.NET</PackageProjectUrl>
+    <RepositoryUrl>https://www.openactive.io/assets/openactive-icon-64x64.png</RepositoryUrl>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageTags>OpenActive schema rpde</PackageTags>
+    <ApplicationIcon>favicon.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Schema.NET" Version="3.6.0" />
+  </ItemGroup>
 
 </Project>

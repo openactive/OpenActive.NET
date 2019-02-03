@@ -1,0 +1,2470 @@
+[
+  {
+    "type": "Action",
+    "derivedFrom": "https://schema.org/Action",
+    "fields": [
+      {
+        "fieldName": "type",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "requiredContent": "Action"
+      },
+      {
+        "fieldName": "name",
+        "sameAs": "https://schema.org/name",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "description": [
+          "The name of the action"
+        ]
+      },
+      {
+        "fieldName": "target",
+        "types": [],
+        "models": [
+          "#EntryPoint"
+        ],
+        "description": [
+          "A definition of the target of the action."
+        ]
+      }
+    ]
+  },
+  {
+    "type": "BabyChanging",
+    "subClassOf": "#LocationFeatureSpecification",
+    "derivedFrom": null,
+    "fields": [
+      {
+        "fieldName": "type",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "requiredContent": "BabyChanging"
+      },
+      {
+        "fieldName": "name",
+        "sameAs": "https://schema.org/name",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "description": [
+          "A string, suitable for presentation in user interfaces."
+        ]
+      }
+    ]
+  },
+  {
+    "type": "Brand",
+    "derivedFrom": "https://schema.org/Brand",
+    "fields": [
+      {
+        "fieldName": "type",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "requiredContent": "Brand"
+      },
+      {
+        "fieldName": "description",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "description": [
+          "A text description for the brand."
+        ]
+      },
+      {
+        "fieldName": "identifier",
+        "types": [
+          "https://schema.org/Integer",
+          "https://schema.org/Text"
+        ],
+        "models": [
+          "#PropertyValue",
+          "ArrayOf#PropertyValue"
+        ],
+        "description": [
+          "A local non-URI identifier for the resource"
+        ]
+      },
+      {
+        "fieldName": "logo",
+        "types": [],
+        "models": [
+          "#ImageObject"
+        ],
+        "description": [
+          "The logo associated with the brand."
+        ]
+      },
+      {
+        "fieldName": "name",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "description": [
+          "The name of the brand."
+        ]
+      },
+      {
+        "fieldName": "url",
+        "types": [
+          "https://schema.org/url"
+        ],
+        "models": [],
+        "description": [
+          "A url where further information can be found for the brand."
+        ]
+      }
+    ]
+  },
+  {
+    "type": "ChangingFacilities",
+    "subClassOf": "#LocationFeatureSpecification",
+    "derivedFrom": null,
+    "fields": [
+      {
+        "fieldName": "type",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "requiredContent": "ChangingFacilities"
+      },
+      {
+        "fieldName": "name",
+        "sameAs": "https://schema.org/name",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "description": [
+          "A string, suitable for presentation in user interfaces."
+        ]
+      }
+    ]
+  },
+  {
+    "type": "Concept",
+    "derivedFrom": "http://www.w3.org/2004/02/skos/core#Concept",
+    "fields": [
+      {
+        "fieldName": "type",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "requiredContent": "Concept"
+      },
+      {
+        "fieldName": "altLabel",
+        "types": [
+          "ArrayOf#https://schema.org/Text"
+        ],
+        "models": [],
+        "description": [
+          "An alternative human readable string for use in user interfaces."
+        ]
+      },
+      {
+        "fieldName": "broader",
+        "types": [
+          "ArrayOf#https://schema.org/url"
+        ],
+        "models": [],
+        "description": [
+          "A broader Concept URI"
+        ]
+      },
+      {
+        "fieldName": "inScheme",
+        "types": [
+          "https://schema.org/url"
+        ],
+        "models": [],
+        "description": [
+          "A stable URL reference for the taxonomy."
+        ]
+      },
+      {
+        "fieldName": "narrower",
+        "types": [
+          "ArrayOf#https://schema.org/url"
+        ],
+        "models": [],
+        "description": [
+          "A more specific concept URI"
+        ]
+      },
+      {
+        "fieldName": "notation",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "description": [
+          "A concept label that is not normally recognisable as natural language."
+        ]
+      },
+      {
+        "fieldName": "prefLabel",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "description": [
+          "A human readable string for use in user interfaces."
+        ]
+      }
+    ]
+  },
+  {
+    "type": "ConceptScheme",
+    "derivedFrom": "http://www.w3.org/2004/02/skos/core#ConceptScheme",
+    "fields": [
+      {
+        "fieldName": "type",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "requiredContent": "ConceptScheme"
+      },
+      {
+        "fieldName": "concept",
+        "sameAs": "https://openactive.io/concept",
+        "types": [],
+        "models": [
+          "ArrayOf#Concept"
+        ],
+        "description": [
+          "A collection of concepts that are part of this scheme"
+        ]
+      },
+      {
+        "fieldName": "description",
+        "sameAs": "https://schema.org/description",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "description": [
+          "A free text description of the taxonomy"
+        ]
+      },
+      {
+        "fieldName": "license",
+        "sameAs": "http://purl.org/dc/terms/license",
+        "types": [
+          "https://schema.org/url"
+        ],
+        "models": [],
+        "description": [
+          "Reference to the license under which the activity list has been published."
+        ]
+      },
+      {
+        "fieldName": "title",
+        "sameAs": "http://purl.org/dc/terms/title",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "description": [
+          "The title of the scheme"
+        ]
+      },
+      {
+        "fieldName": "url",
+        "sameAs": "https://schema.org/url",
+        "types": [
+          "https://schema.org/url"
+        ],
+        "models": [],
+        "description": [
+          "A URL to a web page (or section of a page) that describes the concept scheme."
+        ]
+      }
+    ]
+  },
+  {
+    "type": "Course",
+    "derivedFrom": "https://schema.org/Course",
+    "fields": [
+      {
+        "fieldName": "type",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "requiredContent": "Course"
+      },
+      {
+        "fieldName": "activity",
+        "sameAs": "https://openactive.io/activity",
+        "types": [],
+        "models": [
+          "ArrayOf#Concept"
+        ],
+        "description": [
+          "Specifies the physical activity or activities that will take place during a Course."
+        ]
+      },
+      {
+        "fieldName": "author",
+        "types": [],
+        "models": [
+          "#Person",
+          "#Organization"
+        ],
+        "description": [
+          "The person or organization who have created the Course. An author might be an schema:Organization or a schema:Person."
+        ]
+      },
+      {
+        "fieldName": "description",
+        "sameAs": "https://schema.org/description",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "description": [
+          "The description of the Course"
+        ]
+      },
+      {
+        "fieldName": "identifier",
+        "types": [
+          "https://schema.org/Integer",
+          "https://schema.org/Text"
+        ],
+        "models": [
+          "#PropertyValue",
+          "ArrayOf#PropertyValue"
+        ],
+        "description": [
+          "A local non-URI identifier for the resource"
+        ]
+      },
+      {
+        "fieldName": "logo",
+        "types": [],
+        "models": [
+          "#ImageObject"
+        ],
+        "description": [
+          "A logo for the Course."
+        ]
+      },
+      {
+        "fieldName": "name",
+        "sameAs": "https://schema.org/name",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "description": [
+          "The name of the Course"
+        ]
+      },
+      {
+        "fieldName": "url",
+        "types": [
+          "https://schema.org/url"
+        ],
+        "models": [],
+        "description": [
+          "A definitive canonical URL for the Course."
+        ]
+      }
+    ]
+  },
+  {
+    "type": "CourseInstance",
+    "subClassOf": "#Event",
+    "derivedFrom": "https://pending.schema.org/CourseInstance",
+    "fields": [
+      {
+        "fieldName": "type",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "requiredContent": "CourseInstance"
+      }
+    ]
+  },
+  {
+    "type": "Creche",
+    "subClassOf": "#LocationFeatureSpecification",
+    "derivedFrom": null,
+    "fields": [
+      {
+        "fieldName": "type",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "requiredContent": "Creche"
+      },
+      {
+        "fieldName": "name",
+        "sameAs": "https://schema.org/name",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "description": [
+          "A string, suitable for presentation in user interfaces."
+        ]
+      }
+    ]
+  },
+  {
+    "type": "EntryPoint",
+    "derivedFrom": "https://schema.org/EntryPoint",
+    "fields": [
+      {
+        "fieldName": "type",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "requiredContent": "EntryPoint"
+      },
+      {
+        "fieldName": "encodingType",
+        "sameAs": "https://schema.org/encodingType",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "requiredContent": "application/vnd.openactive.v1.0+json",
+        "description": [
+          "The supported encoding type for an EntryPoint request"
+        ]
+      },
+      {
+        "fieldName": "httpMethod",
+        "sameAs": "https://schema.org/httpMethod",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "description": [
+          "An HTTP method that specifies the appropriate HTTP method for a request to an HTTP EntryPoint. Values are capitalized strings as used in HTTP."
+        ]
+      },
+      {
+        "fieldName": "urlTemplate",
+        "sameAs": "https://schema.org/urlTemplate",
+        "types": [
+          "https://schema.org/urlTemplate"
+        ],
+        "models": [],
+        "description": [
+          "URL of the item"
+        ]
+      }
+    ]
+  },
+  {
+    "type": "Event",
+    "derivedFrom": "https://schema.org/Event",
+    "fields": [
+      {
+        "fieldName": "type",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "requiredContent": "Event"
+      },
+      {
+        "fieldName": "@context",
+        "types": [
+          "ArrayOf#https://schema.org/url",
+          "https://schema.org/url"
+        ],
+        "models": [],
+        "description": [
+          "This must be included in the top-most entity in the JSON model."
+        ]
+      },
+      {
+        "fieldName": "accessibilityInformation",
+        "sameAs": "https://openactive.io/accessibilityInformation",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "description": [
+          "Provide additional, specific documentation for participants about how disabilities are, or can be supported at the Event."
+        ]
+      },
+      {
+        "fieldName": "accessibilitySupport",
+        "sameAs": "https://openactive.io/accessibilitySupport",
+        "types": [],
+        "models": [
+          "ArrayOf#Concept"
+        ],
+        "description": [
+          "Used to specify the types of disabilities or impairments that are supported at an event."
+        ]
+      },
+      {
+        "fieldName": "activity",
+        "sameAs": "https://openactive.io/activity",
+        "types": [],
+        "models": [
+          "ArrayOf#Concept"
+        ],
+        "description": [
+          "Specifies the physical activity or activities that will take place during an event."
+        ]
+      },
+      {
+        "fieldName": "ageRange",
+        "sameAs": "https://openactive.io/ageRange",
+        "types": [],
+        "models": [
+          "#QuantitativeValue"
+        ],
+        "description": [
+          "Indicates that an event is suitable for a specific age range. If only a single age is specified then this is assumed to be a minimum age. Age ranges can be specified as follows: 18-30"
+        ]
+      },
+      {
+        "fieldName": "attendeeInstructions",
+        "sameAs": "https://openactive.io/attendeeInstructions",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "description": [
+          "Provides additional notes and instructions for event attendees. E.g. more information on how to find the event, what to bring, etc."
+        ]
+      },
+      {
+        "fieldName": "category",
+        "sameAs": "https://openactive.io/category",
+        "types": [
+          "ArrayOf#https://schema.org/Text"
+        ],
+        "models": [
+          "ArrayOf#Concept"
+        ],
+        "description": [
+          "Provides a set of tags that help categorise and describe an event, e.g. its intensity, purpose, etc."
+        ]
+      },
+      {
+        "fieldName": "contributor",
+        "types": [],
+        "models": [
+          "ArrayOf#Person"
+        ],
+        "description": [
+          "A Person who contributes to the facilitation of the Event."
+        ]
+      },
+      {
+        "fieldName": "description",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "description": [
+          "A free text description of the event"
+        ]
+      },
+      {
+        "fieldName": "duration",
+        "types": [
+          "https://schema.org/Duration"
+        ],
+        "models": [],
+        "description": [
+          "The duration of the event given in [ISO8601] format."
+        ]
+      },
+      {
+        "fieldName": "endDate",
+        "types": [
+          "https://schema.org/Date",
+          "https://schema.org/DateTime"
+        ],
+        "models": [],
+        "description": [
+          "The end date and time of the event. Can be specified as a schema:Date or  schema:DateTime",
+          "It is recommended that publishers provide either an schema:endDate or a schema:duration for an event."
+        ]
+      },
+      {
+        "fieldName": "eventSchedule",
+        "types": [],
+        "models": [
+          "ArrayOf#Schedule"
+        ],
+        "description": [
+          "A an array of oa:Schedule or oa:PartialSchedule, which represents a recurrence pattern."
+        ]
+      },
+      {
+        "fieldName": "eventStatus",
+        "types": [
+          "https://schema.org/EventStatusType"
+        ],
+        "models": [],
+        "description": [
+          "The status of an event. Can be used to indicate rescheduled or cancelled events"
+        ]
+      },
+      {
+        "fieldName": "genderRestriction",
+        "sameAs": "https://openactive.io/genderRestriction",
+        "types": [
+          "https://openactive.io/GenderRestrictionType"
+        ],
+        "models": [],
+        "description": [
+          "Indicates that an event is restricted to male, female or a mixed audience. If a gender restriction isn't specified then applications should assume that an event is suitable for a mixed audience"
+        ]
+      },
+      {
+        "fieldName": "identifier",
+        "types": [
+          "https://schema.org/Integer",
+          "https://schema.org/Text"
+        ],
+        "models": [
+          "#PropertyValue",
+          "ArrayOf#PropertyValue"
+        ],
+        "description": [
+          "A local non-URI identifier for the resource"
+        ]
+      },
+      {
+        "fieldName": "image",
+        "types": [],
+        "models": [
+          "ArrayOf#ImageObject"
+        ],
+        "description": [
+          "An image or photo that depicts the event, e.g. a photo taken at a previous event."
+        ]
+      },
+      {
+        "fieldName": "isAccessibleForFree",
+        "types": [
+          "https://schema.org/Boolean"
+        ],
+        "models": [],
+        "description": [
+          "Whether the Event is accessible without charge."
+        ]
+      },
+      {
+        "fieldName": "isCoached",
+        "sameAs": "https://openactive.io/isCoached",
+        "types": [
+          "https://schema.org/Boolean"
+        ],
+        "models": [],
+        "description": [
+          "A boolean property that indicates whether an Event will be coached. This flag allows an Event to be marked as being coached without having to specify a named individual as a coach. This addresses both privacy concerns and also scenarios where the actual coach may only be decided on the day."
+        ]
+      },
+      {
+        "fieldName": "leader",
+        "sameAs": "https://openactive.io/leader",
+        "types": [],
+        "models": [
+          "ArrayOf#Person"
+        ],
+        "description": [
+          "Refers to a person (schema:Person) who will be leading an event. E.g. a coach. This is a more specific role than an organiser or a contributor. The person will need to have given their consent for their personal information to be present in the Open Data."
+        ]
+      },
+      {
+        "fieldName": "level",
+        "sameAs": "https://openactive.io/level",
+        "types": [
+          "ArrayOf#https://schema.org/Text"
+        ],
+        "models": [
+          "ArrayOf#Concept"
+        ],
+        "description": [
+          "A general purpose property for specifying the suitability of an event for different participant “levels”. E.g. beginner/intermediate/advanced. Or in the case of martial arts, specific belt requirements."
+        ]
+      },
+      {
+        "fieldName": "location",
+        "types": [],
+        "models": [
+          "#Place"
+        ],
+        "description": [
+          "The location at which the event will take place. Or, in the case of events that may span multiple locations, the initial meeting or starting point.",
+          "It is recommended that locations should be specified as a [Place](/models/place) complete with a fully described geographic location and/or address.\r\n\rIf only an address is available then this should be described as a [PostalAddress](/models/postaladdress).",
+          "Applications may use [schema:Text](https://schema.org/Text) to provide a more general description of a location (\"In Victoria Park, near the lake\"), but this is not recommended: consuming applications will be unable to help users discover opportunities based on their location."
+        ]
+      },
+      {
+        "fieldName": "maximumAttendeeCapacity",
+        "types": [
+          "https://schema.org/Integer"
+        ],
+        "models": [],
+        "description": [
+          "The maximum capacity of the Event."
+        ]
+      },
+      {
+        "fieldName": "meetingPoint",
+        "sameAs": "https://openactive.io/meetingPoint",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "description": [
+          "Instructions for the attendees of an Event about where they should meet the organizer or leader at the start of the event. Some larger locations may have several possible meeting points, so this property provides additional more specific directions."
+        ]
+      },
+      {
+        "fieldName": "name",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "description": [
+          "The name of the event"
+        ]
+      },
+      {
+        "fieldName": "offers",
+        "types": [],
+        "models": [
+          "ArrayOf#Offer"
+        ],
+        "description": [
+          "An array of schema:Offer that include the price of attending."
+        ]
+      },
+      {
+        "fieldName": "organizer",
+        "types": [],
+        "models": [
+          "#Person",
+          "#Organization"
+        ],
+        "description": [
+          "The person or organization ultimately responsible for an event. An organizer might be an  schema:Organization or a schema:Person."
+        ]
+      },
+      {
+        "fieldName": "potentialAction",
+        "sameAs": "https://schema.org/potentialAction",
+        "types": [],
+        "models": [
+          "ArrayOf#Action"
+        ],
+        "description": [
+          "The possible actions that a user may make. e.g. Book."
+        ]
+      },
+      {
+        "fieldName": "programme",
+        "sameAs": "https://openactive.io/programme",
+        "types": [],
+        "models": [
+          "#Brand"
+        ],
+        "description": [
+          "Indicates that an event will be organised according to a specific Programme."
+        ]
+      },
+      {
+        "fieldName": "remainingAttendeeCapacity",
+        "types": [
+          "https://schema.org/Integer"
+        ],
+        "models": [],
+        "description": [
+          "The number of places that are still available for the Event."
+        ]
+      },
+      {
+        "fieldName": "subEvent",
+        "types": [],
+        "models": [
+          "ArrayOf#Event"
+        ],
+        "description": [
+          "Relates a parent event to a child event. Properties describing the parent event can be assumed to apply to the child, unless otherwise specified. A child event might be a specific instance of an Event within a schedule"
+        ]
+      },
+      {
+        "fieldName": "schedulingNote",
+        "sameAs": "https://openactive.io/schedulingNote",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "description": [
+          "Provides a note from an organizer relating to how this Event is scheduled."
+        ]
+      },
+      {
+        "fieldName": "superEvent",
+        "types": [],
+        "models": [
+          "#Event"
+        ],
+        "description": [
+          "Relates a child event to a parent event. Properties describing the parent event can be assumed to apply to the child, unless otherwise specified. A parent event might specify a recurring schedule, of which the child event is one specific instance"
+        ]
+      },
+      {
+        "fieldName": "startDate",
+        "types": [
+          "https://schema.org/Date",
+          "https://schema.org/DateTime"
+        ],
+        "models": [],
+        "description": [
+          "The start date and time of the event. Can be specified as a schema:Date or schema:DateTime."
+        ]
+      },
+      {
+        "fieldName": "url",
+        "types": [
+          "https://schema.org/url"
+        ],
+        "models": [],
+        "description": [
+          "A URL to a web page (or section of a page) that describes the event."
+        ]
+      }
+    ]
+  },
+  {
+    "type": "EventSeries",
+    "subClassOf": "#Event",
+    "derivedFrom": "https://pending.schema.org/EventSeries",
+    "fields": [
+      {
+        "fieldName": "type",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "requiredContent": "EventSeries"
+      }
+    ]
+  },
+  {
+    "type": "FacilityUse",
+    "subClassOf": "https://schema.org/Product",
+    "fields": [
+      {
+        "fieldName": "type",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "requiredContent": "FacilityUse"
+      },
+      {
+        "fieldName": "@context",
+        "types": [
+          "ArrayOf#https://schema.org/url",
+          "https://schema.org/url"
+        ],
+        "models": [],
+        "description": [
+          "This must be included in the top-most entity in the JSON model."
+        ]
+      },
+      {
+        "fieldName": "accessibilityInformation",
+        "sameAs": "https://openactive.io/accessibilityInformation",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "description": [
+          "Provide additional, specific documentation for participants about how disabilities are, or can be supported at the Event."
+        ]
+      },
+      {
+        "fieldName": "accessibilitySupport",
+        "sameAs": "https://openactive.io/accessibilitySupport",
+        "types": [],
+        "models": [
+          "ArrayOf#Concept"
+        ],
+        "description": [
+          "Used to specify the types of disabilities or impairments that are supported at an event."
+        ]
+      },
+      {
+        "fieldName": "activity",
+        "types": [],
+        "models": [
+          "ArrayOf#Concept"
+        ],
+        "description": [
+          "Specifies the physical activity or activities that will take place during a facility use."
+        ]
+      },
+      {
+        "fieldName": "attendeeInstructions",
+        "sameAs": "https://openactive.io/attendeeInstructions",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "description": [
+          "Provides additional notes and instructions for users of a facility. E.g. more information on how to find it, what to bring, etc."
+        ]
+      },
+      {
+        "fieldName": "category",
+        "types": [
+          "ArrayOf#https://schema.org/Text"
+        ],
+        "models": [
+          "ArrayOf#Concept"
+        ],
+        "description": [
+          "Provides a set of tags that help categorise and describe a facility."
+        ]
+      },
+      {
+        "fieldName": "description",
+        "sameAs": "https://schema.org/description",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "description": [
+          "A free text description of the facility use"
+        ]
+      },
+      {
+        "fieldName": "event",
+        "sameAs": "https://pending.schema.org/event",
+        "types": [],
+        "models": [
+          "ArrayOf#Slot"
+        ],
+        "description": [
+          "An array of slots of availability of this FacilityUse."
+        ]
+      },
+      {
+        "fieldName": "hoursAvailable",
+        "sameAs": "https://schema.org/hoursAvailable",
+        "types": [],
+        "models": [
+          "ArrayOf#OpeningHoursSpecification"
+        ],
+        "description": [
+          "The times the facility use is available"
+        ]
+      },
+      {
+        "fieldName": "identifier",
+        "sameAs": "https://schema.org/identifier",
+        "types": [
+          "https://schema.org/Integer",
+          "https://schema.org/Text"
+        ],
+        "models": [
+          "#PropertyValue",
+          "ArrayOf#PropertyValue"
+        ],
+        "description": [
+          "A local non-URI identifier for the resource"
+        ]
+      },
+      {
+        "fieldName": "image",
+        "sameAs": "https://schema.org/image",
+        "types": [],
+        "models": [
+          "ArrayOf#ImageObject"
+        ],
+        "description": [
+          "An image or photo that depicts the facility use, e.g. a photo taken at a previous event."
+        ]
+      },
+      {
+        "fieldName": "individualFacilityUse",
+        "types": [],
+        "models": [
+          "ArrayOf#IndividualFacilityUse"
+        ],
+        "description": [
+          "Inverse of the oa:aggregateFacilityUse property. Relates a oa:FacilityUse (e.g. an opportunity to play tennis at a specific location) to an oa:IndividualFacilityUse (e.g. an opportunity to play tennis on a specific court)."
+        ]
+      },
+      {
+        "fieldName": "location",
+        "sameAs": "https://schema.org/location",
+        "types": [],
+        "models": [
+          "#Place"
+        ],
+        "description": [
+          "The location at which the facility use will take place."
+        ]
+      },
+      {
+        "fieldName": "name",
+        "sameAs": "https://schema.org/name",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "description": [
+          "The name of the facility use"
+        ]
+      },
+      {
+        "fieldName": "potentialAction",
+        "sameAs": "https://schema.org/potentialAction",
+        "types": [],
+        "models": [
+          "ArrayOf#Action"
+        ],
+        "description": [
+          "The possible actions that a user may make. e.g. Book."
+        ]
+      },
+      {
+        "fieldName": "provider",
+        "sameAs": "https://schema.org/provider",
+        "types": [],
+        "models": [],
+        "description": [
+          "The organisation responsible for providing the facility"
+        ]
+      },
+      {
+        "fieldName": "offers",
+        "sameAs": "https://schema.org/offers",
+        "types": [],
+        "models": [
+          "ArrayOf#Offer"
+        ],
+        "description": [
+          "An array of schema:Offer that include the price of booking."
+        ]
+      },
+      {
+        "fieldName": "url",
+        "sameAs": "https://schema.org/url",
+        "types": [
+          "https://schema.org/url"
+        ],
+        "models": [],
+        "description": [
+          "A URL to a web page (or section of a page) that describes the facility use."
+        ]
+      }
+    ]
+  },
+  {
+    "type": "GeoCoordinates",
+    "derivedFrom": "https://schema.org/GeoCoordinates",
+    "fields": [
+      {
+        "fieldName": "type",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "requiredContent": "GeoCoordinates"
+      },
+      {
+        "fieldName": "latitude",
+        "sameAs": "https://schema.org/latitude",
+        "types": [
+          "https://schema.org/Float"
+        ],
+        "models": [],
+        "description": [
+          "The latitude of a location. For example 51.522338 (WGS 84)."
+        ]
+      },
+      {
+        "fieldName": "longitude",
+        "sameAs": "https://schema.org/longitude",
+        "types": [
+          "https://schema.org/Float"
+        ],
+        "models": [],
+        "description": [
+          "The longitude of a location. For example -0.083437 (WGS 84)."
+        ]
+      }
+    ]
+  },
+  {
+    "type": "HeadlineEvent",
+    "subClassOf": "#Event",
+    "derivedFrom": null,
+    "fields": [
+      {
+        "fieldName": "type",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "requiredContent": "HeadlineEvent"
+      }
+    ]
+  },
+  {
+    "type": "ImageObject",
+    "derivedFrom": "https://schema.org/ImageObject",
+    "fields": [
+      {
+        "fieldName": "type",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "requiredContent": "ImageObject"
+      },
+      {
+        "fieldName": "thumbnail",
+        "types": [],
+        "models": [
+          "ArrayOf#ImageObject"
+        ],
+        "description": [
+          "The URL for a thumbnail image for an image."
+        ]
+      },
+      {
+        "fieldName": "url",
+        "types": [
+          "https://schema.org/url"
+        ],
+        "models": [],
+        "description": [
+          "The URL for the display resolution image."
+        ]
+      }
+    ]
+  },
+  {
+    "type": "IndividualFacilityUse",
+    "subClassOf": "#FacilityUse",
+    "fields": [
+      {
+        "fieldName": "type",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "requiredContent": "IndividualFacilityUse"
+      },
+      {
+        "fieldName": "aggregateFacilityUse",
+        "types": [],
+        "models": [
+          "#FacilityUse"
+        ],
+        "description": [
+          "Inverse of the oa:individualFacilityUse property. Relates an oa:IndividualFacilityUse (e.g. an opportunity to play tennis on a specific court) to a oa:FacilityUse (e.g. an opportunity to play tennis at a specific location)."
+        ]
+      },
+      {
+        "fieldName": "event",
+        "sameAs": "https://pending.schema.org/event",
+        "types": [],
+        "models": [
+          "ArrayOf#Slot"
+        ],
+        "description": [
+          "An array of slots of availability of this IndividualFacilityUse."
+        ]
+      }
+    ]
+  },
+  {
+    "type": "LocationFeatureSpecification",
+    "derivedFrom": "https://schema.org/LocationFeatureSpecification",
+    "fields": [
+      {
+        "fieldName": "type",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "requiredContent": "LocationFeatureSpecification"
+      },
+      {
+        "fieldName": "name",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "description": [
+          "A string, suitable for presentation in user interfaces."
+        ]
+      },
+      {
+        "fieldName": "value",
+        "types": [
+          "https://schema.org/Boolean"
+        ],
+        "models": [],
+        "description": [
+          "A boolean value indicating whether this ammenity is available."
+        ]
+      }
+    ]
+  },
+  {
+    "type": "Lockers",
+    "subClassOf": "#LocationFeatureSpecification",
+    "derivedFrom": null,
+    "fields": [
+      {
+        "fieldName": "type",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "requiredContent": "Lockers"
+      },
+      {
+        "fieldName": "name",
+        "sameAs": "https://schema.org/name",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "description": [
+          "A string, suitable for presentation in user interfaces."
+        ]
+      }
+    ]
+  },
+  {
+    "type": "Offer",
+    "derivedFrom": "https://schema.org/Offer",
+    "fields": [
+      {
+        "fieldName": "type",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "requiredContent": "Offer"
+      },
+      {
+        "fieldName": "acceptedPaymentMethod",
+        "sameAs": "https://schema.org/acceptedPaymentMethod",
+        "types": [
+          "ArrayOf#http://purl.org/goodrelations/v1#PaymentMethod"
+        ],
+        "models": [],
+        "description": [
+          "Indicates the offline payment methods accepted by this provider."
+        ]
+      },
+      {
+        "fieldName": "advanceBooking",
+        "sameAs": "https://openactive.io/advanceBooking",
+        "types": [
+          "https://openactive.io/RequiredStatusType"
+        ],
+        "models": [],
+        "description": [
+          "Indicates whether to accept this offer, a participant must book in advance, whether they must pay on attending, or have option to do either."
+        ]
+      },
+      {
+        "fieldName": "ageRange",
+        "sameAs": "https://openactive.io/ageRange",
+        "types": [],
+        "models": [
+          "#QuantitativeValue"
+        ],
+        "description": [
+          "Indicates that an event is suitable for a specific age range. If only a single age is specified then this is assumed to be a minimum age. Age ranges can be specified as follows: 18-30"
+        ]
+      },
+      {
+        "fieldName": "description",
+        "sameAs": "https://schema.org/description",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "description": [
+          "A free text description of the Offer"
+        ]
+      },
+      {
+        "fieldName": "identifier",
+        "types": [
+          "https://schema.org/Integer",
+          "https://schema.org/Text"
+        ],
+        "models": [
+          "#PropertyValue",
+          "ArrayOf#PropertyValue"
+        ],
+        "description": [
+          "A local non-URI identifier for the resource"
+        ]
+      },
+      {
+        "fieldName": "name",
+        "sameAs": "https://schema.org/name",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "description": [
+          "A human readable name for the offer."
+        ]
+      },
+      {
+        "fieldName": "prepayment",
+        "sameAs": "https://openactive.io/prepayment",
+        "types": [
+          "https://openactive.io/RequiredStatusType"
+        ],
+        "models": [],
+        "description": [
+          "Indicates whether to accept this offer, a participant must pay in advance, pay when attending, or have the option to do either."
+        ]
+      },
+      {
+        "fieldName": "price",
+        "sameAs": "https://schema.org/price",
+        "types": [
+          "https://schema.org/Float"
+        ],
+        "models": [],
+        "description": [
+          "The offer price of the activity.",
+          "This price should be specified without currency symbols and as a floating point number with two decimal places.",
+          "The currency of the price should be expressed in the priceCurrency field."
+        ]
+      },
+      {
+        "fieldName": "priceCurrency",
+        "sameAs": "https://schema.org/priceCurrency",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "description": [
+          "The currency (in 3-letter ISO 4217 format) of the price.",
+          "If an Offer has a zero price, then this property is not required. Otherwise the currency must be specified."
+        ]
+      },
+      {
+        "fieldName": "url",
+        "sameAs": "https://schema.org/url",
+        "types": [
+          "https://schema.org/url"
+        ],
+        "models": [],
+        "description": [
+          "URL describing the offer"
+        ]
+      }
+    ]
+  },
+  {
+    "type": "OpeningHoursSpecification",
+    "derivedFrom": "https://schema.org/OpeningHoursSpecification",
+    "fields": [
+      {
+        "fieldName": "type",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "requiredContent": "OpeningHoursSpecification"
+      },
+      {
+        "fieldName": "closes",
+        "types": [
+          "https://schema.org/Time"
+        ],
+        "models": [],
+        "description": [
+          "The closing time."
+        ]
+      },
+      {
+        "fieldName": "dayOfWeek",
+        "types": [
+          "https://schema.org/DayOfWeek"
+        ],
+        "models": [],
+        "description": [
+          "Defines the day of the week upon which the Place is open"
+        ]
+      },
+      {
+        "fieldName": "opens",
+        "types": [
+          "https://schema.org/Time"
+        ],
+        "models": [],
+        "description": [
+          "The opening time."
+        ]
+      }
+    ]
+  },
+  {
+    "type": "Organization",
+    "derivedFrom": "https://schema.org/Organization",
+    "fields": [
+      {
+        "fieldName": "type",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "requiredContent": "Organization"
+      },
+      {
+        "fieldName": "description",
+        "sameAs": "https://schema.org/description",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "description": [
+          "The description of the Organization"
+        ]
+      },
+      {
+        "fieldName": "identifier",
+        "types": [
+          "https://schema.org/Integer",
+          "https://schema.org/Text"
+        ],
+        "models": [
+          "#PropertyValue",
+          "ArrayOf#PropertyValue"
+        ],
+        "description": [
+          "A local non-URI identifier for the resource"
+        ]
+      },
+      {
+        "fieldName": "logo",
+        "types": [],
+        "models": [
+          "#ImageObject"
+        ],
+        "description": [
+          "A logo for the Organization."
+        ]
+      },
+      {
+        "fieldName": "name",
+        "sameAs": "https://schema.org/name",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "description": [
+          "The name of the Organization"
+        ]
+      },
+      {
+        "fieldName": "legalName",
+        "sameAs": "https://schema.org/legalName",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "description": [
+          "The official name of the organization, e.g. the registered company name."
+        ]
+      },
+      {
+        "fieldName": "email",
+        "sameAs": "https://schema.org/email",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "description": [
+          "General enquiries e-mail address for the organization."
+        ]
+      },
+      {
+        "fieldName": "sameAs",
+        "sameAs": "https://schema.org/sameAs",
+        "types": [
+          "ArrayOf#https://schema.org/url"
+        ],
+        "models": [],
+        "description": [
+          "Lists the URL(s) of the official social media profile pages associated with the organization."
+        ]
+      },
+      {
+        "fieldName": "telephone",
+        "sameAs": "https://schema.org/telephone",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "description": [
+          "The telephone number of the Organization"
+        ]
+      },
+      {
+        "fieldName": "url",
+        "types": [
+          "https://schema.org/url"
+        ],
+        "models": [],
+        "description": [
+          "A definitive canonical URL for the Organization."
+        ]
+      }
+    ]
+  },
+  {
+    "type": "Parking",
+    "subClassOf": "#LocationFeatureSpecification",
+    "derivedFrom": null,
+    "fields": [
+      {
+        "fieldName": "type",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "requiredContent": "Parking"
+      },
+      {
+        "fieldName": "name",
+        "sameAs": "https://schema.org/name",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "description": [
+          "A string, suitable for presentation in user interfaces."
+        ]
+      }
+    ]
+  },
+  {
+    "type": "PartialSchedule",
+    "subClassOf": "#Schedule",
+    "derivedFrom": null,
+    "fields": [
+      {
+        "fieldName": "type",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "requiredContent": "PartialSchedule"
+      }
+    ]
+  },
+  {
+    "type": "Person",
+    "derivedFrom": "https://schema.org/Person",
+    "fields": [
+      {
+        "fieldName": "type",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "requiredContent": "Person"
+      },
+      {
+        "fieldName": "description",
+        "sameAs": "https://schema.org/description",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "description": [
+          "The description of the Person"
+        ]
+      },
+      {
+        "fieldName": "identifier",
+        "types": [
+          "https://schema.org/Integer",
+          "https://schema.org/Text"
+        ],
+        "models": [
+          "#PropertyValue",
+          "ArrayOf#PropertyValue"
+        ],
+        "description": [
+          "A local non-URI identifier for the resource"
+        ]
+      },
+      {
+        "fieldName": "logo",
+        "types": [],
+        "models": [
+          "#ImageObject"
+        ],
+        "description": [
+          "A logo for the person."
+        ]
+      },
+      {
+        "fieldName": "name",
+        "sameAs": "https://schema.org/name",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "description": [
+          "A full name for the person.",
+          "This person must give direct permission for their personal information to be shared as part of the Open Data."
+        ]
+      },
+      {
+        "fieldName": "givenName",
+        "sameAs": "https://schema.org/givenName",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "description": [
+          "A first name for the person.",
+          "This person must give direct permission for their personal information to be shared as part of the Open Data."
+        ]
+      },
+      {
+        "fieldName": "familyName",
+        "sameAs": "https://schema.org/familyName",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "description": [
+          "A last name for the person.",
+          "This person must give direct permission for their personal information to be shared as part of the Open Data."
+        ]
+      },
+      {
+        "fieldName": "gender",
+        "sameAs": "https://schema.org/gender",
+        "types": [
+          "https://schema.org/GenderType"
+        ],
+        "models": [],
+        "description": [
+          "Indicates the gender of the person."
+        ]
+      },
+      {
+        "fieldName": "sameAs",
+        "sameAs": "https://schema.org/sameAs",
+        "types": [
+          "ArrayOf#https://schema.org/url"
+        ],
+        "models": [],
+        "description": [
+          "Lists the URL(s) of the official social media profile pages associated with the person."
+        ]
+      },
+      {
+        "fieldName": "telephone",
+        "sameAs": "https://schema.org/telephone",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "description": [
+          "The telephone number of the person"
+        ]
+      },
+      {
+        "fieldName": "url",
+        "sameAs": "https://schema.org/url",
+        "types": [
+          "https://schema.org/url"
+        ],
+        "models": [],
+        "description": [
+          "A URL where more information about the person may be found"
+        ]
+      }
+    ]
+  },
+  {
+    "type": "Place",
+    "derivedFrom": "https://schema.org/Place",
+    "fields": [
+      {
+        "fieldName": "type",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "requiredContent": "Place"
+      },
+      {
+        "fieldName": "address",
+        "sameAs": "https://schema.org/address",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [
+          "#PostalAddress"
+        ],
+        "description": [
+          "A structured PostalAddress object for the Place.",
+          "Ideally the address should be provided using the PostalAddress structured format. Google Reserve requires https://schema.org/PostalAddress and will not accept plain text addresses."
+        ]
+      },
+      {
+        "fieldName": "amenityFeature",
+        "types": [],
+        "models": [
+          "ArrayOf#LocationFeatureSpecification"
+        ],
+        "description": [
+          "An array listing the Ammenities of the Place."
+        ]
+      },
+      {
+        "fieldName": "containedInPlace",
+        "types": [],
+        "models": [
+          "#Place"
+        ],
+        "description": [
+          "The place within which this Place exists"
+        ]
+      },
+      {
+        "fieldName": "containsPlace",
+        "types": [],
+        "models": [
+          "ArrayOf#Place"
+        ],
+        "description": [
+          "Places that exist within this place"
+        ]
+      },
+      {
+        "fieldName": "description",
+        "sameAs": "https://schema.org/description",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "description": [
+          "The description of the Place"
+        ]
+      },
+      {
+        "fieldName": "geo",
+        "types": [],
+        "models": [
+          "#GeoCoordinates"
+        ],
+        "description": [
+          "The geo coordinates of the Place."
+        ]
+      },
+      {
+        "fieldName": "identifier",
+        "types": [
+          "https://schema.org/Integer",
+          "https://schema.org/Text"
+        ],
+        "models": [
+          "#PropertyValue",
+          "ArrayOf#PropertyValue"
+        ],
+        "description": [
+          "A local non-URI identifier for the resource"
+        ]
+      },
+      {
+        "fieldName": "image",
+        "types": [],
+        "models": [
+          "ArrayOf#ImageObject"
+        ],
+        "description": [
+          "An image or photo that depicts the place, e.g. a photo taken at a previous event."
+        ]
+      },
+      {
+        "fieldName": "name",
+        "sameAs": "https://schema.org/name",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "description": [
+          "The name of the Place"
+        ]
+      },
+      {
+        "fieldName": "openingHoursSpecification",
+        "types": [],
+        "models": [
+          "ArrayOf#OpeningHoursSpecification"
+        ],
+        "description": [
+          "The times the Place is open"
+        ]
+      },
+      {
+        "fieldName": "telephone",
+        "sameAs": "https://schema.org/telephone",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "description": [
+          "The telephone number for the Place"
+        ]
+      },
+      {
+        "fieldName": "url",
+        "sameAs": "https://schema.org/url",
+        "types": [
+          "https://schema.org/url"
+        ],
+        "models": [],
+        "description": [
+          "The website for the Place"
+        ]
+      }
+    ]
+  },
+  {
+    "type": "PostalAddress",
+    "derivedFrom": "https://schema.org/PostalAddress",
+    "fields": [
+      {
+        "fieldName": "type",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "requiredContent": "PostalAddress"
+      },
+      {
+        "fieldName": "addressCountry",
+        "sameAs": "https://schema.org/addressCountry",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "description": [
+          "The country, expressed as a two-letter ISO 3166-1 alpha-2 country code."
+        ]
+      },
+      {
+        "fieldName": "addressLocality",
+        "sameAs": "https://schema.org/addressLocality",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "description": [
+          "The locality, a suburb within a city or a town within a county or district."
+        ]
+      },
+      {
+        "fieldName": "addressRegion",
+        "sameAs": "https://schema.org/addressRegion",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "description": [
+          "The region, either a city or a county or district."
+        ]
+      },
+      {
+        "fieldName": "postalCode",
+        "sameAs": "https://schema.org/postalCode",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "description": [
+          "The postal code."
+        ]
+      },
+      {
+        "fieldName": "streetAddress",
+        "sameAs": "https://schema.org/streetAddress",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "description": [
+          "The street address."
+        ]
+      }
+    ]
+  },
+  {
+    "type": "PropertyValue",
+    "derivedFrom": "https://schema.org/PropertyValue",
+    "fields": [
+      {
+        "fieldName": "type",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "requiredContent": "PropertyValue"
+      },
+      {
+        "fieldName": "name",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "description": [
+          "The name of this PropertyValue"
+        ]
+      },
+      {
+        "fieldName": "propertyID",
+        "types": [
+          "https://schema.org/Text",
+          "https://schema.org/url"
+        ],
+        "models": [],
+        "description": [
+          "A commonly used identifier for the characteristic represented by the property"
+        ]
+      },
+      {
+        "fieldName": "value",
+        "types": [
+          "https://schema.org/Integer",
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "description": [
+          "The actual value of this identifier"
+        ]
+      }
+    ]
+  },
+  {
+    "type": "QuantitativeValue",
+    "derivedFrom": "https://schema.org/QuantitativeValue",
+    "fields": [
+      {
+        "fieldName": "type",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "requiredContent": "QuantitativeValue"
+      },
+      {
+        "fieldName": "maxValue",
+        "types": [
+          "https://schema.org/Integer"
+        ],
+        "models": [],
+        "description": [
+          "The maximum value."
+        ]
+      },
+      {
+        "fieldName": "minValue",
+        "types": [
+          "https://schema.org/Integer"
+        ],
+        "models": [],
+        "description": [
+          "The minimum value."
+        ]
+      }
+    ]
+  },
+  {
+    "type": "ReserveAction",
+    "subClassOf": "#Action",
+    "derivedFrom": "https://schema.org/ReserveAction",
+    "fields": [
+      {
+        "fieldName": "type",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "requiredContent": "ReserveAction"
+      }
+    ]
+  },
+  {
+    "type": "Schedule",
+    "derivedFrom": "https://pending.schema.org/Schedule",
+    "fields": [
+      {
+        "fieldName": "type",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "requiredContent": "Schedule"
+      },
+      {
+        "fieldName": "byDay",
+        "types": [
+          "ArrayOf#https://schema.org/Text",
+          "ArrayOf#https://schema.org/DayOfWeek"
+        ],
+        "models": [],
+        "description": [
+          "Defines the day of the week upon which the Event takes place.",
+          "When using string values, this MUST conform to iCal BYDAY rule."
+        ]
+      },
+      {
+        "fieldName": "byMonth",
+        "types": [
+          "ArrayOf#https://schema.org/Integer"
+        ],
+        "models": [],
+        "description": [
+          "Defines the months of the year on which the Event takes place. Specified as an integer between 1 and 12, with 1 representing January."
+        ]
+      },
+      {
+        "fieldName": "byMonthDay",
+        "types": [
+          "ArrayOf#https://schema.org/Integer"
+        ],
+        "models": [],
+        "description": [
+          "Defines the days of the month on which the Event takes place. Specified as an integer between 1 and 31"
+        ]
+      },
+      {
+        "fieldName": "duration",
+        "sameAs": "https://schema.org/duration",
+        "types": [
+          "https://schema.org/Duration"
+        ],
+        "models": [],
+        "description": [
+          "The duration of the event given in [ISO8601] format."
+        ]
+      },
+      {
+        "fieldName": "endDate",
+        "sameAs": "https://schema.org/endDate",
+        "types": [
+          "https://schema.org/Date"
+        ],
+        "models": [],
+        "description": [
+          "The end date of the schedule."
+        ]
+      },
+      {
+        "fieldName": "endTime",
+        "sameAs": "https://schema.org/endTime",
+        "types": [
+          "https://schema.org/Time"
+        ],
+        "models": [],
+        "description": [
+          "The end time of the event."
+        ]
+      },
+      {
+        "fieldName": "exceptDate",
+        "types": [
+          "ArrayOf#https://schema.org/DateTime",
+          "ArrayOf#https://schema.org/Date"
+        ],
+        "models": [],
+        "description": [
+          "Exception dates where the schedule should not generate an event."
+        ]
+      },
+      {
+        "fieldName": "idTemplate",
+        "sameAs": "https://schema.org/urlTemplate",
+        "types": [
+          "https://schema.org/urlTemplate"
+        ],
+        "models": [],
+        "description": [
+          "An RFC6570 compliant URI template that can be used to generate a unique identifier (@id) for every event described by the schedule (see below for more information). This property is required if the data provider is supporting third-party booking via the Open Booking API."
+        ]
+      },
+      {
+        "fieldName": "repeatCount",
+        "types": [
+          "https://schema.org/Integer"
+        ],
+        "models": [],
+        "description": [
+          "Defines the number of times a recurring Event will take place."
+        ]
+      },
+      {
+        "fieldName": "repeatFrequency",
+        "types": [
+          "https://schema.org/Duration"
+        ],
+        "models": [],
+        "description": [
+          "Defines the frequency at which Events will occur according to a Schedule. The intervals between events should be defined as a Duration of time."
+        ]
+      },
+      {
+        "fieldName": "scheduledEventType",
+        "sameAs": "https://openactive.io/scheduledEventType",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "description": [
+          "The type of event this schedule related to."
+        ]
+      },
+      {
+        "fieldName": "startDate",
+        "sameAs": "https://schema.org/startDate",
+        "types": [
+          "https://schema.org/Date"
+        ],
+        "models": [],
+        "description": [
+          "The start date of the event."
+        ]
+      },
+      {
+        "fieldName": "startTime",
+        "sameAs": "https://schema.org/startTime",
+        "types": [
+          "https://schema.org/Time"
+        ],
+        "models": [],
+        "description": [
+          "The start time of the event."
+        ]
+      },
+      {
+        "fieldName": "urlTemplate",
+        "sameAs": "https://schema.org/urlTemplate",
+        "types": [
+          "https://schema.org/urlTemplate"
+        ],
+        "models": [],
+        "description": [
+          "An RFC6570 compliant URI template that can be used to generate a unique URL (schema:url) for every event described by the schedule (see below for more information). This property is required if the data provider wants to provide participants with a unique URL to book to attend an event."
+        ]
+      }
+    ]
+  },
+  {
+    "type": "ScheduledSession",
+    "subClassOf": "#Event",
+    "derivedFrom": null,
+    "fields": [
+      {
+        "fieldName": "type",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "requiredContent": "ScheduledSession"
+      },
+      {
+        "fieldName": "superEvent",
+        "sameAs": "https://schema.org/superEvent",
+        "types": [
+          "https://schema.org/url"
+        ],
+        "models": [
+          "#Event"
+        ],
+        "description": [
+          "Relates a child event to a parent event. Properties describing the parent event can be assumed to apply to the child, unless otherwise specified. A parent event might specify a recurring schedule, of which the child event is one specific instance"
+        ]
+      }
+    ]
+  },
+  {
+    "type": "SessionSeries",
+    "subClassOf": "#Event",
+    "derivedFrom": null,
+    "fields": [
+      {
+        "fieldName": "type",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "requiredContent": "SessionSeries"
+      },
+      {
+        "fieldName": "subEvent",
+        "sameAs": "https://schema.org/subEvent",
+        "types": [],
+        "models": [
+          "ArrayOf#ScheduledSession"
+        ],
+        "description": [
+          "Relates a parent event to a child event. Properties describing the parent event can be assumed to apply to the child, unless otherwise specified. A child event might be a specific instance of an Event within a schedule"
+        ]
+      }
+    ]
+  },
+  {
+    "type": "Showers",
+    "subClassOf": "#LocationFeatureSpecification",
+    "derivedFrom": null,
+    "fields": [
+      {
+        "fieldName": "type",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "requiredContent": "Showers"
+      },
+      {
+        "fieldName": "name",
+        "sameAs": "https://schema.org/name",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "description": [
+          "A string, suitable for presentation in user interfaces."
+        ]
+      }
+    ]
+  },
+  {
+    "type": "Slot",
+    "subClassOf": "https://schema.org/Event",
+    "fields": [
+      {
+        "fieldName": "type",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "requiredContent": "Slot"
+      },
+      {
+        "fieldName": "duration",
+        "sameAs": "https://schema.org/duration",
+        "types": [
+          "https://schema.org/Duration"
+        ],
+        "models": [],
+        "description": [
+          "The duration of the slot given in [ISO8601] format."
+        ]
+      },
+      {
+        "fieldName": "endDate",
+        "sameAs": "https://schema.org/endDate",
+        "types": [
+          "https://schema.org/Date",
+          "https://schema.org/DateTime"
+        ],
+        "models": [],
+        "description": [
+          "The end date and time of the slot. Can be specified as a schema:Date or schema:DateTime",
+          "It is recommended that publishers provide either an schema:endDate or a schema:duration for an slot."
+        ]
+      },
+      {
+        "fieldName": "facilityUse",
+        "types": [
+          "https://schema.org/url"
+        ],
+        "models": [],
+        "description": [
+          "URI to the FacilityUse that has this offer"
+        ]
+      },
+      {
+        "fieldName": "identifier",
+        "sameAs": "https://schema.org/identifier",
+        "types": [
+          "https://schema.org/Integer",
+          "https://schema.org/Text"
+        ],
+        "models": [
+          "#PropertyValue",
+          "ArrayOf#PropertyValue"
+        ],
+        "description": [
+          "A local non-URI identifier for the resource"
+        ]
+      },
+      {
+        "fieldName": "maximumUses",
+        "types": [
+          "https://schema.org/Integer"
+        ],
+        "models": [],
+        "description": [
+          "The maximum available courts or pitches at this time. Must be 0 or 1 for an IndividualFacilityUse."
+        ]
+      },
+      {
+        "fieldName": "offers",
+        "sameAs": "https://schema.org/offers",
+        "types": [],
+        "models": [
+          "ArrayOf#Offer"
+        ],
+        "description": [
+          "An array of schema:Offer that include the price of booking."
+        ]
+      },
+      {
+        "fieldName": "remainingUses",
+        "types": [
+          "https://schema.org/Integer"
+        ],
+        "models": [],
+        "description": [
+          "The remaining available courts or pitches at this time. Must be 0 or 1 for an IndividualFacilityUse."
+        ]
+      },
+      {
+        "fieldName": "startDate",
+        "sameAs": "https://schema.org/startDate",
+        "types": [
+          "https://schema.org/Date",
+          "https://schema.org/DateTime"
+        ],
+        "models": [],
+        "description": [
+          "The start date and time of the slot. Can be specified as a schema:Date or schema:DateTime"
+        ]
+      }
+    ]
+  },
+  {
+    "type": "SportsActivityLocation",
+    "subClassOf": "#Place",
+    "derivedFrom": "https://schema.org/SportsActivityLocation",
+    "fields": [
+      {
+        "fieldName": "type",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "requiredContent": "SportsActivityLocation"
+      },
+      {
+        "fieldName": "containedInPlace",
+        "types": [
+          "https://schema.org/url"
+        ],
+        "models": [
+          "#Place"
+        ],
+        "description": [
+          "While a `url` is not specified as an option in the Modelling Specification, it is necessary to link entities in RPDE."
+        ]
+      }
+    ]
+  },
+  {
+    "type": "Toilets",
+    "subClassOf": "#LocationFeatureSpecification",
+    "derivedFrom": null,
+    "fields": [
+      {
+        "fieldName": "type",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "requiredContent": "Toilets"
+      },
+      {
+        "fieldName": "name",
+        "sameAs": "https://schema.org/name",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "description": [
+          "A string, suitable for presentation in user interfaces."
+        ]
+      }
+    ]
+  },
+  {
+    "type": "Towels",
+    "subClassOf": "#LocationFeatureSpecification",
+    "derivedFrom": null,
+    "fields": [
+      {
+        "fieldName": "type",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "requiredContent": "Towels"
+      },
+      {
+        "fieldName": "name",
+        "sameAs": "https://schema.org/name",
+        "types": [
+          "https://schema.org/Text"
+        ],
+        "models": [],
+        "description": [
+          "A string, suitable for presentation in user interfaces."
+        ]
+      }
+    ]
+  }
+]

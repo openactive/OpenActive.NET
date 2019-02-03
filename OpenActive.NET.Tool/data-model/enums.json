@@ -1,0 +1,59 @@
+[
+  {
+    "type": "DayOfWeek",
+    "namespace": "https://schema.org/",
+    "values": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday"
+    ]
+  },
+  {
+    "type": "EventStatusType",
+    "namespace": "https://schema.org/",
+    "values": [
+      "EventCancelled",
+      "EventPostponed",
+      "EventRescheduled",
+      "EventScheduled"
+    ]
+  },
+  {
+    "type": "GenderType",
+    "namespace": "https://schema.org/",
+    "values": [
+      "Male",
+      "Female"
+    ]
+  },
+  {
+    "type": "GenderRestrictionType",
+    "namespace": "https://openactive.io/",
+    "values": [
+      "NoRestriction",
+      "MaleOnly",
+      "FemaleOnly"
+    ]
+  },
+  {
+    "type": "PaymentMethod",
+    "namespace": "http://purl.org/goodrelations/v1#",
+    "values": [
+      "Cash",
+      "PaymentMethodCreditCard"
+    ]
+  },
+  {
+    "type": "RequiredStatusType",
+    "namespace": "https://openactive.io/",
+    "values": [
+      "Required",
+      "Optional",
+      "Unavailable"
+    ]
+  }
+]
