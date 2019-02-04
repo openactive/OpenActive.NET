@@ -19,14 +19,14 @@ namespace OpenActive.NET.Test
 
         private readonly SessionSeries @event = new OpenActive.NET.SessionSeries()
         {
-            Name = "Jan Lieberman Concert Series: Journey in Jazz", // Required
-            Description = "Join us for an afternoon of Jazz with Santa Clara resident and pianist Andy Lagunoff. Complimentary food and beverages will be served.", // Recommended
+            Name = "Virtual BODYPUMP",
+            Description = "This is the virtual version of the original barbell class, which will help you get lean, toned and fit - fast. Les Mills™ Virtual classes are designed for people who cannot get access to our live classes or who want to get a ‘taste’ of a Les Mills™ class before taking a live class with an instructor. The classes are played on a big video screen, with dimmed lighting and pumping surround sound, and are led onscreen by the people who actually choreograph the classes.",
             Duration = TimeSpan.FromDays(1),
-            StartDate = new DateTimeOffset(2017, 4, 24, 19, 30, 0, TimeSpan.FromHours(-8)), // Required
-            Location = new Place() // Required
+            StartDate = new DateTimeOffset(2017, 4, 24, 19, 30, 0, TimeSpan.FromHours(-8)),
+            Location = new Place()
             {
-                Name = "Santa Clara City Library, Central Park Library", // Recommended
-                Address = new PostalAddress() // Required
+                Name = "Santa Clara City Library, Central Park Library",
+                Address = new PostalAddress()
                 {
                     StreetAddress = "2635 Homestead Rd",
                     AddressLocality = "Santa Clara",
@@ -35,28 +35,22 @@ namespace OpenActive.NET.Test
                     AddressCountry = "US"
                 }
             },
-            Image = new List<ImageObject>() { new ImageObject { Url = new Uri("http://www.example.com/event_image/12345") } }, // Recommended
-            EndDate = new DateTimeOffset(2017, 4, 24, 23, 0, 0, TimeSpan.FromHours(-8)), // Recommended
-            Offers = new List<Offer>() { new Offer() // Recommended
+            Image = new List<ImageObject>() { new ImageObject { Url = new Uri("http://www.example.com/event_image/12345") } },
+            EndDate = new DateTimeOffset(2017, 4, 24, 23, 0, 0, TimeSpan.FromHours(-8)),
+            Offers = new List<Offer>() { new Offer()
             {
-                Url = new Uri("https://www.example.com/event_offer/12345_201803180430"), // Recommended
-                Price = 30, // Recommended
-                PriceCurrency = "USD", // Recommended
-                Availability = Schema.NET.ItemAvailability.InStock, // Recommended
-                ValidFrom = new DateTimeOffset(2017, 1, 20, 16, 20, 0, TimeSpan.FromHours(-8)) // Recommended
+                Url = new Uri("https://www.example.com/event_offer/12345_201803180430"), 
+                Price = 30, 
+                PriceCurrency = "USD", 
+                ValidFrom = new DateTimeOffset(2017, 1, 20, 16, 20, 0, TimeSpan.FromHours(-8))
             } },
-            Performer = new Person() // Recommended
-            {
-                Name = "Andy Lagunoff" // Recommended
-            },
-            AttendeeInstructions = "fun!",
-            MeetingPoint = "",
-            
+            AttendeeInstructions = "Ensure you bring trainers and a bottle of water.",
+            MeetingPoint = ""
         };
 
         private readonly string json =
         "{" +
-            "\"@context\":\"https://openactive.io\"," +
+            "\"@context\":\"https://openactive.io/\"," +
             "\"type\":\"SessionSeries\"," +
             "\"name\":\"Jan Lieberman Concert Series: Journey in Jazz\"," +
             "\"description\":\"Join us for an afternoon of Jazz with Santa Clara resident and pianist Andy Lagunoff. Complimentary food and beverages will be served.\"," +

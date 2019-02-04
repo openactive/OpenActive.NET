@@ -12,7 +12,7 @@ namespace OpenActive.NET
     public static class OpenActiveSerializer
     {
         private const string ContextPropertyJson = "\"@context\":\"http://schema.org\",";
-        private const string OpenActiveContextPropertyJson = "\"@context\":\"https://openactive.io\",";
+        private const string OpenActiveContextPropertyJson = "\"@context\":\"https://openactive.io/\",";
 
         private const string SchemaIdJson = "\"@id\":";
         private const string OpenActiveIdJson = "\"id\":";
