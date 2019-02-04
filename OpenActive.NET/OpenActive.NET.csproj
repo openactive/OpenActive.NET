@@ -9,7 +9,7 @@
     <PackageLicenseUrl>https://opensource.org/licenses/MIT</PackageLicenseUrl>
     <PackageProjectUrl>https://www.openactive.io/OpenActive.NET</PackageProjectUrl>
     <RepositoryUrl>https://github.com/openactive/OpenActive.NET</RepositoryUrl>
-    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageTags>OpenActive schema rpde</PackageTags>
     <ApplicationIcon>favicon.ico</ApplicationIcon>
     <LangVersion>7.1</LangVersion>
