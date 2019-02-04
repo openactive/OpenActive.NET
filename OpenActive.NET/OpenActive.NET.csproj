@@ -8,11 +8,14 @@
     <Authors>Nick Evans</Authors>
     <PackageLicenseUrl>https://opensource.org/licenses/MIT</PackageLicenseUrl>
     <PackageProjectUrl>https://www.openactive.io/OpenActive.NET</PackageProjectUrl>
-    <RepositoryUrl>https://www.openactive.io/assets/openactive-icon-64x64.png</RepositoryUrl>
+    <RepositoryUrl>https://github.com/openactive/OpenActive.NET</RepositoryUrl>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageTags>OpenActive schema rpde</PackageTags>
     <ApplicationIcon>favicon.ico</ApplicationIcon>
     <LangVersion>7.1</LangVersion>
+    <PackageIconUrl>https://www.openactive.io/assets/openactive-icon-64x64.png</PackageIconUrl>
+    <RepositoryType />
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
