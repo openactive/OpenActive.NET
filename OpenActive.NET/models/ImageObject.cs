@@ -23,7 +23,7 @@ namespace OpenActive.NET
         /// <summary>
         /// The URL for a thumbnail image for an image.
         /// </summary>
-        [DataMember(Name = "thumbnail", Order = 115)]
+        [DataMember(Name = "thumbnail", EmitDefaultValue = false, Order = 7)]
         public new virtual List<ImageObject> Thumbnail { get; set; }
 
 
@@ -35,7 +35,7 @@ namespace OpenActive.NET
         /// "url": "http://example.com/static/image/speedball_large.jpg"
         /// </code>
         /// </example>
-        [DataMember(Name = "url", Order = 115)]
+        [DataMember(Name = "url", EmitDefaultValue = false, Order = 8)]
         public new virtual Uri Url { get; set; }
 
     }

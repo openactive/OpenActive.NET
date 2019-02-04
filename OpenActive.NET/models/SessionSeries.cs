@@ -20,15 +20,15 @@ namespace OpenActive.NET
         public override string Type => "SessionSeries";
 
         
+        [Obsolete("This property is disinherited in this type, and must not be used.", true)]
+        public override int? RemainingAttendeeCapacity { get; set; }
+
+
         /// <summary>
         /// Relates a parent event to a child event. Properties describing the parent event can be assumed to apply to the child, unless otherwise specified. A child event might be a specific instance of an Event within a schedule
         /// </summary>
-        [DataMember(Name = "subEvent", Order = 115)]
+        [DataMember(Name = "subEvent", EmitDefaultValue = false, Order = 8)]
         public new virtual List<ScheduledSession> SubEvent { get; set; }
-
-
-        [Obsolete("This property is disinherited in this type, and must not be used.", true)]
-        public override int? RemainingAttendeeCapacity { get; set; }
 
     }
 }

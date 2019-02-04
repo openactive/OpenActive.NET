@@ -28,7 +28,7 @@ namespace OpenActive.NET
         /// "addressCountry": "GB"
         /// </code>
         /// </example>
-        [DataMember(Name = "addressCountry", Order = 115)]
+        [DataMember(Name = "addressCountry", EmitDefaultValue = false, Order = 7)]
         public new virtual string AddressCountry { get; set; }
 
 
@@ -40,7 +40,7 @@ namespace OpenActive.NET
         /// "addressLocality": "Shoreditch"
         /// </code>
         /// </example>
-        [DataMember(Name = "addressLocality", Order = 115)]
+        [DataMember(Name = "addressLocality", EmitDefaultValue = false, Order = 8)]
         public new virtual string AddressLocality { get; set; }
 
 
@@ -52,7 +52,7 @@ namespace OpenActive.NET
         /// "addressRegion": "London"
         /// </code>
         /// </example>
-        [DataMember(Name = "addressRegion", Order = 115)]
+        [DataMember(Name = "addressRegion", EmitDefaultValue = false, Order = 9)]
         public new virtual string AddressRegion { get; set; }
 
 
@@ -64,7 +64,7 @@ namespace OpenActive.NET
         /// "postalCode": "EC2A 4JE"
         /// </code>
         /// </example>
-        [DataMember(Name = "postalCode", Order = 115)]
+        [DataMember(Name = "postalCode", EmitDefaultValue = false, Order = 10)]
         public new virtual string PostalCode { get; set; }
 
 
@@ -76,7 +76,7 @@ namespace OpenActive.NET
         /// "streetAddress": "Open Data Institute, Floor 3, 65 Clifton St"
         /// </code>
         /// </example>
-        [DataMember(Name = "streetAddress", Order = 115)]
+        [DataMember(Name = "streetAddress", EmitDefaultValue = false, Order = 11)]
         public new virtual string StreetAddress { get; set; }
 
     }

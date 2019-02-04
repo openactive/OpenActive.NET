@@ -26,7 +26,7 @@ namespace OpenActive.NET
         /// 
         /// If you are using this property, please join the discussion at proposal [#164](https://github.com/openactive/modelling-opportunity-data/issues/164).
         /// </summary>
-        [DataMember(Name = "beta:course", Order = 115)]
+        [DataMember(Name = "beta:course", EmitDefaultValue = false, Order = 1007)]
         public virtual Course Course { get; set; }
 
     }

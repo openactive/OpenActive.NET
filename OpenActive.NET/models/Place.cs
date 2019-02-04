@@ -21,6 +21,43 @@ namespace OpenActive.NET
 
         
         /// <summary>
+        /// A local non-URI identifier for the resource
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// "identifier": "SB1234"
+        /// </code>
+        /// </example>
+        [DataMember(Name = "identifier", EmitDefaultValue = false, Order = 7)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public new virtual SingleValues<int?, string, PropertyValue, List<PropertyValue>> Identifier { get; set; }
+
+
+        /// <summary>
+        /// The name of the Place
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// "name": "Raynes Park High School"
+        /// </code>
+        /// </example>
+        [DataMember(Name = "name", EmitDefaultValue = false, Order = 8)]
+        public new virtual string Name { get; set; }
+
+
+        /// <summary>
+        /// The description of the Place
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// "description": "Raynes Park High School in London"
+        /// </code>
+        /// </example>
+        [DataMember(Name = "description", EmitDefaultValue = false, Order = 9)]
+        public new virtual string Description { get; set; }
+
+
+        /// <summary>
         /// A structured PostalAddress object for the Place. 
         /// Ideally the address should be provided using the PostalAddress structured format. Google Reserve requires https://schema.org/PostalAddress and will not accept plain text addresses.
         /// </summary>
@@ -36,9 +73,9 @@ namespace OpenActive.NET
         /// }
         /// </code>
         /// </example>
-        [DataMember(Name = "address", Order = 115)]
-        [JsonConverter(typeof(Schema.NET.ValuesConverter))]
-        public new virtual Schema.NET.Values<string, PostalAddress> Address { get; set; }
+        [DataMember(Name = "address", EmitDefaultValue = false, Order = 10)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public new virtual SingleValues<string, PostalAddress> Address { get; set; }
 
 
         /// <summary>
@@ -80,7 +117,7 @@ namespace OpenActive.NET
         /// ]
         /// </code>
         /// </example>
-        [DataMember(Name = "amenityFeature", Order = 115)]
+        [DataMember(Name = "amenityFeature", EmitDefaultValue = false, Order = 11)]
         public new virtual List<LocationFeatureSpecification> AmenityFeature { get; set; }
 
 
@@ -96,7 +133,7 @@ namespace OpenActive.NET
         /// }
         /// </code>
         /// </example>
-        [DataMember(Name = "containedInPlace", Order = 115)]
+        [DataMember(Name = "containedInPlace", EmitDefaultValue = false, Order = 12)]
         public new virtual Place ContainedInPlace { get; set; }
 
 
@@ -112,20 +149,8 @@ namespace OpenActive.NET
         /// }
         /// </code>
         /// </example>
-        [DataMember(Name = "containsPlace", Order = 115)]
+        [DataMember(Name = "containsPlace", EmitDefaultValue = false, Order = 13)]
         public new virtual List<Place> ContainsPlace { get; set; }
-
-
-        /// <summary>
-        /// The description of the Place
-        /// </summary>
-        /// <example>
-        /// <code>
-        /// "description": "Raynes Park High School in London"
-        /// </code>
-        /// </example>
-        [DataMember(Name = "description", Order = 115)]
-        public new virtual string Description { get; set; }
 
 
         /// <summary>
@@ -140,21 +165,8 @@ namespace OpenActive.NET
         /// }
         /// </code>
         /// </example>
-        [DataMember(Name = "geo", Order = 115)]
+        [DataMember(Name = "geo", EmitDefaultValue = false, Order = 14)]
         public new virtual GeoCoordinates Geo { get; set; }
-
-
-        /// <summary>
-        /// A local non-URI identifier for the resource
-        /// </summary>
-        /// <example>
-        /// <code>
-        /// "identifier": "SB1234"
-        /// </code>
-        /// </example>
-        [DataMember(Name = "identifier", Order = 115)]
-        [JsonConverter(typeof(Schema.NET.ValuesConverter))]
-        public new virtual Schema.NET.Values<int?, string, PropertyValue, List<PropertyValue>> Identifier { get; set; }
 
 
         /// <summary>
@@ -171,26 +183,14 @@ namespace OpenActive.NET
         /// ]
         /// </code>
         /// </example>
-        [DataMember(Name = "image", Order = 115)]
+        [DataMember(Name = "image", EmitDefaultValue = false, Order = 15)]
         public new virtual List<ImageObject> Image { get; set; }
-
-
-        /// <summary>
-        /// The name of the Place
-        /// </summary>
-        /// <example>
-        /// <code>
-        /// "name": "Raynes Park High School"
-        /// </code>
-        /// </example>
-        [DataMember(Name = "name", Order = 115)]
-        public new virtual string Name { get; set; }
 
 
         /// <summary>
         /// The times the Place is open
         /// </summary>
-        [DataMember(Name = "openingHoursSpecification", Order = 115)]
+        [DataMember(Name = "openingHoursSpecification", EmitDefaultValue = false, Order = 16)]
         public new virtual List<OpeningHoursSpecification> OpeningHoursSpecification { get; set; }
 
 
@@ -202,7 +202,7 @@ namespace OpenActive.NET
         /// "telephone": "01253 473934"
         /// </code>
         /// </example>
-        [DataMember(Name = "telephone", Order = 115)]
+        [DataMember(Name = "telephone", EmitDefaultValue = false, Order = 17)]
         public new virtual string Telephone { get; set; }
 
 
@@ -214,7 +214,7 @@ namespace OpenActive.NET
         /// "url": "http://www.rphs.org.uk/"
         /// </code>
         /// </example>
-        [DataMember(Name = "url", Order = 115)]
+        [DataMember(Name = "url", EmitDefaultValue = false, Order = 18)]
         public new virtual Uri Url { get; set; }
 
     }

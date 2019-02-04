@@ -28,7 +28,7 @@ namespace OpenActive.NET
         /// "name": "Book"
         /// </code>
         /// </example>
-        [DataMember(Name = "name", Order = 115)]
+        [DataMember(Name = "name", EmitDefaultValue = false, Order = 7)]
         public new virtual string Name { get; set; }
 
 
@@ -45,7 +45,7 @@ namespace OpenActive.NET
         /// }
         /// </code>
         /// </example>
-        [DataMember(Name = "target", Order = 115)]
+        [DataMember(Name = "target", EmitDefaultValue = false, Order = 8)]
         public new virtual EntryPoint Target { get; set; }
 
     }

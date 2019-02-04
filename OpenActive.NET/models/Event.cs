@@ -21,6 +21,43 @@ namespace OpenActive.NET
 
         
         /// <summary>
+        /// A local non-URI identifier for the resource
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// "identifier": "SB1234"
+        /// </code>
+        /// </example>
+        [DataMember(Name = "identifier", EmitDefaultValue = false, Order = 7)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public new virtual SingleValues<int?, string, PropertyValue, List<PropertyValue>> Identifier { get; set; }
+
+
+        /// <summary>
+        /// The name of the event
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// "name": "Speedball"
+        /// </code>
+        /// </example>
+        [DataMember(Name = "name", EmitDefaultValue = false, Order = 8)]
+        public new virtual string Name { get; set; }
+
+
+        /// <summary>
+        /// A free text description of the event
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// "description": "An fast paced game that incorporates netball, handball and football."
+        /// </code>
+        /// </example>
+        [DataMember(Name = "description", EmitDefaultValue = false, Order = 9)]
+        public new virtual string Description { get; set; }
+
+
+        /// <summary>
         /// Provide additional, specific documentation for participants about how disabilities are, or can be supported at the Event.
         /// </summary>
         /// <example>
@@ -28,7 +65,7 @@ namespace OpenActive.NET
         /// "accessibilityInformation": "This route has been British Cycling assessed as an accessible route, meaning it is suitable for the majority of adaptive bikes. The route will have no or low levels of traffic, there will be plenty of space and will have a good surface throughout. If you have any questions about using this route on an adaptive bike on this ride, please use visit https://www.letsride.co.uk/accessibility or call 0123 456 7000 and ask for the Recreation team."
         /// </code>
         /// </example>
-        [DataMember(Name = "accessibilityInformation", Order = 115)]
+        [DataMember(Name = "accessibilityInformation", EmitDefaultValue = false, Order = 11)]
         public virtual string AccessibilityInformation { get; set; }
 
 
@@ -47,7 +84,7 @@ namespace OpenActive.NET
         /// ]
         /// </code>
         /// </example>
-        [DataMember(Name = "accessibilitySupport", Order = 115)]
+        [DataMember(Name = "accessibilitySupport", EmitDefaultValue = false, Order = 12)]
         public virtual List<Concept> AccessibilitySupport { get; set; }
 
 
@@ -66,7 +103,7 @@ namespace OpenActive.NET
         /// ]
         /// </code>
         /// </example>
-        [DataMember(Name = "activity", Order = 115)]
+        [DataMember(Name = "activity", EmitDefaultValue = false, Order = 13)]
         public virtual List<Concept> Activity { get; set; }
 
 
@@ -82,7 +119,7 @@ namespace OpenActive.NET
         /// }
         /// </code>
         /// </example>
-        [DataMember(Name = "ageRange", Order = 115)]
+        [DataMember(Name = "ageRange", EmitDefaultValue = false, Order = 14)]
         public virtual QuantitativeValue AgeRange { get; set; }
 
 
@@ -94,7 +131,7 @@ namespace OpenActive.NET
         /// "attendeeInstructions": "Ensure you bring trainers and a bottle of water."
         /// </code>
         /// </example>
-        [DataMember(Name = "attendeeInstructions", Order = 115)]
+        [DataMember(Name = "attendeeInstructions", EmitDefaultValue = false, Order = 15)]
         public virtual string AttendeeInstructions { get; set; }
 
 
@@ -108,9 +145,9 @@ namespace OpenActive.NET
         /// ]
         /// </code>
         /// </example>
-        [DataMember(Name = "category", Order = 115)]
-        [JsonConverter(typeof(Schema.NET.ValuesConverter))]
-        public virtual Schema.NET.Values<List<string>, List<Concept>> Category { get; set; }
+        [DataMember(Name = "category", EmitDefaultValue = false, Order = 16)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public new virtual SingleValues<List<string>, List<Concept>> Category { get; set; }
 
 
         /// <summary>
@@ -129,20 +166,8 @@ namespace OpenActive.NET
         /// ]
         /// </code>
         /// </example>
-        [DataMember(Name = "contributor", Order = 115)]
+        [DataMember(Name = "contributor", EmitDefaultValue = false, Order = 17)]
         public new virtual List<Person> Contributor { get; set; }
-
-
-        /// <summary>
-        /// A free text description of the event
-        /// </summary>
-        /// <example>
-        /// <code>
-        /// "description": "An fast paced game that incorporates netball, handball and football."
-        /// </code>
-        /// </example>
-        [DataMember(Name = "description", Order = 115)]
-        public new virtual string Description { get; set; }
 
 
         /// <summary>
@@ -153,23 +178,9 @@ namespace OpenActive.NET
         /// "duration": "PT1H"
         /// </code>
         /// </example>
-        [DataMember(Name = "duration", Order = 115)]
+        [DataMember(Name = "duration", EmitDefaultValue = false, Order = 18)]
         [JsonConverter(typeof(OpenActiveTimeSpanToISO8601DurationValuesConverter))]
         public new virtual TimeSpan? Duration { get; set; }
-
-
-        /// <summary>
-        /// The end date and time of the event. Can be specified as a schema:Date or  schema:DateTime 
-        /// It is recommended that publishers provide either an schema:endDate or a schema:duration for an event.
-        /// </summary>
-        /// <example>
-        /// <code>
-        /// "endDate": "2018-01-27T12:00:00Z"
-        /// </code>
-        /// </example>
-        [DataMember(Name = "endDate", Order = 115)]
-        [JsonConverter(typeof(Schema.NET.ValuesConverter))]
-        public new virtual Schema.NET.Values<DateTimeOffset?, DateTimeOffset?> EndDate { get; set; }
 
 
         /// <summary>
@@ -190,7 +201,7 @@ namespace OpenActive.NET
         /// ]
         /// </code>
         /// </example>
-        [DataMember(Name = "eventSchedule", Order = 115)]
+        [DataMember(Name = "eventSchedule", EmitDefaultValue = false, Order = 19)]
         public virtual List<Schedule> EventSchedule { get; set; }
 
 
@@ -202,7 +213,7 @@ namespace OpenActive.NET
         /// "eventStatus": "https://schema.org/EventScheduled"
         /// </code>
         /// </example>
-        [DataMember(Name = "eventStatus", Order = 115)]
+        [DataMember(Name = "eventStatus", EmitDefaultValue = false, Order = 20)]
         public new virtual Schema.NET.EventStatusType? EventStatus { get; set; }
 
 
@@ -214,21 +225,8 @@ namespace OpenActive.NET
         /// "genderRestriction": "https://openactive.io/FemaleOnly"
         /// </code>
         /// </example>
-        [DataMember(Name = "genderRestriction", Order = 115)]
+        [DataMember(Name = "genderRestriction", EmitDefaultValue = false, Order = 21)]
         public virtual GenderRestrictionType? GenderRestriction { get; set; }
-
-
-        /// <summary>
-        /// A local non-URI identifier for the resource
-        /// </summary>
-        /// <example>
-        /// <code>
-        /// "identifier": "SB1234"
-        /// </code>
-        /// </example>
-        [DataMember(Name = "identifier", Order = 115)]
-        [JsonConverter(typeof(Schema.NET.ValuesConverter))]
-        public new virtual Schema.NET.Values<int?, string, PropertyValue, List<PropertyValue>> Identifier { get; set; }
 
 
         /// <summary>
@@ -250,7 +248,7 @@ namespace OpenActive.NET
         /// ]
         /// </code>
         /// </example>
-        [DataMember(Name = "image", Order = 115)]
+        [DataMember(Name = "image", EmitDefaultValue = false, Order = 22)]
         public new virtual List<ImageObject> Image { get; set; }
 
 
@@ -262,7 +260,7 @@ namespace OpenActive.NET
         /// "isAccessibleForFree": "true"
         /// </code>
         /// </example>
-        [DataMember(Name = "isAccessibleForFree", Order = 115)]
+        [DataMember(Name = "isAccessibleForFree", EmitDefaultValue = false, Order = 23)]
         public new virtual bool? IsAccessibleForFree { get; set; }
 
 
@@ -274,7 +272,7 @@ namespace OpenActive.NET
         /// "isCoached": "true"
         /// </code>
         /// </example>
-        [DataMember(Name = "isCoached", Order = 115)]
+        [DataMember(Name = "isCoached", EmitDefaultValue = false, Order = 24)]
         public virtual bool? IsCoached { get; set; }
 
 
@@ -295,7 +293,7 @@ namespace OpenActive.NET
         /// ]
         /// </code>
         /// </example>
-        [DataMember(Name = "leader", Order = 115)]
+        [DataMember(Name = "leader", EmitDefaultValue = false, Order = 25)]
         public virtual List<Person> Leader { get; set; }
 
 
@@ -309,9 +307,9 @@ namespace OpenActive.NET
         /// ]
         /// </code>
         /// </example>
-        [DataMember(Name = "level", Order = 115)]
-        [JsonConverter(typeof(Schema.NET.ValuesConverter))]
-        public virtual Schema.NET.Values<List<string>, List<Concept>> Level { get; set; }
+        [DataMember(Name = "level", EmitDefaultValue = false, Order = 26)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public virtual SingleValues<List<string>, List<Concept>> Level { get; set; }
 
 
         /// <summary>
@@ -344,7 +342,7 @@ namespace OpenActive.NET
         /// }
         /// </code>
         /// </example>
-        [DataMember(Name = "location", Order = 115)]
+        [DataMember(Name = "location", EmitDefaultValue = false, Order = 27)]
         public new virtual Place Location { get; set; }
 
 
@@ -356,7 +354,7 @@ namespace OpenActive.NET
         /// "maximumAttendeeCapacity": 30
         /// </code>
         /// </example>
-        [DataMember(Name = "maximumAttendeeCapacity", Order = 115)]
+        [DataMember(Name = "maximumAttendeeCapacity", EmitDefaultValue = false, Order = 28)]
         public new virtual int? MaximumAttendeeCapacity { get; set; }
 
 
@@ -368,20 +366,8 @@ namespace OpenActive.NET
         /// "meetingPoint": "At the entrance to the park"
         /// </code>
         /// </example>
-        [DataMember(Name = "meetingPoint", Order = 115)]
+        [DataMember(Name = "meetingPoint", EmitDefaultValue = false, Order = 29)]
         public virtual string MeetingPoint { get; set; }
-
-
-        /// <summary>
-        /// The name of the event
-        /// </summary>
-        /// <example>
-        /// <code>
-        /// "name": "Speedball"
-        /// </code>
-        /// </example>
-        [DataMember(Name = "name", Order = 115)]
-        public new virtual string Name { get; set; }
 
 
         /// <summary>
@@ -401,7 +387,7 @@ namespace OpenActive.NET
         /// ]
         /// </code>
         /// </example>
-        [DataMember(Name = "offers", Order = 115)]
+        [DataMember(Name = "offers", EmitDefaultValue = false, Order = 30)]
         public new virtual List<Offer> Offers { get; set; }
 
 
@@ -417,9 +403,9 @@ namespace OpenActive.NET
         /// }
         /// </code>
         /// </example>
-        [DataMember(Name = "organizer", Order = 115)]
-        [JsonConverter(typeof(Schema.NET.ValuesConverter))]
-        public new virtual Schema.NET.Values<Person, Organization> Organizer { get; set; }
+        [DataMember(Name = "organizer", EmitDefaultValue = false, Order = 31)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public new virtual SingleValues<Person, Organization> Organizer { get; set; }
 
 
         /// <summary>
@@ -441,7 +427,7 @@ namespace OpenActive.NET
         /// ]
         /// </code>
         /// </example>
-        [DataMember(Name = "potentialAction", Order = 115)]
+        [DataMember(Name = "potentialAction", EmitDefaultValue = false, Order = 32)]
         public new virtual List<Action> PotentialAction { get; set; }
 
 
@@ -457,7 +443,7 @@ namespace OpenActive.NET
         /// }
         /// </code>
         /// </example>
-        [DataMember(Name = "programme", Order = 115)]
+        [DataMember(Name = "programme", EmitDefaultValue = false, Order = 33)]
         public virtual Brand Programme { get; set; }
 
 
@@ -469,15 +455,8 @@ namespace OpenActive.NET
         /// "remainingAttendeeCapacity": 20
         /// </code>
         /// </example>
-        [DataMember(Name = "remainingAttendeeCapacity", Order = 115)]
+        [DataMember(Name = "remainingAttendeeCapacity", EmitDefaultValue = false, Order = 34)]
         public new virtual int? RemainingAttendeeCapacity { get; set; }
-
-
-        /// <summary>
-        /// Relates a parent event to a child event. Properties describing the parent event can be assumed to apply to the child, unless otherwise specified. A child event might be a specific instance of an Event within a schedule
-        /// </summary>
-        [DataMember(Name = "subEvent", Order = 115)]
-        public new virtual List<Event> SubEvent { get; set; }
 
 
         /// <summary>
@@ -488,15 +467,8 @@ namespace OpenActive.NET
         /// "schedulingNote": "This event doesn't run during school holidays"
         /// </code>
         /// </example>
-        [DataMember(Name = "schedulingNote", Order = 115)]
+        [DataMember(Name = "schedulingNote", EmitDefaultValue = false, Order = 35)]
         public virtual string SchedulingNote { get; set; }
-
-
-        /// <summary>
-        /// Relates a child event to a parent event. Properties describing the parent event can be assumed to apply to the child, unless otherwise specified. A parent event might specify a recurring schedule, of which the child event is one specific instance
-        /// </summary>
-        [DataMember(Name = "superEvent", Order = 115)]
-        public new virtual Event SuperEvent { get; set; }
 
 
         /// <summary>
@@ -507,9 +479,37 @@ namespace OpenActive.NET
         /// "startDate": "2018-01-27T12:00:00Z"
         /// </code>
         /// </example>
-        [DataMember(Name = "startDate", Order = 115)]
-        [JsonConverter(typeof(Schema.NET.ValuesConverter))]
-        public new virtual Schema.NET.Values<DateTimeOffset?, DateTimeOffset?> StartDate { get; set; }
+        [DataMember(Name = "startDate", EmitDefaultValue = false, Order = 36)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public new virtual SingleValues<string, DateTimeOffset?> StartDate { get; set; }
+
+
+        /// <summary>
+        /// The end date and time of the event. Can be specified as a schema:Date or  schema:DateTime 
+        /// It is recommended that publishers provide either an schema:endDate or a schema:duration for an event.
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// "endDate": "2018-01-27T12:00:00Z"
+        /// </code>
+        /// </example>
+        [DataMember(Name = "endDate", EmitDefaultValue = false, Order = 37)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public new virtual SingleValues<string, DateTimeOffset?> EndDate { get; set; }
+
+
+        /// <summary>
+        /// Relates a parent event to a child event. Properties describing the parent event can be assumed to apply to the child, unless otherwise specified. A child event might be a specific instance of an Event within a schedule
+        /// </summary>
+        [DataMember(Name = "subEvent", EmitDefaultValue = false, Order = 38)]
+        public new virtual List<Event> SubEvent { get; set; }
+
+
+        /// <summary>
+        /// Relates a child event to a parent event. Properties describing the parent event can be assumed to apply to the child, unless otherwise specified. A parent event might specify a recurring schedule, of which the child event is one specific instance
+        /// </summary>
+        [DataMember(Name = "superEvent", EmitDefaultValue = false, Order = 39)]
+        public new virtual Event SuperEvent { get; set; }
 
 
         /// <summary>
@@ -520,78 +520,29 @@ namespace OpenActive.NET
         /// "url": "https://example.com/event/1234"
         /// </code>
         /// </example>
-        [DataMember(Name = "url", Order = 115)]
+        [DataMember(Name = "url", EmitDefaultValue = false, Order = 40)]
         public new virtual Uri Url { get; set; }
 
 
         /// <summary>
         /// [NOTICE: This is a beta field, and is highly likely to change in future versions of this library.] 
-        /// Sometimes a description is stored with formatting (e.g. href, bold, italics, embedded YouTube videos). This formatting can be useful for data consumers.
+        /// Duration before the event for which the associated Offers are valid
         /// 
-        /// If you are using this property, please join the discussion at proposal [#2](https://github.com/openactive/ns-beta/issues/2).
+        /// If you are using this property, please join the discussion at proposal [#204](https://github.com/openactive/modelling-opportunity-data/issues/204).
         /// </summary>
-        [DataMember(Name = "beta:formattedDescription", Order = 115)]
-        public virtual string FormattedDescription { get; set; }
+        [DataMember(Name = "beta:offerValidityPeriod", EmitDefaultValue = false, Order = 1041)]
+        [JsonConverter(typeof(OpenActiveTimeSpanToISO8601DurationValuesConverter))]
+        public virtual TimeSpan? OfferValidityPeriod { get; set; }
 
 
         /// <summary>
         /// [NOTICE: This is a beta field, and is highly likely to change in future versions of this library.] 
-        /// The distance of a run, cycle or other activity. Must also include units.
+        /// Internal location of the event, e.g. Court 1
         /// 
-        /// If you are using this property, please join the discussion at proposal [#3](https://github.com/openactive/ns-beta/issues/3).
+        /// If you are using this property, please join the discussion at proposal [#110](https://github.com/openactive/modelling-opportunity-data/issues/110).
         /// </summary>
-        [DataMember(Name = "beta:distance", Order = 115)]
-        public virtual QuantitativeValue Distance { get; set; }
-
-
-        /// <summary>
-        /// [NOTICE: This is a beta field, and is highly likely to change in future versions of this library.] 
-        /// For data publishers not wishing to disclose the granular availability of their sessions openly.
-        /// 
-        /// If you are using this property, please join the discussion at proposal [#9](https://github.com/openactive/ns-beta/issues/9).
-        /// </summary>
-        [DataMember(Name = "beta:availability", Order = 115)]
-        public virtual string Availability { get; set; }
-
-
-        /// <summary>
-        /// [NOTICE: This is a beta field, and is highly likely to change in future versions of this library.] 
-        /// For events that have an unlimited number of tickets, captures the number of attendees (actual attendance).
-        /// 
-        /// If you are using this property, please join the discussion at proposal [#12](https://github.com/openactive/ns-beta/issues/12).
-        /// </summary>
-        [DataMember(Name = "beta:attendeeCount", Order = 115)]
-        public virtual int? AttendeeCount { get; set; }
-
-
-        /// <summary>
-        /// [NOTICE: This is a beta field, and is highly likely to change in future versions of this library.] 
-        /// For events that have an unlimited number of tickets, captures the number of registrations (intention to attend).
-        /// 
-        /// If you are using this property, please join the discussion at proposal [#13](https://github.com/openactive/ns-beta/issues/13).
-        /// </summary>
-        [DataMember(Name = "beta:registrationCount", Order = 115)]
-        public virtual int? RegistrationCount { get; set; }
-
-
-        /// <summary>
-        /// [NOTICE: This is a beta field, and is highly likely to change in future versions of this library.] 
-        /// A property that details whether the event is suitable for wheelchair access. Placed on Event as this field could be used to detail whether the Event is suitable, as well as the Place.
-        /// 
-        /// If you are using this property, please join the discussion at proposal [#166](https://github.com/openactive/modelling-opportunity-data/issues/166).
-        /// </summary>
-        [DataMember(Name = "beta:isWheelchairAccessible", Order = 115)]
-        public virtual bool? IsWheelchairAccessible { get; set; }
-
-
-        /// <summary>
-        /// [NOTICE: This is a beta field, and is highly likely to change in future versions of this library.] 
-        /// A property that allows an Event duration to be represented as a range (e.g. 0-30mins, 30-60mins, 60-90mins, 90+).
-        /// 
-        /// If you are using this property, please join the discussion at proposal [#201](https://github.com/openactive/modelling-opportunity-data/issues/201).
-        /// </summary>
-        [DataMember(Name = "beta:estimatedDuration", Order = 115)]
-        public virtual QuantitativeValue EstimatedDuration { get; set; }
+        [DataMember(Name = "beta:sportsActivityLocation", EmitDefaultValue = false, Order = 1042)]
+        public virtual List<SportsActivityLocation> SportsActivityLocation { get; set; }
 
 
         /// <summary>
@@ -600,8 +551,78 @@ namespace OpenActive.NET
         /// 
         /// If you are using this property, please join the discussion at proposal [#88](https://github.com/openactive/modelling-opportunity-data/issues/88).
         /// </summary>
-        [DataMember(Name = "beta:video", Order = 115)]
+        [DataMember(Name = "beta:video", EmitDefaultValue = false, Order = 1043)]
         public virtual List<Schema.NET.VideoObject> Video { get; set; }
+
+
+        /// <summary>
+        /// [NOTICE: This is a beta field, and is highly likely to change in future versions of this library.] 
+        /// A property that allows an Event duration to be represented as a range (e.g. 0-30mins, 30-60mins, 60-90mins, 90+).
+        /// 
+        /// If you are using this property, please join the discussion at proposal [#201](https://github.com/openactive/modelling-opportunity-data/issues/201).
+        /// </summary>
+        [DataMember(Name = "beta:estimatedDuration", EmitDefaultValue = false, Order = 1044)]
+        public virtual QuantitativeValue EstimatedDuration { get; set; }
+
+
+        /// <summary>
+        /// [NOTICE: This is a beta field, and is highly likely to change in future versions of this library.] 
+        /// A property that details whether the event is suitable for wheelchair access. Placed on Event as this field could be used to detail whether the Event is suitable, as well as the Place.
+        /// 
+        /// If you are using this property, please join the discussion at proposal [#166](https://github.com/openactive/modelling-opportunity-data/issues/166).
+        /// </summary>
+        [DataMember(Name = "beta:isWheelchairAccessible", EmitDefaultValue = false, Order = 1045)]
+        public virtual bool? IsWheelchairAccessible { get; set; }
+
+
+        /// <summary>
+        /// [NOTICE: This is a beta field, and is highly likely to change in future versions of this library.] 
+        /// For events that have an unlimited number of tickets, captures the number of registrations (intention to attend).
+        /// 
+        /// If you are using this property, please join the discussion at proposal [#13](https://github.com/openactive/ns-beta/issues/13).
+        /// </summary>
+        [DataMember(Name = "beta:registrationCount", EmitDefaultValue = false, Order = 1046)]
+        public virtual int? RegistrationCount { get; set; }
+
+
+        /// <summary>
+        /// [NOTICE: This is a beta field, and is highly likely to change in future versions of this library.] 
+        /// For events that have an unlimited number of tickets, captures the number of attendees (actual attendance).
+        /// 
+        /// If you are using this property, please join the discussion at proposal [#12](https://github.com/openactive/ns-beta/issues/12).
+        /// </summary>
+        [DataMember(Name = "beta:attendeeCount", EmitDefaultValue = false, Order = 1047)]
+        public virtual int? AttendeeCount { get; set; }
+
+
+        /// <summary>
+        /// [NOTICE: This is a beta field, and is highly likely to change in future versions of this library.] 
+        /// For data publishers not wishing to disclose the granular availability of their sessions openly.
+        /// 
+        /// If you are using this property, please join the discussion at proposal [#9](https://github.com/openactive/ns-beta/issues/9).
+        /// </summary>
+        [DataMember(Name = "beta:availability", EmitDefaultValue = false, Order = 1048)]
+        public virtual string Availability { get; set; }
+
+
+        /// <summary>
+        /// [NOTICE: This is a beta field, and is highly likely to change in future versions of this library.] 
+        /// The distance of a run, cycle or other activity. Must also include units.
+        /// 
+        /// If you are using this property, please join the discussion at proposal [#3](https://github.com/openactive/ns-beta/issues/3).
+        /// </summary>
+        [DataMember(Name = "beta:distance", EmitDefaultValue = false, Order = 1049)]
+        public virtual QuantitativeValue Distance { get; set; }
+
+
+        /// <summary>
+        /// [NOTICE: This is a beta field, and is highly likely to change in future versions of this library.] 
+        /// Sometimes a description is stored with formatting (e.g. href, bold, italics, embedded YouTube videos). This formatting can be useful for data consumers.
+        /// 
+        /// If you are using this property, please join the discussion at proposal [#2](https://github.com/openactive/ns-beta/issues/2).
+        /// </summary>
+        [DataMember(Name = "beta:formattedDescription", EmitDefaultValue = false, Order = 1050)]
+        public virtual string FormattedDescription { get; set; }
 
     }
 }

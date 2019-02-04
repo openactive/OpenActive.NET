@@ -28,7 +28,7 @@ namespace OpenActive.NET
         /// "latitude": 51.522338
         /// </code>
         /// </example>
-        [DataMember(Name = "latitude", Order = 115)]
+        [DataMember(Name = "latitude", EmitDefaultValue = false, Order = 7)]
         public new virtual decimal? Latitude { get; set; }
 
 
@@ -40,7 +40,7 @@ namespace OpenActive.NET
         /// "longitude": -0.083437
         /// </code>
         /// </example>
-        [DataMember(Name = "longitude", Order = 115)]
+        [DataMember(Name = "longitude", EmitDefaultValue = false, Order = 8)]
         public new virtual decimal? Longitude { get; set; }
 
     }

@@ -21,6 +21,19 @@ namespace OpenActive.NET
 
         
         /// <summary>
+        /// A local non-URI identifier for the resource
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// "identifier": "SB1234"
+        /// </code>
+        /// </example>
+        [DataMember(Name = "identifier", EmitDefaultValue = false, Order = 7)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public new virtual SingleValues<int?, string, PropertyValue, List<PropertyValue>> Identifier { get; set; }
+
+
+        /// <summary>
         /// The duration of the slot given in [ISO8601] format.
         /// </summary>
         /// <example>
@@ -28,23 +41,9 @@ namespace OpenActive.NET
         /// "duration": "PT1H"
         /// </code>
         /// </example>
-        [DataMember(Name = "duration", Order = 115)]
+        [DataMember(Name = "duration", EmitDefaultValue = false, Order = 8)]
         [JsonConverter(typeof(OpenActiveTimeSpanToISO8601DurationValuesConverter))]
         public new virtual TimeSpan? Duration { get; set; }
-
-
-        /// <summary>
-        /// The end date and time of the slot. Can be specified as a schema:Date or schema:DateTime 
-        /// It is recommended that publishers provide either an schema:endDate or a schema:duration for an slot.
-        /// </summary>
-        /// <example>
-        /// <code>
-        /// "endDate": "2018-01-27T12:00:00Z"
-        /// </code>
-        /// </example>
-        [DataMember(Name = "endDate", Order = 115)]
-        [JsonConverter(typeof(Schema.NET.ValuesConverter))]
-        public new virtual Schema.NET.Values<DateTimeOffset?, DateTimeOffset?> EndDate { get; set; }
 
 
         /// <summary>
@@ -55,21 +54,8 @@ namespace OpenActive.NET
         /// "facilityUse": "https://example.com/facility-use/1"
         /// </code>
         /// </example>
-        [DataMember(Name = "facilityUse", Order = 115)]
+        [DataMember(Name = "facilityUse", EmitDefaultValue = false, Order = 9)]
         public virtual Uri FacilityUse { get; set; }
-
-
-        /// <summary>
-        /// A local non-URI identifier for the resource
-        /// </summary>
-        /// <example>
-        /// <code>
-        /// "identifier": "SB1234"
-        /// </code>
-        /// </example>
-        [DataMember(Name = "identifier", Order = 115)]
-        [JsonConverter(typeof(Schema.NET.ValuesConverter))]
-        public new virtual Schema.NET.Values<int?, string, PropertyValue, List<PropertyValue>> Identifier { get; set; }
 
 
         /// <summary>
@@ -80,7 +66,7 @@ namespace OpenActive.NET
         /// "maximumUses": 16
         /// </code>
         /// </example>
-        [DataMember(Name = "maximumUses", Order = 115)]
+        [DataMember(Name = "maximumUses", EmitDefaultValue = false, Order = 10)]
         public virtual int? MaximumUses { get; set; }
 
 
@@ -99,7 +85,7 @@ namespace OpenActive.NET
         /// }
         /// </code>
         /// </example>
-        [DataMember(Name = "offers", Order = 115)]
+        [DataMember(Name = "offers", EmitDefaultValue = false, Order = 11)]
         public new virtual List<Offer> Offers { get; set; }
 
 
@@ -111,7 +97,7 @@ namespace OpenActive.NET
         /// "remainingUses": 5
         /// </code>
         /// </example>
-        [DataMember(Name = "remainingUses", Order = 115)]
+        [DataMember(Name = "remainingUses", EmitDefaultValue = false, Order = 12)]
         public virtual int? RemainingUses { get; set; }
 
 
@@ -123,9 +109,23 @@ namespace OpenActive.NET
         /// "startDate": "2018-01-27T12:00:00Z"
         /// </code>
         /// </example>
-        [DataMember(Name = "startDate", Order = 115)]
-        [JsonConverter(typeof(Schema.NET.ValuesConverter))]
-        public new virtual Schema.NET.Values<DateTimeOffset?, DateTimeOffset?> StartDate { get; set; }
+        [DataMember(Name = "startDate", EmitDefaultValue = false, Order = 13)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public new virtual SingleValues<string, DateTimeOffset?> StartDate { get; set; }
+
+
+        /// <summary>
+        /// The end date and time of the slot. Can be specified as a schema:Date or schema:DateTime 
+        /// It is recommended that publishers provide either an schema:endDate or a schema:duration for an slot.
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// "endDate": "2018-01-27T12:00:00Z"
+        /// </code>
+        /// </example>
+        [DataMember(Name = "endDate", EmitDefaultValue = false, Order = 14)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public new virtual SingleValues<string, DateTimeOffset?> EndDate { get; set; }
 
     }
 }

@@ -28,7 +28,7 @@ namespace OpenActive.NET
         /// "altLabel": "Speedball"
         /// </code>
         /// </example>
-        [DataMember(Name = "altLabel", Order = 115)]
+        [DataMember(Name = "altLabel", EmitDefaultValue = false, Order = 7)]
         public virtual List<string> AltLabel { get; set; }
 
 
@@ -40,7 +40,7 @@ namespace OpenActive.NET
         /// "broader": "https://example.com/football"
         /// </code>
         /// </example>
-        [DataMember(Name = "broader", Order = 115)]
+        [DataMember(Name = "broader", EmitDefaultValue = false, Order = 8)]
         public virtual List<Uri> Broader { get; set; }
 
 
@@ -52,7 +52,7 @@ namespace OpenActive.NET
         /// "inScheme": "https://example.com/reference/activities"
         /// </code>
         /// </example>
-        [DataMember(Name = "inScheme", Order = 115)]
+        [DataMember(Name = "inScheme", EmitDefaultValue = false, Order = 9)]
         public virtual Uri InScheme { get; set; }
 
 
@@ -64,7 +64,7 @@ namespace OpenActive.NET
         /// "narrower": "https://example.com/walking-football"
         /// </code>
         /// </example>
-        [DataMember(Name = "narrower", Order = 115)]
+        [DataMember(Name = "narrower", EmitDefaultValue = false, Order = 10)]
         public virtual List<Uri> Narrower { get; set; }
 
 
@@ -76,7 +76,7 @@ namespace OpenActive.NET
         /// "notation": "Speedball"
         /// </code>
         /// </example>
-        [DataMember(Name = "notation", Order = 115)]
+        [DataMember(Name = "notation", EmitDefaultValue = false, Order = 11)]
         public virtual string Notation { get; set; }
 
 
@@ -88,7 +88,7 @@ namespace OpenActive.NET
         /// "prefLabel": "Speedball"
         /// </code>
         /// </example>
-        [DataMember(Name = "prefLabel", Order = 115)]
+        [DataMember(Name = "prefLabel", EmitDefaultValue = false, Order = 12)]
         public virtual string PrefLabel { get; set; }
 
     }

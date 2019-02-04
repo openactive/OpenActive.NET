@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using Schema.NET;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -16,8 +15,8 @@ namespace OpenActive.NET.Beta
         /// <returns>
         /// A <see cref="string" /> that represents the JSON-LD representation of this instance.
         /// </returns>
-        public static string ToOpenActiveBetaString(this Thing thing) => thing.ToOpenActiveBetaString(new List<string> { OpenActiveBetaContext } );
-        public static string ToOpenActiveBetaString(this Thing thing, List<string> contexts) => ReplaceContext(thing.ToOpenActiveString(), contexts);
+        public static string ToOpenActiveBetaString(this Schema.NET.Thing thing) => thing.ToOpenActiveBetaString(new List<string> { OpenActiveBetaContext } );
+        public static string ToOpenActiveBetaString(this Schema.NET.Thing thing, List<string> contexts) => ReplaceContext(thing.ToOpenActiveString(), contexts);
 
         /// <summary>
         /// Returns the JSON-LD representation of this instance.
@@ -29,8 +28,8 @@ namespace OpenActive.NET.Beta
         /// <returns>
         /// A <see cref="string" /> that represents the JSON-LD representation of this instance.
         /// </returns>
-        public static string ToOpenActiveBetaHtmlEscapedString(this Thing thing) => thing.ToOpenActiveBetaString(new List<string> { OpenActiveBetaContext });
-        public static string ToOpenActiveBetaHtmlEscapedString(this Thing thing, List<string> contexts) => ReplaceContext(thing.ToOpenActiveHtmlEscapedString(), contexts);
+        public static string ToOpenActiveBetaHtmlEscapedString(this Schema.NET.Thing thing) => thing.ToOpenActiveBetaString(new List<string> { OpenActiveBetaContext });
+        public static string ToOpenActiveBetaHtmlEscapedString(this Schema.NET.Thing thing, List<string> contexts) => ReplaceContext(thing.ToOpenActiveHtmlEscapedString(), contexts);
 
         /// <summary>
         /// Returns the JSON-LD representation of this instance using the <see cref="JsonSerializerSettings"/> provided.

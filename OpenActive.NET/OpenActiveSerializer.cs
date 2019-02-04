@@ -1,9 +1,9 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
-using Schema.NET;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using System.Text;
 
@@ -24,12 +24,12 @@ namespace OpenActive.NET
         /// </summary>
         private static readonly JsonSerializerSettings SerializerSettings = new JsonSerializerSettings()
         {
+            NullValueHandling = NullValueHandling.Ignore,
             Converters = new List<JsonConverter>()
             {
                 new StringEnumConverter()
             },
-            NullValueHandling = NullValueHandling.Ignore,
-             ContractResolver = NoEmptyStringsContractResolver.Instance
+            ContractResolver = NoEmptyStringsContractResolver.Instance
         };
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace OpenActive.NET
         /// <returns>
         /// A <see cref="string" /> that represents the JSON-LD representation of this instance.
         /// </returns>
-        public static string ToOpenActiveString(this Thing thing) => ToString(thing, SerializerSettings);
+        public static string ToOpenActiveString(this Schema.NET.Thing thing) => ToString(thing, SerializerSettings);
 
         /// <summary>
         /// Returns the JSON-LD representation of this instance.
@@ -65,7 +65,7 @@ namespace OpenActive.NET
         /// <returns>
         /// A <see cref="string" /> that represents the JSON-LD representation of this instance.
         /// </returns>
-        public static string ToOpenActiveHtmlEscapedString(this Thing thing) => ToString(thing, HtmlEscapedSerializerSettings);
+        public static string ToOpenActiveHtmlEscapedString(this Schema.NET.Thing thing) => ToString(thing, HtmlEscapedSerializerSettings);
 
         /// <summary>
         /// Returns the JSON-LD representation of this instance using the <see cref="JsonSerializerSettings"/> provided.
@@ -79,7 +79,7 @@ namespace OpenActive.NET
         /// <returns>
         /// A <see cref="string" /> that represents the JSON-LD representation of this instance.
         /// </returns>
-        private static string ToString(Thing thing, JsonSerializerSettings serializerSettings) =>
+        private static string ToString(Schema.NET.Thing thing, JsonSerializerSettings serializerSettings) =>
             RemoveAllButFirstContext(JsonConvert.SerializeObject(thing, serializerSettings));
 
         private static string RemoveAllButFirstContext(string json)
@@ -109,7 +109,12 @@ namespace OpenActive.NET
                     // Do not include empty strings in JSON output (as per OpenActive Modelling Specification)
                     property.ShouldSerialize = instance =>
                     {
-                        return !string.IsNullOrWhiteSpace(instance.GetType().GetRuntimeProperty(member.Name).GetValue(instance, null) as string);
+                        var type = instance.GetType();
+                        var colName = member.Name;
+                        var all = type.GetRuntimeProperties().Where(x => x.Name == colName);
+                        var info = all.FirstOrDefault(x => x.DeclaringType == type) ?? all.First();
+
+                        return !string.IsNullOrWhiteSpace(info.GetValue(instance, null) as string);
                     };
                 }
 

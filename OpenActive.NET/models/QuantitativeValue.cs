@@ -28,7 +28,7 @@ namespace OpenActive.NET
         /// "maxValue": 60
         /// </code>
         /// </example>
-        [DataMember(Name = "maxValue", Order = 115)]
+        [DataMember(Name = "maxValue", EmitDefaultValue = false, Order = 7)]
         public new virtual int? MaxValue { get; set; }
 
 
@@ -40,7 +40,7 @@ namespace OpenActive.NET
         /// "minValue": 16
         /// </code>
         /// </example>
-        [DataMember(Name = "minValue", Order = 115)]
+        [DataMember(Name = "minValue", EmitDefaultValue = false, Order = 8)]
         public new virtual int? MinValue { get; set; }
 
     }

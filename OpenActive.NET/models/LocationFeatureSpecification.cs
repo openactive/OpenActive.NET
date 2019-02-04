@@ -28,14 +28,14 @@ namespace OpenActive.NET
         /// "name": "Bike Shed"
         /// </code>
         /// </example>
-        [DataMember(Name = "name", Order = 115)]
+        [DataMember(Name = "name", EmitDefaultValue = false, Order = 7)]
         public new virtual string Name { get; set; }
 
 
         /// <summary>
         /// A boolean value indicating whether this ammenity is available.
         /// </summary>
-        [DataMember(Name = "value", Order = 115)]
+        [DataMember(Name = "value", EmitDefaultValue = false, Order = 8)]
         public new virtual bool? Value { get; set; }
 
     }

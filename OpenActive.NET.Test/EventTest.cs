@@ -1,13 +1,22 @@
 using Newtonsoft.Json;
-using Schema.NET;
+using OpenActive.NET;
 using System;
+using System.Collections.Generic;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace OpenActive.NET.Test
 {
     // https://developers.google.com/search/docs/data-types/events
     public class EventTest
     {
+        private readonly ITestOutputHelper output;
+
+        public EventTest(ITestOutputHelper output)
+        {
+            this.output = output;
+        }
+
         private readonly SessionSeries @event = new OpenActive.NET.SessionSeries()
         {
             Name = "Jan Lieberman Concert Series: Journey in Jazz", // Required
@@ -26,16 +35,16 @@ namespace OpenActive.NET.Test
                     AddressCountry = "US"
                 }
             },
-            Image = new Uri("http://www.example.com/event_image/12345"), // Recommended
+            Image = new List<ImageObject>() { new ImageObject { Url = new Uri("http://www.example.com/event_image/12345") } }, // Recommended
             EndDate = new DateTimeOffset(2017, 4, 24, 23, 0, 0, TimeSpan.FromHours(-8)), // Recommended
-            Offers = new Offer() // Recommended
+            Offers = new List<Offer>() { new Offer() // Recommended
             {
                 Url = new Uri("https://www.example.com/event_offer/12345_201803180430"), // Recommended
                 Price = 30, // Recommended
                 PriceCurrency = "USD", // Recommended
-                Availability = ItemAvailability.InStock, // Recommended
+                Availability = Schema.NET.ItemAvailability.InStock, // Recommended
                 ValidFrom = new DateTimeOffset(2017, 1, 20, 16, 20, 0, TimeSpan.FromHours(-8)) // Recommended
-            },
+            } },
             Performer = new Person() // Recommended
             {
                 Name = "Andy Lagunoff" // Recommended
@@ -48,7 +57,7 @@ namespace OpenActive.NET.Test
         private readonly string json =
         "{" +
             "\"@context\":\"https://openactive.io\"," +
-            "\"type\":\"Event\"," +
+            "\"type\":\"SessionSeries\"," +
             "\"name\":\"Jan Lieberman Concert Series: Journey in Jazz\"," +
             "\"description\":\"Join us for an afternoon of Jazz with Santa Clara resident and pianist Andy Lagunoff. Complimentary food and beverages will be served.\"," +
             "\"image\":\"http://www.example.com/event_image/12345\"," +
@@ -83,7 +92,9 @@ namespace OpenActive.NET.Test
         "}";
 
         [Fact]
-        public void ToString_EventGoogleStructuredData_ReturnsExpectedJsonLd() =>
+        public void ToString_EventGoogleStructuredData_ReturnsExpectedJsonLd() {
+            output.WriteLine(this.@event.ToOpenActiveString());
             Assert.Equal(this.json, this.@event.ToOpenActiveString());
+        }
     }
 }

@@ -264,9 +264,65 @@ function calculateInherits(subClassOf, derivedFrom) {
     }
 }
 
+function compareFields(xField, yField) {
+    var x = xField.fieldName.toLowerCase();
+    var y = yField.fieldName.toLowerCase();
+
+    const knownPropertyNameOrders = {
+        "context": 0,
+        "type": 1,
+        "id": 2,
+        "identifier": 3,
+        "title": 4,
+        "name": 5,
+        "description": 6
+    }
+
+    function compare(nameA, nameB) {
+        if (nameA < nameB) {
+            return -1;
+        }
+        if (nameA > nameB) {
+            return 1;
+        }
+
+        // names must be equal
+        return 0;
+    }
+
+    if (x === "enddate") {
+        x = "startdate1";
+    }
+    else if (y === "enddate") {
+        y = "startdate1";
+    }
+
+    var isXKnown = knownPropertyNameOrders.hasOwnProperty(x);
+    var isYKnown = knownPropertyNameOrders.hasOwnProperty(y);
+    if (isXKnown && isYKnown) {
+        var xIndex = knownPropertyNameOrders[x];
+        var yIndex = knownPropertyNameOrders[y];
+        return compare(xIndex, yIndex);
+    }
+    else if (isXKnown) {
+        return -1;
+    }
+    else if (isYKnown) {
+        return 1;
+    }
+    else if (xField.extensionPrefix) {
+        return 1;
+    }
+    else if (yField.extensionPrefix) {
+        return -1;
+    }
+
+    return compare(x, y);
+}
+
 function createModelMarkdownPage(model, models, extensions, enumMap) {
     var fullFields = obsoleteNotInSpecFields(model, models);
-    var fullFieldsList = Object.values(fullFields);
+    var fullFieldsList = Object.values(fullFields).sort(compareFields).map((field, index) => { field.order = index + 6; return field; });
     var fullModel = createFullModel(fullFields, model, models);
     var derivedFrom = getPropertyWithInheritance("derivedFrom", model, models);
     var derivedFromName = convertToCamelCase(getPropNameFromFQP(derivedFrom));
@@ -362,8 +418,8 @@ function getDotNetBaseType(prefixedTypeName, enumMap, modelsMap, isExtension) {
     switch (typeName) {
         case "Boolean":
             return "bool?";
-        case "Date":
         case "DateTime":
+        case "Time":
             return "DateTimeOffset?";
         case "Integer":
             return "int?";
@@ -371,9 +427,9 @@ function getDotNetBaseType(prefixedTypeName, enumMap, modelsMap, isExtension) {
             return "decimal?";
         case "Number":
             return "decimal?";
+        case "Date": // TODO: Find better way of representing Date
         case "Text":
             return "string";
-        case "Time":
         case "Duration":
             return "TimeSpan?";
         case "URL":
@@ -402,18 +458,28 @@ function createTableFromFieldList(fieldList, models, enumMap, hasBaseClass) {
     return fieldList.filter(field => field.fieldName != "type" && field.fieldName != "@context").map(field => createMarkdownFromField(field, models, enumMap, hasBaseClass)).join('\n');
 }
 
+function renderJsonConverter(field, propertyType) {
+    if (propertyType.indexOf("Values<") > -1) {
+        return `\n        [JsonConverter(typeof(ValuesConverter))]`;
+    } else if (propertyType == 'TimeSpan?') {
+        return `\n        [JsonConverter(typeof(OpenActiveTimeSpanToISO8601DurationValuesConverter))]`;
+    } else if (field.requiredType == 'https://schema.org/Time') {
+        return `\n        [JsonConverter(typeof(OpenActiveDateTimeOffsetToISO8601TimeValuesConverter))]`;
+    } else {
+        return "";
+    }
+}
+
 function createMarkdownFromField(field, models, enumMap, hasBaseClass) {
     var memberName = field.extensionPrefix ? `${field.extensionPrefix}:${field.fieldName}` : field.fieldName;
     var isExtension = !!field.extensionPrefix;
     var isNew = field.derivedFromSchema; // Only need new if sameAs specified as it will be replacing a schema.org type
     var propertyName = convertToCamelCase(field.fieldName);
     var propertyType = createTypeString(field, models, enumMap, isExtension);
-    var jsonConverter = propertyType == 'TimeSpan?' ?
-        `\n        [JsonConverter(typeof(OpenActiveTimeSpanToISO8601DurationValuesConverter))]` :
-        (propertyType.indexOf("Values<") > -1 ? `\n        [JsonConverter(typeof(Schema.NET.ValuesConverter))]` : "")
+    var jsonConverter = renderJsonConverter(field, propertyType);
     return !field.obsolete ? `
         /// ${createDescriptionWithExample(field).replace(/\n/g, '\n        /// ')}
-        [DataMember(Name = "${memberName}", Order = 115)]${jsonConverter}
+        [DataMember(Name = "${memberName}", EmitDefaultValue = false, Order = ${isExtension ? 1000 + field.order : field.order})]${jsonConverter}
         public ${!isExtension && hasBaseClass && (isNew || field.override) ? "new " : ""}virtual ${propertyType} ${propertyName} { get; set; }
 ` : `
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
@@ -437,7 +503,7 @@ function createTypeString(field, models, enumMap, isExtension) {
 
 
     // TODO: Create OpenActive Values which does not allow many of the same type, only allows one
-    return types.length > 1 ? `Schema.NET.Values<${types.join(', ')}>` : types[0];
+    return types.length > 1 ? `SingleValues<${types.join(', ')}>` : types[0];
 }
 
 function createLinkFromFullyQualifiedProperty(prop) {

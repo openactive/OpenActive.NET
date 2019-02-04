@@ -21,6 +21,43 @@ namespace OpenActive.NET
 
         
         /// <summary>
+        /// A local non-URI identifier for the resource
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// "identifier": "SB1234"
+        /// </code>
+        /// </example>
+        [DataMember(Name = "identifier", EmitDefaultValue = false, Order = 7)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public new virtual SingleValues<int?, string, PropertyValue, List<PropertyValue>> Identifier { get; set; }
+
+
+        /// <summary>
+        /// A human readable name for the offer.
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// "name": "Speedball winger position"
+        /// </code>
+        /// </example>
+        [DataMember(Name = "name", EmitDefaultValue = false, Order = 8)]
+        public new virtual string Name { get; set; }
+
+
+        /// <summary>
+        /// A free text description of the Offer
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// "description": "Concession requirements are available at https://www.fusion-lifestyle.com/. Proof of entitlement to concession membership must be provided when you visit the centre."
+        /// </code>
+        /// </example>
+        [DataMember(Name = "description", EmitDefaultValue = false, Order = 9)]
+        public new virtual string Description { get; set; }
+
+
+        /// <summary>
         /// Indicates the offline payment methods accepted by this provider.
         /// </summary>
         /// <example>
@@ -31,7 +68,7 @@ namespace OpenActive.NET
         /// ]
         /// </code>
         /// </example>
-        [DataMember(Name = "acceptedPaymentMethod", Order = 115)]
+        [DataMember(Name = "acceptedPaymentMethod", EmitDefaultValue = false, Order = 10)]
         public new virtual List<PaymentMethod?> AcceptedPaymentMethod { get; set; }
 
 
@@ -43,7 +80,7 @@ namespace OpenActive.NET
         /// "advanceBooking": "https://openactive.io/Required"
         /// </code>
         /// </example>
-        [DataMember(Name = "advanceBooking", Order = 115)]
+        [DataMember(Name = "advanceBooking", EmitDefaultValue = false, Order = 11)]
         public virtual RequiredStatusType? AdvanceBooking { get; set; }
 
 
@@ -59,45 +96,8 @@ namespace OpenActive.NET
         /// }
         /// </code>
         /// </example>
-        [DataMember(Name = "ageRange", Order = 115)]
+        [DataMember(Name = "ageRange", EmitDefaultValue = false, Order = 12)]
         public virtual QuantitativeValue AgeRange { get; set; }
-
-
-        /// <summary>
-        /// A free text description of the Offer
-        /// </summary>
-        /// <example>
-        /// <code>
-        /// "description": "Concession requirements are available at https://www.fusion-lifestyle.com/. Proof of entitlement to concession membership must be provided when you visit the centre."
-        /// </code>
-        /// </example>
-        [DataMember(Name = "description", Order = 115)]
-        public new virtual string Description { get; set; }
-
-
-        /// <summary>
-        /// A local non-URI identifier for the resource
-        /// </summary>
-        /// <example>
-        /// <code>
-        /// "identifier": "SB1234"
-        /// </code>
-        /// </example>
-        [DataMember(Name = "identifier", Order = 115)]
-        [JsonConverter(typeof(Schema.NET.ValuesConverter))]
-        public new virtual Schema.NET.Values<int?, string, PropertyValue, List<PropertyValue>> Identifier { get; set; }
-
-
-        /// <summary>
-        /// A human readable name for the offer.
-        /// </summary>
-        /// <example>
-        /// <code>
-        /// "name": "Speedball winger position"
-        /// </code>
-        /// </example>
-        [DataMember(Name = "name", Order = 115)]
-        public new virtual string Name { get; set; }
 
 
         /// <summary>
@@ -108,7 +108,7 @@ namespace OpenActive.NET
         /// "prepayment": "https://openactive.io/Required"
         /// </code>
         /// </example>
-        [DataMember(Name = "prepayment", Order = 115)]
+        [DataMember(Name = "prepayment", EmitDefaultValue = false, Order = 13)]
         public virtual RequiredStatusType? Prepayment { get; set; }
 
 
@@ -122,7 +122,7 @@ namespace OpenActive.NET
         /// "price": 33
         /// </code>
         /// </example>
-        [DataMember(Name = "price", Order = 115)]
+        [DataMember(Name = "price", EmitDefaultValue = false, Order = 14)]
         public new virtual decimal? Price { get; set; }
 
 
@@ -135,7 +135,7 @@ namespace OpenActive.NET
         /// "priceCurrency": "GBP"
         /// </code>
         /// </example>
-        [DataMember(Name = "priceCurrency", Order = 115)]
+        [DataMember(Name = "priceCurrency", EmitDefaultValue = false, Order = 15)]
         public new virtual string PriceCurrency { get; set; }
 
 
@@ -147,7 +147,7 @@ namespace OpenActive.NET
         /// "url": "http://www.rphs.org.uk/"
         /// </code>
         /// </example>
-        [DataMember(Name = "url", Order = 115)]
+        [DataMember(Name = "url", EmitDefaultValue = false, Order = 16)]
         public new virtual Uri Url { get; set; }
 
 
@@ -157,7 +157,7 @@ namespace OpenActive.NET
         /// 
         /// If you are using this property, please join the discussion at proposal [#161](https://github.com/openactive/modelling-opportunity-data/issues/161).
         /// </summary>
-        [DataMember(Name = "beta:availableChannel", Order = 115)]
+        [DataMember(Name = "beta:availableChannel", EmitDefaultValue = false, Order = 1017)]
         public virtual List<AvailableChannelType?> AvailableChannel { get; set; }
 
     }

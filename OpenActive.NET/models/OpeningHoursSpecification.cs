@@ -28,9 +28,9 @@ namespace OpenActive.NET
         /// "closes": "17:00"
         /// </code>
         /// </example>
-        [DataMember(Name = "closes", Order = 115)]
-        [JsonConverter(typeof(OpenActiveTimeSpanToISO8601DurationValuesConverter))]
-        public new virtual TimeSpan? Closes { get; set; }
+        [DataMember(Name = "closes", EmitDefaultValue = false, Order = 7)]
+        [JsonConverter(typeof(OpenActiveDateTimeOffsetToISO8601TimeValuesConverter))]
+        public new virtual DateTimeOffset? Closes { get; set; }
 
 
         /// <summary>
@@ -41,7 +41,7 @@ namespace OpenActive.NET
         /// "dayOfWeek": "https://schema.org/Monday"
         /// </code>
         /// </example>
-        [DataMember(Name = "dayOfWeek", Order = 115)]
+        [DataMember(Name = "dayOfWeek", EmitDefaultValue = false, Order = 8)]
         public new virtual Schema.NET.DayOfWeek? DayOfWeek { get; set; }
 
 
@@ -53,9 +53,9 @@ namespace OpenActive.NET
         /// "opens": "09:00"
         /// </code>
         /// </example>
-        [DataMember(Name = "opens", Order = 115)]
-        [JsonConverter(typeof(OpenActiveTimeSpanToISO8601DurationValuesConverter))]
-        public new virtual TimeSpan? Opens { get; set; }
+        [DataMember(Name = "opens", EmitDefaultValue = false, Order = 9)]
+        [JsonConverter(typeof(OpenActiveDateTimeOffsetToISO8601TimeValuesConverter))]
+        public new virtual DateTimeOffset? Opens { get; set; }
 
     }
 }

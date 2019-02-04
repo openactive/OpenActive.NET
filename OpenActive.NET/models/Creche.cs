@@ -28,7 +28,7 @@ namespace OpenActive.NET
         /// "name": "Childcare"
         /// </code>
         /// </example>
-        [DataMember(Name = "name", Order = 115)]
+        [DataMember(Name = "name", EmitDefaultValue = false, Order = 7)]
         public new virtual string Name { get; set; }
 
     }

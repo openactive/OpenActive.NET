@@ -21,6 +21,30 @@ namespace OpenActive.NET
 
         
         /// <summary>
+        /// The title of the scheme
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// "title": "Activity List"
+        /// </code>
+        /// </example>
+        [DataMember(Name = "title", EmitDefaultValue = false, Order = 7)]
+        public virtual string Title { get; set; }
+
+
+        /// <summary>
+        /// A free text description of the taxonomy
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// "description": "An example activity list."
+        /// </code>
+        /// </example>
+        [DataMember(Name = "description", EmitDefaultValue = false, Order = 8)]
+        public virtual string Description { get; set; }
+
+
+        /// <summary>
         /// A collection of concepts that are part of this scheme
         /// </summary>
         /// <example>
@@ -36,20 +60,8 @@ namespace OpenActive.NET
         /// ]
         /// </code>
         /// </example>
-        [DataMember(Name = "concept", Order = 115)]
+        [DataMember(Name = "concept", EmitDefaultValue = false, Order = 9)]
         public virtual List<Concept> Concept { get; set; }
-
-
-        /// <summary>
-        /// A free text description of the taxonomy
-        /// </summary>
-        /// <example>
-        /// <code>
-        /// "description": "An example activity list."
-        /// </code>
-        /// </example>
-        [DataMember(Name = "description", Order = 115)]
-        public virtual string Description { get; set; }
 
 
         /// <summary>
@@ -60,20 +72,8 @@ namespace OpenActive.NET
         /// "license": "https://example.com/license/MIT"
         /// </code>
         /// </example>
-        [DataMember(Name = "license", Order = 115)]
+        [DataMember(Name = "license", EmitDefaultValue = false, Order = 10)]
         public virtual Uri License { get; set; }
-
-
-        /// <summary>
-        /// The title of the scheme
-        /// </summary>
-        /// <example>
-        /// <code>
-        /// "title": "Activity List"
-        /// </code>
-        /// </example>
-        [DataMember(Name = "title", Order = 115)]
-        public virtual string Title { get; set; }
 
 
         /// <summary>
@@ -84,7 +84,7 @@ namespace OpenActive.NET
         /// "url": "https://example.com/scheme/1234"
         /// </code>
         /// </example>
-        [DataMember(Name = "url", Order = 115)]
+        [DataMember(Name = "url", EmitDefaultValue = false, Order = 11)]
         public virtual Uri Url { get; set; }
 
     }

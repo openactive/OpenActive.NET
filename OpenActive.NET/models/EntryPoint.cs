@@ -23,7 +23,7 @@ namespace OpenActive.NET
         /// Must always be present and set to <code>
         /// "encodingType": "application/vnd.openactive.v1.0+json"
         /// </code>
-        [DataMember(Name = "encodingType", Order = 115)]
+        [DataMember(Name = "encodingType", EmitDefaultValue = false, Order = 7)]
         public new virtual string EncodingType { get; set; }
 
 
@@ -35,7 +35,7 @@ namespace OpenActive.NET
         /// "httpMethod": "POST"
         /// </code>
         /// </example>
-        [DataMember(Name = "httpMethod", Order = 115)]
+        [DataMember(Name = "httpMethod", EmitDefaultValue = false, Order = 8)]
         public new virtual string HttpMethod { get; set; }
 
 
@@ -47,7 +47,7 @@ namespace OpenActive.NET
         /// "urlTemplate": "https://example.com/orders{/var}"
         /// </code>
         /// </example>
-        [DataMember(Name = "urlTemplate", Order = 115)]
+        [DataMember(Name = "urlTemplate", EmitDefaultValue = false, Order = 9)]
         public new virtual Uri UrlTemplate { get; set; }
 
     }

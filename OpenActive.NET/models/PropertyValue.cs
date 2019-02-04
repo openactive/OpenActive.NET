@@ -28,7 +28,7 @@ namespace OpenActive.NET
         /// "name": "Vendor ID"
         /// </code>
         /// </example>
-        [DataMember(Name = "name", Order = 115)]
+        [DataMember(Name = "name", EmitDefaultValue = false, Order = 7)]
         public new virtual string Name { get; set; }
 
 
@@ -40,9 +40,9 @@ namespace OpenActive.NET
         /// "propertyID": "ActivePlaces"
         /// </code>
         /// </example>
-        [DataMember(Name = "propertyID", Order = 115)]
-        [JsonConverter(typeof(Schema.NET.ValuesConverter))]
-        public new virtual Schema.NET.Values<string, Uri> PropertyID { get; set; }
+        [DataMember(Name = "propertyID", EmitDefaultValue = false, Order = 8)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public new virtual SingleValues<string, Uri> PropertyID { get; set; }
 
 
         /// <summary>
@@ -53,9 +53,9 @@ namespace OpenActive.NET
         /// "value": "SB1234"
         /// </code>
         /// </example>
-        [DataMember(Name = "value", Order = 115)]
-        [JsonConverter(typeof(Schema.NET.ValuesConverter))]
-        public new virtual Schema.NET.Values<int?, string> Value { get; set; }
+        [DataMember(Name = "value", EmitDefaultValue = false, Order = 9)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public new virtual SingleValues<int?, string> Value { get; set; }
 
     }
 }

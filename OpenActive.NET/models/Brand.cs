@@ -21,18 +21,6 @@ namespace OpenActive.NET
 
         
         /// <summary>
-        /// A text description for the brand.
-        /// </summary>
-        /// <example>
-        /// <code>
-        /// "description": "Play Ball! is a series of games for people of all abilities."
-        /// </code>
-        /// </example>
-        [DataMember(Name = "description", Order = 115)]
-        public new virtual string Description { get; set; }
-
-
-        /// <summary>
         /// A local non-URI identifier for the resource
         /// </summary>
         /// <example>
@@ -40,9 +28,33 @@ namespace OpenActive.NET
         /// "identifier": "BR1234"
         /// </code>
         /// </example>
-        [DataMember(Name = "identifier", Order = 115)]
-        [JsonConverter(typeof(Schema.NET.ValuesConverter))]
-        public new virtual Schema.NET.Values<int?, string, PropertyValue, List<PropertyValue>> Identifier { get; set; }
+        [DataMember(Name = "identifier", EmitDefaultValue = false, Order = 7)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public new virtual SingleValues<int?, string, PropertyValue, List<PropertyValue>> Identifier { get; set; }
+
+
+        /// <summary>
+        /// The name of the brand.
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// "name": "Play Ball!"
+        /// </code>
+        /// </example>
+        [DataMember(Name = "name", EmitDefaultValue = false, Order = 8)]
+        public new virtual string Name { get; set; }
+
+
+        /// <summary>
+        /// A text description for the brand.
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// "description": "Play Ball! is a series of games for people of all abilities."
+        /// </code>
+        /// </example>
+        [DataMember(Name = "description", EmitDefaultValue = false, Order = 9)]
+        public new virtual string Description { get; set; }
 
 
         /// <summary>
@@ -56,20 +68,8 @@ namespace OpenActive.NET
         /// }
         /// </code>
         /// </example>
-        [DataMember(Name = "logo", Order = 115)]
+        [DataMember(Name = "logo", EmitDefaultValue = false, Order = 10)]
         public new virtual ImageObject Logo { get; set; }
-
-
-        /// <summary>
-        /// The name of the brand.
-        /// </summary>
-        /// <example>
-        /// <code>
-        /// "name": "Play Ball!"
-        /// </code>
-        /// </example>
-        [DataMember(Name = "name", Order = 115)]
-        public new virtual string Name { get; set; }
 
 
         /// <summary>
@@ -80,7 +80,7 @@ namespace OpenActive.NET
         /// "url": "http://example.com/play_ball"
         /// </code>
         /// </example>
-        [DataMember(Name = "url", Order = 115)]
+        [DataMember(Name = "url", EmitDefaultValue = false, Order = 11)]
         public new virtual Uri Url { get; set; }
 
 
@@ -90,7 +90,7 @@ namespace OpenActive.NET
         /// 
         /// If you are using this property, please join the discussion at proposal [#88](https://github.com/openactive/modelling-opportunity-data/issues/88).
         /// </summary>
-        [DataMember(Name = "beta:video", Order = 115)]
+        [DataMember(Name = "beta:video", EmitDefaultValue = false, Order = 1012)]
         public virtual List<Schema.NET.VideoObject> Video { get; set; }
 
     }

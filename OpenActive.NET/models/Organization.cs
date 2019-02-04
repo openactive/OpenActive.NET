@@ -21,18 +21,6 @@ namespace OpenActive.NET
 
         
         /// <summary>
-        /// The description of the Organization
-        /// </summary>
-        /// <example>
-        /// <code>
-        /// "description": "The national governing body of cycling"
-        /// </code>
-        /// </example>
-        [DataMember(Name = "description", Order = 115)]
-        public new virtual string Description { get; set; }
-
-
-        /// <summary>
         /// A local non-URI identifier for the resource
         /// </summary>
         /// <example>
@@ -40,9 +28,57 @@ namespace OpenActive.NET
         /// "identifier": "SB1234"
         /// </code>
         /// </example>
-        [DataMember(Name = "identifier", Order = 115)]
-        [JsonConverter(typeof(Schema.NET.ValuesConverter))]
-        public new virtual Schema.NET.Values<int?, string, PropertyValue, List<PropertyValue>> Identifier { get; set; }
+        [DataMember(Name = "identifier", EmitDefaultValue = false, Order = 7)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public new virtual SingleValues<int?, string, PropertyValue, List<PropertyValue>> Identifier { get; set; }
+
+
+        /// <summary>
+        /// The name of the Organization
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// "name": "Central Speedball Association"
+        /// </code>
+        /// </example>
+        [DataMember(Name = "name", EmitDefaultValue = false, Order = 8)]
+        public new virtual string Name { get; set; }
+
+
+        /// <summary>
+        /// The description of the Organization
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// "description": "The national governing body of cycling"
+        /// </code>
+        /// </example>
+        [DataMember(Name = "description", EmitDefaultValue = false, Order = 9)]
+        public new virtual string Description { get; set; }
+
+
+        /// <summary>
+        /// General enquiries e-mail address for the organization.
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// "email": "info@example.com"
+        /// </code>
+        /// </example>
+        [DataMember(Name = "email", EmitDefaultValue = false, Order = 10)]
+        public new virtual string Email { get; set; }
+
+
+        /// <summary>
+        /// The official name of the organization, e.g. the registered company name.
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// "legalName": "Central Speedball Ltd"
+        /// </code>
+        /// </example>
+        [DataMember(Name = "legalName", EmitDefaultValue = false, Order = 11)]
+        public new virtual string LegalName { get; set; }
 
 
         /// <summary>
@@ -56,44 +92,8 @@ namespace OpenActive.NET
         /// }
         /// </code>
         /// </example>
-        [DataMember(Name = "logo", Order = 115)]
+        [DataMember(Name = "logo", EmitDefaultValue = false, Order = 12)]
         public new virtual ImageObject Logo { get; set; }
-
-
-        /// <summary>
-        /// The name of the Organization
-        /// </summary>
-        /// <example>
-        /// <code>
-        /// "name": "Central Speedball Association"
-        /// </code>
-        /// </example>
-        [DataMember(Name = "name", Order = 115)]
-        public new virtual string Name { get; set; }
-
-
-        /// <summary>
-        /// The official name of the organization, e.g. the registered company name.
-        /// </summary>
-        /// <example>
-        /// <code>
-        /// "legalName": "Central Speedball Ltd"
-        /// </code>
-        /// </example>
-        [DataMember(Name = "legalName", Order = 115)]
-        public new virtual string LegalName { get; set; }
-
-
-        /// <summary>
-        /// General enquiries e-mail address for the organization.
-        /// </summary>
-        /// <example>
-        /// <code>
-        /// "email": "info@example.com"
-        /// </code>
-        /// </example>
-        [DataMember(Name = "email", Order = 115)]
-        public new virtual string Email { get; set; }
 
 
         /// <summary>
@@ -107,7 +107,7 @@ namespace OpenActive.NET
         /// ]
         /// </code>
         /// </example>
-        [DataMember(Name = "sameAs", Order = 115)]
+        [DataMember(Name = "sameAs", EmitDefaultValue = false, Order = 13)]
         public new virtual List<Uri> SameAs { get; set; }
 
 
@@ -119,7 +119,7 @@ namespace OpenActive.NET
         /// "telephone": "01234 567890"
         /// </code>
         /// </example>
-        [DataMember(Name = "telephone", Order = 115)]
+        [DataMember(Name = "telephone", EmitDefaultValue = false, Order = 14)]
         public new virtual string Telephone { get; set; }
 
 
@@ -131,7 +131,7 @@ namespace OpenActive.NET
         /// "url": "http://www.speedball-world.com"
         /// </code>
         /// </example>
-        [DataMember(Name = "url", Order = 115)]
+        [DataMember(Name = "url", EmitDefaultValue = false, Order = 15)]
         public new virtual Uri Url { get; set; }
 
     }

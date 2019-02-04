@@ -21,6 +21,47 @@ namespace OpenActive.NET
 
         
         /// <summary>
+        /// A local non-URI identifier for the resource
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// "identifier": "BR1234"
+        /// </code>
+        /// </example>
+        [DataMember(Name = "identifier", EmitDefaultValue = false, Order = 7)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public new virtual SingleValues<int?, string, PropertyValue, List<PropertyValue>> Identifier { get; set; }
+
+
+        /// <summary>
+        /// The name of the Course
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// "name": "Netball Youth Camp"
+        /// </code>
+        /// </example>
+        [DataMember(Name = "name", EmitDefaultValue = false, Order = 8)]
+        public new virtual string Name { get; set; }
+
+
+        /// <summary>
+        /// The description of the Course
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// "description": "Netball Youth Camps give junior netballers the chance to get together with their friends and take to the court in the holidays!
+        /// 
+        /// The camp is a non-residential holiday camp providing ‘Nothing but Netball’; not only will there be top quality coaching and fun netball activities but there is even an opportunity to meet and be inspired by an elite player.
+        /// 
+        /// If you are a junior netball lover (or the parent of one!) these are an unmissable holiday activity."
+        /// </code>
+        /// </example>
+        [DataMember(Name = "description", EmitDefaultValue = false, Order = 9)]
+        public new virtual string Description { get; set; }
+
+
+        /// <summary>
         /// Specifies the physical activity or activities that will take place during a Course.
         /// </summary>
         /// <example>
@@ -35,7 +76,7 @@ namespace OpenActive.NET
         /// ]
         /// </code>
         /// </example>
-        [DataMember(Name = "activity", Order = 115)]
+        [DataMember(Name = "activity", EmitDefaultValue = false, Order = 10)]
         public virtual List<Concept> Activity { get; set; }
 
 
@@ -51,60 +92,9 @@ namespace OpenActive.NET
         /// }
         /// </code>
         /// </example>
-        [DataMember(Name = "author", Order = 115)]
-        [JsonConverter(typeof(Schema.NET.ValuesConverter))]
-        public new virtual Schema.NET.Values<Person, Organization> Author { get; set; }
-
-
-        /// <summary>
-        /// The description of the Course
-        /// </summary>
-        /// <example>
-        /// <code>
-        /// "description": "Netball Youth Camps give junior netballers the chance to get together with their friends and take to the court in the holidays!
-        /// 
-        /// The camp is a non-residential holiday camp providing ‘Nothing but Netball’; not only will there be top quality coaching and fun netball activities but there is even an opportunity to meet and be inspired by an elite player.
-        /// 
-        /// If you are a junior netball lover (or the parent of one!) these are an unmissable holiday activity."
-        /// </code>
-        /// </example>
-        [DataMember(Name = "description", Order = 115)]
-        public new virtual string Description { get; set; }
-
-
-        /// <summary>
-        /// A local non-URI identifier for the resource
-        /// </summary>
-        /// <example>
-        /// <code>
-        /// "identifier": "BR1234"
-        /// </code>
-        /// </example>
-        [DataMember(Name = "identifier", Order = 115)]
-        [JsonConverter(typeof(Schema.NET.ValuesConverter))]
-        public new virtual Schema.NET.Values<int?, string, PropertyValue, List<PropertyValue>> Identifier { get; set; }
-
-
-        /// <summary>
-        /// [NOTICE: This is a beta field, and is highly likely to change in future versions of this library.] 
-        /// An associated logo for a course.
-        /// 
-        /// If you are using this property, please join the discussion at proposal [#164](https://github.com/openactive/modelling-opportunity-data/issues/164).
-        /// </summary>
-        [DataMember(Name = "beta:logo", Order = 115)]
-        public virtual ImageObject Logo { get; set; }
-
-
-        /// <summary>
-        /// The name of the Course
-        /// </summary>
-        /// <example>
-        /// <code>
-        /// "name": "Netball Youth Camp"
-        /// </code>
-        /// </example>
-        [DataMember(Name = "name", Order = 115)]
-        public new virtual string Name { get; set; }
+        [DataMember(Name = "author", EmitDefaultValue = false, Order = 11)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public new virtual SingleValues<Person, Organization> Author { get; set; }
 
 
         /// <summary>
@@ -115,8 +105,18 @@ namespace OpenActive.NET
         /// "url": "http://www.speedball-world.com/beginners-course"
         /// </code>
         /// </example>
-        [DataMember(Name = "url", Order = 115)]
+        [DataMember(Name = "url", EmitDefaultValue = false, Order = 12)]
         public new virtual Uri Url { get; set; }
+
+
+        /// <summary>
+        /// [NOTICE: This is a beta field, and is highly likely to change in future versions of this library.] 
+        /// An associated logo for a course.
+        /// 
+        /// If you are using this property, please join the discussion at proposal [#164](https://github.com/openactive/modelling-opportunity-data/issues/164).
+        /// </summary>
+        [DataMember(Name = "beta:logo", EmitDefaultValue = false, Order = 1013)]
+        public virtual ImageObject Logo { get; set; }
 
     }
 }

@@ -31,9 +31,9 @@ namespace OpenActive.NET
         /// ]
         /// </code>
         /// </example>
-        [DataMember(Name = "byDay", Order = 115)]
-        [JsonConverter(typeof(Schema.NET.ValuesConverter))]
-        public virtual Schema.NET.Values<List<string>, List<Schema.NET.DayOfWeek?>> ByDay { get; set; }
+        [DataMember(Name = "byDay", EmitDefaultValue = false, Order = 7)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public virtual SingleValues<List<string>, List<Schema.NET.DayOfWeek?>> ByDay { get; set; }
 
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace OpenActive.NET
         /// ]
         /// </code>
         /// </example>
-        [DataMember(Name = "byMonth", Order = 115)]
+        [DataMember(Name = "byMonth", EmitDefaultValue = false, Order = 8)]
         public virtual List<int?> ByMonth { get; set; }
 
 
@@ -60,7 +60,7 @@ namespace OpenActive.NET
         /// ]
         /// </code>
         /// </example>
-        [DataMember(Name = "byMonthDay", Order = 115)]
+        [DataMember(Name = "byMonthDay", EmitDefaultValue = false, Order = 9)]
         public virtual List<int?> ByMonthDay { get; set; }
 
 
@@ -72,21 +72,9 @@ namespace OpenActive.NET
         /// "duration": "PT1H"
         /// </code>
         /// </example>
-        [DataMember(Name = "duration", Order = 115)]
+        [DataMember(Name = "duration", EmitDefaultValue = false, Order = 10)]
         [JsonConverter(typeof(OpenActiveTimeSpanToISO8601DurationValuesConverter))]
         public virtual TimeSpan? Duration { get; set; }
-
-
-        /// <summary>
-        /// The end date of the schedule.
-        /// </summary>
-        /// <example>
-        /// <code>
-        /// "endDate": "2018-01-27"
-        /// </code>
-        /// </example>
-        [DataMember(Name = "endDate", Order = 115)]
-        public virtual DateTimeOffset? EndDate { get; set; }
 
 
         /// <summary>
@@ -97,9 +85,9 @@ namespace OpenActive.NET
         /// "endTime": "12:00:00"
         /// </code>
         /// </example>
-        [DataMember(Name = "endTime", Order = 115)]
-        [JsonConverter(typeof(OpenActiveTimeSpanToISO8601DurationValuesConverter))]
-        public virtual TimeSpan? EndTime { get; set; }
+        [DataMember(Name = "endTime", EmitDefaultValue = false, Order = 11)]
+        [JsonConverter(typeof(OpenActiveDateTimeOffsetToISO8601TimeValuesConverter))]
+        public virtual DateTimeOffset? EndTime { get; set; }
 
 
         /// <summary>
@@ -117,9 +105,9 @@ namespace OpenActive.NET
         /// ]
         /// </code>
         /// </example>
-        [DataMember(Name = "exceptDate", Order = 115)]
-        [JsonConverter(typeof(Schema.NET.ValuesConverter))]
-        public virtual Schema.NET.Values<List<DateTimeOffset?>, List<DateTimeOffset?>> ExceptDate { get; set; }
+        [DataMember(Name = "exceptDate", EmitDefaultValue = false, Order = 12)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public virtual SingleValues<List<DateTimeOffset?>, List<string>> ExceptDate { get; set; }
 
 
         /// <summary>
@@ -130,7 +118,7 @@ namespace OpenActive.NET
         /// "idTemplate": "https://example.com/event{/id}"
         /// </code>
         /// </example>
-        [DataMember(Name = "idTemplate", Order = 115)]
+        [DataMember(Name = "idTemplate", EmitDefaultValue = false, Order = 13)]
         public virtual Uri IdTemplate { get; set; }
 
 
@@ -142,7 +130,7 @@ namespace OpenActive.NET
         /// "repeatCount": 3
         /// </code>
         /// </example>
-        [DataMember(Name = "repeatCount", Order = 115)]
+        [DataMember(Name = "repeatCount", EmitDefaultValue = false, Order = 14)]
         public virtual int? RepeatCount { get; set; }
 
 
@@ -154,7 +142,7 @@ namespace OpenActive.NET
         /// "repeatFrequency": "P1D"
         /// </code>
         /// </example>
-        [DataMember(Name = "repeatFrequency", Order = 115)]
+        [DataMember(Name = "repeatFrequency", EmitDefaultValue = false, Order = 15)]
         [JsonConverter(typeof(OpenActiveTimeSpanToISO8601DurationValuesConverter))]
         public virtual TimeSpan? RepeatFrequency { get; set; }
 
@@ -167,7 +155,7 @@ namespace OpenActive.NET
         /// "scheduledEventType": "Event"
         /// </code>
         /// </example>
-        [DataMember(Name = "scheduledEventType", Order = 115)]
+        [DataMember(Name = "scheduledEventType", EmitDefaultValue = false, Order = 16)]
         public virtual string ScheduledEventType { get; set; }
 
 
@@ -179,8 +167,20 @@ namespace OpenActive.NET
         /// "startDate": "2018-01-27"
         /// </code>
         /// </example>
-        [DataMember(Name = "startDate", Order = 115)]
-        public virtual DateTimeOffset? StartDate { get; set; }
+        [DataMember(Name = "startDate", EmitDefaultValue = false, Order = 17)]
+        public virtual string StartDate { get; set; }
+
+
+        /// <summary>
+        /// The end date of the schedule.
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// "endDate": "2018-01-27"
+        /// </code>
+        /// </example>
+        [DataMember(Name = "endDate", EmitDefaultValue = false, Order = 18)]
+        public virtual string EndDate { get; set; }
 
 
         /// <summary>
@@ -191,9 +191,9 @@ namespace OpenActive.NET
         /// "startTime": "12:00:00"
         /// </code>
         /// </example>
-        [DataMember(Name = "startTime", Order = 115)]
-        [JsonConverter(typeof(OpenActiveTimeSpanToISO8601DurationValuesConverter))]
-        public virtual TimeSpan? StartTime { get; set; }
+        [DataMember(Name = "startTime", EmitDefaultValue = false, Order = 19)]
+        [JsonConverter(typeof(OpenActiveDateTimeOffsetToISO8601TimeValuesConverter))]
+        public virtual DateTimeOffset? StartTime { get; set; }
 
 
         /// <summary>
@@ -204,7 +204,7 @@ namespace OpenActive.NET
         /// "urlTemplate": "https://example.com/event{/id}"
         /// </code>
         /// </example>
-        [DataMember(Name = "urlTemplate", Order = 115)]
+        [DataMember(Name = "urlTemplate", EmitDefaultValue = false, Order = 20)]
         public virtual Uri UrlTemplate { get; set; }
 
 
@@ -214,7 +214,7 @@ namespace OpenActive.NET
         /// 
         /// If you are using this property, please join the discussion at proposal [#197](https://github.com/openactive/modelling-opportunity-data/issues/197).
         /// </summary>
-        [DataMember(Name = "beta:timeZone", Order = 115)]
+        [DataMember(Name = "beta:timeZone", EmitDefaultValue = false, Order = 1021)]
         public virtual string TimeZone { get; set; }
 
     }
