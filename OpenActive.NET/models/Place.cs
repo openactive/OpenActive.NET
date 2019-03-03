@@ -217,5 +217,15 @@ namespace OpenActive.NET
         [DataMember(Name = "url", EmitDefaultValue = false, Order = 18)]
         public new virtual Uri Url { get; set; }
 
+
+        /// <summary>
+        /// [NOTICE: This is a beta field, and is highly likely to change in future versions of this library.] 
+        /// Sometimes a description is stored with formatting (e.g. href, bold, italics, embedded YouTube videos). This formatting can be useful for data consumers.
+        /// 
+        /// If you are using this property, please join the discussion at proposal [#2](https://github.com/openactive/ns-beta/issues/2).
+        /// </summary>
+        [DataMember(Name = "beta:formattedDescription", EmitDefaultValue = false, Order = 1019)]
+        public virtual string FormattedDescription { get; set; }
+
     }
 }

@@ -14,9 +14,9 @@ var EXTENSIONS = {
     }
 };
 
-generateTypeDocumentation(DATA_MODEL_OUTPUT_DIR, EXTENSIONS);
+generateModelClassFiles(DATA_MODEL_OUTPUT_DIR, EXTENSIONS);
 
-function generateTypeDocumentation(dataModelDirectory, extensions) {
+function generateModelClassFiles(dataModelDirectory, extensions) {
     // Returns the latest version of the models map
     const models = getModels();
     const enumMap = getEnums();
@@ -46,7 +46,7 @@ function generateTypeDocumentation(dataModelDirectory, extensions) {
         if (typeName != "undefined") { //ignores "model_list.json" (which appears to be ignored everywhere else)
 
             var pageName = 'models/' + model.type + ".cs";
-            var pageContent = createModelMarkdownPage(model, models, extensions, enumMap);
+            var pageContent = createModelFile(model, models, extensions, enumMap);
 
             console.log("NAME: " + pageName);
             console.log(pageContent);
@@ -214,49 +214,22 @@ function obsoleteNotInSpecFields(model, models) {
 }
 
 
-function augmentWithParentFields(augFields, model, models, notInSpec) {
-    if (model.fields) Object.keys(model.fields).forEach(function (field) {
-        if (!augFields[field] && !notInSpec.includes(field)) {
-            augFields[field] = model.fields[field];
-        }
-    });
-
-    // TODO: Sample IDs and IDs in general?
-    if (model.hasId && !augFields['id']) {
-        augFields['id'] = {
-            'fieldName': 'id',
-            'requiredType': model['idFormat'] || 'http://schema.org/URL',
-            'description': ['A unique url based identifier for the record'],
-            'example': ''
-        };
-        if (model.hasId && model.sampleId) {
-            augFields['id']['example'] = model['sampleId'] + '12345';
-        }
-    }
-
-    var parentModel = getParentModel(model, models);
-    if (parentModel) {
-        return augmentWithParentFields(augFields, parentModel, models, notInSpec.concat(model.notInSpec));
-    } else {
-        return augFields;
-    }
-}
 
 function calculateInherits(subClassOf, derivedFrom) {
     if (subClassOf) {
         var subClassOfName = convertToCamelCase(getPropNameFromFQP(subClassOf));
         if (includedInSchema(subClassOf)) {
-            return `: Schema.NET.${subClassOfName}`;
+            return `Schema.NET.${subClassOfName}`;
         } else {
-            return `: ${subClassOfName}`;
+            return `${subClassOfName}`;
         }
     } else if (derivedFrom) {
         var derivedFromName = convertToCamelCase(getPropNameFromFQP(derivedFrom));
         if (includedInSchema(derivedFrom)) {
-            return `: Schema.NET.${derivedFromName}`;
+            return `Schema.NET.${derivedFromName}`;
         } else {
-            // Note if derived from is outside of schema.org there won't be a base class
-            return "";
+            // Note if derived from is outside of schema.org there won't be a base class, but it will still be JSON-LD
+            return `Schema.NET.JsonLdObject`;
         }
     } else {
         // In the model everything is one or the other (at a minimum must inherit https://schema.org/Thing)
@@ -320,7 +293,7 @@ function compareFields(xField, yField) {
     return compare(x, y);
 }
 
-function createModelMarkdownPage(model, models, extensions, enumMap) {
+function createModelFile(model, models, extensions, enumMap) {
     var fullFields = obsoleteNotInSpecFields(model, models);
     var fullFieldsList = Object.values(fullFields).sort(compareFields).map((field, index) => { field.order = index + 6; return field; });
     var fullModel = createFullModel(fullFields, model, models);
@@ -328,7 +301,9 @@ function createModelMarkdownPage(model, models, extensions, enumMap) {
     var derivedFromName = convertToCamelCase(getPropNameFromFQP(derivedFrom));
 
     var inherits = calculateInherits(model.subClassOf, derivedFrom);
-    var hasBaseClass = inherits != "";
+
+    // Note hasBaseClass is used here to ensure that assumptions about schema.org fields requiring overrides are not applied if the base class doesn't exist in the model
+    var hasBaseClass = inherits != "Schema.NET.JsonLdObject";
 
     return `
 using Newtonsoft.Json;
@@ -339,17 +314,17 @@ using System.Runtime.Serialization;
 namespace OpenActive.NET
 {
     /// <summary>
-    /// ${createMarkdownFromDescription(model.description).replace(/\n/g,'\n    /// ')}
+    /// ${createCommentFromDescription(model.description).replace(/\n/g,'\n    /// ')}
     /// ${derivedFrom ? `This type is derived from [` + derivedFromName + `](` + derivedFrom + `)` + (derivedFrom.indexOf("schema.org") > -1 ? ", which means that any of this type's properties within schema.org may also be used. Note however the properties on this page must be used in preference if a relevant property is available" : "") + "." : ""}
     /// </summary>
     [DataContract]
-    public class ${convertToCamelCase(model.type)} ${inherits}
+    public class ${convertToCamelCase(model.type)} : ${inherits}
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
         [DataMember(Name = "@type", Order = 1)]
-        public ${hasBaseClass ? "override" :  "virtual"} string Type => "${model.type}";
+        public override string Type => "${model.type}";
 
         ${createTableFromFieldList(fullFieldsList, models, enumMap, hasBaseClass)}
     }
@@ -384,20 +359,8 @@ function createEnumValue(value, thisEnum) {
         ${value}`;
 }
 
-function createSectionForEachExtension(fieldList, fullFields, extensions) {
-    var str = '';``
-    Object.keys(extensions).forEach(function (prefix) {
-        var extension = extensions[prefix];
-        extensionFieldList = fieldList.filter(field => fullFields[field].extensionPrefix === prefix);
-        // If extention has any fields, then include it
-        if (extensionFieldList.length > 0) {
-            str += createSectionIfFields(extension.heading, extensionFieldList, fullFields, extension.description);
-        }
-    });
-    return str;
-}
 
-function createMarkdownFromDescription(description) {
+function createCommentFromDescription(description) {
     if (description === null || description === undefined) return "";
     if (description.sections) {
         return description.sections.map(section => (section.title && section.paragraphs ? `
@@ -455,7 +418,7 @@ function getDotNetBaseType(prefixedTypeName, enumMap, modelsMap, isExtension) {
 }
 
 function createTableFromFieldList(fieldList, models, enumMap, hasBaseClass) {
-    return fieldList.filter(field => field.fieldName != "type" && field.fieldName != "@context").map(field => createMarkdownFromField(field, models, enumMap, hasBaseClass)).join('\n');
+    return fieldList.filter(field => field.fieldName != "type" && field.fieldName != "@context").map(field => createPropertyFromField(field, models, enumMap, hasBaseClass)).join('\n');
 }
 
 function renderJsonConverter(field, propertyType) {
@@ -470,7 +433,7 @@ function renderJsonConverter(field, propertyType) {
     }
 }
 
-function createMarkdownFromField(field, models, enumMap, hasBaseClass) {
+function createPropertyFromField(field, models, enumMap, hasBaseClass) {
     var memberName = field.extensionPrefix ? `${field.extensionPrefix}:${field.fieldName}` : field.fieldName;
     var isExtension = !!field.extensionPrefix;
     var isNew = field.derivedFromSchema; // Only need new if sameAs specified as it will be replacing a schema.org type
@@ -504,10 +467,6 @@ function createTypeString(field, models, enumMap, isExtension) {
 
     // TODO: Create OpenActive Values which does not allow many of the same type, only allows one
     return types.length > 1 ? `SingleValues<${types.join(', ')}>` : types[0];
-}
-
-function createLinkFromFullyQualifiedProperty(prop) {
-    return (isArray(prop) ? "Array of " : "") + `<a href="` + getPropLinkFromFQP(prop) + `"><code>` + getPropNameFromFQP(prop) + `</code></a>`;
 }
 
 function isArray(prop) {

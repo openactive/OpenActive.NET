@@ -134,5 +134,25 @@ namespace OpenActive.NET
         [DataMember(Name = "url", EmitDefaultValue = false, Order = 15)]
         public new virtual Uri Url { get; set; }
 
+
+        /// <summary>
+        /// [NOTICE: This is a beta field, and is highly likely to change in future versions of this library.] 
+        /// An related video object.
+        /// 
+        /// If you are using this property, please join the discussion at proposal [#88](https://github.com/openactive/modelling-opportunity-data/issues/88).
+        /// </summary>
+        [DataMember(Name = "beta:video", EmitDefaultValue = false, Order = 1016)]
+        public virtual List<Schema.NET.VideoObject> Video { get; set; }
+
+
+        /// <summary>
+        /// [NOTICE: This is a beta field, and is highly likely to change in future versions of this library.] 
+        /// Sometimes a description is stored with formatting (e.g. href, bold, italics, embedded YouTube videos). This formatting can be useful for data consumers.
+        /// 
+        /// If you are using this property, please join the discussion at proposal [#2](https://github.com/openactive/ns-beta/issues/2).
+        /// </summary>
+        [DataMember(Name = "beta:formattedDescription", EmitDefaultValue = false, Order = 1017)]
+        public virtual string FormattedDescription { get; set; }
+
     }
 }

@@ -20,7 +20,7 @@ namespace OpenActive.NET
         public override string Type => "HeadlineEvent";
 
         
-        [Obsolete("This property is disinherited in this type, and must not be used. Sorry.", true)]
+        [Obsolete("This property is disinherited in this type, and must not be used.", true)]
         public override List<Schedule> EventSchedule { get; set; }
 
     }

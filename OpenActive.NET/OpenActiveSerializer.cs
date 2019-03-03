@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ namespace OpenActive.NET
     {
         private const string ContextPropertyJson = "\"@context\":\"http://schema.org\",";
         private const string OpenActiveContextPropertyJson = "\"@context\":\"https://openactive.io/\",";
+        private const string OpenActiveContextPropertyJsonWithBeta = "\"@context\":[\"https://openactive.io/\",\"https://openactive.io/ns-beta\"],";
 
         private const string SchemaIdJson = "\"@id\":";
         private const string OpenActiveIdJson = "\"id\":";
@@ -27,7 +29,8 @@ namespace OpenActive.NET
             NullValueHandling = NullValueHandling.Ignore,
             Converters = new List<JsonConverter>()
             {
-                new StringEnumConverter()
+                new StringEnumConverter(),
+                new DecimalConverter()
             },
             ContractResolver = NoEmptyStringsContractResolver.Instance
         };
@@ -40,7 +43,8 @@ namespace OpenActive.NET
         {
             Converters = new List<JsonConverter>()
             {
-                new StringEnumConverter()
+                new StringEnumConverter(),
+                new DecimalConverter()
             },
             NullValueHandling = NullValueHandling.Ignore,
             ContractResolver = NoEmptyStringsContractResolver.Instance,
@@ -84,17 +88,45 @@ namespace OpenActive.NET
 
         private static string RemoveAllButFirstContext(string json)
         {
+            // Only include beta context if there are beta properties present
+            var contextString = json.Contains("\"beta:") ?
+                OpenActiveContextPropertyJsonWithBeta : OpenActiveContextPropertyJson;
+
             var stringBuilder = new StringBuilder(json);
             var startIndex = ContextPropertyJson.Length + 1; // We add the one to represent the opening curly brace.
-            stringBuilder.Replace(ContextPropertyJson, string.Empty, startIndex, stringBuilder.Length - startIndex);
             // Replace OpenActive context and properties
             stringBuilder.Replace(ContextPropertyJson, string.Empty, startIndex, stringBuilder.Length - startIndex);
-            stringBuilder.Replace(ContextPropertyJson, OpenActiveContextPropertyJson, 0, startIndex);
+            stringBuilder.Replace(ContextPropertyJson, contextString, 0, startIndex);
             stringBuilder.Replace(SchemaIdJson, OpenActiveIdJson, 0, stringBuilder.Length);
             stringBuilder.Replace(SchemaTypeJson, OpenActiveTypeJson, 0, stringBuilder.Length);
             return stringBuilder.ToString();
         }
+        
+        internal class DecimalConverter : JsonConverter
+        {
+            public override bool CanConvert(Type objectType)
+            {
+                return (objectType == typeof(decimal) || objectType == typeof(decimal?));
+            }
 
+            public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+            {
+                throw new NotImplementedException();
+            }
+
+            public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+            {
+                if (value as Decimal? == 0)
+                {
+                    // Use simple zero "0" to represent a decimal in JSON, instead of the default "0.0".
+                    JToken.FromObject(0).WriteTo(writer);
+                }
+                else
+                {
+                    JToken.FromObject(value).WriteTo(writer);
+                }
+            }
+        }
 
         public class NoEmptyStringsContractResolver : DefaultContractResolver
         {
@@ -111,14 +143,46 @@ namespace OpenActive.NET
                     {
                         var type = instance.GetType();
                         var colName = member.Name;
-                        var all = type.GetRuntimeProperties().Where(x => x.Name == colName);
-                        var info = all.FirstOrDefault(x => x.DeclaringType == type) ?? all.First();
+                        var usefulValues = type.GetRuntimeProperties().Where(x => x.Name == colName && !string.IsNullOrWhiteSpace(x.GetValue(instance, null) as string));
+                        return usefulValues.Count() > 0;
+                    };
+                }
 
-                        return !string.IsNullOrWhiteSpace(info.GetValue(instance, null) as string);
+                if (property.PropertyType == typeof(Schema.NET.OneOrMany<string>?))
+                {
+                    // Do not include empty strings in JSON output (as per OpenActive Modelling Specification)
+                    property.ShouldSerialize = instance =>
+                    {
+                        var type = instance.GetType();
+                        var colName = member.Name;
+                        var usefulValues = type.GetRuntimeProperties().Where(x => x.Name == colName && ContainsUsefulValues(x.GetValue(instance, null) as Schema.NET.OneOrMany<string>?));
+                        return usefulValues.Count() > 0;
+                    };
+                }
+
+                if (property.PropertyType == typeof(List<string>))
+                {
+                    // Do not include empty strings in JSON output (as per OpenActive Modelling Specification)
+                    property.ShouldSerialize = instance =>
+                    {
+                        var type = instance.GetType();
+                        var colName = member.Name;
+                        var usefulValues = type.GetRuntimeProperties().Where(x => x.Name == colName && ContainsUsefulValues(x.GetValue(instance, null) as List<string>));
+                        return usefulValues.Count() > 0;
                     };
                 }
 
                 return property;
+            }
+
+            private bool ContainsUsefulValues(Schema.NET.OneOrMany<string>? str)
+            {
+                return str.HasValue && str.Value.Where(x => !string.IsNullOrWhiteSpace(x)).Count() > 0;
+            }
+
+            private bool ContainsUsefulValues(List<string> str)
+            {
+                return str != null && str.Where(x => !string.IsNullOrWhiteSpace(x)).Count() > 0;
             }
         }
     }

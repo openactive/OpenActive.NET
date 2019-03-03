@@ -11,13 +11,13 @@ namespace OpenActive.NET
     /// This type is derived from [ConceptScheme](http://www.w3.org/2004/02/skos/core#ConceptScheme).
     /// </summary>
     [DataContract]
-    public class ConceptScheme 
+    public class ConceptScheme : Schema.NET.JsonLdObject
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
         [DataMember(Name = "@type", Order = 1)]
-        public virtual string Type => "ConceptScheme";
+        public override string Type => "ConceptScheme";
 
         
         /// <summary>
