@@ -265,7 +265,7 @@ namespace OpenActive.NET.Rpde.Version1
             }
             else if (value is Schema.NET.Thing thing)
             {
-                writer.WriteValue(thing.ToOpenActiveString());
+                writer.WriteRawValue(thing.ToOpenActiveString());
             }
             else
             {
