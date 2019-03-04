@@ -11,7 +11,7 @@ namespace OpenActive.NET
     /// This type is derived from [SportsActivityLocation](https://schema.org/SportsActivityLocation), which means that any of this type's properties within schema.org may also be used. Note however the properties on this page must be used in preference if a relevant property is available.
     /// </summary>
     [DataContract]
-    public class SportsActivityLocation : Schema.NET.SportsActivityLocation
+    public partial class SportsActivityLocation : Schema.NET.SportsActivityLocation
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

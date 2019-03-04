@@ -11,7 +11,7 @@ namespace OpenActive.NET
     /// This type is derived from [Person](https://schema.org/Person), which means that any of this type's properties within schema.org may also be used. Note however the properties on this page must be used in preference if a relevant property is available.
     /// </summary>
     [DataContract]
-    public class Person : Schema.NET.Person
+    public partial class Person : Schema.NET.Person
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

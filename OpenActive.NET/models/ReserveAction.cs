@@ -11,7 +11,7 @@ namespace OpenActive.NET
     /// This type is derived from [ReserveAction](https://schema.org/ReserveAction), which means that any of this type's properties within schema.org may also be used. Note however the properties on this page must be used in preference if a relevant property is available.
     /// </summary>
     [DataContract]
-    public class ReserveAction : Action
+    public partial class ReserveAction : Action
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

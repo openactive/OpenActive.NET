@@ -11,7 +11,7 @@ namespace OpenActive.NET
     /// 
     /// </summary>
     [DataContract]
-    public class IndividualFacilityUse : FacilityUse
+    public partial class IndividualFacilityUse : FacilityUse
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

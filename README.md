@@ -78,3 +78,12 @@ The code above outputs the following JSON-LD:
   "endDate": "2017-04-24T23:00:00-08:00"
 }
 ```
+
+## Referencing Schema.org properties and types
+
+The OpenActive data model builds on top of Schema.org, which means that you are free to use additional Schema.org properties within OpenActive published data.
+
+To reflect this, OpenActive.NET uses inheritance to build on top of [Schema.NET](https://github.com/RehanSaeed/Schema.NET), and so makes it easy to use additional properties from Schema.org on any given type.
+
+To avoid naming conflicts between OpenActive.NET and Schema.NET, it is recommended that you import `using OpenActive.NET;` to reference OpenActive model types, and use fully qualified references for Schema.NET types (e.g. `Schema.NET.Thing`).
+

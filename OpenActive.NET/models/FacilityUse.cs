@@ -11,7 +11,7 @@ namespace OpenActive.NET
     /// 
     /// </summary>
     [DataContract]
-    public class FacilityUse : Schema.NET.Product
+    public partial class FacilityUse : Schema.NET.Product
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

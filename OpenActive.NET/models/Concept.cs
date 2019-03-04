@@ -11,7 +11,7 @@ namespace OpenActive.NET
     /// This type is derived from [Concept](http://www.w3.org/2004/02/skos/core#Concept).
     /// </summary>
     [DataContract]
-    public class Concept : Schema.NET.JsonLdObject
+    public partial class Concept : Schema.NET.JsonLdObject
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

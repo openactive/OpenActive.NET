@@ -51,6 +51,30 @@ namespace OpenActive.NET
             StringEscapeHandling = StringEscapeHandling.EscapeHtml
         };
 
+
+        /// <summary>
+        /// Return null if the provided list is empty, otherwise return the list.
+        /// </summary>
+        public static List<TSource> ToListOrNullIfEmpty<TSource>(this IEnumerable<TSource> source)
+        {
+            if (source != null && source.Count() > 0)
+                return source.ToList();
+            else
+                return null;
+        }
+
+        /// <summary>
+        /// Return null if the provided string IsNullOrWhiteSpace, otherwise return the string.
+        /// </summary>
+        public static string NullIfEmpty(this string source)
+        {
+            if (source != null && !string.IsNullOrWhiteSpace(source))
+                return source;
+            else
+                return null;
+        }
+        
+
         /// <summary>
         /// Returns the JSON-LD representation of this instance.
         /// </summary>

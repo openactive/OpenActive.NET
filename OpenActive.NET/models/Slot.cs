@@ -11,7 +11,7 @@ namespace OpenActive.NET
     /// 
     /// </summary>
     [DataContract]
-    public class Slot : Schema.NET.Event
+    public partial class Slot : Schema.NET.Event
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.

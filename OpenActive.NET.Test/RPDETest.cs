@@ -231,18 +231,18 @@ namespace OpenActive.NET.Test
         {
             new RpdeItem<string, SessionSeries>
             {
-                ID = "2",
+                Id = "2",
                 Modified = 4,
-                State = RPDEState.Updated,
-                Kind = RPDEKind.SessionSeries,
+                State = RpdeState.Updated,
+                Kind = RpdeKind.SessionSeries,
                 Data = @event
             },
             new RpdeItem<string, SessionSeries>
             {
-                ID = "1",
+                Id = "1",
                 Modified = 5,
-                State = RPDEState.Deleted,
-                Kind = RPDEKind.SessionSeries,
+                State = RpdeState.Deleted,
+                Kind = RpdeKind.SessionSeries,
                 Data = null
             }
         };
@@ -271,18 +271,18 @@ namespace OpenActive.NET.Test
             {
                 new RpdeItem<string, SessionSeries>
                 {
-                    ID = "2",
+                    Id = "2",
                     Modified = 5,
-                    State = RPDEState.Updated,
-                    Kind = RPDEKind.SessionSeries,
+                    State = RpdeState.Updated,
+                    Kind = RpdeKind.SessionSeries,
                     Data = @event
                 },
                 new RpdeItem<string, SessionSeries>
                 {
-                    ID = "1",
+                    Id = "1",
                     Modified = 4,
-                    State = RPDEState.Deleted,
-                    Kind = RPDEKind.SessionSeries,
+                    State = RpdeState.Deleted,
+                    Kind = RpdeKind.SessionSeries,
                     Data = null
                 }
             })).ToString());
@@ -298,18 +298,18 @@ namespace OpenActive.NET.Test
             {
                 new RpdeItem<string, SessionSeries>
                 {
-                    ID = "2",
+                    Id = "2",
                     Modified = 4,
-                    State = RPDEState.Updated,
-                    Kind = RPDEKind.SessionSeries,
+                    State = RpdeState.Updated,
+                    Kind = RpdeKind.SessionSeries,
                     Data = @event
                 },
                 new RpdeItem<string, SessionSeries>
                 {
-                    ID = "1",
+                    Id = "1",
                     Modified = 4,
-                    State = RPDEState.Deleted,
-                    Kind = RPDEKind.SessionSeries,
+                    State = RpdeState.Deleted,
+                    Kind = RpdeKind.SessionSeries,
                     Data = null
                 }
             })).ToString());
@@ -325,18 +325,18 @@ namespace OpenActive.NET.Test
             {
                 new RpdeItem<string, SessionSeries>
                 {
-                    ID = "2",
+                    Id = "2",
                     Modified = 4,
-                    State = RPDEState.Updated,
-                    Kind = RPDEKind.SessionSeries,
+                    State = RpdeState.Updated,
+                    Kind = RpdeKind.SessionSeries,
                     Data = @event
                 },
                 new RpdeItem<string, SessionSeries>
                 {
-                    ID = "1",
+                    Id = "1",
                     Modified = 5,
-                    State = RPDEState.Deleted,
-                    Kind = RPDEKind.SessionSeries,
+                    State = RpdeState.Deleted,
+                    Kind = RpdeKind.SessionSeries,
                     Data = @event
                 }
             })).ToString());
@@ -353,18 +353,18 @@ namespace OpenActive.NET.Test
             {
                 new RpdeItem<string, SessionSeries>
                 {
-                    ID = "2",
+                    Id = "2",
                     Modified = 4,
-                    State = RPDEState.Updated,
-                    Kind = RPDEKind.SessionSeries,
+                    State = RpdeState.Updated,
+                    Kind = RpdeKind.SessionSeries,
                     Data = @event
                 },
                 new RpdeItem<string, SessionSeries>
                 {
-                    ID = "1",
+                    Id = "1",
                     Modified = 5,
-                    State = RPDEState.Deleted,
-                    Kind = RPDEKind.SessionSeries,
+                    State = RpdeState.Deleted,
+                    Kind = RpdeKind.SessionSeries,
                     Data = null
                 }
             })).ToString());
@@ -385,18 +385,18 @@ namespace OpenActive.NET.Test
             {
                 new RpdeItem<int, SessionSeries>
                 {
-                    ID = 2,
+                    Id = 2,
                     Modified = 5,
-                    State = RPDEState.Updated,
-                    Kind = RPDEKind.SessionSeries,
+                    State = RpdeState.Updated,
+                    Kind = RpdeKind.SessionSeries,
                     Data = @event
                 },
                 new RpdeItem<int, SessionSeries>
                 {
-                    ID = 1,
+                    Id = 1,
                     Modified = 4,
-                    State = RPDEState.Deleted,
-                    Kind = RPDEKind.SessionSeries,
+                    State = RpdeState.Deleted,
+                    Kind = RpdeKind.SessionSeries,
                     Data = null
                 }
             })).ToString());
@@ -412,18 +412,18 @@ namespace OpenActive.NET.Test
             {
                 new RpdeItem<int, SessionSeries>
                 {
-                    ID = 2,
+                    Id = 2,
                     Modified = 4,
-                    State = RPDEState.Updated,
-                    Kind = RPDEKind.SessionSeries,
+                    State = RpdeState.Updated,
+                    Kind = RpdeKind.SessionSeries,
                     Data = @event
                 },
                 new RpdeItem<int, SessionSeries>
                 {
-                    ID = 1,
+                    Id = 1,
                     Modified = 4,
-                    State = RPDEState.Deleted,
-                    Kind = RPDEKind.SessionSeries,
+                    State = RpdeState.Deleted,
+                    Kind = RpdeKind.SessionSeries,
                     Data = null
                 }
             })).ToString());
@@ -439,18 +439,18 @@ namespace OpenActive.NET.Test
             {
                 new RpdeItem<int, SessionSeries>
                 {
-                    ID = 2,
+                    Id = 2,
                     Modified = 4,
-                    State = RPDEState.Updated,
-                    Kind = RPDEKind.SessionSeries,
+                    State = RpdeState.Updated,
+                    Kind = RpdeKind.SessionSeries,
                     Data = @event
                 },
                 new RpdeItem<int, SessionSeries>
                 {
-                    ID = 1,
+                    Id = 1,
                     Modified = 5,
-                    State = RPDEState.Deleted,
-                    Kind = RPDEKind.SessionSeries,
+                    State = RpdeState.Deleted,
+                    Kind = RpdeKind.SessionSeries,
                     Data = @event
                 }
             })).ToString());
@@ -467,18 +467,18 @@ namespace OpenActive.NET.Test
             {
                 new RpdeItem<int, SessionSeries>
                 {
-                    ID = 2,
+                    Id = 2,
                     Modified = 4,
-                    State = RPDEState.Updated,
-                    Kind = RPDEKind.SessionSeries,
+                    State = RpdeState.Updated,
+                    Kind = RpdeKind.SessionSeries,
                     Data = @event
                 },
                 new RpdeItem<int, SessionSeries>
                 {
-                    ID = 1,
+                    Id = 1,
                     Modified = 5,
-                    State = RPDEState.Deleted,
-                    Kind = RPDEKind.SessionSeries,
+                    State = RpdeState.Deleted,
+                    Kind = RpdeKind.SessionSeries,
                     Data = null
                 }
             })).ToString());
@@ -502,18 +502,18 @@ namespace OpenActive.NET.Test
             {
                 new RpdeItem<int, SessionSeries>
                 {
-                    ID = 2,
+                    Id = 2,
                     Modified = 5,
-                    State = RPDEState.Updated,
-                    Kind = RPDEKind.SessionSeries,
+                    State = RpdeState.Updated,
+                    Kind = RpdeKind.SessionSeries,
                     Data = @event
                 },
                 new RpdeItem<int, SessionSeries>
                 {
-                    ID = 1,
+                    Id = 1,
                     Modified = 4,
-                    State = RPDEState.Deleted,
-                    Kind = RPDEKind.SessionSeries,
+                    State = RpdeState.Deleted,
+                    Kind = RpdeKind.SessionSeries,
                     Data = null
                 }
             })).ToString());
@@ -529,18 +529,18 @@ namespace OpenActive.NET.Test
             {
                 new RpdeItem<int, SessionSeries>
                 {
-                    ID = 2,
+                    Id = 2,
                     Modified = 4,
-                    State = RPDEState.Updated,
-                    Kind = RPDEKind.SessionSeries,
+                    State = RpdeState.Updated,
+                    Kind = RpdeKind.SessionSeries,
                     Data = @event
                 },
                 new RpdeItem<int, SessionSeries>
                 {
-                    ID = 1,
+                    Id = 1,
                     Modified = 4,
-                    State = RPDEState.Deleted,
-                    Kind = RPDEKind.SessionSeries,
+                    State = RpdeState.Deleted,
+                    Kind = RpdeKind.SessionSeries,
                     Data = null
                 }
             })).ToString());
@@ -556,18 +556,18 @@ namespace OpenActive.NET.Test
             {
                 new RpdeItem<int, SessionSeries>
                 {
-                    ID = 2,
+                    Id = 2,
                     Modified = 4,
-                    State = RPDEState.Updated,
-                    Kind = RPDEKind.SessionSeries,
+                    State = RpdeState.Updated,
+                    Kind = RpdeKind.SessionSeries,
                     Data = @event
                 },
                 new RpdeItem<int, SessionSeries>
                 {
-                    ID = 1,
+                    Id = 1,
                     Modified = 5,
-                    State = RPDEState.Deleted,
-                    Kind = RPDEKind.SessionSeries,
+                    State = RpdeState.Deleted,
+                    Kind = RpdeKind.SessionSeries,
                     Data = @event
                 }
             })).ToString());
@@ -584,18 +584,18 @@ namespace OpenActive.NET.Test
             {
                 new RpdeItem<int, SessionSeries>
                 {
-                    ID = 2,
+                    Id = 2,
                     Modified = 4,
-                    State = RPDEState.Updated,
-                    Kind = RPDEKind.SessionSeries,
+                    State = RpdeState.Updated,
+                    Kind = RpdeKind.SessionSeries,
                     Data = @event
                 },
                 new RpdeItem<int, SessionSeries>
                 {
-                    ID = 1,
+                    Id = 1,
                     Modified = 5,
-                    Kind = RPDEKind.SessionSeries,
-                    State = RPDEState.Deleted,
+                    Kind = RpdeKind.SessionSeries,
+                    State = RpdeState.Deleted,
                     Data = null
                 }
             })).ToString());
@@ -612,16 +612,16 @@ namespace OpenActive.NET.Test
             {
                 new RpdeItem<int, SessionSeries>
                 {
-                    ID = 2,
+                    Id = 2,
                     Modified = 4,
-                    State = RPDEState.Updated,
+                    State = RpdeState.Updated,
                     Data = @event
                 },
                 new RpdeItem<int, SessionSeries>
                 {
-                    ID = 1,
+                    Id = 1,
                     Modified = 5,
-                    State = RPDEState.Deleted,
+                    State = RpdeState.Deleted,
                     Data = null
                 }
             })).ToString());

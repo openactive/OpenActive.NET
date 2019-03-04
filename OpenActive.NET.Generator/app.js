@@ -318,7 +318,7 @@ namespace OpenActive.NET
     /// ${derivedFrom ? `This type is derived from [` + derivedFromName + `](` + derivedFrom + `)` + (derivedFrom.indexOf("schema.org") > -1 ? ", which means that any of this type's properties within schema.org may also be used. Note however the properties on this page must be used in preference if a relevant property is available" : "") + "." : ""}
     /// </summary>
     [DataContract]
-    public class ${convertToCamelCase(model.type)} : ${inherits}
+    public partial class ${convertToCamelCase(model.type)} : ${inherits}
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -373,6 +373,16 @@ function createCommentFromDescription(description) {
 
 function getDotNetType(fullyQualifiedType, enumMap, modelsMap, isExtension) {
     var baseType = getDotNetBaseType(fullyQualifiedType, enumMap, modelsMap, isExtension);
+    if (isArray(fullyQualifiedType)) {
+        // Remove ? from end of type if it's a list
+        if (baseType.slice(-1) = '?') {
+            return `List<${baseType.slice(0, -1)}>`;
+        } else {
+            return `List<${baseType}>`;
+        }
+    } else {
+        return baseType;
+    }
     return isArray(fullyQualifiedType) ? `List<${baseType}>` : baseType;
 }
 

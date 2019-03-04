@@ -10,14 +10,14 @@ using System.Net.Http;
 namespace OpenActive.NET.Rpde.Version1
 {
     [DataContract]
-    public class RpdeItem<IDType, ItemType> where ItemType : Schema.NET.Thing where IDType : IEquatable<IDType>, IComparable
+    public class RpdeItem<IdType, ItemType> where ItemType : Schema.NET.Thing where IdType : IEquatable<IdType>, IComparable
     {
         [DataMember(Name = "state", EmitDefaultValue = false, Order = 1)]
-        public RPDEState? State { get; set; }
+        public RpdeState? State { get; set; }
         [DataMember(Name = "kind", EmitDefaultValue = false, Order = 2)]
-        public RPDEKind? Kind { get; set; }
+        public RpdeKind? Kind { get; set; }
         [DataMember(Name = "id", EmitDefaultValue = false, Order = 3)]
-        public IDType ID { get; set; }
+        public IdType Id { get; set; }
         [DataMember(Name = "modified", EmitDefaultValue = false, Order = 4)]
         public long? Modified { get; set; }
         [DataMember(Name = "data", EmitDefaultValue = false, Order = 5)]
@@ -26,12 +26,12 @@ namespace OpenActive.NET.Rpde.Version1
     }
 
     [DataContract]
-    public class RpdeBody<IDType, ItemType> where ItemType : Schema.NET.Thing where IDType : IEquatable<IDType>, IComparable
+    public class RpdeBody<IdType, ItemType> where ItemType : Schema.NET.Thing where IdType : IEquatable<IdType>, IComparable
     {
         [DataMember(Name = "next", EmitDefaultValue = false, Order = 1)]
         public string Next { get; set; }
         [DataMember(Name = "items", EmitDefaultValue = false, Order = 2)]
-        public List<RpdeItem<IDType, ItemType>> Items { get; set; }
+        public List<RpdeItem<IdType, ItemType>> Items { get; set; }
         [DataMember(Name = "license", EmitDefaultValue = false, Order = 3)]
         public string License { get; set; } = "https://creativecommons.org/licenses/by/4.0/";
 
@@ -71,19 +71,22 @@ namespace OpenActive.NET.Rpde.Version1
             return new StringContent(this.ToString(), Encoding.UTF8, "application/ld+json");
         }
 
-        public RpdeBody(string feedBaseUrl, long modified, IDType id, List<RpdeItem<IDType, ItemType>> items)
+        // Constructor for JSON deserialisation
+        public RpdeBody() {}
+
+        public RpdeBody(string feedBaseUrl, long? modified, IdType id, List<RpdeItem<IdType, ItemType>> items)
         {
             this.Items = items;
             SetNextModifiedID(feedBaseUrl, modified, id);
         }
 
-        public RpdeBody(string feedBaseUrl, long changeNumber, List<RpdeItem<IDType, ItemType>> items)
+        public RpdeBody(string feedBaseUrl, long? changeNumber, List<RpdeItem<IdType, ItemType>> items)
         {
             this.Items = items;
             SetNextChangeNumber(feedBaseUrl, changeNumber);
         }
 
-        public void SetNextModifiedID(string feedBaseUrl, long modified, IDType id)
+        public void SetNextModifiedID(string feedBaseUrl, long? modified, IdType id)
         {
             // If there is at least one item, run validation on items array
             var firstItem = Items.FirstOrDefault();
@@ -91,30 +94,30 @@ namespace OpenActive.NET.Rpde.Version1
             {
                 // Checks that the afterId and afterTimestamp provided are not the
                 // first item in the feed (helps detect whether query is correct)
-                if (firstItem.Modified == modified && firstItem.ID.Equals(id))
+                if (firstItem.Modified == modified && firstItem.Id.Equals(id))
                 {
                     throw new SerializationException("First item in the feed must never have same 'modified' and 'id' as afterTimestamp and afterId query parameters. Please check the RPDE specification and ensure you are using the correct query for your ordering strategy.");
                 }
 
                 // Check that items are ordered, and deleted items contain no data
                 long? currentModified = -1;
-                IDType currentId = firstItem.ID;
+                IdType currentId = firstItem.Id;
                 foreach (var item in Items)
                 {
-                    if (item.State == RPDEState.Deleted && item.Data != null)
+                    if (item.State == RpdeState.Deleted && item.Data != null)
                     {
                         throw new SerializationException("Deleted items must not contain data.");
                     }
 
-                    if (!item.State.HasValue || !item.Kind.HasValue || !item.Modified.HasValue || item.ID == null)
+                    if (!item.State.HasValue || !item.Kind.HasValue || !item.Modified.HasValue || item.Id == null)
                     {
                         throw new SerializationException("All RPDE feed items must include id, modified, state and kind.");
                     }
 
-                    if (item.Modified > currentModified || (item.Modified == currentModified && item.ID.CompareTo(currentId) > 0))
+                    if (item.Modified > currentModified || (item.Modified == currentModified && item.Id.CompareTo(currentId) > 0))
                     {
                         currentModified = item.Modified;
-                        currentId = item.ID;
+                        currentId = item.Id;
                     } else
                     {
                         throw new SerializationException("Items must be ordered first by 'modified', then by 'id'. Please check the RPDE specification and ensure you are using the correct query for your ordering strategy.");
@@ -126,15 +129,19 @@ namespace OpenActive.NET.Rpde.Version1
             var lastItem = Items.LastOrDefault();
             if (lastItem != null)
             {
-                Next = $"{feedBaseUrl}?afterTimestamp={lastItem.Modified}&afterId={lastItem.ID}";
-            } else
+                Next = $"{feedBaseUrl}?afterTimestamp={lastItem.Modified}&afterId={lastItem.Id}";
+            } else if (modified.HasValue && id != null)
             {
                 // Last page, use existing values
                 Next = $"{feedBaseUrl}?afterTimestamp={modified}&afterId={id}";
+            } else
+            {
+                // No items, use feed base URL
+                Next = $"{feedBaseUrl}";
             }
         }
 
-        public void SetNextChangeNumber(string feedBaseUrl, long changeNumber)
+        public void SetNextChangeNumber(string feedBaseUrl, long? changeNumber)
         {
             // If there is at least one item, run validation on items array
             var firstItem = Items.FirstOrDefault();
@@ -151,12 +158,12 @@ namespace OpenActive.NET.Rpde.Version1
                 long? currentChangeNumber = -1;
                 foreach (var item in Items)
                 {
-                    if (item.State == RPDEState.Deleted && item.Data != null)
+                    if (item.State == RpdeState.Deleted && item.Data != null)
                     {
                         throw new SerializationException("Deleted items must not contain data.");
                     }
 
-                    if (!item.State.HasValue || !item.Kind.HasValue || !item.Modified.HasValue || item.ID == null)
+                    if (!item.State.HasValue || !item.Kind.HasValue || !item.Modified.HasValue || item.Id == null)
                     {
                         throw new SerializationException("All RPDE feed items must include id, modified, state and kind.");
                     }
@@ -178,15 +185,19 @@ namespace OpenActive.NET.Rpde.Version1
             {
                 Next = $"{feedBaseUrl}?afterChangeNumber={lastItem.Modified}";
             }
-            else
+            else if (changeNumber.HasValue)
             {
                 // Last page, use existing values
                 Next = $"{feedBaseUrl}?afterChangeNumber={changeNumber}";
+            } else
+            {
+                // No items, use feed base URL
+                Next = $"{feedBaseUrl}";
             }
         }
     }
 
-    public enum RPDEState
+    public enum RpdeState
     {
         [EnumMember(Value = "updated")]
         Updated,
@@ -194,7 +205,7 @@ namespace OpenActive.NET.Rpde.Version1
         Deleted
     }
 
-    public enum RPDEKind
+    public enum RpdeKind
     {
         [EnumMember(Value = "SessionSeries")]
         SessionSeries,
