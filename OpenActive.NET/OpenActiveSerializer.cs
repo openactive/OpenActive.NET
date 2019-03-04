@@ -172,6 +172,7 @@ namespace OpenActive.NET
                     };
                 }
 
+                /*
                 if (property.PropertyType == typeof(Schema.NET.OneOrMany<string>?))
                 {
                     // Do not include empty strings in JSON output (as per OpenActive Modelling Specification)
@@ -195,10 +196,12 @@ namespace OpenActive.NET
                         return usefulValues.Count() > 0;
                     };
                 }
+                */
 
                 return property;
             }
 
+            /*
             private bool ContainsUsefulValues(Schema.NET.OneOrMany<string>? str)
             {
                 return str.HasValue && str.Value.Where(x => !string.IsNullOrWhiteSpace(x)).Count() > 0;
@@ -208,6 +211,7 @@ namespace OpenActive.NET
             {
                 return str != null && str.Where(x => !string.IsNullOrWhiteSpace(x)).Count() > 0;
             }
+            */
         }
     }
 }

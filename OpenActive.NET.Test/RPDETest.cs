@@ -85,7 +85,7 @@ namespace OpenActive.NET.Test
                         MaxValue = 2
                     },
                     PriceCurrency = "",
-                    AcceptedPaymentMethod = new List<PaymentMethod?> { PaymentMethod.Cash }
+                    AcceptedPaymentMethod = new List<PaymentMethod> { PaymentMethod.Cash }
                 }
             },
             // **** Place mapping ****
@@ -151,7 +151,7 @@ namespace OpenActive.NET.Test
               },
             AgeRange = new QuantitativeValue()
               {
-                  Name = "",
+                  Name = null,
                   MaxValue = 0,
                   MinValue = 2
               },
