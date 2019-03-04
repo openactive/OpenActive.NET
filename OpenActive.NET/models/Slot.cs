@@ -127,5 +127,15 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual SingleValues<string, DateTimeOffset?> EndDate { get; set; }
 
+
+        /// <summary>
+        /// [NOTICE: This is a beta field, and is highly likely to change in future versions of this library.] 
+        /// Internal location of the event, e.g. Court 1
+        /// 
+        /// If you are using this property, please join the discussion at proposal [#110](https://github.com/openactive/modelling-opportunity-data/issues/110).
+        /// </summary>
+        [DataMember(Name = "beta:sportsActivityLocation", EmitDefaultValue = false, Order = 1015)]
+        public virtual List<SportsActivityLocation> SportsActivityLocation { get; set; }
+
     }
 }

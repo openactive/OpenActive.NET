@@ -33,7 +33,7 @@ namespace OpenActive.NET
         /// </example>
         [DataMember(Name = "byDay", EmitDefaultValue = false, Order = 7)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual SingleValues<List<string>, List<Schema.NET.DayOfWeek?>> ByDay { get; set; }
+        public virtual SingleValues<List<string>, List<Schema.NET.DayOfWeek>> ByDay { get; set; }
 
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "byMonth", EmitDefaultValue = false, Order = 8)]
-        public virtual List<int?> ByMonth { get; set; }
+        public virtual List<int> ByMonth { get; set; }
 
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "byMonthDay", EmitDefaultValue = false, Order = 9)]
-        public virtual List<int?> ByMonthDay { get; set; }
+        public virtual List<int> ByMonthDay { get; set; }
 
 
         /// <summary>
@@ -107,7 +107,7 @@ namespace OpenActive.NET
         /// </example>
         [DataMember(Name = "exceptDate", EmitDefaultValue = false, Order = 12)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual SingleValues<List<DateTimeOffset?>, List<string>> ExceptDate { get; set; }
+        public virtual SingleValues<List<DateTimeOffset>, List<string>> ExceptDate { get; set; }
 
 
         /// <summary>

@@ -69,7 +69,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "acceptedPaymentMethod", EmitDefaultValue = false, Order = 10)]
-        public new virtual List<PaymentMethod?> AcceptedPaymentMethod { get; set; }
+        public new virtual List<PaymentMethod> AcceptedPaymentMethod { get; set; }
 
 
         /// <summary>
@@ -158,7 +158,7 @@ namespace OpenActive.NET
         /// If you are using this property, please join the discussion at proposal [#161](https://github.com/openactive/modelling-opportunity-data/issues/161).
         /// </summary>
         [DataMember(Name = "beta:availableChannel", EmitDefaultValue = false, Order = 1017)]
-        public virtual List<AvailableChannelType?> AvailableChannel { get; set; }
+        public virtual List<AvailableChannelType> AvailableChannel { get; set; }
 
     }
 }

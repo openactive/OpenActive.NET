@@ -375,7 +375,7 @@ function getDotNetType(fullyQualifiedType, enumMap, modelsMap, isExtension) {
     var baseType = getDotNetBaseType(fullyQualifiedType, enumMap, modelsMap, isExtension);
     if (isArray(fullyQualifiedType)) {
         // Remove ? from end of type if it's a list
-        if (baseType.slice(-1) = '?') {
+        if (baseType.slice(-1) == '?') {
             return `List<${baseType.slice(0, -1)}>`;
         } else {
             return `List<${baseType}>`;
@@ -383,7 +383,6 @@ function getDotNetType(fullyQualifiedType, enumMap, modelsMap, isExtension) {
     } else {
         return baseType;
     }
-    return isArray(fullyQualifiedType) ? `List<${baseType}>` : baseType;
 }
 
 function getDotNetBaseType(prefixedTypeName, enumMap, modelsMap, isExtension) {
