@@ -12,6 +12,7 @@
   "license": "MIT",
   "dependencies": {
     "@openactive/data-models": "^1.2.34",
+    "fs-extra": "^7.0.1",
     "sync-request": "^6.0.0"
   }
 }

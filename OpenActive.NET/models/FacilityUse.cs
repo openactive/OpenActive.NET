@@ -307,13 +307,53 @@ namespace OpenActive.NET
 
         /// <summary>
         /// [NOTICE: This is a beta field, and is highly likely to change in future versions of this library.] 
+        /// A property that details whether the event is suitable for wheelchair access. Placed on Event as this field could be used to detail whether the Event is suitable, as well as the Place.
+        /// 
+        /// If you are using this property, please join the discussion at proposal [#166](https://github.com/openactive/modelling-opportunity-data/issues/166).
+        /// </summary>
+        [DataMember(Name = "beta:isWheelchairAccessible", EmitDefaultValue = false, Order = 1025)]
+        public virtual bool? IsWheelchairAccessible { get; set; }
+
+
+        /// <summary>
+        /// [NOTICE: This is a beta field, and is highly likely to change in future versions of this library.] 
+        /// Whether the facility is indoor or outdoor.
+        /// 
+        /// If you are using this property, please join the discussion at proposal [#1](https://github.com/openactive/facility-types/issues/1).
+        /// </summary>
+        [DataMember(Name = "beta:facilitySetting", EmitDefaultValue = false, Order = 1026)]
+        public virtual FacilitySettingType? FacilitySetting { get; set; }
+
+
+        /// <summary>
+        /// [NOTICE: This is a beta field, and is highly likely to change in future versions of this library.] 
+        /// The type of facility in use.
+        /// 
+        /// If you are using this property, please join the discussion at proposal [#1](https://github.com/openactive/facility-types/issues/1).
+        /// </summary>
+        [DataMember(Name = "beta:facilityType", EmitDefaultValue = false, Order = 1027)]
+        public virtual List<Concept> FacilityType { get; set; }
+
+
+        /// <summary>
+        /// [NOTICE: This is a beta field, and is highly likely to change in future versions of this library.] 
         /// Duration before the event for which the associated Offers are valid
         /// 
         /// If you are using this property, please join the discussion at proposal [#204](https://github.com/openactive/modelling-opportunity-data/issues/204).
         /// </summary>
-        [DataMember(Name = "beta:offerValidityPeriod", EmitDefaultValue = false, Order = 1025)]
+        [DataMember(Name = "beta:offerValidityPeriod", EmitDefaultValue = false, Order = 1028)]
         [JsonConverter(typeof(OpenActiveTimeSpanToISO8601DurationValuesConverter))]
         public virtual TimeSpan? OfferValidityPeriod { get; set; }
+
+
+        /// <summary>
+        /// [NOTICE: This is a beta field, and is highly likely to change in future versions of this library.] 
+        /// Internal location of the event, e.g. Court 1
+        /// 
+        /// If you are using this property, please join the discussion at proposal [#110](https://github.com/openactive/modelling-opportunity-data/issues/110).
+        /// </summary>
+        [DataMember(Name = "beta:sportsActivityLocation", EmitDefaultValue = false, Order = 1029)]
+        public virtual List<SportsActivityLocation> SportsActivityLocation { get; set; }
 
 
         /// <summary>
@@ -322,28 +362,8 @@ namespace OpenActive.NET
         /// 
         /// If you are using this property, please join the discussion at proposal [#88](https://github.com/openactive/modelling-opportunity-data/issues/88).
         /// </summary>
-        [DataMember(Name = "beta:video", EmitDefaultValue = false, Order = 1026)]
+        [DataMember(Name = "beta:video", EmitDefaultValue = false, Order = 1030)]
         public virtual List<Schema.NET.VideoObject> Video { get; set; }
-
-
-        /// <summary>
-        /// [NOTICE: This is a beta field, and is highly likely to change in future versions of this library.] 
-        /// A property that details whether the event is suitable for wheelchair access. Placed on Event as this field could be used to detail whether the Event is suitable, as well as the Place.
-        /// 
-        /// If you are using this property, please join the discussion at proposal [#166](https://github.com/openactive/modelling-opportunity-data/issues/166).
-        /// </summary>
-        [DataMember(Name = "beta:isWheelchairAccessible", EmitDefaultValue = false, Order = 1027)]
-        public virtual bool? IsWheelchairAccessible { get; set; }
-
-
-        /// <summary>
-        /// [NOTICE: This is a beta field, and is highly likely to change in future versions of this library.] 
-        /// The specific array of SportsActivityLocation related to the FacilityUse, usually within the location.
-        /// 
-        /// If you are using this property, please join the discussion at proposal [#110](https://github.com/openactive/modelling-opportunity-data/issues/110).
-        /// </summary>
-        [DataMember(Name = "beta:sportsActivityLocation", EmitDefaultValue = false, Order = 1028)]
-        public virtual List<SportsActivityLocation> SportsActivityLocation { get; set; }
 
 
         /// <summary>
@@ -352,7 +372,7 @@ namespace OpenActive.NET
         /// 
         /// If you are using this property, please join the discussion at proposal [#2](https://github.com/openactive/ns-beta/issues/2).
         /// </summary>
-        [DataMember(Name = "beta:formattedDescription", EmitDefaultValue = false, Order = 1029)]
+        [DataMember(Name = "beta:formattedDescription", EmitDefaultValue = false, Order = 1031)]
         public virtual string FormattedDescription { get; set; }
 
     }

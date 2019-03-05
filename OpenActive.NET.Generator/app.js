@@ -3,8 +3,9 @@ const DATA_MODEL_DOCS_URL_PREFIX = "https://developer.openactive.io/data-model/t
 
 const { getModels, getEnums, getMetaData } = require('@openactive/data-models');
 var fs = require('fs');
+var fsExtra = require('fs-extra');
 var request = require('sync-request');
-
+var path = require('path');
 
 var EXTENSIONS = {
     "beta": {
@@ -17,6 +18,10 @@ var EXTENSIONS = {
 generateModelClassFiles(DATA_MODEL_OUTPUT_DIR, EXTENSIONS);
 
 function generateModelClassFiles(dataModelDirectory, extensions) {
+    // Empty output directories
+    fsExtra.emptyDirSync(DATA_MODEL_OUTPUT_DIR + 'models');
+    fsExtra.emptyDirSync(DATA_MODEL_OUTPUT_DIR + 'enums');
+
     // Returns the latest version of the models map
     const models = getModels();
     const enumMap = getEnums();
@@ -45,7 +50,7 @@ function generateModelClassFiles(dataModelDirectory, extensions) {
         var model = models[typeName];
         if (typeName != "undefined") { //ignores "model_list.json" (which appears to be ignored everywhere else)
 
-            var pageName = 'models/' + model.type + ".cs";
+            var pageName = 'models/' + getPropNameFromFQP(model.type) + ".cs";
             var pageContent = createModelFile(model, models, extensions, enumMap);
 
             console.log("NAME: " + pageName);
@@ -82,6 +87,26 @@ function generateModelClassFiles(dataModelDirectory, extensions) {
 }
 
 function augmentWithExtension(extModelGraph, models, extensionUrl, extensionPrefix, namespaces) {
+    // Add classes first
+    extModelGraph.forEach(function (node) {
+        if (node.type === 'Class' && Array.isArray(node.subClassOf) && node.subClassOf[0] != "schema:Enumeration") {
+            // Only include subclasses for either OA or schema.org classes
+            var subClasses = node.subClassOf.filter(prop => models[getPropNameFromFQP(prop)] || includedInSchema(prop));
+            
+            var model = subClasses.length > 0 ? {
+                "type": node.id,
+                // Include first relevant subClass in list (note this does not currently support multiple inheritance), which is discouraged in OA modelling anyway
+                "subClassOf": models[getPropNameFromFQP(subClasses[0])] ? "#" + getPropNameFromFQP(subClasses[0]) : expandPrefix(subClasses[0], false, namespaces)
+            } :
+            {
+                "type": node.id
+            };
+
+            models[getPropNameFromFQP(node.id)] = model;
+        }
+    });
+
+    // Add properties to classes
     extModelGraph.forEach(function (node) {
         if (node.type === 'Property') {
             var field = {
@@ -102,8 +127,6 @@ function augmentWithExtension(extModelGraph, models, extensionUrl, extensionPref
                     model.fields[field.fieldName] = field;
                 }
             });
-        } else if (node.type === 'Class') {
-            //Ignore Classes and other extension types for now // TODO: Add extension enum support here
         }
     });
 }
@@ -188,7 +211,7 @@ function obsoleteNotInSpecFields(model, models) {
     var parentModel = getParentModel(model, models);
     if (model.notInSpec && model.notInSpec.length > 0) model.notInSpec.forEach(function (field) {
         if (parentModel && parentModel.fields[field]) {
-            if (model.type.toLowerCase() !== field.toLowerCase()) { // Cannot have property with same name as type, so do not disinherit here
+            if (getPropNameFromFQP(model.type).toLowerCase() !== field.toLowerCase()) { // Cannot have property with same name as type, so do not disinherit here
                 augFields[field] = Object.assign({}, parentModel.fields[field]);
                 augFields[field].obsolete = true;
             }
@@ -314,11 +337,11 @@ using System.Runtime.Serialization;
 namespace OpenActive.NET
 {
     /// <summary>
-    /// ${createCommentFromDescription(model.description).replace(/\n/g,'\n    /// ')}
+    /// ${getPropNameFromFQP(model.type) != model.type ? `[NOTICE: This is a beta class, and is highly likely to change in future versions of this library.]. ` : ""}${createCommentFromDescription(model.description).replace(/\n/g,'\n    /// ')}
     /// ${derivedFrom ? `This type is derived from [` + derivedFromName + `](` + derivedFrom + `)` + (derivedFrom.indexOf("schema.org") > -1 ? ", which means that any of this type's properties within schema.org may also be used. Note however the properties on this page must be used in preference if a relevant property is available" : "") + "." : ""}
     /// </summary>
     [DataContract]
-    public partial class ${convertToCamelCase(model.type)} : ${inherits}
+    public partial class ${convertToCamelCase(getPropNameFromFQP(model.type))} : ${inherits}
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -494,7 +517,7 @@ function getPropNameFromFQP(prop) {
     if (prop === null || prop === undefined) return null;
     //Just the characters after the last /, # or :
     var match = prop.match(/[/#:]/g);
-    var lastIndex = prop.lastIndexOf(match[match.length - 1]);
+    var lastIndex = match === null ? -1 : prop.lastIndexOf(match[match.length - 1]);
     if (lastIndex > -1) {
         return prop.substring(lastIndex + 1);
     } else return prop;
@@ -567,5 +590,5 @@ function convertToCamelCase(str) {
 
 function includedInSchema(url) {
     if (!url) return false;
-    return url.indexOf("//schema.org") > -1;
+    return url.indexOf("//schema.org") > -1 || url.indexOf("schema:") == 0;
 }
