@@ -35,7 +35,7 @@
             }
             else if (value is DateTimeOffset time)
             {
-                writer.WriteValue(time.ToString("HH:mm:ss"));
+                writer.WriteValue(time.ToString("HH:mm"));
             }
             else
             {

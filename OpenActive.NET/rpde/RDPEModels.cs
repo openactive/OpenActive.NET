@@ -68,7 +68,7 @@ namespace OpenActive.NET.Rpde.Version1
         
         public StringContent ToStringContent()
         {
-            return new StringContent(this.ToString(), Encoding.UTF8, "application/ld+json");
+            return new StringContent(this.ToString(), Encoding.UTF8, OpenActiveDiscovery.MediaTypes.Version1.RealtimePagedDataExchange);
         }
 
         // Constructor for JSON deserialisation
