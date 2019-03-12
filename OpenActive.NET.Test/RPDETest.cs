@@ -129,15 +129,7 @@ namespace OpenActive.NET.Test
             FormattedDescription = "",
             IsCoached = false,
             Video = new List<Schema.NET.VideoObject> { new Schema.NET.VideoObject() { Url = new Uri("https://example.com") } },
-            AccessibilitySupport = new List<Concept>
-            {
-                new Concept()
-                {
-                    Id = new Uri("https://example.com"),
-                    PrefLabel = "",
-                    InScheme = new Uri("https://example.com")
-                },
-            },
+            AccessibilitySupport = new List<Concept> { },
             Level = new List<string> { "" },
             Image = new List<ImageObject> { new ImageObject() { Url = new Uri("https://example.com") } },
             Programme = new Brand()

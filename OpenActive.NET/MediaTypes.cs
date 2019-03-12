@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net.Http.Headers;
 using System.Text;
 
 namespace OpenActive.NET
@@ -21,19 +22,19 @@ namespace OpenActive.NET
             /// <summary>
             /// Create a versioned equivalent of a given media type
             /// </summary>
-            public static string VersionedMediaType(string mediatype, decimal version) => $"; version={version}";
+            public static MediaTypeHeaderValue VersionedMediaType(string mediatype, decimal version) => MediaTypeHeaderValue.Parse($"{mediatype}; version={version}");
 
             public static class Version1
             {
                 /// <summary>
                 /// Media type for latest version of Realtime Paged Data Exchange
                 /// </summary>
-                public static string RealtimePagedDataExchange => MediaTypes.VersionedMediaType(MediaTypes.RealtimePagedDataExchange, 1);
+                public static MediaTypeHeaderValue RealtimePagedDataExchange => VersionedMediaType(MediaTypes.RealtimePagedDataExchange, 1);
 
                 /// <summary>
                 /// Media type for latest version of Realtime Paged Data Exchange
                 /// </summary>
-                public static string OpenBooking => MediaTypes.VersionedMediaType(MediaTypes.OpenBooking, 1);
+                public static MediaTypeHeaderValue OpenBooking => VersionedMediaType(MediaTypes.OpenBooking, 1);
             }
         }
     }

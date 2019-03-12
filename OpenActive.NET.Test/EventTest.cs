@@ -2,6 +2,7 @@ using Newtonsoft.Json;
 using OpenActive.NET;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -37,7 +38,7 @@ namespace OpenActive.NET.Test
             },
             Image = new List<ImageObject>() { new ImageObject { Url = new Uri("http://www.example.com/event_image/12345") } },
             EndDate = new DateTimeOffset(2017, 4, 24, 23, 0, 0, TimeSpan.FromHours(-8)),
-            Offers = new List<Offer>() { new Offer()
+            Offers = new List<Offer>() { new IndicativeOffer()
             {
                 Url = new Uri("https://www.example.com/event_offer/12345_201803180430"), 
                 Price = 30, 
@@ -90,5 +91,31 @@ namespace OpenActive.NET.Test
             output.WriteLine(this.@event.ToOpenActiveString());
             Assert.Equal(this.json, this.@event.ToOpenActiveString());
         }
+
+        [Fact]
+        public void ToString_EventAccessor()
+        {
+            output.WriteLine(this.@event.ToOpenActiveString());
+            Assert.Equal("Santa Clara City Library, Central Park Library", this.@event.Location.Name);
+        }
+
+        [Fact]
+        public void ToString_OfferCast()
+        {
+            var ev = new Event
+            {
+                Offers = (new List<IndicativeOffer>() { new IndicativeOffer()
+                {
+                    Url = new Uri("https://www.example.com/event_offer/12345_201803180430"),
+                    Price = 30,
+                    PriceCurrency = "USD",
+                    ValidFrom = new DateTimeOffset(2017, 1, 20, 16, 20, 0, TimeSpan.FromHours(-8))
+                } }).Cast<Offer>().ToList()
+            };
+            
+            output.WriteLine(ev.ToOpenActiveString());
+            Assert.Equal("Santa Clara City Library, Central Park Library", ev.ToOpenActiveString());
+        }
+
     }
 }

@@ -16,4 +16,10 @@
     <ProjectReference Include="..\OpenActive.NET\OpenActive.NET.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="Schema.NET">
+      <HintPath>..\..\Schema.NET\Source\Schema.NET\bin\Debug\netstandard2.0\Schema.NET.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

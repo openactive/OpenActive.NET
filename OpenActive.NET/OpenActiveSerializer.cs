@@ -152,6 +152,7 @@ namespace OpenActive.NET
             }
         }
 
+        // This is used for OpenActive strings, which are not handled by IValue types so may have empty strings
         public class NoEmptyStringsContractResolver : DefaultContractResolver
         {
             public static readonly NoEmptyStringsContractResolver Instance = new NoEmptyStringsContractResolver();

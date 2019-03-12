@@ -10,7 +10,7 @@
     /// to ISO 8601 format first.
     /// </summary>
     /// <seealso cref="JsonConverter" />
-    public class OpenActiveTimeSpanToISO8601DurationValuesConverter : JsonConverter
+    public class OpenActiveDateTimeOffsetToISO8601TimeValuesConverter : JsonConverter
     {
         /// <summary>
         /// Determines whether this instance can convert the specified object type.
@@ -19,7 +19,7 @@
         /// <returns>
         /// <c>true</c> if this instance can convert the specified object type; otherwise, <c>false</c>.
         /// </returns>
-        public override bool CanConvert(Type objectType) => objectType == typeof(TimeSpan);
+        public override bool CanConvert(Type objectType) => objectType == typeof(DateTimeOffset);
 
         /// <summary>
         /// Writes the object retrieved from <see cref="IValue"/> when one is found.
@@ -33,9 +33,9 @@
             {
                 writer.WriteNull();
             }
-            else if (value is TimeSpan duration)
+            else if (value is DateTimeOffset time)
             {
-                writer.WriteValue(XmlConvert.ToString(duration));
+                writer.WriteValue(time.ToString("HH:mm"));
             }
             else
             {

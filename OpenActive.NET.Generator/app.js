@@ -454,12 +454,12 @@ function createTableFromFieldList(fieldList, models, enumMap, hasBaseClass) {
 }
 
 function renderJsonConverter(field, propertyType) {
-    if (propertyType.indexOf("Values<") > -1) {
-        return `\n        [JsonConverter(typeof(ValuesConverter))]`;
-    } else if (propertyType == 'TimeSpan?') {
+    if (propertyType == 'TimeSpan?') {
         return `\n        [JsonConverter(typeof(OpenActiveTimeSpanToISO8601DurationValuesConverter))]`;
     } else if (field.requiredType == 'https://schema.org/Time') {
         return `\n        [JsonConverter(typeof(OpenActiveDateTimeOffsetToISO8601TimeValuesConverter))]`;
+    } else if (propertyType.indexOf("Values<") > -1) {
+        return `\n        [JsonConverter(typeof(ValuesConverter))]`;
     } else {
         return "";
     }
@@ -496,8 +496,7 @@ function createTypeString(field, models, enumMap, isExtension) {
         throw new Error('No type found for field: ' + field.fieldName);
     }
 
-
-    // TODO: Create OpenActive Values which does not allow many of the same type, only allows one
+    // OpenActive SingleValues not allow many of the same type, only allows one
     return types.length > 1 ? `SingleValues<${types.join(', ')}>` : types[0];
 }
 

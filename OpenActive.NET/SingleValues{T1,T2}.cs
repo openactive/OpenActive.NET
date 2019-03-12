@@ -1,5 +1,6 @@
 namespace OpenActive.NET
 {
+    using System.Collections;
     using System.Collections.Generic;
 
     /// <summary>
@@ -8,13 +9,13 @@ namespace OpenActive.NET
     /// <typeparam name="T1">The first type the values can take.</typeparam>
     /// <typeparam name="T2">The second type the values can take.</typeparam>
     /// <seealso cref="IValue" />
-    public struct SingleValues<T1, T2> : IValue
+    public class SingleValues<T1, T2> : IValue
     {
         private readonly T1 value1;
         private readonly T2 value2;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Values{T1,T2}"/> struct.
+        /// Initializes a new instance of the <see cref="SingleValues{T1,T2}"/> class.
         /// </summary>
         /// <param name="value">The value of type <typeparamref name="T1"/>.</param>
         public SingleValues(T1 value)
@@ -24,7 +25,7 @@ namespace OpenActive.NET
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Values{T1,T2}"/> struct.
+        /// Initializes a new instance of the <see cref="SingleValues{T1,T2}"/> class.
         /// </summary>
         /// <param name="value">The value of type <typeparamref name="T2"/>.</param>
         public SingleValues(T2 value)
@@ -64,17 +65,17 @@ namespace OpenActive.NET
         }
 
         /// <summary>
-        /// Performs an implicit conversion from <typeparamref name="T1"/> to <see cref="Values{T1,T2}"/>.
+        /// Performs an implicit conversion from <typeparamref name="T1"/> to <see cref="SingleValues{T1,T2}"/>.
         /// </summary>
         /// <param name="item">The single item value.</param>
         /// <returns>The result of the conversion.</returns>
-        public static implicit operator SingleValues<T1, T2>(T1 item) => new SingleValues<T1, T2>(item);
+        public static implicit operator SingleValues<T1, T2>(T1 item) => item == null || (item.GetType() == typeof(string) && string.IsNullOrWhiteSpace(item as string)) || (item as ICollection)?.Count == 0 ? null : new SingleValues<T1, T2>(item);
 
         /// <summary>
-        /// Performs an implicit conversion from <typeparamref name="T2"/> to <see cref="Values{T1,T2}"/>.
+        /// Performs an implicit conversion from <typeparamref name="T2"/> to <see cref="SingleValues{T1,T2}"/>.
         /// </summary>
         /// <param name="item">The single item value.</param>
         /// <returns>The result of the conversion.</returns>
-        public static implicit operator SingleValues<T1, T2>(T2 item) => new SingleValues<T1, T2>(item);
+        public static implicit operator SingleValues<T1, T2>(T2 item) => item == null || (item.GetType() == typeof(string) && string.IsNullOrWhiteSpace(item as string)) || (item as ICollection)?.Count == 0 ? null : new SingleValues<T1, T2>(item);
     }
 }
