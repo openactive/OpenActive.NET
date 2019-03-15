@@ -117,5 +117,57 @@ namespace OpenActive.NET.Test
             Assert.Equal("Santa Clara City Library, Central Park Library", ev.ToOpenActiveString());
         }
 
+        [Fact]
+        public void ToString_EncodeDecode ()
+        {
+            var original = "{\"type\":\"Concept\",\"id\":\"https://openactive.io/facility-types#37bbed12-270b-42b1-9af2-70f0273990dd\",\"prefLabel\":\"Grass\",\"inScheme\":\"https://openactive.io/facility-types\"}";
+            var decode = OpenActiveSerializer.Deserialize<Concept>(original);
+            var encode = OpenActiveSerializer.Serialize(decode);
+
+            //output.WriteLine(decode.Id?.ToString());
+            output.WriteLine(original);
+            output.WriteLine(encode);
+            //Assert.Equal("https://openactive.io/facility-types#37bbed12-270b-42b1-9af2-70f0273990dd", decode.Id?.ToString());
+            Assert.Equal(original, encode);
+        }
+
+        [Fact]
+        public void ToString_EncodeDecodeList()
+        {
+            var originalList = "[{\"type\":\"Concept\",\"id\":\"https://openactive.io/facility-types#37bbed12-270b-42b1-9af2-70f0273990dd\",\"prefLabel\":\"Grass\",\"inScheme\":\"https://openactive.io/facility-types\"}]";
+            var decodeList = OpenActiveSerializer.Deserialize<List<Concept>>(originalList);
+            var encodeList = OpenActiveSerializer.Serialize(decodeList);
+
+            output.WriteLine(originalList);
+            output.WriteLine(encodeList);
+            //Assert.Equal("https://openactive.io/facility-types#37bbed12-270b-42b1-9af2-70f0273990dd", decodeList.First().Id?.ToString());
+            Assert.Equal(originalList, encodeList);
+        }
+
+
+        [Fact]
+        public void ToString_OfferEncodeDecode()
+        {
+            var offer = new Offer()
+            {
+                Id = new Uri("https://www.example.com/event_offer/12345_201803180430"),
+                Url = new Uri("https://www.example.com/event_offer/12345_201803180430"),
+                Price = 30,
+                PriceCurrency = "USD",
+                ValidFrom = new DateTimeOffset(2017, 1, 20, 16, 20, 0, TimeSpan.FromHours(-8))
+            };
+
+            var encode = offer.ToOpenActiveString();
+
+            var decode = OpenActiveSerializer.Deserialize<Offer>(encode);
+
+            var reencode = decode.ToOpenActiveString();
+
+            output.WriteLine(encode);
+            output.WriteLine(reencode);
+            Assert.Equal(encode, reencode);
+        }
+
+
     }
 }

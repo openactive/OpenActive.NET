@@ -125,7 +125,19 @@ namespace OpenActive.NET
             stringBuilder.Replace(SchemaTypeJson, OpenActiveTypeJson, 0, stringBuilder.Length);
             return stringBuilder.ToString();
         }
+
+        public static string Serialize(object obj) => RemoveAllButFirstContext(JsonConvert.SerializeObject(obj, SerializerSettings));
+
+        public static T Deserialize<T>(string str) => JsonConvert.DeserializeObject<T>(PrepareForDeserialization(str));
         
+        private static string PrepareForDeserialization(string json)
+        {
+            var stringBuilder = new StringBuilder(json);
+            stringBuilder.Replace(OpenActiveIdJson, SchemaIdJson, 0, stringBuilder.Length);
+            stringBuilder.Replace(OpenActiveTypeJson, SchemaTypeJson, 0, stringBuilder.Length);
+            return stringBuilder.ToString();
+        }
+
         internal class DecimalConverter : JsonConverter
         {
             public override bool CanConvert(Type objectType)
