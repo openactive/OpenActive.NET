@@ -526,11 +526,31 @@ namespace OpenActive.NET
 
         /// <summary>
         /// [NOTICE: This is a beta field, and is highly likely to change in future versions of this library.] 
+        /// Sometimes a description is stored with formatting (e.g. href, bold, italics, embedded YouTube videos). This formatting can be useful for data consumers.
+        /// 
+        /// If you are using this property, please join the discussion at proposal [#2](https://github.com/openactive/ns-beta/issues/2).
+        /// </summary>
+        [DataMember(Name = "beta:formattedDescription", EmitDefaultValue = false, Order = 1041)]
+        public virtual string FormattedDescription { get; set; }
+
+
+        /// <summary>
+        /// [NOTICE: This is a beta field, and is highly likely to change in future versions of this library.] 
+        /// A property that indicates whether the event is led by a virtual coach.
+        /// 
+        /// If you are using this property, please join the discussion at proposal [#new](https://github.com/openactive/modelling-opportunity-data/issues/new).
+        /// </summary>
+        [DataMember(Name = "beta:isVirtuallyCoached", EmitDefaultValue = false, Order = 1042)]
+        public virtual bool? IsVirtuallyCoached { get; set; }
+
+
+        /// <summary>
+        /// [NOTICE: This is a beta field, and is highly likely to change in future versions of this library.] 
         /// Duration before the event for which the associated Offers are valid
         /// 
         /// If you are using this property, please join the discussion at proposal [#204](https://github.com/openactive/modelling-opportunity-data/issues/204).
         /// </summary>
-        [DataMember(Name = "beta:offerValidityPeriod", EmitDefaultValue = false, Order = 1041)]
+        [DataMember(Name = "beta:offerValidityPeriod", EmitDefaultValue = false, Order = 1043)]
         [JsonConverter(typeof(OpenActiveTimeSpanToISO8601DurationValuesConverter))]
         public virtual TimeSpan? OfferValidityPeriod { get; set; }
 
@@ -541,7 +561,7 @@ namespace OpenActive.NET
         /// 
         /// If you are using this property, please join the discussion at proposal [#110](https://github.com/openactive/modelling-opportunity-data/issues/110).
         /// </summary>
-        [DataMember(Name = "beta:sportsActivityLocation", EmitDefaultValue = false, Order = 1042)]
+        [DataMember(Name = "beta:sportsActivityLocation", EmitDefaultValue = false, Order = 1044)]
         public virtual List<SportsActivityLocation> SportsActivityLocation { get; set; }
 
 
@@ -551,7 +571,7 @@ namespace OpenActive.NET
         /// 
         /// If you are using this property, please join the discussion at proposal [#88](https://github.com/openactive/modelling-opportunity-data/issues/88).
         /// </summary>
-        [DataMember(Name = "beta:video", EmitDefaultValue = false, Order = 1043)]
+        [DataMember(Name = "beta:video", EmitDefaultValue = false, Order = 1045)]
         public virtual List<Schema.NET.VideoObject> Video { get; set; }
 
 
@@ -561,7 +581,7 @@ namespace OpenActive.NET
         /// 
         /// If you are using this property, please join the discussion at proposal [#201](https://github.com/openactive/modelling-opportunity-data/issues/201).
         /// </summary>
-        [DataMember(Name = "beta:estimatedDuration", EmitDefaultValue = false, Order = 1044)]
+        [DataMember(Name = "beta:estimatedDuration", EmitDefaultValue = false, Order = 1046)]
         public virtual QuantitativeValue EstimatedDuration { get; set; }
 
 
@@ -571,7 +591,7 @@ namespace OpenActive.NET
         /// 
         /// If you are using this property, please join the discussion at proposal [#166](https://github.com/openactive/modelling-opportunity-data/issues/166).
         /// </summary>
-        [DataMember(Name = "beta:isWheelchairAccessible", EmitDefaultValue = false, Order = 1045)]
+        [DataMember(Name = "beta:isWheelchairAccessible", EmitDefaultValue = false, Order = 1047)]
         public virtual bool? IsWheelchairAccessible { get; set; }
 
 
@@ -581,7 +601,7 @@ namespace OpenActive.NET
         /// 
         /// If you are using this property, please join the discussion at proposal [#13](https://github.com/openactive/ns-beta/issues/13).
         /// </summary>
-        [DataMember(Name = "beta:registrationCount", EmitDefaultValue = false, Order = 1046)]
+        [DataMember(Name = "beta:registrationCount", EmitDefaultValue = false, Order = 1048)]
         public virtual int? RegistrationCount { get; set; }
 
 
@@ -591,7 +611,7 @@ namespace OpenActive.NET
         /// 
         /// If you are using this property, please join the discussion at proposal [#12](https://github.com/openactive/ns-beta/issues/12).
         /// </summary>
-        [DataMember(Name = "beta:attendeeCount", EmitDefaultValue = false, Order = 1047)]
+        [DataMember(Name = "beta:attendeeCount", EmitDefaultValue = false, Order = 1049)]
         public virtual int? AttendeeCount { get; set; }
 
 
@@ -601,7 +621,7 @@ namespace OpenActive.NET
         /// 
         /// If you are using this property, please join the discussion at proposal [#9](https://github.com/openactive/ns-beta/issues/9).
         /// </summary>
-        [DataMember(Name = "beta:availability", EmitDefaultValue = false, Order = 1048)]
+        [DataMember(Name = "beta:availability", EmitDefaultValue = false, Order = 1050)]
         public virtual string Availability { get; set; }
 
 
@@ -611,18 +631,8 @@ namespace OpenActive.NET
         /// 
         /// If you are using this property, please join the discussion at proposal [#3](https://github.com/openactive/ns-beta/issues/3).
         /// </summary>
-        [DataMember(Name = "beta:distance", EmitDefaultValue = false, Order = 1049)]
+        [DataMember(Name = "beta:distance", EmitDefaultValue = false, Order = 1051)]
         public virtual QuantitativeValue Distance { get; set; }
-
-
-        /// <summary>
-        /// [NOTICE: This is a beta field, and is highly likely to change in future versions of this library.] 
-        /// Sometimes a description is stored with formatting (e.g. href, bold, italics, embedded YouTube videos). This formatting can be useful for data consumers.
-        /// 
-        /// If you are using this property, please join the discussion at proposal [#2](https://github.com/openactive/ns-beta/issues/2).
-        /// </summary>
-        [DataMember(Name = "beta:formattedDescription", EmitDefaultValue = false, Order = 1050)]
-        public virtual string FormattedDescription { get; set; }
 
     }
 }
