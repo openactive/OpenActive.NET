@@ -1,5 +1,48 @@
-# OpenActive.NET
-OpenActive.io objects turned into strongly typed C# POCO classes for use in .NET. All classes can be serialized into JSON/JSON-LD, to provide easy conformance with the [OpenActive Modelling Specification](https://www.openactive.io/modelling-opportunity-data/).
+# OpenActive.NET RPDE Feed Publishing
+
+To publish an OpenActive data feed (see this [video explainer](https://developer.openactive.io/publishing-data/data-feeds/how-a-data-feed-works)), OpenActive.NET provides a drop-in solution to render the feed pages. This also includes validation for the underlying feed query.
+
+```C#
+using OpenActive.NET.Rpde.Version1;
+
+public abstract class RPDEBase<IDType, DatabaseType, ItemType> where DatabaseType : RPDEBase<IDType, DatabaseType, ItemType>, new() where ItemType : Schema.NET.Thing where IDType : IEquatable<IDType>, IComparable
+{
+    public abstract RpdeKind RpdeKind { get; }
+
+    private async Task<RpdeBody<IDType, ItemType>> GetRPDEPage(long? afterChangeNumber, string feedUrl, string baseUrl, int limit)
+    {
+        var items = new List<RpdeItem<IDType, ItemType>>();
+
+        DatabaseFactory.ColumnSerializer = new NPocoSerializer();
+        using (Database db = new Database("DefaultConnection"))
+        {
+            // Get the table name manually as we are constructing the query by hand
+            var tableName = db.PocoDataFactory.ForType(typeof(DatabaseType)).TableInfo.TableName;
+
+            // Query for paging as shown in https://www.openactive.io/realtime-paged-data-exchange/#incrementing-unique-change-number
+            // Note due to the issues with big endian vs little endian conversion when converting from rowversion in SQL Server to int64 in C#, it is best to do the
+            // conversion in both directions in SQL Server, as below
+            var whereClause = afterChangeNumber != null ? "WHERE Modified > Convert(ROWVERSION, @0)" : "";
+            var results = await db.QueryAsync<DatabaseType>($"SELECT TOP {limit} Convert(BIGINT,Modified) as ChangeNumber, u.* from {tableName} u (nolock) {whereClause} ORDER BY Modified", afterChangeNumber);
+
+            items = results.Select(row => new RpdeItem<IDType, ItemType>
+            {
+                Id = row.ID,
+                Modified = row.modified,
+                Data = row.Deleted ? null : ConvertToOpenActiveModel(row, baseUrl),
+                State = row.Deleted ? RpdeState.Deleted : RpdeState.Updated,
+                Kind = RpdeKind
+            }).ToList();
+        }
+
+        return new RpdeBody<IDType, ItemType>(feedUrl, afterChangeNumber, items);
+    }
+}
+```
+
+
+# OpenActive.NET Model
+OpenActive.NET also includes OpenActive.io objects turned into strongly typed C# POCO classes for use in .NET. All classes can be serialized into JSON/JSON-LD, to provide easy conformance with the [OpenActive Modelling Specification](https://www.openactive.io/modelling-opportunity-data/).
 
 ## Simple Example
 
