@@ -7,7 +7,7 @@ using OpenActive.NET.Rpde.Version1;
 
 public abstract class RPDEBase<IDType, DatabaseType, ItemType> where DatabaseType : RPDEBase<IDType, DatabaseType, ItemType>, new() where ItemType : Schema.NET.Thing where IDType : IEquatable<IDType>, IComparable
 {
-    public abstract RpdeKind RpdeKind { get; }
+    protected abstract RpdeKind RpdeKind { get; }
     
     protected abstract ItemType ConvertToOpenActiveModel(DatabaseType record, string baseUrl);
 
@@ -39,6 +39,53 @@ public abstract class RPDEBase<IDType, DatabaseType, ItemType> where DatabaseTyp
 
         return new RpdeBody<IDType, ItemType>(feedUrl, afterChangeNumber, items);
     }
+    
+    public static async Task<HttpResponseMessage> ServeRPDEPage(HttpRequestMessage req, int limit)
+    {
+        // parse query parameter 'afterChangeNumber'
+        long? afterChangeNumber = Convert.ToInt64(req.GetQueryNameValuePairs()
+            .FirstOrDefault(q => string.Compare(q.Key, "afterChangeNumber", true) == 0)
+            .Value);
+
+        // Get base Urls
+        var urlHelper = new System.Web.Mvc.UrlHelper(HttpContext.Current.Request.RequestContext);
+        var baseUrl = req.RequestUri.RewriteHttps().GetLeftPart(UriPartial.Authority) + urlHelper.Content("~/");
+        var feedUrl = req.RequestUri.RewriteHttps().GetLeftPart(UriPartial.Path);
+
+        // Instantiate DatabaseType to make use of inheritance in GetRPDEPage
+        var rpdePage = await (new DatabaseType()).GetRPDEPage(afterChangeNumber, feedUrl, baseUrl, limit);
+
+        // If no page returned, return error
+        if (rpdePage == null)
+        {
+            return req.CreateResponse(HttpStatusCode.BadRequest, "Invalid parameters");
+        }
+
+        // Render reponse as JSON
+        var response = req.CreateResponse(HttpStatusCode.OK);
+        response.Content = rpdePage.ToStringContent();
+
+        // Always use MaxAge cache header for a full page
+        if (rpdePage?.Items?.Count > 0)
+        {
+            response.Headers.CacheControl = new CacheControlHeaderValue()
+            {
+                Public = true,
+                MaxAge = TimeSpan.FromHours(1),
+                SharedMaxAge = TimeSpan.FromHours(1)
+            };
+        }
+        else
+        {
+            response.Headers.CacheControl = new CacheControlHeaderValue()
+            {
+                Public = true,
+                MaxAge = TimeSpan.FromSeconds(8),
+                SharedMaxAge = TimeSpan.FromSeconds(8)
+            };
+        }
+        return response;
+    }    
 }
 ```
 
