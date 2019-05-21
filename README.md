@@ -8,6 +8,8 @@ using OpenActive.NET.Rpde.Version1;
 public abstract class RPDEBase<IDType, DatabaseType, ItemType> where DatabaseType : RPDEBase<IDType, DatabaseType, ItemType>, new() where ItemType : Schema.NET.Thing where IDType : IEquatable<IDType>, IComparable
 {
     public abstract RpdeKind RpdeKind { get; }
+    
+    protected abstract ItemType ConvertToOpenActiveModel(DatabaseType record, string baseUrl);
 
     private async Task<RpdeBody<IDType, ItemType>> GetRPDEPage(long? afterChangeNumber, string feedUrl, string baseUrl, int limit)
     {
