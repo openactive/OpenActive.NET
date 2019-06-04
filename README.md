@@ -1,4 +1,4 @@
-# OpenActive.NET RPDE Feed Publishing
+# OpenActive.NET RPDE Feed Publishing ![Nuget](https://img.shields.io/nuget/v/OpenActive.NET.svg)
 
 To publish an OpenActive data feed (see this [video explainer](https://developer.openactive.io/publishing-data/data-feeds/how-a-data-feed-works)), OpenActive.NET provides a drop-in solution to render the feed pages. This also includes validation for the underlying feed query.
 
