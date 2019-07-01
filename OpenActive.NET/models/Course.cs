@@ -111,11 +111,21 @@ namespace OpenActive.NET
 
         /// <summary>
         /// [NOTICE: This is a beta field, and is highly likely to change in future versions of this library.] 
+        /// An related video object.
+        /// 
+        /// If you are using this property, please join the discussion at proposal [#88](https://github.com/openactive/modelling-opportunity-data/issues/88).
+        /// </summary>
+        [DataMember(Name = "beta:video", EmitDefaultValue = false, Order = 1013)]
+        public virtual List<Schema.NET.VideoObject> Video { get; set; }
+
+
+        /// <summary>
+        /// [NOTICE: This is a beta field, and is highly likely to change in future versions of this library.] 
         /// An associated logo for a course.
         /// 
         /// If you are using this property, please join the discussion at proposal [#164](https://github.com/openactive/modelling-opportunity-data/issues/164).
         /// </summary>
-        [DataMember(Name = "beta:logo", EmitDefaultValue = false, Order = 1013)]
+        [DataMember(Name = "beta:logo", EmitDefaultValue = false, Order = 1014)]
         public virtual ImageObject Logo { get; set; }
 
     }

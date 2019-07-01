@@ -536,9 +536,9 @@ namespace OpenActive.NET
 
         /// <summary>
         /// [NOTICE: This is a beta field, and is highly likely to change in future versions of this library.] 
-        /// A property that indicates whether the event is led by a virtual coach.
+        /// A property that indicates whether the event is led by a virtual coach. Only relevant if an event `isCoached`.
         /// 
-        /// If you are using this property, please join the discussion at proposal [#new](https://github.com/openactive/modelling-opportunity-data/issues/new).
+        /// If you are using this property, please join the discussion at proposal [#71](https://github.com/openactive/modelling-opportunity-data/issues/71).
         /// </summary>
         [DataMember(Name = "beta:isVirtuallyCoached", EmitDefaultValue = false, Order = 1042)]
         public virtual bool? IsVirtuallyCoached { get; set; }
