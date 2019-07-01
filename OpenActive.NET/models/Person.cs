@@ -35,7 +35,7 @@ namespace OpenActive.NET
 
         /// <summary>
         /// A full name for the person. 
-        /// This person must give direct permission for their personal information to be shared as part of the Open Data.
+        /// This person must have given permission for their personal information to be shared as part of the open data.
         /// </summary>
         /// <example>
         /// <code>
@@ -59,15 +59,28 @@ namespace OpenActive.NET
 
 
         /// <summary>
+        /// The e-mail address of the person. 
+        /// This person must have given permission for their personal information to be shared as part of the open data.
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// "email": "jane.smith@example.com"
+        /// </code>
+        /// </example>
+        [DataMember(Name = "email", EmitDefaultValue = false, Order = 10)]
+        public new virtual string Email { get; set; }
+
+
+        /// <summary>
         /// A last name for the person. 
-        /// This person must give direct permission for their personal information to be shared as part of the Open Data.
+        /// This person must have given permission for their personal information to be shared as part of the open data.
         /// </summary>
         /// <example>
         /// <code>
         /// "familyName": "Thompson"
         /// </code>
         /// </example>
-        [DataMember(Name = "familyName", EmitDefaultValue = false, Order = 10)]
+        [DataMember(Name = "familyName", EmitDefaultValue = false, Order = 11)]
         public new virtual string FamilyName { get; set; }
 
 
@@ -79,21 +92,34 @@ namespace OpenActive.NET
         /// "gender": "https://schema.org/Female"
         /// </code>
         /// </example>
-        [DataMember(Name = "gender", EmitDefaultValue = false, Order = 11)]
+        [DataMember(Name = "gender", EmitDefaultValue = false, Order = 12)]
         public new virtual Schema.NET.GenderType? Gender { get; set; }
 
 
         /// <summary>
         /// A first name for the person. 
-        /// This person must give direct permission for their personal information to be shared as part of the Open Data.
+        /// This person must have given permission for their personal information to be shared as part of the open data.
         /// </summary>
         /// <example>
         /// <code>
         /// "givenName": "Daley"
         /// </code>
         /// </example>
-        [DataMember(Name = "givenName", EmitDefaultValue = false, Order = 12)]
+        [DataMember(Name = "givenName", EmitDefaultValue = false, Order = 13)]
         public new virtual string GivenName { get; set; }
+
+
+        /// <summary>
+        /// The job title of a person 
+        /// This person must have given permission for their personal information to be shared as part of the open data.
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// "jobTitle": "Team Captain"
+        /// </code>
+        /// </example>
+        [DataMember(Name = "jobTitle", EmitDefaultValue = false, Order = 14)]
+        public new virtual string JobTitle { get; set; }
 
 
         /// <summary>
@@ -107,7 +133,7 @@ namespace OpenActive.NET
         /// }
         /// </code>
         /// </example>
-        [DataMember(Name = "logo", EmitDefaultValue = false, Order = 13)]
+        [DataMember(Name = "logo", EmitDefaultValue = false, Order = 15)]
         public new virtual ImageObject Logo { get; set; }
 
 
@@ -119,19 +145,20 @@ namespace OpenActive.NET
         /// "sameAs": "https://example.org/example-org"
         /// </code>
         /// </example>
-        [DataMember(Name = "sameAs", EmitDefaultValue = false, Order = 14)]
+        [DataMember(Name = "sameAs", EmitDefaultValue = false, Order = 16)]
         public new virtual List<Uri> SameAs { get; set; }
 
 
         /// <summary>
-        /// The telephone number of the person
+        /// The telephone number of the person 
+        /// This person must have given permission for their personal information to be shared as part of the open data.
         /// </summary>
         /// <example>
         /// <code>
         /// "telephone": "01234 567890"
         /// </code>
         /// </example>
-        [DataMember(Name = "telephone", EmitDefaultValue = false, Order = 15)]
+        [DataMember(Name = "telephone", EmitDefaultValue = false, Order = 17)]
         public new virtual string Telephone { get; set; }
 
 
@@ -143,7 +170,7 @@ namespace OpenActive.NET
         /// "url": "http://www.example.com/"
         /// </code>
         /// </example>
-        [DataMember(Name = "url", EmitDefaultValue = false, Order = 16)]
+        [DataMember(Name = "url", EmitDefaultValue = false, Order = 18)]
         public new virtual Uri Url { get; set; }
 
     }

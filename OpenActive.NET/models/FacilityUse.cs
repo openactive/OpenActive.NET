@@ -158,7 +158,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "event", EmitDefaultValue = false, Order = 16)]
-        public virtual List<Slot> Event { get; set; }
+        public new virtual List<Slot> Event { get; set; }
 
 
         /// <summary>
