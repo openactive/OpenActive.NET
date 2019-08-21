@@ -116,7 +116,7 @@ namespace OpenActive.NET
         /// 
         /// </summary>
         [DataMember(Name = "orderItemStatus", EmitDefaultValue = false, Order = 20)]
-        public new virtual List<OrderItemStatus> OrderItemStatus { get; set; }
+        public new virtual OrderItemStatus? OrderItemStatus { get; set; }
 
 
         /// <summary>

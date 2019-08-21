@@ -114,8 +114,8 @@ namespace OpenActive.NET
         /// <summary>
         /// Breakdown of tax payable for the Order.
         /// </summary>
-        [DataMember(Name = "totalPaymentTaxSpecification", EmitDefaultValue = false, Order = 19)]
-        public virtual List<TaxChargeSpecification> TotalPaymentTaxSpecification { get; set; }
+        [DataMember(Name = "totalPaymentTax", EmitDefaultValue = false, Order = 19)]
+        public virtual List<TaxChargeSpecification> TotalPaymentTax { get; set; }
 
     }
 }

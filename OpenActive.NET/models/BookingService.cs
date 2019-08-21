@@ -31,7 +31,7 @@ namespace OpenActive.NET
         /// The terms of service of the Booking System.
         /// </summary>
         [DataMember(Name = "termsOfService", EmitDefaultValue = false, Order = 8)]
-        public new virtual List<Term> TermsOfService { get; set; }
+        public new virtual List<Terms> TermsOfService { get; set; }
 
 
         /// <summary>

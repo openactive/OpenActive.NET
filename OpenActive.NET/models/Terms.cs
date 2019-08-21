@@ -11,13 +11,13 @@ namespace OpenActive.NET
     /// 
     /// </summary>
     [DataContract]
-    public partial class Term : Schema.NET.DigitalDocument
+    public partial class Terms : Schema.NET.DigitalDocument
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
         [DataMember(Name = "@type", Order = 1)]
-        public override string Type => "Term";
+        public override string Type => "Terms";
 
         
         /// <summary>
