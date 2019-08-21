@@ -34,7 +34,7 @@ namespace OpenActive.NET
 
 
         /// <summary>
-        /// A human readable name for the offer.
+        /// The name of the Offer suitable for communication to participants.
         /// </summary>
         /// <example>
         /// <code>
@@ -73,7 +73,7 @@ namespace OpenActive.NET
 
 
         /// <summary>
-        /// Indicates whether to accept this offer, a participant must book in advance, whether they must pay on attending, or have option to do either.
+        /// Indicates whether to accept this offer, a participant must book in advance, whether they must pay on attending, or have option to do either. Values must be one of  https://openactive.io/Required,  https://openactive.io/Optional or  https://openactive.io/Unavailable.
         /// </summary>
         /// <example>
         /// <code>
@@ -81,11 +81,11 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "advanceBooking", EmitDefaultValue = false, Order = 11)]
-        public virtual RequiredStatusType? AdvanceBooking { get; set; }
+        public new virtual RequiredStatusType? AdvanceBooking { get; set; }
 
 
         /// <summary>
-        /// Indicates that an event is suitable for a specific age range. If only a single age is specified then this is assumed to be a minimum age. Age ranges can be specified as follows: 18-30
+        /// Indicates that an Offer is applicable to a specific age range. Specified as a QuantitativeValue with minValue and maxValue properties.
         /// </summary>
         /// <example>
         /// <code>
@@ -101,41 +101,56 @@ namespace OpenActive.NET
 
 
         /// <summary>
-        /// Indicates whether to accept this offer, a participant must pay in advance, pay when attending, or have the option to do either.
+        /// The duration before the startDate during which this Offer may not be cancelled, given in ISO 8601 format.
+        /// </summary>
+        [DataMember(Name = "latestCancellationBeforeStartDate", EmitDefaultValue = false, Order = 13)]
+        [JsonConverter(typeof(OpenActiveTimeSpanToISO8601DurationValuesConverter))]
+        public virtual TimeSpan? LatestCancellationBeforeStartDate { get; set; }
+
+
+        /// <summary>
+        /// Can include  https://openactive.io/OpenBookingIntakeForm,  https://openactive.io/OpenBookingAttendeeDetails,  https://openactive.io/OpenBookingApproval,  https://openactive.io/OpenBookingNegotiation,  https://openactive.io/OpenBookingMessageExchange
+        /// </summary>
+        [DataMember(Name = "openBookingFlowRequirement", EmitDefaultValue = false, Order = 14)]
+        public new virtual List<OpenBookingFlowRequirement> OpenBookingFlowRequirement { get; set; }
+
+
+        /// <summary>
+        /// Indicates whether to accept this offer, a participant must pay in advance, pay when attending, or have the option to do either. Values must be one of  https://openactive.io/Required,  https://openactive.io/Optional or  https://openactive.io/Unavailable.
         /// </summary>
         /// <example>
         /// <code>
         /// "prepayment": "https://openactive.io/Required"
         /// </code>
         /// </example>
-        [DataMember(Name = "prepayment", EmitDefaultValue = false, Order = 13)]
-        public virtual RequiredStatusType? Prepayment { get; set; }
+        [DataMember(Name = "prepayment", EmitDefaultValue = false, Order = 15)]
+        public new virtual RequiredStatusType? Prepayment { get; set; }
 
 
         /// <summary>
         /// The offer price of the activity. 
         /// This price should be specified without currency symbols and as a floating point number with two decimal places. 
-        /// The currency of the price should be expressed in the priceCurrency field.
+        /// The currency of the price should be expressed in the priceCurrency field. 
+        /// Includes or excludes tax depending on the taxMode of the seller.
         /// </summary>
         /// <example>
         /// <code>
         /// "price": 33
         /// </code>
         /// </example>
-        [DataMember(Name = "price", EmitDefaultValue = false, Order = 14)]
+        [DataMember(Name = "price", EmitDefaultValue = false, Order = 16)]
         public new virtual decimal? Price { get; set; }
 
 
         /// <summary>
-        /// The currency (in 3-letter ISO 4217 format) of the price. 
-        /// If an Offer has a zero price, then this property is not required. Otherwise the currency must be specified.
+        /// The currency of the price. Specified as a 3-letter ISO 4217 value. If an Offer has a zero price, then this property is not required. Otherwise the priceCurrency must be specified.
         /// </summary>
         /// <example>
         /// <code>
         /// "priceCurrency": "GBP"
         /// </code>
         /// </example>
-        [DataMember(Name = "priceCurrency", EmitDefaultValue = false, Order = 15)]
+        [DataMember(Name = "priceCurrency", EmitDefaultValue = false, Order = 17)]
         public new virtual string PriceCurrency { get; set; }
 
 
@@ -147,8 +162,16 @@ namespace OpenActive.NET
         /// "url": "http://www.rphs.org.uk/"
         /// </code>
         /// </example>
-        [DataMember(Name = "url", EmitDefaultValue = false, Order = 16)]
+        [DataMember(Name = "url", EmitDefaultValue = false, Order = 18)]
         public new virtual Uri Url { get; set; }
+
+
+        /// <summary>
+        /// The duration before the startDate for which this Offer is valid, given in ISO 8601 format. This is a relatively-defined equivalent of schema:validFrom, to allow for Offer inheritance.
+        /// </summary>
+        [DataMember(Name = "validFromBeforeStartDate", EmitDefaultValue = false, Order = 19)]
+        [JsonConverter(typeof(OpenActiveTimeSpanToISO8601DurationValuesConverter))]
+        public virtual TimeSpan? ValidFromBeforeStartDate { get; set; }
 
 
         /// <summary>
@@ -157,7 +180,7 @@ namespace OpenActive.NET
         /// 
         /// If you are using this property, please join the discussion at proposal [#161](https://github.com/openactive/modelling-opportunity-data/issues/161).
         /// </summary>
-        [DataMember(Name = "beta:availableChannel", EmitDefaultValue = false, Order = 1017)]
+        [DataMember(Name = "beta:availableChannel", EmitDefaultValue = false, Order = 1020)]
         public virtual List<AvailableChannelType> AvailableChannel { get; set; }
 
     }

@@ -20,5 +20,14 @@ namespace OpenActive.NET
         public override string Type => "PartialSchedule";
 
         
+        /// <summary>
+        /// [NOTICE: This is a beta field, and is highly likely to change in future versions of this library.] 
+        /// The time zone used to generate occurrences, same as iCal TZID. E.g. 'Europe/London'.
+        /// 
+        /// If you are using this property, please join the discussion at proposal [#197](https://github.com/openactive/modelling-opportunity-data/issues/197).
+        /// </summary>
+        [DataMember(Name = "beta:timeZone", EmitDefaultValue = false, Order = 1007)]
+        public virtual string TimeZone { get; set; }
+
     }
 }
