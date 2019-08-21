@@ -216,7 +216,7 @@ function obsoleteNotInSpecFields(model, models) {
                 augFields[field].obsolete = true;
             }
         } else {
-            throw new Error('notInSpec field not found in parent');
+            throw new Error('notInSpec field "' + field + '" not found in parent for model "' + model.type + '"');
         }
     });
 
@@ -238,7 +238,8 @@ function obsoleteNotInSpecFields(model, models) {
 
 
 
-function calculateInherits(subClassOf, derivedFrom) {
+function calculateInherits(subClassOf, derivedFrom, model) {
+    // Prioritise subClassOf over derivedFrom
     if (subClassOf) {
         var subClassOfName = convertToCamelCase(getPropNameFromFQP(subClassOf));
         if (includedInSchema(subClassOf)) {
@@ -323,7 +324,7 @@ function createModelFile(model, models, extensions, enumMap) {
     var derivedFrom = getPropertyWithInheritance("derivedFrom", model, models);
     var derivedFromName = convertToCamelCase(getPropNameFromFQP(derivedFrom));
 
-    var inherits = calculateInherits(model.subClassOf, derivedFrom);
+    var inherits = calculateInherits(model.subClassOf, derivedFrom, model);
 
     // Note hasBaseClass is used here to ensure that assumptions about schema.org fields requiring overrides are not applied if the base class doesn't exist in the model
     var hasBaseClass = inherits != "Schema.NET.JsonLdObject";
@@ -428,6 +429,7 @@ function getDotNetBaseType(prefixedTypeName, enumMap, modelsMap, isExtension) {
         case "Duration":
             return "TimeSpan?";
         case "URL":
+        case "Property":
             return "Uri";
         default:
             if (enumMap[typeName]) {
