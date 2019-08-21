@@ -1,5 +1,99 @@
-# OpenActive.NET
-OpenActive.io objects turned into strongly typed C# POCO classes for use in .NET. All classes can be serialized into JSON/JSON-LD, to provide easy conformance with the [OpenActive Modelling Specification](https://www.openactive.io/modelling-opportunity-data/).
+# OpenActive.NET RPDE Feed Publishing [![Nuget](https://img.shields.io/nuget/v/OpenActive.NET.svg)](https://www.nuget.org/packages/OpenActive.NET/)
+
+To publish an OpenActive data feed (see this [video explainer](https://developer.openactive.io/publishing-data/data-feeds/how-a-data-feed-works)), OpenActive.NET provides a drop-in solution to render the feed pages. This also includes validation for the underlying feed query.
+
+Implementation requires implementing `ConvertToOpenActiveModel` to return an instance of e.g. `OpenActive.NET.ScheduledSession` or `OpenActive.NET.Event` as per the OpenActive.NET Model section below.
+
+```C#
+using OpenActive.NET.Rpde.Version1;
+
+public abstract class RPDEBase<IDType, DatabaseType, ItemType> where DatabaseType : RPDEBase<IDType, DatabaseType, ItemType>, new() where ItemType : Schema.NET.Thing where IDType : IEquatable<IDType>, IComparable
+{
+    protected abstract RpdeKind RpdeKind { get; }
+    
+    protected abstract ItemType ConvertToOpenActiveModel(DatabaseType record, string baseUrl);
+
+    private async Task<RpdeBody<IDType, ItemType>> GetRPDEPage(long? afterChangeNumber, string feedUrl, string baseUrl, int limit)
+    {
+        var items = new List<RpdeItem<IDType, ItemType>>();
+
+        DatabaseFactory.ColumnSerializer = new NPocoSerializer();
+        using (Database db = new Database("DefaultConnection"))
+        {
+            // Get the table name manually as we are constructing the query by hand
+            var tableName = db.PocoDataFactory.ForType(typeof(DatabaseType)).TableInfo.TableName;
+
+            // Query for paging as shown in https://www.openactive.io/realtime-paged-data-exchange/#incrementing-unique-change-number
+            // Note due to the issues with big endian vs little endian conversion when converting from rowversion in SQL Server to int64 in C#, it is best to do the
+            // conversion in both directions in SQL Server, as below
+            var whereClause = afterChangeNumber != null ? "WHERE Modified > Convert(ROWVERSION, @0)" : "";
+            var results = await db.QueryAsync<DatabaseType>($"SELECT TOP {limit} Convert(BIGINT,Modified) as ChangeNumber, u.* from {tableName} u (nolock) {whereClause} ORDER BY Modified", afterChangeNumber);
+
+            items = results.Select(row => new RpdeItem<IDType, ItemType>
+            {
+                Id = row.ID,
+                Modified = row.modified,
+                Data = row.Deleted ? null : ConvertToOpenActiveModel(row, baseUrl),
+                State = row.Deleted ? RpdeState.Deleted : RpdeState.Updated,
+                Kind = RpdeKind
+            }).ToList();
+        }
+
+        return new RpdeBody<IDType, ItemType>(feedUrl, afterChangeNumber, items);
+    }
+    
+    public static async Task<HttpResponseMessage> ServeRPDEPage(HttpRequestMessage req, int limit)
+    {
+        // parse query parameter 'afterChangeNumber'
+        long? afterChangeNumber = Convert.ToInt64(req.GetQueryNameValuePairs()
+            .FirstOrDefault(q => string.Compare(q.Key, "afterChangeNumber", true) == 0)
+            .Value);
+
+        // Get base Urls
+        var urlHelper = new System.Web.Mvc.UrlHelper(HttpContext.Current.Request.RequestContext);
+        var baseUrl = req.RequestUri.RewriteHttps().GetLeftPart(UriPartial.Authority) + urlHelper.Content("~/");
+        var feedUrl = req.RequestUri.RewriteHttps().GetLeftPart(UriPartial.Path);
+
+        // Instantiate DatabaseType to make use of inheritance in GetRPDEPage
+        var rpdePage = await (new DatabaseType()).GetRPDEPage(afterChangeNumber, feedUrl, baseUrl, limit);
+
+        // If no page returned, return error
+        if (rpdePage == null)
+        {
+            return req.CreateResponse(HttpStatusCode.BadRequest, "Invalid parameters");
+        }
+
+        // Render reponse as JSON
+        var response = req.CreateResponse(HttpStatusCode.OK);
+        response.Content = rpdePage.ToStringContent();
+
+        // Always use MaxAge cache header for a full page
+        if (rpdePage?.Items?.Count > 0)
+        {
+            response.Headers.CacheControl = new CacheControlHeaderValue()
+            {
+                Public = true,
+                MaxAge = TimeSpan.FromHours(1),
+                SharedMaxAge = TimeSpan.FromHours(1)
+            };
+        }
+        else
+        {
+            response.Headers.CacheControl = new CacheControlHeaderValue()
+            {
+                Public = true,
+                MaxAge = TimeSpan.FromSeconds(8),
+                SharedMaxAge = TimeSpan.FromSeconds(8)
+            };
+        }
+        return response;
+    }    
+}
+```
+
+
+# OpenActive.NET Model
+OpenActive.NET also includes OpenActive.io objects turned into strongly typed C# POCO classes for use in .NET. All classes can be serialized into JSON/JSON-LD, to provide easy conformance with the [OpenActive Modelling Specification](https://www.openactive.io/modelling-opportunity-data/).
 
 ## Simple Example
 
