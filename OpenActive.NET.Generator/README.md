@@ -4,5 +4,5 @@ This Node.js script uses the https://github.com/openactive/data-models/ reposito
 
 ## How to run the generator outside of Visual Studio
 
-`npm install`
-`npm start`
+1. `npm install`
+2. `npm start`
