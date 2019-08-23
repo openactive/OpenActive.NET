@@ -33,13 +33,6 @@ namespace OpenActive.NET
 
 
         /// <summary>
-        /// Additional human-readable version of the value of the property.
-        /// </summary>
-        [DataMember(Name = "description", EmitDefaultValue = false, Order = 8)]
-        public new virtual string Description { get; set; }
-
-
-        /// <summary>
         /// A commonly used identifier for the characteristic represented by the property
         /// </summary>
         /// <example>
@@ -47,7 +40,7 @@ namespace OpenActive.NET
         /// "propertyID": "ActivePlaces"
         /// </code>
         /// </example>
-        [DataMember(Name = "propertyID", EmitDefaultValue = false, Order = 9)]
+        [DataMember(Name = "propertyID", EmitDefaultValue = false, Order = 8)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual SingleValues<string, Uri> PropertyID { get; set; }
 
@@ -60,7 +53,7 @@ namespace OpenActive.NET
         /// "value": "SB1234"
         /// </code>
         /// </example>
-        [DataMember(Name = "value", EmitDefaultValue = false, Order = 10)]
+        [DataMember(Name = "value", EmitDefaultValue = false, Order = 9)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual SingleValues<int?, string> Value { get; set; }
 

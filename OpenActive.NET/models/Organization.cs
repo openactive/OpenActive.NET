@@ -58,13 +58,6 @@ namespace OpenActive.NET
 
 
         /// <summary>
-        /// Address of the Seller, used on tax receipts.
-        /// </summary>
-        [DataMember(Name = "address", EmitDefaultValue = false, Order = 10)]
-        public new virtual PostalAddress Address { get; set; }
-
-
-        /// <summary>
         /// General enquiries e-mail address for the organization.
         /// </summary>
         /// <example>
@@ -72,7 +65,7 @@ namespace OpenActive.NET
         /// "email": "info@example.com"
         /// </code>
         /// </example>
-        [DataMember(Name = "email", EmitDefaultValue = false, Order = 11)]
+        [DataMember(Name = "email", EmitDefaultValue = false, Order = 10)]
         public new virtual string Email { get; set; }
 
 
@@ -84,7 +77,7 @@ namespace OpenActive.NET
         /// "legalName": "Central Speedball Ltd"
         /// </code>
         /// </example>
-        [DataMember(Name = "legalName", EmitDefaultValue = false, Order = 12)]
+        [DataMember(Name = "legalName", EmitDefaultValue = false, Order = 11)]
         public new virtual string LegalName { get; set; }
 
 
@@ -99,7 +92,7 @@ namespace OpenActive.NET
         /// }
         /// </code>
         /// </example>
-        [DataMember(Name = "logo", EmitDefaultValue = false, Order = 13)]
+        [DataMember(Name = "logo", EmitDefaultValue = false, Order = 12)]
         public new virtual ImageObject Logo { get; set; }
 
 
@@ -114,15 +107,8 @@ namespace OpenActive.NET
         /// ]
         /// </code>
         /// </example>
-        [DataMember(Name = "sameAs", EmitDefaultValue = false, Order = 14)]
+        [DataMember(Name = "sameAs", EmitDefaultValue = false, Order = 13)]
         public new virtual List<Uri> SameAs { get; set; }
-
-
-        /// <summary>
-        /// Either  https://openactive/TaxNet or  https://openactive/TaxGross
-        /// </summary>
-        [DataMember(Name = "taxMode", EmitDefaultValue = false, Order = 15)]
-        public new virtual TaxMode? TaxMode { get; set; }
 
 
         /// <summary>
@@ -133,15 +119,8 @@ namespace OpenActive.NET
         /// "telephone": "01234 567890"
         /// </code>
         /// </example>
-        [DataMember(Name = "telephone", EmitDefaultValue = false, Order = 16)]
+        [DataMember(Name = "telephone", EmitDefaultValue = false, Order = 14)]
         public new virtual string Telephone { get; set; }
-
-
-        /// <summary>
-        /// The terms of service of the Seller.
-        /// </summary>
-        [DataMember(Name = "termsOfService", EmitDefaultValue = false, Order = 17)]
-        public new virtual List<Terms> TermsOfService { get; set; }
 
 
         /// <summary>
@@ -152,15 +131,8 @@ namespace OpenActive.NET
         /// "url": "http://www.speedball-world.com"
         /// </code>
         /// </example>
-        [DataMember(Name = "url", EmitDefaultValue = false, Order = 18)]
+        [DataMember(Name = "url", EmitDefaultValue = false, Order = 15)]
         public new virtual Uri Url { get; set; }
-
-
-        /// <summary>
-        /// The Value-added Tax ID of the of the Seller.
-        /// </summary>
-        [DataMember(Name = "vatID", EmitDefaultValue = false, Order = 19)]
-        public new virtual string VatID { get; set; }
 
 
         /// <summary>
@@ -169,7 +141,7 @@ namespace OpenActive.NET
         /// 
         /// If you are using this property, please join the discussion at proposal [#88](https://github.com/openactive/modelling-opportunity-data/issues/88).
         /// </summary>
-        [DataMember(Name = "beta:video", EmitDefaultValue = false, Order = 1020)]
+        [DataMember(Name = "beta:video", EmitDefaultValue = false, Order = 1016)]
         public virtual List<Schema.NET.VideoObject> Video { get; set; }
 
 
@@ -179,7 +151,7 @@ namespace OpenActive.NET
         /// 
         /// If you are using this property, please join the discussion at proposal [#2](https://github.com/openactive/ns-beta/issues/2).
         /// </summary>
-        [DataMember(Name = "beta:formattedDescription", EmitDefaultValue = false, Order = 1021)]
+        [DataMember(Name = "beta:formattedDescription", EmitDefaultValue = false, Order = 1017)]
         public virtual string FormattedDescription { get; set; }
 
     }
