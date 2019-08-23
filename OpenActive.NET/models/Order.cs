@@ -105,16 +105,23 @@ namespace OpenActive.NET
 
 
         /// <summary>
+        /// Set to true when business-to-business tax calculation is required by the seller or brokerRole settings, but not supported by the Broker.
+        /// </summary>
+        [DataMember(Name = "taxCalculationExcluded", EmitDefaultValue = false, Order = 18)]
+        public new virtual bool? TaxCalculationExcluded { get; set; }
+
+
+        /// <summary>
         /// 
         /// </summary>
-        [DataMember(Name = "totalPaymentDue", EmitDefaultValue = false, Order = 18)]
+        [DataMember(Name = "totalPaymentDue", EmitDefaultValue = false, Order = 19)]
         public new virtual PriceSpecification TotalPaymentDue { get; set; }
 
 
         /// <summary>
         /// Breakdown of tax payable for the Order.
         /// </summary>
-        [DataMember(Name = "totalPaymentTax", EmitDefaultValue = false, Order = 19)]
+        [DataMember(Name = "totalPaymentTax", EmitDefaultValue = false, Order = 20)]
         public virtual List<TaxChargeSpecification> TotalPaymentTax { get; set; }
 
     }
