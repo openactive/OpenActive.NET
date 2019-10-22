@@ -26,12 +26,13 @@ namespace OpenActive.NET
         /// </summary>
         private static readonly JsonSerializerSettings SerializerSettings = new JsonSerializerSettings()
         {
-            NullValueHandling = NullValueHandling.Ignore,
             Converters = new List<JsonConverter>()
             {
                 new StringEnumConverter(),
                 new DecimalConverter()
             },
+            NullValueHandling = NullValueHandling.Ignore,
+            DefaultValueHandling = DefaultValueHandling.Ignore,
             ContractResolver = NoEmptyStringsContractResolver.Instance
         };
 
@@ -47,6 +48,7 @@ namespace OpenActive.NET
                 new DecimalConverter()
             },
             NullValueHandling = NullValueHandling.Ignore,
+            DefaultValueHandling = DefaultValueHandling.Ignore,
             ContractResolver = NoEmptyStringsContractResolver.Instance,
             StringEscapeHandling = StringEscapeHandling.EscapeHtml
         };

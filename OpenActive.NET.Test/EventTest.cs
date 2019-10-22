@@ -18,6 +18,9 @@ namespace OpenActive.NET.Test
             this.output = output;
         }
 
+        private static readonly string NullString = null;
+        private static readonly RequiredStatusType? NullRequiredStatusType = null;
+
         private readonly SessionSeries @event = new OpenActive.NET.SessionSeries()
         {
             Name = "Virtual BODYPUMP",
@@ -26,6 +29,7 @@ namespace OpenActive.NET.Test
             StartDate = new DateTimeOffset(2017, 4, 24, 19, 30, 0, TimeSpan.FromHours(-8)),
             Location = new Place()
             {
+                Id = null, // Should be ignored
                 Name = "Santa Clara City Library, Central Park Library",
                 Address = new PostalAddress()
                 {
@@ -38,25 +42,34 @@ namespace OpenActive.NET.Test
             },
             Image = new List<ImageObject>() { new ImageObject { Url = new Uri("http://www.example.com/event_image/12345") } },
             EndDate = new DateTimeOffset(2017, 4, 24, 23, 0, 0, TimeSpan.FromHours(-8)),
-            Offers = new List<Offer>() { new IndicativeOffer()
+            Offers = new List<Offer>() { new Offer()
             {
-                Url = new Uri("https://www.example.com/event_offer/12345_201803180430"), 
-                Price = 30, 
-                PriceCurrency = "USD", 
-                ValidFrom = new DateTimeOffset(2017, 1, 20, 16, 20, 0, TimeSpan.FromHours(-8))
+                AdvanceBooking = NullRequiredStatusType,
+                Url = new Uri("https://www.example.com/event_offer/12345_201803180430"),
+                Price = 30,
+                PriceCurrency = "USD",
+                ValidFrom = new DateTimeOffset(2017, 1, 20, 16, 20, 0, TimeSpan.FromHours(-8)),
+                Category = NullString
             } },
             AttendeeInstructions = "Ensure you bring trainers and a bottle of water.",
-            MeetingPoint = ""
+            MeetingPoint = "",
+            AccessibilityInformation = NullString
         };
 
         private readonly string json =
         "{" +
             "\"@context\":\"https://openactive.io/\"," +
             "\"type\":\"SessionSeries\"," +
-            "\"name\":\"Jan Lieberman Concert Series: Journey in Jazz\"," +
-            "\"description\":\"Join us for an afternoon of Jazz with Santa Clara resident and pianist Andy Lagunoff. Complimentary food and beverages will be served.\"," +
-            "\"image\":\"http://www.example.com/event_image/12345\"," +
+            "\"name\":\"Virtual BODYPUMP\"," +
+            "\"description\":\"This is the virtual version of the original barbell class, which will help you get lean, toned and fit - fast. Les Mills™ Virtual classes are designed for people who cannot get access to our live classes or who want to get a ‘taste’ of a Les Mills™ class before taking a live class with an instructor. The classes are played on a big video screen, with dimmed lighting and pumping surround sound, and are led onscreen by the people who actually choreograph the classes.\"," +
+            "\"attendeeInstructions\":\"Ensure you bring trainers and a bottle of water.\"," +
             "\"duration\":\"P1D\"," +
+            "\"image\":[" +
+                "{" +
+                    "\"type\":\"ImageObject\"," +
+                    "\"url\":\"http://www.example.com/event_image/12345\"" +
+                "}" +
+            "]," +
             "\"location\":{" +
                 "\"type\":\"Place\"," +
                 "\"name\":\"Santa Clara City Library, Central Park Library\"," +
@@ -69,21 +82,17 @@ namespace OpenActive.NET.Test
                     "\"streetAddress\":\"2635 Homestead Rd\"" +
                 "}" +
             "}," +
-            "\"offers\":{" +
-                "\"type\":\"Offer\"," +
-                "\"url\":\"https://www.example.com/event_offer/12345_201803180430\"," +
-                "\"availability\":\"http://schema.org/InStock\"," +
-                "\"price\":30.0," +
-                "\"priceCurrency\":\"USD\"," +
-                "\"validFrom\":\"2017-01-20T16:20:00-08:00\"" +
-            "}," +
-            "\"performer\":{" +
-                "\"type\":\"Person\"," +
-                "\"name\":\"Andy Lagunoff\"" +
-            "}," +
+            "\"offers\":[" +
+                "{" +
+                    "\"type\":\"Offer\"," +
+                    "\"price\":30.0," +
+                    "\"priceCurrency\":\"USD\"," +
+                    "\"url\":\"https://www.example.com/event_offer/12345_201803180430\"," +
+                    "\"validFrom\":\"2017-01-20T16:20:00-08:00\"" +
+                "}" +
+            "]," +
             "\"startDate\":\"2017-04-24T19:30:00-08:00\"," +
-            "\"endDate\":\"2017-04-24T23:00:00-08:00\"," +
-            "\"attendeeInstructions\":\"fun!\"" +
+            "\"endDate\":\"2017-04-24T23:00:00-08:00\"" +
         "}";
 
         [Fact]
@@ -102,6 +111,24 @@ namespace OpenActive.NET.Test
         [Fact]
         public void ToString_OfferCast()
         {
+            var json =
+            "{" + 
+                "\"@context\":[" +
+                    "\"https://openactive.io/\"," +
+                    "\"https://openactive.io/ns-beta\"" +
+                "]," +
+                "\"type\":\"Event\"," +
+                "\"offers\":[" +
+                    "{" +
+                        "\"type\":\"beta:IndicativeOffer\"," +
+                        "\"price\":30.0," +
+                        "\"priceCurrency\":\"USD\"," +
+                        "\"url\":\"https://www.example.com/event_offer/12345_201803180430\"," +
+                        "\"validFrom\":\"2017-01-20T16:20:00-08:00\"" +
+                    "}" +
+                "]" +
+            "}";
+
             var ev = new Event
             {
                 Offers = (new List<IndicativeOffer>() { new IndicativeOffer()
@@ -114,13 +141,13 @@ namespace OpenActive.NET.Test
             };
             
             output.WriteLine(ev.ToOpenActiveString());
-            Assert.Equal("Santa Clara City Library, Central Park Library", ev.ToOpenActiveString());
+            Assert.Equal(json, ev.ToOpenActiveString());
         }
 
         [Fact]
         public void ToString_EncodeDecode ()
         {
-            var original = "{\"type\":\"Concept\",\"id\":\"https://openactive.io/facility-types#37bbed12-270b-42b1-9af2-70f0273990dd\",\"prefLabel\":\"Grass\",\"inScheme\":\"https://openactive.io/facility-types\"}";
+            var original = "{\"@context\":\"https://openactive.io/\",\"type\":\"Concept\",\"id\":\"https://openactive.io/facility-types#37bbed12-270b-42b1-9af2-70f0273990dd\",\"inScheme\":\"https://openactive.io/facility-types\",\"prefLabel\":\"Grass\"}";
             var decode = OpenActiveSerializer.Deserialize<Concept>(original);
             var encode = OpenActiveSerializer.Serialize(decode);
 
@@ -134,7 +161,7 @@ namespace OpenActive.NET.Test
         [Fact]
         public void ToString_EncodeDecodeList()
         {
-            var originalList = "[{\"type\":\"Concept\",\"id\":\"https://openactive.io/facility-types#37bbed12-270b-42b1-9af2-70f0273990dd\",\"prefLabel\":\"Grass\",\"inScheme\":\"https://openactive.io/facility-types\"}]";
+            var originalList = "[{\"@context\":\"https://openactive.io/\",\"type\":\"Concept\",\"id\":\"https://openactive.io/facility-types#37bbed12-270b-42b1-9af2-70f0273990dd\",\"inScheme\":\"https://openactive.io/facility-types\",\"prefLabel\":\"Grass\"}]";
             var decodeList = OpenActiveSerializer.Deserialize<List<Concept>>(originalList);
             var encodeList = OpenActiveSerializer.Serialize(decodeList);
 
@@ -154,7 +181,7 @@ namespace OpenActive.NET.Test
                 Url = new Uri("https://www.example.com/event_offer/12345_201803180430"),
                 Price = 30,
                 PriceCurrency = "USD",
-                ValidFrom = new DateTimeOffset(2017, 1, 20, 16, 20, 0, TimeSpan.FromHours(-8))
+                ValidFrom = new DateTimeOffset(2017, 1, 20, 16, 20, 0, TimeSpan.FromHours(0))
             };
 
             var encode = offer.ToOpenActiveString();
