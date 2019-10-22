@@ -20,6 +20,7 @@ namespace OpenActive.NET.Test
 
         private static readonly string NullString = null;
         private static readonly RequiredStatusType? NullRequiredStatusType = null;
+        private static readonly Person NullPerson = null;
 
         private readonly SessionSeries @event = new OpenActive.NET.SessionSeries()
         {
@@ -51,6 +52,7 @@ namespace OpenActive.NET.Test
                 ValidFrom = new DateTimeOffset(2017, 1, 20, 16, 20, 0, TimeSpan.FromHours(-8)),
                 Category = NullString
             } },
+            Organizer = NullPerson,
             AttendeeInstructions = "Ensure you bring trainers and a bottle of water.",
             MeetingPoint = "",
             AccessibilityInformation = NullString
