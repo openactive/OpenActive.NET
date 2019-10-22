@@ -123,8 +123,6 @@ namespace OpenActive.NET
             // Replace OpenActive context and properties
             stringBuilder.Replace(ContextPropertyJson, string.Empty, startIndex, stringBuilder.Length - startIndex);
             stringBuilder.Replace(ContextPropertyJson, contextString, 0, startIndex);
-            stringBuilder.Replace(SchemaIdJson, OpenActiveIdJson, 0, stringBuilder.Length);
-            stringBuilder.Replace(SchemaTypeJson, OpenActiveTypeJson, 0, stringBuilder.Length);
             return stringBuilder.ToString();
         }
 

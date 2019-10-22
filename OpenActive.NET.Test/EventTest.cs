@@ -61,22 +61,22 @@ namespace OpenActive.NET.Test
         private readonly string json =
         "{" +
             "\"@context\":\"https://openactive.io/\"," +
-            "\"type\":\"SessionSeries\"," +
+            "\"@type\":\"SessionSeries\"," +
             "\"name\":\"Virtual BODYPUMP\"," +
             "\"description\":\"This is the virtual version of the original barbell class, which will help you get lean, toned and fit - fast. Les Mills™ Virtual classes are designed for people who cannot get access to our live classes or who want to get a ‘taste’ of a Les Mills™ class before taking a live class with an instructor. The classes are played on a big video screen, with dimmed lighting and pumping surround sound, and are led onscreen by the people who actually choreograph the classes.\"," +
             "\"attendeeInstructions\":\"Ensure you bring trainers and a bottle of water.\"," +
             "\"duration\":\"P1D\"," +
             "\"image\":[" +
                 "{" +
-                    "\"type\":\"ImageObject\"," +
+                    "\"@type\":\"ImageObject\"," +
                     "\"url\":\"http://www.example.com/event_image/12345\"" +
                 "}" +
             "]," +
             "\"location\":{" +
-                "\"type\":\"Place\"," +
+                "\"@type\":\"Place\"," +
                 "\"name\":\"Santa Clara City Library, Central Park Library\"," +
                 "\"address\":{" +
-                    "\"type\":\"PostalAddress\"," +
+                    "\"@type\":\"PostalAddress\"," +
                     "\"addressCountry\":\"US\"," +
                     "\"addressLocality\":\"Santa Clara\"," +
                     "\"addressRegion\":\"CA\"," +
@@ -86,7 +86,7 @@ namespace OpenActive.NET.Test
             "}," +
             "\"offers\":[" +
                 "{" +
-                    "\"type\":\"Offer\"," +
+                    "\"@type\":\"Offer\"," +
                     "\"price\":30.0," +
                     "\"priceCurrency\":\"USD\"," +
                     "\"url\":\"https://www.example.com/event_offer/12345_201803180430\"," +
@@ -119,10 +119,10 @@ namespace OpenActive.NET.Test
                     "\"https://openactive.io/\"," +
                     "\"https://openactive.io/ns-beta\"" +
                 "]," +
-                "\"type\":\"Event\"," +
+                "\"@type\":\"Event\"," +
                 "\"offers\":[" +
                     "{" +
-                        "\"type\":\"beta:IndicativeOffer\"," +
+                        "\"@type\":\"beta:IndicativeOffer\"," +
                         "\"price\":30.0," +
                         "\"priceCurrency\":\"USD\"," +
                         "\"url\":\"https://www.example.com/event_offer/12345_201803180430\"," +
@@ -149,7 +149,7 @@ namespace OpenActive.NET.Test
         [Fact]
         public void ToString_EncodeDecode ()
         {
-            var original = "{\"@context\":\"https://openactive.io/\",\"type\":\"Concept\",\"id\":\"https://openactive.io/facility-types#37bbed12-270b-42b1-9af2-70f0273990dd\",\"inScheme\":\"https://openactive.io/facility-types\",\"prefLabel\":\"Grass\"}";
+            var original = "{\"@context\":\"https://openactive.io/\",\"@type\":\"Concept\",\"@id\":\"https://openactive.io/facility-types#37bbed12-270b-42b1-9af2-70f0273990dd\",\"inScheme\":\"https://openactive.io/facility-types\",\"prefLabel\":\"Grass\"}";
             var decode = OpenActiveSerializer.Deserialize<Concept>(original);
             var encode = OpenActiveSerializer.Serialize(decode);
 
@@ -163,7 +163,7 @@ namespace OpenActive.NET.Test
         [Fact]
         public void ToString_EncodeDecodeList()
         {
-            var originalList = "[{\"@context\":\"https://openactive.io/\",\"type\":\"Concept\",\"id\":\"https://openactive.io/facility-types#37bbed12-270b-42b1-9af2-70f0273990dd\",\"inScheme\":\"https://openactive.io/facility-types\",\"prefLabel\":\"Grass\"}]";
+            var originalList = "[{\"@context\":\"https://openactive.io/\",\"@type\":\"Concept\",\"@id\":\"https://openactive.io/facility-types#37bbed12-270b-42b1-9af2-70f0273990dd\",\"inScheme\":\"https://openactive.io/facility-types\",\"prefLabel\":\"Grass\"}]";
             var decodeList = OpenActiveSerializer.Deserialize<List<Concept>>(originalList);
             var encodeList = OpenActiveSerializer.Serialize(decodeList);
 
