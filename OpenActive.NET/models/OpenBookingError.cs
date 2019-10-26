@@ -48,35 +48,35 @@ namespace OpenActive.NET
         /// The requested URL.
         /// </summary>
         [DataMember(Name = "instance", EmitDefaultValue = false, Order = 9)]
-        public new virtual Uri Instance { get; set; }
+        public virtual Uri Instance { get; set; }
 
 
         /// <summary>
         /// An array of invalid parameters, if appropriate.
         /// </summary>
         [DataMember(Name = "invalidParams", EmitDefaultValue = false, Order = 10)]
-        public new virtual List<string> InvalidParams { get; set; }
+        public virtual List<string> InvalidParams { get; set; }
 
 
         /// <summary>
         /// The method of the request (e.g. GET).
         /// </summary>
         [DataMember(Name = "method", EmitDefaultValue = false, Order = 11)]
-        public new virtual string Method { get; set; }
+        public virtual string Method { get; set; }
 
 
         /// <summary>
         /// Used by technical support for diagnostics purposes.
         /// </summary>
         [DataMember(Name = "requestId", EmitDefaultValue = false, Order = 12)]
-        public new virtual string RequestId { get; set; }
+        public virtual string RequestId { get; set; }
 
 
         /// <summary>
         /// An integer representing the HTTP status code.
         /// </summary>
         [DataMember(Name = "status", EmitDefaultValue = false, Order = 13)]
-        public new virtual int? Status { get; set; }
+        public virtual int? Status { get; set; }
 
     }
 }

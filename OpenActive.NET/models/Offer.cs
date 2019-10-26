@@ -81,7 +81,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "advanceBooking", EmitDefaultValue = false, Order = 11)]
-        public new virtual RequiredStatusType? AdvanceBooking { get; set; }
+        public virtual RequiredStatusType? AdvanceBooking { get; set; }
 
 
         /// <summary>
@@ -112,7 +112,7 @@ namespace OpenActive.NET
         /// Can include  https://openactive.io/OpenBookingIntakeForm,  https://openactive.io/OpenBookingAttendeeDetails,  https://openactive.io/OpenBookingApproval,  https://openactive.io/OpenBookingNegotiation,  https://openactive.io/OpenBookingMessageExchange
         /// </summary>
         [DataMember(Name = "openBookingFlowRequirement", EmitDefaultValue = false, Order = 14)]
-        public new virtual List<OpenBookingFlowRequirement> OpenBookingFlowRequirement { get; set; }
+        public virtual List<OpenBookingFlowRequirement> OpenBookingFlowRequirement { get; set; }
 
 
         /// <summary>
@@ -124,7 +124,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "prepayment", EmitDefaultValue = false, Order = 15)]
-        public new virtual RequiredStatusType? Prepayment { get; set; }
+        public virtual RequiredStatusType? Prepayment { get; set; }
 
 
         /// <summary>

@@ -119,10 +119,10 @@ namespace OpenActive.NET
 
 
         /// <summary>
-        /// Either  https://openactive/TaxNet or  https://openactive/TaxGross
+        /// Either  https://openactive.io/TaxNet or  https://openactive.io/TaxGross
         /// </summary>
         [DataMember(Name = "taxMode", EmitDefaultValue = false, Order = 15)]
-        public new virtual TaxMode? TaxMode { get; set; }
+        public virtual TaxMode? TaxMode { get; set; }
 
 
         /// <summary>
@@ -141,7 +141,7 @@ namespace OpenActive.NET
         /// The terms of service of the Seller.
         /// </summary>
         [DataMember(Name = "termsOfService", EmitDefaultValue = false, Order = 17)]
-        public new virtual List<Terms> TermsOfService { get; set; }
+        public virtual List<Terms> TermsOfService { get; set; }
 
 
         /// <summary>

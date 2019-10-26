@@ -195,6 +195,23 @@ function getPropertyWithInheritance(prop, model, models) {
     return null;
 }
 
+function getBaseSchemaClass(model, models) {
+    if (typeof model.derivedFrom !== 'undefined') {
+        return model.derivedFrom;
+    } else if (typeof model.subClassOf !== 'undefined') {
+        if (model.subClassOf.match(/^#[A-Za-z]+$/)) {
+            const parentModel = getParentModel(model, models);
+            if (parentModel) {
+                return getBaseSchemaClass(parentModel, models);
+            }
+        } else {
+            return model.subClassOf;
+        }
+    }
+
+    return null;
+}
+
 function getMergedPropertyWithInheritance(prop, model, models) {
     var thisProp = model[prop] || [];
     var parentModel = getParentModel(model, models);
@@ -321,10 +338,12 @@ function createModelFile(model, models, extensions, enumMap) {
     var fullFields = obsoleteNotInSpecFields(model, models);
     var fullFieldsList = Object.values(fullFields).sort(compareFields).map((field, index) => { field.order = index + 6; return field; });
     var fullModel = createFullModel(fullFields, model, models);
-    var derivedFrom = getPropertyWithInheritance("derivedFrom", model, models);
-    var derivedFromName = convertToCamelCase(getPropNameFromFQP(derivedFrom));
 
-    var inherits = calculateInherits(model.subClassOf, derivedFrom, model);
+    // baseSchemaClass is only used here for information
+    var baseSchemaClass = getBaseSchemaClass(model, models);
+    var baseSchemaClassName = convertToCamelCase(getPropNameFromFQP(baseSchemaClass));
+
+    var inherits = calculateInherits(model.subClassOf, model.derivedFrom, model);
 
     // Note hasBaseClass is used here to ensure that assumptions about schema.org fields requiring overrides are not applied if the base class doesn't exist in the model
     var hasBaseClass = inherits != "Schema.NET.JsonLdObject";
@@ -339,7 +358,7 @@ namespace OpenActive.NET
 {
     /// <summary>
     /// ${getPropNameFromFQP(model.type) != model.type ? `[NOTICE: This is a beta class, and is highly likely to change in future versions of this library.]. ` : ""}${createCommentFromDescription(model.description).replace(/\n/g,'\n    /// ')}
-    /// ${derivedFrom ? `This type is derived from [` + derivedFromName + `](` + derivedFrom + `)` + (derivedFrom.indexOf("schema.org") > -1 ? ", which means that any of this type's properties within schema.org may also be used. Note however the properties on this page must be used in preference if a relevant property is available" : "") + "." : ""}
+    /// ${baseSchemaClass ? `This type is derived from [` + baseSchemaClassName + `](` + baseSchemaClass + `)` + (baseSchemaClass.match(/^https:\/\/schema.org/) ? ", which means that any of this type's properties within schema.org may also be used. Note however the properties on this page must be used in preference if a relevant property is available" : "") + "." : ""}
     /// </summary>
     [DataContract]
     public partial class ${convertToCamelCase(getPropNameFromFQP(model.type))} : ${inherits}

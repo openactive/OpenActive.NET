@@ -93,7 +93,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "gender", EmitDefaultValue = false, Order = 12)]
-        public new virtual Schema.NET.GenderType? Gender { get; set; }
+        public virtual Schema.NET.GenderType? Gender { get; set; }
 
 
         /// <summary>
@@ -119,7 +119,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "jobTitle", EmitDefaultValue = false, Order = 14)]
-        public new virtual string JobTitle { get; set; }
+        public virtual string JobTitle { get; set; }
 
 
         /// <summary>

@@ -8,7 +8,7 @@ namespace OpenActive.NET
 {
     /// <summary>
     /// 
-    /// 
+    /// This type is derived from [Product](https://schema.org/Product), which means that any of this type's properties within schema.org may also be used. Note however the properties on this page must be used in preference if a relevant property is available.
     /// </summary>
     [DataContract]
     public partial class FacilityUse : Schema.NET.Product
@@ -65,7 +65,7 @@ namespace OpenActive.NET
         /// "accessibilityInformation": "This route has been British Cycling assessed as an accessible route, meaning it is suitable for the majority of adaptive bikes. The route will have no or low levels of traffic, there will be plenty of space and will have a good surface throughout. If you have any questions about using this route on an adaptive bike on this ride, please use visit https://www.letsride.co.uk/accessibility or call 0123 456 7000 and ask for the Recreation team."
         /// </code>
         /// </example>
-        [DataMember(Name = "accessibilityInformation", EmitDefaultValue = false, Order = 11)]
+        [DataMember(Name = "accessibilityInformation", EmitDefaultValue = false, Order = 10)]
         public virtual string AccessibilityInformation { get; set; }
 
 
@@ -84,7 +84,7 @@ namespace OpenActive.NET
         /// ]
         /// </code>
         /// </example>
-        [DataMember(Name = "accessibilitySupport", EmitDefaultValue = false, Order = 12)]
+        [DataMember(Name = "accessibilitySupport", EmitDefaultValue = false, Order = 11)]
         public virtual List<Concept> AccessibilitySupport { get; set; }
 
 
@@ -103,7 +103,7 @@ namespace OpenActive.NET
         /// ]
         /// </code>
         /// </example>
-        [DataMember(Name = "activity", EmitDefaultValue = false, Order = 13)]
+        [DataMember(Name = "activity", EmitDefaultValue = false, Order = 12)]
         public virtual List<Concept> Activity { get; set; }
 
 
@@ -115,7 +115,7 @@ namespace OpenActive.NET
         /// "attendeeInstructions": "The tennis court is locked with a keycode, so please ensure you book online in advance to gain access."
         /// </code>
         /// </example>
-        [DataMember(Name = "attendeeInstructions", EmitDefaultValue = false, Order = 14)]
+        [DataMember(Name = "attendeeInstructions", EmitDefaultValue = false, Order = 13)]
         public virtual string AttendeeInstructions { get; set; }
 
 
@@ -134,7 +134,7 @@ namespace OpenActive.NET
         /// ]
         /// </code>
         /// </example>
-        [DataMember(Name = "category", EmitDefaultValue = false, Order = 15)]
+        [DataMember(Name = "category", EmitDefaultValue = false, Order = 14)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual SingleValues<List<string>, List<Concept>> Category { get; set; }
 
@@ -157,14 +157,14 @@ namespace OpenActive.NET
         /// ]
         /// </code>
         /// </example>
-        [DataMember(Name = "event", EmitDefaultValue = false, Order = 16)]
+        [DataMember(Name = "event", EmitDefaultValue = false, Order = 15)]
         public new virtual List<Slot> Event { get; set; }
 
 
         /// <summary>
         /// The times the facility use is available
         /// </summary>
-        [DataMember(Name = "hoursAvailable", EmitDefaultValue = false, Order = 17)]
+        [DataMember(Name = "hoursAvailable", EmitDefaultValue = false, Order = 16)]
         public new virtual List<OpeningHoursSpecification> HoursAvailable { get; set; }
 
 
@@ -182,7 +182,7 @@ namespace OpenActive.NET
         /// ]
         /// </code>
         /// </example>
-        [DataMember(Name = "image", EmitDefaultValue = false, Order = 18)]
+        [DataMember(Name = "image", EmitDefaultValue = false, Order = 17)]
         public new virtual List<ImageObject> Image { get; set; }
 
 
@@ -200,7 +200,7 @@ namespace OpenActive.NET
         /// ]
         /// </code>
         /// </example>
-        [DataMember(Name = "individualFacilityUse", EmitDefaultValue = false, Order = 19)]
+        [DataMember(Name = "individualFacilityUse", EmitDefaultValue = false, Order = 18)]
         public virtual List<IndividualFacilityUse> IndividualFacilityUse { get; set; }
 
 
@@ -231,7 +231,7 @@ namespace OpenActive.NET
         /// }
         /// </code>
         /// </example>
-        [DataMember(Name = "location", EmitDefaultValue = false, Order = 20)]
+        [DataMember(Name = "location", EmitDefaultValue = false, Order = 19)]
         public new virtual Place Location { get; set; }
 
 
@@ -250,7 +250,7 @@ namespace OpenActive.NET
         /// }
         /// </code>
         /// </example>
-        [DataMember(Name = "offers", EmitDefaultValue = false, Order = 21)]
+        [DataMember(Name = "offers", EmitDefaultValue = false, Order = 20)]
         public new virtual List<Offer> Offers { get; set; }
 
 
@@ -273,7 +273,7 @@ namespace OpenActive.NET
         /// ]
         /// </code>
         /// </example>
-        [DataMember(Name = "potentialAction", EmitDefaultValue = false, Order = 22)]
+        [DataMember(Name = "potentialAction", EmitDefaultValue = false, Order = 21)]
         public new virtual List<Action> PotentialAction { get; set; }
 
 
@@ -289,7 +289,7 @@ namespace OpenActive.NET
         /// }
         /// </code>
         /// </example>
-        [DataMember(Name = "provider", EmitDefaultValue = false, Order = 23)]
+        [DataMember(Name = "provider", EmitDefaultValue = false, Order = 22)]
         public new virtual Organization Provider { get; set; }
 
 
@@ -301,7 +301,7 @@ namespace OpenActive.NET
         /// "url": "https://example.com/facility-use/1234"
         /// </code>
         /// </example>
-        [DataMember(Name = "url", EmitDefaultValue = false, Order = 24)]
+        [DataMember(Name = "url", EmitDefaultValue = false, Order = 23)]
         public new virtual Uri Url { get; set; }
 
 
@@ -311,17 +311,17 @@ namespace OpenActive.NET
         /// 
         /// If you are using this property, please join the discussion at proposal [#166](https://github.com/openactive/modelling-opportunity-data/issues/166).
         /// </summary>
-        [DataMember(Name = "beta:isWheelchairAccessible", EmitDefaultValue = false, Order = 1025)]
+        [DataMember(Name = "beta:isWheelchairAccessible", EmitDefaultValue = false, Order = 1024)]
         public virtual bool? IsWheelchairAccessible { get; set; }
 
 
         /// <summary>
         /// [NOTICE: This is a beta field, and is highly likely to change in future versions of this library.] 
-        /// Whether the facility is indoor or outdoor.
+        /// Whether the event or facility is indoor or outdoor.
         /// 
         /// If you are using this property, please join the discussion at proposal [#1](https://github.com/openactive/facility-types/issues/1).
         /// </summary>
-        [DataMember(Name = "beta:facilitySetting", EmitDefaultValue = false, Order = 1026)]
+        [DataMember(Name = "beta:facilitySetting", EmitDefaultValue = false, Order = 1025)]
         public virtual FacilitySettingType? FacilitySetting { get; set; }
 
 
@@ -331,7 +331,7 @@ namespace OpenActive.NET
         /// 
         /// If you are using this property, please join the discussion at proposal [#1](https://github.com/openactive/facility-types/issues/1).
         /// </summary>
-        [DataMember(Name = "beta:facilityType", EmitDefaultValue = false, Order = 1027)]
+        [DataMember(Name = "beta:facilityType", EmitDefaultValue = false, Order = 1026)]
         public virtual List<Concept> FacilityType { get; set; }
 
 
@@ -341,7 +341,7 @@ namespace OpenActive.NET
         /// 
         /// If you are using this property, please join the discussion at proposal [#204](https://github.com/openactive/modelling-opportunity-data/issues/204).
         /// </summary>
-        [DataMember(Name = "beta:offerValidityPeriod", EmitDefaultValue = false, Order = 1028)]
+        [DataMember(Name = "beta:offerValidityPeriod", EmitDefaultValue = false, Order = 1027)]
         [JsonConverter(typeof(OpenActiveTimeSpanToISO8601DurationValuesConverter))]
         public virtual TimeSpan? OfferValidityPeriod { get; set; }
 
@@ -352,7 +352,7 @@ namespace OpenActive.NET
         /// 
         /// If you are using this property, please join the discussion at proposal [#110](https://github.com/openactive/modelling-opportunity-data/issues/110).
         /// </summary>
-        [DataMember(Name = "beta:sportsActivityLocation", EmitDefaultValue = false, Order = 1029)]
+        [DataMember(Name = "beta:sportsActivityLocation", EmitDefaultValue = false, Order = 1028)]
         public virtual List<SportsActivityLocation> SportsActivityLocation { get; set; }
 
 
@@ -362,7 +362,7 @@ namespace OpenActive.NET
         /// 
         /// If you are using this property, please join the discussion at proposal [#88](https://github.com/openactive/modelling-opportunity-data/issues/88).
         /// </summary>
-        [DataMember(Name = "beta:video", EmitDefaultValue = false, Order = 1030)]
+        [DataMember(Name = "beta:video", EmitDefaultValue = false, Order = 1029)]
         public virtual List<Schema.NET.VideoObject> Video { get; set; }
 
 
@@ -372,7 +372,7 @@ namespace OpenActive.NET
         /// 
         /// If you are using this property, please join the discussion at proposal [#2](https://github.com/openactive/ns-beta/issues/2).
         /// </summary>
-        [DataMember(Name = "beta:formattedDescription", EmitDefaultValue = false, Order = 1031)]
+        [DataMember(Name = "beta:formattedDescription", EmitDefaultValue = false, Order = 1030)]
         public virtual string FormattedDescription { get; set; }
 
     }

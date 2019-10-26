@@ -41,14 +41,14 @@ namespace OpenActive.NET
 
 
         /// <summary>
-        /// The organisation or developer providing an application that allows Customers to make bookings. Those applications will be clients of the API defined in this specification. If brokerRole is set to https://openactive/NoBroker this is not required.
+        /// The organisation or developer providing an application that allows Customers to make bookings. Those applications will be clients of the API defined in this specification. If brokerRole is set to https://openactive.io/NoBroker this is not required.
         /// </summary>
         [DataMember(Name = "broker", EmitDefaultValue = false, Order = 9)]
         public new virtual Organization Broker { get; set; }
 
 
         /// <summary>
-        /// Either https://openactive/AgentBroker,  https://openactive/ResellerBroker or  https://openactive/NoBroker, as agreed in advance between the Broker and Seller.
+        /// Either https://openactive.io/AgentBroker,  https://openactive.io/ResellerBroker or  https://openactive.io/NoBroker, as agreed in advance between the Broker and Seller.
         /// </summary>
         [DataMember(Name = "brokerRole", EmitDefaultValue = false, Order = 10)]
         public virtual BrokerType? BrokerRole { get; set; }
@@ -108,7 +108,7 @@ namespace OpenActive.NET
         /// Set to true when business-to-business tax calculation is required by the seller or brokerRole settings, but not supported by the Broker.
         /// </summary>
         [DataMember(Name = "taxCalculationExcluded", EmitDefaultValue = false, Order = 18)]
-        public new virtual bool? TaxCalculationExcluded { get; set; }
+        public virtual bool? TaxCalculationExcluded { get; set; }
 
 
         /// <summary>

@@ -8,7 +8,7 @@ namespace OpenActive.NET
 {
     /// <summary>
     /// 
-    /// 
+    /// This type is derived from [Service](https://schema.org/Service), which means that any of this type's properties within schema.org may also be used. Note however the properties on this page must be used in preference if a relevant property is available.
     /// </summary>
     [DataContract]
     public partial class BookingService : Schema.NET.Service
@@ -31,7 +31,7 @@ namespace OpenActive.NET
         /// The terms of service of the Booking System.
         /// </summary>
         [DataMember(Name = "termsOfService", EmitDefaultValue = false, Order = 8)]
-        public new virtual List<Terms> TermsOfService { get; set; }
+        public virtual List<Terms> TermsOfService { get; set; }
 
 
         /// <summary>

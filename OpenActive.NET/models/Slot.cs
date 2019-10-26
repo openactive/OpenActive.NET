@@ -8,10 +8,10 @@ namespace OpenActive.NET
 {
     /// <summary>
     /// 
-    /// 
+    /// This type is derived from [Event](https://schema.org/Event), which means that any of this type's properties within schema.org may also be used. Note however the properties on this page must be used in preference if a relevant property is available.
     /// </summary>
     [DataContract]
-    public partial class Slot : Schema.NET.Event
+    public partial class Slot : Event
     {
         /// <summary>
         /// Gets the name of the type as specified by schema.org.
@@ -33,6 +33,42 @@ namespace OpenActive.NET
         public new virtual SingleValues<int?, string, PropertyValue, List<PropertyValue>> Identifier { get; set; }
 
 
+        [Obsolete("This property is disinherited in this type, and must not be used.", true)]
+        public override string Name { get; set; }
+
+
+        [Obsolete("This property is disinherited in this type, and must not be used.", true)]
+        public override string Description { get; set; }
+
+
+        [Obsolete("This property is disinherited in this type, and must not be used.", true)]
+        public override string AccessibilityInformation { get; set; }
+
+
+        [Obsolete("This property is disinherited in this type, and must not be used.", true)]
+        public override List<Concept> AccessibilitySupport { get; set; }
+
+
+        [Obsolete("This property is disinherited in this type, and must not be used.", true)]
+        public override List<Concept> Activity { get; set; }
+
+
+        [Obsolete("This property is disinherited in this type, and must not be used.", true)]
+        public override QuantitativeValue AgeRange { get; set; }
+
+
+        [Obsolete("This property is disinherited in this type, and must not be used.", true)]
+        public override string AttendeeInstructions { get; set; }
+
+
+        [Obsolete("This property is disinherited in this type, and must not be used.", true)]
+        public override SingleValues<List<string>, List<Concept>> Category { get; set; }
+
+
+        [Obsolete("This property is disinherited in this type, and must not be used.", true)]
+        public override List<Person> Contributor { get; set; }
+
+
         /// <summary>
         /// The duration of the slot given in [ISO8601] format.
         /// </summary>
@@ -41,9 +77,17 @@ namespace OpenActive.NET
         /// "duration": "PT1H"
         /// </code>
         /// </example>
-        [DataMember(Name = "duration", EmitDefaultValue = false, Order = 8)]
+        [DataMember(Name = "duration", EmitDefaultValue = false, Order = 17)]
         [JsonConverter(typeof(OpenActiveTimeSpanToISO8601DurationValuesConverter))]
         public new virtual TimeSpan? Duration { get; set; }
+
+
+        [Obsolete("This property is disinherited in this type, and must not be used.", true)]
+        public override List<Schedule> EventSchedule { get; set; }
+
+
+        [Obsolete("This property is disinherited in this type, and must not be used.", true)]
+        public override Schema.NET.EventStatusType? EventStatus { get; set; }
 
 
         /// <summary>
@@ -54,8 +98,40 @@ namespace OpenActive.NET
         /// "facilityUse": "https://example.com/facility-use/1"
         /// </code>
         /// </example>
-        [DataMember(Name = "facilityUse", EmitDefaultValue = false, Order = 9)]
+        [DataMember(Name = "facilityUse", EmitDefaultValue = false, Order = 20)]
         public virtual Uri FacilityUse { get; set; }
+
+
+        [Obsolete("This property is disinherited in this type, and must not be used.", true)]
+        public override GenderRestrictionType? GenderRestriction { get; set; }
+
+
+        [Obsolete("This property is disinherited in this type, and must not be used.", true)]
+        public override List<ImageObject> Image { get; set; }
+
+
+        [Obsolete("This property is disinherited in this type, and must not be used.", true)]
+        public override bool? IsAccessibleForFree { get; set; }
+
+
+        [Obsolete("This property is disinherited in this type, and must not be used.", true)]
+        public override bool? IsCoached { get; set; }
+
+
+        [Obsolete("This property is disinherited in this type, and must not be used.", true)]
+        public override List<Person> Leader { get; set; }
+
+
+        [Obsolete("This property is disinherited in this type, and must not be used.", true)]
+        public override SingleValues<List<string>, List<Concept>> Level { get; set; }
+
+
+        [Obsolete("This property is disinherited in this type, and must not be used.", true)]
+        public override Place Location { get; set; }
+
+
+        [Obsolete("This property is disinherited in this type, and must not be used.", true)]
+        public override int? MaximumAttendeeCapacity { get; set; }
 
 
         /// <summary>
@@ -66,8 +142,12 @@ namespace OpenActive.NET
         /// "maximumUses": 16
         /// </code>
         /// </example>
-        [DataMember(Name = "maximumUses", EmitDefaultValue = false, Order = 10)]
+        [DataMember(Name = "maximumUses", EmitDefaultValue = false, Order = 29)]
         public virtual int? MaximumUses { get; set; }
+
+
+        [Obsolete("This property is disinherited in this type, and must not be used.", true)]
+        public override string MeetingPoint { get; set; }
 
 
         /// <summary>
@@ -85,8 +165,24 @@ namespace OpenActive.NET
         /// }
         /// </code>
         /// </example>
-        [DataMember(Name = "offers", EmitDefaultValue = false, Order = 11)]
+        [DataMember(Name = "offers", EmitDefaultValue = false, Order = 31)]
         public new virtual List<Offer> Offers { get; set; }
+
+
+        [Obsolete("This property is disinherited in this type, and must not be used.", true)]
+        public override SingleValues<Person, Organization> Organizer { get; set; }
+
+
+        [Obsolete("This property is disinherited in this type, and must not be used.", true)]
+        public override List<Action> PotentialAction { get; set; }
+
+
+        [Obsolete("This property is disinherited in this type, and must not be used.", true)]
+        public override Brand Programme { get; set; }
+
+
+        [Obsolete("This property is disinherited in this type, and must not be used.", true)]
+        public override int? RemainingAttendeeCapacity { get; set; }
 
 
         /// <summary>
@@ -97,8 +193,12 @@ namespace OpenActive.NET
         /// "remainingUses": 5
         /// </code>
         /// </example>
-        [DataMember(Name = "remainingUses", EmitDefaultValue = false, Order = 12)]
+        [DataMember(Name = "remainingUses", EmitDefaultValue = false, Order = 36)]
         public virtual int? RemainingUses { get; set; }
+
+
+        [Obsolete("This property is disinherited in this type, and must not be used.", true)]
+        public override string SchedulingNote { get; set; }
 
 
         /// <summary>
@@ -109,7 +209,7 @@ namespace OpenActive.NET
         /// "startDate": "2018-01-27T12:00:00Z"
         /// </code>
         /// </example>
-        [DataMember(Name = "startDate", EmitDefaultValue = false, Order = 13)]
+        [DataMember(Name = "startDate", EmitDefaultValue = false, Order = 38)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual SingleValues<string, DateTimeOffset?> StartDate { get; set; }
 
@@ -123,9 +223,21 @@ namespace OpenActive.NET
         /// "endDate": "2018-01-27T12:00:00Z"
         /// </code>
         /// </example>
-        [DataMember(Name = "endDate", EmitDefaultValue = false, Order = 14)]
+        [DataMember(Name = "endDate", EmitDefaultValue = false, Order = 39)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual SingleValues<string, DateTimeOffset?> EndDate { get; set; }
+
+
+        [Obsolete("This property is disinherited in this type, and must not be used.", true)]
+        public override List<Event> SubEvent { get; set; }
+
+
+        [Obsolete("This property is disinherited in this type, and must not be used.", true)]
+        public override Event SuperEvent { get; set; }
+
+
+        [Obsolete("This property is disinherited in this type, and must not be used.", true)]
+        public override Uri Url { get; set; }
 
 
         /// <summary>
@@ -134,7 +246,7 @@ namespace OpenActive.NET
         /// 
         /// If you are using this property, please join the discussion at proposal [#110](https://github.com/openactive/modelling-opportunity-data/issues/110).
         /// </summary>
-        [DataMember(Name = "beta:sportsActivityLocation", EmitDefaultValue = false, Order = 1015)]
+        [DataMember(Name = "beta:sportsActivityLocation", EmitDefaultValue = false, Order = 1043)]
         public virtual List<SportsActivityLocation> SportsActivityLocation { get; set; }
 
     }

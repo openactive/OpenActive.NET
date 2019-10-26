@@ -39,7 +39,7 @@ namespace OpenActive.NET
         /// </summary>
         [DataMember(Name = "accessToken", EmitDefaultValue = false, Order = 9)]
         [JsonConverter(typeof(ValuesConverter))]
-        public new virtual SingleValues<BarCode, ImageObject> AccessToken { get; set; }
+        public virtual SingleValues<Barcode, ImageObject> AccessToken { get; set; }
 
 
         /// <summary>
@@ -88,7 +88,7 @@ namespace OpenActive.NET
         /// Array of errors related to the OrderItem being included in the Order, only applicable for an  OrderQuote.
         /// </summary>
         [DataMember(Name = "error", EmitDefaultValue = false, Order = 16)]
-        public virtual List<OpenBookingError> Error { get; set; }
+        public new virtual List<OpenBookingError> Error { get; set; }
 
 
         /// <summary>
