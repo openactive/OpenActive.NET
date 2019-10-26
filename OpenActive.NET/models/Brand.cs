@@ -63,7 +63,7 @@ namespace OpenActive.NET
         /// <example>
         /// <code>
         /// "logo": {
-        ///   "type": "ImageObject",
+        ///   "@type": "ImageObject",
         ///   "url": "http://example.com/static/image/speedball_large.jpg"
         /// }
         /// </code>

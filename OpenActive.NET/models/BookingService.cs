@@ -28,16 +28,23 @@ namespace OpenActive.NET
 
 
         /// <summary>
+        /// The version of the application, useful for on-premise installations.
+        /// </summary>
+        [DataMember(Name = "softwareVersion", EmitDefaultValue = false, Order = 8)]
+        public new virtual string SoftwareVersion { get; set; }
+
+
+        /// <summary>
         /// The terms of service of the Booking System.
         /// </summary>
-        [DataMember(Name = "termsOfService", EmitDefaultValue = false, Order = 8)]
+        [DataMember(Name = "termsOfService", EmitDefaultValue = false, Order = 9)]
         public virtual List<Terms> TermsOfService { get; set; }
 
 
         /// <summary>
         /// The URL of the website of the Booking System.
         /// </summary>
-        [DataMember(Name = "url", EmitDefaultValue = false, Order = 9)]
+        [DataMember(Name = "url", EmitDefaultValue = false, Order = 10)]
         public new virtual Uri Url { get; set; }
 
     }

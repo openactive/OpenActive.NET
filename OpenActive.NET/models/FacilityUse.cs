@@ -241,7 +241,7 @@ namespace OpenActive.NET
         /// <example>
         /// <code>
         /// "offers": {
-        ///   "type": "Offer",
+        ///   "@type": "Offer",
         ///   "identifier": "OX-AD",
         ///   "name": "Adult",
         ///   "price": 7.5,

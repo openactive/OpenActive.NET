@@ -97,7 +97,7 @@ namespace OpenActive.NET
         ///   {
         ///     "type": "Concept",
         ///     "id": "https://openactive.io/activity-list#5e78bcbe-36db-425a-9064-bf96d09cc351",
-        ///     "prefLabel": "Bodypump‚Ñ¢",
+        ///     "prefLabel": "Bodypumpô",
         ///     "inScheme": "https://openactive.io/activity-list"
         ///   }
         /// ]
@@ -113,7 +113,7 @@ namespace OpenActive.NET
         /// <example>
         /// <code>
         /// "ageRange": {
-        ///   "type": "QuantitativeValue",
+        ///   "@type": "QuantitativeValue",
         ///   "minValue": 15,
         ///   "maxValue": 60
         /// }
@@ -157,7 +157,7 @@ namespace OpenActive.NET
         /// <code>
         /// "contributor": [
         ///   {
-        ///     "type": "Person",
+        ///     "@type": "Person",
         ///     "familyName": "Smith",
         ///     "givenName": "Nicole",
         ///     "id": "https://example.com/locations/1234ABCD/leaders/89",
@@ -236,11 +236,11 @@ namespace OpenActive.NET
         /// <code>
         /// "image": [
         ///   {
-        ///     "type": "ImageObject",
+        ///     "@type": "ImageObject",
         ///     "url": "http://example.com/static/image/speedball_large.jpg",
         ///     "thumbnail": [
         ///       {
-        ///         "type": "ImageObject",
+        ///         "@type": "ImageObject",
         ///         "url": "http://example.com/static/image/speedball_thumbnail.jpg"
         ///       }
         ///     ]
@@ -283,7 +283,7 @@ namespace OpenActive.NET
         /// <code>
         /// "leader": [
         ///   {
-        ///     "type": "Person",
+        ///     "@type": "Person",
         ///     "familyName": "Smith",
         ///     "givenName": "Nicole",
         ///     "gender": "https://schema.org/Male",
@@ -298,7 +298,7 @@ namespace OpenActive.NET
 
 
         /// <summary>
-        /// A general purpose property for specifying the suitability of an event for different participant ‚Äúlevels‚Äù. E.g. beginner/intermediate/advanced. Or in the case of martial arts, specific belt requirements.
+        /// A general purpose property for specifying the suitability of an event for different participant ìlevelsî. E.g. beginner/intermediate/advanced. Or in the case of martial arts, specific belt requirements.
         /// </summary>
         /// <example>
         /// <code>
@@ -377,7 +377,7 @@ namespace OpenActive.NET
         /// <code>
         /// "offers": [
         ///   {
-        ///     "type": "Offer",
+        ///     "@type": "Offer",
         ///     "identifier": "OX-AD",
         ///     "name": "Adult",
         ///     "price": 3.3,
@@ -437,7 +437,7 @@ namespace OpenActive.NET
         /// <example>
         /// <code>
         /// "programme": {
-        ///   "type": "Brand",
+        ///   "@type": "Brand",
         ///   "name": "Play Ball!",
         ///   "url": "http://example.org/brand/play-ball"
         /// }

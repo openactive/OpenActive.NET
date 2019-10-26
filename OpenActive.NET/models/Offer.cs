@@ -90,7 +90,7 @@ namespace OpenActive.NET
         /// <example>
         /// <code>
         /// "ageRange": {
-        ///   "type": "QuantitativeValue",
+        ///   "@type": "QuantitativeValue",
         ///   "minValue": 15,
         ///   "maxValue": 60
         /// }

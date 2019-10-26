@@ -15,6 +15,8 @@ namespace OpenActive.NET
         private const string ContextPropertyJson = "\"@context\":\"https://schema.org\",";
         private const string OpenActiveContextPropertyJson = "\"@context\":\"https://openactive.io/\",";
         private const string OpenActiveContextPropertyJsonWithBeta = "\"@context\":[\"https://openactive.io/\",\"https://openactive.io/ns-beta\"],";
+        private const string OpenActiveContextPropertyJsonWithSchema = "\"@context\":[\"https://schema.org/\",\"https://openactive.io/\"],";
+        private const string OpenActiveContextPropertyJsonWithBetaAndSchema = "\"@context\":[\"https://schema.org/\",\"https://openactive.io/\",\"https://openactive.io/ns-beta\"],";
 
         private const string SchemaIdJson = "\"@id\":";
         private const string OpenActiveIdJson = "\"id\":";
@@ -53,37 +55,13 @@ namespace OpenActive.NET
             StringEscapeHandling = StringEscapeHandling.EscapeHtml
         };
 
-
-        /// <summary>
-        /// Return null if the provided list is empty, otherwise return the list.
-        /// </summary>
-        public static List<TSource> ToListOrNullIfEmpty<TSource>(this IEnumerable<TSource> source)
-        {
-            if (source != null && source.Count() > 0)
-                return source.ToList();
-            else
-                return null;
-        }
-
-        /// <summary>
-        /// Return null if the provided string IsNullOrWhiteSpace, otherwise return the string.
-        /// </summary>
-        public static string NullIfEmpty(this string source)
-        {
-            if (source != null && !string.IsNullOrWhiteSpace(source))
-                return source;
-            else
-                return null;
-        }
-        
-
         /// <summary>
         /// Returns the JSON-LD representation of this instance.
         /// </summary>
         /// <returns>
         /// A <see cref="string" /> that represents the JSON-LD representation of this instance.
         /// </returns>
-        public static string ToOpenActiveString(this Schema.NET.Thing thing) => ToString(thing, SerializerSettings);
+        public static string ToOpenActiveString(this Schema.NET.Thing thing) => ToString(thing, SerializerSettings, false);
 
         /// <summary>
         /// Returns the JSON-LD representation of this instance.
@@ -95,7 +73,7 @@ namespace OpenActive.NET
         /// <returns>
         /// A <see cref="string" /> that represents the JSON-LD representation of this instance.
         /// </returns>
-        public static string ToOpenActiveHtmlEscapedString(this Schema.NET.Thing thing) => ToString(thing, HtmlEscapedSerializerSettings);
+        public static string ToOpenActiveHtmlEmbeddableString(this Schema.NET.Thing thing) => ToString(thing, HtmlEscapedSerializerSettings, true);
 
         /// <summary>
         /// Returns the JSON-LD representation of this instance using the <see cref="JsonSerializerSettings"/> provided.
@@ -109,14 +87,15 @@ namespace OpenActive.NET
         /// <returns>
         /// A <see cref="string" /> that represents the JSON-LD representation of this instance.
         /// </returns>
-        private static string ToString(Schema.NET.Thing thing, JsonSerializerSettings serializerSettings) =>
-            RemoveAllButFirstContext(JsonConvert.SerializeObject(thing, serializerSettings));
+        private static string ToString(Schema.NET.Thing thing, JsonSerializerSettings serializerSettings, bool maintainSchemaContext) =>
+            RemoveAllButFirstContext(JsonConvert.SerializeObject(thing, serializerSettings), maintainSchemaContext);
 
-        private static string RemoveAllButFirstContext(string json)
+        private static string RemoveAllButFirstContext(string json, bool maintainSchemaContext)
         {
             // Only include beta context if there are beta properties present
             var contextString = json.Contains("\"beta:") ?
-                OpenActiveContextPropertyJsonWithBeta : OpenActiveContextPropertyJson;
+                (maintainSchemaContext ? OpenActiveContextPropertyJsonWithBetaAndSchema : OpenActiveContextPropertyJsonWithBeta) :
+                (maintainSchemaContext ? OpenActiveContextPropertyJsonWithSchema : OpenActiveContextPropertyJson);
 
             var stringBuilder = new StringBuilder(json);
             var startIndex = ContextPropertyJson.Length + 1; // We add the one to represent the opening curly brace.
@@ -126,7 +105,7 @@ namespace OpenActive.NET
             return stringBuilder.ToString();
         }
 
-        public static string Serialize(object obj) => RemoveAllButFirstContext(JsonConvert.SerializeObject(obj, SerializerSettings));
+        public static string Serialize(object obj) => RemoveAllButFirstContext(JsonConvert.SerializeObject(obj, SerializerSettings), false);
 
         public static T Deserialize<T>(string str) => JsonConvert.DeserializeObject<T>(PrepareForDeserialization(str));
         

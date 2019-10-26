@@ -64,7 +64,7 @@ namespace OpenActive.NET
         /// <example>
         /// <code>
         /// "address": {
-        ///   "type": "PostalAddress",
+        ///   "@type": "PostalAddress",
         ///   "streetAddress": "Raynes Park High School, 46A West Barnes Lane",
         ///   "addressLocality": "New Malden",
         ///   "addressRegion": "London",
@@ -127,7 +127,7 @@ namespace OpenActive.NET
         /// <example>
         /// <code>
         /// "containedInPlace": {
-        ///   "type": "Place",
+        ///   "@type": "Place",
         ///   "url": "https://www.everyoneactive.com/centres/Middlesbrough-Sports-Village",
         ///   "name": "Middlesbrough Sports Village"
         /// }
@@ -143,7 +143,7 @@ namespace OpenActive.NET
         /// <example>
         /// <code>
         /// "containsPlace": {
-        ///   "type": "Place",
+        ///   "@type": "Place",
         ///   "url": "https://www.everyoneactive.com/centres/Center-Parcs-Sports-Plaza",
         ///   "name": "Center Parcs Sports Plaza"
         /// }
