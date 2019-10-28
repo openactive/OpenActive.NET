@@ -64,7 +64,7 @@ namespace OpenActive.NET
         public static string ToOpenActiveString(this Schema.NET.Thing thing) => ToString(thing, SerializerSettings, false);
 
         /// <summary>
-        /// Returns the JSON-LD representation of this instance.
+        /// Returns the JSON-LD representation of this instance, including "https://schema.org" in the "@context".
         ///
         /// This method should be used when you want to embed the output raw (as-is) into a web
         /// page. It uses serializer settings with HTML escaping to avoid Cross-Site Scripting (XSS)
