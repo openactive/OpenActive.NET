@@ -10,28 +10,29 @@ using System.Net.Http;
 namespace OpenActive.NET.Rpde.Version1
 {
     [DataContract]
-    public class RpdeItem<IdType, ItemType> where ItemType : Schema.NET.Thing where IdType : IEquatable<IdType>, IComparable
+    public class RpdeItem
     {
         [DataMember(Name = "state", EmitDefaultValue = false, Order = 1)]
         public RpdeState? State { get; set; }
         [DataMember(Name = "kind", EmitDefaultValue = false, Order = 2)]
         public RpdeKind? Kind { get; set; }
         [DataMember(Name = "id", EmitDefaultValue = false, Order = 3)]
-        public IdType Id { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public ComparableSingleValue<long, string>? Id { get; set; }
         [DataMember(Name = "modified", EmitDefaultValue = false, Order = 4)]
         public long? Modified { get; set; }
         [DataMember(Name = "data", EmitDefaultValue = false, Order = 5)]
         [JsonConverter(typeof(OpenActiveThingConverter))]
-        public ItemType Data { get; set; }
+        public Schema.NET.Thing Data { get; set; }
     }
 
     [DataContract]
-    public class RpdeBody<IdType, ItemType> where ItemType : Schema.NET.Thing where IdType : IEquatable<IdType>, IComparable
+    public class RpdePage
     {
         [DataMember(Name = "next", EmitDefaultValue = false, Order = 1)]
         public string Next { get; set; }
         [DataMember(Name = "items", EmitDefaultValue = false, Order = 2)]
-        public List<RpdeItem<IdType, ItemType>> Items { get; set; }
+        public List<RpdeItem> Items { get; set; }
         [DataMember(Name = "license", EmitDefaultValue = false, Order = 3)]
         public string License { get; set; } = "https://creativecommons.org/licenses/by/4.0/";
 
@@ -74,21 +75,21 @@ namespace OpenActive.NET.Rpde.Version1
         }
 
         // Constructor for JSON deserialisation
-        public RpdeBody() {}
+        public RpdePage() {}
 
-        public RpdeBody(string feedBaseUrl, long? modified, IdType id, List<RpdeItem<IdType, ItemType>> items)
+        public RpdePage(string feedBaseUrl, long? modified, ComparableSingleValue<long, string>? id, List<RpdeItem> items)
         {
             this.Items = items;
             SetNextModifiedID(feedBaseUrl, modified, id);
         }
 
-        public RpdeBody(string feedBaseUrl, long? changeNumber, List<RpdeItem<IdType, ItemType>> items)
+        public RpdePage(string feedBaseUrl, long? changeNumber, List<RpdeItem> items)
         {
             this.Items = items;
             SetNextChangeNumber(feedBaseUrl, changeNumber);
         }
 
-        public void SetNextModifiedID(string feedBaseUrl, long? modified, IdType id)
+        public void SetNextModifiedID(string feedBaseUrl, long? modified, ComparableSingleValue<long, string>? id)
         {
             // If there is at least one item, run validation on items array
             var firstItem = Items.FirstOrDefault();
@@ -96,14 +97,14 @@ namespace OpenActive.NET.Rpde.Version1
             {
                 // Checks that the afterId and afterTimestamp provided are not the
                 // first item in the feed (helps detect whether query is correct)
-                if (firstItem.Modified == modified && firstItem.Id.Equals(id))
+                if (firstItem.Modified == modified && firstItem.Id == id)
                 {
                     throw new SerializationException("First item in the feed must never have same 'modified' and 'id' as afterTimestamp and afterId query parameters. Please check the RPDE specification and ensure you are using the correct query for your ordering strategy.");
                 }
 
                 // Check that items are ordered, and deleted items contain no data
                 long? currentModified = -1;
-                IdType currentId = firstItem.Id;
+                ComparableSingleValue<long, string>? currentId = firstItem.Id;
                 foreach (var item in Items)
                 {
                     if (item.State == RpdeState.Deleted && item.Data != null)
@@ -116,7 +117,7 @@ namespace OpenActive.NET.Rpde.Version1
                         throw new SerializationException("All RPDE feed items must include id, modified, state and kind.");
                     }
 
-                    if (item.Modified > currentModified || (item.Modified == currentModified && item.Id.CompareTo(currentId) > 0))
+                    if (item.Modified > currentModified || (item.Modified == currentModified && item.Id > currentId))
                     {
                         currentModified = item.Modified;
                         currentId = item.Id;
@@ -221,6 +222,8 @@ namespace OpenActive.NET.Rpde.Version1
         FacilityUse,
         [EnumMember(Value = "IndividualFacilityUse")]
         IndividualFacilityUse,
+        [EnumMember(Value = "Slot")]
+        Slot,
         [EnumMember(Value = "FacilityUse/Slot")]
         FacilityUseSlot,
         [EnumMember(Value = "IndividualFacilityUse/Slot")]

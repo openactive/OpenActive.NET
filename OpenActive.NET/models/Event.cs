@@ -97,7 +97,7 @@ namespace OpenActive.NET
         ///   {
         ///     "type": "Concept",
         ///     "id": "https://openactive.io/activity-list#5e78bcbe-36db-425a-9064-bf96d09cc351",
-        ///     "prefLabel": "Bodypumpô",
+        ///     "prefLabel": "Bodypump‚Ñ¢",
         ///     "inScheme": "https://openactive.io/activity-list"
         ///   }
         /// ]
@@ -298,7 +298,7 @@ namespace OpenActive.NET
 
 
         /// <summary>
-        /// A general purpose property for specifying the suitability of an event for different participant ìlevelsî. E.g. beginner/intermediate/advanced. Or in the case of martial arts, specific belt requirements.
+        /// A general purpose property for specifying the suitability of an event for different participant ‚Äúlevels‚Äù. E.g. beginner/intermediate/advanced. Or in the case of martial arts, specific belt requirements.
         /// </summary>
         /// <example>
         /// <code>

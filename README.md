@@ -7,15 +7,15 @@ Implementation requires implementing `ConvertToOpenActiveModel` to return an ins
 ```C#
 using OpenActive.NET.Rpde.Version1;
 
-public abstract class RPDEBase<IDType, DatabaseType, ItemType> where DatabaseType : RPDEBase<IDType, DatabaseType, ItemType>, new() where ItemType : Schema.NET.Thing where IDType : IEquatable<IDType>, IComparable
+public abstract class RPDEBase<DatabaseType>
 {
     protected abstract RpdeKind RpdeKind { get; }
     
-    protected abstract ItemType ConvertToOpenActiveModel(DatabaseType record, string baseUrl);
+    protected abstract Schema.NET.Thing ConvertToOpenActiveModel(DatabaseType record, string baseUrl);
 
-    private async Task<RpdeBody<IDType, ItemType>> GetRPDEPage(long? afterChangeNumber, string feedUrl, string baseUrl, int limit)
+    private async Task<RpdePage> GetRPDEPage(long? afterChangeNumber, string feedUrl, string baseUrl, int limit)
     {
-        var items = new List<RpdeItem<IDType, ItemType>>();
+        var items = new List<RpdeItem>();
 
         DatabaseFactory.ColumnSerializer = new NPocoSerializer();
         using (Database db = new Database("DefaultConnection"))
@@ -29,7 +29,7 @@ public abstract class RPDEBase<IDType, DatabaseType, ItemType> where DatabaseTyp
             var whereClause = afterChangeNumber != null ? "WHERE Modified > Convert(ROWVERSION, @0)" : "";
             var results = await db.QueryAsync<DatabaseType>($"SELECT TOP {limit} Convert(BIGINT,Modified) as ChangeNumber, u.* from {tableName} u (nolock) {whereClause} ORDER BY Modified", afterChangeNumber);
 
-            items = results.Select(row => new RpdeItem<IDType, ItemType>
+            items = results.Select(row => new RpdeItem
             {
                 Id = row.ID,
                 Modified = row.modified,
@@ -39,7 +39,7 @@ public abstract class RPDEBase<IDType, DatabaseType, ItemType> where DatabaseTyp
             }).ToList();
         }
 
-        return new RpdeBody<IDType, ItemType>(feedUrl, afterChangeNumber, items);
+        return new RpdePage(feedUrl, afterChangeNumber, items);
     }
     
     public static async Task<HttpResponseMessage> ServeRPDEPage(HttpRequestMessage req, int limit)

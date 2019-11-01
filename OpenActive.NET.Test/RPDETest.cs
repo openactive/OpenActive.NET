@@ -185,9 +185,9 @@ namespace OpenActive.NET.Test
         private readonly string json =
         "{\"@context\":[\"https://openactive.io/\",\"https://openactive.io/ns-beta\"],\"@type\":\"SessionSeries\",\"@id\":\"https://example.com\",\"accessibilitySupport\":[],\"activity\":[{\"@type\":\"Concept\",\"@id\":\"https://example.com\",\"inScheme\":\"https://example.com\"},{\"@type\":\"Concept\",\"@id\":\"https://example.com\",\"inScheme\":\"https://example.com\"},{\"@type\":\"Concept\",\"@id\":\"https://example.com\",\"inScheme\":\"https://example.com\"}],\"ageRange\":{\"@type\":\"QuantitativeValue\",\"maxValue\":0,\"minValue\":2},\"category\":[\"\"],\"duration\":\"PT5H\",\"eventSchedule\":[{\"@type\":\"PartialSchedule\",\"duration\":\"PT2H\",\"endTime\":\"16:20\",\"startTime\":\"16:20\"}],\"genderRestriction\":\"https://openactive.io/MaleOnly\",\"image\":[{\"@type\":\"ImageObject\",\"url\":\"https://example.com\"}],\"isCoached\":false,\"level\":[\"\"],\"location\":{\"@type\":\"Place\",\"address\":{\"@type\":\"PostalAddress\"},\"amenityFeature\":[{\"@type\":\"Showers\",\"name\":\"Showers\",\"value\":true}],\"geo\":{\"@type\":\"GeoCoordinates\",\"latitude\":0.1,\"longitude\":0.2},\"image\":[{\"@type\":\"ImageObject\",\"url\":\"https://example.com\"}],\"url\":\"https://example.com\"},\"offers\":[{\"@type\":\"Offer\",\"acceptedPaymentMethod\":[\"http://purl.org/goodrelations/v1#Cash\"],\"ageRange\":{\"@type\":\"QuantitativeValue\",\"maxValue\":2,\"minValue\":0},\"price\":0}],\"organizer\":{\"@type\":\"Organization\",\"logo\":{\"@type\":\"ImageObject\",\"url\":\"https://example.com\"},\"sameAs\":[\"https://example.com\",\"https://example.com\"],\"url\":\"https://example.com\",\"beta:video\":[{\"@type\":\"VideoObject\",\"url\":\"https://example.com\"}]},\"programme\":{\"@type\":\"Brand\",\"@id\":\"https://example.com\",\"logo\":{\"@type\":\"ImageObject\",\"url\":\"https://example.com\"},\"url\":\"https://example.com\",\"beta:video\":[{\"@type\":\"VideoObject\",\"url\":\"https://example.com\"}]},\"beta:video\":[{\"@type\":\"VideoObject\",\"url\":\"https://example.com\"}],\"beta:isWheelchairAccessible\":false}";
 
-        private readonly List<RpdeItem<string, SessionSeries>> @feedItems = new List<RpdeItem<string, SessionSeries>>
+        private readonly List<RpdeItem> @feedItems = new List<RpdeItem>
         {
-            new RpdeItem<string, SessionSeries>
+            new RpdeItem
             {
                 Id = "2",
                 Modified = 4,
@@ -195,7 +195,7 @@ namespace OpenActive.NET.Test
                 Kind = RpdeKind.SessionSeries,
                 Data = @event
             },
-            new RpdeItem<string, SessionSeries>
+            new RpdeItem
             {
                 Id = "1",
                 Modified = 5,
@@ -210,7 +210,7 @@ namespace OpenActive.NET.Test
 
         [Fact]
         public void ToString_EventGoogleStructuredData_ReturnsExpectedJsonLd() {
-            var feed = new RpdeBody<string, SessionSeries>("https://www.example.com/feed", 1, "1", @feedItems);
+            var feed = new RpdePage("https://www.example.com/feed", 1, "1", @feedItems);
 
             output.WriteLine(feed.ToString());
             Assert.Equal(this.jsonRpde, feed.ToString());
@@ -226,9 +226,9 @@ namespace OpenActive.NET.Test
         [Fact]
         public void ToString_RpdeBodyUnorderedModified_ReturnsExpectedException()
         {
-            Exception ex = Assert.Throws<SerializationException>(() => (new RpdeBody<string, SessionSeries>("https://www.example.com/feed", 1, "1", new List<RpdeItem<string, SessionSeries>>
+            Exception ex = Assert.Throws<SerializationException>(() => (new RpdePage("https://www.example.com/feed", 1, "1", new List<RpdeItem>
             {
-                new RpdeItem<string, SessionSeries>
+                new RpdeItem
                 {
                     Id = "2",
                     Modified = 5,
@@ -236,7 +236,7 @@ namespace OpenActive.NET.Test
                     Kind = RpdeKind.SessionSeries,
                     Data = @event
                 },
-                new RpdeItem<string, SessionSeries>
+                new RpdeItem
                 {
                     Id = "1",
                     Modified = 4,
@@ -253,9 +253,9 @@ namespace OpenActive.NET.Test
         [Fact]
         public void ToString_RpdeBodyUnorderedID_ReturnsExpectedException()
         {
-            Exception ex = Assert.Throws<SerializationException>(() => (new RpdeBody<string, SessionSeries>("https://www.example.com/feed", 1, "1", new List<RpdeItem<string, SessionSeries>>
+            Exception ex = Assert.Throws<SerializationException>(() => (new RpdePage("https://www.example.com/feed", 1, "1", new List<RpdeItem>
             {
-                new RpdeItem<string, SessionSeries>
+                new RpdeItem
                 {
                     Id = "2",
                     Modified = 4,
@@ -263,7 +263,7 @@ namespace OpenActive.NET.Test
                     Kind = RpdeKind.SessionSeries,
                     Data = @event
                 },
-                new RpdeItem<string, SessionSeries>
+                new RpdeItem
                 {
                     Id = "1",
                     Modified = 4,
@@ -280,9 +280,9 @@ namespace OpenActive.NET.Test
         [Fact]
         public void ToString_RpdeBodyDeletedWithData_ReturnsExpectedException()
         {
-            Exception ex = Assert.Throws<SerializationException>(() => (new RpdeBody<string, SessionSeries>("https://www.example.com/feed", 1, "1", new List<RpdeItem<string, SessionSeries>>
+            Exception ex = Assert.Throws<SerializationException>(() => (new RpdePage("https://www.example.com/feed", 1, "1", new List<RpdeItem>
             {
-                new RpdeItem<string, SessionSeries>
+                new RpdeItem
                 {
                     Id = "2",
                     Modified = 4,
@@ -290,7 +290,7 @@ namespace OpenActive.NET.Test
                     Kind = RpdeKind.SessionSeries,
                     Data = @event
                 },
-                new RpdeItem<string, SessionSeries>
+                new RpdeItem
                 {
                     Id = "1",
                     Modified = 5,
@@ -308,9 +308,9 @@ namespace OpenActive.NET.Test
         [Fact]
         public void ToString_RpdeBodyFirstItemInFeed_ReturnsExpectedException()
         {
-            Exception ex = Assert.Throws<SerializationException>(() => (new RpdeBody<string, SessionSeries>("https://www.example.com/feed", 4, "2", new List<RpdeItem<string, SessionSeries>>
+            Exception ex = Assert.Throws<SerializationException>(() => (new RpdePage("https://www.example.com/feed", 4, "2", new List<RpdeItem>
             {
-                new RpdeItem<string, SessionSeries>
+                new RpdeItem
                 {
                     Id = "2",
                     Modified = 4,
@@ -318,7 +318,7 @@ namespace OpenActive.NET.Test
                     Kind = RpdeKind.SessionSeries,
                     Data = @event
                 },
-                new RpdeItem<string, SessionSeries>
+                new RpdeItem
                 {
                     Id = "1",
                     Modified = 5,
@@ -340,9 +340,9 @@ namespace OpenActive.NET.Test
         [Fact]
         public void ToString_RpdeBodyIntUnorderedModified_ReturnsExpectedException()
         {
-            Exception ex = Assert.Throws<SerializationException>(() => (new RpdeBody<int, SessionSeries>("https://www.example.com/feed", 1, 1, new List<RpdeItem<int, SessionSeries>>
+            Exception ex = Assert.Throws<SerializationException>(() => (new RpdePage("https://www.example.com/feed", 1, 1, new List<RpdeItem>
             {
-                new RpdeItem<int, SessionSeries>
+                new RpdeItem
                 {
                     Id = 2,
                     Modified = 5,
@@ -350,7 +350,7 @@ namespace OpenActive.NET.Test
                     Kind = RpdeKind.SessionSeries,
                     Data = @event
                 },
-                new RpdeItem<int, SessionSeries>
+                new RpdeItem
                 {
                     Id = 1,
                     Modified = 4,
@@ -367,9 +367,9 @@ namespace OpenActive.NET.Test
         [Fact]
         public void ToString_RpdeBodyIntUnorderedID_ReturnsExpectedException()
         {
-            Exception ex = Assert.Throws<SerializationException>(() => (new RpdeBody<int, SessionSeries>("https://www.example.com/feed", 1, 1, new List<RpdeItem<int, SessionSeries>>
+            Exception ex = Assert.Throws<SerializationException>(() => (new RpdePage("https://www.example.com/feed", 1, 1, new List<RpdeItem>
             {
-                new RpdeItem<int, SessionSeries>
+                new RpdeItem
                 {
                     Id = 2,
                     Modified = 4,
@@ -377,7 +377,7 @@ namespace OpenActive.NET.Test
                     Kind = RpdeKind.SessionSeries,
                     Data = @event
                 },
-                new RpdeItem<int, SessionSeries>
+                new RpdeItem
                 {
                     Id = 1,
                     Modified = 4,
@@ -394,9 +394,9 @@ namespace OpenActive.NET.Test
         [Fact]
         public void ToString_RpdeBodyIntDeletedWithData_ReturnsExpectedException()
         {
-            Exception ex = Assert.Throws<SerializationException>(() => (new RpdeBody<int, SessionSeries>("https://www.example.com/feed", 1, 1, new List<RpdeItem<int, SessionSeries>>
+            Exception ex = Assert.Throws<SerializationException>(() => (new RpdePage("https://www.example.com/feed", 1, 1, new List<RpdeItem>
             {
-                new RpdeItem<int, SessionSeries>
+                new RpdeItem
                 {
                     Id = 2,
                     Modified = 4,
@@ -404,7 +404,7 @@ namespace OpenActive.NET.Test
                     Kind = RpdeKind.SessionSeries,
                     Data = @event
                 },
-                new RpdeItem<int, SessionSeries>
+                new RpdeItem
                 {
                     Id = 1,
                     Modified = 5,
@@ -422,9 +422,9 @@ namespace OpenActive.NET.Test
         [Fact]
         public void ToString_RpdeBodyIntFirstItemInFeed_ReturnsExpectedException()
         {
-            Exception ex = Assert.Throws<SerializationException>(() => (new RpdeBody<int, SessionSeries>("https://www.example.com/feed", 4, 2, new List<RpdeItem<int, SessionSeries>>
+            Exception ex = Assert.Throws<SerializationException>(() => (new RpdePage("https://www.example.com/feed", 4, 2, new List<RpdeItem>
             {
-                new RpdeItem<int, SessionSeries>
+                new RpdeItem
                 {
                     Id = 2,
                     Modified = 4,
@@ -432,7 +432,7 @@ namespace OpenActive.NET.Test
                     Kind = RpdeKind.SessionSeries,
                     Data = @event
                 },
-                new RpdeItem<int, SessionSeries>
+                new RpdeItem
                 {
                     Id = 1,
                     Modified = 5,
@@ -457,9 +457,9 @@ namespace OpenActive.NET.Test
         [Fact]
         public void ToString_RpdeBodyChangeNumberUnorderedModified_ReturnsExpectedException()
         {
-            Exception ex = Assert.Throws<SerializationException>(() => (new RpdeBody<int, SessionSeries>("https://www.example.com/feed", 1, new List<RpdeItem<int, SessionSeries>>
+            Exception ex = Assert.Throws<SerializationException>(() => (new RpdePage("https://www.example.com/feed", 1, new List<RpdeItem>
             {
-                new RpdeItem<int, SessionSeries>
+                new RpdeItem
                 {
                     Id = 2,
                     Modified = 5,
@@ -467,7 +467,7 @@ namespace OpenActive.NET.Test
                     Kind = RpdeKind.SessionSeries,
                     Data = @event
                 },
-                new RpdeItem<int, SessionSeries>
+                new RpdeItem
                 {
                     Id = 1,
                     Modified = 4,
@@ -484,9 +484,9 @@ namespace OpenActive.NET.Test
         [Fact]
         public void ToString_RpdeBodyChangeNumberUnorderedID_ReturnsExpectedException()
         {
-            Exception ex = Assert.Throws<SerializationException>(() => (new RpdeBody<int, SessionSeries>("https://www.example.com/feed", 1, new List<RpdeItem<int, SessionSeries>>
+            Exception ex = Assert.Throws<SerializationException>(() => (new RpdePage("https://www.example.com/feed", 1, new List<RpdeItem>
             {
-                new RpdeItem<int, SessionSeries>
+                new RpdeItem
                 {
                     Id = 2,
                     Modified = 4,
@@ -494,7 +494,7 @@ namespace OpenActive.NET.Test
                     Kind = RpdeKind.SessionSeries,
                     Data = @event
                 },
-                new RpdeItem<int, SessionSeries>
+                new RpdeItem
                 {
                     Id = 1,
                     Modified = 4,
@@ -511,9 +511,9 @@ namespace OpenActive.NET.Test
         [Fact]
         public void ToString_RpdeBodyChangeNumberDeletedWithData_ReturnsExpectedException()
         {
-            Exception ex = Assert.Throws<SerializationException>(() => (new RpdeBody<int, SessionSeries>("https://www.example.com/feed", 1, new List<RpdeItem<int, SessionSeries>>
+            Exception ex = Assert.Throws<SerializationException>(() => (new RpdePage("https://www.example.com/feed", 1, new List<RpdeItem>
             {
-                new RpdeItem<int, SessionSeries>
+                new RpdeItem
                 {
                     Id = 2,
                     Modified = 4,
@@ -521,7 +521,7 @@ namespace OpenActive.NET.Test
                     Kind = RpdeKind.SessionSeries,
                     Data = @event
                 },
-                new RpdeItem<int, SessionSeries>
+                new RpdeItem
                 {
                     Id = 1,
                     Modified = 5,
@@ -539,9 +539,9 @@ namespace OpenActive.NET.Test
         [Fact]
         public void ToString_RpdeBodyChangeNumberFirstItemInFeed_ReturnsExpectedException()
         {
-            Exception ex = Assert.Throws<SerializationException>(() => (new RpdeBody<int, SessionSeries>("https://www.example.com/feed", 4, new List<RpdeItem<int, SessionSeries>>
+            Exception ex = Assert.Throws<SerializationException>(() => (new RpdePage("https://www.example.com/feed", 4, new List<RpdeItem>
             {
-                new RpdeItem<int, SessionSeries>
+                new RpdeItem
                 {
                     Id = 2,
                     Modified = 4,
@@ -549,7 +549,7 @@ namespace OpenActive.NET.Test
                     Kind = RpdeKind.SessionSeries,
                     Data = @event
                 },
-                new RpdeItem<int, SessionSeries>
+                new RpdeItem
                 {
                     Id = 1,
                     Modified = 5,
@@ -567,16 +567,16 @@ namespace OpenActive.NET.Test
         [Fact]
         public void ToString_RpdeBodyMissingPros_ReturnsExpectedException()
         {
-            Exception ex = Assert.Throws<SerializationException>(() => (new RpdeBody<int, SessionSeries>("https://www.example.com/feed", 1, new List<RpdeItem<int, SessionSeries>>
+            Exception ex = Assert.Throws<SerializationException>(() => (new RpdePage("https://www.example.com/feed", 1, new List<RpdeItem>
             {
-                new RpdeItem<int, SessionSeries>
+                new RpdeItem
                 {
                     Id = 2,
                     Modified = 4,
                     State = RpdeState.Updated,
                     Data = @event
                 },
-                new RpdeItem<int, SessionSeries>
+                new RpdeItem
                 {
                     Id = 1,
                     Modified = 5,

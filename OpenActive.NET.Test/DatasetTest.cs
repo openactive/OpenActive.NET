@@ -19,8 +19,6 @@ namespace OpenActive.NET.Test
         }
 
         private static readonly string NullString = null;
-        private static readonly RequiredStatusType? NullRequiredStatusType = null;
-        private static readonly Person NullPerson = null;
 
         private readonly Dataset @dataset = new OpenActive.NET.Dataset
         {
@@ -37,12 +35,13 @@ namespace OpenActive.NET.Test
                     "OpenActive"
                 },
             License = new Uri("https://creativecommons.org/licenses/by/4.0/"),
-            InLanguage = "en-GB",
+            InLanguage = new List<string> { "en-GB" },
             SchemaVersion = new Uri("https://www.openactive.io/modelling-opportunity-data/2.0/"),
             Publisher = new OpenActive.NET.Organization
             {
                 Name = "Acme",
                 LegalName = "Acme Ltd",
+                Description = NullString,
                 Logo = new OpenActive.NET.ImageObject
                 {
                     Url = new Uri("https://example.com/logo.png")
@@ -82,7 +81,7 @@ namespace OpenActive.NET.Test
         };
 
         private readonly string json =
-        @"{""@context"":[""https://schema.org/"",""https://openactive.io/""],""@type"":""Dataset"",""@id"":""https://example.com/1"",""name"":""Acme Sessions and Facilities"",""description"":""Near real-time availability and rich descriptions relating to the sessions and facilities available from {settings.organisationName}, published using the OpenActive Modelling Specification 2.0."",""distribution"":[{""@type"":""DataDownload"",""name"":""SessionSeries"",""additionalType"":""https://openactive.io/SessionSeries"",""encodingFormat"":""application/vnd.openactive.rpde+json; version=1""},{""@type"":""DataDownload"",""name"":""ScheduledSession"",""additionalType"":""https://openactive.io/ScheduledSession"",""encodingFormat"":""application/vnd.openactive.rpde+json; version=1""},{""@type"":""DataDownload"",""name"":""FacilityUse"",""additionalType"":""https://openactive.io/FacilityUse"",""encodingFormat"":""application/vnd.openactive.rpde+json; version=1""},{""@type"":""DataDownload"",""name"":""Slot"",""additionalType"":""https://openactive.io/Slot"",""encodingFormat"":""application/vnd.openactive.rpde+json; version=1""}],""inLanguage"":""en-GB"",""keywords"":[""Sessions"",""Facilities"",""Activities"",""Sports"",""Physical Activity"",""OpenActive""],""license"":""https://creativecommons.org/licenses/by/4.0/"",""publisher"":{""@type"":""Organization"",""name"":""Acme"",""legalName"":""Acme Ltd"",""logo"":{""@type"":""ImageObject"",""url"":""https://example.com/logo.png""}},""schemaVersion"":""https://www.openactive.io/modelling-opportunity-data/2.0/"",""url"":""https://example.com/1""}";
+        @"{""@context"":[""https://schema.org/"",""https://openactive.io/""],""@type"":""Dataset"",""@id"":""https://example.com/1"",""name"":""Acme Sessions and Facilities"",""description"":""Near real-time availability and rich descriptions relating to the sessions and facilities available from {settings.organisationName}, published using the OpenActive Modelling Specification 2.0."",""distribution"":[{""@type"":""DataDownload"",""name"":""SessionSeries"",""additionalType"":""https://openactive.io/SessionSeries"",""encodingFormat"":""application/vnd.openactive.rpde+json; version=1""},{""@type"":""DataDownload"",""name"":""ScheduledSession"",""additionalType"":""https://openactive.io/ScheduledSession"",""encodingFormat"":""application/vnd.openactive.rpde+json; version=1""},{""@type"":""DataDownload"",""name"":""FacilityUse"",""additionalType"":""https://openactive.io/FacilityUse"",""encodingFormat"":""application/vnd.openactive.rpde+json; version=1""},{""@type"":""DataDownload"",""name"":""Slot"",""additionalType"":""https://openactive.io/Slot"",""encodingFormat"":""application/vnd.openactive.rpde+json; version=1""}],""inLanguage"":[""en-GB""],""keywords"":[""Sessions"",""Facilities"",""Activities"",""Sports"",""Physical Activity"",""OpenActive""],""license"":""https://creativecommons.org/licenses/by/4.0/"",""publisher"":{""@type"":""Organization"",""name"":""Acme"",""legalName"":""Acme Ltd"",""logo"":{""@type"":""ImageObject"",""url"":""https://example.com/logo.png""}},""schemaVersion"":""https://www.openactive.io/modelling-opportunity-data/2.0/"",""url"":""https://example.com/1""}";
 
         [Fact]
         public void ToString_DatasetGoogleStructuredData_ReturnsExpectedJsonLd() {
