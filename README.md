@@ -7,7 +7,7 @@ Implementation requires implementing `ConvertToOpenActiveModel` to return an ins
 ```C#
 using OpenActive.NET.Rpde.Version1;
 
-public abstract class RPDEBase<DatabaseType> where DatabaseType : new()
+public abstract class RPDEBase<DatabaseType> where DatabaseType : RPDEBase<DatabaseType>, new()
 {
     protected abstract RpdeKind RpdeKind { get; }
     
