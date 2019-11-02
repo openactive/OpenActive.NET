@@ -77,19 +77,19 @@ namespace OpenActive.NET.Rpde.Version1
         // Constructor for JSON deserialisation
         public RpdePage() {}
 
-        public RpdePage(string feedBaseUrl, long? modified, ComparableSingleValue<long, string>? id, List<RpdeItem> items)
+        public RpdePage(Uri feedBaseUrl, long? modified, ComparableSingleValue<long, string>? id, List<RpdeItem> items)
         {
             this.Items = items;
             SetNextModifiedID(feedBaseUrl, modified, id);
         }
 
-        public RpdePage(string feedBaseUrl, long? changeNumber, List<RpdeItem> items)
+        public RpdePage(Uri feedBaseUrl, long? changeNumber, List<RpdeItem> items)
         {
             this.Items = items;
             SetNextChangeNumber(feedBaseUrl, changeNumber);
         }
 
-        public void SetNextModifiedID(string feedBaseUrl, long? modified, ComparableSingleValue<long, string>? id)
+        public void SetNextModifiedID(Uri feedBaseUrl, long? modified, ComparableSingleValue<long, string>? id)
         {
             // If there is at least one item, run validation on items array
             var firstItem = Items.FirstOrDefault();
@@ -144,7 +144,7 @@ namespace OpenActive.NET.Rpde.Version1
             }
         }
 
-        public void SetNextChangeNumber(string feedBaseUrl, long? changeNumber)
+        public void SetNextChangeNumber(Uri feedBaseUrl, long? changeNumber)
         {
             // If there is at least one item, run validation on items array
             var firstItem = Items.FirstOrDefault();
