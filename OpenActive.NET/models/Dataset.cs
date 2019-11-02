@@ -49,6 +49,13 @@ namespace OpenActive.NET
 
 
         /// <summary>
+        /// Information about the Open Booking API. Note this property is in EARLY RELEASE AND IS SUBJECT TO CHANGE.
+        /// </summary>
+        [DataMember(Name = "accessService", EmitDefaultValue = false, Order = 9)]
+        public virtual WebAPI AccessService { get; set; }
+
+
+        /// <summary>
         /// A background image for the Dataset.
         /// </summary>
         /// <example>
@@ -59,14 +66,14 @@ namespace OpenActive.NET
         /// }
         /// </code>
         /// </example>
-        [DataMember(Name = "backgroundImage", EmitDefaultValue = false, Order = 9)]
+        [DataMember(Name = "backgroundImage", EmitDefaultValue = false, Order = 10)]
         public virtual ImageObject BackgroundImage { get; set; }
 
 
         /// <summary>
         /// Information about the Booking System or publishing platform
         /// </summary>
-        [DataMember(Name = "bookingService", EmitDefaultValue = false, Order = 10)]
+        [DataMember(Name = "bookingService", EmitDefaultValue = false, Order = 11)]
         public virtual BookingService BookingService { get; set; }
 
 
@@ -78,7 +85,7 @@ namespace OpenActive.NET
         /// "dateModified": "2018-01-27T12:00:00Z"
         /// </code>
         /// </example>
-        [DataMember(Name = "dateModified", EmitDefaultValue = false, Order = 11)]
+        [DataMember(Name = "dateModified", EmitDefaultValue = false, Order = 12)]
         public new virtual DateTimeOffset? DateModified { get; set; }
 
 
@@ -90,7 +97,7 @@ namespace OpenActive.NET
         /// "datePublished": "2018-01-27T12:00:00Z"
         /// </code>
         /// </example>
-        [DataMember(Name = "datePublished", EmitDefaultValue = false, Order = 12)]
+        [DataMember(Name = "datePublished", EmitDefaultValue = false, Order = 13)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual SingleValues<string, DateTimeOffset?> DatePublished { get; set; }
 
@@ -103,7 +110,7 @@ namespace OpenActive.NET
         /// "discussionUrl": "https://github.com/gladstonemrm/FusionLifestyle/issues"
         /// </code>
         /// </example>
-        [DataMember(Name = "discussionUrl", EmitDefaultValue = false, Order = 13)]
+        [DataMember(Name = "discussionUrl", EmitDefaultValue = false, Order = 14)]
         public new virtual Uri DiscussionUrl { get; set; }
 
 
@@ -123,7 +130,7 @@ namespace OpenActive.NET
         /// ]
         /// </code>
         /// </example>
-        [DataMember(Name = "distribution", EmitDefaultValue = false, Order = 14)]
+        [DataMember(Name = "distribution", EmitDefaultValue = false, Order = 15)]
         public new virtual List<DataDownload> Distribution { get; set; }
 
 
@@ -135,7 +142,7 @@ namespace OpenActive.NET
         /// "documentation": "https://developer.openactive.io"
         /// </code>
         /// </example>
-        [DataMember(Name = "documentation", EmitDefaultValue = false, Order = 15)]
+        [DataMember(Name = "documentation", EmitDefaultValue = false, Order = 16)]
         public virtual Uri Documentation { get; set; }
 
 
@@ -149,7 +156,7 @@ namespace OpenActive.NET
         /// ]
         /// </code>
         /// </example>
-        [DataMember(Name = "inLanguage", EmitDefaultValue = false, Order = 16)]
+        [DataMember(Name = "inLanguage", EmitDefaultValue = false, Order = 17)]
         public new virtual List<string> InLanguage { get; set; }
 
 
@@ -168,14 +175,14 @@ namespace OpenActive.NET
         /// ]
         /// </code>
         /// </example>
-        [DataMember(Name = "keywords", EmitDefaultValue = false, Order = 17)]
+        [DataMember(Name = "keywords", EmitDefaultValue = false, Order = 18)]
         public new virtual List<string> Keywords { get; set; }
 
 
         /// Must always be present and set to <code>
         /// "license": "https://creativecommons.org/licenses/by/4.0/"
         /// </code>
-        [DataMember(Name = "license", EmitDefaultValue = false, Order = 18)]
+        [DataMember(Name = "license", EmitDefaultValue = false, Order = 19)]
         public new virtual Uri License { get; set; }
 
 
@@ -191,7 +198,7 @@ namespace OpenActive.NET
         /// }
         /// </code>
         /// </example>
-        [DataMember(Name = "publisher", EmitDefaultValue = false, Order = 19)]
+        [DataMember(Name = "publisher", EmitDefaultValue = false, Order = 20)]
         public new virtual Organization Publisher { get; set; }
 
 
@@ -203,7 +210,7 @@ namespace OpenActive.NET
         /// "schemaVersion": "https://www.openactive.io/modelling-opportunity-data/2.0/"
         /// </code>
         /// </example>
-        [DataMember(Name = "schemaVersion", EmitDefaultValue = false, Order = 20)]
+        [DataMember(Name = "schemaVersion", EmitDefaultValue = false, Order = 21)]
         public new virtual Uri SchemaVersion { get; set; }
 
 
@@ -215,7 +222,7 @@ namespace OpenActive.NET
         /// "url": "https://opendata.fusion-lifestyle.com/OpenActive/"
         /// </code>
         /// </example>
-        [DataMember(Name = "url", EmitDefaultValue = false, Order = 21)]
+        [DataMember(Name = "url", EmitDefaultValue = false, Order = 22)]
         public new virtual Uri Url { get; set; }
 
     }
