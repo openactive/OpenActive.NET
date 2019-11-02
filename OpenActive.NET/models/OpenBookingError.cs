@@ -75,8 +75,8 @@ namespace OpenActive.NET
         /// <summary>
         /// An integer representing the HTTP status code.
         /// </summary>
-        [DataMember(Name = "status", EmitDefaultValue = false, Order = 13)]
-        public virtual int? Status { get; set; }
+        [DataMember(Name = "statusCode", EmitDefaultValue = false, Order = 13)]
+        public virtual int? StatusCode { get; set; }
 
     }
 }
