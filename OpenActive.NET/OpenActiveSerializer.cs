@@ -38,7 +38,7 @@ namespace OpenActive.NET
             DefaultValueHandling = DefaultValueHandling.Ignore,
             DateParseHandling = DateParseHandling.DateTimeOffset,
             ContractResolver = NoEmptyStringsContractResolver.Instance,
-            // The .NET MVC framework defaults to 32(so 32 levels deep in the JSON structure)
+            // The ASP.NET MVC framework defaults to 32(so 32 levels deep in the JSON structure)
             // to prevent stack overflow caused by malicious complex JSON requests.
             MaxDepth = 32
 
@@ -60,13 +60,13 @@ namespace OpenActive.NET
             DateParseHandling = DateParseHandling.DateTimeOffset,
             ContractResolver = NoEmptyStringsContractResolver.Instance,
             StringEscapeHandling = StringEscapeHandling.EscapeHtml,
-            // The .NET MVC framework defaults to 32(so 32 levels deep in the JSON structure)
+            // The ASP.NET MVC framework defaults to 32(so 32 levels deep in the JSON structure)
             // to prevent stack overflow caused by malicious complex JSON requests.
             MaxDepth = 32
         };
 
         /// <summary>
-        /// Serializer settings used deserializing.
+        /// Serializer settings used when deserializing.
         /// </summary>
         private static readonly JsonSerializerSettings DeserializerSettings = new JsonSerializerSettings()
         {
@@ -77,8 +77,19 @@ namespace OpenActive.NET
             NullValueHandling = NullValueHandling.Ignore,
             DefaultValueHandling = DefaultValueHandling.Ignore,
             DateParseHandling = DateParseHandling.DateTimeOffset,
+            // The ASP.NET MVC framework defaults to 32(so 32 levels deep in the JSON structure)
+            // to prevent stack overflow caused by malicious complex JSON requests.
             MaxDepth = 32
         };
+
+        /// <summary>
+        /// Returns a strongly typed model of the JSON-LD representation provided.
+        /// </summary>
+        /// <typeparam name="T">Type of schema.org object to deserialize (can use Thing for any)</typeparam>
+        /// <param name="str">JSON string</param>
+        /// <returns>Strongly typed schema.org model</returns>
+        public static T Deserialize<T>(string str) => JsonConvert.DeserializeObject<T>(PrepareForDeserialization(str), DeserializerSettings);
+
 
         /// <summary>
         /// Returns the JSON-LD representation of this instance.
@@ -132,8 +143,6 @@ namespace OpenActive.NET
 
         public static string Serialize(object obj) => RemoveAllButFirstContext(JsonConvert.SerializeObject(obj, InternalSerializerSettings), false);
 
-        public static T Deserialize<T>(string str) => JsonConvert.DeserializeObject<T>(PrepareForDeserialization(str), DeserializerSettings);
-        
         private static string PrepareForDeserialization(string json)
         {
             var stringBuilder = new StringBuilder(json);
