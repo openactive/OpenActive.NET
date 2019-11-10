@@ -30,7 +30,7 @@ namespace OpenActive.NET
         /// </example>
         [DataMember(Name = "identifier", EmitDefaultValue = false, Order = 7)]
         [JsonConverter(typeof(ValuesConverter))]
-        public new virtual SingleValues<int?, string, PropertyValue, List<PropertyValue>> Identifier { get; set; }
+        public new virtual SingleValues<long?, string, PropertyValue, List<PropertyValue>> Identifier { get; set; }
 
 
         /// <summary>
@@ -42,6 +42,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "name", EmitDefaultValue = false, Order = 8)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual string Name { get; set; }
 
 
@@ -54,6 +55,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "description", EmitDefaultValue = false, Order = 9)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual string Description { get; set; }
 
 
@@ -66,6 +68,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "accessibilityInformation", EmitDefaultValue = false, Order = 10)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual string AccessibilityInformation { get; set; }
 
 
@@ -85,6 +88,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "accessibilitySupport", EmitDefaultValue = false, Order = 11)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual List<Concept> AccessibilitySupport { get; set; }
 
 
@@ -104,6 +108,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "activity", EmitDefaultValue = false, Order = 12)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual List<Concept> Activity { get; set; }
 
 
@@ -120,6 +125,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "ageRange", EmitDefaultValue = false, Order = 13)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual QuantitativeValue AgeRange { get; set; }
 
 
@@ -132,6 +138,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "attendeeInstructions", EmitDefaultValue = false, Order = 14)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual string AttendeeInstructions { get; set; }
 
 
@@ -167,6 +174,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "contributor", EmitDefaultValue = false, Order = 16)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual List<Person> Contributor { get; set; }
 
 
@@ -202,6 +210,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "eventSchedule", EmitDefaultValue = false, Order = 18)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual List<Schedule> EventSchedule { get; set; }
 
 
@@ -214,6 +223,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "eventStatus", EmitDefaultValue = false, Order = 19)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual Schema.NET.EventStatusType? EventStatus { get; set; }
 
 
@@ -226,6 +236,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "genderRestriction", EmitDefaultValue = false, Order = 20)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual GenderRestrictionType? GenderRestriction { get; set; }
 
 
@@ -249,6 +260,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "image", EmitDefaultValue = false, Order = 21)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual List<ImageObject> Image { get; set; }
 
 
@@ -261,6 +273,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "isAccessibleForFree", EmitDefaultValue = false, Order = 22)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual bool? IsAccessibleForFree { get; set; }
 
 
@@ -273,6 +286,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "isCoached", EmitDefaultValue = false, Order = 23)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual bool? IsCoached { get; set; }
 
 
@@ -294,6 +308,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "leader", EmitDefaultValue = false, Order = 24)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual List<Person> Leader { get; set; }
 
 
@@ -343,6 +358,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "location", EmitDefaultValue = false, Order = 26)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual Place Location { get; set; }
 
 
@@ -355,7 +371,8 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "maximumAttendeeCapacity", EmitDefaultValue = false, Order = 27)]
-        public new virtual int? MaximumAttendeeCapacity { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public new virtual long? MaximumAttendeeCapacity { get; set; }
 
 
         /// <summary>
@@ -367,6 +384,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "meetingPoint", EmitDefaultValue = false, Order = 28)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual string MeetingPoint { get; set; }
 
 
@@ -388,6 +406,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "offers", EmitDefaultValue = false, Order = 29)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual List<Offer> Offers { get; set; }
 
 
@@ -428,6 +447,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "potentialAction", EmitDefaultValue = false, Order = 31)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual List<Action> PotentialAction { get; set; }
 
 
@@ -444,6 +464,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "programme", EmitDefaultValue = false, Order = 32)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual Brand Programme { get; set; }
 
 
@@ -456,7 +477,8 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "remainingAttendeeCapacity", EmitDefaultValue = false, Order = 33)]
-        public new virtual int? RemainingAttendeeCapacity { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public new virtual long? RemainingAttendeeCapacity { get; set; }
 
 
         /// <summary>
@@ -468,6 +490,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "schedulingNote", EmitDefaultValue = false, Order = 34)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual string SchedulingNote { get; set; }
 
 
@@ -502,6 +525,7 @@ namespace OpenActive.NET
         /// Relates a parent event to a child event. Properties describing the parent event can be assumed to apply to the child, unless otherwise specified. A child event might be a specific instance of an Event within a schedule
         /// </summary>
         [DataMember(Name = "subEvent", EmitDefaultValue = false, Order = 37)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual List<Event> SubEvent { get; set; }
 
 
@@ -509,6 +533,7 @@ namespace OpenActive.NET
         /// Relates a child event to a parent event. Properties describing the parent event can be assumed to apply to the child, unless otherwise specified. A parent event might specify a recurring schedule, of which the child event is one specific instance
         /// </summary>
         [DataMember(Name = "superEvent", EmitDefaultValue = false, Order = 38)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual Event SuperEvent { get; set; }
 
 
@@ -521,6 +546,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "url", EmitDefaultValue = false, Order = 39)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual Uri Url { get; set; }
 
 
@@ -531,6 +557,7 @@ namespace OpenActive.NET
         /// If you are using this property, please join the discussion at proposal [#3](https://github.com/openactive/ns-beta/issues/3).
         /// </summary>
         [DataMember(Name = "beta:distance", EmitDefaultValue = false, Order = 1040)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual QuantitativeValue Distance { get; set; }
 
 
@@ -541,6 +568,7 @@ namespace OpenActive.NET
         /// If you are using this property, please join the discussion at proposal [#201](https://github.com/openactive/modelling-opportunity-data/issues/201).
         /// </summary>
         [DataMember(Name = "beta:estimatedDuration", EmitDefaultValue = false, Order = 1041)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual QuantitativeValue EstimatedDuration { get; set; }
 
 
@@ -551,6 +579,7 @@ namespace OpenActive.NET
         /// If you are using this property, please join the discussion at proposal [#71](https://github.com/openactive/modelling-opportunity-data/issues/71).
         /// </summary>
         [DataMember(Name = "beta:isVirtuallyCoached", EmitDefaultValue = false, Order = 1042)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual bool? IsVirtuallyCoached { get; set; }
 
 
@@ -561,6 +590,7 @@ namespace OpenActive.NET
         /// If you are using this property, please join the discussion at proposal [#2](https://github.com/openactive/ns-beta/issues/2).
         /// </summary>
         [DataMember(Name = "beta:formattedDescription", EmitDefaultValue = false, Order = 1043)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual string FormattedDescription { get; set; }
 
 
@@ -571,6 +601,7 @@ namespace OpenActive.NET
         /// If you are using this property, please join the discussion at proposal [#1](https://github.com/openactive/facility-types/issues/1).
         /// </summary>
         [DataMember(Name = "beta:facilitySetting", EmitDefaultValue = false, Order = 1044)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual FacilitySettingType? FacilitySetting { get; set; }
 
 
@@ -592,6 +623,7 @@ namespace OpenActive.NET
         /// If you are using this property, please join the discussion at proposal [#110](https://github.com/openactive/modelling-opportunity-data/issues/110).
         /// </summary>
         [DataMember(Name = "beta:sportsActivityLocation", EmitDefaultValue = false, Order = 1046)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual List<SportsActivityLocation> SportsActivityLocation { get; set; }
 
 
@@ -602,6 +634,7 @@ namespace OpenActive.NET
         /// If you are using this property, please join the discussion at proposal [#88](https://github.com/openactive/modelling-opportunity-data/issues/88).
         /// </summary>
         [DataMember(Name = "beta:video", EmitDefaultValue = false, Order = 1047)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual List<Schema.NET.VideoObject> Video { get; set; }
 
 
@@ -612,6 +645,7 @@ namespace OpenActive.NET
         /// If you are using this property, please join the discussion at proposal [#9](https://github.com/openactive/ns-beta/issues/9).
         /// </summary>
         [DataMember(Name = "beta:availability", EmitDefaultValue = false, Order = 1048)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual string Availability { get; set; }
 
 
@@ -622,6 +656,7 @@ namespace OpenActive.NET
         /// If you are using this property, please join the discussion at proposal [#166](https://github.com/openactive/modelling-opportunity-data/issues/166).
         /// </summary>
         [DataMember(Name = "beta:isWheelchairAccessible", EmitDefaultValue = false, Order = 1049)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual bool? IsWheelchairAccessible { get; set; }
 
 
@@ -632,7 +667,8 @@ namespace OpenActive.NET
         /// If you are using this property, please join the discussion at proposal [#13](https://github.com/openactive/ns-beta/issues/13).
         /// </summary>
         [DataMember(Name = "beta:registrationCount", EmitDefaultValue = false, Order = 1050)]
-        public virtual int? RegistrationCount { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public virtual long? RegistrationCount { get; set; }
 
 
         /// <summary>
@@ -642,7 +678,8 @@ namespace OpenActive.NET
         /// If you are using this property, please join the discussion at proposal [#12](https://github.com/openactive/ns-beta/issues/12).
         /// </summary>
         [DataMember(Name = "beta:attendeeCount", EmitDefaultValue = false, Order = 1051)]
-        public virtual int? AttendeeCount { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public virtual long? AttendeeCount { get; set; }
 
     }
 }

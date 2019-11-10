@@ -30,7 +30,7 @@ namespace OpenActive.NET
         /// </example>
         [DataMember(Name = "identifier", EmitDefaultValue = false, Order = 7)]
         [JsonConverter(typeof(ValuesConverter))]
-        public new virtual SingleValues<int?, string, PropertyValue, List<PropertyValue>> Identifier { get; set; }
+        public new virtual SingleValues<long?, string, PropertyValue, List<PropertyValue>> Identifier { get; set; }
 
 
         /// <summary>
@@ -43,6 +43,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "name", EmitDefaultValue = false, Order = 8)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual string Name { get; set; }
 
 
@@ -55,6 +56,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "description", EmitDefaultValue = false, Order = 9)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual string Description { get; set; }
 
 
@@ -68,6 +70,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "email", EmitDefaultValue = false, Order = 10)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual string Email { get; set; }
 
 
@@ -81,6 +84,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "familyName", EmitDefaultValue = false, Order = 11)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual string FamilyName { get; set; }
 
 
@@ -93,6 +97,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "gender", EmitDefaultValue = false, Order = 12)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual Schema.NET.GenderType? Gender { get; set; }
 
 
@@ -106,6 +111,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "givenName", EmitDefaultValue = false, Order = 13)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual string GivenName { get; set; }
 
 
@@ -119,6 +125,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "jobTitle", EmitDefaultValue = false, Order = 14)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual string JobTitle { get; set; }
 
 
@@ -134,6 +141,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "logo", EmitDefaultValue = false, Order = 15)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual ImageObject Logo { get; set; }
 
 
@@ -146,6 +154,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "sameAs", EmitDefaultValue = false, Order = 16)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual List<Uri> SameAs { get; set; }
 
 
@@ -159,6 +168,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "telephone", EmitDefaultValue = false, Order = 17)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual string Telephone { get; set; }
 
 
@@ -171,6 +181,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "url", EmitDefaultValue = false, Order = 18)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual Uri Url { get; set; }
 
     }

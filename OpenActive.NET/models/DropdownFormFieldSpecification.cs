@@ -24,6 +24,7 @@ namespace OpenActive.NET
         /// Specifies an array of display values for the dropdown.
         /// </summary>
         [DataMember(Name = "valueOption", EmitDefaultValue = false, Order = 7)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual List<string> ValueOption { get; set; }
 
     }

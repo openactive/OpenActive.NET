@@ -30,7 +30,7 @@ namespace OpenActive.NET
         /// </example>
         [DataMember(Name = "identifier", EmitDefaultValue = false, Order = 7)]
         [JsonConverter(typeof(ValuesConverter))]
-        public new virtual SingleValues<int?, string, PropertyValue, List<PropertyValue>> Identifier { get; set; }
+        public new virtual SingleValues<long?, string, PropertyValue, List<PropertyValue>> Identifier { get; set; }
 
 
         /// <summary>
@@ -42,6 +42,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "name", EmitDefaultValue = false, Order = 8)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual string Name { get; set; }
 
 
@@ -54,6 +55,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "description", EmitDefaultValue = false, Order = 9)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual string Description { get; set; }
 
 
@@ -69,6 +71,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "logo", EmitDefaultValue = false, Order = 10)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual ImageObject Logo { get; set; }
 
 
@@ -81,6 +84,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "url", EmitDefaultValue = false, Order = 11)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual Uri Url { get; set; }
 
 
@@ -91,6 +95,7 @@ namespace OpenActive.NET
         /// If you are using this property, please join the discussion at proposal [#88](https://github.com/openactive/modelling-opportunity-data/issues/88).
         /// </summary>
         [DataMember(Name = "beta:video", EmitDefaultValue = false, Order = 1012)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual List<Schema.NET.VideoObject> Video { get; set; }
 
     }

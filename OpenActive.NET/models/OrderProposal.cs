@@ -24,6 +24,7 @@ namespace OpenActive.NET
         /// 
         /// </summary>
         [DataMember(Name = "orderCustomerNote", EmitDefaultValue = false, Order = 7)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual string OrderCustomerNote { get; set; }
 
 
@@ -31,6 +32,7 @@ namespace OpenActive.NET
         /// 
         /// </summary>
         [DataMember(Name = "orderProposalStatus", EmitDefaultValue = false, Order = 8)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual OrderProposalStatus? OrderProposalStatus { get; set; }
 
 
@@ -38,6 +40,7 @@ namespace OpenActive.NET
         /// 
         /// </summary>
         [DataMember(Name = "orderSellerNote", EmitDefaultValue = false, Order = 9)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual string OrderSellerNote { get; set; }
 
     }

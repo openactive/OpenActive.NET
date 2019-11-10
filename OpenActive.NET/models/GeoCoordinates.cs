@@ -29,6 +29,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "latitude", EmitDefaultValue = false, Order = 7)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual decimal? Latitude { get; set; }
 
 
@@ -41,6 +42,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "longitude", EmitDefaultValue = false, Order = 8)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual decimal? Longitude { get; set; }
 
     }

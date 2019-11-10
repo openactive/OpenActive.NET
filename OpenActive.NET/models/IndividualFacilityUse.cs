@@ -24,6 +24,7 @@ namespace OpenActive.NET
         /// Inverse of the oa:individualFacilityUse property. Relates an oa:IndividualFacilityUse (e.g. an opportunity to play tennis on a specific court) to a oa:FacilityUse (e.g. an opportunity to play tennis at a specific location).
         /// </summary>
         [DataMember(Name = "aggregateFacilityUse", EmitDefaultValue = false, Order = 7)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual FacilityUse AggregateFacilityUse { get; set; }
 
 
@@ -46,6 +47,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "event", EmitDefaultValue = false, Order = 8)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual List<Slot> Event { get; set; }
 
     }

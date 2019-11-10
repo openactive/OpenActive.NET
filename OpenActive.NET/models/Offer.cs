@@ -30,7 +30,7 @@ namespace OpenActive.NET
         /// </example>
         [DataMember(Name = "identifier", EmitDefaultValue = false, Order = 7)]
         [JsonConverter(typeof(ValuesConverter))]
-        public new virtual SingleValues<int?, string, PropertyValue, List<PropertyValue>> Identifier { get; set; }
+        public new virtual SingleValues<long?, string, PropertyValue, List<PropertyValue>> Identifier { get; set; }
 
 
         /// <summary>
@@ -42,6 +42,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "name", EmitDefaultValue = false, Order = 8)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual string Name { get; set; }
 
 
@@ -54,6 +55,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "description", EmitDefaultValue = false, Order = 9)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual string Description { get; set; }
 
 
@@ -69,6 +71,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "acceptedPaymentMethod", EmitDefaultValue = false, Order = 10)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual List<PaymentMethod> AcceptedPaymentMethod { get; set; }
 
 
@@ -81,6 +84,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "advanceBooking", EmitDefaultValue = false, Order = 11)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual RequiredStatusType? AdvanceBooking { get; set; }
 
 
@@ -97,6 +101,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "ageRange", EmitDefaultValue = false, Order = 12)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual QuantitativeValue AgeRange { get; set; }
 
 
@@ -112,6 +117,7 @@ namespace OpenActive.NET
         /// Can include  https://openactive.io/OpenBookingIntakeForm,  https://openactive.io/OpenBookingAttendeeDetails,  https://openactive.io/OpenBookingApproval,  https://openactive.io/OpenBookingNegotiation,  https://openactive.io/OpenBookingMessageExchange
         /// </summary>
         [DataMember(Name = "openBookingFlowRequirement", EmitDefaultValue = false, Order = 14)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual List<OpenBookingFlowRequirement> OpenBookingFlowRequirement { get; set; }
 
 
@@ -124,6 +130,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "prepayment", EmitDefaultValue = false, Order = 15)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual RequiredStatusType? Prepayment { get; set; }
 
 
@@ -139,6 +146,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "price", EmitDefaultValue = false, Order = 16)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual decimal? Price { get; set; }
 
 
@@ -151,6 +159,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "priceCurrency", EmitDefaultValue = false, Order = 17)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual string PriceCurrency { get; set; }
 
 
@@ -163,6 +172,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "url", EmitDefaultValue = false, Order = 18)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual Uri Url { get; set; }
 
 
@@ -181,6 +191,7 @@ namespace OpenActive.NET
         /// If you are using this property, please join the discussion at proposal [#161](https://github.com/openactive/modelling-opportunity-data/issues/161).
         /// </summary>
         [DataMember(Name = "beta:availableChannel", EmitDefaultValue = false, Order = 1020)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual List<AvailableChannelType> AvailableChannel { get; set; }
 
     }

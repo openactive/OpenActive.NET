@@ -30,13 +30,14 @@ namespace OpenActive.NET
         /// </example>
         [DataMember(Name = "identifier", EmitDefaultValue = false, Order = 7)]
         [JsonConverter(typeof(ValuesConverter))]
-        public new virtual SingleValues<int?, string, PropertyValue, List<PropertyValue>> Identifier { get; set; }
+        public new virtual SingleValues<long?, string, PropertyValue, List<PropertyValue>> Identifier { get; set; }
 
 
         /// <summary>
         /// The name of the tax charge, e.g. "VAT at 0% for EU transactions"
         /// </summary>
         [DataMember(Name = "name", EmitDefaultValue = false, Order = 8)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual string Name { get; set; }
 
 
@@ -44,6 +45,7 @@ namespace OpenActive.NET
         /// The total amount.
         /// </summary>
         [DataMember(Name = "price", EmitDefaultValue = false, Order = 9)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual decimal? Price { get; set; }
 
 
@@ -51,6 +53,7 @@ namespace OpenActive.NET
         /// The currency of the price. Specified as a 3-letter ISO 4217 value. If a  PriceSpecification has a zero price, then this property is not required. Otherwise the priceCurrency must be specified.
         /// </summary>
         [DataMember(Name = "priceCurrency", EmitDefaultValue = false, Order = 10)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual string PriceCurrency { get; set; }
 
 
@@ -58,6 +61,7 @@ namespace OpenActive.NET
         /// The rate of VAT.
         /// </summary>
         [DataMember(Name = "rate", EmitDefaultValue = false, Order = 11)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual decimal? Rate { get; set; }
 
     }

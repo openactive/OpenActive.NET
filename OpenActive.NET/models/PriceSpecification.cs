@@ -24,6 +24,7 @@ namespace OpenActive.NET
         /// The total amount.
         /// </summary>
         [DataMember(Name = "price", EmitDefaultValue = false, Order = 7)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual decimal? Price { get; set; }
 
 
@@ -31,6 +32,7 @@ namespace OpenActive.NET
         /// The currency of the price. Specified as a 3-letter ISO 4217 value. If a  PriceSpecification has a zero price, then this property is not required. Otherwise the priceCurrency must be specified.
         /// </summary>
         [DataMember(Name = "priceCurrency", EmitDefaultValue = false, Order = 8)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual string PriceCurrency { get; set; }
 
     }

@@ -50,8 +50,29 @@ namespace OpenActive.NET.Test
                 Price = 30,
                 PriceCurrency = "USD",
                 ValidFrom = new DateTimeOffset(2017, 1, 20, 16, 20, 0, TimeSpan.FromHours(-8)),
-                Category = NullString
+                Category = NullString,
+                OpenBookingFlowRequirement = new List<OpenBookingFlowRequirement>
+                {
+                    OpenBookingFlowRequirement.OpenBookingAttendeeDetails
+                }
             } },
+            EventSchedule = new List<Schedule>
+            {
+                new PartialSchedule
+                {
+                    ByDay = new List<Schema.NET.DayOfWeek>
+                    {
+                        Schema.NET.DayOfWeek.Tuesday,
+                        Schema.NET.DayOfWeek.Sunday
+                    },
+                    Duration = new TimeSpan(1, 0, 0),
+                    RepeatFrequency = new TimeSpan(7,0,0,0,0),
+                    StartDate = "2018-10-19",
+                    EndDate = "2018-11-04",
+                    StartTime = new DateTimeOffset(1,1,1,8,30,00, new TimeSpan()),
+                    EndTime = new DateTimeOffset(1,1,1,9,30,00, new TimeSpan())
+                },
+            },
             Organizer = NullPerson,
             AttendeeInstructions = "Ensure you bring trainers and a bottle of water.",
             MeetingPoint = "",
@@ -66,6 +87,21 @@ namespace OpenActive.NET.Test
             "\"description\":\"This is the virtual version of the original barbell class, which will help you get lean, toned and fit - fast. Les Mills™ Virtual classes are designed for people who cannot get access to our live classes or who want to get a ‘taste’ of a Les Mills™ class before taking a live class with an instructor. The classes are played on a big video screen, with dimmed lighting and pumping surround sound, and are led onscreen by the people who actually choreograph the classes.\"," +
             "\"attendeeInstructions\":\"Ensure you bring trainers and a bottle of water.\"," +
             "\"duration\":\"P1D\"," +
+            "\"eventSchedule\":[" +
+              "{" +
+                "\"@type\":\"PartialSchedule\"," +
+                "\"byDay\":[" +
+                  "\"https://schema.org/Tuesday\"," +
+                  "\"https://schema.org/Sunday\"" +
+                "]," +
+                "\"duration\":\"PT1H\"," +
+                "\"endTime\":\"09:30\"," +
+                "\"repeatFrequency\":\"P7D\"," +
+                "\"startDate\":\"2018-10-19\"," +
+                "\"endDate\":\"2018-11-04\"," +
+                "\"startTime\":\"08:30\"" +
+              "}" +
+            "]," +
             "\"image\":[" +
                 "{" +
                     "\"@type\":\"ImageObject\"," +
@@ -87,6 +123,9 @@ namespace OpenActive.NET.Test
             "\"offers\":[" +
                 "{" +
                     "\"@type\":\"Offer\"," +
+                    "\"openBookingFlowRequirement\":[" +
+                        "\"https://openactive.io/OpenBookingAttendeeDetails\"" +
+                    "]," +
                     "\"price\":30.0," +
                     "\"priceCurrency\":\"USD\"," +
                     "\"url\":\"https://www.example.com/event_offer/12345_201803180430\"," +
@@ -101,6 +140,17 @@ namespace OpenActive.NET.Test
         public void ToString_EventGoogleStructuredData_ReturnsExpectedJsonLd() {
             output.WriteLine(this.@event.ToOpenActiveString());
             Assert.Equal(this.json, this.@event.ToOpenActiveString());
+        }
+
+        [Fact]
+        public void SessionSeries_EncodeDecode()
+        {
+            var decode = OpenActiveSerializer.Deserialize<SessionSeries>(json);
+            var encode = OpenActiveSerializer.Serialize(decode);
+
+            output.WriteLine(json);
+            output.WriteLine(encode);
+            Assert.Equal(json, encode);
         }
 
         [Fact]

@@ -33,6 +33,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "name", EmitDefaultValue = false, Order = 7)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual string Name { get; set; }
 
 
@@ -45,6 +46,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "description", EmitDefaultValue = false, Order = 8)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual string Description { get; set; }
 
 
@@ -52,6 +54,7 @@ namespace OpenActive.NET
         /// Information about the Open Booking API. Note this property is in EARLY RELEASE AND IS SUBJECT TO CHANGE.
         /// </summary>
         [DataMember(Name = "accessService", EmitDefaultValue = false, Order = 9)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual WebAPI AccessService { get; set; }
 
 
@@ -67,6 +70,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "backgroundImage", EmitDefaultValue = false, Order = 10)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual ImageObject BackgroundImage { get; set; }
 
 
@@ -74,6 +78,7 @@ namespace OpenActive.NET
         /// Information about the Booking System or publishing platform
         /// </summary>
         [DataMember(Name = "bookingService", EmitDefaultValue = false, Order = 11)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual BookingService BookingService { get; set; }
 
 
@@ -86,6 +91,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "dateModified", EmitDefaultValue = false, Order = 12)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual DateTimeOffset? DateModified { get; set; }
 
 
@@ -111,6 +117,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "discussionUrl", EmitDefaultValue = false, Order = 14)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual Uri DiscussionUrl { get; set; }
 
 
@@ -131,6 +138,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "distribution", EmitDefaultValue = false, Order = 15)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual List<DataDownload> Distribution { get; set; }
 
 
@@ -143,6 +151,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "documentation", EmitDefaultValue = false, Order = 16)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual Uri Documentation { get; set; }
 
 
@@ -157,6 +166,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "inLanguage", EmitDefaultValue = false, Order = 17)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual List<string> InLanguage { get; set; }
 
 
@@ -176,6 +186,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "keywords", EmitDefaultValue = false, Order = 18)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual List<string> Keywords { get; set; }
 
 
@@ -183,6 +194,7 @@ namespace OpenActive.NET
         /// "license": "https://creativecommons.org/licenses/by/4.0/"
         /// </code>
         [DataMember(Name = "license", EmitDefaultValue = false, Order = 19)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual Uri License { get; set; }
 
 
@@ -199,6 +211,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "publisher", EmitDefaultValue = false, Order = 20)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual Organization Publisher { get; set; }
 
 
@@ -211,6 +224,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "schemaVersion", EmitDefaultValue = false, Order = 21)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual Uri SchemaVersion { get; set; }
 
 
@@ -223,6 +237,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "url", EmitDefaultValue = false, Order = 22)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual Uri Url { get; set; }
 
     }

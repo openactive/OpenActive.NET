@@ -24,6 +24,7 @@ namespace OpenActive.NET
         /// The name of the terms. The name must distinguish this from other terms fields provided, e.g. 'Terms and Conditions' or 'Privacy Policy'.
         /// </summary>
         [DataMember(Name = "name", EmitDefaultValue = false, Order = 7)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual string Name { get; set; }
 
 
@@ -31,6 +32,7 @@ namespace OpenActive.NET
         /// 
         /// </summary>
         [DataMember(Name = "requiresExplicitConsent", EmitDefaultValue = false, Order = 8)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual bool? RequiresExplicitConsent { get; set; }
 
 
@@ -38,6 +40,7 @@ namespace OpenActive.NET
         /// The URL of the webpage containing the contents of the terms.
         /// </summary>
         [DataMember(Name = "url", EmitDefaultValue = false, Order = 9)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual Uri Url { get; set; }
 
     }

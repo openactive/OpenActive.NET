@@ -1,5 +1,6 @@
 namespace OpenActive.NET
 {
+    using System;
     using System.Collections;
     using System.Collections.Generic;
 
@@ -9,7 +10,7 @@ namespace OpenActive.NET
     /// <typeparam name="T1">The first type the values can take.</typeparam>
     /// <typeparam name="T2">The second type the values can take.</typeparam>
     /// <seealso cref="IValue" />
-    public class SingleValues<T1, T2> : IValue
+    public struct SingleValues<T1, T2> : IValue, IEquatable<SingleValues<T1, T2>>
     {
         private readonly T1 value1;
         private readonly T2 value2;
@@ -22,6 +23,8 @@ namespace OpenActive.NET
         {
             this.value1 = value;
             this.value2 = default;
+            this.HasValue1 = true;
+            this.HasValue2 = false;
         }
 
         /// <summary>
@@ -32,6 +35,8 @@ namespace OpenActive.NET
         {
             this.value1 = default;
             this.value2 = value;
+            this.HasValue1 = false;
+            this.HasValue2 = true;
         }
 
         /// <summary>
@@ -51,11 +56,11 @@ namespace OpenActive.NET
         {
             get
             {
-                if (this.value1 != default)
+                if (HasValue1)
                 {
                     return this.value1;
                 }
-                else if (this.value2 != default)
+                else if (HasValue2)
                 {
                     return this.value2;
                 }
@@ -65,17 +70,123 @@ namespace OpenActive.NET
         }
 
         /// <summary>
+        /// Gets a value indicating whether this instance has a value.
+        /// </summary>
+        public bool HasValue => this.HasValue1 || this.HasValue2;
+
+        /// <summary>
+        /// Gets whether the value of type <typeparamref name="T1" /> has a value.
+        /// </summary>
+        public bool HasValue1 { get; }
+
+        /// <summary>
+        /// Gets whether the value of type <typeparamref name="T2" /> has a value.
+        /// </summary>
+        public bool HasValue2 { get; }
+
+        /// <summary>
         /// Performs an implicit conversion from <typeparamref name="T1"/> to <see cref="SingleValues{T1,T2}"/>.
         /// </summary>
         /// <param name="item">The single item value.</param>
         /// <returns>The result of the conversion.</returns>
-        public static implicit operator SingleValues<T1, T2>(T1 item) => item == null || (item.GetType() == typeof(string) && string.IsNullOrWhiteSpace(item as string)) || (item as ICollection)?.Count == 0 ? null : new SingleValues<T1, T2>(item);
+        public static implicit operator SingleValues<T1, T2>(T1 item) => item.IsNullEmptyOrWhiteSpace() ? default : new SingleValues<T1, T2>(item);
 
         /// <summary>
         /// Performs an implicit conversion from <typeparamref name="T2"/> to <see cref="SingleValues{T1,T2}"/>.
         /// </summary>
         /// <param name="item">The single item value.</param>
         /// <returns>The result of the conversion.</returns>
-        public static implicit operator SingleValues<T1, T2>(T2 item) => item == null || (item.GetType() == typeof(string) && string.IsNullOrWhiteSpace(item as string)) || (item as ICollection)?.Count == 0 ? null : new SingleValues<T1, T2>(item);
+        public static implicit operator SingleValues<T1, T2>(T2 item) => item.IsNullEmptyOrWhiteSpace() ? default : new SingleValues<T1, T2>(item);
+
+        /// <summary>
+        /// Implements the operator ==.
+        /// </summary>
+        /// <param name="left">The left.</param>
+        /// <param name="right">The right.</param>
+        /// <returns>
+        /// The result of the operator.
+        /// </returns>
+        public static bool operator ==(SingleValues<T1, T2> left, SingleValues<T1, T2> right) => left.Equals(right);
+
+        /// <summary>
+        /// Implements the operator !=.
+        /// </summary>
+        /// <param name="left">The left.</param>
+        /// <param name="right">The right.</param>
+        /// <returns>
+        /// The result of the operator.
+        /// </returns>
+        public static bool operator !=(SingleValues<T1, T2> left, SingleValues<T1, T2> right) => !(left == right);
+
+        /// <summary>
+        /// Indicates whether the current object is equal to another object of the same type.
+        /// </summary>
+        /// <param name="other">An object to compare with this object.</param>
+        /// <returns>
+        /// true if the current object is equal to the <paramref name="other" /> parameter; otherwise, false.
+        /// </returns>
+        public bool Equals(SingleValues<T1, T2> other)
+        {
+            if (other == null)
+            {
+                return false;
+            }
+            else if (other.HasValue1)
+            {
+                if (this.HasValue1)
+                {
+                    return this.Value1.Equals(other.Value1);
+                }
+            }
+            else if (other.HasValue2)
+            {
+                if (this.HasValue2)
+                {
+                    return this.Value2.Equals(other.Value2);
+                }
+            }
+            else if (!other.HasValue && !this.HasValue)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Determines whether the specified <see cref="object" />, is equal to this instance.
+        /// </summary>
+        /// <param name="obj">The <see cref="object" /> to compare with this instance.</param>
+        /// <returns>
+        /// <c>true</c> if the specified <see cref="object" /> is equal to this instance; otherwise, <c>false</c>.
+        /// </returns>
+        public override bool Equals(object obj) => obj is SingleValues<T1, T2> ? this.Equals((SingleValues<T1, T2>)obj) : false;
+
+        /// <summary>
+        /// Implements ToString
+        /// </summary>
+        /// <returns>
+        /// A string representing the relevant value
+        /// </returns>
+        public override string ToString()
+        {
+            if (this.HasValue1)
+            {
+                return this.Value1.ToString();
+            }
+            else if (this.HasValue2)
+            {
+                return this.Value2.ToString();
+            }
+            return ((string)null).ToString();
+        }
+
+        /// <summary>
+        /// Returns a hash code for this instance.
+        /// </summary>
+        /// <returns>
+        /// A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
+        /// </returns>
+        public override int GetHashCode() => Schema.NET.HashCode.Of(this.Value1).And(this.Value2);
     }
 }

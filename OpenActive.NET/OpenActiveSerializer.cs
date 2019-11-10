@@ -2,6 +2,7 @@
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Serialization;
+using OpenActive.NET.Rpde.Version1;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,7 +27,7 @@ namespace OpenActive.NET
         /// <summary>
         /// Default serializer settings used.
         /// </summary>
-        private static readonly JsonSerializerSettings SerializerSettings = new JsonSerializerSettings()
+        private static readonly JsonSerializerSettings InternalSerializerSettings = new JsonSerializerSettings()
         {
             Converters = new List<JsonConverter>()
             {
@@ -35,7 +36,12 @@ namespace OpenActive.NET
             },
             NullValueHandling = NullValueHandling.Ignore,
             DefaultValueHandling = DefaultValueHandling.Ignore,
-            ContractResolver = NoEmptyStringsContractResolver.Instance
+            DateParseHandling = DateParseHandling.DateTimeOffset,
+            ContractResolver = NoEmptyStringsContractResolver.Instance,
+            // The .NET MVC framework defaults to 32(so 32 levels deep in the JSON structure)
+            // to prevent stack overflow caused by malicious complex JSON requests.
+            MaxDepth = 32
+
         };
 
         /// <summary>
@@ -51,8 +57,27 @@ namespace OpenActive.NET
             },
             NullValueHandling = NullValueHandling.Ignore,
             DefaultValueHandling = DefaultValueHandling.Ignore,
+            DateParseHandling = DateParseHandling.DateTimeOffset,
             ContractResolver = NoEmptyStringsContractResolver.Instance,
-            StringEscapeHandling = StringEscapeHandling.EscapeHtml
+            StringEscapeHandling = StringEscapeHandling.EscapeHtml,
+            // The .NET MVC framework defaults to 32(so 32 levels deep in the JSON structure)
+            // to prevent stack overflow caused by malicious complex JSON requests.
+            MaxDepth = 32
+        };
+
+        /// <summary>
+        /// Serializer settings used deserializing.
+        /// </summary>
+        private static readonly JsonSerializerSettings DeserializerSettings = new JsonSerializerSettings()
+        {
+            Converters = new List<JsonConverter>()
+            {
+                new StringEnumConverter()
+            },
+            NullValueHandling = NullValueHandling.Ignore,
+            DefaultValueHandling = DefaultValueHandling.Ignore,
+            DateParseHandling = DateParseHandling.DateTimeOffset,
+            MaxDepth = 32
         };
 
         /// <summary>
@@ -61,7 +86,7 @@ namespace OpenActive.NET
         /// <returns>
         /// A <see cref="string" /> that represents the JSON-LD representation of this instance.
         /// </returns>
-        public static string ToOpenActiveString(this Schema.NET.Thing thing) => ToString(thing, SerializerSettings, false);
+        public static string ToOpenActiveString(this Schema.NET.Thing thing) => ToString(thing, InternalSerializerSettings, false);
 
         /// <summary>
         /// Returns the JSON-LD representation of this instance, including "https://schema.org" in the "@context".
@@ -105,9 +130,9 @@ namespace OpenActive.NET
             return stringBuilder.ToString();
         }
 
-        public static string Serialize(object obj) => RemoveAllButFirstContext(JsonConvert.SerializeObject(obj, SerializerSettings), false);
+        public static string Serialize(object obj) => RemoveAllButFirstContext(JsonConvert.SerializeObject(obj, InternalSerializerSettings), false);
 
-        public static T Deserialize<T>(string str) => JsonConvert.DeserializeObject<T>(PrepareForDeserialization(str));
+        public static T Deserialize<T>(string str) => JsonConvert.DeserializeObject<T>(PrepareForDeserialization(str), DeserializerSettings);
         
         private static string PrepareForDeserialization(string json)
         {

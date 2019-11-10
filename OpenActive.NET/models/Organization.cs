@@ -30,7 +30,7 @@ namespace OpenActive.NET
         /// </example>
         [DataMember(Name = "identifier", EmitDefaultValue = false, Order = 7)]
         [JsonConverter(typeof(ValuesConverter))]
-        public new virtual SingleValues<int?, string, PropertyValue, List<PropertyValue>> Identifier { get; set; }
+        public new virtual SingleValues<long?, string, PropertyValue, List<PropertyValue>> Identifier { get; set; }
 
 
         /// <summary>
@@ -42,6 +42,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "name", EmitDefaultValue = false, Order = 8)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual string Name { get; set; }
 
 
@@ -54,6 +55,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "description", EmitDefaultValue = false, Order = 9)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual string Description { get; set; }
 
 
@@ -61,6 +63,7 @@ namespace OpenActive.NET
         /// Address of the Seller, used on tax receipts.
         /// </summary>
         [DataMember(Name = "address", EmitDefaultValue = false, Order = 10)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual PostalAddress Address { get; set; }
 
 
@@ -73,6 +76,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "email", EmitDefaultValue = false, Order = 11)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual string Email { get; set; }
 
 
@@ -85,6 +89,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "legalName", EmitDefaultValue = false, Order = 12)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual string LegalName { get; set; }
 
 
@@ -100,6 +105,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "logo", EmitDefaultValue = false, Order = 13)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual ImageObject Logo { get; set; }
 
 
@@ -115,6 +121,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "sameAs", EmitDefaultValue = false, Order = 14)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual List<Uri> SameAs { get; set; }
 
 
@@ -122,6 +129,7 @@ namespace OpenActive.NET
         /// Either  https://openactive.io/TaxNet or  https://openactive.io/TaxGross
         /// </summary>
         [DataMember(Name = "taxMode", EmitDefaultValue = false, Order = 15)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual TaxMode? TaxMode { get; set; }
 
 
@@ -134,6 +142,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "telephone", EmitDefaultValue = false, Order = 16)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual string Telephone { get; set; }
 
 
@@ -141,6 +150,7 @@ namespace OpenActive.NET
         /// The terms of service of the Seller.
         /// </summary>
         [DataMember(Name = "termsOfService", EmitDefaultValue = false, Order = 17)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual List<Terms> TermsOfService { get; set; }
 
 
@@ -153,6 +163,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "url", EmitDefaultValue = false, Order = 18)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual Uri Url { get; set; }
 
 
@@ -160,6 +171,7 @@ namespace OpenActive.NET
         /// The Value-added Tax ID of the of the Seller.
         /// </summary>
         [DataMember(Name = "vatID", EmitDefaultValue = false, Order = 19)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual string VatID { get; set; }
 
 
@@ -170,6 +182,7 @@ namespace OpenActive.NET
         /// If you are using this property, please join the discussion at proposal [#88](https://github.com/openactive/modelling-opportunity-data/issues/88).
         /// </summary>
         [DataMember(Name = "beta:video", EmitDefaultValue = false, Order = 1020)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual List<Schema.NET.VideoObject> Video { get; set; }
 
 
@@ -180,6 +193,7 @@ namespace OpenActive.NET
         /// If you are using this property, please join the discussion at proposal [#2](https://github.com/openactive/ns-beta/issues/2).
         /// </summary>
         [DataMember(Name = "beta:formattedDescription", EmitDefaultValue = false, Order = 1021)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual string FormattedDescription { get; set; }
 
     }

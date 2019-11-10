@@ -29,6 +29,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "altLabel", EmitDefaultValue = false, Order = 7)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual List<string> AltLabel { get; set; }
 
 
@@ -41,6 +42,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "broader", EmitDefaultValue = false, Order = 8)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual List<Uri> Broader { get; set; }
 
 
@@ -53,6 +55,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "inScheme", EmitDefaultValue = false, Order = 9)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual Uri InScheme { get; set; }
 
 
@@ -65,6 +68,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "narrower", EmitDefaultValue = false, Order = 10)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual List<Uri> Narrower { get; set; }
 
 
@@ -77,6 +81,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "notation", EmitDefaultValue = false, Order = 11)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual string Notation { get; set; }
 
 
@@ -89,6 +94,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "prefLabel", EmitDefaultValue = false, Order = 12)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual string PrefLabel { get; set; }
 
     }

@@ -29,6 +29,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "title", EmitDefaultValue = false, Order = 7)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual string Title { get; set; }
 
 
@@ -41,6 +42,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "description", EmitDefaultValue = false, Order = 8)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual string Description { get; set; }
 
 
@@ -61,6 +63,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "concept", EmitDefaultValue = false, Order = 9)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual List<Concept> Concept { get; set; }
 
 
@@ -73,6 +76,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "license", EmitDefaultValue = false, Order = 10)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual Uri License { get; set; }
 
 
@@ -85,6 +89,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "url", EmitDefaultValue = false, Order = 11)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual Uri Url { get; set; }
 
     }

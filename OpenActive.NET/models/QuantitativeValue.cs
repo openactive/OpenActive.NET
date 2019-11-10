@@ -29,7 +29,8 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "maxValue", EmitDefaultValue = false, Order = 7)]
-        public new virtual int? MaxValue { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public new virtual long? MaxValue { get; set; }
 
 
         /// <summary>
@@ -41,7 +42,8 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "minValue", EmitDefaultValue = false, Order = 8)]
-        public new virtual int? MinValue { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public new virtual long? MinValue { get; set; }
 
     }
 }

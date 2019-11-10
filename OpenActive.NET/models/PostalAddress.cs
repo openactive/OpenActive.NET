@@ -29,6 +29,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "addressCountry", EmitDefaultValue = false, Order = 7)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual string AddressCountry { get; set; }
 
 
@@ -41,6 +42,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "addressLocality", EmitDefaultValue = false, Order = 8)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual string AddressLocality { get; set; }
 
 
@@ -53,6 +55,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "addressRegion", EmitDefaultValue = false, Order = 9)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual string AddressRegion { get; set; }
 
 
@@ -65,6 +68,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "postalCode", EmitDefaultValue = false, Order = 10)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual string PostalCode { get; set; }
 
 
@@ -77,6 +81,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "streetAddress", EmitDefaultValue = false, Order = 11)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual string StreetAddress { get; set; }
 
     }

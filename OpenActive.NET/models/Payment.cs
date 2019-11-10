@@ -30,13 +30,14 @@ namespace OpenActive.NET
         /// </example>
         [DataMember(Name = "identifier", EmitDefaultValue = false, Order = 7)]
         [JsonConverter(typeof(ValuesConverter))]
-        public new virtual SingleValues<int?, string, PropertyValue, List<PropertyValue>> Identifier { get; set; }
+        public new virtual SingleValues<long?, string, PropertyValue, List<PropertyValue>> Identifier { get; set; }
 
 
         /// <summary>
         /// Optional free text description of the payment method for the Booking System, to help the Seller in discussions with the Customer (e.g. 'AcmeBroker Points' or 'AcmeBroker via Credit Card').
         /// </summary>
         [DataMember(Name = "name", EmitDefaultValue = false, Order = 8)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual string Name { get; set; }
 
 
@@ -44,6 +45,7 @@ namespace OpenActive.NET
         /// A reference used by the Seller to group transactions, which is used to aid reconciliation.
         /// </summary>
         [DataMember(Name = "accountId", EmitDefaultValue = false, Order = 9)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual string AccountId { get; set; }
 
 
@@ -51,6 +53,7 @@ namespace OpenActive.NET
         /// paymentMethod must not be used, and is reserved for future versions of this specification.
         /// </summary>
         [DataMember(Name = "paymentMethod", EmitDefaultValue = false, Order = 10)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual PaymentMethod? PaymentMethod { get; set; }
 
 
@@ -58,6 +61,7 @@ namespace OpenActive.NET
         /// A reference to the specific Payment Provider that is used.
         /// </summary>
         [DataMember(Name = "paymentProviderId", EmitDefaultValue = false, Order = 11)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual string PaymentProviderId { get; set; }
 
     }

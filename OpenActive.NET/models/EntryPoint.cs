@@ -24,6 +24,7 @@ namespace OpenActive.NET
         /// "encodingType": "application/vnd.openactive.v1.0+json"
         /// </code>
         [DataMember(Name = "encodingType", EmitDefaultValue = false, Order = 7)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual string EncodingType { get; set; }
 
 
@@ -36,6 +37,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "httpMethod", EmitDefaultValue = false, Order = 8)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual string HttpMethod { get; set; }
 
 
@@ -48,6 +50,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "urlTemplate", EmitDefaultValue = false, Order = 9)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual Uri UrlTemplate { get; set; }
 
     }

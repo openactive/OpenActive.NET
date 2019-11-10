@@ -30,7 +30,7 @@ namespace OpenActive.NET
         /// </example>
         [DataMember(Name = "identifier", EmitDefaultValue = false, Order = 7)]
         [JsonConverter(typeof(ValuesConverter))]
-        public new virtual SingleValues<int?, string, PropertyValue, List<PropertyValue>> Identifier { get; set; }
+        public new virtual SingleValues<long?, string, PropertyValue, List<PropertyValue>> Identifier { get; set; }
 
 
         /// <summary>
@@ -42,6 +42,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "name", EmitDefaultValue = false, Order = 8)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual string Name { get; set; }
 
 
@@ -54,6 +55,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "description", EmitDefaultValue = false, Order = 9)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual string Description { get; set; }
 
 
@@ -118,6 +120,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "amenityFeature", EmitDefaultValue = false, Order = 11)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual List<LocationFeatureSpecification> AmenityFeature { get; set; }
 
 
@@ -134,6 +137,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "containedInPlace", EmitDefaultValue = false, Order = 12)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual Place ContainedInPlace { get; set; }
 
 
@@ -150,6 +154,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "containsPlace", EmitDefaultValue = false, Order = 13)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual List<Place> ContainsPlace { get; set; }
 
 
@@ -166,6 +171,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "geo", EmitDefaultValue = false, Order = 14)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual GeoCoordinates Geo { get; set; }
 
 
@@ -184,6 +190,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "image", EmitDefaultValue = false, Order = 15)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual List<ImageObject> Image { get; set; }
 
 
@@ -191,6 +198,7 @@ namespace OpenActive.NET
         /// The times the Place is open
         /// </summary>
         [DataMember(Name = "openingHoursSpecification", EmitDefaultValue = false, Order = 16)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual List<OpeningHoursSpecification> OpeningHoursSpecification { get; set; }
 
 
@@ -203,6 +211,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "telephone", EmitDefaultValue = false, Order = 17)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual string Telephone { get; set; }
 
 
@@ -215,6 +224,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "url", EmitDefaultValue = false, Order = 18)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual Uri Url { get; set; }
 
 
@@ -225,6 +235,7 @@ namespace OpenActive.NET
         /// If you are using this property, please join the discussion at proposal [#2](https://github.com/openactive/ns-beta/issues/2).
         /// </summary>
         [DataMember(Name = "beta:formattedDescription", EmitDefaultValue = false, Order = 1019)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual string FormattedDescription { get; set; }
 
     }

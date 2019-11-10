@@ -27,6 +27,7 @@ namespace OpenActive.NET
         /// If you are using this property, please join the discussion at proposal [#197](https://github.com/openactive/modelling-opportunity-data/issues/197).
         /// </summary>
         [DataMember(Name = "beta:timeZone", EmitDefaultValue = false, Order = 1007)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual string TimeZone { get; set; }
 
     }

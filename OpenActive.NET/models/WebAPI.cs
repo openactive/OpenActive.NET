@@ -33,6 +33,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "name", EmitDefaultValue = false, Order = 7)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual string Name { get; set; }
 
 
@@ -45,6 +46,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "description", EmitDefaultValue = false, Order = 8)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual string Description { get; set; }
 
 
@@ -59,6 +61,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "conformsTo", EmitDefaultValue = false, Order = 9)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual List<Uri> ConformsTo { get; set; }
 
 
@@ -71,6 +74,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "documentation", EmitDefaultValue = false, Order = 10)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual Uri Documentation { get; set; }
 
 
@@ -83,6 +87,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "endpointDescription", EmitDefaultValue = false, Order = 11)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual Uri EndpointDescription { get; set; }
 
 
@@ -95,6 +100,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "endpointURL", EmitDefaultValue = false, Order = 12)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual Uri EndpointURL { get; set; }
 
 
@@ -107,6 +113,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "landingPage", EmitDefaultValue = false, Order = 13)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual Uri LandingPage { get; set; }
 
 
@@ -119,6 +126,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "termsOfService", EmitDefaultValue = false, Order = 14)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual Uri TermsOfService { get; set; }
 
     }

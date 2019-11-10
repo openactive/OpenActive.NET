@@ -24,6 +24,7 @@ namespace OpenActive.NET
         /// The URL for a thumbnail image for an image.
         /// </summary>
         [DataMember(Name = "thumbnail", EmitDefaultValue = false, Order = 7)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual List<ImageObject> Thumbnail { get; set; }
 
 
@@ -36,6 +37,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "url", EmitDefaultValue = false, Order = 8)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual Uri Url { get; set; }
 
     }

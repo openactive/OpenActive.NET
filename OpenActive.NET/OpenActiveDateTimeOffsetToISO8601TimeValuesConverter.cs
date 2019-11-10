@@ -1,6 +1,7 @@
 ﻿namespace OpenActive.NET
 {
     using System;
+    using System.Globalization;
     using System.Reflection;
     using System.Xml;
     using Newtonsoft.Json;
@@ -10,7 +11,7 @@
     /// to ISO 8601 format first.
     /// </summary>
     /// <seealso cref="JsonConverter" />
-    public class OpenActiveDateTimeOffsetToISO8601TimeValuesConverter : JsonConverter
+    public class OpenActiveDateTimeOffsetToISO8601TimeValuesConverter : ValuesConverter
     {
         /// <summary>
         /// Determines whether this instance can convert the specified object type.
@@ -45,7 +46,28 @@
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
-            throw new NotImplementedException();
+            if (reader == null)
+            {
+                throw new ArgumentNullException(nameof(reader));
+            }
+
+            if (objectType == null)
+            {
+                throw new ArgumentNullException(nameof(objectType));
+            }
+
+            if (serializer == null)
+            {
+                throw new ArgumentNullException(nameof(serializer));
+            }
+
+            var valuesType = objectType.GetUnderlyingTypeFromNullable();
+            if (valuesType != null && valuesType == typeof(DateTimeOffset))
+            {
+                return new DateTimeOffset(DateTime.ParseExact(reader.Value.ToString(), "HH:mm", CultureInfo.InvariantCulture.DateTimeFormat, DateTimeStyles.NoCurrentDateDefault | DateTimeStyles.AssumeUniversal | DateTimeStyles.AllowWhiteSpaces));
+            }
+
+            return base.ReadJson(reader, objectType, existingValue, serializer);
         }
     }
 }

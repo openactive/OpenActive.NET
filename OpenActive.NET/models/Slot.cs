@@ -30,7 +30,7 @@ namespace OpenActive.NET
         /// </example>
         [DataMember(Name = "identifier", EmitDefaultValue = false, Order = 7)]
         [JsonConverter(typeof(ValuesConverter))]
-        public new virtual SingleValues<int?, string, PropertyValue, List<PropertyValue>> Identifier { get; set; }
+        public new virtual SingleValues<long?, string, PropertyValue, List<PropertyValue>> Identifier { get; set; }
 
 
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
@@ -91,7 +91,7 @@ namespace OpenActive.NET
 
 
         /// <summary>
-        /// URI to the FacilityUse that has this offer
+        /// FacilityUse or IndividualFacilityUse that has this offer, either directly embedded or referenced by its @id
         /// </summary>
         /// <example>
         /// <code>
@@ -99,7 +99,8 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "facilityUse", EmitDefaultValue = false, Order = 20)]
-        public virtual Uri FacilityUse { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public virtual SingleValues<Uri, IndividualFacilityUse, FacilityUse> FacilityUse { get; set; }
 
 
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
@@ -131,7 +132,7 @@ namespace OpenActive.NET
 
 
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
-        public override int? MaximumAttendeeCapacity { get; set; }
+        public override long? MaximumAttendeeCapacity { get; set; }
 
 
         /// <summary>
@@ -143,7 +144,8 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "maximumUses", EmitDefaultValue = false, Order = 29)]
-        public virtual int? MaximumUses { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public virtual long? MaximumUses { get; set; }
 
 
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
@@ -166,6 +168,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "offers", EmitDefaultValue = false, Order = 31)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual List<Offer> Offers { get; set; }
 
 
@@ -182,7 +185,7 @@ namespace OpenActive.NET
 
 
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
-        public override int? RemainingAttendeeCapacity { get; set; }
+        public override long? RemainingAttendeeCapacity { get; set; }
 
 
         /// <summary>
@@ -194,7 +197,8 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "remainingUses", EmitDefaultValue = false, Order = 36)]
-        public virtual int? RemainingUses { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public virtual long? RemainingUses { get; set; }
 
 
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
@@ -247,6 +251,7 @@ namespace OpenActive.NET
         /// If you are using this property, please join the discussion at proposal [#110](https://github.com/openactive/modelling-opportunity-data/issues/110).
         /// </summary>
         [DataMember(Name = "beta:sportsActivityLocation", EmitDefaultValue = false, Order = 1043)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual List<SportsActivityLocation> SportsActivityLocation { get; set; }
 
     }

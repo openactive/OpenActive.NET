@@ -47,7 +47,8 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "byMonth", EmitDefaultValue = false, Order = 8)]
-        public virtual List<int> ByMonth { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public virtual List<long> ByMonth { get; set; }
 
 
         /// <summary>
@@ -61,7 +62,8 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "byMonthDay", EmitDefaultValue = false, Order = 9)]
-        public virtual List<int> ByMonthDay { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public virtual List<long> ByMonthDay { get; set; }
 
 
         /// <summary>
@@ -119,6 +121,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "idTemplate", EmitDefaultValue = false, Order = 13)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual Uri IdTemplate { get; set; }
 
 
@@ -131,7 +134,8 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "repeatCount", EmitDefaultValue = false, Order = 14)]
-        public virtual int? RepeatCount { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public virtual long? RepeatCount { get; set; }
 
 
         /// <summary>
@@ -156,6 +160,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "scheduledEventType", EmitDefaultValue = false, Order = 16)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual string ScheduledEventType { get; set; }
 
 
@@ -168,6 +173,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "startDate", EmitDefaultValue = false, Order = 17)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual string StartDate { get; set; }
 
 
@@ -180,6 +186,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "endDate", EmitDefaultValue = false, Order = 18)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual string EndDate { get; set; }
 
 
@@ -205,6 +212,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "urlTemplate", EmitDefaultValue = false, Order = 20)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual Uri UrlTemplate { get; set; }
 
 
@@ -215,6 +223,7 @@ namespace OpenActive.NET
         /// If you are using this property, please join the discussion at proposal [#197](https://github.com/openactive/modelling-opportunity-data/issues/197).
         /// </summary>
         [DataMember(Name = "beta:timeZone", EmitDefaultValue = false, Order = 1021)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual string TimeZone { get; set; }
 
     }

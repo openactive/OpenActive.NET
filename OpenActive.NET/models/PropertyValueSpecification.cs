@@ -24,6 +24,7 @@ namespace OpenActive.NET
         /// Display label for the field.
         /// </summary>
         [DataMember(Name = "name", EmitDefaultValue = false, Order = 7)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual string Name { get; set; }
 
 
@@ -31,6 +32,7 @@ namespace OpenActive.NET
         /// Descriptive help text for the field.
         /// </summary>
         [DataMember(Name = "description", EmitDefaultValue = false, Order = 8)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual string Description { get; set; }
 
 
@@ -38,6 +40,7 @@ namespace OpenActive.NET
         /// Specifies that a value for the field is required to proceed with the booking.
         /// </summary>
         [DataMember(Name = "valueRequired", EmitDefaultValue = false, Order = 9)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual string ValueRequired { get; set; }
 
     }

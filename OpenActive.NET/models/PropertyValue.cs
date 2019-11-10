@@ -29,6 +29,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "name", EmitDefaultValue = false, Order = 7)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual string Name { get; set; }
 
 
@@ -36,6 +37,7 @@ namespace OpenActive.NET
         /// Additional human-readable version of the value of the property.
         /// </summary>
         [DataMember(Name = "description", EmitDefaultValue = false, Order = 8)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual string Description { get; set; }
 
 
@@ -62,7 +64,7 @@ namespace OpenActive.NET
         /// </example>
         [DataMember(Name = "value", EmitDefaultValue = false, Order = 10)]
         [JsonConverter(typeof(ValuesConverter))]
-        public new virtual SingleValues<int?, string> Value { get; set; }
+        public new virtual SingleValues<long?, string> Value { get; set; }
 
     }
 }

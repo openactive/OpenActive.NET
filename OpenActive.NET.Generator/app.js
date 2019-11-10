@@ -437,7 +437,7 @@ function getDotNetBaseType(prefixedTypeName, enumMap, modelsMap, isExtension) {
         case "Time":
             return "DateTimeOffset?";
         case "Integer":
-            return "int?";
+            return "long?";
         case "Float":
             return "decimal?";
         case "Number":
@@ -479,10 +479,11 @@ function renderJsonConverter(field, propertyType) {
         return `\n        [JsonConverter(typeof(OpenActiveTimeSpanToISO8601DurationValuesConverter))]`;
     } else if (field.requiredType == 'https://schema.org/Time') {
         return `\n        [JsonConverter(typeof(OpenActiveDateTimeOffsetToISO8601TimeValuesConverter))]`;
-    } else if (propertyType.indexOf("Values<") > -1) {
+    } else if (propertyType.indexOf("Values<") > -1 || field.requiredType || field.model || field.alternativeModels) {
         return `\n        [JsonConverter(typeof(ValuesConverter))]`;
     } else {
-        return "";
+        // Note this can be switched back to empty string - is here temporarily to increase surface area for testing
+        return `\n        [JsonConverter(typeof(ValuesConverter))]`;
     }
 }
 

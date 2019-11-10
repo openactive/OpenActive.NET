@@ -66,7 +66,17 @@ namespace OpenActive.NET.Rpde.Version1
         /// </returns>
         public string ToString(JsonSerializerSettings serializerSettings) =>
             JsonConvert.SerializeObject(this, serializerSettings);
-        
+
+        /// <summary>
+        /// This is provided as a convenience to .NET Framework users, to create a standards compliant JSON output.
+        /// .NET Core users are advised to use the Open Booking SDK, which targets a newer version of .NET and includes
+        /// similar features that are compatible with .NET Core
+        /// </summary>
+        /// <example>
+        /// var resp = req.CreateResponse(HttpStatusCode.OK);
+        /// resp.Content = rpdePage.ToStringContent();
+        /// </example>
+        /// <returns></returns>
         public StringContent ToStringContent()
         {
             var content = new StringContent(this.ToString(), Encoding.UTF8, "application/json");
@@ -112,7 +122,7 @@ namespace OpenActive.NET.Rpde.Version1
                         throw new SerializationException("Deleted items must not contain data.");
                     }
 
-                    if (!item.State.HasValue || !item.Kind.HasValue || !item.Modified.HasValue || item.Id == null)
+                    if (!item.State.HasValue || !item.Kind.HasValue || !item.Modified.HasValue || !item.Id.HasValue)
                     {
                         throw new SerializationException("All RPDE feed items must include id, modified, state and kind.");
                     }
@@ -133,7 +143,7 @@ namespace OpenActive.NET.Rpde.Version1
             if (lastItem != null)
             {
                 Next = $"{feedBaseUrl}?afterTimestamp={lastItem.Modified}&afterId={lastItem.Id}";
-            } else if (modified.HasValue && id != null)
+            } else if (modified.HasValue && id.HasValue)
             {
                 // Last page, use existing values
                 Next = $"{feedBaseUrl}?afterTimestamp={modified}&afterId={id}";

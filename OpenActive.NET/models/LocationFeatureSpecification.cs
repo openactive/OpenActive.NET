@@ -29,6 +29,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "name", EmitDefaultValue = false, Order = 7)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual string Name { get; set; }
 
 
@@ -36,6 +37,7 @@ namespace OpenActive.NET
         /// A boolean value indicating whether this ammenity is available.
         /// </summary>
         [DataMember(Name = "value", EmitDefaultValue = false, Order = 8)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual bool? Value { get; set; }
 
     }

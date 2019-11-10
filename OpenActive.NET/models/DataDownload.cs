@@ -33,6 +33,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "name", EmitDefaultValue = false, Order = 7)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual string Name { get; set; }
 
 
@@ -45,6 +46,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "additionalType", EmitDefaultValue = false, Order = 8)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual Uri AdditionalType { get; set; }
 
 
@@ -57,6 +59,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "contentUrl", EmitDefaultValue = false, Order = 9)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual Uri ContentUrl { get; set; }
 
 
@@ -64,6 +67,7 @@ namespace OpenActive.NET
         /// "encodingFormat": "application/vnd.openactive.rpde+json; version=1"
         /// </code>
         [DataMember(Name = "encodingFormat", EmitDefaultValue = false, Order = 10)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual string EncodingFormat { get; set; }
 
     }

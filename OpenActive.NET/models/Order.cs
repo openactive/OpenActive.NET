@@ -30,13 +30,14 @@ namespace OpenActive.NET
         /// </example>
         [DataMember(Name = "identifier", EmitDefaultValue = false, Order = 7)]
         [JsonConverter(typeof(ValuesConverter))]
-        public new virtual SingleValues<int?, string, PropertyValue, List<PropertyValue>> Identifier { get; set; }
+        public new virtual SingleValues<long?, string, PropertyValue, List<PropertyValue>> Identifier { get; set; }
 
 
         /// <summary>
         /// Details about the Booking System
         /// </summary>
         [DataMember(Name = "bookingService", EmitDefaultValue = false, Order = 8)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual BookingService BookingService { get; set; }
 
 
@@ -44,6 +45,7 @@ namespace OpenActive.NET
         /// The organisation or developer providing an application that allows Customers to make bookings. Those applications will be clients of the API defined in this specification. If brokerRole is set to https://openactive.io/NoBroker this is not required.
         /// </summary>
         [DataMember(Name = "broker", EmitDefaultValue = false, Order = 9)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual Organization Broker { get; set; }
 
 
@@ -51,6 +53,7 @@ namespace OpenActive.NET
         /// Either https://openactive.io/AgentBroker,  https://openactive.io/ResellerBroker or  https://openactive.io/NoBroker, as agreed in advance between the Broker and Seller.
         /// </summary>
         [DataMember(Name = "brokerRole", EmitDefaultValue = false, Order = 10)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual BrokerType? BrokerRole { get; set; }
 
 
@@ -66,6 +69,7 @@ namespace OpenActive.NET
         /// This property is internal to the Broker in this version of the specification.
         /// </summary>
         [DataMember(Name = "orderCreationStatus", EmitDefaultValue = false, Order = 12)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual OrderCreationStatus? OrderCreationStatus { get; set; }
 
 
@@ -73,6 +77,7 @@ namespace OpenActive.NET
         /// The items that constitute the Order.
         /// </summary>
         [DataMember(Name = "orderedItem", EmitDefaultValue = false, Order = 13)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual List<OrderItem> OrderedItem { get; set; }
 
 
@@ -80,6 +85,7 @@ namespace OpenActive.NET
         /// The Customer-facing identifier of the Order.
         /// </summary>
         [DataMember(Name = "orderNumber", EmitDefaultValue = false, Order = 14)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual string OrderNumber { get; set; }
 
 
@@ -87,6 +93,7 @@ namespace OpenActive.NET
         /// The unique URL representing this version of the  OrderProposal, or the version of the OrderProposal to which this Order is related.
         /// </summary>
         [DataMember(Name = "orderProposalVersion", EmitDefaultValue = false, Order = 15)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual Uri OrderProposalVersion { get; set; }
 
 
@@ -94,6 +101,7 @@ namespace OpenActive.NET
         /// The payment associated with the Order by the Broker. It is required for cases where a payment has been taken.
         /// </summary>
         [DataMember(Name = "payment", EmitDefaultValue = false, Order = 16)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual Payment Payment { get; set; }
 
 
@@ -101,6 +109,7 @@ namespace OpenActive.NET
         /// The organisation (schema:Organization) providing access to events or facilities via a Booking System. e.g. a leisure provider running yoga classes.
         /// </summary>
         [DataMember(Name = "seller", EmitDefaultValue = false, Order = 17)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual Organization Seller { get; set; }
 
 
@@ -108,6 +117,7 @@ namespace OpenActive.NET
         /// Set to true when business-to-business tax calculation is required by the seller or brokerRole settings, but not supported by the Broker.
         /// </summary>
         [DataMember(Name = "taxCalculationExcluded", EmitDefaultValue = false, Order = 18)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual bool? TaxCalculationExcluded { get; set; }
 
 
@@ -115,6 +125,7 @@ namespace OpenActive.NET
         /// 
         /// </summary>
         [DataMember(Name = "totalPaymentDue", EmitDefaultValue = false, Order = 19)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual PriceSpecification TotalPaymentDue { get; set; }
 
 
@@ -122,6 +133,7 @@ namespace OpenActive.NET
         /// Breakdown of tax payable for the Order.
         /// </summary>
         [DataMember(Name = "totalPaymentTax", EmitDefaultValue = false, Order = 20)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual List<TaxChargeSpecification> TotalPaymentTax { get; set; }
 
     }

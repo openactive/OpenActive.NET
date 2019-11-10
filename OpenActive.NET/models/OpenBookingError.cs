@@ -29,6 +29,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "name", EmitDefaultValue = false, Order = 7)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual string Name { get; set; }
 
 
@@ -41,6 +42,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "description", EmitDefaultValue = false, Order = 8)]
+        [JsonConverter(typeof(ValuesConverter))]
         public new virtual string Description { get; set; }
 
 
@@ -48,6 +50,7 @@ namespace OpenActive.NET
         /// The requested URL.
         /// </summary>
         [DataMember(Name = "instance", EmitDefaultValue = false, Order = 9)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual Uri Instance { get; set; }
 
 
@@ -55,6 +58,7 @@ namespace OpenActive.NET
         /// An array of invalid parameters, if appropriate.
         /// </summary>
         [DataMember(Name = "invalidParams", EmitDefaultValue = false, Order = 10)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual List<string> InvalidParams { get; set; }
 
 
@@ -62,6 +66,7 @@ namespace OpenActive.NET
         /// The method of the request (e.g. GET).
         /// </summary>
         [DataMember(Name = "method", EmitDefaultValue = false, Order = 11)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual string Method { get; set; }
 
 
@@ -69,6 +74,7 @@ namespace OpenActive.NET
         /// Used by technical support for diagnostics purposes.
         /// </summary>
         [DataMember(Name = "requestId", EmitDefaultValue = false, Order = 12)]
+        [JsonConverter(typeof(ValuesConverter))]
         public virtual string RequestId { get; set; }
 
 
@@ -76,7 +82,8 @@ namespace OpenActive.NET
         /// An integer representing the HTTP status code.
         /// </summary>
         [DataMember(Name = "statusCode", EmitDefaultValue = false, Order = 13)]
-        public virtual int? StatusCode { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public virtual long? StatusCode { get; set; }
 
     }
 }
