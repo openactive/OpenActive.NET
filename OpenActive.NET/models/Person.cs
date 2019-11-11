@@ -61,6 +61,14 @@ namespace OpenActive.NET
 
 
         /// <summary>
+        /// Address of the Seller, used on tax receipts.
+        /// </summary>
+        [DataMember(Name = "address", EmitDefaultValue = false, Order = 10)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public new virtual PostalAddress Address { get; set; }
+
+
+        /// <summary>
         /// The e-mail address of the person. 
         /// This person must have given permission for their personal information to be shared as part of the open data.
         /// </summary>
@@ -69,7 +77,7 @@ namespace OpenActive.NET
         /// "email": "jane.smith@example.com"
         /// </code>
         /// </example>
-        [DataMember(Name = "email", EmitDefaultValue = false, Order = 10)]
+        [DataMember(Name = "email", EmitDefaultValue = false, Order = 11)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string Email { get; set; }
 
@@ -83,7 +91,7 @@ namespace OpenActive.NET
         /// "familyName": "Thompson"
         /// </code>
         /// </example>
-        [DataMember(Name = "familyName", EmitDefaultValue = false, Order = 11)]
+        [DataMember(Name = "familyName", EmitDefaultValue = false, Order = 12)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string FamilyName { get; set; }
 
@@ -96,7 +104,7 @@ namespace OpenActive.NET
         /// "gender": "https://schema.org/Female"
         /// </code>
         /// </example>
-        [DataMember(Name = "gender", EmitDefaultValue = false, Order = 12)]
+        [DataMember(Name = "gender", EmitDefaultValue = false, Order = 13)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual Schema.NET.GenderType? Gender { get; set; }
 
@@ -110,7 +118,7 @@ namespace OpenActive.NET
         /// "givenName": "Daley"
         /// </code>
         /// </example>
-        [DataMember(Name = "givenName", EmitDefaultValue = false, Order = 13)]
+        [DataMember(Name = "givenName", EmitDefaultValue = false, Order = 14)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string GivenName { get; set; }
 
@@ -124,9 +132,22 @@ namespace OpenActive.NET
         /// "jobTitle": "Team Captain"
         /// </code>
         /// </example>
-        [DataMember(Name = "jobTitle", EmitDefaultValue = false, Order = 14)]
+        [DataMember(Name = "jobTitle", EmitDefaultValue = false, Order = 15)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual string JobTitle { get; set; }
+
+
+        /// <summary>
+        /// The official name of the organization, e.g. the registered company name.
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// "legalName": "Central Speedball Ltd"
+        /// </code>
+        /// </example>
+        [DataMember(Name = "legalName", EmitDefaultValue = false, Order = 16)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public new virtual string LegalName { get; set; }
 
 
         /// <summary>
@@ -140,7 +161,7 @@ namespace OpenActive.NET
         /// }
         /// </code>
         /// </example>
-        [DataMember(Name = "logo", EmitDefaultValue = false, Order = 15)]
+        [DataMember(Name = "logo", EmitDefaultValue = false, Order = 17)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual ImageObject Logo { get; set; }
 
@@ -153,9 +174,17 @@ namespace OpenActive.NET
         /// "sameAs": "https://example.org/example-org"
         /// </code>
         /// </example>
-        [DataMember(Name = "sameAs", EmitDefaultValue = false, Order = 16)]
+        [DataMember(Name = "sameAs", EmitDefaultValue = false, Order = 18)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual List<Uri> SameAs { get; set; }
+
+
+        /// <summary>
+        /// Either  https://openactive.io/TaxNet or  https://openactive.io/TaxGross
+        /// </summary>
+        [DataMember(Name = "taxMode", EmitDefaultValue = false, Order = 19)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public virtual TaxMode? TaxMode { get; set; }
 
 
         /// <summary>
@@ -167,9 +196,17 @@ namespace OpenActive.NET
         /// "telephone": "01234 567890"
         /// </code>
         /// </example>
-        [DataMember(Name = "telephone", EmitDefaultValue = false, Order = 17)]
+        [DataMember(Name = "telephone", EmitDefaultValue = false, Order = 20)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string Telephone { get; set; }
+
+
+        /// <summary>
+        /// The terms of service of the Seller.
+        /// </summary>
+        [DataMember(Name = "termsOfService", EmitDefaultValue = false, Order = 21)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public virtual List<Terms> TermsOfService { get; set; }
 
 
         /// <summary>
@@ -180,9 +217,28 @@ namespace OpenActive.NET
         /// "url": "http://www.example.com/"
         /// </code>
         /// </example>
-        [DataMember(Name = "url", EmitDefaultValue = false, Order = 18)]
+        [DataMember(Name = "url", EmitDefaultValue = false, Order = 22)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual Uri Url { get; set; }
+
+
+        /// <summary>
+        /// The Value-added Tax ID of the of the Seller.
+        /// </summary>
+        [DataMember(Name = "vatID", EmitDefaultValue = false, Order = 23)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public new virtual string VatID { get; set; }
+
+
+        /// <summary>
+        /// [NOTICE: This is a beta field, and is highly likely to change in future versions of this library.] 
+        /// Sometimes a description is stored with formatting (e.g. href, bold, italics, embedded YouTube videos). This formatting can be useful for data consumers.
+        /// 
+        /// If you are using this property, please join the discussion at proposal [#2](https://github.com/openactive/ns-beta/issues/2).
+        /// </summary>
+        [DataMember(Name = "beta:formattedDescription", EmitDefaultValue = false, Order = 1024)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public virtual string FormattedDescription { get; set; }
 
     }
 }
