@@ -158,6 +158,7 @@ namespace OpenActive.NET
         /// <returns>The result of the conversion.</returns>
         public static implicit operator SingleValues<T1, T2>(T2 item) => item.IsNullEmptyOrWhiteSpace() ? default : new SingleValues<T1, T2>(item);
 
+
         /// <summary>
         /// Implements the operator ==.
         /// </summary>
