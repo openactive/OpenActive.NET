@@ -9,7 +9,7 @@ namespace OpenActive.NET
     /// schema:Person and schema:Organization types, as defined in the Modelling Opportunity Data 2.0 and
     /// Open Booking 1.0 specifications
     /// </summary>
-    interface ILegalEntity
+    public interface ILegalEntity
     {
         string Type { get; }
         SingleValues<long?, string, PropertyValue, List<PropertyValue>> Identifier { get; set; }
