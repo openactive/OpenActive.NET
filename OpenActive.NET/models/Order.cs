@@ -106,11 +106,11 @@ namespace OpenActive.NET
 
 
         /// <summary>
-        /// The organisation (schema:Organization) providing access to events or facilities via a Booking System. e.g. a leisure provider running yoga classes.
+        /// The organisation (schema:Organization) or person (schema:Person) providing access to events or facilities via a Booking System. e.g. a leisure provider or independent instructor running a yoga classes.
         /// </summary>
         [DataMember(Name = "seller", EmitDefaultValue = false, Order = 17)]
         [JsonConverter(typeof(ValuesConverter))]
-        public new virtual Organization Seller { get; set; }
+        public new virtual SingleValues<Person, Organization> Seller { get; set; }
 
 
         /// <summary>

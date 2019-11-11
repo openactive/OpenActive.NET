@@ -86,27 +86,133 @@ namespace OpenActive.NET
         /// <summary>
         /// Gets the value of type <typeparamref name="T1" />.
         /// </summary>
-        public T1 Value1 => this.value1;
+        internal T1 Value1 => this.value1;
 
         /// <summary>
         /// Gets the value of type <typeparamref name="T2" />.
         /// </summary>
-        public T2 Value2 => this.value2;
+        internal T2 Value2 => this.value2;
 
         /// <summary>
         /// Gets the value of type <typeparamref name="T3" />.
         /// </summary>
-        public T3 Value3 => this.value3;
+        internal T3 Value3 => this.value3;
 
         /// <summary>
         /// Gets the value of type <typeparamref name="T4" />.
         /// </summary>
-        public T4 Value4 => this.value4;
+        internal T4 Value4 => this.value4;
+
+
+        /// <summary>
+        /// Gets the nullable primative representing the instance, if it is of the type specified.
+        /// </summary>
+        public Nullable<T> GetPrimative<T>() where T : struct
+        {
+            if (typeof(T1) == typeof(T))
+            {
+                if (HasValue1)
+                {
+                    return (T)(object)this.value1;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            else if (typeof(T2) == typeof(T))
+            {
+                if (HasValue2)
+                {
+                    return (T)(object)this.value2;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            else if (typeof(T3) == typeof(T))
+            {
+                if (HasValue3)
+                {
+                    return (T)(object)this.value3;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            else if (typeof(T4) == typeof(T))
+            {
+                if (HasValue4)
+                {
+                    return (T)(object)this.value4;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            throw new TypeAccessException("GetPrimative was used with an type that is not available.");
+        }
+
+        /// <summary>
+        /// Gets the object representing the instance, if it is of the type specified.
+        /// </summary>
+        public T GetClass<T>() where T : class
+        {
+            if (typeof(T1) == typeof(T))
+            {
+                if (HasValue1)
+                {
+                    return (T)(object)this.value1;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            else if (typeof(T2) == typeof(T))
+            {
+                if (HasValue2)
+                {
+                    return (T)(object)this.value2;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            else if (typeof(T3) == typeof(T))
+            {
+                if (HasValue3)
+                {
+                    return (T)(object)this.value3;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            else if (typeof(T4) == typeof(T))
+            {
+                if (HasValue4)
+                {
+                    return (T)(object)this.value4;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            throw new TypeAccessException("GetClass was used with an type that is not available.");
+        }
+
 
         /// <summary>
         /// Gets the non-null object representing the instance.
         /// </summary>
-        object IValue.Value
+        public object Value
         {
             get
             {
@@ -138,27 +244,27 @@ namespace OpenActive.NET
         public bool HasValue => this.HasValue1 || this.HasValue2 || this.HasValue3 || this.HasValue4;
 
         /// <summary>
-        /// Gets whether the value of type <typeparamref name="T1" /> has a value.
+        /// Gets whether the value of type <typeparamref name="T1" /> has a value. This is internal as the order of values may change over time.
         /// </summary>
-        public bool HasValue1 { get; }
+        internal bool HasValue1 { get; }
 
         /// <summary>
-        /// Gets whether the value of type <typeparamref name="T2" /> has a value.
+        /// Gets whether the value of type <typeparamref name="T2" /> has a value. This is internal as the order of values may change over time.
         /// </summary>
-        public bool HasValue2 { get; }
+        internal bool HasValue2 { get; }
 
         /// <summary>
-        /// Gets whether the value of type <typeparamref name="T3" /> has a value.
+        /// Gets whether the value of type <typeparamref name="T3" /> has a value. This is internal as the order of values may change over time.
         /// </summary>
-        public bool HasValue3 { get; }
+        internal bool HasValue3 { get; }
 
         /// <summary>
-        /// Gets whether the value of type <typeparamref name="T4" /> has a value.
+        /// Gets whether the value of type <typeparamref name="T4" /> has a value. This is internal as the order of values may change over time.
         /// </summary>
-        public bool HasValue4 { get; }
+        internal bool HasValue4 { get; }
 
         /// <summary>
-        /// Performs an implicit conversion from <typeparamref name="T1"/> to <see cref="SingleValues{T1,T2}"/>.
+        /// Performs an implicit conversion from <typeparamref name="T1"/> to <see cref="SingleValues{T1,T2}"/>. 
         /// </summary>
         /// <param name="item">The single item value.</param>
         /// <returns>The result of the conversion.</returns>

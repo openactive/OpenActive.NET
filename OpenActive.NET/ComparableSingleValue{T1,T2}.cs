@@ -42,17 +42,79 @@ namespace OpenActive.NET
         /// <summary>
         /// Gets the value of type <typeparamref name="T1" />.
         /// </summary>
-        public T1 Value1 => this.value1;
+        internal T1 Value1 => this.value1;
 
         /// <summary>
         /// Gets the value of type <typeparamref name="T2" />.
         /// </summary>
-        public T2 Value2 => this.value2;
+        internal T2 Value2 => this.value2;
+
+
+        /// <summary>
+        /// Gets the nullable primative representing the instance, if it is of the type specified.
+        /// </summary>
+        public Nullable<T> GetPrimative<T>() where T : struct
+        {
+            if (typeof(T1) == typeof(T))
+            {
+                if (HasValue1)
+                {
+                    return (T)(object)this.value1;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            else if (typeof(T2) == typeof(T))
+            {
+                if (HasValue2)
+                {
+                    return (T)(object)this.value2;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            throw new TypeAccessException("GetPrimative was used with an type that is not available.");
+        }
+
+        /// <summary>
+        /// Gets the object representing the instance, if it is of the type specified.
+        /// </summary>
+        public T GetClass<T>() where T : class
+        {
+            if (typeof(T1) == typeof(T))
+            {
+                if (HasValue1)
+                {
+                    return (T)(object)this.value1;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            else if (typeof(T2) == typeof(T))
+            {
+                if (HasValue2)
+                {
+                    return (T)(object)this.value2;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            throw new TypeAccessException("GetClass was used with an type that is not available.");
+        }
+
 
         /// <summary>
         /// Gets the non-null object representing the instance.
         /// </summary>
-        object IValue.Value
+        public object Value
         {
             get
             {
@@ -77,12 +139,12 @@ namespace OpenActive.NET
         /// <summary>
         /// Gets whether the value of type <typeparamref name="T1" /> has a value.
         /// </summary>
-        public bool HasValue1 { get; }
+        internal bool HasValue1 { get; }
 
         /// <summary>
         /// Gets whether the value of type <typeparamref name="T2" /> has a value.
         /// </summary>
-        public bool HasValue2 { get; }
+        internal bool HasValue2 { get; }
 
         /// <summary>
         /// Performs an implicit conversion from <typeparamref name="T1"/> to <see cref="ComparableSingleValue{T1,T2}"/>.

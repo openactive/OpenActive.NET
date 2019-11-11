@@ -112,10 +112,10 @@ namespace OpenActive.NET.Test
             OrderQuote orderQuote = OpenActiveSerializer.Deserialize<OrderQuote>(json);
             Assert.Equal(new Uri("https://www.example.com/offer/1"), orderQuote.OrderedItem[0].AcceptedOffer.Id);
             Assert.Equal(new Uri("https://www.example.com/sessionseries/1"), orderQuote.OrderedItem[0].OrderedItem.Id);
-            Assert.Equal(new Uri("https://www.example.com/seller/1"), orderQuote.Seller.Id);
+            Assert.Equal(new Uri("https://www.example.com/seller/1"), orderQuote.Seller.GetClass<Organization>().Id);
             Assert.Equal(BrokerType.ResellerBroker, orderQuote.BrokerRole);
             Assert.Equal("Alan Peacock Way", orderQuote?.Broker?.Address?.StreetAddress);
-            Assert.Equal("Geoff", orderQuote.Customer.Value2?.GivenName);
+            Assert.Equal("Geoff", orderQuote.Customer.GetClass<Person>().GivenName);
         }
 
         [Fact]
@@ -321,11 +321,11 @@ namespace OpenActive.NET.Test
             Assert.IsType<ScheduledSession>(order.OrderedItem[0].OrderedItem);
             Assert.Equal("ScheduledSession", order.OrderedItem[0].OrderedItem.Type);
             Assert.Equal(new Uri("https://example.com/events/452/subEvents/132"), order.OrderedItem[0].OrderedItem.Id);
-            Assert.Equal(new Uri("https://example.com/api/organisations/123"), order.Seller.Id);
+            Assert.Equal(new Uri("https://example.com/api/organisations/123"), order.Seller.GetClass<Organization>().Id);
             Assert.Equal(BrokerType.AgentBroker, order.BrokerRole);
             Assert.Equal("Alan Peacock Way", order?.Broker?.Address?.StreetAddress);
-            Assert.Equal("Geoff", order?.Customer.Value2?.GivenName);
-            Assert.Equal("EUCODE", order?.OrderedItem?[0]?.UnitTaxSpecification?[0]?.Identifier.Value4?[0].Name);
+            Assert.Equal("Geoff", order?.Customer.GetClass<Person>().GivenName);
+            Assert.Equal("EUCODE", order?.OrderedItem?[0]?.UnitTaxSpecification?[0]?.Identifier.GetClass<List<PropertyValue>>()?[0].Name);
             Assert.Equal(new TimeSpan(6,0,0,0), order?.OrderedItem?[0]?.AcceptedOffer?.ValidFromBeforeStartDate);
             Assert.Equal(new DateTimeOffset(2018, 10, 30, 11, 00, 00, 00, new TimeSpan()), order?.OrderedItem?[0]?.OrderedItem?.StartDate);
         }
