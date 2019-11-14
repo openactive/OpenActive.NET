@@ -9,6 +9,26 @@ using System.Net.Http;
 
 namespace OpenActive.NET.Rpde.Version1
 {
+    /// <summary>
+    /// Strongly typed RpdeItem
+    /// </summary>
+    /// <typeparam name="T">Type of the data contained within the RpdeItem</typeparam>
+    [DataContract]
+    public class RpdeItem<T> : RpdeItem where T : Schema.NET.Thing
+    {
+        [DataMember(Name = "data", EmitDefaultValue = false, Order = 5)]
+        [JsonConverter(typeof(OpenActiveThingConverter))]
+        public new T Data
+        {
+            get {
+                return (T)base.Data;
+            }
+            set {
+                base.Data = value;
+            }
+        }
+    }
+
     [DataContract]
     public class RpdeItem
     {
@@ -23,7 +43,7 @@ namespace OpenActive.NET.Rpde.Version1
         public long? Modified { get; set; }
         [DataMember(Name = "data", EmitDefaultValue = false, Order = 5)]
         [JsonConverter(typeof(OpenActiveThingConverter))]
-        public Schema.NET.Thing Data { get; set; }
+        public virtual Schema.NET.Thing Data { get; set; }
     }
 
     [DataContract]

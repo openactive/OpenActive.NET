@@ -21,5 +21,12 @@ namespace OpenActive.NET
         /// Gets the object representing the instance, if it is of the type specified.
         /// </summary>
         T GetClass<T>() where T : class;
+
+        /// <summary>
+        /// Checks whether the instance represents the specified type
+        /// </summary>
+        /// <typeparam name="T">Type to check</typeparam>
+        /// <returns>true/false if the matching type does / does not have a value, throws exception if T is unknown</returns>
+        bool HasValueOfType<T>();
     }
 }

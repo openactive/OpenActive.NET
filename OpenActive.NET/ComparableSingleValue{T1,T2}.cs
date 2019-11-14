@@ -112,6 +112,25 @@ namespace OpenActive.NET
 
 
         /// <summary>
+        /// Checks whether the instance represents the specified type
+        /// </summary>
+        /// <typeparam name="T">Type to check</typeparam>
+        /// <returns>true/false if the matching type does / does not have a value, throws exception if T is unknown</returns>
+        public bool HasValueOfType<T>()
+        {
+            if (typeof(T1) == typeof(T))
+            {
+                return HasValue1;
+            }
+            else if (typeof(T2) == typeof(T))
+            {
+                return HasValue2;
+            }
+            throw new TypeAccessException("HasValueOfType was used with a type that is not available.");
+        }
+
+
+        /// <summary>
         /// Gets the non-null object representing the instance.
         /// </summary>
         public object Value
