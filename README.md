@@ -190,7 +190,7 @@ Implementation requires implementing `ConvertToOpenActiveModel` to return an ins
 
 > `RpdePage(feedBaseUrl, afterTimestamp, afterId, items)`
 
-Creates a new RPDE Page based on the RPDE Items provided, and the `afterTimestamp` and `afterId` parameters of the current query. Also validates that the items are in the correct order, throwing a `SerializationException` if this is not the case.
+Creates a new RPDE Page based on the RPDE Items provided using the [Modified Timestamp and ID Ordering Strategy](https://www.w3.org/2017/08/realtime-paged-data-exchange/#modified-timestamp-and-id), with the `afterTimestamp` and `afterId` parameters of the current query. Also validates that the items are in the correct order, throwing a `SerializationException` if this is not the case.
 
 ```C#
 var items = new List<RpdeItem>
@@ -221,7 +221,7 @@ var jsonLd = new RpdePage(new Uri("https://www.example.com/feed"), 1, "1", items
 
 > `RpdePage(feedBaseUrl, afterChangeNumber, items)`
 
-Creates a new RPDE Page based on the RPDE Items provided, and the `afterChangeNumber` parameter of the current query. Also validates that the items are in the correct order, throwing a `SerializationException` if this is not the case.
+Creates a new RPDE Page based on the RPDE Items provided using the [Incrementing Unique Change Number Ordering Strategy](https://www.w3.org/2017/08/realtime-paged-data-exchange/#incrementing-unique-change-number), with the `afterChangeNumber` parameter of the current query. Also validates that the items are in the correct order, throwing a `SerializationException` if this is not the case.
 
 ```C#
 var items = new List<RpdeItem>
