@@ -70,22 +70,14 @@ namespace OpenActive.NET.Rpde.Version1
         };
 
         /// <summary>
-        /// Returns the JSON-LD representation of this instance.
+        /// Returns the serialised representation of an RpdePage.
+        /// Note that OpenActiveSerializer.Serialize<T> should not be used on an RpdePage, as RPDE itself is not an JSON-LD based format.
         /// </summary>
         /// <returns>
         /// A <see cref="string" /> that represents the JSON-LD representation of this instance.
         /// </returns>
-        public override string ToString() => this.ToString(SerializerSettings);
-
-        /// <summary>
-        /// Returns the JSON-LD representation of this instance using the <see cref="JsonSerializerSettings"/> provided.
-        /// </summary>
-        /// <param name="serializerSettings">Serialization settings.</param>
-        /// <returns>
-        /// A <see cref="string" /> that represents the JSON-LD representation of this instance.
-        /// </returns>
-        public string ToString(JsonSerializerSettings serializerSettings) =>
-            JsonConvert.SerializeObject(this, serializerSettings);
+        public override string ToString() =>
+            JsonConvert.SerializeObject(this, SerializerSettings);
 
         /// <summary>
         /// This is provided as a convenience to .NET Framework users, to create a standards compliant JSON output.
@@ -107,19 +99,44 @@ namespace OpenActive.NET.Rpde.Version1
         // Constructor for JSON deserialisation
         public RpdePage() {}
 
-        public RpdePage(Uri feedBaseUrl, long? modified, ComparableSingleValue<long, string>? id, List<RpdeItem> items)
+        /// <summary>
+        /// Creates a new RPDE Page based on the RPDE Items provided, using the Modified Timestamp and ID Ordering Strategy.
+        /// Also validates that the items are in the correct order, throwing a SerializationException if this is not the case.
+        /// </summary>
+        /// <param name="feedBaseUrl">The base URL of the feed, used to construct the "next" URL.</param>
+        /// <param name="afterTimestamp">The afterTimestamp query parameter value of the current request.</param>
+        /// <param name="afterId">The afterId query parameter value of the current request.</param>
+        /// <param name="items">Items to include in the RPDE Page</param>
+        public RpdePage(Uri feedBaseUrl, long? afterTimestamp, ComparableSingleValue<long, string>? afterId, List<RpdeItem> items)
         {
             this.Items = items;
-            SetNextModifiedID(feedBaseUrl, modified, id);
+            SetNextModifiedID(feedBaseUrl, afterTimestamp, afterId);
         }
 
-        public RpdePage(Uri feedBaseUrl, long? changeNumber, List<RpdeItem> items)
+
+        /// <summary>
+        /// Creates a new RPDE Page based on the RPDE Items provided, using the Incrementing Unique Change Number Ordering Strategy.
+        /// Also validates that the items are in the correct order, throwing a SerializationException if this is not the case.
+        /// </summary>
+        /// <param name="feedBaseUrl">The base URL of the feed, used to construct the "next" URL</param>
+        /// <param name="afterChangeNumber">The afterChangeNumber query parameter value of the current request</param>
+        /// <param name="items">Items to include in the RPDE Page</param>
+        public RpdePage(Uri feedBaseUrl, long? afterChangeNumber, List<RpdeItem> items)
         {
             this.Items = items;
-            SetNextChangeNumber(feedBaseUrl, changeNumber);
+            SetNextChangeNumber(feedBaseUrl, afterChangeNumber);
         }
 
-        public void SetNextModifiedID(Uri feedBaseUrl, long? modified, ComparableSingleValue<long, string>? id)
+
+        /// <summary>
+        /// Use the Modified Timestamp and ID Ordering Strategy to set the "next" URL based on the current Items
+        /// of the instance and provided afterTimestamp and afterId.
+        /// Also validates that the items are in the correct order, throwing a SerializationException if this is not the case.
+        /// </summary>
+        /// <param name="feedBaseUrl">The base URL of the feed, used to construct the "next" URL.</param>
+        /// <param name="afterTimestamp">The afterTimestamp query parameter value of the current request.</param>
+        /// <param name="afterId">The afterId query parameter value of the current request.</param>
+        public void SetNextModifiedID(Uri feedBaseUrl, long? afterTimestamp, ComparableSingleValue<long, string>? afterId)
         {
             // If there is at least one item, run validation on items array
             var firstItem = Items.FirstOrDefault();
@@ -127,7 +144,7 @@ namespace OpenActive.NET.Rpde.Version1
             {
                 // Checks that the afterId and afterTimestamp provided are not the
                 // first item in the feed (helps detect whether query is correct)
-                if (firstItem.Modified == modified && firstItem.Id == id)
+                if (firstItem.Modified == afterTimestamp && firstItem.Id == afterId)
                 {
                     throw new SerializationException("First item in the feed must never have same 'modified' and 'id' as afterTimestamp and afterId query parameters. Please check the RPDE specification and ensure you are using the correct query for your ordering strategy.");
                 }
@@ -163,10 +180,10 @@ namespace OpenActive.NET.Rpde.Version1
             if (lastItem != null)
             {
                 Next = $"{feedBaseUrl}?afterTimestamp={lastItem.Modified}&afterId={lastItem.Id}";
-            } else if (modified.HasValue && id.HasValue)
+            } else if (afterTimestamp.HasValue && afterId.HasValue)
             {
                 // Last page, use existing values
-                Next = $"{feedBaseUrl}?afterTimestamp={modified}&afterId={id}";
+                Next = $"{feedBaseUrl}?afterTimestamp={afterTimestamp}&afterId={afterId}";
             } else
             {
                 // No items, use feed base URL
@@ -174,7 +191,14 @@ namespace OpenActive.NET.Rpde.Version1
             }
         }
 
-        public void SetNextChangeNumber(Uri feedBaseUrl, long? changeNumber)
+        /// <summary>
+        /// Use the Incrementing Unique Change Number Ordering Strategy to set the "next" URL based on the current Items
+        /// of the instance and provided afterChangeNumber.
+        /// Also validates that the items are in the correct order, throwing a SerializationException if this is not the case.
+        /// </summary>
+        /// <param name="feedBaseUrl">The base URL of the feed, used to construct the "next" URL.</param>
+        /// <param name="afterChangeNumber">The afterChangeNumber query parameter value of the current request</param>
+        public void SetNextChangeNumber(Uri feedBaseUrl, long? afterChangeNumber)
         {
             // If there is at least one item, run validation on items array
             var firstItem = Items.FirstOrDefault();
@@ -182,7 +206,7 @@ namespace OpenActive.NET.Rpde.Version1
             {
                 // Checks that the afterChangeNumber provided are not the
                 // first item in the feed (helps detect whether query is correct)
-                if (firstItem.Modified == changeNumber)
+                if (firstItem.Modified == afterChangeNumber)
                 {
                     throw new SerializationException("First item in the feed must never have same 'modified' as afterChangeNumber query parameter. Please check the RPDE specification and ensure you are using the correct query for your ordering strategy.");
                 }
@@ -218,10 +242,10 @@ namespace OpenActive.NET.Rpde.Version1
             {
                 Next = $"{feedBaseUrl}?afterChangeNumber={lastItem.Modified}";
             }
-            else if (changeNumber.HasValue)
+            else if (afterChangeNumber.HasValue)
             {
                 // Last page, use existing values
-                Next = $"{feedBaseUrl}?afterChangeNumber={changeNumber}";
+                Next = $"{feedBaseUrl}?afterChangeNumber={afterChangeNumber}";
             } else
             {
                 // No items, use feed base URL
@@ -300,7 +324,7 @@ namespace OpenActive.NET.Rpde.Version1
             }
             else if (value is Schema.NET.Thing thing)
             {
-                writer.WriteRawValue(thing.ToOpenActiveString());
+                writer.WriteRawValue(OpenActiveSerializer.Serialize(thing));
             }
             else
             {

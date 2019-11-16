@@ -138,8 +138,8 @@ namespace OpenActive.NET.Test
 
         [Fact]
         public void ToString_EventGoogleStructuredData_ReturnsExpectedJsonLd() {
-            output.WriteLine(this.@event.ToOpenActiveString());
-            Assert.Equal(this.json, this.@event.ToOpenActiveString());
+            output.WriteLine(this.@event.ToString());
+            Assert.Equal(this.json, this.@event.ToString());
         }
 
         [Fact]
@@ -156,7 +156,7 @@ namespace OpenActive.NET.Test
         [Fact]
         public void ToString_EventAccessor()
         {
-            output.WriteLine(this.@event.ToOpenActiveString());
+            output.WriteLine(this.@event.ToString());
             Assert.Equal("Santa Clara City Library, Central Park Library", this.@event.Location.Name);
         }
 
@@ -192,8 +192,8 @@ namespace OpenActive.NET.Test
                 } }).Cast<Offer>().ToList()
             };
             
-            output.WriteLine(ev.ToOpenActiveString());
-            Assert.Equal(json, ev.ToOpenActiveString());
+            output.WriteLine(ev.ToString());
+            Assert.Equal(json, ev.ToString());
         }
 
         [Fact]
@@ -210,18 +210,30 @@ namespace OpenActive.NET.Test
             Assert.Equal(original, encode);
         }
 
+
+
         [Fact]
         public void ToString_EncodeDecodeList()
         {
             var originalList = "[{\"@context\":\"https://openactive.io/\",\"@type\":\"Concept\",\"@id\":\"https://openactive.io/facility-types#37bbed12-270b-42b1-9af2-70f0273990dd\",\"inScheme\":\"https://openactive.io/facility-types\",\"prefLabel\":\"Grass\"}]";
-            var decodeList = OpenActiveSerializer.Deserialize<List<Concept>>(originalList);
-            var encodeList = OpenActiveSerializer.Serialize(decodeList);
+            var decodeList = OpenActiveSerializer.DeserializeList<Concept>(originalList);
+            var encodeList = OpenActiveSerializer.SerializeList(decodeList);
 
             output.WriteLine(originalList);
             output.WriteLine(encodeList);
             //Assert.Equal("https://openactive.io/facility-types#37bbed12-270b-42b1-9af2-70f0273990dd", decodeList.First().Id?.ToString());
             Assert.Equal(originalList, encodeList);
         }
+
+        public List<Concept> concepts = new List<Concept>
+        {
+            new Concept
+            {
+                Id = new Uri("https://openactive.io/facility-types#37bbed12-270b-42b1-9af2-70f0273990dd"),
+                PrefLabel = "Grass",
+                InScheme = new Uri("https://openactive.io/facility-types")
+            }
+        };
 
 
         [Fact]
@@ -236,11 +248,11 @@ namespace OpenActive.NET.Test
                 ValidFrom = new DateTimeOffset(2017, 1, 20, 16, 20, 0, TimeSpan.FromHours(0))
             };
 
-            var encode = offer.ToOpenActiveString();
+            var encode = offer.ToString();
 
             var decode = OpenActiveSerializer.Deserialize<Offer>(encode);
 
-            var reencode = decode.ToOpenActiveString();
+            var reencode = decode.ToString();
 
             output.WriteLine(encode);
             output.WriteLine(reencode);

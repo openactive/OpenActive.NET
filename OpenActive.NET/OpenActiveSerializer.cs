@@ -82,34 +82,53 @@ namespace OpenActive.NET
             MaxDepth = 32
         };
 
-        /// <summary>
-        /// Returns a strongly typed model of the JSON-LD representation provided.
-        /// </summary>
-        /// <typeparam name="T">Type of schema.org object to deserialize (can use Thing for any)</typeparam>
-        /// <param name="str">JSON string</param>
-        /// <returns>Strongly typed schema.org model</returns>
-        public static T Deserialize<T>(string str) => JsonConvert.DeserializeObject<T>(PrepareForDeserialization(str), DeserializerSettings);
-
 
         /// <summary>
-        /// Returns the JSON-LD representation of this instance.
+        /// Returns the JSON-LD representation of a JsonLdObject.
         /// </summary>
         /// <returns>
-        /// A <see cref="string" /> that represents the JSON-LD representation of this instance.
+        /// A <see cref="string" /> that represents the JSON-LD representation of the JsonLdObject.
         /// </returns>
-        public static string ToOpenActiveString(this Schema.NET.Thing thing) => ToString(thing, InternalSerializerSettings, false);
+        public static string Serialize<T>(T obj) where T : Schema.NET.JsonLdObject => SerializeWithSettings(obj, InternalSerializerSettings, false);
 
         /// <summary>
-        /// Returns the JSON-LD representation of this instance, including "https://schema.org" in the "@context".
+        /// Returns the JSON-LD representation of a list of JsonLdObject.
+        /// </summary>
+        /// <returns>
+        /// A <see cref="string" /> that represents the JSON-LD representation of the JsonLdObject.
+        /// </returns>
+        public static string SerializeList<T>(List<T> obj) where T : Schema.NET.JsonLdObject => SerializeWithSettings(obj, InternalSerializerSettings, false);
+
+        /// <summary>
+        /// Returns the JSON-LD representation of an JsonLdObject, including "https://schema.org" in the "@context",
+        /// to make the output compatible with search engines, for SEO.
         ///
         /// This method should be used when you want to embed the output raw (as-is) into a web
         /// page. It uses serializer settings with HTML escaping to avoid Cross-Site Scripting (XSS)
         /// vulnerabilities if the object was constructed from an untrusted source.
         /// </summary>
         /// <returns>
-        /// A <see cref="string" /> that represents the JSON-LD representation of this instance.
+        /// A <see cref="string" /> that represents the JSON-LD representation of the JsonLdObject.
         /// </returns>
-        public static string ToOpenActiveHtmlEmbeddableString(this Schema.NET.Thing thing) => ToString(thing, HtmlEscapedSerializerSettings, true);
+        public static string SerializeToHtmlEmbeddableString<T>(T obj) where T : Schema.NET.JsonLdObject => SerializeWithSettings(obj, HtmlEscapedSerializerSettings, true);
+
+
+        /// <summary>
+        /// Returns a strongly typed model of the JSON-LD representation provided.
+        /// </summary>
+        /// <typeparam name="T">Type of schema.org object to deserialize (can use Thing for any)</typeparam>
+        /// <param name="str">JSON string</param>
+        /// <returns>Strongly typed schema.org model</returns>
+        public static T Deserialize<T>(string str) where T : Schema.NET.JsonLdObject => JsonConvert.DeserializeObject<T>(PrepareForDeserialization(str), DeserializerSettings);
+
+        /// <summary>
+        /// Returns a strongly typed list of models of the given type of the JSON-LD representation provided.
+        /// </summary>
+        /// <typeparam name="T">Type of schema.org List to deserialize (can use Thing for any)</typeparam>
+        /// <param name="str">JSON string</param>
+        /// <returns>Strongly typed schema.org model</returns>
+        public static List<T> DeserializeList<T>(string str) where T : Schema.NET.JsonLdObject => JsonConvert.DeserializeObject<List<T>>(PrepareForDeserialization(str), DeserializerSettings);
+
 
         /// <summary>
         /// Returns the JSON-LD representation of this instance using the <see cref="JsonSerializerSettings"/> provided.
@@ -123,8 +142,8 @@ namespace OpenActive.NET
         /// <returns>
         /// A <see cref="string" /> that represents the JSON-LD representation of this instance.
         /// </returns>
-        private static string ToString(Schema.NET.Thing thing, JsonSerializerSettings serializerSettings, bool maintainSchemaContext) =>
-            RemoveAllButFirstContext(JsonConvert.SerializeObject(thing, serializerSettings), maintainSchemaContext);
+        private static string SerializeWithSettings(object obj, JsonSerializerSettings serializerSettings, bool maintainSchemaContext) =>
+            RemoveAllButFirstContext(JsonConvert.SerializeObject(obj, serializerSettings), maintainSchemaContext);
 
         private static string RemoveAllButFirstContext(string json, bool maintainSchemaContext)
         {
@@ -140,8 +159,6 @@ namespace OpenActive.NET
             stringBuilder.Replace(ContextPropertyJson, contextString, 0, startIndex);
             return stringBuilder.ToString();
         }
-
-        public static string Serialize(object obj) => RemoveAllButFirstContext(JsonConvert.SerializeObject(obj, InternalSerializerSettings), false);
 
         private static string PrepareForDeserialization(string json)
         {

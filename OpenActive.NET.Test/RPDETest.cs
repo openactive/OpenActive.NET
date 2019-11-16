@@ -219,8 +219,8 @@ namespace OpenActive.NET.Test
         [Fact]
         public void ToString_EventEmptyStings_ReturnsExpectedJsonLd()
         {
-            output.WriteLine(@fullFatSessionSeries.ToOpenActiveString());
-            Assert.Equal(this.json, @fullFatSessionSeries.ToOpenActiveString());
+            output.WriteLine(@fullFatSessionSeries.ToString());
+            Assert.Equal(this.json, @fullFatSessionSeries.ToString());
         }
 
         [Fact]

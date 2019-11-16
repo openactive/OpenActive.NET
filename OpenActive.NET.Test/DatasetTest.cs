@@ -85,14 +85,14 @@ namespace OpenActive.NET.Test
 
         [Fact]
         public void ToString_DatasetGoogleStructuredData_ReturnsExpectedJsonLd() {
-            output.WriteLine(this.@dataset.ToOpenActiveHtmlEmbeddableString());
-            Assert.Equal(this.json, this.@dataset.ToOpenActiveHtmlEmbeddableString());
+            output.WriteLine(this.@dataset.ToHtmlEscapedString());
+            Assert.Equal(this.json, this.@dataset.ToHtmlEscapedString());
         }
 
         [Fact]
         public void ToString_Dataset()
         {
-            output.WriteLine(this.@dataset.ToOpenActiveHtmlEmbeddableString());
+            output.WriteLine(this.@dataset.ToHtmlEscapedString());
             Assert.Equal("Acme Ltd", this.@dataset.Publisher.LegalName);
         }
     }

@@ -1,8 +1,253 @@
-# OpenActive.NET RPDE Feed Publishing [![Nuget](https://img.shields.io/nuget/v/OpenActive.NET.svg)](https://www.nuget.org/packages/OpenActive.NET/)
+# OpenActive.NET [![Nuget](https://img.shields.io/nuget/v/OpenActive.NET.svg)](https://www.nuget.org/packages/OpenActive.NET/)
+.NET classes and resources supporting RPDE feed creation and Open Booking API implementation, to create something like the feeds available [here](https://opendata.fusion-lifestyle.com/OpenActive/) (or any of the other feeds available at the examples listed [here](http://status.openactive.io/)).
+
+This package intends to simplify creation implementing [OpenActive RPDE Feeds](https://developer.openactive.io/publishing-data/data-feeds/how-a-data-feed-works) using templates.
+
+For comparison, see the [PHP](https://github.com/openactive/models-php/) and [Ruby](https://github.com/openactive/models-ruby/) implementations.
+
+Please find full documentation that covers creation and scaling of RPDE feeds at https://developer.openactive.io/publishing-data/data-feeds/.
+
+OpenActive aims to provide strongly typed models for all classes defined in the [Modelling Specification](https://www.openactive.io/modelling-opportunity-data/) and [Open Booking API Specification](https://www.openactive.io/open-booking-api/) across the PHP, Ruby, and .NET languages. This library is specific to .NET; see also the [PHP](https://github.com/openactive/models-php/) and [Ruby](https://github.com/openactive/models-ruby/) implementations.
+
+## Table of Contents
+- [Requirements](#requirements)
+- [Usage](#usage)
+    - [Models](#models)
+        - [OpenActive](#openactive)
+        - [schema.org](#schemaorg)
+        - [Full Models Example](#full-models-example)
+    - [RPDE Feed Publishing](#rpde-feed-publishing)
+        - [Modified Timestamp and ID Ordering Strategy](#modified-timestamp-and-id-ordering-strategy)
+        - [Incrementing Unique Change Number Ordering Strategy](#incrementing-unique-change-number-ordering-strategy)
+        - [Full RPDE Example](#full-rpde-example)
+    - [Serialization Methods](#serialization-methods)
+        - [Empty Lists](#empty-lists)
+        - [`OpenActiveSerializer.Serialize<T>(T obj)`](#)
+        - [`OpenActiveSerializer.SerializeList<T>(List<T> obj)`](#)
+        - [`OpenActiveSerializer.SerializeToHtmlEmbeddableString<T>(T obj)`](#)
+        - [`OpenActiveSerializer.Deserialize<T>(string str)`](#)
+        - [`OpenActiveSerializer.DeserializeList<T>(string str)`](#)
+        - [`RpdePage.ToString()`](#)
+- [Contributing](#contributing)
+
+## Requirements
+This project is compatible with .NET Standard 1.1 and later (.NET Framework 4.5 and .NET Core 1.0).
+
+## Usage
+
+### Models
+
+OpenActive.NET includes OpenActive.io objects as strongly typed C# POCO classes for use in .NET. All classes can be serialized into JSON-LD, to provide easy conformance with the [Modelling Specification](https://www.openactive.io/modelling-opportunity-data/) and [Open Booking API Specification](https://www.openactive.io/open-booking-api/).
+
+Note that empty strings are automatically ignored during serialisation, however empty lists need to be explicitly set to `null` in order to conform to the OpenActive serialisation rules.
+
+An extension method `.ToListOrNullIfEmpty()` is provided for this purpose, which should be used on any lists being set on the model.
+
+
+#### OpenActive
+
+Classes for all OpenActive classes are available in the `OpenActive.NET` namespace, and can be easily serialized to JSON-LD, as follows. Enumerations are available as `enum`s for properties that require their use.
+
+```C#
+var event = new Event()
+{
+    Name = "Virtual BODYPUMP",
+    EventStatus =  Schema.NET.EventStatusType.EventScheduled
+};
+var jsonLd = OpenActiveSerializer.Serialize(event);
+```
+
+Value of `jsonLd`:
+```JSON
+{
+  "@context": "https://openactive.io/",
+  "@type": "Event",
+  "name": "Virtual BODYPUMP",
+  "eventStatus": "https://schema.org/EventScheduled"
+}
+```
+
+#### schema.org
+
+The OpenActive data model builds on top of Schema.org, which means that you are free to use additional schema.org properties within OpenActive published data.
+
+To reflect this, OpenActive.NET uses inheritance to build on top of [Schema.NET](https://github.com/RehanSaeed/Schema.NET), and so makes it easy to use additional properties from schema.org on any given type.
+
+To avoid naming conflicts between OpenActive.NET and Schema.NET, it is recommended that you import `using OpenActive.NET;` to reference OpenActive model types, and use **fully qualified references** for Schema.NET types (e.g. `Schema.NET.Thing`).
+
+```C#
+var event = new Event()
+{
+    Name = "Virtual BODYPUMP",
+    Review = new Schema.NET.Review
+    {
+        ReviewBody = "So was I really there?"
+    }
+};
+var jsonLd = OpenActiveSerializer.Serialize(event);
+```
+
+Value of `jsonLd`:
+```JSON
+{
+  "@context": "https://openactive.io/",
+  "@type": "Event",
+  "name": "Virtual BODYPUMP",
+  "review": {
+      "@type": "Review",
+      "reviewBody": "So was I really there?"
+  }
+}
+```
+
+
+#### Full Models Example
+
+```C#
+var event = new Event()
+{
+    Name = "Virtual BODYPUMP",
+    Description = "This is the virtual version of the original barbell class, which will help you get lean, toned and fit - fast. Les Mills™ Virtual classes are designed for people who cannot get access to our live classes or who want to get a ‘taste’ of a Les Mills™ class before taking a live class with an instructor. The classes are played on a big video screen, with dimmed lighting and pumping surround sound, and are led onscreen by the people who actually choreograph the classes.",
+    Duration = TimeSpan.FromDays(1),
+    StartDate = new DateTimeOffset(2017, 4, 24, 19, 30, 0, TimeSpan.FromHours(-8)),
+    Location = new Place()
+    {
+        Name = "Santa Clara City Library, Central Park Library",
+        Address = new PostalAddress()
+        {
+            StreetAddress = "2635 Homestead Rd",
+            AddressLocality = "Santa Clara",
+            PostalCode = "95051",
+            AddressRegion = "CA",
+            AddressCountry = "US"
+        }
+    },
+    Image = new List<ImageObject>() { new ImageObject { Url = new Uri("http://www.example.com/event_image/12345") } },
+    EndDate = new DateTimeOffset(2017, 4, 24, 23, 0, 0, TimeSpan.FromHours(-8)),
+    Offers = new List<Offer>() { 
+        new Offer()
+        {
+            Url = new Uri("https://www.example.com/event_offer/12345_201803180430"), 
+            Price = 30, 
+            PriceCurrency = "USD", 
+            ValidFrom = new DateTimeOffset(2017, 1, 20, 16, 20, 0, TimeSpan.FromHours(-8))
+        } 
+    }.ToListOrNullIfEmpty(),
+    AttendeeInstructions = "Ensure you bring trainers and a bottle of water.",
+    MeetingPoint = ""
+};
+var jsonLd = OpenActiveSerializer.Serialize(event);
+```
+
+The code above outputs the following JSON-LD:
+
+```JSON
+{
+  "@context": "https://openactive.io/",
+  "@type": "Event",
+  "name": "Virtual BODYPUMP",
+  "description": "This is the virtual version of the original barbell class, which will help you get lean, toned and fit - fast. Les Mills™ Virtual classes are designed for people who cannot get access to our live classes or who want to get a ‘taste’ of a Les Mills™ class before taking a live class with an instructor. The classes are played on a big video screen, with dimmed lighting and pumping surround sound, and are led onscreen by the people who actually choreograph the classes.",
+  "attendeeInstructions": "Ensure you bring trainers and a bottle of water.",
+  "duration": "P1D",
+  "image": [
+    {
+      "@type": "ImageObject",
+      "url": "http://www.example.com/event_image/12345"
+    }
+  ],
+  "location": {
+    "@type": "Place",
+    "name": "Santa Clara City Library, Central Park Library",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "US",
+      "addressLocality": "Santa Clara",
+      "addressRegion": "CA",
+      "postalCode": "95051",
+      "streetAddress": "2635 Homestead Rd"
+    }
+  },
+  "offers": [
+    {
+      "@type": "Offer",
+      "price": 30.0,
+      "priceCurrency": "USD",
+      "url": "https://www.example.com/event_offer/12345_201803180430",
+      "validFrom": "2017-01-20T16:20:00-08:00"
+    }
+  ],
+  "startDate": "2017-04-24T19:30:00-08:00",
+  "endDate": "2017-04-24T23:00:00-08:00"
+}
+```
+
+
+### RPDE Feed Publishing 
 
 To publish an OpenActive data feed (see this [video explainer](https://developer.openactive.io/publishing-data/data-feeds/how-a-data-feed-works)), OpenActive.NET provides a drop-in solution to render the feed pages. This also includes validation for the underlying feed query.
 
 Implementation requires implementing `ConvertToOpenActiveModel` to return an instance of e.g. `OpenActive.NET.ScheduledSession` or `OpenActive.NET.Event` as per the OpenActive.NET Model section below.
+
+
+#### Modified Timestamp and ID Ordering Strategy
+> `RpdePage(feedBaseUrl, afterTimestamp, afterId, items)`
+
+Creates a new RPDE Page based on the RPDE Items provided, and the `afterTimestamp` and `afterId` parameters of the current query. Also validates that the items are in the correct order, throwing a `SerializationException` if this is not the case.
+
+```C#
+var items = new List<RpdeItem>
+{
+    new RpdeItem
+    {
+        Id = "1",
+        Modified = 3,
+        State = RpdeState.Updated,
+        Kind = RpdeKind.SessionSeries,
+        Data = @event
+    },
+    new RpdeItem
+    {
+        Id = "2",
+        Modified = 4,
+        State = RpdeState.Deleted,
+        Kind = RpdeKind.SessionSeries,
+        Data = null
+    }
+};
+
+var jsonLd = new RpdePage(new Uri("https://www.example.com/feed"), 1, "1", items).ToString();
+```
+
+
+#### Incrementing Unique Change Number Ordering Strategy
+> `RpdePage(feedBaseUrl, afterChangeNumber, items)`
+Creates a new RPDE Page based on the RPDE Items provided, and the `afterChangeNumber` parameter of the current query. Also validates that the items are in the correct order, throwing a `SerializationException` if this is not the case.
+
+```C#
+var items = new List<RpdeItem>
+{
+    new RpdeItem
+    {
+        Id = "1",
+        Modified = 3,
+        State = RpdeState.Updated,
+        Kind = RpdeKind.SessionSeries,
+        Data = @event
+    },
+    new RpdeItem
+    {
+        Id = "2",
+        Modified = 4,
+        State = RpdeState.Deleted,
+        Kind = RpdeKind.SessionSeries,
+        Data = null
+    }
+};
+
+var jsonLd = new RpdePage(new Uri("https://www.example.com/feed"), 2, items).ToString();
+```
+
+#### Full RPDE Example
 
 ```C#
 using OpenActive.NET.Rpde.Version1;
@@ -91,93 +336,119 @@ public abstract class RPDEBase<DatabaseType> where DatabaseType : RPDEBase<Datab
 }
 ```
 
+### Serialization Methods
 
-# OpenActive.NET Model
-OpenActive.NET also includes OpenActive.io objects turned into strongly typed C# POCO classes for use in .NET. All classes can be serialized into JSON/JSON-LD, to provide easy conformance with the [OpenActive Modelling Specification](https://www.openactive.io/modelling-opportunity-data/).
+#### Empty Lists
 
-## Simple Example
+Empty strings are automatically ignored during serialisation, however empty lists need to be explicitly set to `null` in order to conform to the OpenActive specification.
+
+An extension method `.ToListOrNullIfEmpty()` is provided for this purpose, which should be used on any lists being set on the model.
 
 ```C#
 var event = new Event()
 {
-    Name = "Virtual BODYPUMP",
-    Description = "This is the virtual version of the original barbell class, which will help you get lean, toned and fit - fast. Les Mills™ Virtual classes are designed for people who cannot get access to our live classes or who want to get a ‘taste’ of a Les Mills™ class before taking a live class with an instructor. The classes are played on a big video screen, with dimmed lighting and pumping surround sound, and are led onscreen by the people who actually choreograph the classes.",
-    Duration = TimeSpan.FromDays(1),
-    StartDate = new DateTimeOffset(2017, 4, 24, 19, 30, 0, TimeSpan.FromHours(-8)),
-    Location = new Place()
-    {
-        Name = "Santa Clara City Library, Central Park Library",
-        Address = new PostalAddress()
-        {
-            StreetAddress = "2635 Homestead Rd",
-            AddressLocality = "Santa Clara",
-            PostalCode = "95051",
-            AddressRegion = "CA",
-            AddressCountry = "US"
-        }
-    },
-    Image = new List<ImageObject>() { new ImageObject { Url = new Uri("http://www.example.com/event_image/12345") } },
-    EndDate = new DateTimeOffset(2017, 4, 24, 23, 0, 0, TimeSpan.FromHours(-8)),
-    Offers = new List<Offer>() { new Offer()
-    {
-        Url = new Uri("https://www.example.com/event_offer/12345_201803180430"), 
-        Price = 30, 
-        PriceCurrency = "USD", 
-        ValidFrom = new DateTimeOffset(2017, 1, 20, 16, 20, 0, TimeSpan.FromHours(-8))
-    } },
-    AttendeeInstructions = "Ensure you bring trainers and a bottle of water.",
-    MeetingPoint = ""
+    Name = "Virtual BODYPUMP"
+    Offers = offers.ToListOrNullIfEmpty();
 };
-var jsonLd = event.ToOpenActiveString();
+var jsonLd = OpenActiveSerializer.Serialize(event);
 ```
 
-The code above outputs the following JSON-LD:
 
+#### OpenActiveSerializer.Serialize<T>(T obj)
+Returns the JSON-LD representation of a JsonLdObject.
+
+```C#
+var event = new Event()
+{
+    Name = "Virtual BODYPUMP"
+};
+var jsonLd = OpenActiveSerializer.Serialize(event);
+```
+
+Value of `jsonLd`:
 ```JSON
 {
   "@context": "https://openactive.io/",
-  "type": "Event",
-  "name": "Virtual BODYPUMP",
-  "description": "This is the virtual version of the original barbell class, which will help you get lean, toned and fit - fast. Les Mills™ Virtual classes are designed for people who cannot get access to our live classes or who want to get a ‘taste’ of a Les Mills™ class before taking a live class with an instructor. The classes are played on a big video screen, with dimmed lighting and pumping surround sound, and are led onscreen by the people who actually choreograph the classes.",
-  "attendeeInstructions": "Ensure you bring trainers and a bottle of water.",
-  "duration": "P1D",
-  "image": [
-    {
-      "type": "ImageObject",
-      "url": "http://www.example.com/event_image/12345"
-    }
-  ],
-  "location": {
-    "type": "Place",
-    "name": "Santa Clara City Library, Central Park Library",
-    "address": {
-      "type": "PostalAddress",
-      "addressCountry": "US",
-      "addressLocality": "Santa Clara",
-      "addressRegion": "CA",
-      "postalCode": "95051",
-      "streetAddress": "2635 Homestead Rd"
-    }
-  },
-  "offers": [
-    {
-      "type": "Offer",
-      "price": 30.0,
-      "priceCurrency": "USD",
-      "url": "https://www.example.com/event_offer/12345_201803180430",
-      "validFrom": "2017-01-20T16:20:00-08:00"
-    }
-  ],
-  "startDate": "2017-04-24T19:30:00-08:00",
-  "endDate": "2017-04-24T23:00:00-08:00"
+  "@type": "Event",
+  "name": "Virtual BODYPUMP"
 }
 ```
 
-## Referencing Schema.org properties and types
+#### OpenActiveSerializer.SerializeList<T>(List<T> obj)
+Returns the JSON-LD representation of a list of JsonLdObject.
 
-The OpenActive data model builds on top of Schema.org, which means that you are free to use additional Schema.org properties within OpenActive published data.
+```C#
+var concepts = new List<Concept>
+{
+    new Concept
+    {
+        Id = new Uri("https://openactive.io/facility-types#37bbed12-270b-42b1-9af2-70f0273990dd"),
+        PrefLabel = "Grass",
+        InScheme = new Uri("https://openactive.io/facility-types")
+    }
+};
+var jsonLd = OpenActiveSerializer.SerializeList(event);
+```
 
-To reflect this, OpenActive.NET uses inheritance to build on top of [Schema.NET](https://github.com/RehanSaeed/Schema.NET), and so makes it easy to use additional properties from Schema.org on any given type.
+Value of `jsonLd`:
+```JSON
+[
+    {
+        "@context":"https://openactive.io/",
+        "@type":"Concept",
+        "@id":"https://openactive.io/facility-types#37bbed12-270b-42b1-9af2-70f0273990dd",
+        "inScheme":"https://openactive.io/facility-types",
+        "prefLabel":"Grass"
+    }
+]
+```
 
-To avoid naming conflicts between OpenActive.NET and Schema.NET, it is recommended that you import `using OpenActive.NET;` to reference OpenActive model types, and use fully qualified references for Schema.NET types (e.g. `Schema.NET.Thing`).
 
+#### OpenActiveSerializer.SerializeToHtmlEmbeddableString<T>(T obj)
+Returns the JSON-LD representation of an JsonLdObject, including "https://schema.org" in the "@context",
+to make the output compatible with search engines, for SEO.
+
+This method should be used when you want to embed the output raw (as-is) into a web
+page. It uses serializer settings with HTML escaping to avoid Cross-Site Scripting (XSS)
+vulnerabilities if the object was constructed from an untrusted source.
+
+```C#
+var event = new Event()
+{
+    Name = "Virtual BODYPUMP"
+};
+var jsonLd = OpenActiveSerializer.SerializeToHtmlEmbeddableString(event);
+```
+
+Value of `jsonLd`:
+```JSON
+{
+  "@context": ["https://schema.org", "https://openactive.io/"],
+  "@type": "Event",
+  "name": "Virtual BODYPUMP"
+}
+```
+
+#### OpenActiveSerializer.Deserialize<T>(string str)
+Returns a strongly typed model of the JSON-LD representation provided.
+
+
+#### OpenActiveSerializer.DeserializeList<T>(string str)
+Returns a strongly typed list of models of the given type of the JSON-LD representation provided.
+
+
+#### RpdePage.ToString()
+Returns the serialised representation of an RpdePage. Note that `OpenActiveSerializer.Serialize<T>` should not be used on an RpdePage, as RPDE itself is not an JSON-LD based format.
+
+## Contributing
+
+### Model regeneration
+Running `npm start` in the `OpenActive.NET.Generator` project will regenerate the mdoels from the [OpenActive model files](https://github.com/openactive/data-models).
+
+```bash
+npm install
+npm start
+```
+
+### Pull requests
+Contributions are very welcome. Please raise an issue or pull request as appropriate.
