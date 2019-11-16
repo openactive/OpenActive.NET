@@ -443,7 +443,7 @@ Returns the serialised representation of an `RpdePage`. Note that `OpenActiveSer
 ## Contributing
 
 ### Model regeneration
-Running `npm start` in the `OpenActive.NET.Generator` project will regenerate the mdoels from the [OpenActive model files](https://github.com/openactive/data-models).
+Running `npm start` in the `OpenActive.NET.Generator` project will regenerate the models from the [OpenActive model files](https://github.com/openactive/data-models).
 
 ```bash
 npm install
