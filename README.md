@@ -36,7 +36,7 @@ This project is compatible with .NET Standard 1.1 and later (.NET Framework 4.5 
 
 OpenActive.NET includes OpenActive.io objects as strongly typed C# POCO classes for use in .NET. All classes can be serialized into JSON-LD, to provide easy conformance with the [Modelling Specification](https://www.openactive.io/modelling-opportunity-data/) and [Open Booking API Specification](https://www.openactive.io/open-booking-api/).
 
-Note that empty strings are automatically ignored during serialisation, however empty lists need to be explicitly set to `null` in order to conform to the OpenActive serialisation rules.
+Note that empty strings are automatically ignored during serialization, however empty lists need to be explicitly set to `null` in order to conform to the OpenActive serialization rules.
 
 An extension method `.ToListOrNullIfEmpty()` is provided for this purpose, which should be used on any lists being set on the model.
 
@@ -217,7 +217,7 @@ var jsonLd = new RpdePage(new Uri("https://www.example.com/feed"), 1, "1", items
 ```
 
 
-### Incrementing Unique Change Number Ordering Strategy]
+### Incrementing Unique Change Number Ordering Strategy
 
 > `RpdePage(feedBaseUrl, afterChangeNumber, items)`
 
@@ -340,7 +340,7 @@ public abstract class RPDEBase<DatabaseType> where DatabaseType : RPDEBase<Datab
 
 ### Empty Lists
 
-Empty strings are automatically ignored during serialisation, however empty lists need to be explicitly set to `null` in order to conform to the OpenActive specification.
+Empty strings are automatically ignored during serialization, however empty lists need to be explicitly set to `null` in order to conform to the OpenActive specification.
 
 An extension method `.ToListOrNullIfEmpty()` is provided for this purpose, which should be used on any lists being set on the model.
 
