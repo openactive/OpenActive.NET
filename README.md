@@ -187,6 +187,7 @@ Implementation requires implementing `ConvertToOpenActiveModel` to return an ins
 
 
 ### Modified Timestamp and ID Ordering Strategy
+
 > `RpdePage(feedBaseUrl, afterTimestamp, afterId, items)`
 
 Creates a new RPDE Page based on the RPDE Items provided, and the `afterTimestamp` and `afterId` parameters of the current query. Also validates that the items are in the correct order, throwing a `SerializationException` if this is not the case.
@@ -216,8 +217,10 @@ var jsonLd = new RpdePage(new Uri("https://www.example.com/feed"), 1, "1", items
 ```
 
 
-### Incrementing Unique Change Number Ordering Strategy
+### Incrementing Unique Change Number Ordering Strategy]
+
 > `RpdePage(feedBaseUrl, afterChangeNumber, items)`
+
 Creates a new RPDE Page based on the RPDE Items provided, and the `afterChangeNumber` parameter of the current query. Also validates that the items are in the correct order, throwing a `SerializationException` if this is not the case.
 
 ```C#
