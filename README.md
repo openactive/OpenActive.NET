@@ -355,7 +355,7 @@ var jsonLd = OpenActiveSerializer.Serialize(event);
 
 
 ### OpenActiveSerializer.Serialize<T>(T obj)
-Returns the JSON-LD representation of a JsonLdObject.
+Returns the JSON-LD representation of a `JsonLdObject`.
 
 ```C#
 var event = new Event()
@@ -375,7 +375,7 @@ Value of `jsonLd`:
 ```
 
 ### OpenActiveSerializer.SerializeList<T>(List<T> obj)
-Returns the JSON-LD representation of a list of JsonLdObject.
+Returns the JSON-LD representation of a list of `JsonLdObject`.
 
 ```C#
 var concepts = new List<Concept>
@@ -405,7 +405,7 @@ Value of `jsonLd`:
 
 
 ### OpenActiveSerializer.SerializeToHtmlEmbeddableString<T>(T obj)
-Returns the JSON-LD representation of an JsonLdObject, including "https://schema.org" in the "@context",
+Returns the JSON-LD representation of an `JsonLdObject`, including `"https://schema.org"` in the `"@context"` property,
 to make the output compatible with search engines, for SEO.
 
 This method should be used when you want to embed the output raw (as-is) into a web
@@ -438,7 +438,7 @@ Returns a strongly typed list of models of the given type of the JSON-LD represe
 
 
 ### RpdePage.ToString()
-Returns the serialised representation of an RpdePage. Note that `OpenActiveSerializer.Serialize<T>` should not be used on an RpdePage, as RPDE itself is not an JSON-LD based format.
+Returns the serialised representation of an `RpdePage`. Note that `OpenActiveSerializer.Serialize<T>` should not be used on an `RpdePage`, as RPDE itself is not an JSON-LD based format.
 
 ## Contributing
 
