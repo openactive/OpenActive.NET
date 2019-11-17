@@ -30,7 +30,7 @@ OpenActive aims to provide strongly typed models for all classes defined in the 
 - [Contributing](#contributing)
 
 ## Requirements
-This project is compatible with .NET Standard 1.1 and later (.NET Framework 4.5 and .NET Core 1.0).
+This library is compatible with .NET Standard 1.1 and later (.NET Framework 4.5 and .NET Core 1.0).
 
 ## Models
 
