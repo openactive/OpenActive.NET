@@ -183,14 +183,11 @@ The code above outputs the following JSON-LD:
 
 To publish an OpenActive data feed (see this [video explainer](https://developer.openactive.io/publishing-data/data-feeds/how-a-data-feed-works)), OpenActive.NET provides a drop-in solution to render the feed pages. This also includes validation for the underlying feed query.
 
-Implementation requires implementing `ConvertToOpenActiveModel` to return an instance of e.g. `OpenActive.NET.ScheduledSession` or `OpenActive.NET.Event` as per the OpenActive.NET Model section below.
-
-
 ### Modified Timestamp and ID Ordering Strategy
 
-> `RpdePage(feedBaseUrl, afterTimestamp, afterId, items)`
+`RpdePage(feedBaseUrl, afterTimestamp, afterId, items)`
 
-Creates a new RPDE Page based on the RPDE Items provided using the [Modified Timestamp and ID Ordering Strategy](https://www.w3.org/2017/08/realtime-paged-data-exchange/#modified-timestamp-and-id), with the `afterTimestamp` and `afterId` parameters of the current query. Also validates that the items are in the correct order, throwing a `SerializationException` if this is not the case.
+Creates a new RPDE Page based on the RPDE Items provided using the [Modified Timestamp and ID Ordering Strategy](https://www.w3.org/2017/08/realtime-paged-data-exchange/#modified-timestamp-and-id), given the `afterTimestamp` and `afterId` parameters of the current query. Also validates that the items are in the correct order, throwing a `SerializationException` if this is not the case.
 
 ```C#
 var items = new List<RpdeItem>
@@ -219,9 +216,9 @@ var jsonLd = new RpdePage(new Uri("https://www.example.com/feed"), 1, "1", items
 
 ### Incrementing Unique Change Number Ordering Strategy
 
-> `RpdePage(feedBaseUrl, afterChangeNumber, items)`
+`RpdePage(feedBaseUrl, afterChangeNumber, items)`
 
-Creates a new RPDE Page based on the RPDE Items provided using the [Incrementing Unique Change Number Ordering Strategy](https://www.w3.org/2017/08/realtime-paged-data-exchange/#incrementing-unique-change-number), with the `afterChangeNumber` parameter of the current query. Also validates that the items are in the correct order, throwing a `SerializationException` if this is not the case.
+Creates a new RPDE Page based on the RPDE Items provided using the [Incrementing Unique Change Number Ordering Strategy](https://www.w3.org/2017/08/realtime-paged-data-exchange/#incrementing-unique-change-number), given the `afterChangeNumber` parameter of the current query. Also validates that the items are in the correct order, throwing a `SerializationException` if this is not the case.
 
 ```C#
 var items = new List<RpdeItem>
@@ -248,6 +245,8 @@ var jsonLd = new RpdePage(new Uri("https://www.example.com/feed"), 2, items).ToS
 ```
 
 ### Full RPDE Example
+
+Implementation requires implementing `ConvertToOpenActiveModel` to return an instance of e.g. `OpenActive.NET.ScheduledSession` or `OpenActive.NET.Event` as per the OpenActive.NET Model section below.
 
 ```C#
 using OpenActive.NET.Rpde.Version1;
@@ -354,7 +353,7 @@ var jsonLd = OpenActiveSerializer.Serialize(event);
 ```
 
 
-### OpenActiveSerializer.Serialize<T>(T obj)
+### `OpenActiveSerializer.Serialize<T>(T obj)`
 Returns the JSON-LD representation of a `JsonLdObject`.
 
 ```C#
@@ -374,7 +373,7 @@ Value of `jsonLd`:
 }
 ```
 
-### OpenActiveSerializer.SerializeList<T>(List<T> obj)
+### `OpenActiveSerializer.SerializeList<T>(List<T> obj)`
 Returns the JSON-LD representation of a list of `JsonLdObject`.
 
 ```C#
@@ -404,7 +403,7 @@ Value of `jsonLd`:
 ```
 
 
-### OpenActiveSerializer.SerializeToHtmlEmbeddableString<T>(T obj)
+### `OpenActiveSerializer.SerializeToHtmlEmbeddableString<T>(T obj)`
 Returns the JSON-LD representation of an `JsonLdObject`, including `"https://schema.org"` in the `"@context"` property,
 to make the output compatible with search engines, for SEO.
 
@@ -429,16 +428,16 @@ Value of `jsonLd`:
 }
 ```
 
-### OpenActiveSerializer.Deserialize<T>(string str)
+### `OpenActiveSerializer.Deserialize<T>(string str)`
 Returns a strongly typed model of the JSON-LD representation provided.
 
 
-### OpenActiveSerializer.DeserializeList<T>(string str)
+### `OpenActiveSerializer.DeserializeList<T>(string str)`
 Returns a strongly typed list of models of the given type of the JSON-LD representation provided.
 
 
-### RpdePage.ToString()
-Returns the serialised representation of an `RpdePage`. Note that `OpenActiveSerializer.Serialize<T>` should not be used on an `RpdePage`, as RPDE itself is not an JSON-LD based format.
+### `RpdePage.ToString()`
+Returns the serialized representation of an `RpdePage`. Note that `OpenActiveSerializer.Serialize<T>` should not be used on an `RpdePage`, as RPDE itself is not a JSON-LD based format.
 
 ## Contributing
 
