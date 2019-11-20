@@ -146,12 +146,38 @@ namespace OpenActive.NET.Test
         public void SessionSeries_EncodeDecode()
         {
             // Should recognise subclasses of Event when deserialising
-            var decode = OpenActiveSerializer.Deserialize<Event>(json);
+            var decode = OpenActiveSerializer.Deserialize<SessionSeries>(json);
             var encode = OpenActiveSerializer.Serialize(decode);
 
             output.WriteLine(json);
             output.WriteLine(encode);
             Assert.Equal(json, encode);
+        }
+
+        [Fact]
+        public void RootTypeMismatchError()
+        {
+            var rootSessionSeriesJson = "{" +
+            "\"@context\":\"https://openactive.io/\"," +
+            "\"@type\":\"SessionSeries\"," +
+            "\"name\":\"Virtual BODYPUMP\"" +
+            "}";
+
+            var rootEventJson = "{" +
+            "\"@context\":\"https://openactive.io/\"," +
+            "\"@type\":\"Event\"," +
+            "\"name\":\"Virtual BODYPUMP\"" +
+            "}";
+
+            // Should recognise subclasses of Event when deserialising
+            Assert.IsType<SessionSeries>(OpenActiveSerializer.Deserialize<SessionSeries>(rootSessionSeriesJson));
+            Assert.IsType<SessionSeries>(OpenActiveSerializer.Deserialize<Event>(rootSessionSeriesJson));
+            Assert.IsType<Event>(OpenActiveSerializer.Deserialize<Event>(rootEventJson));
+            
+            // Note assignment fails if attempting to cast downwards
+            Assert.Null(OpenActiveSerializer.Deserialize<SessionSeries>(rootEventJson));
+
+            //var encode = OpenActiveSerializer.Serialize(decode);
         }
 
         [Fact]

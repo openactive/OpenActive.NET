@@ -11,9 +11,13 @@ namespace OpenActive.NET
     /// </summary>
     public interface ILegalEntity
     {
-        string Type { get; }
+        bool IsPerson { get; }
+        bool IsOrganization { get; }
+        Uri Id { get; set; }
         SingleValues<long?, string, PropertyValue, List<PropertyValue>> Identifier { get; set; }
         string Name { get; set; }
+        string GivenName { get; set; }
+        string FamilyName { get; set; }
         string LegalName { get; set; }
         string Email { get; set; }
         TaxMode? TaxMode { get; set; }
@@ -26,5 +30,25 @@ namespace OpenActive.NET
         string FormattedDescription { get; set; }
         string Description { get; set; }
         List<Uri> SameAs { get; set; }
+        string DisplayName { get; }
+    }
+
+    public static class LegalEntityConverter
+    {
+        // Note that the order of "Organization, Person" must match the generated properties that accept ILegalEntity
+        public static SingleValues<Organization, Person> GetSingleValues(this ILegalEntity legalEntity)
+        {
+            switch (legalEntity)
+            {
+                case Organization organization:
+                    return organization;
+                case Person person:
+                    return person;
+                case null:
+                    return default;
+                default:
+                    throw new InvalidCastException($"Supplied ILegalEntity is of unknown type {legalEntity.GetType().ToString()}");
+            }
+        }
     }
 }

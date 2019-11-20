@@ -545,6 +545,11 @@ function createTypeString(field, models, enumMap, isExtension) {
         throw new Error('No type found for field: ' + field.fieldName);
     }
 
+    // Use ILegalEntity in place of SingleValues<Organization, Person>
+    if (types.length == 2 && types.includes('Organization') && types.includes('Person')) {
+        return `ILegalEntity`;
+    }
+
     // OpenActive SingleValues not allow many of the same type, only allows one
     return types.length > 1 ? `SingleValues<${types.join(', ')}>` : types[0];
 }

@@ -124,7 +124,7 @@ namespace OpenActive.NET
         /// </example>
         [DataMember(Name = "author", EmitDefaultValue = false, Order = 11)]
         [JsonConverter(typeof(ValuesConverter))]
-        public new virtual SingleValues<Person, Organization> Author { get; set; }
+        public new virtual ILegalEntity Author { get; set; }
 
 
         /// <summary>

@@ -72,7 +72,8 @@ namespace OpenActive.NET
         {
             Converters = new List<JsonConverter>()
             {
-                new StringEnumConverter()
+                new StringEnumConverter(),
+                new ValuesConverter()
             },
             NullValueHandling = NullValueHandling.Ignore,
             DefaultValueHandling = DefaultValueHandling.Ignore,
@@ -115,6 +116,8 @@ namespace OpenActive.NET
 
         /// <summary>
         /// Returns a strongly typed model of the JSON-LD representation provided.
+        /// 
+        /// Note this will return null if the deserialized JSON-LD class cannot be assigned to `T`.
         /// </summary>
         /// <typeparam name="T">Type of schema.org object to deserialize (can use Thing for any)</typeparam>
         /// <param name="str">JSON string</param>

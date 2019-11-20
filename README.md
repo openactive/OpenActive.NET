@@ -431,6 +431,10 @@ Value of `jsonLd`:
 ### `OpenActiveSerializer.Deserialize<T>(string str)`
 Returns a strongly typed model of the JSON-LD representation provided.
 
+Note this will return null if the deserialized JSON-LD class cannot be assigned to `T`.
+
+Hence `OpenActiveSerializer.Deserialize<SessionSeries>(eventJson);` would return null where `eventJson` represented an `Event`.
+
 
 ### `OpenActiveSerializer.DeserializeList<T>(string str)`
 Returns a strongly typed list of models of the given type of the JSON-LD representation provided.

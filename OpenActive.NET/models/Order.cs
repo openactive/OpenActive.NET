@@ -89,7 +89,7 @@ namespace OpenActive.NET
         /// </summary>
         [DataMember(Name = "customer", EmitDefaultValue = false, Order = 11)]
         [JsonConverter(typeof(ValuesConverter))]
-        public new virtual SingleValues<Organization, Person> Customer { get; set; }
+        public new virtual ILegalEntity Customer { get; set; }
 
 
         /// <summary>
@@ -137,7 +137,7 @@ namespace OpenActive.NET
         /// </summary>
         [DataMember(Name = "seller", EmitDefaultValue = false, Order = 17)]
         [JsonConverter(typeof(ValuesConverter))]
-        public new virtual SingleValues<Person, Organization> Seller { get; set; }
+        public new virtual ILegalEntity Seller { get; set; }
 
 
         /// <summary>

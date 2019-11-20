@@ -26,7 +26,7 @@
         /// <returns>
         /// <c>true</c> if this instance can convert the specified object type; otherwise, <c>false</c>.
         /// </returns>
-        public override bool CanConvert(Type objectType) => objectType == typeof(IValue);
+        public override bool CanConvert(Type objectType) => objectType == typeof(IValue) || typeof(Schema.NET.JsonLdObject).GetTypeInfo().IsAssignableFrom(objectType.GetTypeInfo());
 
         /// <summary>
         /// Writes the specified <see cref="IValue"/> object using the JSON writer.

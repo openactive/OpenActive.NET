@@ -66,7 +66,7 @@ namespace OpenActive.NET
                     return null;
                 }
             }
-            else if (typeof(T2) == typeof(T) || typeof(T2s) == typeof(Nullable<T>))
+            else if (typeof(T2) == typeof(T) || typeof(T2) == typeof(Nullable<T>))
             {
                 if (HasValue2)
                 {
