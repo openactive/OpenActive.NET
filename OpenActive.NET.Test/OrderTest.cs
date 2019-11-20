@@ -327,7 +327,7 @@ namespace OpenActive.NET.Test
             Assert.Equal("Geoff", order?.Customer.GetClass<Person>().GivenName);
             Assert.Equal("EUCODE", order?.OrderedItem?[0]?.UnitTaxSpecification?[0]?.Identifier.GetClass<List<PropertyValue>>()?[0].Name);
             Assert.Equal(new TimeSpan(6,0,0,0), order?.OrderedItem?[0]?.AcceptedOffer?.ValidFromBeforeStartDate);
-            Assert.Equal(new DateTimeOffset(2018, 10, 30, 11, 00, 00, 00, new TimeSpan()), order?.OrderedItem?[0]?.OrderedItem?.StartDate);
+            Assert.Equal(new DateTimeOffset(2018, 10, 30, 11, 00, 00, 00, new TimeSpan()), order?.OrderedItem?[0]?.OrderedItem?.StartDate.GetPrimative<DateTimeOffset>());
         }
 
         [Fact]
@@ -340,6 +340,5 @@ namespace OpenActive.NET.Test
             output.WriteLine(encode);
             Assert.Equal(complexJson, encode);
         }
-
     }
 }

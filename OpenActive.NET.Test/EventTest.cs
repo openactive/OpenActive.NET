@@ -145,7 +145,8 @@ namespace OpenActive.NET.Test
         [Fact]
         public void SessionSeries_EncodeDecode()
         {
-            var decode = OpenActiveSerializer.Deserialize<SessionSeries>(json);
+            // Should recognise subclasses of Event when deserialising
+            var decode = OpenActiveSerializer.Deserialize<Event>(json);
             var encode = OpenActiveSerializer.Serialize(decode);
 
             output.WriteLine(json);

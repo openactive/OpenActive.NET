@@ -80,7 +80,7 @@ namespace OpenActive.NET
         /// </summary>
         public Nullable<T> GetPrimative<T>() where T : struct
         {
-            if (typeof(T1) == typeof(T))
+            if (typeof(T1) == typeof(T) || typeof(T1) == typeof(Nullable<T>))
             {
                 if (HasValue1)
                 {
@@ -91,7 +91,7 @@ namespace OpenActive.NET
                     return null;
                 }
             }
-            else if (typeof(T2) == typeof(T))
+            else if (typeof(T2) == typeof(T) || typeof(T2) == typeof(Nullable<T>))
             {
                 if (HasValue2)
                 {
@@ -102,7 +102,7 @@ namespace OpenActive.NET
                     return null;
                 }
             }
-            else if (typeof(T3) == typeof(T))
+            else if (typeof(T3) == typeof(T) || typeof(T3) == typeof(Nullable<T>))
             {
                 if (HasValue3)
                 {
