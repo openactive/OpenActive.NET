@@ -590,7 +590,7 @@ function renderCode(code, fieldName, requiredType) {
     if (typeof code === 'object') {
         return "<code>\n" + (fieldName ? `"` + fieldName + `": ` : "") + JSON.stringify(code, null, 2)+ "\n</code>";
     } else {
-        var isNumber = requiredType && (requiredType.indexOf("Integer") > -1 || requiredType.indexOf("Float") > -1);
+        var isNumber = requiredType && (requiredType.indexOf("Integer") > -1 || requiredType.indexOf("Float") > -1 || requiredType.indexOf("Number") > -1);
         return "<code>\n" + (fieldName ? `"` + fieldName + `": ` : "") + (isNumber ? code : `"` + code + `"`) + "\n</code>";
     }
 }

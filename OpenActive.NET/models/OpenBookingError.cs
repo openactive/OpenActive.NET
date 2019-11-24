@@ -61,7 +61,7 @@ namespace OpenActive.NET
 
 
         /// <summary>
-        /// A slightly longer, human-readable summary of the problem type. It largely should not change from occurrence to occurrence of the problem, except for purposes of localization or to provide specific information about why the error occurred in that particular case.
+        /// A human-readable explanation specific to this occurrence of the problem, providing specific information about why the error occurred in this particular case.
         /// </summary>
         /// <example>
         /// <code>
@@ -74,7 +74,7 @@ namespace OpenActive.NET
 
 
         /// <summary>
-        /// The requested URL.
+        /// A URI reference that identifies the specific occurrence of the problem. It may or may not yield further information if dereferenced.
         /// </summary>
         [DataMember(Name = "instance", EmitDefaultValue = false, Order = 9)]
         [JsonConverter(typeof(ValuesConverter))]
@@ -82,25 +82,9 @@ namespace OpenActive.NET
 
 
         /// <summary>
-        /// An array of invalid parameters, if appropriate.
-        /// </summary>
-        [DataMember(Name = "invalidParams", EmitDefaultValue = false, Order = 10)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public virtual List<string> InvalidParams { get; set; }
-
-
-        /// <summary>
-        /// The method of the request (e.g. GET).
-        /// </summary>
-        [DataMember(Name = "method", EmitDefaultValue = false, Order = 11)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public virtual string Method { get; set; }
-
-
-        /// <summary>
         /// Used by technical support for diagnostics purposes.
         /// </summary>
-        [DataMember(Name = "requestId", EmitDefaultValue = false, Order = 12)]
+        [DataMember(Name = "requestId", EmitDefaultValue = false, Order = 10)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual string RequestId { get; set; }
 
@@ -108,7 +92,7 @@ namespace OpenActive.NET
         /// <summary>
         /// An integer representing the HTTP status code.
         /// </summary>
-        [DataMember(Name = "statusCode", EmitDefaultValue = false, Order = 13)]
+        [DataMember(Name = "statusCode", EmitDefaultValue = false, Order = 11)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual long? StatusCode { get; set; }
 
