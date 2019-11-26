@@ -6,6 +6,7 @@ using System.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.Net.Http;
+using System.Net.Http.Headers;
 
 namespace OpenActive.NET.Rpde.Version1
 {
@@ -92,7 +93,7 @@ namespace OpenActive.NET.Rpde.Version1
         public StringContent ToStringContent()
         {
             var content = new StringContent(this.ToString(), Encoding.UTF8, "application/json");
-            content.Headers.ContentType = OpenActiveDiscovery.MediaTypes.Version1.RealtimePagedDataExchange;
+            content.Headers.ContentType = MediaTypeHeaderValue.Parse(OpenActiveMediaTypes.Version1.RealtimePagedDataExchange);
             return content;
         }
 
