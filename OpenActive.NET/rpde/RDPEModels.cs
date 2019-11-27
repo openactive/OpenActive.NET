@@ -93,7 +93,7 @@ namespace OpenActive.NET.Rpde.Version1
         public StringContent ToStringContent()
         {
             var content = new StringContent(this.ToString(), Encoding.UTF8, "application/json");
-            content.Headers.ContentType = MediaTypeHeaderValue.Parse(OpenActiveMediaTypes.Version1.RealtimePagedDataExchange);
+            content.Headers.ContentType = MediaTypeHeaderValue.Parse(OpenActiveMediaTypes.RealtimePagedDataExchange.Version1);
             return content;
         }
 
