@@ -100,6 +100,16 @@ namespace OpenActive.NET
         /// </returns>
         public static string SerializeList<T>(List<T> obj) where T : Schema.NET.JsonLdObject => SerializeWithSettings(obj, InternalSerializerSettings, false);
 
+
+        /// <summary>
+        /// Returns the JSON-LD representation of an RpdePage.
+        /// </summary>
+        /// <returns>
+        /// A <see cref="string" /> that represents the JSON representation of the RPDE page.
+        /// </returns>
+        public static string SerializeRpdePage(RpdePage obj) => JsonConvert.SerializeObject(obj, RpdePage.SerializerSettings);
+
+
         /// <summary>
         /// Returns the JSON-LD representation of an JsonLdObject, including "https://schema.org" in the "@context",
         /// to make the output compatible with search engines, for SEO.
@@ -131,6 +141,13 @@ namespace OpenActive.NET
         /// <param name="str">JSON string</param>
         /// <returns>Strongly typed schema.org model</returns>
         public static List<T> DeserializeList<T>(string str) where T : Schema.NET.JsonLdObject => JsonConvert.DeserializeObject<List<T>>(PrepareForDeserialization(str), DeserializerSettings);
+
+        /// <summary>
+        /// Returns a strongly typed model of the PPDE page representation provided.
+        /// </summary>
+        /// <param name="str">JSON string</param>
+        /// <returns>Strongly typed RPDE model</returns>
+        public static RpdePage DeserializeRpdePage(string str) => JsonConvert.DeserializeObject<RpdePage>(str, RpdePage.SerializerSettings);
 
 
         /// <summary>
@@ -180,6 +197,7 @@ namespace OpenActive.NET
 
             public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
             {
+                // Note this does not get called during deserialisation due to ValuesConverter, so is not required.
                 throw new NotImplementedException();
             }
 

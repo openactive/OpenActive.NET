@@ -22,9 +22,10 @@ OpenActive aims to provide strongly typed models for all classes defined in the 
     - [`OpenActiveSerializer.Serialize<T>(T obj)`](#openactiveserializerserializett-obj)
     - [`OpenActiveSerializer.SerializeList<T>(List<T> obj)`](#openactiveserializerserializelisttlistt-obj)
     - [`OpenActiveSerializer.SerializeToHtmlEmbeddableString<T>(T obj)`](#openactiveserializerserializetohtmlembeddablestringtt-obj)
+    - [`OpenActiveSerializer.SerializeRpdePage(RpdePage obj)`](#openactiveserializerserializerpdepagerpdepage-obj)
     - [`OpenActiveSerializer.Deserialize<T>(string str)`](#openactiveserializerdeserializetstring-str)
     - [`OpenActiveSerializer.DeserializeList<T>(string str)`](#openactiveserializerdeserializelisttstring-str)
-    - [`RpdePage.ToString()`](#rpdepagetostring)
+    - [`OpenActiveSerializer.DeserializeRpdePage(string str)`](#openactiveserializerdeserializerpdepagestring-str)
 - [Contributing](#contributing)
 
 ## Requirements
@@ -426,6 +427,11 @@ Value of `jsonLd`:
 }
 ```
 
+
+### `OpenActiveSerializer.SerializeRpdePage(RpdePage obj)`
+Returns the serialized representation of an `RpdePage`. Note that `OpenActiveSerializer.Serialize<T>` cannot be used on an `RpdePage`, as RPDE itself is not a JSON-LD based format.
+
+
 ### `OpenActiveSerializer.Deserialize<T>(string str)`
 Returns a strongly typed model of the JSON-LD representation provided.
 
@@ -438,8 +444,9 @@ Hence `OpenActiveSerializer.Deserialize<SessionSeries>(eventJson);` would return
 Returns a strongly typed list of models of the given type of the JSON-LD representation provided.
 
 
-### `RpdePage.ToString()`
-Returns the serialized representation of an `RpdePage`. Note that `OpenActiveSerializer.Serialize<T>` should not be used on an `RpdePage`, as RPDE itself is not a JSON-LD based format.
+### `OpenActiveSerializer.DeserializeRpdePage(string str)`
+Returns a strongly typed model of the RPDE page provided.
+
 
 ## Contributing
 

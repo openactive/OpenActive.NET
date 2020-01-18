@@ -200,7 +200,7 @@ namespace OpenActive.NET.Test
                 "\"offers\":[" +
                     "{" +
                         "\"@type\":\"beta:IndicativeOffer\"," +
-                        "\"price\":30.0," +
+                        "\"price\":0," +
                         "\"priceCurrency\":\"USD\"," +
                         "\"url\":\"https://www.example.com/event_offer/12345_201803180430\"," +
                         "\"validFrom\":\"2017-01-20T16:20:00-08:00\"" +
@@ -213,7 +213,7 @@ namespace OpenActive.NET.Test
                 Offers = (new List<IndicativeOffer>() { new IndicativeOffer()
                 {
                     Url = new Uri("https://www.example.com/event_offer/12345_201803180430"),
-                    Price = 30,
+                    Price = 0,
                     PriceCurrency = "USD",
                     ValidFrom = new DateTimeOffset(2017, 1, 20, 16, 20, 0, TimeSpan.FromHours(-8))
                 } }).Cast<Offer>().ToList()
@@ -270,7 +270,7 @@ namespace OpenActive.NET.Test
             {
                 Id = new Uri("https://www.example.com/event_offer/12345_201803180430"),
                 Url = new Uri("https://www.example.com/event_offer/12345_201803180430"),
-                Price = 30,
+                Price = 0,
                 PriceCurrency = "USD",
                 ValidFrom = new DateTimeOffset(2017, 1, 20, 16, 20, 0, TimeSpan.FromHours(0))
             };

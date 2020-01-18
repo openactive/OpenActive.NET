@@ -42,7 +42,7 @@ namespace OpenActive.NET.Test
             Offers = new List<Offer>() { new Offer()
             {
                 Url = new Uri("https://www.example.com/event_offer/12345_201803180430"),
-                Price = 30,
+                Price = 0,
                 PriceCurrency = "USD",
                 ValidFrom = new DateTimeOffset(2017, 1, 20, 16, 20, 0, TimeSpan.FromHours(-8))
             } },
@@ -206,7 +206,7 @@ namespace OpenActive.NET.Test
         };
 
         private readonly string jsonRpde =
-        "{\"next\":\"https://www.example.com/feed?afterTimestamp=5&afterId=1\",\"items\":[{\"state\":\"updated\",\"kind\":\"SessionSeries\",\"id\":\"2\",\"modified\":4,\"data\":{\"@context\":\"https://openactive.io/\",\"@type\":\"SessionSeries\",\"name\":\"Virtual BODYPUMP\",\"description\":\"This is the virtual version of the original barbell class, which will help you get lean, toned and fit - fast. Les Mills™ Virtual classes are designed for people who cannot get access to our live classes or who want to get a ‘taste’ of a Les Mills™ class before taking a live class with an instructor. The classes are played on a big video screen, with dimmed lighting and pumping surround sound, and are led onscreen by the people who actually choreograph the classes.\",\"attendeeInstructions\":\"Ensure you bring trainers and a bottle of water.\",\"duration\":\"P1D\",\"image\":[{\"@type\":\"ImageObject\",\"url\":\"http://www.example.com/event_image/12345\"}],\"location\":{\"@type\":\"Place\",\"name\":\"Santa Clara City Library, Central Park Library\",\"address\":{\"@type\":\"PostalAddress\",\"addressCountry\":\"US\",\"addressLocality\":\"Santa Clara\",\"addressRegion\":\"CA\",\"postalCode\":\"95051\",\"streetAddress\":\"2635 Homestead Rd\"}},\"offers\":[{\"@type\":\"Offer\",\"price\":30.0,\"priceCurrency\":\"USD\",\"url\":\"https://www.example.com/event_offer/12345_201803180430\",\"validFrom\":\"2017-01-20T16:20:00-08:00\"}],\"startDate\":\"2017-04-24T19:30:00-08:00\",\"endDate\":\"2017-04-24T23:00:00-08:00\"}},{\"state\":\"deleted\",\"kind\":\"SessionSeries\",\"id\":\"1\",\"modified\":5}],\"license\":\"https://creativecommons.org/licenses/by/4.0/\"}";
+        "{\"next\":\"https://www.example.com/feed?afterTimestamp=5&afterId=1\",\"items\":[{\"state\":\"updated\",\"kind\":\"SessionSeries\",\"id\":\"2\",\"modified\":4,\"data\":{\"@context\":\"https://openactive.io/\",\"@type\":\"SessionSeries\",\"name\":\"Virtual BODYPUMP\",\"description\":\"This is the virtual version of the original barbell class, which will help you get lean, toned and fit - fast. Les Mills™ Virtual classes are designed for people who cannot get access to our live classes or who want to get a ‘taste’ of a Les Mills™ class before taking a live class with an instructor. The classes are played on a big video screen, with dimmed lighting and pumping surround sound, and are led onscreen by the people who actually choreograph the classes.\",\"attendeeInstructions\":\"Ensure you bring trainers and a bottle of water.\",\"duration\":\"P1D\",\"image\":[{\"@type\":\"ImageObject\",\"url\":\"http://www.example.com/event_image/12345\"}],\"location\":{\"@type\":\"Place\",\"name\":\"Santa Clara City Library, Central Park Library\",\"address\":{\"@type\":\"PostalAddress\",\"addressCountry\":\"US\",\"addressLocality\":\"Santa Clara\",\"addressRegion\":\"CA\",\"postalCode\":\"95051\",\"streetAddress\":\"2635 Homestead Rd\"}},\"offers\":[{\"@type\":\"Offer\",\"price\":0,\"priceCurrency\":\"USD\",\"url\":\"https://www.example.com/event_offer/12345_201803180430\",\"validFrom\":\"2017-01-20T16:20:00-08:00\"}],\"startDate\":\"2017-04-24T19:30:00-08:00\",\"endDate\":\"2017-04-24T23:00:00-08:00\"}},{\"state\":\"deleted\",\"kind\":\"SessionSeries\",\"id\":\"1\",\"modified\":5}],\"license\":\"https://creativecommons.org/licenses/by/4.0/\"}";
 
         [Fact]
         public void ToString_EventGoogleStructuredData_ReturnsExpectedJsonLd() {
@@ -214,6 +214,16 @@ namespace OpenActive.NET.Test
 
             output.WriteLine(feed.ToString());
             Assert.Equal(this.jsonRpde, feed.ToString());
+        }
+
+        [Fact]
+        public void DeserializeRpdePage()
+        {
+            var page = OpenActiveSerializer.DeserializeRpdePage(this.jsonRpde);
+            var json = OpenActiveSerializer.SerializeRpdePage(page);
+
+            output.WriteLine(json);
+            Assert.Equal(this.jsonRpde, json);
         }
 
         [Fact]

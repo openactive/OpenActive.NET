@@ -53,28 +53,28 @@ namespace OpenActive.NET.Test
                 {
                     Name = "SessionSeries",
                     AdditionalType = new Uri("https://openactive.io/SessionSeries"),
-                    EncodingFormat = OpenActiveDiscovery.MediaTypes.Version1.RealtimePagedDataExchange.ToString(),
+                    EncodingFormat = OpenActiveMediaTypes.RealtimePagedDataExchange.Version1,
                     ContentUrl = ("feeds/session-series").ParseUrlOrNull()
                 },
                 new DataDownload
                 {
                     Name = "ScheduledSession",
                     AdditionalType = new Uri("https://openactive.io/ScheduledSession"),
-                    EncodingFormat = OpenActiveDiscovery.MediaTypes.Version1.RealtimePagedDataExchange.ToString(),
+                    EncodingFormat = OpenActiveMediaTypes.RealtimePagedDataExchange.Version1,
                     ContentUrl = ("feeds/scheduled-sessions").ParseUrlOrNull()
                 },
                 new DataDownload
                 {
                     Name = "FacilityUse",
                     AdditionalType = new Uri("https://openactive.io/FacilityUse"),
-                    EncodingFormat = OpenActiveDiscovery.MediaTypes.Version1.RealtimePagedDataExchange.ToString(),
+                    EncodingFormat = OpenActiveMediaTypes.RealtimePagedDataExchange.Version1,
                     ContentUrl = ("feeds/facility-uses").ParseUrlOrNull()
                 },
                 new DataDownload
                 {
                     Name = "Slot",
                     AdditionalType = new Uri("https://openactive.io/Slot"),
-                    EncodingFormat = OpenActiveDiscovery.MediaTypes.Version1.RealtimePagedDataExchange.ToString(),
+                    EncodingFormat = OpenActiveMediaTypes.RealtimePagedDataExchange.Version1,
                     ContentUrl = ("feeds/slots").ParseUrlOrNull()
                 }
             }

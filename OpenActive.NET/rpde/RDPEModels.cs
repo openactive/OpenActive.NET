@@ -7,6 +7,8 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.IO;
+using System.Globalization;
 
 namespace OpenActive.NET.Rpde.Version1
 {
@@ -61,7 +63,7 @@ namespace OpenActive.NET.Rpde.Version1
         /// <summary>
         /// Default serializer settings used.
         /// </summary>
-        private static readonly JsonSerializerSettings SerializerSettings = new JsonSerializerSettings()
+        internal static readonly JsonSerializerSettings SerializerSettings = new JsonSerializerSettings()
         {
             Converters = new List<JsonConverter>()
             {
@@ -72,13 +74,12 @@ namespace OpenActive.NET.Rpde.Version1
 
         /// <summary>
         /// Returns the serialised representation of an RpdePage.
-        /// Note that OpenActiveSerializer.Serialize<T> should not be used on an RpdePage, as RPDE itself is not an JSON-LD based format.
+        /// Note that OpenActiveSerializer.Serialize<T> cannot be used on an RpdePage, as RPDE itself is not an JSON-LD based format.
         /// </summary>
         /// <returns>
         /// A <see cref="string" /> that represents the JSON-LD representation of this instance.
         /// </returns>
-        public override string ToString() =>
-            JsonConvert.SerializeObject(this, SerializerSettings);
+        public override string ToString() => OpenActiveSerializer.SerializeRpdePage(this);
 
         /// <summary>
         /// This is provided as a convenience to .NET Framework users, to create a standards compliant JSON output.
@@ -337,7 +338,55 @@ namespace OpenActive.NET.Rpde.Version1
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
-            throw new NotImplementedException();
+            string json = ReadOuterJson(reader);
+            if (json == null)
+            {
+                return null;
+            }
+            else
+            {
+                var thing = OpenActiveSerializer.Deserialize<Schema.NET.Thing>(json);
+                if (thing != null)
+                {
+                    return thing;
+                }
+                else
+                {
+                    // The resulting class cannot be assigned to Schema.NET.Thing
+                    throw new NotImplementedException();
+                }
+            }
+        }
+
+        /// <summary>
+        /// See https://stackoverflow.com/questions/56944160/efficiently-get-full-json-string-in-jsonconverter-readjson
+        /// </summary>
+        private static string ReadOuterJson(JsonReader reader, Formatting formatting = Formatting.None, DateParseHandling? dateParseHandling = DateParseHandling.None, FloatParseHandling? floatParseHandling = null)
+        {
+            if (reader.TokenType == JsonToken.Null)
+                return null;
+            var oldDateParseHandling = reader.DateParseHandling;
+            var oldFloatParseHandling = reader.FloatParseHandling;
+            try
+            {
+                if (dateParseHandling != null)
+                    reader.DateParseHandling = dateParseHandling.Value;
+                if (floatParseHandling != null)
+                    reader.FloatParseHandling = floatParseHandling.Value;
+                using (var sw = new StringWriter(CultureInfo.InvariantCulture))
+                using (var jsonWriter = new JsonTextWriter(sw) { Formatting = formatting })
+                {
+                    jsonWriter.WriteToken(reader);
+                    return sw.ToString();
+                }
+            }
+            finally
+            {
+                reader.DateParseHandling = oldDateParseHandling;
+                reader.FloatParseHandling = oldFloatParseHandling;
+            }
         }
     }
+
+
 }
