@@ -117,6 +117,7 @@
             var token = JToken.Load(reader);
             var count = token.Children().Count();
 
+            // Primitive type
             if (!mainType.GetTypeInfo().IsGenericType) {
                 if (tokenType == JsonToken.StartArray)
                 {
@@ -126,6 +127,7 @@
                     return ParseTokenArguments(token, tokenType, mainType, value);
                 }
             }
+            // List<> of primitives
             else if (mainType.GetGenericTypeDefinition() == typeof(List<>))
             {
                 var type = mainType.GenericTypeArguments[0];
@@ -139,6 +141,7 @@
                     argument = ParseTokenArguments(token, tokenType, type, value);
                 }
             }
+            // SingleValues<>
             else
             {
                 if (tokenType == JsonToken.StartArray)
@@ -286,7 +289,7 @@
             serializer.Serialize(writer, value);
         }
 
-        private static object ParseTokenArguments(JToken token, JsonToken tokenType, Type type, object value)
+        public static object ParseEnum(JToken token, Type unwrappedType)
         {
             const string SCHEMA_ORG = "http://schema.org/";
             const int SCHEMA_ORG_LENGTH = 18; // equivalent to "http://schema.org/".Length
@@ -294,15 +297,21 @@
             const int SCHEMA_ORG_HTTPS_LENGTH = 19; // equivalent to "https://schema.org/".Length
             const string OPENACTIVE_IO = "https://openactive.io/";
             const int OPENACTIVE_IO_LENGTH = 22; // equivalent to "https://openactive.io/".Length
+
+            var en = token.ToString();
+            var enumString = en.Contains(OPENACTIVE_IO) ? en.Substring(OPENACTIVE_IO_LENGTH) :
+                en.Contains(SCHEMA_ORG) ? en.Substring(SCHEMA_ORG_LENGTH) :
+                en.Contains(SCHEMA_ORG_HTTPS) ? en.Substring(SCHEMA_ORG_HTTPS_LENGTH) : en;
+            return Enum.Parse(unwrappedType, enumString);
+        }
+
+        private static object ParseTokenArguments(JToken token, JsonToken tokenType, Type type, object value)
+        {
             object args;
             var unwrappedType = type.GetUnderlyingTypeFromNullable();
             if (unwrappedType.GetTypeInfo().IsEnum)
             {
-                var en = token.ToString();
-                var enumString = en.Contains(OPENACTIVE_IO) ? en.Substring(OPENACTIVE_IO_LENGTH) : 
-                    en.Contains(SCHEMA_ORG) ? en.Substring(SCHEMA_ORG_LENGTH) :
-                    en.Contains(SCHEMA_ORG_HTTPS) ? en.Substring(SCHEMA_ORG_HTTPS_LENGTH) : en;
-                args = Enum.Parse(unwrappedType, enumString);
+                args = ParseEnum(token, unwrappedType);
             }
             else
             {
@@ -540,14 +549,24 @@
                 var typeName = GetTypeNameFromToken(childToken);
                 if (string.IsNullOrEmpty(typeName))
                 {
-                    var child = childToken.ToObject(classType);
-                    var method = listType.GetRuntimeMethod(nameof(List<object>.Add), new[] { classType });
-
-                    if (method != null)
+                    // Edge case for strings, to ensure assignment to objects is not attempted if the object is not a string or enum
+                    if (childToken.Type == JTokenType.String && classType != typeof(string) && !classType.GetTypeInfo().IsEnum)
                     {
-                        method.Invoke(list, new object[] { child });
+                        // Do nothing, as this child type does not match
+                    }
+                    else
+                    {
+                        var child = classType.GetTypeInfo().IsEnum ? 
+                            ParseEnum(childToken, type) 
+                            : childToken.ToObject(classType);
+                        var method = listType.GetRuntimeMethod(nameof(List<object>.Add), new[] { classType });
 
-                        i++;
+                        if (method != null)
+                        {
+                            method.Invoke(list, new object[] { child });
+
+                            i++;
+                        }
                     }
                 }
                 else

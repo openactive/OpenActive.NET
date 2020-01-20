@@ -15,7 +15,7 @@
     <LangVersion>7.2</LangVersion>
     <PackageIconUrl>https://www.openactive.io/assets/openactive-icon-64x64.png</PackageIconUrl>
     <RepositoryType />
-    <Version>8.5.0</Version>
+    <Version>8.5.1</Version>
     <Description>OpenActive.io objects turned into strongly typed C# POCO classes for use in .NET. All classes can be serialized into JSON/JSON-LD, to provide easy conformance with the OpenActive Modelling Specification.</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
