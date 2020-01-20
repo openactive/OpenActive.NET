@@ -242,7 +242,7 @@ namespace OpenActive.NET.Test
         [Fact]
         public void ToString_EncodeDecodeList()
         {
-            var originalList = "[{\"@context\":\"https://openactive.io/\",\"@type\":\"Concept\",\"@id\":\"https://openactive.io/facility-types#37bbed12-270b-42b1-9af2-70f0273990dd\",\"inScheme\":\"https://openactive.io/facility-types\",\"prefLabel\":\"Grass\"}]";
+            var originalList = "[{\"@type\":\"Concept\",\"@id\":\"https://openactive.io/facility-types#37bbed12-270b-42b1-9af2-70f0273990dd\",\"inScheme\":\"https://openactive.io/facility-types\",\"prefLabel\":\"Grass\"}]";
             var decodeList = OpenActiveSerializer.DeserializeList<Concept>(originalList);
             var encodeList = OpenActiveSerializer.SerializeList(decodeList);
 

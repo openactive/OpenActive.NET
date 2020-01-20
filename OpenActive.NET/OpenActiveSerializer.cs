@@ -173,7 +173,9 @@ namespace OpenActive.NET
                 (maintainSchemaContext ? OpenActiveContextPropertyJsonWithSchema : OpenActiveContextPropertyJson);
 
             var stringBuilder = new StringBuilder(json);
-            var startIndex = ContextPropertyJson.Length + 1; // We add the one to represent the opening curly brace.
+            var startIndex = json[0] == '[' ?
+                0 : // If the result is an array, remove all "@context"
+                ContextPropertyJson.Length + 1; // We add the one to represent the opening curly brace.
             // Replace OpenActive context and properties
             stringBuilder.Replace(ContextPropertyJson, string.Empty, startIndex, stringBuilder.Length - startIndex);
             stringBuilder.Replace(ContextPropertyJson, contextString, 0, startIndex);
