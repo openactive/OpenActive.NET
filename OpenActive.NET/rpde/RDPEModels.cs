@@ -172,7 +172,7 @@ namespace OpenActive.NET.Rpde.Version1
                         currentId = item.Id;
                     } else
                     {
-                        throw new SerializationException("Items must be ordered first by 'modified', then by 'id'. Please check the RPDE specification and ensure you are using the correct query for your ordering strategy.");
+                        throw new SerializationException($"Items must be ordered first by 'modified', then by 'id'. Item with id '{item.Id}' has modified '{item.Modified}' compared with previous item's modified '{currentModified}' and id '{currentId}'. Please check the RPDE specification and ensure you are using the correct query for your ordering strategy.");
                     }
                 }
             }
@@ -233,7 +233,7 @@ namespace OpenActive.NET.Rpde.Version1
                     }
                     else
                     {
-                        throw new SerializationException("Items must be ordered by 'modified'. Please check the RPDE specification and ensure you are using the correct query for your ordering strategy.");
+                        throw new SerializationException($"Items must be ordered by 'modified'. Item with id '{item.Id}' has modified '{item.Modified}' compared with previous item's modified '{currentChangeNumber}'. Please check the RPDE specification and ensure you are using the correct query for your ordering strategy.");
                     }
                 }
             }
