@@ -297,11 +297,14 @@
             const int SCHEMA_ORG_HTTPS_LENGTH = 19; // equivalent to "https://schema.org/".Length
             const string OPENACTIVE_IO = "https://openactive.io/";
             const int OPENACTIVE_IO_LENGTH = 22; // equivalent to "https://openactive.io/".Length
+            const string GOOD_RELATIONS = "http://purl.org/goodrelations/v1#";
+            const int GOOD_RELATIONS_LENGTH = 33; // equivalent to "http://purl.org/goodrelations/v1#".Length
 
             var en = token.ToString();
             var enumString = en.Contains(OPENACTIVE_IO) ? en.Substring(OPENACTIVE_IO_LENGTH) :
                 en.Contains(SCHEMA_ORG) ? en.Substring(SCHEMA_ORG_LENGTH) :
-                en.Contains(SCHEMA_ORG_HTTPS) ? en.Substring(SCHEMA_ORG_HTTPS_LENGTH) : en;
+                en.Contains(SCHEMA_ORG_HTTPS) ? en.Substring(SCHEMA_ORG_HTTPS_LENGTH) :
+                en.Contains(GOOD_RELATIONS) ? en.Substring(GOOD_RELATIONS_LENGTH) : en;
             return Enum.Parse(unwrappedType, enumString);
         }
 
@@ -598,7 +601,7 @@
         private static string GetTypeNameFromToken(JToken token)
         {
             var o = token as JObject;
-            return o?.SelectToken("@type")?.ToString();
+            return o?.SelectToken("@type")?.ToString().Replace("beta:", ""); // Ignore beta type prefix
         }
     }
 
