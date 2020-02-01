@@ -111,9 +111,9 @@ function augmentWithExtension(extModelGraph, models, extensionUrl, extensionPref
         if (node.type === 'Property') {
             var field = {
                 "fieldName": getPropNameFromFQP(node.id),
-                "alternativeTypes": node.rangeIncludes.map(type => expandPrefix(type, node.isArray, namespaces)),
+                "alternativeTypes": node.rangeIncludes.map(type => expandPrefix(type, node["@container"] == "@list", namespaces)),
                 "description": [
-                    node.comment + (node.githubIssue ? '\n\nIf you are using this property, please join the discussion at proposal ' + renderGitHubIssueLink(node.githubIssue) + '.' : '')
+                    node.comment + (node.discussionUrl ? '\n\nIf you are using this property, please join the discussion at proposal ' + renderGitHubIssueLink(node.discussionUrl) + '.' : '')
                 ],
                 "example": node.example,
                 "extensionPrefix": extensionPrefix
