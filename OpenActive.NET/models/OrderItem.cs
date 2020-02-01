@@ -160,9 +160,17 @@ namespace OpenActive.NET
 
 
         /// <summary>
+        /// An integer representing the order of OrderItems within the array.
+        /// </summary>
+        [DataMember(Name = "position", EmitDefaultValue = false, Order = 21)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public new virtual long? Position { get; set; }
+
+
+        /// <summary>
         /// Breakdown of tax payable for the OrderItem.
         /// </summary>
-        [DataMember(Name = "unitTaxSpecification", EmitDefaultValue = false, Order = 21)]
+        [DataMember(Name = "unitTaxSpecification", EmitDefaultValue = false, Order = 22)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual List<TaxChargeSpecification> UnitTaxSpecification { get; set; }
 

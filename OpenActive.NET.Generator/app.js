@@ -116,7 +116,8 @@ function augmentWithExtension(extModelGraph, models, extensionUrl, extensionPref
                     node.comment + (node.discussionUrl ? '\n\nIf you are using this property, please join the discussion at proposal ' + renderGitHubIssueLink(node.discussionUrl) + '.' : '')
                 ],
                 "example": node.example,
-                "extensionPrefix": extensionPrefix
+                "extensionPrefix": extensionPrefix,
+                "betaDeprecated": node.comment && node.comment.indexOf("[DEPRECATED") > -1 ? node.comment.substring(node.comment.indexOf("[DEPRECATED") + 1, node.comment.indexOf("]")) : null
             };
             node.domainIncludes.forEach(function (prop) {
                 var model = models[getPropNameFromFQP(prop)];
@@ -521,9 +522,10 @@ function createPropertyFromField(field, models, enumMap, hasBaseClass) {
     var propertyName = convertToCamelCase(field.fieldName);
     var propertyType = createTypeString(field, models, enumMap, isExtension);
     var jsonConverter = renderJsonConverter(field, propertyType);
+    var deprecated = field.betaDeprecated ? `\n        [Obsolete("${field.betaDeprecated}", true)]` : "";
     return !field.obsolete ? `
         /// ${createDescriptionWithExample(field).replace(/\n/g, '\n        /// ')}
-        [DataMember(Name = "${memberName}", EmitDefaultValue = false, Order = ${isExtension ? 1000 + field.order : field.order})]${jsonConverter}
+        [DataMember(Name = "${memberName}", EmitDefaultValue = false, Order = ${isExtension ? 1000 + field.order : field.order})]${jsonConverter}${deprecated}
         public ${!isExtension && hasBaseClass && (isNew || field.override) ? "new " : ""}virtual ${propertyType} ${propertyName} { get; set; }
 ` : `
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]

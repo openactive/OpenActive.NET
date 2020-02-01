@@ -133,9 +133,17 @@ namespace OpenActive.NET
 
 
         /// <summary>
+        /// 
+        /// </summary>
+        [DataMember(Name = "availableChannel", EmitDefaultValue = false, Order = 13)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public new virtual List<AvailableChannelType> AvailableChannel { get; set; }
+
+
+        /// <summary>
         /// The duration before the startDate during which this Offer may not be cancelled, given in ISO 8601 format.
         /// </summary>
-        [DataMember(Name = "latestCancellationBeforeStartDate", EmitDefaultValue = false, Order = 13)]
+        [DataMember(Name = "latestCancellationBeforeStartDate", EmitDefaultValue = false, Order = 14)]
         [JsonConverter(typeof(OpenActiveTimeSpanToISO8601DurationValuesConverter))]
         public virtual TimeSpan? LatestCancellationBeforeStartDate { get; set; }
 
@@ -143,7 +151,7 @@ namespace OpenActive.NET
         /// <summary>
         /// Can include  https://openactive.io/OpenBookingIntakeForm,  https://openactive.io/OpenBookingAttendeeDetails,  https://openactive.io/OpenBookingApproval,  https://openactive.io/OpenBookingNegotiation,  https://openactive.io/OpenBookingMessageExchange
         /// </summary>
-        [DataMember(Name = "openBookingFlowRequirement", EmitDefaultValue = false, Order = 14)]
+        [DataMember(Name = "openBookingFlowRequirement", EmitDefaultValue = false, Order = 15)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual List<OpenBookingFlowRequirement> OpenBookingFlowRequirement { get; set; }
 
@@ -156,7 +164,7 @@ namespace OpenActive.NET
         /// "prepayment": "https://openactive.io/Required"
         /// </code>
         /// </example>
-        [DataMember(Name = "prepayment", EmitDefaultValue = false, Order = 15)]
+        [DataMember(Name = "prepayment", EmitDefaultValue = false, Order = 16)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual RequiredStatusType? Prepayment { get; set; }
 
@@ -172,7 +180,7 @@ namespace OpenActive.NET
         /// "price": 33
         /// </code>
         /// </example>
-        [DataMember(Name = "price", EmitDefaultValue = false, Order = 16)]
+        [DataMember(Name = "price", EmitDefaultValue = false, Order = 17)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual decimal? Price { get; set; }
 
@@ -185,7 +193,7 @@ namespace OpenActive.NET
         /// "priceCurrency": "GBP"
         /// </code>
         /// </example>
-        [DataMember(Name = "priceCurrency", EmitDefaultValue = false, Order = 17)]
+        [DataMember(Name = "priceCurrency", EmitDefaultValue = false, Order = 18)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string PriceCurrency { get; set; }
 
@@ -198,7 +206,7 @@ namespace OpenActive.NET
         /// "url": "http://www.rphs.org.uk/"
         /// </code>
         /// </example>
-        [DataMember(Name = "url", EmitDefaultValue = false, Order = 18)]
+        [DataMember(Name = "url", EmitDefaultValue = false, Order = 19)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual Uri Url { get; set; }
 
@@ -206,20 +214,9 @@ namespace OpenActive.NET
         /// <summary>
         /// The duration before the startDate for which this Offer is valid, given in ISO 8601 format. This is a relatively-defined equivalent of schema:validFrom, to allow for Offer inheritance.
         /// </summary>
-        [DataMember(Name = "validFromBeforeStartDate", EmitDefaultValue = false, Order = 19)]
+        [DataMember(Name = "validFromBeforeStartDate", EmitDefaultValue = false, Order = 20)]
         [JsonConverter(typeof(OpenActiveTimeSpanToISO8601DurationValuesConverter))]
         public virtual TimeSpan? ValidFromBeforeStartDate { get; set; }
-
-
-        /// <summary>
-        /// [NOTICE: This is a beta field, and is highly likely to change in future versions of this library.] 
-        /// The channels through which a booking can be made.
-        /// 
-        /// If you are using this property, please join the discussion at proposal [#161](https://github.com/openactive/modelling-opportunity-data/issues/161).
-        /// </summary>
-        [DataMember(Name = "beta:availableChannel", EmitDefaultValue = false, Order = 1020)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public virtual List<AvailableChannelType> AvailableChannel { get; set; }
 
     }
 }

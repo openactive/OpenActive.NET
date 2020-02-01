@@ -192,6 +192,19 @@ namespace OpenActive.NET
 
 
         /// <summary>
+        /// Indicates the timezone for which the time(s) indicated in the Schedule are given. The value provided should be among those listed in the IANA Time Zone Database.
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// "scheduleTimezone": "Europe/London"
+        /// </code>
+        /// </example>
+        [DataMember(Name = "scheduleTimezone", EmitDefaultValue = false, Order = 17)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public virtual string ScheduleTimezone { get; set; }
+
+
+        /// <summary>
         /// The start date of the event.
         /// </summary>
         /// <example>
@@ -199,7 +212,7 @@ namespace OpenActive.NET
         /// "startDate": "2018-01-27"
         /// </code>
         /// </example>
-        [DataMember(Name = "startDate", EmitDefaultValue = false, Order = 17)]
+        [DataMember(Name = "startDate", EmitDefaultValue = false, Order = 18)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual string StartDate { get; set; }
 
@@ -212,7 +225,7 @@ namespace OpenActive.NET
         /// "endDate": "2018-01-27"
         /// </code>
         /// </example>
-        [DataMember(Name = "endDate", EmitDefaultValue = false, Order = 18)]
+        [DataMember(Name = "endDate", EmitDefaultValue = false, Order = 19)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual string EndDate { get; set; }
 
@@ -225,7 +238,7 @@ namespace OpenActive.NET
         /// "startTime": "12:00:00"
         /// </code>
         /// </example>
-        [DataMember(Name = "startTime", EmitDefaultValue = false, Order = 19)]
+        [DataMember(Name = "startTime", EmitDefaultValue = false, Order = 20)]
         [JsonConverter(typeof(OpenActiveDateTimeOffsetToISO8601TimeValuesConverter))]
         public virtual DateTimeOffset? StartTime { get; set; }
 
@@ -238,19 +251,20 @@ namespace OpenActive.NET
         /// "urlTemplate": "https://example.com/event{/id}"
         /// </code>
         /// </example>
-        [DataMember(Name = "urlTemplate", EmitDefaultValue = false, Order = 20)]
+        [DataMember(Name = "urlTemplate", EmitDefaultValue = false, Order = 21)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual Uri UrlTemplate { get; set; }
 
 
         /// <summary>
         /// [NOTICE: This is a beta field, and is highly likely to change in future versions of this library.] 
-        /// The time zone used to generate occurrences, same as iCal TZID. E.g. 'Europe/London'.
+        /// [DEPRECATED: This beta property is now deprecated, please use `schema:scheduleTimezone` instead.] The time zone used to generate occurrences, same as iCal TZID. E.g. 'Europe/London'.
         /// 
         /// If you are using this property, please join the discussion at proposal [#197](https://github.com/openactive/modelling-opportunity-data/issues/197).
         /// </summary>
-        [DataMember(Name = "beta:timeZone", EmitDefaultValue = false, Order = 1021)]
+        [DataMember(Name = "beta:timeZone", EmitDefaultValue = false, Order = 1022)]
         [JsonConverter(typeof(ValuesConverter))]
+        [Obsolete("DEPRECATED: This beta property is now deprecated, please use `schema:scheduleTimezone` instead.", true)]
         public virtual string TimeZone { get; set; }
 
     }

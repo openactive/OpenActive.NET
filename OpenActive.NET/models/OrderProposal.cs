@@ -63,10 +63,14 @@ namespace OpenActive.NET
         public virtual OrderProposalStatus? OrderProposalStatus { get; set; }
 
 
+        [Obsolete("This property is disinherited in this type, and must not be used.", true)]
+        public override bool? OrderRequiresApproval { get; set; }
+
+
         /// <summary>
         /// 
         /// </summary>
-        [DataMember(Name = "orderSellerNote", EmitDefaultValue = false, Order = 9)]
+        [DataMember(Name = "orderSellerNote", EmitDefaultValue = false, Order = 10)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual string OrderSellerNote { get; set; }
 

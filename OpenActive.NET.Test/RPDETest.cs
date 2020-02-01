@@ -67,7 +67,7 @@ namespace OpenActive.NET.Test
                     StartTime = new DateTimeOffset(2017, 1, 20, 16, 20, 0, TimeSpan.FromHours(0)),
                     EndTime = new DateTimeOffset(2017, 1, 20, 16, 20, 0, TimeSpan.FromHours(0)),
                     Duration = TimeSpan.FromHours(2),
-                    TimeZone = "",
+                    ScheduleTimezone = "",
                     ByDay = new List<string>()
                 }
             },
