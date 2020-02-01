@@ -522,7 +522,7 @@ function createPropertyFromField(field, models, enumMap, hasBaseClass) {
     var propertyName = convertToCamelCase(field.fieldName);
     var propertyType = createTypeString(field, models, enumMap, isExtension);
     var jsonConverter = renderJsonConverter(field, propertyType);
-    var deprecated = field.betaDeprecated ? `\n        [Obsolete("${field.betaDeprecated}", true)]` : "";
+    var deprecated = field.betaDeprecated ? `\n        [Obsolete("${field.betaDeprecated}", false)]` : "";
     return !field.obsolete ? `
         /// ${createDescriptionWithExample(field).replace(/\n/g, '\n        /// ')}
         [DataMember(Name = "${memberName}", EmitDefaultValue = false, Order = ${isExtension ? 1000 + field.order : field.order})]${jsonConverter}${deprecated}
