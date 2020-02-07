@@ -3,6 +3,7 @@ namespace OpenActive.NET
     using System;
     using System.Collections;
     using System.Collections.Generic;
+    using System.Reflection;
 
     /// <summary>
     /// A single or list of values which can be any of the specified types.
@@ -121,7 +122,7 @@ namespace OpenActive.NET
         /// </summary>
         public T GetClass<T>() where T : class
         {
-            if (typeof(T1) == typeof(T))
+            if (typeof(T1).GetTypeInfo().IsAssignableFrom(typeof(T).GetTypeInfo()))
             {
                 if (HasValue1)
                 {
@@ -132,7 +133,7 @@ namespace OpenActive.NET
                     return null;
                 }
             }
-            else if (typeof(T2) == typeof(T))
+            else if (typeof(T2).GetTypeInfo().IsAssignableFrom(typeof(T).GetTypeInfo()))
             {
                 if (HasValue2)
                 {
@@ -143,7 +144,7 @@ namespace OpenActive.NET
                     return null;
                 }
             }
-            else if (typeof(T3) == typeof(T))
+            else if (typeof(T3).GetTypeInfo().IsAssignableFrom(typeof(T).GetTypeInfo()))
             {
                 if (HasValue3)
                 {

@@ -8,10 +8,10 @@ namespace OpenActive.NET
 {
     /// <summary>
     /// [NOTICE: This is a beta class, and is highly likely to change in future versions of this library.]. 
-    /// This type is derived from [Person](https://schema.org/Person), which means that any of this type's properties within schema.org may also be used. Note however the properties on this page must be used in preference if a relevant property is available.
+    /// This type is derived from [Thing](https://schema.org/Thing), which means that any of this type's properties within schema.org may also be used. Note however the properties on this page must be used in preference if a relevant property is available.
     /// </summary>
     [DataContract]
-    public partial class AuthenticatedPerson : Person
+    public partial class CertificationLevel : Schema.NET.Thing
     {
         /// <summary>
         /// Returns the JSON-LD representation of this instance.
@@ -44,18 +44,8 @@ namespace OpenActive.NET
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
         [DataMember(Name = "@type", Order = 1)]
-        public override string Type => "beta:AuthenticatedPerson";
+        public override string Type => "beta:CertificationLevel";
 
         
-        /// <summary>
-        /// [NOTICE: This is a beta field, and is highly likely to change in future versions of this library.] 
-        /// Token indicating the Broker's authorisation to book on behalf of a Customer.
-        /// 
-        /// If you are using this property, please join the discussion at proposal [#120](https://github.com/openactive/open-booking-api/issues/120).
-        /// </summary>
-        [DataMember(Name = "beta:accessToken", EmitDefaultValue = false, Order = 1006)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public virtual string AccessToken { get; set; }
-
     }
 }

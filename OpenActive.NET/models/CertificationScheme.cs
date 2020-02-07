@@ -7,11 +7,11 @@ using System.Runtime.Serialization;
 namespace OpenActive.NET
 {
     /// <summary>
-    /// 
-    /// This type is derived from [Barcode](https://schema.org/Barcode), which means that any of this type's properties within schema.org may also be used. Note however the properties on this page must be used in preference if a relevant property is available.
+    /// [NOTICE: This is a beta class, and is highly likely to change in future versions of this library.]. 
+    /// This type is derived from [Thing](https://schema.org/Thing), which means that any of this type's properties within schema.org may also be used. Note however the properties on this page must be used in preference if a relevant property is available.
     /// </summary>
     [DataContract]
-    public partial class Barcode : ImageObject
+    public partial class CertificationScheme : Schema.NET.Thing
     {
         /// <summary>
         /// Returns the JSON-LD representation of this instance.
@@ -44,44 +44,29 @@ namespace OpenActive.NET
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
         [DataMember(Name = "@type", Order = 1)]
-        public override string Type => "Barcode";
+        public override string Type => "beta:CertificationScheme";
 
         
         /// <summary>
-        /// The barcode number
+        /// [NOTICE: This is a beta field, and is highly likely to change in future versions of this library.] 
+        /// From within a CertificationScheme, points to other CertificationSchemes considered valid and trusted in order to allow the creation of a trust network.
+        /// 
+        /// If you are using this property, please join the discussion at proposal [#217](https://github.com/openactive/modelling-opportunity-data/issues/217).
         /// </summary>
-        /// <example>
-        /// <code>
-        /// "text": "0123456789"
-        /// </code>
-        /// </example>
-        [DataMember(Name = "text", EmitDefaultValue = false, Order = 7)]
+        [DataMember(Name = "beta:trustedCertificationSchemes", EmitDefaultValue = false, Order = 1006)]
         [JsonConverter(typeof(ValuesConverter))]
-        public new virtual string Text { get; set; }
-
-
-        /// <summary>
-        /// A fallback rendered barcode image url in addition to the raw barcode details.
-        /// </summary>
-        /// <example>
-        /// <code>
-        /// "url": "https://fallback.image.example.com/476ac24c694da79c5e33731ebbb5f1"
-        /// </code>
-        /// </example>
-        [DataMember(Name = "url", EmitDefaultValue = false, Order = 8)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public new virtual Uri Url { get; set; }
+        public virtual Uri TrustedCertificationSchemes { get; set; }
 
 
         /// <summary>
         /// [NOTICE: This is a beta field, and is highly likely to change in future versions of this library.] 
-        /// Type of barcode, e.g. 'Code39'
+        /// Property containing an array of CertificationLevels
         /// 
-        /// If you are using this property, please join the discussion at proposal [#130](https://github.com/openactive/open-booking-api/issues/130).
+        /// If you are using this property, please join the discussion at proposal [#217](https://github.com/openactive/modelling-opportunity-data/issues/217).
         /// </summary>
-        [DataMember(Name = "beta:codeType", EmitDefaultValue = false, Order = 1009)]
+        [DataMember(Name = "beta:certificationLevel", EmitDefaultValue = false, Order = 1007)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual string CodeType { get; set; }
+        public virtual CertificationLevel CertificationLevel { get; set; }
 
     }
 }

@@ -460,3 +460,11 @@ npm start
 
 ### Pull requests
 Contributions are very welcome. Please raise an issue or pull request as appropriate.
+
+
+### Publishing to nuget
+
+1. Bump the version number of OpenActive.NET
+2. Rebuild OpenActive.NET
+3. Generate new API key from https://www.nuget.org/account/apikeys
+4. `dotnet nuget push C:\repos\OpenActive.NET\OpenActive.NET\bin\Release\OpenActive.NET.8.6.3.nupkg -k qz2jga8pl3dvn2akksyquwcs9ygggg4exypy3bhxy6w6x6 -s https://api.nuget.org/v3/index.json`

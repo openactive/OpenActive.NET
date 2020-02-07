@@ -1,6 +1,7 @@
 namespace OpenActive.NET
 {
     using System;
+    using System.Reflection;
     using System.Collections;
     using System.Collections.Generic;
 
@@ -84,7 +85,7 @@ namespace OpenActive.NET
         /// </summary>
         public T GetClass<T>() where T : class
         {
-            if (typeof(T1) == typeof(T))
+            if (typeof(T1).GetTypeInfo().IsAssignableFrom(typeof(T).GetTypeInfo()))
             {
                 if (HasValue1)
                 {
@@ -95,7 +96,7 @@ namespace OpenActive.NET
                     return null;
                 }
             }
-            else if (typeof(T2) == typeof(T))
+            else if (typeof(T2).GetTypeInfo().IsAssignableFrom(typeof(T).GetTypeInfo()))
             {
                 if (HasValue2)
                 {
