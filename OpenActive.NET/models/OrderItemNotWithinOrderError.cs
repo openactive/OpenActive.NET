@@ -8,10 +8,9 @@ namespace OpenActive.NET
 {
     /// <summary>
     /// 
-    /// ## **Error Use Case**
-    /// The Order UUID for each provided `OrderItem` does not match the Order UUID of the `Order` being PATCHed.
+    /// Error Use Case: The Order UUID for each provided `OrderItem` does not match the Order UUID of the `Order` being PATCHed.
     /// 
-    /// This type is derived from [Thing](https://schema.org/Thing), which means that any of this type's properties within schema.org may also be used. Note however the properties on this page must be used in preference if a relevant property is available.
+    /// This type is derived from https://schema.org/Thing, which means that any of this type's properties within schema.org may also be used.
     /// </summary>
     [DataContract]
     public partial class OrderItemNotWithinOrderError : OpenBookingError

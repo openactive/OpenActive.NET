@@ -366,8 +366,8 @@ using System.Runtime.Serialization;
 namespace OpenActive.NET
 {
     /// <summary>
-    /// ${getPropNameFromFQP(model.type) != model.type ? `[NOTICE: This is a beta class, and is highly likely to change in future versions of this library.]. ` : ""}${createCommentFromDescription(model.description).replace(/\n/g,'\n    /// ')}
-    /// ${baseSchemaClass ? `This type is derived from [` + baseSchemaClassName + `](` + baseSchemaClass + `)` + (baseSchemaClass.match(/^https:\/\/schema.org/) ? ", which means that any of this type's properties within schema.org may also be used. Note however the properties on this page must be used in preference if a relevant property is available" : "") + "." : ""}
+    /// ${getPropNameFromFQP(model.type) != model.type ? `[NOTICE: This is a beta class, and is highly likely to change in future versions of this library.] ` : ""}${createCommentFromDescription(model.description).replace(/\n/g,'\n    /// ')}
+    /// ${baseSchemaClass ? `This type is derived from ` + baseSchemaClass + (baseSchemaClass.match(/^https:\/\/schema.org/) ? ", which means that any of this type's properties within schema.org may also be used" : "") + "." : ""}
     /// </summary>
     [DataContract]
     public partial class ${convertToCamelCase(getPropNameFromFQP(model.type))} : ${inherits}
@@ -443,8 +443,7 @@ function createCommentFromDescription(description) {
     if (description === null || description === undefined) return "";
     if (description.sections) {
         return description.sections.map(section => (section.title && section.paragraphs ? `
-## **` + section.title + `**
-` + section.paragraphs.join("\n") : "")).join("\n\n") + "\n";
+` + section.title + `: ` + section.paragraphs.join(" ") : "")).join("\n\n") + "\n";
     } else {
         return "";
     }

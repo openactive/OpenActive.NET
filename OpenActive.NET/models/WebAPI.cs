@@ -8,11 +8,9 @@ namespace OpenActive.NET
 {
     /// <summary>
     /// 
-    /// ## **EARLY RELEASE NOTICE**
-    /// In order to expedite the OpenActive tooling work, this class has been added to the model for the purposes of testing.
-    /// IT IS SUBJECT TO CHANGE, as the [Dataset API Discovery specification](https://www.openactive.io/dataset-api-discovery/EditorsDraft/) evolves.
+    /// EARLY RELEASE NOTICE: In order to expedite the OpenActive tooling work, this class has been added to the model for the purposes of testing. IT IS SUBJECT TO CHANGE, as the [Dataset API Discovery specification](https://www.openactive.io/dataset-api-discovery/EditorsDraft/) evolves.
     /// 
-    /// This type is derived from [WebAPI](https://pending.schema.org/WebAPI).
+    /// This type is derived from https://pending.schema.org/WebAPI.
     /// </summary>
     [DataContract]
     public partial class WebAPI : Schema.NET.JsonLdObject

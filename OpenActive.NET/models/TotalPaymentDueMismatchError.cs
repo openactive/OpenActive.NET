@@ -8,10 +8,9 @@ namespace OpenActive.NET
 {
     /// <summary>
     /// 
-    /// ## **Error Use Case**
-    /// The `totalPaymentDue` property of the submitted `Order` or `OrderProposal` does not match the value calculated for that `Order` or `OrderProposal` by the Booking System.
+    /// Error Use Case: The `totalPaymentDue` property of the submitted `Order` or `OrderProposal` does not match the value calculated for that `Order` or `OrderProposal` by the Booking System.
     /// 
-    /// This type is derived from [Thing](https://schema.org/Thing), which means that any of this type's properties within schema.org may also be used. Note however the properties on this page must be used in preference if a relevant property is available.
+    /// This type is derived from https://schema.org/Thing, which means that any of this type's properties within schema.org may also be used.
     /// </summary>
     [DataContract]
     public partial class TotalPaymentDueMismatchError : OpenBookingError

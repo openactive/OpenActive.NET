@@ -8,10 +8,9 @@ namespace OpenActive.NET
 {
     /// <summary>
     /// 
-    /// ## **Error Use Case**
-    /// Cancellation is not permitted due to internal rules of the Booking System not otherwise exposed to the Broker.  The `description` property of the object MUST include a Customer-facing description of the reason that cancellation is not permitted.
+    /// Error Use Case: Cancellation is not permitted due to internal rules of the Booking System not otherwise exposed to the Broker.  The `description` property of the object MUST include a Customer-facing description of the reason that cancellation is not permitted.
     /// 
-    /// This type is derived from [Thing](https://schema.org/Thing), which means that any of this type's properties within schema.org may also be used. Note however the properties on this page must be used in preference if a relevant property is available.
+    /// This type is derived from https://schema.org/Thing, which means that any of this type's properties within schema.org may also be used.
     /// </summary>
     [DataContract]
     public partial class CancellationNotPermittedError : OpenBookingError

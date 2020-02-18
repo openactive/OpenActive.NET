@@ -8,7 +8,7 @@ namespace OpenActive.NET
 {
     /// <summary>
     /// 
-    /// This type is derived from [Schedule](https://pending.schema.org/Schedule).
+    /// This type is derived from https://pending.schema.org/Schedule.
     /// </summary>
     [DataContract]
     public partial class PartialSchedule : Schedule

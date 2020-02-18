@@ -8,10 +8,9 @@ namespace OpenActive.NET
 {
     /// <summary>
     /// 
-    /// ## **Error Use Case**
-    /// `OrderItem` errors would have been generated at C2 given the same set of `OrderItem`s. The Broker is expected to retry C2 to retrieve such errors.
+    /// Error Use Case: `OrderItem` errors would have been generated at C2 given the same set of `OrderItem`s. The Broker is expected to retry C2 to retrieve such errors.
     /// 
-    /// This type is derived from [Thing](https://schema.org/Thing), which means that any of this type's properties within schema.org may also be used. Note however the properties on this page must be used in preference if a relevant property is available.
+    /// This type is derived from https://schema.org/Thing, which means that any of this type's properties within schema.org may also be used.
     /// </summary>
     [DataContract]
     public partial class UnableToProcessOrderItemError : OpenBookingError

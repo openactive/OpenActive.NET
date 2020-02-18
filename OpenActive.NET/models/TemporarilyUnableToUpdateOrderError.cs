@@ -8,10 +8,9 @@ namespace OpenActive.NET
 {
     /// <summary>
     /// 
-    /// ## **Error Use Case**
-    /// The Booking System is unable for technical reasons to update an `Order` (which includes processing the PATCH for cancellation) where the data provided to it is sufficient to allow it to do so.
+    /// Error Use Case: The Booking System is unable for technical reasons to update an `Order` (which includes processing the PATCH for cancellation) where the data provided to it is sufficient to allow it to do so.
     /// 
-    /// This type is derived from [Thing](https://schema.org/Thing), which means that any of this type's properties within schema.org may also be used. Note however the properties on this page must be used in preference if a relevant property is available.
+    /// This type is derived from https://schema.org/Thing, which means that any of this type's properties within schema.org may also be used.
     /// </summary>
     [DataContract]
     public partial class TemporarilyUnableToUpdateOrderError : OpenBookingError

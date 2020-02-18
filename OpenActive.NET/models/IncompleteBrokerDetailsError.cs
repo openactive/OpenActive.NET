@@ -8,10 +8,9 @@ namespace OpenActive.NET
 {
     /// <summary>
     /// 
-    /// ## **Error Use Case**
-    /// The `name` property is not supplied within the `Organisation` object describing the Broker; or the `broker` property supplied is not a valid `Organisation` object.
+    /// Error Use Case: The `name` property is not supplied within the `Organisation` object describing the Broker; or the `broker` property supplied is not a valid `Organisation` object.
     /// 
-    /// This type is derived from [Thing](https://schema.org/Thing), which means that any of this type's properties within schema.org may also be used. Note however the properties on this page must be used in preference if a relevant property is available.
+    /// This type is derived from https://schema.org/Thing, which means that any of this type's properties within schema.org may also be used.
     /// </summary>
     [DataContract]
     public partial class IncompleteBrokerDetailsError : OpenBookingError

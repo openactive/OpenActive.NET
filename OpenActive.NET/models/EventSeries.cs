@@ -8,7 +8,7 @@ namespace OpenActive.NET
 {
     /// <summary>
     /// 
-    /// This type is derived from [EventSeries](https://pending.schema.org/EventSeries).
+    /// This type is derived from https://pending.schema.org/EventSeries.
     /// </summary>
     [DataContract]
     public partial class EventSeries : Event
