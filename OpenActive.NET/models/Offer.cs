@@ -133,7 +133,7 @@ namespace OpenActive.NET
 
 
         /// <summary>
-        /// 
+        /// The channels through which a booking can be made.
         /// </summary>
         [DataMember(Name = "availableChannel", EmitDefaultValue = false, Order = 13)]
         [JsonConverter(typeof(ValuesConverter))]

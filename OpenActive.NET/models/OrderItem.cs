@@ -66,9 +66,9 @@ namespace OpenActive.NET
         /// <summary>
         /// ImageObject or Barcode that contains reference to an asset (e.g. Barcode, QR code image or PDF) usable for entrance. Not applicable for an OrderQuote.
         /// </summary>
-        [DataMember(Name = "accessToken", EmitDefaultValue = false, Order = 9)]
+        [DataMember(Name = "accessPass", EmitDefaultValue = false, Order = 9)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual List<ImageObject> AccessToken { get; set; }
+        public virtual List<ImageObject> AccessPass { get; set; }
 
 
         /// <summary>
@@ -112,7 +112,7 @@ namespace OpenActive.NET
 
 
         /// <summary>
-        /// A message set by the Seller to trigger a notification to the Customer, only applicable for an Order and where the OrderItem has  orderItemStatus set to  https://openactive.io/OrderConfirmed or  https://openactive.io/CustomerAttended
+        /// A message set by the Seller to trigger a notification to the Customer, only applicable for an Order and where the OrderItem has  orderItemStatus set to  https://openactive.io/OrderItemConfirmed or  https://openactive.io/CustomerAttended
         /// </summary>
         [DataMember(Name = "customerNotice", EmitDefaultValue = false, Order = 15)]
         [JsonConverter(typeof(ValuesConverter))]

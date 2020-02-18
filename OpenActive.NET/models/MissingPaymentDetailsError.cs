@@ -8,10 +8,13 @@ namespace OpenActive.NET
 {
     /// <summary>
     /// 
+    /// ## **Error Use Case**
+    /// The `payment` property of the `Order` is absent when it is expected to be provided.
+    /// 
     /// This type is derived from [Thing](https://schema.org/Thing), which means that any of this type's properties within schema.org may also be used. Note however the properties on this page must be used in preference if a relevant property is available.
     /// </summary>
     [DataContract]
-    public partial class UnknownOpportunityDetailsError : OpenBookingError
+    public partial class MissingPaymentDetailsError : OpenBookingError
     {
         /// <summary>
         /// Returns the JSON-LD representation of this instance.
@@ -44,8 +47,28 @@ namespace OpenActive.NET
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
         [DataMember(Name = "@type", Order = 1)]
-        public override string Type => "UnknownOpportunityDetailsError";
+        public override string Type => "MissingPaymentDetailsError";
 
         
+        /// <summary>
+        /// A short, human-readable summary of the problem type. It should not change from occurrence to occurrence of the problem, except for purposes of localization.
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// "name": "The 'payment' property of the 'Order' is absent when it is expected to be provided."
+        /// </code>
+        /// </example>
+        [DataMember(Name = "name", EmitDefaultValue = false, Order = 7)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public override string Name { get; set; } = "The 'payment' property of the 'Order' is absent when it is expected to be provided.";
+
+
+        /// Must always be present and set to <code>
+        /// "statusCode": 400
+        /// </code>
+        [DataMember(Name = "statusCode", EmitDefaultValue = false, Order = 8)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public override long? StatusCode { get; set; } = 400;
+
     }
 }

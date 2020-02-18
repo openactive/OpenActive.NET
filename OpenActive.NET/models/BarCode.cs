@@ -70,7 +70,7 @@ namespace OpenActive.NET
         /// </example>
         [DataMember(Name = "url", EmitDefaultValue = false, Order = 8)]
         [JsonConverter(typeof(ValuesConverter))]
-        public new virtual Uri Url { get; set; }
+        public override Uri Url { get; set; }
 
 
         /// <summary>

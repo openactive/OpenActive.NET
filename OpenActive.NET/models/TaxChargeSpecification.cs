@@ -68,26 +68,30 @@ namespace OpenActive.NET
         public new virtual string Name { get; set; }
 
 
+        [Obsolete("This property is disinherited in this type, and must not be used.", true)]
+        public override RequiredStatusType? Prepayment { get; set; }
+
+
         /// <summary>
         /// The total amount.
         /// </summary>
-        [DataMember(Name = "price", EmitDefaultValue = false, Order = 9)]
+        [DataMember(Name = "price", EmitDefaultValue = false, Order = 10)]
         [JsonConverter(typeof(ValuesConverter))]
-        public new virtual decimal? Price { get; set; }
+        public override decimal? Price { get; set; }
 
 
         /// <summary>
         /// The currency of the price. Specified as a 3-letter ISO 4217 value. If a  PriceSpecification has a zero price, then this property is not required. Otherwise the priceCurrency must be specified.
         /// </summary>
-        [DataMember(Name = "priceCurrency", EmitDefaultValue = false, Order = 10)]
+        [DataMember(Name = "priceCurrency", EmitDefaultValue = false, Order = 11)]
         [JsonConverter(typeof(ValuesConverter))]
-        public new virtual string PriceCurrency { get; set; }
+        public override string PriceCurrency { get; set; }
 
 
         /// <summary>
         /// The rate of VAT.
         /// </summary>
-        [DataMember(Name = "rate", EmitDefaultValue = false, Order = 11)]
+        [DataMember(Name = "rate", EmitDefaultValue = false, Order = 12)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual decimal? Rate { get; set; }
 

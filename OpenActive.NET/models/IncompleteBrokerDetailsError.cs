@@ -8,6 +8,9 @@ namespace OpenActive.NET
 {
     /// <summary>
     /// 
+    /// ## **Error Use Case**
+    /// The `name` property is not supplied within the `Organisation` object describing the Broker; or the `broker` property supplied is not a valid `Organisation` object.
+    /// 
     /// This type is derived from [Thing](https://schema.org/Thing), which means that any of this type's properties within schema.org may also be used. Note however the properties on this page must be used in preference if a relevant property is available.
     /// </summary>
     [DataContract]
@@ -47,5 +50,25 @@ namespace OpenActive.NET
         public override string Type => "IncompleteBrokerDetailsError";
 
         
+        /// <summary>
+        /// A short, human-readable summary of the problem type. It should not change from occurrence to occurrence of the problem, except for purposes of localization.
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// "name": "The 'name' property is not supplied within the 'Organisation' object describing the Broker; or the 'broker' property supplied is not a valid 'Organisation' object."
+        /// </code>
+        /// </example>
+        [DataMember(Name = "name", EmitDefaultValue = false, Order = 7)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public override string Name { get; set; } = "The 'name' property is not supplied within the 'Organisation' object describing the Broker; or the 'broker' property supplied is not a valid 'Organisation' object.";
+
+
+        /// Must always be present and set to <code>
+        /// "statusCode": 400
+        /// </code>
+        [DataMember(Name = "statusCode", EmitDefaultValue = false, Order = 8)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public override long? StatusCode { get; set; } = 400;
+
     }
 }

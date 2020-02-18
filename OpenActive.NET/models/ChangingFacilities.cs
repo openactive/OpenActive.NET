@@ -57,7 +57,7 @@ namespace OpenActive.NET
         /// </example>
         [DataMember(Name = "name", EmitDefaultValue = false, Order = 7)]
         [JsonConverter(typeof(ValuesConverter))]
-        public new virtual string Name { get; set; }
+        public override string Name { get; set; }
 
     }
 }

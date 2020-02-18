@@ -125,7 +125,7 @@ function augmentWithExtension(extModelGraph, models, extensionUrl, extensionPref
                     model.extensionFields = model.extensionFields || [];
                     model.fields = model.fields || {};
                     model.extensionFields.push(field.fieldName);
-                    model.fields[field.fieldName] = field;
+                    model.fields[field.fieldName] = Object.assign({}, field);
                 }
             });
         }
@@ -247,7 +247,15 @@ function obsoleteNotInSpecFields(model, models) {
         }
 
         if (parentModel && parentModel.fields[field]) {
-            thisField.override = true;
+            // TODO: Include thisField.alternativeModels and thisField.alternativeTypes in the comparison to make this more robust
+            var parentField = parentModel.fields[field];
+            if (parentField.model == thisField.model 
+                && parentField.requiredType == thisField.requiredType
+                && JSON.stringify(parentField.alternativeModels) == JSON.stringify(thisField.alternativeModels)
+                && JSON.stringify(parentField.alternativeTypes) == JSON.stringify(thisField.alternativeTypes))
+            {
+                thisField.override = true;
+            }
         }
     });
 
@@ -523,10 +531,13 @@ function createPropertyFromField(field, models, enumMap, hasBaseClass) {
     var propertyType = createTypeString(field, models, enumMap, isExtension);
     var jsonConverter = renderJsonConverter(field, propertyType);
     var deprecated = field.betaDeprecated ? `\n        [Obsolete("${field.betaDeprecated}", false)]` : "";
+    var defaultContent = field.defaultContent ?
+        (Number.isInteger(field.defaultContent) ? ` = ${field.defaultContent};` : ` = "${field.defaultContent.replace(/"/g, '\"')}";`)
+        : "";
     return !field.obsolete ? `
         /// ${createDescriptionWithExample(field).replace(/\n/g, '\n        /// ')}
         [DataMember(Name = "${memberName}", EmitDefaultValue = false, Order = ${isExtension ? 1000 + field.order : field.order})]${jsonConverter}${deprecated}
-        public ${!isExtension && hasBaseClass && (isNew || field.override) ? "new " : ""}virtual ${propertyType} ${propertyName} { get; set; }
+        public ${field.override ? "override" : !isExtension && hasBaseClass && (isNew || field.override) ? "new virtual" : "virtual"} ${propertyType} ${propertyName} { get; set; }${defaultContent}
 ` : `
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
         public override ${propertyType} ${propertyName} { get; set; }

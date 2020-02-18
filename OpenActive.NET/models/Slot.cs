@@ -57,7 +57,7 @@ namespace OpenActive.NET
         /// </example>
         [DataMember(Name = "identifier", EmitDefaultValue = false, Order = 7)]
         [JsonConverter(typeof(ValuesConverter))]
-        public new virtual SingleValues<long?, string, PropertyValue, List<PropertyValue>> Identifier { get; set; }
+        public override SingleValues<long?, string, PropertyValue, List<PropertyValue>> Identifier { get; set; }
 
 
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
@@ -106,7 +106,7 @@ namespace OpenActive.NET
         /// </example>
         [DataMember(Name = "duration", EmitDefaultValue = false, Order = 17)]
         [JsonConverter(typeof(OpenActiveTimeSpanToISO8601DurationValuesConverter))]
-        public new virtual TimeSpan? Duration { get; set; }
+        public override TimeSpan? Duration { get; set; }
 
 
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
@@ -196,7 +196,7 @@ namespace OpenActive.NET
         /// </example>
         [DataMember(Name = "offers", EmitDefaultValue = false, Order = 31)]
         [JsonConverter(typeof(ValuesConverter))]
-        public new virtual List<Offer> Offers { get; set; }
+        public override List<Offer> Offers { get; set; }
 
 
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
@@ -242,7 +242,7 @@ namespace OpenActive.NET
         /// </example>
         [DataMember(Name = "startDate", EmitDefaultValue = false, Order = 38)]
         [JsonConverter(typeof(ValuesConverter))]
-        public new virtual SingleValues<string, DateTimeOffset?> StartDate { get; set; }
+        public override SingleValues<string, DateTimeOffset?> StartDate { get; set; }
 
 
         /// <summary>
@@ -256,7 +256,7 @@ namespace OpenActive.NET
         /// </example>
         [DataMember(Name = "endDate", EmitDefaultValue = false, Order = 39)]
         [JsonConverter(typeof(ValuesConverter))]
-        public new virtual SingleValues<string, DateTimeOffset?> EndDate { get; set; }
+        public override SingleValues<string, DateTimeOffset?> EndDate { get; set; }
 
 
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
@@ -279,7 +279,7 @@ namespace OpenActive.NET
         /// </summary>
         [DataMember(Name = "beta:sportsActivityLocation", EmitDefaultValue = false, Order = 1043)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual List<SportsActivityLocation> SportsActivityLocation { get; set; }
+        public override List<SportsActivityLocation> SportsActivityLocation { get; set; }
 
     }
 }

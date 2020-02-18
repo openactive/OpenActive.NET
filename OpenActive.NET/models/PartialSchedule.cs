@@ -56,7 +56,7 @@ namespace OpenActive.NET
         [DataMember(Name = "beta:timeZone", EmitDefaultValue = false, Order = 1007)]
         [JsonConverter(typeof(ValuesConverter))]
         [Obsolete("DEPRECATED: This beta property is now deprecated, please use `schema:scheduleTimezone` instead.", false)]
-        public virtual string TimeZone { get; set; }
+        public override string TimeZone { get; set; }
 
     }
 }

@@ -9,12 +9,12 @@ namespace OpenActive.NET
     /// <summary>
     /// 
     /// ## **Error Use Case**
-    /// The Broker supplied an invalid API key, either malformed or expired.
+    /// The Order UUID for each provided `OrderItem` does not match the Order UUID of the `Order` being PATCHed.
     /// 
     /// This type is derived from [Thing](https://schema.org/Thing), which means that any of this type's properties within schema.org may also be used. Note however the properties on this page must be used in preference if a relevant property is available.
     /// </summary>
     [DataContract]
-    public partial class InvalidAPITokenError : OpenBookingError
+    public partial class OrderItemNotWithinOrderError : OpenBookingError
     {
         /// <summary>
         /// Returns the JSON-LD representation of this instance.
@@ -47,7 +47,7 @@ namespace OpenActive.NET
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
         [DataMember(Name = "@type", Order = 1)]
-        public override string Type => "InvalidAPITokenError";
+        public override string Type => "OrderItemNotWithinOrderError";
 
         
         /// <summary>
@@ -55,20 +55,20 @@ namespace OpenActive.NET
         /// </summary>
         /// <example>
         /// <code>
-        /// "name": "The Broker supplied an invalid API key, either malformed or expired."
+        /// "name": "The Order UUID for each provided 'OrderItem' does not match the Order UUID of the 'Order' being PATCHed."
         /// </code>
         /// </example>
         [DataMember(Name = "name", EmitDefaultValue = false, Order = 7)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override string Name { get; set; } = "The Broker supplied an invalid API key, either malformed or expired.";
+        public override string Name { get; set; } = "The Order UUID for each provided 'OrderItem' does not match the Order UUID of the 'Order' being PATCHed.";
 
 
         /// Must always be present and set to <code>
-        /// "statusCode": 401
+        /// "statusCode": 500
         /// </code>
         [DataMember(Name = "statusCode", EmitDefaultValue = false, Order = 8)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override long? StatusCode { get; set; } = 401;
+        public override long? StatusCode { get; set; } = 500;
 
     }
 }

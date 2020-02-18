@@ -75,7 +75,7 @@ namespace OpenActive.NET
         /// </example>
         [DataMember(Name = "event", EmitDefaultValue = false, Order = 8)]
         [JsonConverter(typeof(ValuesConverter))]
-        public new virtual List<Slot> Event { get; set; }
+        public override List<Slot> Event { get; set; }
 
     }
 }
