@@ -64,7 +64,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "dateModified", EmitDefaultValue = false, Order = 8)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(OpenActiveDateTimeOffsetToISO8601DateTimeValuesConverter))]
         public new virtual DateTimeOffset? DateModified { get; set; }
 
 

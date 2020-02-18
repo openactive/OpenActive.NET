@@ -64,7 +64,7 @@ namespace OpenActive.NET
         /// Expiry DateTime of the Lease in ISO 8601 format
         /// </summary>
         [DataMember(Name = "leaseExpires", EmitDefaultValue = false, Order = 8)]
-        [JsonConverter(typeof(ValuesConverter))]
+        [JsonConverter(typeof(OpenActiveDateTimeOffsetToISO8601DateTimeValuesConverter))]
         public virtual DateTimeOffset? LeaseExpires { get; set; }
 
     }

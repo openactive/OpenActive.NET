@@ -7,10 +7,10 @@
     using Newtonsoft.Json;
 
     /// <summary>
-    /// Converts an <see cref="IValue"/> object to JSON when it is a Time.
+    /// Converts an <see cref="IValue"/> object to JSON when it is a DateTime
     /// </summary>
     /// <seealso cref="JsonConverter" />
-    public class OpenActiveDateTimeOffsetToISO8601TimeValuesConverter : ValuesConverter
+    public class OpenActiveDateTimeOffsetToISO8601DateTimeValuesConverter : ValuesConverter
     {
         /// <summary>
         /// Determines whether this instance can convert the specified object type.
@@ -33,9 +33,9 @@
             {
                 writer.WriteNull();
             }
-            else if (value is DateTimeOffset time)
+            else if (value is DateTimeOffset datetime)
             {
-                writer.WriteValue(time.ToString("HH:mm"));
+                writer.WriteValue(datetime.ToString("yyyy-MM-ddTHH\\:mm\\:sszzz"));
             }
             else
             {
@@ -45,27 +45,7 @@
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
-            if (reader == null)
-            {
-                throw new ArgumentNullException(nameof(reader));
-            }
-
-            if (objectType == null)
-            {
-                throw new ArgumentNullException(nameof(objectType));
-            }
-
-            if (serializer == null)
-            {
-                throw new ArgumentNullException(nameof(serializer));
-            }
-
-            var valuesType = objectType.GetUnderlyingTypeFromNullable();
-            if (valuesType != null && valuesType == typeof(DateTimeOffset))
-            {
-                return new DateTimeOffset(DateTime.ParseExact(reader.Value.ToString(), "HH:mm", CultureInfo.InvariantCulture.DateTimeFormat, DateTimeStyles.NoCurrentDateDefault | DateTimeStyles.AssumeUniversal | DateTimeStyles.AllowWhiteSpaces));
-            }
-
+            // No special treatment for reading
             return base.ReadJson(reader, objectType, existingValue, serializer);
         }
     }

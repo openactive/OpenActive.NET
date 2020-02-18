@@ -184,7 +184,7 @@ namespace OpenActive.NET.Test
                     "\"priceCurrency\":\"GBP\"," +
                     "\"validFromBeforeStartDate\":\"P6D\"" +
                 "}," +
-                "\"accessToken\":[" +
+                "\"accessPass\":[" +
                     "{" +
                         "\"@type\":\"Barcode\"," +
                         "\"text\":\"0123456789\"" +
@@ -229,7 +229,7 @@ namespace OpenActive.NET.Test
                     "\"startDate\":\"2018-10-30T11:00:00+00:00\"," +
                     "\"endDate\":\"2018-10-30T12:00:00+00:00\"" +
                 "}," +
-                "\"orderItemStatus\":\"https://openactive.io/OrderConfirmed\"," +
+                "\"orderItemStatus\":\"https://openactive.io/OrderItemConfirmed\"," +
                 "\"unitTaxSpecification\":[" +
                     "{" +
                         "\"@type\":\"TaxChargeSpecification\"," +
@@ -340,6 +340,31 @@ namespace OpenActive.NET.Test
             output.WriteLine(complexJson);
             output.WriteLine(encode);
             Assert.Equal(complexJson, encode);
+        }
+
+        [Fact]
+        public void Order_LeaseEncode()
+        {
+            var leaseExpires = DateTimeOffset.UtcNow + new TimeSpan(0, 5, 0);
+            var encode = OpenActiveSerializer.Serialize(new OrderQuote { Lease = new Lease { LeaseExpires = leaseExpires } } );
+            
+            var expectedLeaseJson = "{" +
+            "\"@context\":\"https://openactive.io/\"," +
+            "\"@type\":\"OrderQuote\"," +
+            "\"lease\":{" +
+                "\"@type\":\"Lease\"," +
+                $"\"leaseExpires\":\"{leaseExpires.ToString("yyyy-MM-ddTHH\\:mm\\:sszzz")}\"" +
+            "}" +
+            "}";
+
+            output.WriteLine(encode);
+            output.WriteLine(expectedLeaseJson);
+
+            Assert.Equal(expectedLeaseJson, encode);
+
+            var decode = OpenActiveSerializer.Deserialize<OrderQuote>(encode);
+            // Truncate milliseconds from leaseExpires
+            Assert.Equal(leaseExpires.AddTicks(-(leaseExpires.Ticks % TimeSpan.TicksPerSecond)), decode.Lease.LeaseExpires);
         }
     }
 }

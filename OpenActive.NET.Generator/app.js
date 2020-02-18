@@ -515,6 +515,8 @@ function renderJsonConverter(field, propertyType) {
         return `\n        [JsonConverter(typeof(OpenActiveTimeSpanToISO8601DurationValuesConverter))]`;
     } else if (field.requiredType == 'https://schema.org/Time') {
         return `\n        [JsonConverter(typeof(OpenActiveDateTimeOffsetToISO8601TimeValuesConverter))]`;
+    } else if (propertyType == 'DateTimeOffset?') {
+        return `\n        [JsonConverter(typeof(OpenActiveDateTimeOffsetToISO8601DateTimeValuesConverter))]`;
     } else if (propertyType.indexOf("Values<") > -1 || field.requiredType || field.model || field.alternativeModels) {
         return `\n        [JsonConverter(typeof(ValuesConverter))]`;
     } else {
