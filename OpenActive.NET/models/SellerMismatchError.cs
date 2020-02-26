@@ -8,12 +8,12 @@ namespace OpenActive.NET
 {
     /// <summary>
     /// 
-    /// Error Use Case: The `OrderItem`s  `@id` of the `seller` was not found.
+    /// Error Use Case: At least one of the `OrderItem`s did not match the specified `seller`.
     /// 
     /// This type is derived from https://schema.org/Thing, which means that any of this type's properties within schema.org may also be used.
     /// </summary>
     [DataContract]
-    public partial class SellerIdMismatchError : OpenBookingError
+    public partial class SellerMismatchError : OpenBookingError
     {
         /// <summary>
         /// Returns the JSON-LD representation of this instance.
@@ -46,7 +46,7 @@ namespace OpenActive.NET
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
         [DataMember(Name = "@type", Order = 1)]
-        public override string Type => "SellerIdMismatchError";
+        public override string Type => "SellerMismatchError";
 
         
         /// <summary>
@@ -54,12 +54,12 @@ namespace OpenActive.NET
         /// </summary>
         /// <example>
         /// <code>
-        /// "name": "The 'OrderItem's  '@id' of the 'seller' was not found."
+        /// "name": "At least one of the 'OrderItem's did not match the specified 'seller'."
         /// </code>
         /// </example>
         [DataMember(Name = "name", EmitDefaultValue = false, Order = 7)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override string Name { get; set; } = "The 'OrderItem's  '@id' of the 'seller' was not found.";
+        public override string Name { get; set; } = "At least one of the 'OrderItem's did not match the specified 'seller'.";
 
 
         /// Must always be present and set to <code>

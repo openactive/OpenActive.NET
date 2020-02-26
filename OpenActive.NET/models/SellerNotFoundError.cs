@@ -8,7 +8,7 @@ namespace OpenActive.NET
 {
     /// <summary>
     /// 
-    /// Error Use Case: The `@id` of the `seller` included in the request was not found.
+    /// Error Use Case: The `@id` of the `seller` included in the request was not found within the Booking System.
     /// 
     /// This type is derived from https://schema.org/Thing, which means that any of this type's properties within schema.org may also be used.
     /// </summary>
@@ -54,12 +54,12 @@ namespace OpenActive.NET
         /// </summary>
         /// <example>
         /// <code>
-        /// "name": "The '@id' of the 'seller' included in the request was not found."
+        /// "name": "The '@id' of the 'seller' included in the request was not found within the Booking System."
         /// </code>
         /// </example>
         [DataMember(Name = "name", EmitDefaultValue = false, Order = 7)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override string Name { get; set; } = "The '@id' of the 'seller' included in the request was not found.";
+        public override string Name { get; set; } = "The '@id' of the 'seller' included in the request was not found within the Booking System.";
 
 
         /// Must always be present and set to <code>

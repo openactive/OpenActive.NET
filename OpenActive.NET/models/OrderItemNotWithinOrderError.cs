@@ -8,7 +8,7 @@ namespace OpenActive.NET
 {
     /// <summary>
     /// 
-    /// Error Use Case: The Order UUID for each provided `OrderItem` does not match the Order UUID of the `Order` being PATCHed.
+    /// Error Use Case: The Order UUID for at least one provided `OrderItem` does not match the Order UUID of the `Order` being PATCHed.
     /// 
     /// This type is derived from https://schema.org/Thing, which means that any of this type's properties within schema.org may also be used.
     /// </summary>
@@ -54,12 +54,12 @@ namespace OpenActive.NET
         /// </summary>
         /// <example>
         /// <code>
-        /// "name": "The Order UUID for each provided 'OrderItem' does not match the Order UUID of the 'Order' being PATCHed."
+        /// "name": "The Order UUID for at least one provided 'OrderItem' does not match the Order UUID of the 'Order' being PATCHed."
         /// </code>
         /// </example>
         [DataMember(Name = "name", EmitDefaultValue = false, Order = 7)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override string Name { get; set; } = "The Order UUID for each provided 'OrderItem' does not match the Order UUID of the 'Order' being PATCHed.";
+        public override string Name { get; set; } = "The Order UUID for at least one provided 'OrderItem' does not match the Order UUID of the 'Order' being PATCHed.";
 
 
         /// Must always be present and set to <code>

@@ -77,9 +77,17 @@ namespace OpenActive.NET
 
 
         /// <summary>
+        /// PropertyValue that contains a text value useful for reconciliation.
+        /// </summary>
+        [DataMember(Name = "additionalProperty", EmitDefaultValue = false, Order = 10)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public new virtual List<PropertyValue> AdditionalProperty { get; set; }
+
+
+        /// <summary>
         /// paymentMethod must not be used, and is reserved for future versions of this specification.
         /// </summary>
-        [DataMember(Name = "paymentMethod", EmitDefaultValue = false, Order = 10)]
+        [DataMember(Name = "paymentMethod", EmitDefaultValue = false, Order = 11)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual PaymentMethod? PaymentMethod { get; set; }
 
@@ -87,7 +95,7 @@ namespace OpenActive.NET
         /// <summary>
         /// A reference to the specific Payment Provider that is used.
         /// </summary>
-        [DataMember(Name = "paymentProviderId", EmitDefaultValue = false, Order = 11)]
+        [DataMember(Name = "paymentProviderId", EmitDefaultValue = false, Order = 12)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual string PaymentProviderId { get; set; }
 

@@ -8,7 +8,7 @@ namespace OpenActive.NET
 {
     /// <summary>
     /// 
-    /// Error Use Case: The `orderedItem` is not a URL which corresponds to an Opportunity within the Booking System.
+    /// Error Use Case: The `@id` provided for the `orderedItem` is not a URL which corresponds to an Opportunity within the Booking System.
     /// 
     /// This type is derived from https://schema.org/Thing, which means that any of this type's properties within schema.org may also be used.
     /// </summary>
@@ -54,12 +54,12 @@ namespace OpenActive.NET
         /// </summary>
         /// <example>
         /// <code>
-        /// "name": "The 'orderedItem' is not a URL which corresponds to an Opportunity within the Booking System."
+        /// "name": "The '@id' provided for the 'orderedItem' is not a URL which corresponds to an Opportunity within the Booking System."
         /// </code>
         /// </example>
         [DataMember(Name = "name", EmitDefaultValue = false, Order = 7)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override string Name { get; set; } = "The 'orderedItem' is not a URL which corresponds to an Opportunity within the Booking System.";
+        public override string Name { get; set; } = "The '@id' provided for the 'orderedItem' is not a URL which corresponds to an Opportunity within the Booking System.";
 
 
         /// Must always be present and set to <code>
