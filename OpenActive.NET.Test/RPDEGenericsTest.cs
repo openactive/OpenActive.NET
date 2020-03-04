@@ -217,7 +217,7 @@ namespace OpenActive.NET.Test
         [Fact]
         public void ToString_EventGoogleStructuredData_ReturnsExpectedJsonLd()
         {
-            var feed = new RpdePage(new Uri("https://www.example.com/feed"), 1, "1", @feedItems.ConvertAll<RpdeItem>(x => x));
+            var feed = new RpdePage<SessionSeries>(new Uri("https://www.example.com/feed"), 1, "1", @feedItems);
 
             output.WriteLine(feed.ToString());
             Assert.Equal(this.jsonRpde, feed.ToString());
@@ -264,7 +264,7 @@ namespace OpenActive.NET.Test
         [Fact]
         public void ToString_RpdeBodyUnorderedModified_ReturnsExpectedException()
         {
-            Exception ex = Assert.Throws<SerializationException>(() => (new RpdePage(new Uri("https://www.example.com/feed"), 1, "1", new List<RpdeItem<SessionSeries>>
+            Exception ex = Assert.Throws<SerializationException>(() => (new RpdePage<SessionSeries>(new Uri("https://www.example.com/feed"), 1, "1", new List<RpdeItem<SessionSeries>>
             {
                 new RpdeItem<SessionSeries>
                 {
@@ -282,7 +282,7 @@ namespace OpenActive.NET.Test
                     Kind = RpdeKind.SessionSeries,
                     Data = null
                 }
-            }.ConvertAll<RpdeItem>(x => (RpdeItem)x))).ToString());
+            })).ToString());
 
             
             Assert.StartsWith("Items must be ordered", ex.Message);
@@ -291,7 +291,7 @@ namespace OpenActive.NET.Test
         [Fact]
         public void ToString_RpdeBodyUnorderedID_ReturnsExpectedException()
         {
-            Exception ex = Assert.Throws<SerializationException>(() => (new RpdePage(new Uri("https://www.example.com/feed"), 1, "1", new List<RpdeItem<SessionSeries>>
+            Exception ex = Assert.Throws<SerializationException>(() => (new RpdePage<SessionSeries>(new Uri("https://www.example.com/feed"), 1, "1", new List<RpdeItem<SessionSeries>>
             {
                 new RpdeItem<SessionSeries>
                 {
@@ -309,7 +309,7 @@ namespace OpenActive.NET.Test
                     Kind = RpdeKind.SessionSeries,
                     Data = null
                 }
-            }.ConvertAll<RpdeItem>(x => (RpdeItem)x))).ToString());
+            })).ToString());
 
             
             Assert.StartsWith("Items must be ordered", ex.Message);
@@ -318,7 +318,7 @@ namespace OpenActive.NET.Test
         [Fact]
         public void ToString_RpdeBodyDeletedWithData_ReturnsExpectedException()
         {
-            Exception ex = Assert.Throws<SerializationException>(() => (new RpdePage(new Uri("https://www.example.com/feed"), 1, "1", new List<RpdeItem<SessionSeries>>
+            Exception ex = Assert.Throws<SerializationException>(() => (new RpdePage<SessionSeries>(new Uri("https://www.example.com/feed"), 1, "1", new List<RpdeItem<SessionSeries>>
             {
                 new RpdeItem<SessionSeries>
                 {
@@ -336,9 +336,9 @@ namespace OpenActive.NET.Test
                     Kind = RpdeKind.SessionSeries,
                     Data = @event
                 }
-            }.ConvertAll<RpdeItem>(x => (RpdeItem)x))).ToString());
+            })).ToString());
 
-            
+
             Assert.StartsWith("Deleted items must not contain data", ex.Message);
         }
 
@@ -346,7 +346,7 @@ namespace OpenActive.NET.Test
         [Fact]
         public void ToString_RpdeBodyFirstItemInFeed_ReturnsExpectedException()
         {
-            Exception ex = Assert.Throws<SerializationException>(() => (new RpdePage(new Uri("https://www.example.com/feed"), 4, "2", new List<RpdeItem<SessionSeries>>
+            Exception ex = Assert.Throws<SerializationException>(() => (new RpdePage<SessionSeries>(new Uri("https://www.example.com/feed"), 4, "2", new List<RpdeItem<SessionSeries>>
             {
                 new RpdeItem<SessionSeries>
                 {
@@ -364,7 +364,7 @@ namespace OpenActive.NET.Test
                     Kind = RpdeKind.SessionSeries,
                     Data = null
                 }
-            }.ConvertAll<RpdeItem>(x => (RpdeItem)x))).ToString());
+            })).ToString());
 
             
             Assert.StartsWith("First item in the feed must never have same", ex.Message);
@@ -378,7 +378,7 @@ namespace OpenActive.NET.Test
         [Fact]
         public void ToString_RpdeBodyIntUnorderedModified_ReturnsExpectedException()
         {
-            Exception ex = Assert.Throws<SerializationException>(() => (new RpdePage(new Uri("https://www.example.com/feed"), 1, 1, new List<RpdeItem<SessionSeries>>
+            Exception ex = Assert.Throws<SerializationException>(() => (new RpdePage<SessionSeries>(new Uri("https://www.example.com/feed"), 1, 1, new List<RpdeItem<SessionSeries>>
             {
                 new RpdeItem<SessionSeries>
                 {
@@ -396,7 +396,7 @@ namespace OpenActive.NET.Test
                     Kind = RpdeKind.SessionSeries,
                     Data = null
                 }
-            }.ConvertAll<RpdeItem>(x => (RpdeItem)x))).ToString());
+            })).ToString());
 
             
             Assert.StartsWith("Items must be ordered", ex.Message);
@@ -405,7 +405,7 @@ namespace OpenActive.NET.Test
         [Fact]
         public void ToString_RpdeBodyIntUnorderedID_ReturnsExpectedException()
         {
-            Exception ex = Assert.Throws<SerializationException>(() => (new RpdePage(new Uri("https://www.example.com/feed"), 1, 1, new List<RpdeItem<SessionSeries>>
+            Exception ex = Assert.Throws<SerializationException>(() => (new RpdePage<SessionSeries>(new Uri("https://www.example.com/feed"), 1, 1, new List<RpdeItem<SessionSeries>>
             {
                 new RpdeItem<SessionSeries>
                 {
@@ -423,7 +423,7 @@ namespace OpenActive.NET.Test
                     Kind = RpdeKind.SessionSeries,
                     Data = null
                 }
-            }.ConvertAll<RpdeItem>(x => (RpdeItem)x))).ToString());
+            })).ToString());
 
             
             Assert.StartsWith("Items must be ordered", ex.Message);
@@ -432,7 +432,7 @@ namespace OpenActive.NET.Test
         [Fact]
         public void ToString_RpdeBodyIntDeletedWithData_ReturnsExpectedException()
         {
-            Exception ex = Assert.Throws<SerializationException>(() => (new RpdePage(new Uri("https://www.example.com/feed"), 1, 1, new List<RpdeItem<SessionSeries>>
+            Exception ex = Assert.Throws<SerializationException>(() => (new RpdePage<SessionSeries>(new Uri("https://www.example.com/feed"), 1, 1, new List<RpdeItem<SessionSeries>>
             {
                 new RpdeItem<SessionSeries>
                 {
@@ -450,7 +450,7 @@ namespace OpenActive.NET.Test
                     Kind = RpdeKind.SessionSeries,
                     Data = @event
                 }
-            }.ConvertAll<RpdeItem>(x => (RpdeItem)x))).ToString());
+            })).ToString());
 
             
             Assert.StartsWith("Deleted items must not contain data", ex.Message);
@@ -460,7 +460,7 @@ namespace OpenActive.NET.Test
         [Fact]
         public void ToString_RpdeBodyIntFirstItemInFeed_ReturnsExpectedException()
         {
-            Exception ex = Assert.Throws<SerializationException>(() => (new RpdePage(new Uri("https://www.example.com/feed"), 4, 2, new List<RpdeItem<SessionSeries>>
+            Exception ex = Assert.Throws<SerializationException>(() => (new RpdePage<SessionSeries>(new Uri("https://www.example.com/feed"), 4, 2, new List<RpdeItem<SessionSeries>>
             {
                 new RpdeItem<SessionSeries>
                 {
@@ -478,7 +478,7 @@ namespace OpenActive.NET.Test
                     Kind = RpdeKind.SessionSeries,
                     Data = null
                 }
-            }.ConvertAll<RpdeItem>(x => (RpdeItem)x))).ToString());
+            })).ToString());
 
             
             Assert.StartsWith("First item in the feed must never have same", ex.Message);
@@ -495,7 +495,7 @@ namespace OpenActive.NET.Test
         [Fact]
         public void ToString_RpdeBodyChangeNumberUnorderedModified_ReturnsExpectedException()
         {
-            Exception ex = Assert.Throws<SerializationException>(() => (new RpdePage(new Uri("https://www.example.com/feed"), 1, new List<RpdeItem<SessionSeries>>
+            Exception ex = Assert.Throws<SerializationException>(() => (new RpdePage<SessionSeries>(new Uri("https://www.example.com/feed"), 1, new List<RpdeItem<SessionSeries>>
             {
                 new RpdeItem<SessionSeries>
                 {
@@ -513,7 +513,7 @@ namespace OpenActive.NET.Test
                     Kind = RpdeKind.SessionSeries,
                     Data = null
                 }
-            }.ConvertAll<RpdeItem>(x => (RpdeItem)x))).ToString());
+            })).ToString());
 
             
             Assert.StartsWith("Items must be ordered", ex.Message);
@@ -522,7 +522,7 @@ namespace OpenActive.NET.Test
         [Fact]
         public void ToString_RpdeBodyChangeNumberUnorderedID_ReturnsExpectedException()
         {
-            Exception ex = Assert.Throws<SerializationException>(() => (new RpdePage(new Uri("https://www.example.com/feed"), 1, new List<RpdeItem<SessionSeries>>
+            Exception ex = Assert.Throws<SerializationException>(() => (new RpdePage<SessionSeries>(new Uri("https://www.example.com/feed"), 1, new List<RpdeItem<SessionSeries>>
             {
                 new RpdeItem<SessionSeries>
                 {
@@ -540,7 +540,7 @@ namespace OpenActive.NET.Test
                     Kind = RpdeKind.SessionSeries,
                     Data = null
                 }
-            }.ConvertAll<RpdeItem>(x => (RpdeItem)x))).ToString());
+            })).ToString());
 
             
             Assert.StartsWith("Items must be ordered", ex.Message);
@@ -549,7 +549,7 @@ namespace OpenActive.NET.Test
         [Fact]
         public void ToString_RpdeBodyChangeNumberDeletedWithData_ReturnsExpectedException()
         {
-            Exception ex = Assert.Throws<SerializationException>(() => (new RpdePage(new Uri("https://www.example.com/feed"), 1, new List<RpdeItem<SessionSeries>>
+            Exception ex = Assert.Throws<SerializationException>(() => (new RpdePage<SessionSeries>(new Uri("https://www.example.com/feed"), 1, new List<RpdeItem<SessionSeries>>
             {
                 new RpdeItem<SessionSeries>
                 {
@@ -567,7 +567,7 @@ namespace OpenActive.NET.Test
                     Kind = RpdeKind.SessionSeries,
                     Data = @event
                 }
-            }.ConvertAll<RpdeItem>(x => (RpdeItem)x))).ToString());
+            })).ToString());
 
             
             Assert.StartsWith("Deleted items must not contain data", ex.Message);
@@ -577,7 +577,7 @@ namespace OpenActive.NET.Test
         [Fact]
         public void ToString_RpdeBodyChangeNumberFirstItemInFeed_ReturnsExpectedException()
         {
-            Exception ex = Assert.Throws<SerializationException>(() => (new RpdePage(new Uri("https://www.example.com/feed"), 4, new List<RpdeItem<SessionSeries>>
+            Exception ex = Assert.Throws<SerializationException>(() => (new RpdePage<SessionSeries>(new Uri("https://www.example.com/feed"), 4, new List<RpdeItem<SessionSeries>>
             {
                 new RpdeItem<SessionSeries>
                 {
@@ -595,7 +595,7 @@ namespace OpenActive.NET.Test
                     State = RpdeState.Deleted,
                     Data = null
                 }
-            }.ConvertAll<RpdeItem>(x => (RpdeItem)x))).ToString());
+            })).ToString());
 
             
             Assert.StartsWith("First item in the feed must never have same", ex.Message);
@@ -605,7 +605,7 @@ namespace OpenActive.NET.Test
         [Fact]
         public void ToString_RpdeBodyMissingPros_ReturnsExpectedException()
         {
-            Exception ex = Assert.Throws<SerializationException>(() => (new RpdePage(new Uri("https://www.example.com/feed"), 1, new List<RpdeItem<SessionSeries>>
+            Exception ex = Assert.Throws<SerializationException>(() => (new RpdePage<SessionSeries>(new Uri("https://www.example.com/feed"), 1, new List<RpdeItem<SessionSeries>>
             {
                 new RpdeItem<SessionSeries>
                 {
@@ -621,7 +621,7 @@ namespace OpenActive.NET.Test
                     State = RpdeState.Deleted,
                     Data = null
                 }
-            }.ConvertAll<RpdeItem>(x => (RpdeItem)x))).ToString());
+            })).ToString());
 
             Assert.StartsWith("All RPDE feed items must include", ex.Message);
         }

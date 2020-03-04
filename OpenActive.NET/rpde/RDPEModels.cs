@@ -57,7 +57,7 @@ namespace OpenActive.NET.Rpde.Version1
     /// <summary>
     /// Deserialisation wrapper for RPDE items
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">Type of the data contained within the RpdeItem</typeparam>
     [DataContract]
     public class RpdePage<T> : RpdePage where T : Schema.NET.Thing
     {
@@ -75,6 +75,33 @@ namespace OpenActive.NET.Rpde.Version1
             {
                 base.Items = value?.Select(x => (RpdeItem)x).ToList();
             }
+        }
+
+        /// <summary>
+        /// Creates a new RPDE Page based on the RPDE Items provided, using the Modified Timestamp and ID Ordering Strategy.
+        /// Also validates that the items are in the correct order, throwing a SerializationException if this is not the case.
+        /// </summary>
+        /// <param name="feedBaseUrl">The base URL of the feed, used to construct the "next" URL.</param>
+        /// <param name="afterTimestamp">The afterTimestamp query parameter value of the current request.</param>
+        /// <param name="afterId">The afterId query parameter value of the current request.</param>
+        /// <param name="items">Items to include in the RPDE Page</param>
+        public RpdePage(Uri feedBaseUrl, long? afterTimestamp, ComparableSingleValue<long, string>? afterId, List<RpdeItem<T>> items)
+        {
+            base.Items = items?.Select(x => (RpdeItem)x).ToList();
+            SetNextModifiedID(feedBaseUrl, afterTimestamp, afterId);
+        }
+
+        /// <summary>
+        /// Creates a new RPDE Page based on the RPDE Items provided, using the Incrementing Unique Change Number Ordering Strategy.
+        /// Also validates that the items are in the correct order, throwing a SerializationException if this is not the case.
+        /// </summary>
+        /// <param name="feedBaseUrl">The base URL of the feed, used to construct the "next" URL</param>
+        /// <param name="afterChangeNumber">The afterChangeNumber query parameter value of the current request</param>
+        /// <param name="items">Items to include in the RPDE Page</param>
+        public RpdePage(Uri feedBaseUrl, long? afterChangeNumber, List<RpdeItem<T>> items)
+        {
+            base.Items = items?.Select(x => (RpdeItem)x).ToList();
+            SetNextChangeNumber(feedBaseUrl, afterChangeNumber);
         }
     }
 
