@@ -107,7 +107,7 @@ namespace OpenActive.NET
         /// <returns>
         /// A <see cref="string" /> that represents the JSON representation of the RPDE page.
         /// </returns>
-        public static string SerializeRpdePage<T>(RpdePage<T> obj) where T : Schema.NET.Thing => JsonConvert.SerializeObject(obj, RpdePage<T>.SerializerSettings);
+        public static string SerializeRpdePage<T>(RpdePage<T> obj) where T : Schema.NET.Thing => JsonConvert.SerializeObject(obj, RpdePage.SerializerSettings);
 
 
         /// <summary>
@@ -116,7 +116,7 @@ namespace OpenActive.NET
         /// <returns>
         /// A <see cref="string" /> that represents the JSON representation of the RPDE page.
         /// </returns>
-        public static string SerializeRpdePage(RpdePage<Schema.NET.Thing> obj) => SerializeRpdePage<Schema.NET.Thing>(obj);
+        public static string SerializeRpdePage(RpdePage obj) => JsonConvert.SerializeObject(obj, RpdePage.SerializerSettings);
 
 
         /// <summary>
@@ -156,7 +156,7 @@ namespace OpenActive.NET
         /// </summary>
         /// <param name="str">JSON string</param>
         /// <returns>Strongly typed RPDE model</returns>
-        public static RpdePage<Schema.NET.Thing> DeserializeRpdePage(string str) => DeserializeRpdePage<Schema.NET.Thing>(str);
+        public static RpdePage DeserializeRpdePage(string str) => JsonConvert.DeserializeObject<RpdePage>(str, RpdePage.SerializerSettings);
 
         /// <summary>
         /// Returns a strongly typed model of the RPDE page representation provided, for a specific type of item data.
