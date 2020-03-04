@@ -208,13 +208,51 @@ namespace OpenActive.NET.Test
         private readonly string jsonRpde =
         "{\"next\":\"https://www.example.com/feed?afterTimestamp=5&afterId=1\",\"items\":[{\"state\":\"updated\",\"kind\":\"SessionSeries\",\"id\":\"2\",\"modified\":4,\"data\":{\"@context\":\"https://openactive.io/\",\"@type\":\"SessionSeries\",\"name\":\"Virtual BODYPUMP\",\"description\":\"This is the virtual version of the original barbell class, which will help you get lean, toned and fit - fast. Les Mills™ Virtual classes are designed for people who cannot get access to our live classes or who want to get a ‘taste’ of a Les Mills™ class before taking a live class with an instructor. The classes are played on a big video screen, with dimmed lighting and pumping surround sound, and are led onscreen by the people who actually choreograph the classes.\",\"attendeeInstructions\":\"Ensure you bring trainers and a bottle of water.\",\"duration\":\"P1D\",\"image\":[{\"@type\":\"ImageObject\",\"url\":\"http://www.example.com/event_image/12345\"}],\"location\":{\"@type\":\"Place\",\"name\":\"Santa Clara City Library, Central Park Library\",\"address\":{\"@type\":\"PostalAddress\",\"addressCountry\":\"US\",\"addressLocality\":\"Santa Clara\",\"addressRegion\":\"CA\",\"postalCode\":\"95051\",\"streetAddress\":\"2635 Homestead Rd\"}},\"offers\":[{\"@type\":\"Offer\",\"price\":30.0,\"priceCurrency\":\"USD\",\"url\":\"https://www.example.com/event_offer/12345_201803180430\",\"validFrom\":\"2017-01-20T16:20:00-08:00\"}],\"startDate\":\"2017-04-24T19:30:00-08:00\",\"endDate\":\"2017-04-24T23:00:00-08:00\"}},{\"state\":\"deleted\",\"kind\":\"SessionSeries\",\"id\":\"1\",\"modified\":5}],\"license\":\"https://creativecommons.org/licenses/by/4.0/\"}";
 
+        private readonly string jsonRpdeEveryoneActive =
+        "{\"next\":\"https://opendata.leisurecloud.live/api/feeds/EveryoneActive-test-session-series?afterTimestamp=28577192&afterId=1217CRP17000217\",\"items\":[{\"state\":\"updated\",\"kind\":\"SessionSeries\",\"id\" :\"1502CMX20000216\",\"modified\":15529138,\"data\":{\"@context\":[\"https://openactive.io/\",\"https://openactive.io/ns-beta\"],\"type\":\"SessionSeries\",\"id\":\"https://tst.myeveryoneactive.com/OpenActive/api/session-series/2011CAQ15150119\",\"identifier\":\"2011CAQ15150119\",\"name\":\"Active Aqua Mon 15:15\",\"category\":[\"Group Exercise 16+ Yrs\"],\"duration\":\"PT45M\",\"eventSchedule\":[{\"type\":\"PartialSchedule\",\"byDay\":[\"http://schema.org/Monday\"],\"duration\":\"PT45M\",\"endTime\":\"16:00\",\"startDate\":\"2019-04-01\",\"endDate\":\"2022-12-31\",\"startTime\":\"15:15\",\"beta:timeZone\":\"Europe/London\"}],\"location\":{\"type\":\"Place\",\"identifier\":\"0201\",\"name\":\"Wythenshawe Forum Leisure\",\"address\":{\"type\":\"PostalAddress\",\"addressCountry\":\"GB\",\"addressLocality\":\"Wythenshawe\",\"addressRegion\":\"Manchester\",\"postalCode\":\"M22 5RX\",\"streetAddress\":\"Forum Square\"},\"amenityFeature\":[{\"type\":\"ChangingFacilities\",\"name\":\"Changing Facilities\",\"value\":true},{\"type\":\"Showers\",\"name\":\"Showers\",\"value\":true},{\"type\":\"Toilets\",\"name\":\"Toilets\",\"value\":true},{\"type\":\"Lockers\",\"name\":\"Lockers\",\"value\":true},{\"type\":\"Towels\",\"name\":\"Towels\",\"value\":false},{\"type\":\"Creche\",\"name\":\"Creche\",\"value\":false},{\"type\":\"Parking\",\"name\":\"Parking\",\"value\":false},{\"type\":\"BabyChanging\",\"name\":\"Baby Changing\",\"value\":true},{\"type\":\"beta:Cafe\",\"name\":\"Cafe\",\"value\":false},{\"type\":\"beta:Bar\",\"name\":\"Bar\",\"value\":false}],\"geo\":{\"type\":\"GeoCoordinates\",\"latitude\":53.380323,\"longitude\":-2.265142},\"telephone\":\"0161 935 4020\",\"url\":\"https://www-everyoneactive-dev.mediablazegroup.com/centre/wythenshawe-forum/\",\"beta:formattedDescription\":\"<p><br></p>\"},\"offers\":[{\"type\":\"Offer\",\"identifier\":\"STAND\",\"name\":\"Adult\",\"description\":\"Grp Ex - Aqua\",\"acceptedPaymentMethod\":[\"http://purl.org/goodrelations/v1#Cash\",\"http://purl.org/goodrelations/v1#PaymentMethodCreditCard\"],\"price\":1.0,\"priceCurrency\":\"GBP\"}],\"superEvent\":{\"type\":\"EventSeries\",\"identifier\":93,\"name\":\"Aqua Aerobics\",\"description\":\"A dedicated instructor led session for pregnant women or new mums only that provides an invigorating and safe all-over body work-out in the water with minimal impact.\",\"activity\":[{\"type\":\"Concept\",\"id\":\"https://openactive.io/activity-list#6e31262b-ce37-4fc7-b3e3-d827ac5e8b42\",\"inScheme\":\"https://openactive.io/activity-list\",\"prefLabel\":\"aqua_aerobics\"}],\"ageRange\":{\"type\":\"QuantitativeValue\",\"maxValue\":100,\"minValue\":16},\"isCoached\":true,\"organizer\":{\"type\":\"Organization\",\"name\":\"EveryoneActive\",\"legalName\":\"EveryoneActive\"}}}}],\"license\":\"https://creativecommons.org/licenses/by/4.0/\"}";
+
+        private readonly string jsonRpdeSlotEveryoneActive =
+        "{\"next\":\"https://opendata.leisurecloud.live/api/feeds/EveryoneActive-test-slots?afterTimestamp=2564761380&afterId=162OUTDOOR10_2020-03-04T18-30-00\",\"items\":[{\"state\":\"updated\",\"kind\":\"FacilityUse/Slot\",\"id\" :\"161ASTRO001_2020-03-04T16-00-00\",\"modified\":2564739554,\"data\":{\"@context\":[\"https://openactive.io/\",\"https://openactive.io/ns-beta\"],\"type\":\"Slot\",\"id\":\"https://tst.myeveryoneactive.com/OpenActive/api/slots/161ASTRO001_2020-03-04T16-00-00\",\"identifier\":\"161ASTRO001_2020-03-04T16-00-00\",\"duration\":\"PT1H\",\"facilityUse\":\"https://tst.myeveryoneactive.com/OpenActive/api/facility-uses/161ASTRO001\",\"maximumUses\":1,\"offers\":[{\"type\":\"Offer\",\"price\":169.3,\"priceCurrency\":\"GBP\"}],\"remainingUses\":1,\"startDate\":\"2020-03-04T16:00:00+00:00\",\"endDate\":\"2020-03-04T17:00:00+00:00\",\"beta:sportsActivityLocation\":[{\"type\":\"SportsActivityLocation\",\"name\":[\"Burgess Park Astroturf 1\",\"Burgess Park Astroturf 2\",\"Burgess Park Astroturf 3\"],\"identifier\":[\"161ZOUA001\",\"161ZOUA002\",\"161ZOUA003\"]}]}}],\"license\":\"https://creativecommons.org/licenses/by/4.0/\"}";
+
         [Fact]
-        public void ToString_EventGoogleStructuredData_ReturnsExpectedJsonLd() {
-            var feed = new RpdePage(new Uri("https://www.example.com/feed"), 1, "1", @feedItems.ConvertAll<RpdeItem>( x => (RpdeItem)x ));
+        public void ToString_EventGoogleStructuredData_ReturnsExpectedJsonLd()
+        {
+            var feed = new RpdePage<SessionSeries>(new Uri("https://www.example.com/feed"), 1, "1", @feedItems);
 
             output.WriteLine(feed.ToString());
             Assert.Equal(this.jsonRpde, feed.ToString());
         }
+
+        [Fact]
+        public void DeserializeRpdePageEveryoneActive()
+        {
+            var page = OpenActiveSerializer.DeserializeRpdePage(this.jsonRpdeEveryoneActive);
+            var json = OpenActiveSerializer.SerializeRpdePage(page);
+
+            output.WriteLine(json);
+            Assert.Equal(this.jsonRpdeEveryoneActive.Replace("http://schema", "https://schema").Replace("http://openactive", "https://openactive").Replace("\"type\"", "\"@type\"").Replace("\"id\":", "\"@id\":").Replace("\"id\" :", "\"id\":").Replace("[\"https://openactive.io/\"]", "\"https://openactive.io/\""), json);
+        }
+
+        [Fact]
+        public void DeserializeRpdePageSlotEveryoneActive()
+        {
+            var page = OpenActiveSerializer.DeserializeRpdePage(this.jsonRpdeSlotEveryoneActive);
+            var json = OpenActiveSerializer.SerializeRpdePage(page);
+
+            output.WriteLine(json);
+            Assert.Equal(this.jsonRpdeSlotEveryoneActive.Replace("http://schema", "https://schema").Replace("http://openactive", "https://openactive").Replace("\"type\"", "\"@type\"").Replace("\"id\":", "\"@id\":").Replace("\"id\" :", "\"id\":").Replace("[\"https://openactive.io/\"]", "\"https://openactive.io/\""), json);
+        }
+
+        [Fact]
+        public void DeserializeRpdePage()
+        {
+            var page = OpenActiveSerializer.DeserializeRpdePage(this.jsonRpde);
+            var json = OpenActiveSerializer.SerializeRpdePage(page);
+
+            output.WriteLine(json);
+            Assert.Equal(this.jsonRpde, json);
+        }
+
 
         [Fact]
         public void ToString_EventEmptyStings_ReturnsExpectedJsonLd()
@@ -226,7 +264,7 @@ namespace OpenActive.NET.Test
         [Fact]
         public void ToString_RpdeBodyUnorderedModified_ReturnsExpectedException()
         {
-            Exception ex = Assert.Throws<SerializationException>(() => (new RpdePage(new Uri("https://www.example.com/feed"), 1, "1", new List<RpdeItem<SessionSeries>>
+            Exception ex = Assert.Throws<SerializationException>(() => (new RpdePage<SessionSeries>(new Uri("https://www.example.com/feed"), 1, "1", new List<RpdeItem<SessionSeries>>
             {
                 new RpdeItem<SessionSeries>
                 {
@@ -244,7 +282,7 @@ namespace OpenActive.NET.Test
                     Kind = RpdeKind.SessionSeries,
                     Data = null
                 }
-            }.ConvertAll<RpdeItem>(x => (RpdeItem)x))).ToString());
+            })).ToString());
 
             
             Assert.StartsWith("Items must be ordered", ex.Message);
@@ -253,7 +291,7 @@ namespace OpenActive.NET.Test
         [Fact]
         public void ToString_RpdeBodyUnorderedID_ReturnsExpectedException()
         {
-            Exception ex = Assert.Throws<SerializationException>(() => (new RpdePage(new Uri("https://www.example.com/feed"), 1, "1", new List<RpdeItem<SessionSeries>>
+            Exception ex = Assert.Throws<SerializationException>(() => (new RpdePage<SessionSeries>(new Uri("https://www.example.com/feed"), 1, "1", new List<RpdeItem<SessionSeries>>
             {
                 new RpdeItem<SessionSeries>
                 {
@@ -271,7 +309,7 @@ namespace OpenActive.NET.Test
                     Kind = RpdeKind.SessionSeries,
                     Data = null
                 }
-            }.ConvertAll<RpdeItem>(x => (RpdeItem)x))).ToString());
+            })).ToString());
 
             
             Assert.StartsWith("Items must be ordered", ex.Message);
@@ -280,7 +318,7 @@ namespace OpenActive.NET.Test
         [Fact]
         public void ToString_RpdeBodyDeletedWithData_ReturnsExpectedException()
         {
-            Exception ex = Assert.Throws<SerializationException>(() => (new RpdePage(new Uri("https://www.example.com/feed"), 1, "1", new List<RpdeItem<SessionSeries>>
+            Exception ex = Assert.Throws<SerializationException>(() => (new RpdePage<SessionSeries>(new Uri("https://www.example.com/feed"), 1, "1", new List<RpdeItem<SessionSeries>>
             {
                 new RpdeItem<SessionSeries>
                 {
@@ -298,7 +336,7 @@ namespace OpenActive.NET.Test
                     Kind = RpdeKind.SessionSeries,
                     Data = @event
                 }
-            }.ConvertAll<RpdeItem>(x => (RpdeItem)x))).ToString());
+            })).ToString());
 
             
             Assert.StartsWith("Deleted items must not contain data", ex.Message);
@@ -308,7 +346,7 @@ namespace OpenActive.NET.Test
         [Fact]
         public void ToString_RpdeBodyFirstItemInFeed_ReturnsExpectedException()
         {
-            Exception ex = Assert.Throws<SerializationException>(() => (new RpdePage(new Uri("https://www.example.com/feed"), 4, "2", new List<RpdeItem<SessionSeries>>
+            Exception ex = Assert.Throws<SerializationException>(() => (new RpdePage<SessionSeries>(new Uri("https://www.example.com/feed"), 4, "2", new List<RpdeItem<SessionSeries>>
             {
                 new RpdeItem<SessionSeries>
                 {
@@ -326,7 +364,7 @@ namespace OpenActive.NET.Test
                     Kind = RpdeKind.SessionSeries,
                     Data = null
                 }
-            }.ConvertAll<RpdeItem>(x => (RpdeItem)x))).ToString());
+            })).ToString());
 
             
             Assert.StartsWith("First item in the feed must never have same", ex.Message);
@@ -340,7 +378,7 @@ namespace OpenActive.NET.Test
         [Fact]
         public void ToString_RpdeBodyIntUnorderedModified_ReturnsExpectedException()
         {
-            Exception ex = Assert.Throws<SerializationException>(() => (new RpdePage(new Uri("https://www.example.com/feed"), 1, 1, new List<RpdeItem<SessionSeries>>
+            Exception ex = Assert.Throws<SerializationException>(() => (new RpdePage<SessionSeries>(new Uri("https://www.example.com/feed"), 1, 1, new List<RpdeItem<SessionSeries>>
             {
                 new RpdeItem<SessionSeries>
                 {
@@ -358,7 +396,7 @@ namespace OpenActive.NET.Test
                     Kind = RpdeKind.SessionSeries,
                     Data = null
                 }
-            }.ConvertAll<RpdeItem>(x => (RpdeItem)x))).ToString());
+            })).ToString());
 
             
             Assert.StartsWith("Items must be ordered", ex.Message);
@@ -367,7 +405,7 @@ namespace OpenActive.NET.Test
         [Fact]
         public void ToString_RpdeBodyIntUnorderedID_ReturnsExpectedException()
         {
-            Exception ex = Assert.Throws<SerializationException>(() => (new RpdePage(new Uri("https://www.example.com/feed"), 1, 1, new List<RpdeItem<SessionSeries>>
+            Exception ex = Assert.Throws<SerializationException>(() => (new RpdePage<SessionSeries>(new Uri("https://www.example.com/feed"), 1, 1, new List<RpdeItem<SessionSeries>>
             {
                 new RpdeItem<SessionSeries>
                 {
@@ -385,7 +423,7 @@ namespace OpenActive.NET.Test
                     Kind = RpdeKind.SessionSeries,
                     Data = null
                 }
-            }.ConvertAll<RpdeItem>(x => (RpdeItem)x))).ToString());
+            })).ToString());
 
             
             Assert.StartsWith("Items must be ordered", ex.Message);
@@ -394,7 +432,7 @@ namespace OpenActive.NET.Test
         [Fact]
         public void ToString_RpdeBodyIntDeletedWithData_ReturnsExpectedException()
         {
-            Exception ex = Assert.Throws<SerializationException>(() => (new RpdePage(new Uri("https://www.example.com/feed"), 1, 1, new List<RpdeItem<SessionSeries>>
+            Exception ex = Assert.Throws<SerializationException>(() => (new RpdePage<SessionSeries>(new Uri("https://www.example.com/feed"), 1, 1, new List<RpdeItem<SessionSeries>>
             {
                 new RpdeItem<SessionSeries>
                 {
@@ -412,7 +450,7 @@ namespace OpenActive.NET.Test
                     Kind = RpdeKind.SessionSeries,
                     Data = @event
                 }
-            }.ConvertAll<RpdeItem>(x => (RpdeItem)x))).ToString());
+            })).ToString());
 
             
             Assert.StartsWith("Deleted items must not contain data", ex.Message);
@@ -422,7 +460,7 @@ namespace OpenActive.NET.Test
         [Fact]
         public void ToString_RpdeBodyIntFirstItemInFeed_ReturnsExpectedException()
         {
-            Exception ex = Assert.Throws<SerializationException>(() => (new RpdePage(new Uri("https://www.example.com/feed"), 4, 2, new List<RpdeItem<SessionSeries>>
+            Exception ex = Assert.Throws<SerializationException>(() => (new RpdePage<SessionSeries>(new Uri("https://www.example.com/feed"), 4, 2, new List<RpdeItem<SessionSeries>>
             {
                 new RpdeItem<SessionSeries>
                 {
@@ -440,7 +478,7 @@ namespace OpenActive.NET.Test
                     Kind = RpdeKind.SessionSeries,
                     Data = null
                 }
-            }.ConvertAll<RpdeItem>(x => (RpdeItem)x))).ToString());
+            })).ToString());
 
             
             Assert.StartsWith("First item in the feed must never have same", ex.Message);
@@ -457,7 +495,7 @@ namespace OpenActive.NET.Test
         [Fact]
         public void ToString_RpdeBodyChangeNumberUnorderedModified_ReturnsExpectedException()
         {
-            Exception ex = Assert.Throws<SerializationException>(() => (new RpdePage(new Uri("https://www.example.com/feed"), 1, new List<RpdeItem<SessionSeries>>
+            Exception ex = Assert.Throws<SerializationException>(() => (new RpdePage<SessionSeries>(new Uri("https://www.example.com/feed"), 1, new List<RpdeItem<SessionSeries>>
             {
                 new RpdeItem<SessionSeries>
                 {
@@ -475,7 +513,7 @@ namespace OpenActive.NET.Test
                     Kind = RpdeKind.SessionSeries,
                     Data = null
                 }
-            }.ConvertAll<RpdeItem>(x => (RpdeItem)x))).ToString());
+            })).ToString());
 
             
             Assert.StartsWith("Items must be ordered", ex.Message);
@@ -484,7 +522,7 @@ namespace OpenActive.NET.Test
         [Fact]
         public void ToString_RpdeBodyChangeNumberUnorderedID_ReturnsExpectedException()
         {
-            Exception ex = Assert.Throws<SerializationException>(() => (new RpdePage(new Uri("https://www.example.com/feed"), 1, new List<RpdeItem<SessionSeries>>
+            Exception ex = Assert.Throws<SerializationException>(() => (new RpdePage<SessionSeries>(new Uri("https://www.example.com/feed"), 1, new List<RpdeItem<SessionSeries>>
             {
                 new RpdeItem<SessionSeries>
                 {
@@ -502,7 +540,7 @@ namespace OpenActive.NET.Test
                     Kind = RpdeKind.SessionSeries,
                     Data = null
                 }
-            }.ConvertAll<RpdeItem>(x => (RpdeItem)x))).ToString());
+            })).ToString());
 
             
             Assert.StartsWith("Items must be ordered", ex.Message);
@@ -511,7 +549,7 @@ namespace OpenActive.NET.Test
         [Fact]
         public void ToString_RpdeBodyChangeNumberDeletedWithData_ReturnsExpectedException()
         {
-            Exception ex = Assert.Throws<SerializationException>(() => (new RpdePage(new Uri("https://www.example.com/feed"), 1, new List<RpdeItem<SessionSeries>>
+            Exception ex = Assert.Throws<SerializationException>(() => (new RpdePage<SessionSeries>(new Uri("https://www.example.com/feed"), 1, new List<RpdeItem<SessionSeries>>
             {
                 new RpdeItem<SessionSeries>
                 {
@@ -529,7 +567,7 @@ namespace OpenActive.NET.Test
                     Kind = RpdeKind.SessionSeries,
                     Data = @event
                 }
-            }.ConvertAll<RpdeItem>(x => (RpdeItem)x))).ToString());
+            })).ToString());
 
             
             Assert.StartsWith("Deleted items must not contain data", ex.Message);
@@ -539,7 +577,7 @@ namespace OpenActive.NET.Test
         [Fact]
         public void ToString_RpdeBodyChangeNumberFirstItemInFeed_ReturnsExpectedException()
         {
-            Exception ex = Assert.Throws<SerializationException>(() => (new RpdePage(new Uri("https://www.example.com/feed"), 4, new List<RpdeItem<SessionSeries>>
+            Exception ex = Assert.Throws<SerializationException>(() => (new RpdePage<SessionSeries>(new Uri("https://www.example.com/feed"), 4, new List<RpdeItem<SessionSeries>>
             {
                 new RpdeItem<SessionSeries>
                 {
@@ -557,7 +595,7 @@ namespace OpenActive.NET.Test
                     State = RpdeState.Deleted,
                     Data = null
                 }
-            }.ConvertAll<RpdeItem>(x => (RpdeItem)x))).ToString());
+            })).ToString());
 
             
             Assert.StartsWith("First item in the feed must never have same", ex.Message);
@@ -567,7 +605,7 @@ namespace OpenActive.NET.Test
         [Fact]
         public void ToString_RpdeBodyMissingPros_ReturnsExpectedException()
         {
-            Exception ex = Assert.Throws<SerializationException>(() => (new RpdePage(new Uri("https://www.example.com/feed"), 1, new List<RpdeItem<SessionSeries>>
+            Exception ex = Assert.Throws<SerializationException>(() => (new RpdePage<SessionSeries>(new Uri("https://www.example.com/feed"), 1, new List<RpdeItem<SessionSeries>>
             {
                 new RpdeItem<SessionSeries>
                 {
@@ -583,7 +621,7 @@ namespace OpenActive.NET.Test
                     State = RpdeState.Deleted,
                     Data = null
                 }
-            }.ConvertAll<RpdeItem>(x => (RpdeItem)x))).ToString());
+            })).ToString());
 
             Assert.StartsWith("All RPDE feed items must include", ex.Message);
         }

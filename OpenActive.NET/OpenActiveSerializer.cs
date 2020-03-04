@@ -102,12 +102,21 @@ namespace OpenActive.NET
 
 
         /// <summary>
-        /// Returns the JSON-LD representation of an RpdePage.
+        /// Returns the JSON-LD representation of an RpdePage, when the item data type is known at compile time.
         /// </summary>
         /// <returns>
         /// A <see cref="string" /> that represents the JSON representation of the RPDE page.
         /// </returns>
-        public static string SerializeRpdePage(RpdePage obj) => JsonConvert.SerializeObject(obj, RpdePage.SerializerSettings);
+        public static string SerializeRpdePage<T>(RpdePage<T> obj) where T : Schema.NET.Thing => JsonConvert.SerializeObject(obj, RpdePage<T>.SerializerSettings);
+
+
+        /// <summary>
+        /// Returns the JSON-LD representation of an RpdePage, when the item data type is known at runtime.
+        /// </summary>
+        /// <returns>
+        /// A <see cref="string" /> that represents the JSON representation of the RPDE page.
+        /// </returns>
+        public static string SerializeRpdePage(RpdePage<Schema.NET.Thing> obj) => SerializeRpdePage<Schema.NET.Thing>(obj);
 
 
         /// <summary>
@@ -143,11 +152,19 @@ namespace OpenActive.NET
         public static List<T> DeserializeList<T>(string str) where T : Schema.NET.JsonLdObject => JsonConvert.DeserializeObject<List<T>>(PrepareForDeserialization(str), DeserializerSettings);
 
         /// <summary>
-        /// Returns a strongly typed model of the PPDE page representation provided.
+        /// Returns a strongly typed model of the RPDE page representation provided.
         /// </summary>
         /// <param name="str">JSON string</param>
         /// <returns>Strongly typed RPDE model</returns>
-        public static RpdePage DeserializeRpdePage(string str) => JsonConvert.DeserializeObject<RpdePage>(str, RpdePage.SerializerSettings);
+        public static RpdePage<Schema.NET.Thing> DeserializeRpdePage(string str) => DeserializeRpdePage<Schema.NET.Thing>(str);
+
+        /// <summary>
+        /// Returns a strongly typed model of the RPDE page representation provided, for a specific type of item data.
+        /// </summary>
+        /// <typeparam name="T">Type of schema.org item data to deserialize (can use Thing for any)</typeparam>
+        /// <param name="str">JSON string</param>
+        /// <returns>Strongly typed RPDE model</returns>
+        public static RpdePage<T> DeserializeRpdePage<T>(string str) where T : Schema.NET.Thing => JsonConvert.DeserializeObject<RpdePage<T>>(str, RpdePage<T>.SerializerSettings);
 
 
         /// <summary>

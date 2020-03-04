@@ -22,10 +22,10 @@ OpenActive aims to provide strongly typed models for all classes defined in the 
     - [`OpenActiveSerializer.Serialize<T>(T obj)`](#openactiveserializerserializett-obj)
     - [`OpenActiveSerializer.SerializeList<T>(List<T> obj)`](#openactiveserializerserializelisttlistt-obj)
     - [`OpenActiveSerializer.SerializeToHtmlEmbeddableString<T>(T obj)`](#openactiveserializerserializetohtmlembeddablestringtt-obj)
-    - [`OpenActiveSerializer.SerializeRpdePage(RpdePage obj)`](#openactiveserializerserializerpdepagerpdepage-obj)
+    - [`OpenActiveSerializer.SerializeRpdePage<T>(RpdePage obj)`](#openactiveserializerserializerpdepagetrpdepage-obj)
     - [`OpenActiveSerializer.Deserialize<T>(string str)`](#openactiveserializerdeserializetstring-str)
     - [`OpenActiveSerializer.DeserializeList<T>(string str)`](#openactiveserializerdeserializelisttstring-str)
-    - [`OpenActiveSerializer.DeserializeRpdePage(string str)`](#openactiveserializerdeserializerpdepagestring-str)
+    - [`OpenActiveSerializer.DeserializeRpdePage<T>(string str)`](#openactiveserializerdeserializerpdepagetstring-str)
 - [Contributing](#contributing)
 
 ## Requirements
@@ -189,9 +189,9 @@ To publish an OpenActive data feed (see this [video explainer](https://developer
 Creates a new RPDE Page based on the RPDE Items provided using the [Modified Timestamp and ID Ordering Strategy](https://www.w3.org/2017/08/realtime-paged-data-exchange/#modified-timestamp-and-id), given the `afterTimestamp` and `afterId` parameters of the current query. Also validates that the items are in the correct order, throwing a `SerializationException` if this is not the case.
 
 ```C#
-var items = new List<RpdeItem>
+var items = new List<RpdeItem<SessionSeries>>
 {
-    new RpdeItem
+    new RpdeItem<SessionSeries>
     {
         Id = "1",
         Modified = 3,
@@ -199,7 +199,7 @@ var items = new List<RpdeItem>
         Kind = RpdeKind.SessionSeries,
         Data = @event
     },
-    new RpdeItem
+    new RpdeItem<SessionSeries>
     {
         Id = "2",
         Modified = 4,
@@ -209,7 +209,7 @@ var items = new List<RpdeItem>
     }
 };
 
-var jsonLd = new RpdePage(new Uri("https://www.example.com/feed"), 1, "1", items).ToString();
+var jsonLd = new RpdePage<SessionSeries>(new Uri("https://www.example.com/feed"), 1, "1", items).ToString();
 ```
 
 
@@ -220,9 +220,9 @@ var jsonLd = new RpdePage(new Uri("https://www.example.com/feed"), 1, "1", items
 Creates a new RPDE Page based on the RPDE Items provided using the [Incrementing Unique Change Number Ordering Strategy](https://www.w3.org/2017/08/realtime-paged-data-exchange/#incrementing-unique-change-number), given the `afterChangeNumber` parameter of the current query. Also validates that the items are in the correct order, throwing a `SerializationException` if this is not the case.
 
 ```C#
-var items = new List<RpdeItem>
+var items = new List<RpdeItem<SessionSeries>>
 {
-    new RpdeItem
+    new RpdeItem<SessionSeries>
     {
         Id = "1",
         Modified = 3,
@@ -230,7 +230,7 @@ var items = new List<RpdeItem>
         Kind = RpdeKind.SessionSeries,
         Data = @event
     },
-    new RpdeItem
+    new RpdeItem<SessionSeries>
     {
         Id = "2",
         Modified = 4,
@@ -240,7 +240,7 @@ var items = new List<RpdeItem>
     }
 };
 
-var jsonLd = new RpdePage(new Uri("https://www.example.com/feed"), 2, items).ToString();
+var jsonLd = new RpdePage<SessionSeries>(new Uri("https://www.example.com/feed"), 2, items).ToString();
 ```
 
 ### Full RPDE Example
@@ -256,7 +256,7 @@ public abstract class RPDEBase<DatabaseType> where DatabaseType : RPDEBase<Datab
     
     protected abstract Schema.NET.Thing ConvertToOpenActiveModel(DatabaseType record, string baseUrl);
 
-    private async Task<RpdePage> GetRPDEPage(long? afterChangeNumber, string feedUrl, string baseUrl, int limit)
+    private async Task<RpdePage<Schema.NET.Thing>> GetRPDEPage(long? afterChangeNumber, string feedUrl, string baseUrl, int limit)
     {
         var items = new List<RpdeItem>();
 
@@ -282,7 +282,7 @@ public abstract class RPDEBase<DatabaseType> where DatabaseType : RPDEBase<Datab
             }).ToList();
         }
 
-        return new RpdePage(feedUrl, afterChangeNumber, items);
+        return new RpdePage<Schema.NET.Thing>(feedUrl, afterChangeNumber, items);
     }
     
     public static async Task<HttpResponseMessage> ServeRPDEPage(HttpRequestMessage req, int limit)
@@ -428,7 +428,7 @@ Value of `jsonLd`:
 ```
 
 
-### `OpenActiveSerializer.SerializeRpdePage(RpdePage obj)`
+### `OpenActiveSerializer.SerializeRpdePage<T>(RpdePage obj)`
 Returns the serialized representation of an `RpdePage`. Note that `OpenActiveSerializer.Serialize<T>` cannot be used on an `RpdePage`, as RPDE itself is not a JSON-LD based format.
 
 
@@ -444,7 +444,7 @@ Hence `OpenActiveSerializer.Deserialize<SessionSeries>(eventJson);` would return
 Returns a strongly typed list of models of the given type of the JSON-LD representation provided.
 
 
-### `OpenActiveSerializer.DeserializeRpdePage(string str)`
+### `OpenActiveSerializer.DeserializeRpdePage<T>(string str)`
 Returns a strongly typed model of the RPDE page provided.
 
 

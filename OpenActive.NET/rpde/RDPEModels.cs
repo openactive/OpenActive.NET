@@ -17,23 +17,7 @@ namespace OpenActive.NET.Rpde.Version1
     /// </summary>
     /// <typeparam name="T">Type of the data contained within the RpdeItem</typeparam>
     [DataContract]
-    public class RpdeItem<T> : RpdeItem where T : Schema.NET.Thing
-    {
-        [DataMember(Name = "data", EmitDefaultValue = false, Order = 5)]
-        [JsonConverter(typeof(OpenActiveThingConverter))]
-        public new T Data
-        {
-            get {
-                return (T)base.Data;
-            }
-            set {
-                base.Data = value;
-            }
-        }
-    }
-
-    [DataContract]
-    public class RpdeItem
+    public class RpdeItem<T>
     {
         [DataMember(Name = "state", EmitDefaultValue = false, Order = 1)]
         public RpdeState? State { get; set; }
@@ -50,12 +34,12 @@ namespace OpenActive.NET.Rpde.Version1
     }
 
     [DataContract]
-    public class RpdePage
+    public class RpdePage<T> where T : Schema.NET.Thing
     {
         [DataMember(Name = "next", EmitDefaultValue = false, Order = 1)]
         public string Next { get; set; }
         [DataMember(Name = "items", EmitDefaultValue = false, Order = 2)]
-        public List<RpdeItem> Items { get; set; }
+        public virtual List<RpdeItem<T>> Items { get; set; }
         [DataMember(Name = "license", EmitDefaultValue = false, Order = 3)]
         public string License { get; set; } = "https://creativecommons.org/licenses/by/4.0/";
 
@@ -109,7 +93,7 @@ namespace OpenActive.NET.Rpde.Version1
         /// <param name="afterTimestamp">The afterTimestamp query parameter value of the current request.</param>
         /// <param name="afterId">The afterId query parameter value of the current request.</param>
         /// <param name="items">Items to include in the RPDE Page</param>
-        public RpdePage(Uri feedBaseUrl, long? afterTimestamp, ComparableSingleValue<long, string>? afterId, List<RpdeItem> items)
+        public RpdePage(Uri feedBaseUrl, long? afterTimestamp, ComparableSingleValue<long, string>? afterId, List<RpdeItem<T>> items)
         {
             this.Items = items;
             SetNextModifiedID(feedBaseUrl, afterTimestamp, afterId);
@@ -123,7 +107,7 @@ namespace OpenActive.NET.Rpde.Version1
         /// <param name="feedBaseUrl">The base URL of the feed, used to construct the "next" URL</param>
         /// <param name="afterChangeNumber">The afterChangeNumber query parameter value of the current request</param>
         /// <param name="items">Items to include in the RPDE Page</param>
-        public RpdePage(Uri feedBaseUrl, long? afterChangeNumber, List<RpdeItem> items)
+        public RpdePage(Uri feedBaseUrl, long? afterChangeNumber, List<RpdeItem<T>> items)
         {
             this.Items = items;
             SetNextChangeNumber(feedBaseUrl, afterChangeNumber);
