@@ -148,7 +148,7 @@ namespace OpenActive.NET
         /// </summary>
         [DataMember(Name = "beta:video", EmitDefaultValue = false, Order = 1013)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual List<Schema.NET.VideoObject> Video { get; set; }
+        public virtual List<VideoObject> Video { get; set; }
 
 
         /// <summary>

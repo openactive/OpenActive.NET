@@ -128,7 +128,7 @@ namespace OpenActive.NET.Test
             Description = "",
             FormattedDescription = "",
             IsCoached = false,
-            Video = new List<Schema.NET.VideoObject> { new Schema.NET.VideoObject() { Url = new Uri("https://example.com") } },
+            Video = new List<VideoObject> { new VideoObject() { Url = new Uri("https://example.com") } },
             AccessibilitySupport = new List<Concept> { },
             Level = new List<string> { "" },
             Image = new List<ImageObject> { new ImageObject() { Url = new Uri("https://example.com") } },
@@ -139,7 +139,7 @@ namespace OpenActive.NET.Test
                   Description = "",
                   Url = new Uri("https://example.com"),
                   Logo =  new ImageObject() { Url = new Uri("https://example.com") },
-                  Video = new List<Schema.NET.VideoObject> { new Schema.NET.VideoObject() { Url = new Uri("https://example.com") } }
+                  Video = new List<VideoObject> { new VideoObject() { Url = new Uri("https://example.com") } }
               },
             AgeRange = new QuantitativeValue()
               {
@@ -176,14 +176,14 @@ namespace OpenActive.NET.Test
                 Telephone = "",
                 Url = new Uri("https://example.com"),
                 Logo = new ImageObject() { Url = new Uri("https://example.com") },
-                Video = new List<Schema.NET.VideoObject> { new Schema.NET.VideoObject() { Url = new Uri("https://example.com") } },
+                Video = new List<VideoObject> { new VideoObject() { Url = new Uri("https://example.com") } },
                 Email = "",
                 SameAs = new List<Uri>() { new Uri("https://example.com"), new Uri("https://example.com") }
             }
         };
 
         private readonly string json =
-        "{\"@context\":[\"https://openactive.io/\",\"https://openactive.io/ns-beta\"],\"@type\":\"SessionSeries\",\"@id\":\"https://example.com\",\"accessibilitySupport\":[],\"activity\":[{\"@type\":\"Concept\",\"@id\":\"https://example.com\",\"inScheme\":\"https://example.com\"},{\"@type\":\"Concept\",\"@id\":\"https://example.com\",\"inScheme\":\"https://example.com\"},{\"@type\":\"Concept\",\"@id\":\"https://example.com\",\"inScheme\":\"https://example.com\"}],\"ageRange\":{\"@type\":\"QuantitativeValue\",\"maxValue\":0,\"minValue\":2},\"category\":[\"\"],\"duration\":\"PT5H\",\"eventSchedule\":[{\"@type\":\"PartialSchedule\",\"duration\":\"PT2H\",\"endTime\":\"16:20\",\"startTime\":\"16:20\"}],\"genderRestriction\":\"https://openactive.io/MaleOnly\",\"image\":[{\"@type\":\"ImageObject\",\"url\":\"https://example.com\"}],\"isCoached\":false,\"level\":[\"\"],\"location\":{\"@type\":\"Place\",\"address\":{\"@type\":\"PostalAddress\"},\"amenityFeature\":[{\"@type\":\"Showers\",\"name\":\"Showers\",\"value\":true}],\"geo\":{\"@type\":\"GeoCoordinates\",\"latitude\":0.1,\"longitude\":0.2},\"image\":[{\"@type\":\"ImageObject\",\"url\":\"https://example.com\"}],\"url\":\"https://example.com\"},\"offers\":[{\"@type\":\"Offer\",\"acceptedPaymentMethod\":[\"http://purl.org/goodrelations/v1#Cash\"],\"ageRange\":{\"@type\":\"QuantitativeValue\",\"maxValue\":2,\"minValue\":0},\"price\":0}],\"organizer\":{\"@type\":\"Organization\",\"logo\":{\"@type\":\"ImageObject\",\"url\":\"https://example.com\"},\"sameAs\":[\"https://example.com\",\"https://example.com\"],\"url\":\"https://example.com\",\"beta:video\":[{\"@type\":\"VideoObject\",\"url\":\"https://example.com\"}]},\"programme\":{\"@type\":\"Brand\",\"@id\":\"https://example.com\",\"logo\":{\"@type\":\"ImageObject\",\"url\":\"https://example.com\"},\"url\":\"https://example.com\",\"beta:video\":[{\"@type\":\"VideoObject\",\"url\":\"https://example.com\"}]},\"beta:video\":[{\"@type\":\"VideoObject\",\"url\":\"https://example.com\"}],\"beta:isWheelchairAccessible\":false}";
+        "{\"@context\":[\"https://openactive.io/\",\"https://openactive.io/ns-beta\"],\"@type\":\"SessionSeries\",\"@id\":\"https://example.com\",\"accessibilitySupport\":[],\"activity\":[{\"@type\":\"Concept\",\"@id\":\"https://example.com\",\"inScheme\":\"https://example.com\"},{\"@type\":\"Concept\",\"@id\":\"https://example.com\",\"inScheme\":\"https://example.com\"},{\"@type\":\"Concept\",\"@id\":\"https://example.com\",\"inScheme\":\"https://example.com\"}],\"ageRange\":{\"@type\":\"QuantitativeValue\",\"maxValue\":0,\"minValue\":2},\"category\":[\"\"],\"duration\":\"PT5H\",\"eventSchedule\":[{\"@type\":\"PartialSchedule\",\"duration\":\"PT2H\",\"endTime\":\"16:20\",\"startTime\":\"16:20\"}],\"genderRestriction\":\"https://openactive.io/MaleOnly\",\"image\":[{\"@type\":\"ImageObject\",\"url\":\"https://example.com\"}],\"isCoached\":false,\"level\":[\"\"],\"location\":{\"@type\":\"Place\",\"address\":{\"@type\":\"PostalAddress\"},\"amenityFeature\":[{\"@type\":\"Showers\",\"name\":\"Showers\",\"value\":true}],\"geo\":{\"@type\":\"GeoCoordinates\",\"latitude\":0.1,\"longitude\":0.2},\"image\":[{\"@type\":\"ImageObject\",\"url\":\"https://example.com\"}],\"url\":\"https://example.com\"},\"offers\":[{\"@type\":\"Offer\",\"acceptedPaymentMethod\":[\"http://purl.org/goodrelations/v1#Cash\"],\"ageRange\":{\"@type\":\"QuantitativeValue\",\"maxValue\":2,\"minValue\":0},\"price\":0}],\"organizer\":{\"@type\":\"Organization\",\"logo\":{\"@type\":\"ImageObject\",\"url\":\"https://example.com\"},\"sameAs\":[\"https://example.com\",\"https://example.com\"],\"url\":\"https://example.com\",\"beta:video\":[{\"@type\":\"VideoObject\",\"url\":\"https://example.com\"}]},\"programme\":{\"@type\":\"Brand\",\"@id\":\"https://example.com\",\"logo\":{\"@type\":\"ImageObject\",\"url\":\"https://example.com\"},\"url\":\"https://example.com\",\"beta:video\":[{\"@type\":\"VideoObject\",\"url\":\"https://example.com\"}]},\"beta:isWheelchairAccessible\":false,\"beta:video\":[{\"@type\":\"VideoObject\",\"url\":\"https://example.com\"}]}";
 
         private readonly List<RpdeItem> @feedItems = new List<RpdeItem>
         {

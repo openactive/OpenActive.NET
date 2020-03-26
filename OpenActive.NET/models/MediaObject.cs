@@ -8,10 +8,10 @@ namespace OpenActive.NET
 {
     /// <summary>
     /// 
-    /// This type is derived from https://schema.org/Brand, which means that any of this type's properties within schema.org may also be used.
+    /// This type is derived from https://schema.org/MediaObject, which means that any of this type's properties within schema.org may also be used.
     /// </summary>
     [DataContract]
-    public partial class Brand : Schema.NET.Brand
+    public partial class MediaObject : Schema.NET.MediaObject
     {
         /// <summary>
         /// Returns the JSON-LD representation of this instance.
@@ -44,70 +44,62 @@ namespace OpenActive.NET
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
         [DataMember(Name = "@type", Order = 1)]
-        public override string Type => "Brand";
+        public override string Type => "MediaObject";
 
         
         /// <summary>
-        /// A local non-URI identifier for the resource
+        /// Actual bytes of the media object, for example the image file or video file.
         /// </summary>
         /// <example>
         /// <code>
-        /// "identifier": "BR1234"
+        /// "contentUrl": "https://example.com/media/stayin/getfit"
         /// </code>
         /// </example>
-        [DataMember(Name = "identifier", EmitDefaultValue = false, Order = 7)]
+        [DataMember(Name = "contentUrl", EmitDefaultValue = false, Order = 7)]
         [JsonConverter(typeof(ValuesConverter))]
-        public new virtual SingleValues<long?, string, PropertyValue, List<PropertyValue>> Identifier { get; set; }
+        public new virtual Uri ContentUrl { get; set; }
 
 
         /// <summary>
-        /// The name of the brand.
+        /// A URL pointing to a player for a specific video. In general, this is the information in the src element of an embed tag and should not be the same as the content of the loc tag.
         /// </summary>
         /// <example>
         /// <code>
-        /// "name": "Play Ball!"
+        /// "embedUrl": "https://example.com/media/stayin/getfit"
         /// </code>
         /// </example>
-        [DataMember(Name = "name", EmitDefaultValue = false, Order = 8)]
+        [DataMember(Name = "embedUrl", EmitDefaultValue = false, Order = 8)]
         [JsonConverter(typeof(ValuesConverter))]
-        public new virtual string Name { get; set; }
+        public new virtual Uri EmbedUrl { get; set; }
 
 
         /// <summary>
-        /// A text description for the brand.
+        /// The height of the media in pixels.
         /// </summary>
         /// <example>
         /// <code>
-        /// "description": "Play Ball! is a series of games for people of all abilities."
+        /// "height": 300
         /// </code>
         /// </example>
-        [DataMember(Name = "description", EmitDefaultValue = false, Order = 9)]
+        [DataMember(Name = "height", EmitDefaultValue = false, Order = 9)]
         [JsonConverter(typeof(ValuesConverter))]
-        public new virtual string Description { get; set; }
+        public new virtual long? Height { get; set; }
 
 
         /// <summary>
-        /// The logo associated with the brand.
+        /// The URL for a thumbnail image for the media.
         /// </summary>
-        /// <example>
-        /// <code>
-        /// "logo": {
-        ///   "@type": "ImageObject",
-        ///   "url": "http://example.com/static/image/speedball_large.jpg"
-        /// }
-        /// </code>
-        /// </example>
-        [DataMember(Name = "logo", EmitDefaultValue = false, Order = 10)]
+        [DataMember(Name = "thumbnail", EmitDefaultValue = false, Order = 10)]
         [JsonConverter(typeof(ValuesConverter))]
-        public new virtual ImageObject Logo { get; set; }
+        public new virtual List<ImageObject> Thumbnail { get; set; }
 
 
         /// <summary>
-        /// A url where further information can be found for the brand.
+        /// The URL for the page containing the media.
         /// </summary>
         /// <example>
         /// <code>
-        /// "url": "http://example.com/play_ball"
+        /// "url": "https://example.com/media/stayin/getfit"
         /// </code>
         /// </example>
         [DataMember(Name = "url", EmitDefaultValue = false, Order = 11)]
@@ -116,14 +108,16 @@ namespace OpenActive.NET
 
 
         /// <summary>
-        /// [NOTICE: This is a beta field, and is highly likely to change in future versions of this library.] 
-        /// An related video object.
-        /// 
-        /// If you are using this property, please join the discussion at proposal [#88](https://github.com/openactive/modelling-opportunity-data/issues/88).
+        /// The width of the media in pixels.
         /// </summary>
-        [DataMember(Name = "beta:video", EmitDefaultValue = false, Order = 1012)]
+        /// <example>
+        /// <code>
+        /// "width": 400
+        /// </code>
+        /// </example>
+        [DataMember(Name = "width", EmitDefaultValue = false, Order = 12)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual List<VideoObject> Video { get; set; }
+        public new virtual long? Width { get; set; }
 
     }
 }

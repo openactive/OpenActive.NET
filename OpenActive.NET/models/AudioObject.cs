@@ -8,10 +8,10 @@ namespace OpenActive.NET
 {
     /// <summary>
     /// 
-    /// This type is derived from https://schema.org/SportsActivityLocation, which means that any of this type's properties within schema.org may also be used.
+    /// This type is derived from https://schema.org/AudioObject, which means that any of this type's properties within schema.org may also be used.
     /// </summary>
     [DataContract]
-    public partial class SportsActivityLocation : Schema.NET.SportsActivityLocation
+    public partial class AudioObject : MediaObject
     {
         /// <summary>
         /// Returns the JSON-LD representation of this instance.
@@ -44,19 +44,28 @@ namespace OpenActive.NET
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
         [DataMember(Name = "@type", Order = 1)]
-        public override string Type => "SportsActivityLocation";
+        public override string Type => "AudioObject";
+
+        
+        /// <summary>
+        /// The URL for a thumbnail image for the audio.
+        /// </summary>
+        [DataMember(Name = "thumbnail", EmitDefaultValue = false, Order = 7)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public override List<ImageObject> Thumbnail { get; set; }
+
 
         /// <summary>
-        /// While a `url` is not specified as an option in the Modelling Specification, it is necessary to link entities in RPDE.
+        /// The URL for the audio.
         /// </summary>
         /// <example>
         /// <code>
-        /// "containedInPlace": "http://www.example.org/api/locations/8958f9b8-2004-4e90-80ff-50c98a9b121d"
+        /// "url": "https://soundcloud.com/stayin/getfit"
         /// </code>
         /// </example>
-        [DataMember(Name = "containedInPlace", EmitDefaultValue = false, Order = 8)]
+        [DataMember(Name = "url", EmitDefaultValue = false, Order = 8)]
         [JsonConverter(typeof(ValuesConverter))]
-        public new virtual SingleValues<Uri, Place> ContainedInPlace { get; set; }
+        public override Uri Url { get; set; }
 
     }
 }

@@ -110,6 +110,10 @@ namespace OpenActive.NET
 
 
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
+        public override EventAttendanceModeEnumeration? EventAttendanceMode { get; set; }
+
+
+        [Obsolete("This property is disinherited in this type, and must not be used.", true)]
         public override List<Schedule> EventSchedule { get; set; }
 
 
@@ -125,7 +129,7 @@ namespace OpenActive.NET
         /// "facilityUse": "https://example.com/facility-use/1"
         /// </code>
         /// </example>
-        [DataMember(Name = "facilityUse", EmitDefaultValue = false, Order = 20)]
+        [DataMember(Name = "facilityUse", EmitDefaultValue = false, Order = 21)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual SingleValues<Uri, IndividualFacilityUse, FacilityUse> FacilityUse { get; set; }
 
@@ -170,7 +174,7 @@ namespace OpenActive.NET
         /// "maximumUses": 16
         /// </code>
         /// </example>
-        [DataMember(Name = "maximumUses", EmitDefaultValue = false, Order = 29)]
+        [DataMember(Name = "maximumUses", EmitDefaultValue = false, Order = 30)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual long? MaximumUses { get; set; }
 
@@ -194,17 +198,9 @@ namespace OpenActive.NET
         /// }
         /// </code>
         /// </example>
-        [DataMember(Name = "offers", EmitDefaultValue = false, Order = 31)]
+        [DataMember(Name = "offers", EmitDefaultValue = false, Order = 32)]
         [JsonConverter(typeof(ValuesConverter))]
         public override List<Offer> Offers { get; set; }
-
-
-        [Obsolete("This property is disinherited in this type, and must not be used.", true)]
-        public override ILegalEntity Organizer { get; set; }
-
-
-        [Obsolete("This property is disinherited in this type, and must not be used.", true)]
-        public override List<Action> PotentialAction { get; set; }
 
 
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
@@ -223,7 +219,7 @@ namespace OpenActive.NET
         /// "remainingUses": 5
         /// </code>
         /// </example>
-        [DataMember(Name = "remainingUses", EmitDefaultValue = false, Order = 36)]
+        [DataMember(Name = "remainingUses", EmitDefaultValue = false, Order = 35)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual long? RemainingUses { get; set; }
 
@@ -240,7 +236,7 @@ namespace OpenActive.NET
         /// "startDate": "2018-01-27T12:00:00Z"
         /// </code>
         /// </example>
-        [DataMember(Name = "startDate", EmitDefaultValue = false, Order = 38)]
+        [DataMember(Name = "startDate", EmitDefaultValue = false, Order = 37)]
         [JsonConverter(typeof(ValuesConverter))]
         public override SingleValues<string, DateTimeOffset?> StartDate { get; set; }
 
@@ -254,7 +250,7 @@ namespace OpenActive.NET
         /// "endDate": "2018-01-27T12:00:00Z"
         /// </code>
         /// </example>
-        [DataMember(Name = "endDate", EmitDefaultValue = false, Order = 39)]
+        [DataMember(Name = "endDate", EmitDefaultValue = false, Order = 38)]
         [JsonConverter(typeof(ValuesConverter))]
         public override SingleValues<string, DateTimeOffset?> EndDate { get; set; }
 
@@ -277,7 +273,7 @@ namespace OpenActive.NET
         /// 
         /// If you are using this property, please join the discussion at proposal [#110](https://github.com/openactive/modelling-opportunity-data/issues/110).
         /// </summary>
-        [DataMember(Name = "beta:sportsActivityLocation", EmitDefaultValue = false, Order = 1043)]
+        [DataMember(Name = "beta:sportsActivityLocation", EmitDefaultValue = false, Order = 1042)]
         [JsonConverter(typeof(ValuesConverter))]
         public override List<SportsActivityLocation> SportsActivityLocation { get; set; }
 

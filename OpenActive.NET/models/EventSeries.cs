@@ -47,5 +47,8 @@ namespace OpenActive.NET
         public override string Type => "EventSeries";
 
         
+        [Obsolete("This property is disinherited in this type, and must not be used.", true)]
+        public override EventAttendanceModeEnumeration? EventAttendanceMode { get; set; }
+
     }
 }

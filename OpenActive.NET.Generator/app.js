@@ -67,7 +67,7 @@ function generateModelClassFiles(dataModelDirectory, extensions) {
     });
 
     // Converts the enum map into an array for ease of use
-    Object.keys(enumMap).filter(typeName => !includedInSchema(enumMap[typeName].namespace)).forEach(function (typeName) {
+    Object.keys(enumMap).filter(typeName => !includedInSchema(enumMap[typeName].namespace) || enumMap[typeName].isSchemaPending).forEach(function (typeName) {
         var thisEnum = enumMap[typeName];
 
         var pageName = "enums/" + typeName + ".cs";
@@ -487,7 +487,7 @@ function getDotNetBaseType(prefixedTypeName, enumMap, modelsMap, isExtension) {
             return "Uri";
         default:
             if (enumMap[typeName]) {
-                if (includedInSchema(enumMap[typeName].namespace)) {
+                if (includedInSchema(enumMap[typeName].namespace) && !enumMap[typeName].isSchemaPending) {
                     return "Schema.NET." + convertToCamelCase(typeName) + "?";
                 } else {
                     return convertToCamelCase(typeName) + "?";

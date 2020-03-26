@@ -294,30 +294,6 @@ namespace OpenActive.NET
 
 
         /// <summary>
-        /// The possible actions that a user may make. e.g. Book.
-        /// </summary>
-        /// <example>
-        /// <code>
-        /// "potentialAction": [
-        ///   {
-        ///     "name": "Book",
-        ///     "target": {
-        ///       "encodingType": "application/vnd.openactive.v1.0+json",
-        ///       "httpMethod": "POST",
-        ///       "type": "EntryPoint",
-        ///       "url": "https://example.com/orders"
-        ///     },
-        ///     "type": "Action"
-        ///   }
-        /// ]
-        /// </code>
-        /// </example>
-        [DataMember(Name = "potentialAction", EmitDefaultValue = false, Order = 21)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public new virtual List<Action> PotentialAction { get; set; }
-
-
-        /// <summary>
         /// The organisation responsible for providing the facility
         /// </summary>
         /// <example>
@@ -329,7 +305,7 @@ namespace OpenActive.NET
         /// }
         /// </code>
         /// </example>
-        [DataMember(Name = "provider", EmitDefaultValue = false, Order = 22)]
+        [DataMember(Name = "provider", EmitDefaultValue = false, Order = 21)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual Organization Provider { get; set; }
 
@@ -342,20 +318,9 @@ namespace OpenActive.NET
         /// "url": "https://example.com/facility-use/1234"
         /// </code>
         /// </example>
-        [DataMember(Name = "url", EmitDefaultValue = false, Order = 23)]
+        [DataMember(Name = "url", EmitDefaultValue = false, Order = 22)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual Uri Url { get; set; }
-
-
-        /// <summary>
-        /// [NOTICE: This is a beta field, and is highly likely to change in future versions of this library.] 
-        /// A property that details whether the event is suitable for wheelchair access. Placed on Event as this field could be used to detail whether the Event is suitable, as well as the Place.
-        /// 
-        /// If you are using this property, please join the discussion at proposal [#166](https://github.com/openactive/modelling-opportunity-data/issues/166).
-        /// </summary>
-        [DataMember(Name = "beta:isWheelchairAccessible", EmitDefaultValue = false, Order = 1024)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public virtual bool? IsWheelchairAccessible { get; set; }
 
 
         /// <summary>
@@ -364,7 +329,7 @@ namespace OpenActive.NET
         /// 
         /// If you are using this property, please join the discussion at proposal [#1](https://github.com/openactive/facility-types/issues/1).
         /// </summary>
-        [DataMember(Name = "beta:facilitySetting", EmitDefaultValue = false, Order = 1025)]
+        [DataMember(Name = "beta:facilitySetting", EmitDefaultValue = false, Order = 1023)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual FacilitySettingType? FacilitySetting { get; set; }
 
@@ -375,7 +340,7 @@ namespace OpenActive.NET
         /// 
         /// If you are using this property, please join the discussion at proposal [#1](https://github.com/openactive/facility-types/issues/1).
         /// </summary>
-        [DataMember(Name = "beta:facilityType", EmitDefaultValue = false, Order = 1026)]
+        [DataMember(Name = "beta:facilityType", EmitDefaultValue = false, Order = 1024)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual List<Concept> FacilityType { get; set; }
 
@@ -386,7 +351,7 @@ namespace OpenActive.NET
         /// 
         /// If you are using this property, please join the discussion at proposal [#204](https://github.com/openactive/modelling-opportunity-data/issues/204).
         /// </summary>
-        [DataMember(Name = "beta:offerValidityPeriod", EmitDefaultValue = false, Order = 1027)]
+        [DataMember(Name = "beta:offerValidityPeriod", EmitDefaultValue = false, Order = 1025)]
         [JsonConverter(typeof(OpenActiveTimeSpanToISO8601DurationValuesConverter))]
         public virtual TimeSpan? OfferValidityPeriod { get; set; }
 
@@ -397,7 +362,7 @@ namespace OpenActive.NET
         /// 
         /// If you are using this property, please join the discussion at proposal [#110](https://github.com/openactive/modelling-opportunity-data/issues/110).
         /// </summary>
-        [DataMember(Name = "beta:sportsActivityLocation", EmitDefaultValue = false, Order = 1028)]
+        [DataMember(Name = "beta:sportsActivityLocation", EmitDefaultValue = false, Order = 1026)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual List<SportsActivityLocation> SportsActivityLocation { get; set; }
 
@@ -408,9 +373,20 @@ namespace OpenActive.NET
         /// 
         /// If you are using this property, please join the discussion at proposal [#88](https://github.com/openactive/modelling-opportunity-data/issues/88).
         /// </summary>
-        [DataMember(Name = "beta:video", EmitDefaultValue = false, Order = 1029)]
+        [DataMember(Name = "beta:video", EmitDefaultValue = false, Order = 1027)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual List<Schema.NET.VideoObject> Video { get; set; }
+        public virtual List<VideoObject> Video { get; set; }
+
+
+        /// <summary>
+        /// [NOTICE: This is a beta field, and is highly likely to change in future versions of this library.] 
+        /// A property that details whether the event is suitable for wheelchair access. Placed on Event as this field could be used to detail whether the Event is suitable, as well as the Place.
+        /// 
+        /// If you are using this property, please join the discussion at proposal [#166](https://github.com/openactive/modelling-opportunity-data/issues/166).
+        /// </summary>
+        [DataMember(Name = "beta:isWheelchairAccessible", EmitDefaultValue = false, Order = 1028)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public virtual bool? IsWheelchairAccessible { get; set; }
 
 
         /// <summary>
@@ -419,7 +395,7 @@ namespace OpenActive.NET
         /// 
         /// If you are using this property, please join the discussion at proposal [#2](https://github.com/openactive/ns-beta/issues/2).
         /// </summary>
-        [DataMember(Name = "beta:formattedDescription", EmitDefaultValue = false, Order = 1030)]
+        [DataMember(Name = "beta:formattedDescription", EmitDefaultValue = false, Order = 1029)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual string FormattedDescription { get; set; }
 
