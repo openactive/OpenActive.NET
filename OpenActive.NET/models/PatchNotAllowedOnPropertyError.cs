@@ -8,10 +8,10 @@ namespace OpenActive.NET
 {
     /// <summary>
     /// 
-    /// This type is derived from https://schema.org/EntryPoint, which means that any of this type's properties within schema.org may also be used.
+    /// This type is derived from https://schema.org/Thing, which means that any of this type's properties within schema.org may also be used.
     /// </summary>
     [DataContract]
-    public partial class EntryPoint : Schema.NET.EntryPoint
+    public partial class PatchNotAllowedOnPropertyError : OpenBookingError
     {
         /// <summary>
         /// Returns the JSON-LD representation of this instance.
@@ -44,41 +44,8 @@ namespace OpenActive.NET
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
         [DataMember(Name = "@type", Order = 1)]
-        public override string Type => "EntryPoint";
+        public override string Type => "PatchNotAllowedOnPropertyError";
 
         
-        /// Must always be present and set to <code>
-        /// "encodingType": "application/vnd.openactive.v1.0+json"
-        /// </code>
-        [DataMember(Name = "encodingType", EmitDefaultValue = false, Order = 7)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public new virtual string EncodingType { get; set; }
-
-
-        /// <summary>
-        /// An HTTP method that specifies the appropriate HTTP method for a request to an HTTP EntryPoint. Values are capitalized strings as used in HTTP.
-        /// </summary>
-        /// <example>
-        /// <code>
-        /// "httpMethod": "POST"
-        /// </code>
-        /// </example>
-        [DataMember(Name = "httpMethod", EmitDefaultValue = false, Order = 8)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public new virtual string HttpMethod { get; set; }
-
-
-        /// <summary>
-        /// URL of the item
-        /// </summary>
-        /// <example>
-        /// <code>
-        /// "urlTemplate": "https://example.com/orders{/var}"
-        /// </code>
-        /// </example>
-        [DataMember(Name = "urlTemplate", EmitDefaultValue = false, Order = 9)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public new virtual Uri UrlTemplate { get; set; }
-
     }
 }

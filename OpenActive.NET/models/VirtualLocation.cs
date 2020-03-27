@@ -85,16 +85,5 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public virtual Uri Url { get; set; }
 
-
-        /// <summary>
-        /// [NOTICE: This is a beta field, and is highly likely to change in future versions of this library.] 
-        /// Indicates the maximum number of connections to a shared virtual space
-        /// 
-        /// If you are using this property, please join the discussion at proposal [#226](https://github.com/openactive/modelling-opportunity-data/issues/226).
-        /// </summary>
-        [DataMember(Name = "beta:maximumVirtualAttendeeCapacity", EmitDefaultValue = false, Order = 1010)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public virtual long? MaximumVirtualAttendeeCapacity { get; set; }
-
     }
 }

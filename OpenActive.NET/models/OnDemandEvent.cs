@@ -48,7 +48,15 @@ namespace OpenActive.NET
 
         
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
+        public override EventAttendanceModeEnumeration? EventAttendanceMode { get; set; }
+
+
+        [Obsolete("This property is disinherited in this type, and must not be used.", true)]
         public override List<Schedule> EventSchedule { get; set; }
+
+
+        [Obsolete("This property is disinherited in this type, and must not be used.", true)]
+        public override Schema.NET.EventStatusType? EventStatus { get; set; }
 
 
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
@@ -57,6 +65,14 @@ namespace OpenActive.NET
 
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
         public override long? MaximumAttendeeCapacity { get; set; }
+
+
+        [Obsolete("This property is disinherited in this type, and must not be used.", true)]
+        public override long? MaximumVirtualAttendeeCapacity { get; set; }
+
+
+        [Obsolete("This property is disinherited in this type, and must not be used.", true)]
+        public override string MeetingPoint { get; set; }
 
 
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
@@ -80,26 +96,32 @@ namespace OpenActive.NET
 
 
         /// <summary>
-        /// An video, audio or other media that represents the actual recording of the OnDemandEvent.
+        /// Relates an `OnDemandEvent` to an `EventSeries`.
+        /// </summary>
+        [DataMember(Name = "superEvent", EmitDefaultValue = false, Order = 19)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public override Event SuperEvent { get; set; }
+
+
+        /// <summary>
+        /// An video, audio or other media that represents the actual recording of the `OnDemandEvent`.
         /// </summary>
         /// <example>
         /// <code>
-        /// "workFeatured": [
-        ///   {
-        ///     "@type": "VideoObject",
-        ///     "url": "https://www.youtube.com/watch?v=3fbCs0GVjgQ",
-        ///     "embedUrl": "https://www.youtube.com/embed/3fbCs0GVjgQ",
-        ///     "thumbnail": [
-        ///       {
-        ///         "@type": "ImageObject",
-        ///         "url": "http://example.com/static/image/speedball_thumbnail.jpg"
-        ///       }
-        ///     ]
-        ///   }
-        /// ]
+        /// "workFeatured": {
+        ///   "@type": "VideoObject",
+        ///   "url": "https://www.youtube.com/watch?v=3fbCs0GVjgQ",
+        ///   "embedUrl": "https://www.youtube.com/embed/3fbCs0GVjgQ",
+        ///   "thumbnail": [
+        ///     {
+        ///       "@type": "ImageObject",
+        ///       "url": "http://example.com/static/image/speedball_thumbnail.jpg"
+        ///     }
+        ///   ]
+        /// }
         /// </code>
         /// </example>
-        [DataMember(Name = "workFeatured", EmitDefaultValue = false, Order = 15)]
+        [DataMember(Name = "workFeatured", EmitDefaultValue = false, Order = 20)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual MediaObject WorkFeatured { get; set; }
 

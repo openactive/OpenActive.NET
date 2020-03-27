@@ -8,10 +8,10 @@ namespace OpenActive.NET
 {
     /// <summary>
     /// 
-    /// This type is derived from https://schema.org/ReserveAction, which means that any of this type's properties within schema.org may also be used.
+    /// This type is derived from https://schema.org/Thing, which means that any of this type's properties within schema.org may also be used.
     /// </summary>
     [DataContract]
-    public partial class ReserveAction : Action
+    public partial class MethodNotAllowedError : OpenBookingError
     {
         /// <summary>
         /// Returns the JSON-LD representation of this instance.
@@ -44,7 +44,7 @@ namespace OpenActive.NET
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
         [DataMember(Name = "@type", Order = 1)]
-        public override string Type => "ReserveAction";
+        public override string Type => "MethodNotAllowedError";
 
         
     }
