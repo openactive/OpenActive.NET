@@ -89,29 +89,29 @@ function generateModelClassFiles(dataModelDirectory, extensions) {
 function augmentWithExtension(extModelGraph, models, extensionUrl, extensionPrefix, namespaces) {
     // Add classes first
     extModelGraph.forEach(function (node) {
-        if (node.type === 'Class' && Array.isArray(node.subClassOf) && node.subClassOf[0] != "schema:Enumeration") {
+        if (node['@type'] === 'Class' && Array.isArray(node.subClassOf) && node.subClassOf[0] != "schema:Enumeration") {
             // Only include subclasses for either OA or schema.org classes
             var subClasses = node.subClassOf.filter(prop => models[getPropNameFromFQP(prop)] || includedInSchema(prop));
             
             var model = subClasses.length > 0 ? {
-                "type": node.id,
+                "type": node['@id'],
                 // Include first relevant subClass in list (note this does not currently support multiple inheritance), which is discouraged in OA modelling anyway
                 "subClassOf": models[getPropNameFromFQP(subClasses[0])] ? "#" + getPropNameFromFQP(subClasses[0]) : expandPrefix(subClasses[0], false, namespaces)
             } :
             {
-                "type": node.id
+                "type": node['@id']
             };
 
-            models[getPropNameFromFQP(node.id)] = model;
+            models[getPropNameFromFQP(node['@id'])] = model;
         }
     });
 
     // Add properties to classes
     extModelGraph.forEach(function (node) {
-        if (node.type === 'Property') {
+        if (node['@type'] === 'Property') {
             var field = {
-                "fieldName": getPropNameFromFQP(node.id),
-                "alternativeTypes": node.rangeIncludes.map(type => expandPrefix(type, node["@container"] == "@list", namespaces)),
+                "fieldName": getPropNameFromFQP(node['@id']),
+                "alternativeTypes": node.rangeIncludes.map(type => expandPrefix(type, node['@container'] == '@list', namespaces)),
                 "description": [
                     node.comment + (node.discussionUrl ? '\n\nIf you are using this property, please join the discussion at proposal ' + renderGitHubIssueLink(node.discussionUrl) + '.' : '')
                 ],
@@ -134,11 +134,11 @@ function augmentWithExtension(extModelGraph, models, extensionUrl, extensionPref
 
 function augmentEnumsWithExtension(extModelGraph, enumMap, extensionUrl, extensionPrefix, namespaces) {
     extModelGraph.forEach(function (node) {
-        if (node.type === 'Class' && Array.isArray(node.subClassOf) && node.subClassOf[0] == "schema:Enumeration") {
+        if (node['@type'] === 'Class' && Array.isArray(node.subClassOf) && node.subClassOf[0] == "schema:Enumeration") {
             enumMap[node.label] = {
                 "namespace": namespaces[extensionPrefix],
                 "comment": node.comment,
-                "values": extModelGraph.filter(n => n.type == node.id).map(n => n.label),
+                "values": extModelGraph.filter(n => n['@type'] == node['@id']).map(n => n.label),
                 "extensionPrefix": extensionPrefix
             };
         }
