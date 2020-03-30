@@ -63,7 +63,7 @@
             var valuesType = objectType.GetUnderlyingTypeFromNullable();
             if (valuesType != null && valuesType == typeof(DateTimeOffset))
             {
-                return new DateTimeOffset(DateTime.ParseExact(reader.Value.ToString(), "HH:mm", CultureInfo.InvariantCulture.DateTimeFormat, DateTimeStyles.NoCurrentDateDefault | DateTimeStyles.AssumeUniversal | DateTimeStyles.AllowWhiteSpaces));
+                return new DateTimeOffset(DateTime.ParseExact(reader.Value.ToString(), "HH:mm", CultureInfo.InvariantCulture.DateTimeFormat, DateTimeStyles.NoCurrentDateDefault | DateTimeStyles.AssumeLocal | DateTimeStyles.AllowWhiteSpaces));
             }
 
             return base.ReadJson(reader, objectType, existingValue, serializer);
