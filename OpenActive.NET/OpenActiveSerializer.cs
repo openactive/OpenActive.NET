@@ -38,6 +38,7 @@ namespace OpenActive.NET
             DefaultValueHandling = DefaultValueHandling.Ignore,
             DateParseHandling = DateParseHandling.DateTimeOffset,
             ContractResolver = NoEmptyStringsContractResolver.Instance,
+            ReferenceLoopHandling = ReferenceLoopHandling.Serialize,
             // The ASP.NET MVC framework defaults to 32(so 32 levels deep in the JSON structure)
             // to prevent stack overflow caused by malicious complex JSON requests.
             MaxDepth = 32
@@ -60,6 +61,7 @@ namespace OpenActive.NET
             DateParseHandling = DateParseHandling.DateTimeOffset,
             ContractResolver = NoEmptyStringsContractResolver.Instance,
             StringEscapeHandling = StringEscapeHandling.EscapeHtml,
+            ReferenceLoopHandling = ReferenceLoopHandling.Serialize,
             // The ASP.NET MVC framework defaults to 32(so 32 levels deep in the JSON structure)
             // to prevent stack overflow caused by malicious complex JSON requests.
             MaxDepth = 32

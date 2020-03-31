@@ -287,5 +287,36 @@ namespace OpenActive.NET.Test
         }
 
 
+        private readonly SessionSeries nestedEvent = new OpenActive.NET.SessionSeries()
+        {
+            Name = "Virtual BODYPUMP",
+            Image = new List<ImageObject>() {
+                new ImageObject {
+                    Url = new Uri("http://www.example.com/event_image/12345"),
+                    Thumbnail = new List<ImageObject>
+                    {
+                        new ImageObject
+                        {
+                            Url = new Uri("https://images.weserv.nl?url=res.cloudinary.com/gladstone/image/upload/EveryoneActive-test/bkvsc3jcowzmak7f56ta&h=150&w=150&t=square&a=attention&q=80"),
+                            Height = 150,
+                            Width = 150
+                        }
+                    }
+                }
+            }
+        };
+
+
+        private readonly string nestedJson = "{\"@context\":\"https://openactive.io/\",\"@type\":\"SessionSeries\",\"name\":\"Virtual BODYPUMP\",\"image\":[{\"@type\":\"ImageObject\",\"thumbnail\":[{\"@type\":\"ImageObject\",\"height\":150,\"url\":\"https://images.weserv.nl?url=res.cloudinary.com/gladstone/image/upload/EveryoneActive-test/bkvsc3jcowzmak7f56ta&h=150&w=150&t=square&a=attention&q=80\",\"width\":150}],\"url\":\"http://www.example.com/event_image/12345\"}]}";
+
+        [Fact]
+        public void SessionSeries_Nested_EncodeDecode()
+        {
+            // Should recognise embedded identical subclasses when deserialising
+            var encode = OpenActiveSerializer.Serialize(nestedEvent);
+
+            output.WriteLine(encode);
+            Assert.Equal(nestedJson, encode);
+        }
     }
 }
