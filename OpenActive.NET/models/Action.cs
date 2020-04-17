@@ -8,10 +8,10 @@ namespace OpenActive.NET
 {
     /// <summary>
     /// 
-    /// This type is derived from https://schema.org/Event, which means that any of this type's properties within schema.org may also be used.
+    /// This type is derived from https://schema.org/Action, which means that any of this type's properties within schema.org may also be used.
     /// </summary>
     [DataContract]
-    public partial class HeadlineEvent : Event
+    public partial class Action : Schema.NET.Action
     {
         /// <summary>
         /// Returns the JSON-LD representation of this instance.
@@ -44,8 +44,32 @@ namespace OpenActive.NET
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
         [DataMember(Name = "@type", Order = 1)]
-        public override string Type => "HeadlineEvent";
+        public override string Type => "Action";
 
         
+        /// <summary>
+        /// The object upon which the action is carried out, whose state is kept intact or changed.
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// "object": {
+        ///   "@type": "SessionSeries",
+        ///   "@id": "https://id.booking-system.example.com/session-series/42"
+        /// }
+        /// </code>
+        /// </example>
+        [DataMember(Name = "object", EmitDefaultValue = false, Order = 7)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public new virtual Event Object { get; set; }
+
+
+        /// <summary>
+        /// [NOTICE: This property is part of the Open Booking API Test Interface, and MUST NOT be used in production.]
+        /// The simulation associated with the specific Action to be executed.
+        /// </summary>
+        [DataMember(Name = "test:testOpportunitySimulation", EmitDefaultValue = false, Order = 1008)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public virtual TestSimulationEnumeration? TestOpportunitySimulation { get; set; }
+
     }
 }

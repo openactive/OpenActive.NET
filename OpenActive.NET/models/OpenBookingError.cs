@@ -61,7 +61,7 @@ namespace OpenActive.NET
 
 
         /// <summary>
-        /// A human-readable explanation specific to this occurrence of the problem, providing specific information about why the error occurred in this particular case.
+        /// A plain-text human-readable explanation specific to this occurrence of the problem, providing specific information about why the error occurred in this particular case. This description must not include HTML or other markup.
         /// </summary>
         /// <example>
         /// <code>

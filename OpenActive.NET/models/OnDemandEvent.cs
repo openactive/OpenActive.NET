@@ -52,10 +52,6 @@ namespace OpenActive.NET
 
 
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
-        public override List<Schedule> EventSchedule { get; set; }
-
-
-        [Obsolete("This property is disinherited in this type, and must not be used.", true)]
         public override Schema.NET.EventStatusType? EventStatus { get; set; }
 
 
@@ -98,13 +94,13 @@ namespace OpenActive.NET
         /// <summary>
         /// Relates an `OnDemandEvent` to an `EventSeries`.
         /// </summary>
-        [DataMember(Name = "superEvent", EmitDefaultValue = false, Order = 19)]
+        [DataMember(Name = "superEvent", EmitDefaultValue = false, Order = 18)]
         [JsonConverter(typeof(ValuesConverter))]
         public override Event SuperEvent { get; set; }
 
 
         /// <summary>
-        /// An video, audio or other media that represents the actual recording of the `OnDemandEvent`.
+        /// A video, audio or other media that represents the actual recording of the `OnDemandEvent`.
         /// </summary>
         /// <example>
         /// <code>
@@ -121,7 +117,7 @@ namespace OpenActive.NET
         /// }
         /// </code>
         /// </example>
-        [DataMember(Name = "workFeatured", EmitDefaultValue = false, Order = 20)]
+        [DataMember(Name = "workFeatured", EmitDefaultValue = false, Order = 19)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual MediaObject WorkFeatured { get; set; }
 

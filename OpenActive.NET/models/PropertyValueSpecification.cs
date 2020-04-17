@@ -56,7 +56,7 @@ namespace OpenActive.NET
 
 
         /// <summary>
-        /// Descriptive help text for the field.
+        /// Descriptive help plain text for the field, which must not include HTML or other markup.
         /// </summary>
         [DataMember(Name = "description", EmitDefaultValue = false, Order = 8)]
         [JsonConverter(typeof(ValuesConverter))]

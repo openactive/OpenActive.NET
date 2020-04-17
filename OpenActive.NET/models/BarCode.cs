@@ -74,7 +74,7 @@ namespace OpenActive.NET
 
 
         /// <summary>
-        /// [NOTICE: This is a beta field, and is highly likely to change in future versions of this library.] 
+        /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
         /// Type of barcode, e.g. 'Code39'
         /// 
         /// If you are using this property, please join the discussion at proposal [#130](https://github.com/openactive/open-booking-api/issues/130).

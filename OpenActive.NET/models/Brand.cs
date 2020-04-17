@@ -74,7 +74,7 @@ namespace OpenActive.NET
 
 
         /// <summary>
-        /// A text description for the brand.
+        /// A plain text description for the brand, which must not include HTML or other markup.
         /// </summary>
         /// <example>
         /// <code>
@@ -116,7 +116,7 @@ namespace OpenActive.NET
 
 
         /// <summary>
-        /// [NOTICE: This is a beta field, and is highly likely to change in future versions of this library.] 
+        /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
         /// An related video object.
         /// 
         /// If you are using this property, please join the discussion at proposal [#88](https://github.com/openactive/modelling-opportunity-data/issues/88).
@@ -124,6 +124,17 @@ namespace OpenActive.NET
         [DataMember(Name = "beta:video", EmitDefaultValue = false, Order = 1012)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual List<VideoObject> Video { get; set; }
+
+
+        /// <summary>
+        /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
+        /// Sometimes a description is stored with formatting (e.g. href, bold, italics, embedded YouTube videos). This formatting can be useful for data consumers.
+        /// 
+        /// If you are using this property, please join the discussion at proposal [#2](https://github.com/openactive/ns-beta/issues/2).
+        /// </summary>
+        [DataMember(Name = "beta:formattedDescription", EmitDefaultValue = false, Order = 1013)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public virtual string FormattedDescription { get; set; }
 
     }
 }

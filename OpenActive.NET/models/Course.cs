@@ -74,7 +74,7 @@ namespace OpenActive.NET
 
 
         /// <summary>
-        /// The description of the Course
+        /// A plain text description of the Course, which must not include HTML or other markup.
         /// </summary>
         /// <example>
         /// <code>
@@ -97,8 +97,8 @@ namespace OpenActive.NET
         /// <code>
         /// "activity": [
         ///   {
-        ///     "id": "https://openactive.io/activity-list#fbdc35a8-3dd0-40ee-a7ca-6ff40b3e5f90",
-        ///     "type": "Concept",
+        ///     "@id": "https://openactive.io/activity-list#fbdc35a8-3dd0-40ee-a7ca-6ff40b3e5f90",
+        ///     "@type": "Concept",
         ///     "prefLabel": "Netball",
         ///     "inScheme": "https://openactive.io/activity-list"
         ///   }
@@ -117,7 +117,7 @@ namespace OpenActive.NET
         /// <code>
         /// "author": {
         ///   "name": "Central Speedball Association",
-        ///   "type": "Organization",
+        ///   "@type": "Organization",
         ///   "url": "http://www.speedball-world.com"
         /// }
         /// </code>
@@ -141,7 +141,7 @@ namespace OpenActive.NET
 
 
         /// <summary>
-        /// [NOTICE: This is a beta field, and is highly likely to change in future versions of this library.] 
+        /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
         /// An related video object.
         /// 
         /// If you are using this property, please join the discussion at proposal [#88](https://github.com/openactive/modelling-opportunity-data/issues/88).
@@ -152,7 +152,7 @@ namespace OpenActive.NET
 
 
         /// <summary>
-        /// [NOTICE: This is a beta field, and is highly likely to change in future versions of this library.] 
+        /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
         /// An associated logo for a course.
         /// 
         /// If you are using this property, please join the discussion at proposal [#164](https://github.com/openactive/modelling-opportunity-data/issues/164).

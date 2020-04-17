@@ -63,7 +63,7 @@ namespace OpenActive.NET
 
 
         /// <summary>
-        /// The description of the Dataset
+        /// A plain text description of the Dataset, which must not include HTML or other markup.
         /// </summary>
         /// <example>
         /// <code>

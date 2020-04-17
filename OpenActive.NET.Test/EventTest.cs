@@ -83,10 +83,6 @@ namespace OpenActive.NET.Test
         "{" +
             "\"@context\":\"https://openactive.io/\"," +
             "\"@type\":\"SessionSeries\"," +
-            "\"name\":\"Virtual BODYPUMP\"," +
-            "\"description\":\"This is the virtual version of the original barbell class, which will help you get lean, toned and fit - fast. Les Mills™ Virtual classes are designed for people who cannot get access to our live classes or who want to get a ‘taste’ of a Les Mills™ class before taking a live class with an instructor. The classes are played on a big video screen, with dimmed lighting and pumping surround sound, and are led onscreen by the people who actually choreograph the classes.\"," +
-            "\"attendeeInstructions\":\"Ensure you bring trainers and a bottle of water.\"," +
-            "\"duration\":\"P1D\"," +
             "\"eventSchedule\":[" +
               "{" +
                 "\"@type\":\"PartialSchedule\"," +
@@ -102,6 +98,10 @@ namespace OpenActive.NET.Test
                 "\"startTime\":\"08:30\"" +
               "}" +
             "]," +
+            "\"name\":\"Virtual BODYPUMP\"," +
+            "\"description\":\"This is the virtual version of the original barbell class, which will help you get lean, toned and fit - fast. Les Mills™ Virtual classes are designed for people who cannot get access to our live classes or who want to get a ‘taste’ of a Les Mills™ class before taking a live class with an instructor. The classes are played on a big video screen, with dimmed lighting and pumping surround sound, and are led onscreen by the people who actually choreograph the classes.\"," +
+            "\"attendeeInstructions\":\"Ensure you bring trainers and a bottle of water.\"," +
+            "\"duration\":\"P1D\"," +
             "\"image\":[" +
                 "{" +
                     "\"@type\":\"ImageObject\"," +

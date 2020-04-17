@@ -61,7 +61,7 @@ namespace OpenActive.NET
 
 
         /// <summary>
-        /// A free text description of the taxonomy
+        /// A plain text description of the taxonomy, which must not include HTML or other markup.
         /// </summary>
         /// <example>
         /// <code>
@@ -80,7 +80,7 @@ namespace OpenActive.NET
         /// <code>
         /// "concept": [
         ///   {
-        ///     "id": "https://example.com/concept/martial-arts",
+        ///     "@id": "https://example.com/concept/martial-arts",
         ///     "type": "Concept",
         ///     "prefLabel": "Martial Arts",
         ///     "inScheme": "https://example.com/scheme/123",

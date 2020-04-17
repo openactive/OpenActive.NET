@@ -47,6 +47,30 @@ namespace OpenActive.NET
         public override string Type => "SessionSeries";
 
         
+        /// <summary>
+        /// A an array of oa:Schedule or oa:PartialSchedule, which represents a recurrence pattern.
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// "eventSchedule": [
+        ///   {
+        ///     "@type": "PartialSchedule",
+        ///     "repeatFrequency": "P1W",
+        ///     "startTime": "20:15",
+        ///     "endTime": "20:45",
+        ///     "byDay": [
+        ///       "http://schema.org/Tuesday"
+        ///     ],
+        ///     "scheduleTimezone": "Europe/London"
+        ///   }
+        /// ]
+        /// </code>
+        /// </example>
+        [DataMember(Name = "eventSchedule", EmitDefaultValue = false, Order = 7)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public virtual List<Schedule> EventSchedule { get; set; }
+
+
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
         public override long? RemainingAttendeeCapacity { get; set; }
 
@@ -54,7 +78,7 @@ namespace OpenActive.NET
         /// <summary>
         /// Relates a parent event to a child event. Properties describing the parent event can be assumed to apply to the child, unless otherwise specified. A child event might be a specific instance of an Event within a schedule
         /// </summary>
-        [DataMember(Name = "subEvent", EmitDefaultValue = false, Order = 8)]
+        [DataMember(Name = "subEvent", EmitDefaultValue = false, Order = 9)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual List<ScheduledSession> SubEvent { get; set; }
 

@@ -61,7 +61,7 @@ namespace OpenActive.NET
 
 
         /// <summary>
-        /// A free text description of the livestream, including any instructions to join.
+        /// A plain text description of the live stream, including any instructions to join. This description must not include HTML or other markup.
         /// </summary>
         /// <example>
         /// <code>

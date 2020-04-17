@@ -74,7 +74,7 @@ namespace OpenActive.NET
 
 
         /// <summary>
-        /// A free text description of the Offer
+        /// A plain text description of the Offer, which must not include HTML or other markup.
         /// </summary>
         /// <example>
         /// <code>

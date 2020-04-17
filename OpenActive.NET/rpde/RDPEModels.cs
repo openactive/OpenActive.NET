@@ -351,7 +351,9 @@ namespace OpenActive.NET.Rpde.Version1
         [EnumMember(Value = "EventSeries")]
         EventSeries,
         [EnumMember(Value = "Order")]
-        Order
+        Order,
+        [EnumMember(Value = "OnDemandEvent")]
+        OnDemandEvent
     }
 
 

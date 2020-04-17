@@ -114,22 +114,18 @@ namespace OpenActive.NET
 
 
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
-        public override List<Schedule> EventSchedule { get; set; }
-
-
-        [Obsolete("This property is disinherited in this type, and must not be used.", true)]
         public override Schema.NET.EventStatusType? EventStatus { get; set; }
 
 
         /// <summary>
-        /// FacilityUse or IndividualFacilityUse that has this offer, either directly embedded or referenced by its @id
+        /// `FacilityUse` or `IndividualFacilityUse` that has this `Slot`, either directly embedded or referenced by its `@id`
         /// </summary>
         /// <example>
         /// <code>
         /// "facilityUse": "https://example.com/facility-use/1"
         /// </code>
         /// </example>
-        [DataMember(Name = "facilityUse", EmitDefaultValue = false, Order = 21)]
+        [DataMember(Name = "facilityUse", EmitDefaultValue = false, Order = 20)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual SingleValues<Uri, IndividualFacilityUse, FacilityUse> FacilityUse { get; set; }
 
@@ -174,7 +170,7 @@ namespace OpenActive.NET
         /// "maximumUses": 16
         /// </code>
         /// </example>
-        [DataMember(Name = "maximumUses", EmitDefaultValue = false, Order = 30)]
+        [DataMember(Name = "maximumUses", EmitDefaultValue = false, Order = 29)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual long? MaximumUses { get; set; }
 
@@ -202,7 +198,7 @@ namespace OpenActive.NET
         /// }
         /// </code>
         /// </example>
-        [DataMember(Name = "offers", EmitDefaultValue = false, Order = 33)]
+        [DataMember(Name = "offers", EmitDefaultValue = false, Order = 32)]
         [JsonConverter(typeof(ValuesConverter))]
         public override List<Offer> Offers { get; set; }
 
@@ -223,7 +219,7 @@ namespace OpenActive.NET
         /// "remainingUses": 5
         /// </code>
         /// </example>
-        [DataMember(Name = "remainingUses", EmitDefaultValue = false, Order = 36)]
+        [DataMember(Name = "remainingUses", EmitDefaultValue = false, Order = 35)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual long? RemainingUses { get; set; }
 
@@ -240,7 +236,7 @@ namespace OpenActive.NET
         /// "startDate": "2018-01-27T12:00:00Z"
         /// </code>
         /// </example>
-        [DataMember(Name = "startDate", EmitDefaultValue = false, Order = 38)]
+        [DataMember(Name = "startDate", EmitDefaultValue = false, Order = 37)]
         [JsonConverter(typeof(ValuesConverter))]
         public override SingleValues<string, DateTimeOffset?> StartDate { get; set; }
 
@@ -254,7 +250,7 @@ namespace OpenActive.NET
         /// "endDate": "2018-01-27T12:00:00Z"
         /// </code>
         /// </example>
-        [DataMember(Name = "endDate", EmitDefaultValue = false, Order = 39)]
+        [DataMember(Name = "endDate", EmitDefaultValue = false, Order = 38)]
         [JsonConverter(typeof(ValuesConverter))]
         public override SingleValues<string, DateTimeOffset?> EndDate { get; set; }
 
@@ -272,12 +268,12 @@ namespace OpenActive.NET
 
 
         /// <summary>
-        /// [NOTICE: This is a beta field, and is highly likely to change in future versions of this library.] 
+        /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
         /// Internal location of the event, e.g. Court 1
         /// 
         /// If you are using this property, please join the discussion at proposal [#110](https://github.com/openactive/modelling-opportunity-data/issues/110).
         /// </summary>
-        [DataMember(Name = "beta:sportsActivityLocation", EmitDefaultValue = false, Order = 1043)]
+        [DataMember(Name = "beta:sportsActivityLocation", EmitDefaultValue = false, Order = 1042)]
         [JsonConverter(typeof(ValuesConverter))]
         public override List<SportsActivityLocation> SportsActivityLocation { get; set; }
 

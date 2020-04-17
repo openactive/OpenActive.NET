@@ -74,7 +74,7 @@ namespace OpenActive.NET
 
 
         /// <summary>
-        /// The description of the Place
+        /// A plain text description of the Place, which must not include HTML or other markup.
         /// </summary>
         /// <example>
         /// <code>
@@ -116,32 +116,32 @@ namespace OpenActive.NET
         ///   {
         ///     "name": "Changing Facilities",
         ///     "value": true,
-        ///     "type": "ChangingFacilities"
+        ///     "@type": "ChangingFacilities"
         ///   },
         ///   {
         ///     "name": "Showers",
         ///     "value": false,
-        ///     "type": "Showers"
+        ///     "@type": "Showers"
         ///   },
         ///   {
         ///     "name": "Lockers",
         ///     "value": true,
-        ///     "type": "Lockers"
+        ///     "@type": "Lockers"
         ///   },
         ///   {
         ///     "name": "Towels",
         ///     "value": false,
-        ///     "type": "Towels"
+        ///     "@type": "Towels"
         ///   },
         ///   {
         ///     "name": "Creche",
         ///     "value": false,
-        ///     "type": "Creche"
+        ///     "@type": "Creche"
         ///   },
         ///   {
         ///     "name": "Parking",
         ///     "value": true,
-        ///     "type": "Parking"
+        ///     "@type": "Parking"
         ///   }
         /// ]
         /// </code>
@@ -193,7 +193,7 @@ namespace OpenActive.NET
         /// "geo": {
         ///   "latitude": 51.4034423828125,
         ///   "longitude": -0.2369088977575302,
-        ///   "type": "GeoCoordinates"
+        ///   "@type": "GeoCoordinates"
         /// }
         /// </code>
         /// </example>
@@ -210,7 +210,7 @@ namespace OpenActive.NET
         /// "image": [
         ///   {
         ///     "thumbnail": "http://example.com/static/image/speedball_thumbnail.jpg",
-        ///     "type": "ImageObject",
+        ///     "@type": "ImageObject",
         ///     "url": "http://example.com/static/image/speedball_large.jpg"
         ///   }
         /// ]
@@ -256,7 +256,7 @@ namespace OpenActive.NET
 
 
         /// <summary>
-        /// [NOTICE: This is a beta field, and is highly likely to change in future versions of this library.] 
+        /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
         /// Sometimes a description is stored with formatting (e.g. href, bold, italics, embedded YouTube videos). This formatting can be useful for data consumers.
         /// 
         /// If you are using this property, please join the discussion at proposal [#2](https://github.com/openactive/ns-beta/issues/2).

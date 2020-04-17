@@ -48,7 +48,11 @@ namespace OpenActive.NET
 
         
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
-        public override EventAttendanceModeEnumeration? EventAttendanceMode { get; set; }
+        public override SingleValues<string, DateTimeOffset?> StartDate { get; set; }
+
+
+        [Obsolete("This property is disinherited in this type, and must not be used.", true)]
+        public override SingleValues<string, DateTimeOffset?> EndDate { get; set; }
 
     }
 }

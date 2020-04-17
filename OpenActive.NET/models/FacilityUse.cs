@@ -74,7 +74,7 @@ namespace OpenActive.NET
 
 
         /// <summary>
-        /// A free text description of the facility use
+        /// A plain text description of the facility use, which must not include HTML or other markup.
         /// </summary>
         /// <example>
         /// <code>
@@ -106,8 +106,8 @@ namespace OpenActive.NET
         /// <code>
         /// "accessibilitySupport": [
         ///   {
-        ///     "type": "Concept",
-        ///     "id": "https://openactive.io/accessibility-support#1393f2dc-3fcc-4be9-a99f-f1e51f5ad277",
+        ///     "@type": "Concept",
+        ///     "@id": "https://openactive.io/accessibility-support#1393f2dc-3fcc-4be9-a99f-f1e51f5ad277",
         ///     "prefLabel": "Visual impairment",
         ///     "inScheme": "https://openactive.io/accessibility-support"
         ///   }
@@ -126,8 +126,8 @@ namespace OpenActive.NET
         /// <code>
         /// "activity": [
         ///   {
-        ///     "type": "Concept",
-        ///     "id": "https://openactive.io/activity-list#c0360db0-a817-4bae-9167-40f89b49fc9e",
+        ///     "@type": "Concept",
+        ///     "@id": "https://openactive.io/activity-list#c0360db0-a817-4bae-9167-40f89b49fc9e",
         ///     "prefLabel": "Badminton",
         ///     "inScheme": "https://openactive.io/activity-list"
         ///   }
@@ -140,7 +140,7 @@ namespace OpenActive.NET
 
 
         /// <summary>
-        /// Provides additional notes and instructions for users of a facility. E.g. more information on how to find it, what to bring, etc.
+        /// Provides additional notes and instructions for users of a facility, for example more information on how to find it, what to bring, etc. The value of this property must not include HTML or other markup.
         /// </summary>
         /// <example>
         /// <code>
@@ -159,10 +159,10 @@ namespace OpenActive.NET
         /// <code>
         /// "category": [
         ///   {
-        ///     "id": "https://example.com/reference/categories#Top%20Club%20Level",
+        ///     "@type": "Concept",
+        ///     "@id": "https://example.com/reference/categories#Top%20Club%20Level",
         ///     "inScheme": "https://example.com/reference/categories",
-        ///     "prefLabel": "Top Club Level",
-        ///     "type": "Concept"
+        ///     "prefLabel": "Top Club Level"
         ///   }
         /// ]
         /// </code>
@@ -179,8 +179,8 @@ namespace OpenActive.NET
         /// <code>
         /// "event": [
         ///   {
-        ///     "type": "Slot",
-        ///     "id": "http://www.example.org/api/facility-uses/432#/event/2018-03-01T10:00:00Z",
+        ///     "@type": "Slot",
+        ///     "@id": "http://www.example.org/api/facility-uses/432#/event/2018-03-01T10:00:00Z",
         ///     "startDate": "2018-03-01T11:00:00Z",
         ///     "endDate": "2018-03-01T11:30:00Z",
         ///     "duration": "PT30M",
@@ -211,7 +211,7 @@ namespace OpenActive.NET
         /// "image": [
         ///   {
         ///     "thumbnail": "http://example.com/static/image/speedball_thumbnail.jpg",
-        ///     "type": "ImageObject",
+        ///     "@type": "ImageObject",
         ///     "url": "http://example.com/static/image/speedball_large.jpg"
         ///   }
         /// ]
@@ -229,8 +229,8 @@ namespace OpenActive.NET
         /// <code>
         /// "individualFacilityUse": [
         ///   {
-        ///     "type": "IndividualFacilityUse",
-        ///     "id": "http://www.example.org/facility-uses/1",
+        ///     "@type": "IndividualFacilityUse",
+        ///     "@id": "http://www.example.org/facility-uses/1",
         ///     "name": "Tennis Court 1"
         ///   }
         /// ]
@@ -247,24 +247,24 @@ namespace OpenActive.NET
         /// <example>
         /// <code>
         /// "location": {
+        ///   "@type": "Place",
         ///   "address": {
         ///     "addressLocality": "New Malden",
         ///     "addressRegion": "London",
         ///     "postalCode": "NW5 3DU",
         ///     "streetAddress": "Raynes Park High School, 46A West Barnes Lane",
-        ///     "type": "PostalAddress"
+        ///     "@type": "PostalAddress"
         ///   },
         ///   "description": "Raynes Park High School in London",
         ///   "geo": {
         ///     "latitude": 51.4034423828125,
         ///     "longitude": -0.2369088977575302,
-        ///     "type": "GeoCoordinates"
+        ///     "@type": "GeoCoordinates"
         ///   },
-        ///   "id": "https://example.com/locations/1234ABCD",
+        ///   "@id": "https://example.com/locations/1234ABCD",
         ///   "identifier": "1234ABCD",
         ///   "name": "Raynes Park High School",
-        ///   "telephone": "01253 473934",
-        ///   "type": "Place"
+        ///   "telephone": "01253 473934"
         /// }
         /// </code>
         /// </example>
@@ -300,7 +300,7 @@ namespace OpenActive.NET
         /// <code>
         /// "provider": {
         ///   "name": "Central Speedball Association",
-        ///   "type": "Organization",
+        ///   "@type": "Organization",
         ///   "url": "http://www.speedball-world.com"
         /// }
         /// </code>
@@ -324,7 +324,7 @@ namespace OpenActive.NET
 
 
         /// <summary>
-        /// [NOTICE: This is a beta field, and is highly likely to change in future versions of this library.] 
+        /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
         /// Whether the event or facility is indoor or outdoor.
         /// 
         /// If you are using this property, please join the discussion at proposal [#1](https://github.com/openactive/facility-types/issues/1).
@@ -335,7 +335,7 @@ namespace OpenActive.NET
 
 
         /// <summary>
-        /// [NOTICE: This is a beta field, and is highly likely to change in future versions of this library.] 
+        /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
         /// The type of facility in use.
         /// 
         /// If you are using this property, please join the discussion at proposal [#1](https://github.com/openactive/facility-types/issues/1).
@@ -346,7 +346,7 @@ namespace OpenActive.NET
 
 
         /// <summary>
-        /// [NOTICE: This is a beta field, and is highly likely to change in future versions of this library.] 
+        /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
         /// Duration before the event for which the associated Offers are valid
         /// 
         /// If you are using this property, please join the discussion at proposal [#204](https://github.com/openactive/modelling-opportunity-data/issues/204).
@@ -357,7 +357,7 @@ namespace OpenActive.NET
 
 
         /// <summary>
-        /// [NOTICE: This is a beta field, and is highly likely to change in future versions of this library.] 
+        /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
         /// Internal location of the event, e.g. Court 1
         /// 
         /// If you are using this property, please join the discussion at proposal [#110](https://github.com/openactive/modelling-opportunity-data/issues/110).
@@ -368,7 +368,7 @@ namespace OpenActive.NET
 
 
         /// <summary>
-        /// [NOTICE: This is a beta field, and is highly likely to change in future versions of this library.] 
+        /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
         /// An related video object.
         /// 
         /// If you are using this property, please join the discussion at proposal [#88](https://github.com/openactive/modelling-opportunity-data/issues/88).
@@ -379,7 +379,7 @@ namespace OpenActive.NET
 
 
         /// <summary>
-        /// [NOTICE: This is a beta field, and is highly likely to change in future versions of this library.] 
+        /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
         /// A property that details whether the event is suitable for wheelchair access. Placed on Event as this field could be used to detail whether the Event is suitable, as well as the Place.
         /// 
         /// If you are using this property, please join the discussion at proposal [#166](https://github.com/openactive/modelling-opportunity-data/issues/166).
@@ -390,7 +390,7 @@ namespace OpenActive.NET
 
 
         /// <summary>
-        /// [NOTICE: This is a beta field, and is highly likely to change in future versions of this library.] 
+        /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
         /// Sometimes a description is stored with formatting (e.g. href, bold, italics, embedded YouTube videos). This formatting can be useful for data consumers.
         /// 
         /// If you are using this property, please join the discussion at proposal [#2](https://github.com/openactive/ns-beta/issues/2).

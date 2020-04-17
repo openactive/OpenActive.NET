@@ -16,6 +16,7 @@ namespace OpenActive.NET
         private const string ContextPropertyJson = "\"@context\":\"https://schema.org\",";
         private const string OpenActiveContextPropertyJson = "\"@context\":\"https://openactive.io/\",";
         private const string OpenActiveContextPropertyJsonWithBeta = "\"@context\":[\"https://openactive.io/\",\"https://openactive.io/ns-beta\"],";
+        private const string OpenActiveContextPropertyJsonWithTestInterface = "\"@context\":[\"https://openactive.io/\",\"https://openactive.io/test-interface\"],";
         private const string OpenActiveContextPropertyJsonWithSchema = "\"@context\":[\"https://schema.org/\",\"https://openactive.io/\"],";
         private const string OpenActiveContextPropertyJsonWithBetaAndSchema = "\"@context\":[\"https://schema.org/\",\"https://openactive.io/\",\"https://openactive.io/ns-beta\"],";
 
@@ -189,7 +190,8 @@ namespace OpenActive.NET
             // Only include beta context if there are beta properties present
             var contextString = json.Contains("\"beta:") ?
                 (maintainSchemaContext ? OpenActiveContextPropertyJsonWithBetaAndSchema : OpenActiveContextPropertyJsonWithBeta) :
-                (maintainSchemaContext ? OpenActiveContextPropertyJsonWithSchema : OpenActiveContextPropertyJson);
+                (maintainSchemaContext ? OpenActiveContextPropertyJsonWithSchema :
+                    json.Contains("\"test:") ? OpenActiveContextPropertyJsonWithTestInterface : OpenActiveContextPropertyJson);
 
             var stringBuilder = new StringBuilder(json);
             var startIndex = json[0] == '[' ?

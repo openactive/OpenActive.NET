@@ -48,12 +48,36 @@ namespace OpenActive.NET
 
         
         /// <summary>
-        /// [NOTICE: This is a beta field, and is highly likely to change in future versions of this library.] 
+        /// A an array of oa:Schedule or oa:PartialSchedule, which represents a recurrence pattern.
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// "eventSchedule": [
+        ///   {
+        ///     "@type": "PartialSchedule",
+        ///     "repeatFrequency": "P1W",
+        ///     "startTime": "20:15",
+        ///     "endTime": "20:45",
+        ///     "byDay": [
+        ///       "http://schema.org/Tuesday"
+        ///     ],
+        ///     "scheduleTimezone": "Europe/London"
+        ///   }
+        /// ]
+        /// </code>
+        /// </example>
+        [DataMember(Name = "eventSchedule", EmitDefaultValue = false, Order = 7)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public virtual List<Schedule> EventSchedule { get; set; }
+
+
+        /// <summary>
+        /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
         /// This course for which this is an offering.
         /// 
         /// If you are using this property, please join the discussion at proposal [#164](https://github.com/openactive/modelling-opportunity-data/issues/164).
         /// </summary>
-        [DataMember(Name = "beta:course", EmitDefaultValue = false, Order = 1007)]
+        [DataMember(Name = "beta:course", EmitDefaultValue = false, Order = 1008)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual Course Course { get; set; }
 

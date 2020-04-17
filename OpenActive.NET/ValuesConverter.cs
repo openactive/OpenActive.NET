@@ -301,6 +301,8 @@
             const int GOOD_RELATIONS_LENGTH = 33; // equivalent to "http://purl.org/goodrelations/v1#".Length
             const string OPENACTIVE_BETA = "https://openactive.io/ns-beta#";
             const int OPENACTIVE_BETA_LENGTH = 30; // equivalent to "https://openactive.io/ns-beta#".Length
+            const string OPENACTIVE_TEST_INTERFACE = "https://openactive.io/test-interface#";
+            const int OPENACTIVE_TEST_INTERFACE_LENGTH = 37; // equivalent to "https://openactive.io/test-interface#".Length
 
             var en = token.ToString();
             var enumString = en.Contains(OPENACTIVE_IO) ? en.Substring(OPENACTIVE_IO_LENGTH) :
@@ -308,6 +310,7 @@
                 en.Contains(SCHEMA_ORG_HTTPS) ? en.Substring(SCHEMA_ORG_HTTPS_LENGTH) :
                 en.Contains(GOOD_RELATIONS) ? en.Substring(GOOD_RELATIONS_LENGTH) :
                 en.Contains(OPENACTIVE_BETA) ? en.Substring(OPENACTIVE_BETA_LENGTH) :
+                en.Contains(OPENACTIVE_TEST_INTERFACE) ? en.Substring(OPENACTIVE_TEST_INTERFACE_LENGTH) :
                 en.Contains(":") ? en.Substring(en.LastIndexOf(":") + 1) :
                 en;
 
