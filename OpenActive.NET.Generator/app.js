@@ -11,7 +11,16 @@ var EXTENSIONS = {
     "beta": {
         "url": "https://www.openactive.io/ns-beta/beta.jsonld",
         "heading": "OpenActive Beta Extension properties",
-        "description": "These properties are defined in the [OpenActive Beta Extension](https://openactive.io/ns-beta). The OpenActive Beta Extension is defined as a convenience to help document properties that are in active testing and review by the community. Publishers should not assume that properties in the beta namespace will either be added to the core specification or be included in the namespace over the long term."
+        "description": "These properties are defined in the [OpenActive Beta Extension](https://openactive.io/ns-beta). The OpenActive Beta Extension is defined as a convenience to help document properties that are in active testing and review by the community. Publishers should not assume that properties in the beta namespace will either be added to the core specification or be included in the namespace over the long term.",
+        "propertyWarning": "[NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]",
+        "enumWarning": "[NOTICE: This is a beta enumeration, and is highly likely to change in future versions of this library.]"
+    },
+    "test": {
+        "url": "https://www.openactive.io/test-interface/test-interface.jsonld",
+        "heading": "Open Booking API Test Interface",
+        "description": "These properties are defined in the [Open Booking API Test Interface](https://openactive.io/test-interface). This interface is defined as a convenience to aid testing of the Open Booking API. Booking Systems MUST NOT expose this interface in production environments.",
+        "propertyWarning": "[NOTICE: This property is part of the Open Booking API Test Interface, and MUST NOT be used in production.]",
+        "enumWarning": "[NOTICE: This enumeration is part of the Open Booking API Test Interface, and MUST NOT be used in production.]"
     }
 };
 
@@ -413,14 +422,14 @@ namespace OpenActive.NET
 }
 
 function createEnumFile(typeName, thisEnum) {
-    var betaWarning = thisEnum.extensionPrefix == 'beta' ? "[NOTICE: This is a beta enumeration, and is highly likely to change in future versions of this library.] \n" : "";
+    var enumWarning = EXTENSIONS[thisEnum.extensionPrefix] ? EXTENSIONS[thisEnum.extensionPrefix].enumWarning + "\n" : "";
     return `
 using System.Runtime.Serialization;
 
 namespace OpenActive.NET
 {
     /// <summary>
-    /// ${(betaWarning + (thisEnum.comment || '')).replace(/\n/g, '\n    /// ')}
+    /// ${(enumWarning + (thisEnum.comment || '')).replace(/\n/g, '\n    /// ')}
     /// </summary>
     public enum  ${typeName}
     {
@@ -594,8 +603,8 @@ function createDescriptionWithExample(field) {
     if (field.requiredContent) {
         return "Must always be present and set to " + renderCode(field.requiredContent, field.fieldName, field.requiredType);
     } else {
-        var betaWarning = field.extensionPrefix == 'beta' ? "[NOTICE: This is a beta field, and is highly likely to change in future versions of this library.] \n" : "";
-        return `<summary>\n${betaWarning}${field.description.join(" \n")}\n</summary>`
+        var propertyWarning = EXTENSIONS[field.extensionPrefix] ? EXTENSIONS[field.extensionPrefix].propertyWarning + "\n" : "";
+        return `<summary>\n${propertyWarning}${field.description.join(" \n")}\n</summary>`
             + (field.example ? "\n<example>\n" + renderCode(field.example, field.fieldName, field.requiredType) + "\n</example>" : "");
     }
 }
