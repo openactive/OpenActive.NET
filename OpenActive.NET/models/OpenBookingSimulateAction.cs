@@ -7,11 +7,11 @@ using System.Runtime.Serialization;
 namespace OpenActive.NET
 {
     /// <summary>
-    /// 
+    /// [NOTICE: This class is part of the Open Booking API Test Interface, and MUST NOT be used in production.] 
     /// This type is derived from https://schema.org/Action, which means that any of this type's properties within schema.org may also be used.
     /// </summary>
     [DataContract]
-    public partial class Action : Schema.NET.Action
+    public partial class OpenBookingSimulateAction : Action
     {
         /// <summary>
         /// Returns the JSON-LD representation of this instance.
@@ -44,23 +44,8 @@ namespace OpenActive.NET
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
         [DataMember(Name = "@type", Order = 1)]
-        public override string Type => "Action";
+        public override string Type => "test:OpenBookingSimulateAction";
 
         
-        /// <summary>
-        /// The object upon which the action is carried out, whose state is kept intact or changed.
-        /// </summary>
-        /// <example>
-        /// <code>
-        /// "object": {
-        ///   "@type": "SessionSeries",
-        ///   "@id": "https://id.booking-system.example.com/session-series/42"
-        /// }
-        /// </code>
-        /// </example>
-        [DataMember(Name = "object", EmitDefaultValue = false, Order = 7)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public new virtual Event Object { get; set; }
-
     }
 }

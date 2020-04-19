@@ -617,7 +617,7 @@
         private static string GetTypeNameFromToken(JToken token)
         {
             var o = token as JObject;
-            return o?.SelectToken("@type")?.ToString().Replace("beta:", ""); // Ignore beta type prefix
+            return o?.SelectToken("@type")?.ToString().Replace("beta:", "").Replace("test:", ""); // Ignore beta and test type prefix
         }
     }
 

@@ -13,14 +13,16 @@ var EXTENSIONS = {
         "heading": "OpenActive Beta Extension properties",
         "description": "These properties are defined in the [OpenActive Beta Extension](https://openactive.io/ns-beta). The OpenActive Beta Extension is defined as a convenience to help document properties that are in active testing and review by the community. Publishers should not assume that properties in the beta namespace will either be added to the core specification or be included in the namespace over the long term.",
         "propertyWarning": "[NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]",
-        "enumWarning": "[NOTICE: This is a beta enumeration, and is highly likely to change in future versions of this library.]"
+        "enumWarning": "[NOTICE: This is a beta enumeration, and is highly likely to change in future versions of this library.]",
+        "classWarning": "[NOTICE: This is a beta class, and is highly likely to change in future versions of this library.]"
     },
     "test": {
         "url": "https://www.openactive.io/test-interface/test-interface.jsonld",
         "heading": "Open Booking API Test Interface",
         "description": "These properties are defined in the [Open Booking API Test Interface](https://openactive.io/test-interface). This interface is defined as a convenience to aid testing of the Open Booking API. Booking Systems MUST NOT expose this interface in production environments.",
         "propertyWarning": "[NOTICE: This property is part of the Open Booking API Test Interface, and MUST NOT be used in production.]",
-        "enumWarning": "[NOTICE: This enumeration is part of the Open Booking API Test Interface, and MUST NOT be used in production.]"
+        "enumWarning": "[NOTICE: This enumeration is part of the Open Booking API Test Interface, and MUST NOT be used in production.]",
+        "classWarning": "[NOTICE: This class is part of the Open Booking API Test Interface, and MUST NOT be used in production.]"
     }
 };
 
@@ -99,16 +101,18 @@ function augmentWithExtension(extModelGraph, models, extensionUrl, extensionPref
     // Add classes first
     extModelGraph.forEach(function (node) {
         if (node['@type'] === 'Class' && Array.isArray(node.subClassOf) && node.subClassOf[0] != "schema:Enumeration") {
-            // Only include subclasses for either OA or schema.org classes
+            // Only include subclasses for either recognised (OA or other extension namespace) or schema.org classes
             var subClasses = node.subClassOf.filter(prop => models[getPropNameFromFQP(prop)] || includedInSchema(prop));
             
             var model = subClasses.length > 0 ? {
                 "type": node['@id'],
                 // Include first relevant subClass in list (note this does not currently support multiple inheritance), which is discouraged in OA modelling anyway
-                "subClassOf": models[getPropNameFromFQP(subClasses[0])] ? "#" + getPropNameFromFQP(subClasses[0]) : expandPrefix(subClasses[0], false, namespaces)
+                "subClassOf": models[getPropNameFromFQP(subClasses[0])] ? "#" + getPropNameFromFQP(subClasses[0]) : expandPrefix(subClasses[0], false, namespaces),
+                "extensionPrefix": extensionPrefix
             } :
             {
-                "type": node['@id']
+                "type": node['@id'],
+                "extensionPrefix": extensionPrefix
             };
 
             models[getPropNameFromFQP(node['@id'])] = model;
@@ -366,6 +370,8 @@ function createModelFile(model, models, extensions, enumMap) {
     // Note hasBaseClass is used here to ensure that assumptions about schema.org fields requiring overrides are not applied if the base class doesn't exist in the model
     var hasBaseClass = inherits != "Schema.NET.JsonLdObject";
 
+    var classWarning = EXTENSIONS[model.extensionPrefix] ? EXTENSIONS[model.extensionPrefix].classWarning + " " : "";
+
     return `
 using Newtonsoft.Json;
 using System;
@@ -375,7 +381,7 @@ using System.Runtime.Serialization;
 namespace OpenActive.NET
 {
     /// <summary>
-    /// ${getPropNameFromFQP(model.type) != model.type ? `[NOTICE: This is a beta class, and is highly likely to change in future versions of this library.] ` : ""}${createCommentFromDescription(model.description).replace(/\n/g,'\n    /// ')}
+    /// ${classWarning}${createCommentFromDescription(model.description).replace(/\n/g,'\n    /// ')}
     /// ${baseSchemaClass ? `This type is derived from ` + baseSchemaClass + (baseSchemaClass.match(/^https:\/\/schema.org/) ? ", which means that any of this type's properties within schema.org may also be used" : "") + "." : ""}
     /// </summary>
     [DataContract]
