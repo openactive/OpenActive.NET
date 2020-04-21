@@ -204,11 +204,22 @@ namespace OpenActive.NET
 
         /// <summary>
         /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
-        /// An related video object.
+        /// An array of URLs, each of which describe the formal criteria that are met by the organizer.
+        /// 
+        /// If you are using this property, please join the discussion at proposal [#236](https://github.com/openactive/modelling-opportunity-data/issues/236).
+        /// </summary>
+        [DataMember(Name = "beta:formalCriteriaMet", EmitDefaultValue = false, Order = 1020)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public virtual List<Uri> FormalCriteriaMet { get; set; }
+
+
+        /// <summary>
+        /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
+        /// A related video object.
         /// 
         /// If you are using this property, please join the discussion at proposal [#88](https://github.com/openactive/modelling-opportunity-data/issues/88).
         /// </summary>
-        [DataMember(Name = "beta:video", EmitDefaultValue = false, Order = 1020)]
+        [DataMember(Name = "beta:video", EmitDefaultValue = false, Order = 1021)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual List<VideoObject> Video { get; set; }
 
@@ -219,7 +230,7 @@ namespace OpenActive.NET
         /// 
         /// If you are using this property, please join the discussion at proposal [#2](https://github.com/openactive/ns-beta/issues/2).
         /// </summary>
-        [DataMember(Name = "beta:formattedDescription", EmitDefaultValue = false, Order = 1021)]
+        [DataMember(Name = "beta:formattedDescription", EmitDefaultValue = false, Order = 1022)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual string FormattedDescription { get; set; }
 

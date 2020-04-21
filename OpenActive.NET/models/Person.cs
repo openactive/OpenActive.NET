@@ -259,11 +259,22 @@ namespace OpenActive.NET
 
         /// <summary>
         /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
+        /// An array of URLs, each of which describe the formal criteria that are met by the organizer.
+        /// 
+        /// If you are using this property, please join the discussion at proposal [#236](https://github.com/openactive/modelling-opportunity-data/issues/236).
+        /// </summary>
+        [DataMember(Name = "beta:formalCriteriaMet", EmitDefaultValue = false, Order = 1024)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public virtual List<Uri> FormalCriteriaMet { get; set; }
+
+
+        /// <summary>
+        /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
         /// Sometimes a description is stored with formatting (e.g. href, bold, italics, embedded YouTube videos). This formatting can be useful for data consumers.
         /// 
         /// If you are using this property, please join the discussion at proposal [#2](https://github.com/openactive/ns-beta/issues/2).
         /// </summary>
-        [DataMember(Name = "beta:formattedDescription", EmitDefaultValue = false, Order = 1024)]
+        [DataMember(Name = "beta:formattedDescription", EmitDefaultValue = false, Order = 1025)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual string FormattedDescription { get; set; }
 
