@@ -50,7 +50,7 @@ namespace OpenActive.NET
 
         
         /// <summary>
-        /// The name of the Dataset
+        /// The name of the `Dataset`
         /// </summary>
         /// <example>
         /// <code>
@@ -63,7 +63,7 @@ namespace OpenActive.NET
 
 
         /// <summary>
-        /// A plain text description of the Dataset, which must not include HTML or other markup.
+        /// A plain text description of the `Dataset`, which must not include HTML or other markup.
         /// </summary>
         /// <example>
         /// <code>
@@ -84,7 +84,7 @@ namespace OpenActive.NET
 
 
         /// <summary>
-        /// A background image for the Dataset.
+        /// A background image for the `Dataset`.
         /// </summary>
         /// <example>
         /// <code>
@@ -108,7 +108,7 @@ namespace OpenActive.NET
 
 
         /// <summary>
-        /// The date this Dataset was last updated. For RPDE feeds this may simply be the date and time that the Dataset Site was rendered, which may be cached.
+        /// The date this `Dataset` was last updated. For RPDE feeds this may simply be the date and time that the Dataset Site was rendered, which may be cached.
         /// </summary>
         /// <example>
         /// <code>
@@ -121,7 +121,7 @@ namespace OpenActive.NET
 
 
         /// <summary>
-        /// The date this Dataset was first published. Can be specified as a schema:Date or schema:DateTime.
+        /// The date this `Dataset` was first published. Can be specified as a schema:Date or schema:DateTime.
         /// </summary>
         /// <example>
         /// <code>
@@ -134,7 +134,7 @@ namespace OpenActive.NET
 
 
         /// <summary>
-        /// A URL that can be used to raise issues related to the Dataset via a public forum.
+        /// A URL that can be used to raise issues related to the `Dataset` via a public forum.
         /// </summary>
         /// <example>
         /// <code>
@@ -168,7 +168,7 @@ namespace OpenActive.NET
 
 
         /// <summary>
-        /// A link to documentation related to the Dataset, or a link to the OpenActive developer documentation if no Dataset-specific documentation is available.
+        /// A link to documentation related to the `Dataset`, or a link to the OpenActive developer documentation if no Dataset-specific documentation is available.
         /// </summary>
         /// <example>
         /// <code>
@@ -181,7 +181,7 @@ namespace OpenActive.NET
 
 
         /// <summary>
-        /// An array of languages included in the Dataset content. Please use one of the language codes from the IETF BCP 47 standard.
+        /// An array of languages included in the Dataset's content. Please use one of the language codes from the IETF BCP 47 standard.
         /// </summary>
         /// <example>
         /// <code>
@@ -224,7 +224,7 @@ namespace OpenActive.NET
 
 
         /// <summary>
-        /// The organization ultimately responsible for this Dataset.
+        /// The organization ultimately responsible for this `Dataset`.
         /// </summary>
         /// <example>
         /// <code>
@@ -241,7 +241,7 @@ namespace OpenActive.NET
 
 
         /// <summary>
-        /// Indicates the version of OpenActive Modelling Opportunity Data Specification with which this Dataset conforms, by specifying its URL.
+        /// Indicates the version of OpenActive Modelling Opportunity Data Specification with which this `Dataset` conforms, by specifying its URL.
         /// </summary>
         /// <example>
         /// <code>
