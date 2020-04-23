@@ -50,6 +50,19 @@ namespace OpenActive.NET
 
         
         /// <summary>
+        /// A local non-URI identifier for the resource
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// "identifier": "ScheduledSession"
+        /// </code>
+        /// </example>
+        [DataMember(Name = "identifier", EmitDefaultValue = false, Order = 7)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public new virtual string Identifier { get; set; }
+
+
+        /// <summary>
         /// The name of the type of feed
         /// </summary>
         /// <example>
@@ -57,7 +70,7 @@ namespace OpenActive.NET
         /// "name": "SessionSeries"
         /// </code>
         /// </example>
-        [DataMember(Name = "name", EmitDefaultValue = false, Order = 7)]
+        [DataMember(Name = "name", EmitDefaultValue = false, Order = 8)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string Name { get; set; }
 
@@ -70,7 +83,7 @@ namespace OpenActive.NET
         /// "additionalType": "https://openactive.io/SessionSeries"
         /// </code>
         /// </example>
-        [DataMember(Name = "additionalType", EmitDefaultValue = false, Order = 8)]
+        [DataMember(Name = "additionalType", EmitDefaultValue = false, Order = 9)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual Uri AdditionalType { get; set; }
 
@@ -83,7 +96,7 @@ namespace OpenActive.NET
         /// "contentUrl": "https://opendata.leisurecloud.live/api/feeds/fusion-lifestyle-fl-live-session-series"
         /// </code>
         /// </example>
-        [DataMember(Name = "contentUrl", EmitDefaultValue = false, Order = 9)]
+        [DataMember(Name = "contentUrl", EmitDefaultValue = false, Order = 10)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual Uri ContentUrl { get; set; }
 
@@ -91,7 +104,7 @@ namespace OpenActive.NET
         /// Must always be present and set to <code>
         /// "encodingFormat": "application/vnd.openactive.rpde+json; version=1"
         /// </code>
-        [DataMember(Name = "encodingFormat", EmitDefaultValue = false, Order = 10)]
+        [DataMember(Name = "encodingFormat", EmitDefaultValue = false, Order = 11)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string EncodingFormat { get; set; }
 
