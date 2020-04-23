@@ -534,7 +534,7 @@ function renderJsonConverter(field, propertyType) {
     } else if (propertyType.indexOf("Values<") > -1 || field.requiredType || field.model || field.alternativeModels) {
         return `\n        [JsonConverter(typeof(ValuesConverter))]`;
     } else {
-        // Note this can be switched back to empty string - is here temporarily to increase surface area for testing
+        // TODO: This could be switched back to empty string, with a thorough analysis of where ValuesConverter is actually required
         return `\n        [JsonConverter(typeof(ValuesConverter))]`;
     }
 }

@@ -43,10 +43,15 @@
                 var values = (IValue)value;
                 obj = values.Value;
             }
-            
+
             if (obj == null)
             {
                 writer.WriteNull();
+            }
+            else if (obj is DateTimeOffset datetime)
+            {
+                // Truncate milliseconds
+                writer.WriteValue(datetime.ToString("yyyy-MM-ddTHH\\:mm\\:sszzz"));
             }
             else
             {

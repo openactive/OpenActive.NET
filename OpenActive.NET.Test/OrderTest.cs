@@ -124,7 +124,10 @@ namespace OpenActive.NET.Test
             var decode = OpenActiveSerializer.Deserialize<OrderQuote>(json);
             var encode = OpenActiveSerializer.Serialize(decode);
 
-            output.WriteLine(json);
+            // Should cast this to ScheduledSession instead of Event
+            Assert.IsType<ScheduledSession>(decode.OrderedItem[0].OrderedItem);
+
+           output.WriteLine(json);
             output.WriteLine(encode);
             Assert.Equal(json, encode);
         }

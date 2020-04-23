@@ -95,5 +95,22 @@ namespace OpenActive.NET.Test
             output.WriteLine(this.@dataset.ToHtmlEscapedString());
             Assert.Equal("Acme Ltd", this.@dataset.Publisher.LegalName);
         }
+
+        [Fact]
+        public void ToString_Dataset_DataTime_Truncated()
+        {
+            // Should truncate milliseconds for recognised OpenActive types
+            DateTimeOffset timeWithMilliseconds = new DateTime(2012, 1, 1, 12, 00, 00, 100);
+            Dataset @dataset = new OpenActive.NET.Dataset
+            {
+                DatePublished = timeWithMilliseconds, // OpenActive type: should truncate
+                DateCreated = timeWithMilliseconds, // schema.org type: should not truncate
+                DateModified = timeWithMilliseconds // OpenActive type: should truncate
+            };
+            var serializedDataset = OpenActiveSerializer.Serialize(@dataset);
+            output.WriteLine(OpenActiveSerializer.Serialize(@dataset));
+            Assert.Equal("{\"@context\":\"https://openactive.io/\",\"@type\":\"Dataset\",\"dateModified\":\"2012-01-01T12:00:00+00:00\",\"datePublished\":\"2012-01-01T12:00:00+00:00\",\"dateCreated\":\"2012-01-01T12:00:00.1+00:00\"}", serializedDataset);
+        }
+
     }
 }
