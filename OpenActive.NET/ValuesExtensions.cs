@@ -11,7 +11,7 @@ namespace OpenActive.NET
     public static class ValuesExtensions
     {
         /// <summary>
-        /// Return null if the provided URL is empty, otherwise return the list.
+        /// Return null if the provided URL is empty, otherwise return null.
         /// </summary>
         public static Uri ParseUrlOrNull(this string str)
         {
