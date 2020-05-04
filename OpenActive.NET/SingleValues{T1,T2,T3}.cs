@@ -181,7 +181,7 @@ namespace OpenActive.NET
         }
 
         /// <summary>
-        /// Gets the non-null object representing the instance.
+        /// Gets the object representing the instance.
         /// </summary>
         public object Value
         {

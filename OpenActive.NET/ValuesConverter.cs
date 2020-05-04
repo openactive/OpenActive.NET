@@ -310,12 +310,13 @@
             const int OPENACTIVE_TEST_INTERFACE_LENGTH = 37; // equivalent to "https://openactive.io/test-interface#".Length
 
             var en = token.ToString();
-            var enumString = en.Contains(OPENACTIVE_IO) ? en.Substring(OPENACTIVE_IO_LENGTH) :
+            var enumString = 
                 en.Contains(SCHEMA_ORG) ? en.Substring(SCHEMA_ORG_LENGTH) :
                 en.Contains(SCHEMA_ORG_HTTPS) ? en.Substring(SCHEMA_ORG_HTTPS_LENGTH) :
                 en.Contains(GOOD_RELATIONS) ? en.Substring(GOOD_RELATIONS_LENGTH) :
                 en.Contains(OPENACTIVE_BETA) ? en.Substring(OPENACTIVE_BETA_LENGTH) :
                 en.Contains(OPENACTIVE_TEST_INTERFACE) ? en.Substring(OPENACTIVE_TEST_INTERFACE_LENGTH) :
+                en.Contains(OPENACTIVE_IO) ? en.Substring(OPENACTIVE_IO_LENGTH) :
                 en.Contains(":") ? en.Substring(en.LastIndexOf(":") + 1) :
                 en;
 
