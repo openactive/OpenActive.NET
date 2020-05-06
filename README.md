@@ -5,7 +5,7 @@ This package is intended to simplify the creation of [OpenActive RPDE Feeds](htt
 
 Please find full documentation that covers creation and scaling of RPDE feeds at https://developer.openactive.io/publishing-data/data-feeds/.
 
-OpenActive aims to provide strongly typed models for all classes defined in the [Modelling Specification](https://www.openactive.io/modelling-opportunity-data/) and [Open Booking API Specification](https://www.openactive.io/open-booking-api/) across the PHP, Ruby, and .NET languages. This library is specific to .NET; see also the [PHP](https://github.com/openactive/models-php/) and [Ruby](https://github.com/openactive/models-ruby/) implementations.
+OpenActive aims to provide strongly typed models for all classes defined in the [Modelling Specification](https://openactive.io/modelling-opportunity-data/) and [Open Booking API Specification](https://openactive.io/open-booking-api/) across the PHP, Ruby, and .NET languages. This library is specific to .NET; see also the [PHP](https://github.com/openactive/models-php/) and [Ruby](https://github.com/openactive/models-ruby/) implementations.
 
 ## Table of Contents
 - [Requirements](#requirements)
