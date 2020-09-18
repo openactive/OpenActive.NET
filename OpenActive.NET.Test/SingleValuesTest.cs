@@ -54,7 +54,32 @@ namespace OpenActive.NET.Test
             // Test superEvent.superEvent
             Assert.IsType<EventSeries>(decode.SuperEvent.GetClass<SessionSeries>().SuperEvent);
             Assert.Equal("11-15 Years Supervised Gym Sessions", decode.SuperEvent.GetClass<SessionSeries>().SuperEvent.Name);
+        }
 
+        [Fact]
+        public void SingleValues_HasValueOfType()
+        {
+            SingleValues<Event, string> sessionSeries = new SessionSeries();
+            SingleValues<Event, string> @event = new Event();
+
+            Assert.True(sessionSeries.HasValueOfType<SessionSeries>());
+            Assert.True(sessionSeries.HasValueOfType<Event>());
+
+            Assert.False(@event.HasValueOfType<SessionSeries>());
+            Assert.True(@event.HasValueOfType<Event>());
+        }
+
+        [Fact]
+        public void SingleValues_GetClass()
+        {
+            SingleValues<Event, string> sessionSeries = new SessionSeries();
+            SingleValues<Event, string> @event = new Event();
+
+            Assert.NotNull(sessionSeries.GetClass<SessionSeries>());
+            Assert.NotNull(sessionSeries.GetClass<Event>());
+
+            Assert.Null(@event.GetClass<SessionSeries>());
+            Assert.NotNull(@event.GetClass<Event>());
         }
     }
 }

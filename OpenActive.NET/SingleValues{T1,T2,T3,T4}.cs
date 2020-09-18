@@ -162,77 +162,29 @@ namespace OpenActive.NET
         /// </summary>
         public T GetClass<T>() where T : class
         {
-            if (typeof(T1).GetTypeInfo().IsAssignableFrom(typeof(T).GetTypeInfo()))
+            return TypeExtensions.GetClass<T>(new List<(Type Tx, bool hasValue, object value)>
             {
-                if (HasValue1)
-                {
-                    return (T)(object)this.value1;
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            else if (typeof(T2).GetTypeInfo().IsAssignableFrom(typeof(T).GetTypeInfo()))
-            {
-                if (HasValue2)
-                {
-                    return (T)(object)this.value2;
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            else if (typeof(T3).GetTypeInfo().IsAssignableFrom(typeof(T).GetTypeInfo()))
-            {
-                if (HasValue3)
-                {
-                    return (T)(object)this.value3;
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            else if (typeof(T4).GetTypeInfo().IsAssignableFrom(typeof(T).GetTypeInfo()))
-            {
-                if (HasValue4)
-                {
-                    return (T)(object)this.value4;
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            throw new TypeAccessException("GetClass was used with a type that is not available.");
+                (typeof(T1), HasValue1, this.value1),
+                (typeof(T2), HasValue2, this.value2),
+                (typeof(T3), HasValue3, this.value3),
+                (typeof(T4), HasValue4, this.value4)
+            });
         }
 
         /// <summary>
         /// Checks whether the instance represents the specified type
         /// </summary>
         /// <typeparam name="T">Type to check</typeparam>
-        /// <returns>true/false if the matching type does / does not have a value, throws exception if T is unknown</returns>
+        /// <returns>true/false if the matching type does / does not have a value that is assignable to T, throws exception if T is unknown</returns>
         public bool HasValueOfType<T>()
         {
-            if (typeof(T1).GetTypeInfo().IsAssignableFrom(typeof(T).GetTypeInfo()))
+            return TypeExtensions.HasValueOfType<T>(new List<(Type Tx, bool hasValue, object value)>
             {
-                return HasValue1;
-            }
-            else if (typeof(T2).GetTypeInfo().IsAssignableFrom(typeof(T).GetTypeInfo()))
-            {
-                return HasValue2;
-            }
-            else if (typeof(T3).GetTypeInfo().IsAssignableFrom(typeof(T).GetTypeInfo()))
-            {
-                return HasValue3;
-            }
-            else if (typeof(T4).GetTypeInfo().IsAssignableFrom(typeof(T).GetTypeInfo()))
-            {
-                return HasValue4;
-            }
-            throw new TypeAccessException("HasValueOfType was used with a type that is not available.");
+                (typeof(T1), HasValue1, this.value1),
+                (typeof(T2), HasValue2, this.value2),
+                (typeof(T3), HasValue3, this.value3),
+                (typeof(T4), HasValue4, this.value4)
+            });
         }
 
 
