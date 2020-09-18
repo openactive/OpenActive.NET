@@ -117,11 +117,11 @@ namespace OpenActive.NET
         /// <returns>true/false if the matching type does / does not have a value, throws exception if T is unknown</returns>
         public bool HasValueOfType<T>()
         {
-            if (typeof(T1) == typeof(T))
+            if (typeof(T1).GetTypeInfo().IsAssignableFrom(typeof(T).GetTypeInfo()))
             {
                 return HasValue1;
             }
-            else if (typeof(T2) == typeof(T))
+            else if (typeof(T2).GetTypeInfo().IsAssignableFrom(typeof(T).GetTypeInfo()))
             {
                 return HasValue2;
             }
