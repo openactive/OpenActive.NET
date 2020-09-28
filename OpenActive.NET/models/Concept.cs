@@ -52,7 +52,9 @@ namespace OpenActive.NET
         /// </summary>
         /// <example>
         /// <code>
-        /// "altLabel": "Speedball"
+        /// "altLabel": [
+        ///   "Five a side"
+        /// ]
         /// </code>
         /// </example>
         [DataMember(Name = "altLabel", EmitDefaultValue = false, Order = 7)]
@@ -65,7 +67,9 @@ namespace OpenActive.NET
         /// </summary>
         /// <example>
         /// <code>
-        /// "broader": "https://example.com/football"
+        /// "broader": [
+        ///   "https://openactive.io/activity-list#6ca15167-51da-4d91-a1ae-8a45dc47b0ea"
+        /// ]
         /// </code>
         /// </example>
         [DataMember(Name = "broader", EmitDefaultValue = false, Order = 8)]
@@ -74,14 +78,42 @@ namespace OpenActive.NET
 
 
         /// <summary>
-        /// A stable URL reference for the taxonomy.
+        /// A human readable string that unambiguously defines the Concept, for use in user interfaces.
         /// </summary>
         /// <example>
         /// <code>
-        /// "inScheme": "https://example.com/reference/activities"
+        /// "definition": "Latin American style of dance with Cuban origins."
         /// </code>
         /// </example>
-        [DataMember(Name = "inScheme", EmitDefaultValue = false, Order = 9)]
+        [DataMember(Name = "definition", EmitDefaultValue = false, Order = 9)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public virtual string Definition { get; set; }
+
+
+        /// <summary>
+        /// An alternative human readable string used to drive autocomplete search matches, that is hidden from the user.
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// "hiddenLabel": [
+        ///   "5-a-side"
+        /// ]
+        /// </code>
+        /// </example>
+        [DataMember(Name = "hiddenLabel", EmitDefaultValue = false, Order = 10)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public virtual List<string> HiddenLabel { get; set; }
+
+
+        /// <summary>
+        /// A stable URL reference for the taxonomy, which must be `https://openactive.io/activity-list` to reference the OpenActive Activity List.
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// "inScheme": "https://openactive.io/activity-list"
+        /// </code>
+        /// </example>
+        [DataMember(Name = "inScheme", EmitDefaultValue = false, Order = 11)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual Uri InScheme { get; set; }
 
@@ -91,38 +123,68 @@ namespace OpenActive.NET
         /// </summary>
         /// <example>
         /// <code>
-        /// "narrower": "https://example.com/walking-football"
+        /// "narrower": [
+        ///   "https://openactive.io/activity-list#b3829f3e-a63e-455f-a51c-1f50ecf85ad5"
+        /// ]
         /// </code>
         /// </example>
-        [DataMember(Name = "narrower", EmitDefaultValue = false, Order = 10)]
+        [DataMember(Name = "narrower", EmitDefaultValue = false, Order = 12)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual List<Uri> Narrower { get; set; }
 
 
         /// <summary>
-        /// A concept label that is not normally recognisable as natural language.
+        /// A human-readable identifier for the concept.
         /// </summary>
         /// <example>
         /// <code>
-        /// "notation": "Speedball"
+        /// "notation": "salsa"
         /// </code>
         /// </example>
-        [DataMember(Name = "notation", EmitDefaultValue = false, Order = 11)]
+        [DataMember(Name = "notation", EmitDefaultValue = false, Order = 13)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual string Notation { get; set; }
 
 
         /// <summary>
-        /// A human readable string for use in user interfaces.
+        /// A human readable string that minimally describes the Concept, for use in user interfaces.
         /// </summary>
         /// <example>
         /// <code>
-        /// "prefLabel": "Speedball"
+        /// "prefLabel": "Salsa"
         /// </code>
         /// </example>
-        [DataMember(Name = "prefLabel", EmitDefaultValue = false, Order = 12)]
+        [DataMember(Name = "prefLabel", EmitDefaultValue = false, Order = 14)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual string PrefLabel { get; set; }
+
+
+        /// <summary>
+        /// A related Concept URI
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// "related": [
+        ///   "https://openactive.io/activity-list#5cdf5ead-e19d-4619-9585-cfe509c3fe52"
+        /// ]
+        /// </code>
+        /// </example>
+        [DataMember(Name = "related", EmitDefaultValue = false, Order = 15)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public virtual List<Uri> Related { get; set; }
+
+
+        /// <summary>
+        /// A reference to the Scheme URI, the existence of which indicates that this Concept is at the top level of the hierarchy.
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// "topConceptOf": "https://openactive.io/activity-list"
+        /// </code>
+        /// </example>
+        [DataMember(Name = "topConceptOf", EmitDefaultValue = false, Order = 16)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public virtual Uri TopConceptOf { get; set; }
 
     }
 }

@@ -56,7 +56,7 @@ namespace OpenActive.NET
 
 
         /// <summary>
-        /// The version of the application, useful for on-premise installations. Note this property is in EARLY RELEASE AND IS SUBJECT TO CHANGE, as the [Dataset API Discovery specification](https://www.openactive.io/dataset-api-discovery/EditorsDraft/) evolves.
+        /// The version of the application, useful for on-premise installations. Note this property is in EARLY RELEASE AND IS SUBJECT TO CHANGE, as the [Dataset API Discovery specification](https://openactive.io/dataset-api-discovery/EditorsDraft/) evolves.
         /// </summary>
         [DataMember(Name = "softwareVersion", EmitDefaultValue = false, Order = 8)]
         [JsonConverter(typeof(ValuesConverter))]

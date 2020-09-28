@@ -325,35 +325,35 @@ namespace OpenActive.NET
 
         /// <summary>
         /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
-        /// Whether the event or facility is indoor or outdoor.
+        /// Sometimes a description is stored with formatting (e.g. href, bold, italics, embedded YouTube videos). This formatting can be useful for data consumers. This property must contain HTML.
         /// 
-        /// If you are using this property, please join the discussion at proposal [#1](https://github.com/openactive/facility-types/issues/1).
+        /// If you are using this property, please join the discussion at proposal [#2](https://github.com/openactive/ns-beta/issues/2).
         /// </summary>
-        [DataMember(Name = "beta:facilitySetting", EmitDefaultValue = false, Order = 1023)]
+        [DataMember(Name = "beta:formattedDescription", EmitDefaultValue = false, Order = 1023)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual FacilitySettingType? FacilitySetting { get; set; }
+        public virtual string FormattedDescription { get; set; }
 
 
         /// <summary>
         /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
-        /// The type of facility in use.
+        /// A property that details whether the event is suitable for wheelchair access. Placed on Event as this field could be used to detail whether the Event is suitable, as well as the Place.
         /// 
-        /// If you are using this property, please join the discussion at proposal [#1](https://github.com/openactive/facility-types/issues/1).
+        /// If you are using this property, please join the discussion at proposal [#166](https://github.com/openactive/modelling-opportunity-data/issues/166).
         /// </summary>
-        [DataMember(Name = "beta:facilityType", EmitDefaultValue = false, Order = 1024)]
+        [DataMember(Name = "beta:isWheelchairAccessible", EmitDefaultValue = false, Order = 1024)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual List<Concept> FacilityType { get; set; }
+        public virtual bool? IsWheelchairAccessible { get; set; }
 
 
         /// <summary>
         /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
-        /// Duration before the event for which the associated Offers are valid
+        /// A related video object.
         /// 
-        /// If you are using this property, please join the discussion at proposal [#204](https://github.com/openactive/modelling-opportunity-data/issues/204).
+        /// If you are using this property, please join the discussion at proposal [#88](https://github.com/openactive/modelling-opportunity-data/issues/88).
         /// </summary>
-        [DataMember(Name = "beta:offerValidityPeriod", EmitDefaultValue = false, Order = 1025)]
-        [JsonConverter(typeof(OpenActiveTimeSpanToISO8601DurationValuesConverter))]
-        public virtual TimeSpan? OfferValidityPeriod { get; set; }
+        [DataMember(Name = "beta:video", EmitDefaultValue = false, Order = 1025)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public virtual List<VideoObject> Video { get; set; }
 
 
         /// <summary>
@@ -364,40 +364,40 @@ namespace OpenActive.NET
         /// </summary>
         [DataMember(Name = "beta:sportsActivityLocation", EmitDefaultValue = false, Order = 1026)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual List<SportsActivityLocation> SportsActivityLocation { get; set; }
+        public virtual List<Schema.NET.SportsActivityLocation> SportsActivityLocation { get; set; }
 
 
         /// <summary>
         /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
-        /// A related video object.
+        /// Duration before the event for which the associated Offers are valid
         /// 
-        /// If you are using this property, please join the discussion at proposal [#88](https://github.com/openactive/modelling-opportunity-data/issues/88).
+        /// If you are using this property, please join the discussion at proposal [#204](https://github.com/openactive/modelling-opportunity-data/issues/204).
         /// </summary>
-        [DataMember(Name = "beta:video", EmitDefaultValue = false, Order = 1027)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public virtual List<VideoObject> Video { get; set; }
+        [DataMember(Name = "beta:offerValidityPeriod", EmitDefaultValue = false, Order = 1027)]
+        [JsonConverter(typeof(OpenActiveTimeSpanToISO8601DurationValuesConverter))]
+        public virtual TimeSpan? OfferValidityPeriod { get; set; }
 
 
         /// <summary>
         /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
-        /// A property that details whether the event is suitable for wheelchair access. Placed on Event as this field could be used to detail whether the Event is suitable, as well as the Place.
+        /// The type of facility in use.
         /// 
-        /// If you are using this property, please join the discussion at proposal [#166](https://github.com/openactive/modelling-opportunity-data/issues/166).
+        /// If you are using this property, please join the discussion at proposal [#1](https://github.com/openactive/facility-types/issues/1).
         /// </summary>
-        [DataMember(Name = "beta:isWheelchairAccessible", EmitDefaultValue = false, Order = 1028)]
+        [DataMember(Name = "beta:facilityType", EmitDefaultValue = false, Order = 1028)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual bool? IsWheelchairAccessible { get; set; }
+        public virtual List<Concept> FacilityType { get; set; }
 
 
         /// <summary>
         /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
-        /// Sometimes a description is stored with formatting (e.g. href, bold, italics, embedded YouTube videos). This formatting can be useful for data consumers.
+        /// Whether the event or facility is indoor or outdoor.
         /// 
-        /// If you are using this property, please join the discussion at proposal [#2](https://github.com/openactive/ns-beta/issues/2).
+        /// If you are using this property, please join the discussion at proposal [#1](https://github.com/openactive/facility-types/issues/1).
         /// </summary>
-        [DataMember(Name = "beta:formattedDescription", EmitDefaultValue = false, Order = 1029)]
+        [DataMember(Name = "beta:facilitySetting", EmitDefaultValue = false, Order = 1029)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual string FormattedDescription { get; set; }
+        public virtual FacilitySettingType? FacilitySetting { get; set; }
 
     }
 }

@@ -9,8 +9,6 @@ namespace OpenActive.NET
     public enum  OpenBookingFlowRequirement
     {
         
-        [EnumMember(Value = "https://openactive.io/OnlinePrepayment")]
-        OnlinePrepayment,
         [EnumMember(Value = "https://openactive.io/OpenBookingIntakeForm")]
         OpenBookingIntakeForm,
         [EnumMember(Value = "https://openactive.io/OpenBookingAttendeeDetails")]

@@ -60,7 +60,7 @@ namespace OpenActive.NET
         /// </example>
         [DataMember(Name = "object", EmitDefaultValue = false, Order = 7)]
         [JsonConverter(typeof(ValuesConverter))]
-        public new virtual Event Object { get; set; }
+        public new virtual SingleValues<Order, Event> Object { get; set; }
 
     }
 }

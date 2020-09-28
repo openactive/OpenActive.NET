@@ -140,16 +140,16 @@ namespace OpenActive.NET
 
 
         /// <summary>
-        /// An RFC6570 compliant URI template that can be used to generate a unique identifier (@id) for every event described by the schedule (see below for more information). This property is required if the data provider is supporting third-party booking via the Open Booking API.
+        /// An RFC6570 compliant URI template that can be used to generate a unique identifier (`@id`) for every event described by the schedule. This property is required if the data provider is supporting third-party booking via the Open Booking API, or providing complimentary individual `subEvent`s.
         /// </summary>
         /// <example>
         /// <code>
-        /// "idTemplate": "https://example.com/event{/id}"
+        /// "idTemplate": "https://api.example.org/session-series/123/{startDate}"
         /// </code>
         /// </example>
         [DataMember(Name = "idTemplate", EmitDefaultValue = false, Order = 13)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual Uri IdTemplate { get; set; }
+        public virtual string IdTemplate { get; set; }
 
 
         /// <summary>
@@ -244,16 +244,16 @@ namespace OpenActive.NET
 
 
         /// <summary>
-        /// An RFC6570 compliant URI template that can be used to generate a unique URL (schema:url) for every event described by the schedule (see below for more information). This property is required if the data provider wants to provide participants with a unique URL to book to attend an event.
+        /// An RFC6570 compliant URI template that can be used to generate a unique `url` for every event described by the schedule. This property is required if the data provider wants to provide participants with a unique URL to book to attend an event.
         /// </summary>
         /// <example>
         /// <code>
-        /// "urlTemplate": "https://example.com/event{/id}"
+        /// "urlTemplate": "https://example.org/session-series/123/{startDate}"
         /// </code>
         /// </example>
         [DataMember(Name = "urlTemplate", EmitDefaultValue = false, Order = 21)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual Uri UrlTemplate { get; set; }
+        public virtual string UrlTemplate { get; set; }
 
 
         /// <summary>

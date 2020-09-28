@@ -35,7 +35,9 @@
             }
             else if (value is TimeSpan duration)
             {
-                writer.WriteValue(XmlConvert.ToString(duration));
+                // Truncate the duration to ensure that it does not include excess precision
+                var truncatedDuration = new TimeSpan(duration.Days, duration.Hours, duration.Minutes, duration.Seconds);
+                writer.WriteValue(XmlConvert.ToString(truncatedDuration));
             }
             else
             {

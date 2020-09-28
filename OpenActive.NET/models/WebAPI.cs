@@ -8,7 +8,7 @@ namespace OpenActive.NET
 {
     /// <summary>
     /// 
-    /// EARLY RELEASE NOTICE: In order to expedite the OpenActive tooling work, this class has been added to the model for the purposes of testing. IT IS SUBJECT TO CHANGE, as the [Dataset API Discovery specification](https://www.openactive.io/dataset-api-discovery/EditorsDraft/) evolves.
+    /// EARLY RELEASE NOTICE: This class represents a draft that is designed to inform the OpenActive specification work with implementation feedback. IT IS SUBJECT TO CHANGE, as the [Dataset API Discovery specification](https://openactive.io/dataset-api-discovery/EditorsDraft/) evolves.
     /// 
     /// This type is derived from https://pending.schema.org/WebAPI.
     /// </summary>
@@ -81,7 +81,7 @@ namespace OpenActive.NET
         /// <example>
         /// <code>
         /// "conformsTo": [
-        ///   "https://www.openactive.io/open-booking-api/1.0/#core"
+        ///   "https://openactive.io/open-booking-api/1.0/#core"
         /// ]
         /// </code>
         /// </example>
@@ -108,7 +108,7 @@ namespace OpenActive.NET
         /// </summary>
         /// <example>
         /// <code>
-        /// "endpointDescription": "https://www.openactive.io/open-booking-api/1.0/swagger.json"
+        /// "endpointDescription": "https://openactive.io/open-booking-api/1.0/swagger.json"
         /// </code>
         /// </example>
         [DataMember(Name = "endpointDescription", EmitDefaultValue = false, Order = 11)]

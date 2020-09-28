@@ -558,44 +558,13 @@ namespace OpenActive.NET
 
         /// <summary>
         /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
-        /// A property that allows an Event duration to be represented as a range (e.g. 0-30mins, 30-60mins, 60-90mins, 90+).
+        /// Sometimes a description is stored with formatting (e.g. href, bold, italics, embedded YouTube videos). This formatting can be useful for data consumers. This property must contain HTML.
         /// 
-        /// If you are using this property, please join the discussion at proposal [#201](https://github.com/openactive/modelling-opportunity-data/issues/201).
+        /// If you are using this property, please join the discussion at proposal [#2](https://github.com/openactive/ns-beta/issues/2).
         /// </summary>
-        [DataMember(Name = "beta:estimatedDuration", EmitDefaultValue = false, Order = 1040)]
+        [DataMember(Name = "beta:formattedDescription", EmitDefaultValue = false, Order = 1040)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual QuantitativeValue EstimatedDuration { get; set; }
-
-
-        /// <summary>
-        /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
-        /// Whether the event or facility is indoor or outdoor.
-        /// 
-        /// If you are using this property, please join the discussion at proposal [#1](https://github.com/openactive/facility-types/issues/1).
-        /// </summary>
-        [DataMember(Name = "beta:facilitySetting", EmitDefaultValue = false, Order = 1041)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public virtual FacilitySettingType? FacilitySetting { get; set; }
-
-
-        /// <summary>
-        /// [NOTICE: This property is part of the Open Booking API Test Interface, and MUST NOT be used in production.]
-        /// The opportunity criteria which the Event conforms to.
-        /// </summary>
-        [DataMember(Name = "test:testOpportunityCriteria", EmitDefaultValue = false, Order = 1042)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public virtual TestOpportunityCriteriaEnumeration? TestOpportunityCriteria { get; set; }
-
-
-        /// <summary>
-        /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
-        /// A property that indicates whether the event is led by a virtual coach. Only relevant if an event `isCoached`. If not provided is assumed to be `false`.
-        /// 
-        /// If you are using this property, please join the discussion at proposal [#71](https://github.com/openactive/modelling-opportunity-data/issues/71).
-        /// </summary>
-        [DataMember(Name = "beta:isVirtuallyCoached", EmitDefaultValue = false, Order = 1043)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public virtual bool? IsVirtuallyCoached { get; set; }
+        public virtual string FormattedDescription { get; set; }
 
 
         /// <summary>
@@ -604,20 +573,20 @@ namespace OpenActive.NET
         /// 
         /// If you are using this property, please join the discussion at proposal [#3](https://github.com/openactive/ns-beta/issues/3).
         /// </summary>
-        [DataMember(Name = "beta:distance", EmitDefaultValue = false, Order = 1044)]
+        [DataMember(Name = "beta:distance", EmitDefaultValue = false, Order = 1041)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual QuantitativeValue Distance { get; set; }
 
 
         /// <summary>
         /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
-        /// Describes a means of electronic access to a shared virtual space.
+        /// For events that have an unlimited number of tickets, captures the number of attendees (actual attendance).
         /// 
-        /// If you are using this property, please join the discussion at proposal [#224](https://github.com/openactive/modelling-opportunity-data/issues/224).
+        /// If you are using this property, please join the discussion at proposal [#12](https://github.com/openactive/ns-beta/issues/12).
         /// </summary>
-        [DataMember(Name = "beta:virtualLocation", EmitDefaultValue = false, Order = 1045)]
+        [DataMember(Name = "beta:attendeeCount", EmitDefaultValue = false, Order = 1042)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual VirtualLocation VirtualLocation { get; set; }
+        public virtual long? AttendeeCount { get; set; }
 
 
         /// <summary>
@@ -626,31 +595,42 @@ namespace OpenActive.NET
         /// 
         /// If you are using this property, please join the discussion at proposal [#13](https://github.com/openactive/ns-beta/issues/13).
         /// </summary>
-        [DataMember(Name = "beta:registrationCount", EmitDefaultValue = false, Order = 1046)]
+        [DataMember(Name = "beta:registrationCount", EmitDefaultValue = false, Order = 1043)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual long? RegistrationCount { get; set; }
 
 
         /// <summary>
         /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
-        /// The physical location affiliated with the virtual event, for example the original location of the event before it was moved online.
+        /// A property that details whether the event is suitable for wheelchair access. Placed on Event as this field could be used to detail whether the Event is suitable, as well as the Place.
         /// 
-        /// If you are using this property, please join the discussion at proposal [#227](https://github.com/openactive/modelling-opportunity-data/issues/227).
+        /// If you are using this property, please join the discussion at proposal [#166](https://github.com/openactive/modelling-opportunity-data/issues/166).
         /// </summary>
-        [DataMember(Name = "beta:affiliatedLocation", EmitDefaultValue = false, Order = 1047)]
+        [DataMember(Name = "beta:isWheelchairAccessible", EmitDefaultValue = false, Order = 1044)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual Place AffiliatedLocation { get; set; }
+        public virtual bool? IsWheelchairAccessible { get; set; }
 
 
         /// <summary>
         /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
-        /// Sometimes a description is stored with formatting (e.g. href, bold, italics, embedded YouTube videos). This formatting can be useful for data consumers.
+        /// A property that allows an Event duration to be represented as a range (e.g. 0-30mins, 30-60mins, 60-90mins, 90+).
         /// 
-        /// If you are using this property, please join the discussion at proposal [#2](https://github.com/openactive/ns-beta/issues/2).
+        /// If you are using this property, please join the discussion at proposal [#201](https://github.com/openactive/modelling-opportunity-data/issues/201).
         /// </summary>
-        [DataMember(Name = "beta:formattedDescription", EmitDefaultValue = false, Order = 1048)]
+        [DataMember(Name = "beta:estimatedDuration", EmitDefaultValue = false, Order = 1045)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual string FormattedDescription { get; set; }
+        public virtual QuantitativeValue EstimatedDuration { get; set; }
+
+
+        /// <summary>
+        /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
+        /// A related video object.
+        /// 
+        /// If you are using this property, please join the discussion at proposal [#88](https://github.com/openactive/modelling-opportunity-data/issues/88).
+        /// </summary>
+        [DataMember(Name = "beta:video", EmitDefaultValue = false, Order = 1046)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public virtual List<VideoObject> Video { get; set; }
 
 
         /// <summary>
@@ -659,42 +639,64 @@ namespace OpenActive.NET
         /// 
         /// If you are using this property, please join the discussion at proposal [#110](https://github.com/openactive/modelling-opportunity-data/issues/110).
         /// </summary>
-        [DataMember(Name = "beta:sportsActivityLocation", EmitDefaultValue = false, Order = 1049)]
+        [DataMember(Name = "beta:sportsActivityLocation", EmitDefaultValue = false, Order = 1047)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual List<SportsActivityLocation> SportsActivityLocation { get; set; }
+        public virtual List<Schema.NET.SportsActivityLocation> SportsActivityLocation { get; set; }
 
 
         /// <summary>
         /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
-        /// A property that indicates whether the first session is free.
+        /// Duration before the event for which the associated Offers are valid
         /// 
-        /// If you are using this property, please join the discussion at proposal [#232](https://github.com/openactive/modelling-opportunity-data/issues/232).
+        /// If you are using this property, please join the discussion at proposal [#204](https://github.com/openactive/modelling-opportunity-data/issues/204).
         /// </summary>
-        [DataMember(Name = "beta:isFirstSessionAccessibleForFree", EmitDefaultValue = false, Order = 1050)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public virtual bool? IsFirstSessionAccessibleForFree { get; set; }
+        [DataMember(Name = "beta:offerValidityPeriod", EmitDefaultValue = false, Order = 1048)]
+        [JsonConverter(typeof(OpenActiveTimeSpanToISO8601DurationValuesConverter))]
+        public virtual TimeSpan? OfferValidityPeriod { get; set; }
 
 
         /// <summary>
         /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
-        /// The URL of the webpage where the activity provider accepts donations.
+        /// Whether the event or facility is indoor or outdoor.
         /// 
-        /// If you are using this property, please join the discussion at proposal [#234](https://github.com/openactive/modelling-opportunity-data/issues/234).
+        /// If you are using this property, please join the discussion at proposal [#1](https://github.com/openactive/facility-types/issues/1).
         /// </summary>
-        [DataMember(Name = "beta:donationPaymentUrl", EmitDefaultValue = false, Order = 1051)]
+        [DataMember(Name = "beta:facilitySetting", EmitDefaultValue = false, Order = 1049)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual Uri DonationPaymentUrl { get; set; }
+        public virtual FacilitySettingType? FacilitySetting { get; set; }
 
 
         /// <summary>
         /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
-        /// Indicates whether the participant must or may supply equipment for use in the Event.
+        /// A property that indicates whether the event is led by a virtual coach. Only relevant if an event `isCoached`. If not provided is assumed to be `false`.
         /// 
-        /// If you are using this property, please join the discussion at proposal [#229](https://github.com/openactive/modelling-opportunity-data/issues/229).
+        /// If you are using this property, please join the discussion at proposal [#71](https://github.com/openactive/modelling-opportunity-data/issues/71).
         /// </summary>
-        [DataMember(Name = "beta:participantSuppliedEquipment", EmitDefaultValue = false, Order = 1052)]
+        [DataMember(Name = "beta:isVirtuallyCoached", EmitDefaultValue = false, Order = 1050)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual RequiredStatusType? ParticipantSuppliedEquipment { get; set; }
+        public virtual bool? IsVirtuallyCoached { get; set; }
+
+
+        /// <summary>
+        /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
+        /// Describes a means of electronic access to a shared virtual space.
+        /// 
+        /// If you are using this property, please join the discussion at proposal [#224](https://github.com/openactive/modelling-opportunity-data/issues/224).
+        /// </summary>
+        [DataMember(Name = "beta:virtualLocation", EmitDefaultValue = false, Order = 1051)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public virtual VirtualLocation VirtualLocation { get; set; }
+
+
+        /// <summary>
+        /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
+        /// The physical location affiliated with the virtual event, for example the original location of the event before it was moved online.
+        /// 
+        /// If you are using this property, please join the discussion at proposal [#227](https://github.com/openactive/modelling-opportunity-data/issues/227).
+        /// </summary>
+        [DataMember(Name = "beta:affiliatedLocation", EmitDefaultValue = false, Order = 1052)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public virtual Place AffiliatedLocation { get; set; }
 
 
         /// <summary>
@@ -710,46 +712,55 @@ namespace OpenActive.NET
 
         /// <summary>
         /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
-        /// Duration before the event for which the associated Offers are valid
+        /// Indicates whether the participant must or may supply equipment for use in the Event.
         /// 
-        /// If you are using this property, please join the discussion at proposal [#204](https://github.com/openactive/modelling-opportunity-data/issues/204).
+        /// If you are using this property, please join the discussion at proposal [#229](https://github.com/openactive/modelling-opportunity-data/issues/229).
         /// </summary>
-        [DataMember(Name = "beta:offerValidityPeriod", EmitDefaultValue = false, Order = 1054)]
-        [JsonConverter(typeof(OpenActiveTimeSpanToISO8601DurationValuesConverter))]
-        public virtual TimeSpan? OfferValidityPeriod { get; set; }
+        [DataMember(Name = "beta:participantSuppliedEquipment", EmitDefaultValue = false, Order = 1054)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public virtual RequiredStatusType? ParticipantSuppliedEquipment { get; set; }
 
 
         /// <summary>
         /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
-        /// A related video object.
+        /// The URL of the webpage where the activity provider accepts donations.
         /// 
-        /// If you are using this property, please join the discussion at proposal [#88](https://github.com/openactive/modelling-opportunity-data/issues/88).
+        /// If you are using this property, please join the discussion at proposal [#234](https://github.com/openactive/modelling-opportunity-data/issues/234).
         /// </summary>
-        [DataMember(Name = "beta:video", EmitDefaultValue = false, Order = 1055)]
+        [DataMember(Name = "beta:donationPaymentUrl", EmitDefaultValue = false, Order = 1055)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual List<VideoObject> Video { get; set; }
+        public virtual Uri DonationPaymentUrl { get; set; }
 
 
         /// <summary>
         /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
-        /// A property that details whether the event is suitable for wheelchair access. Placed on Event as this field could be used to detail whether the Event is suitable, as well as the Place.
+        /// A property that indicates whether the first session is free.
         /// 
-        /// If you are using this property, please join the discussion at proposal [#166](https://github.com/openactive/modelling-opportunity-data/issues/166).
+        /// If you are using this property, please join the discussion at proposal [#232](https://github.com/openactive/modelling-opportunity-data/issues/232).
         /// </summary>
-        [DataMember(Name = "beta:isWheelchairAccessible", EmitDefaultValue = false, Order = 1056)]
+        [DataMember(Name = "beta:isFirstSessionAccessibleForFree", EmitDefaultValue = false, Order = 1056)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual bool? IsWheelchairAccessible { get; set; }
+        public virtual bool? IsFirstSessionAccessibleForFree { get; set; }
 
 
         /// <summary>
         /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
-        /// For events that have an unlimited number of tickets, captures the number of attendees (actual attendance).
+        /// Contact details for an Event, where they are not specifically related to the `organizer` or `leader`.
         /// 
-        /// If you are using this property, please join the discussion at proposal [#12](https://github.com/openactive/ns-beta/issues/12).
+        /// If you are using this property, please join the discussion at proposal [#113](https://github.com/openactive/modelling-opportunity-data/issues/113).
         /// </summary>
-        [DataMember(Name = "beta:attendeeCount", EmitDefaultValue = false, Order = 1057)]
+        [DataMember(Name = "beta:contactPoint", EmitDefaultValue = false, Order = 1057)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual long? AttendeeCount { get; set; }
+        public virtual Schema.NET.ContactPoint ContactPoint { get; set; }
+
+
+        /// <summary>
+        /// [NOTICE: This property is part of the Open Booking API Test Interface, and MUST NOT be used in production.]
+        /// The opportunity criteria which the Event conforms to.
+        /// </summary>
+        [DataMember(Name = "test:testOpportunityCriteria", EmitDefaultValue = false, Order = 1058)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public virtual TestOpportunityCriteriaEnumeration? TestOpportunityCriteria { get; set; }
 
     }
 }

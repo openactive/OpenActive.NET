@@ -8,7 +8,7 @@ namespace OpenActive.NET
 {
     /// <summary>
     /// 
-    /// EARLY RELEASE NOTICE: In order to expedite the OpenActive tooling work, this class has been added to the model for the purposes of testing. IT IS SUBJECT TO CHANGE, as the [Dataset API Discovery specification](https://www.openactive.io/dataset-api-discovery/EditorsDraft/) evolves.
+    /// EARLY RELEASE NOTICE: This class represents a draft that is designed to inform the OpenActive specification work with implementation feedback. It is mostly stable, as it based almost entirely on schema.org. HOWEVER, IT IS STILL SUBJECT TO CHANGE, as the [Dataset API Discovery specification](https://openactive.io/dataset-api-discovery/EditorsDraft/) evolves.
     /// 
     /// This type is derived from https://schema.org/Dataset, which means that any of this type's properties within schema.org may also be used.
     /// </summary>
@@ -245,7 +245,7 @@ namespace OpenActive.NET
         /// </summary>
         /// <example>
         /// <code>
-        /// "schemaVersion": "https://www.openactive.io/modelling-opportunity-data/2.0/"
+        /// "schemaVersion": "https://openactive.io/modelling-opportunity-data/2.0/"
         /// </code>
         /// </example>
         [DataMember(Name = "schemaVersion", EmitDefaultValue = false, Order = 21)]

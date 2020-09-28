@@ -142,24 +142,24 @@ namespace OpenActive.NET
 
         /// <summary>
         /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
-        /// A related video object.
-        /// 
-        /// If you are using this property, please join the discussion at proposal [#88](https://github.com/openactive/modelling-opportunity-data/issues/88).
-        /// </summary>
-        [DataMember(Name = "beta:video", EmitDefaultValue = false, Order = 1013)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public virtual List<VideoObject> Video { get; set; }
-
-
-        /// <summary>
-        /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
         /// An associated logo for a course.
         /// 
         /// If you are using this property, please join the discussion at proposal [#164](https://github.com/openactive/modelling-opportunity-data/issues/164).
         /// </summary>
-        [DataMember(Name = "beta:logo", EmitDefaultValue = false, Order = 1014)]
+        [DataMember(Name = "beta:logo", EmitDefaultValue = false, Order = 1013)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual ImageObject Logo { get; set; }
+
+
+        /// <summary>
+        /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
+        /// A related video object.
+        /// 
+        /// If you are using this property, please join the discussion at proposal [#88](https://github.com/openactive/modelling-opportunity-data/issues/88).
+        /// </summary>
+        [DataMember(Name = "beta:video", EmitDefaultValue = false, Order = 1014)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public virtual List<VideoObject> Video { get; set; }
 
     }
 }

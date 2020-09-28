@@ -218,5 +218,16 @@ namespace OpenActive.NET
         [JsonConverter(typeof(OpenActiveTimeSpanToISO8601DurationValuesConverter))]
         public virtual TimeSpan? ValidFromBeforeStartDate { get; set; }
 
+
+        /// <summary>
+        /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
+        /// Number of people the reservation should accommodate.
+        /// 
+        /// If you are using this property, please join the discussion at proposal [#250](https://github.com/openactive/modelling-opportunity-data/issues/250).
+        /// </summary>
+        [DataMember(Name = "beta:partySize", EmitDefaultValue = false, Order = 1021)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public virtual QuantitativeValue PartySize { get; set; }
+
     }
 }

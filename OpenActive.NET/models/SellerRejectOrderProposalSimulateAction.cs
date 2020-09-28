@@ -7,11 +7,11 @@ using System.Runtime.Serialization;
 namespace OpenActive.NET
 {
     /// <summary>
-    /// 
-    /// This type is derived from https://pending.schema.org/Schedule.
+    /// [NOTICE: This class is part of the Open Booking API Test Interface, and MUST NOT be used in production.] 
+    /// This type is derived from https://schema.org/Action, which means that any of this type's properties within schema.org may also be used.
     /// </summary>
     [DataContract]
-    public partial class PartialSchedule : Schedule
+    public partial class SellerRejectOrderProposalSimulateAction : OpenBookingSimulateAction
     {
         /// <summary>
         /// Returns the JSON-LD representation of this instance.
@@ -44,27 +44,8 @@ namespace OpenActive.NET
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
         [DataMember(Name = "@type", Order = 1)]
-        public override string Type => "PartialSchedule";
+        public override string Type => "test:SellerRejectOrderProposalSimulateAction";
 
         
-        [Obsolete("This property is disinherited in this type, and must not be used.", true)]
-        public override string IdTemplate { get; set; }
-
-
-        [Obsolete("This property is disinherited in this type, and must not be used.", true)]
-        public override string UrlTemplate { get; set; }
-
-
-        /// <summary>
-        /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
-        /// [DEPRECATED: This beta property is now deprecated, please use `schema:scheduleTimezone` instead.] The time zone used to generate occurrences, same as iCal TZID. E.g. 'Europe/London'.
-        /// 
-        /// If you are using this property, please join the discussion at proposal [#197](https://github.com/openactive/modelling-opportunity-data/issues/197).
-        /// </summary>
-        [DataMember(Name = "beta:timeZone", EmitDefaultValue = false, Order = 1009)]
-        [JsonConverter(typeof(ValuesConverter))]
-        [Obsolete("DEPRECATED: This beta property is now deprecated, please use `schema:scheduleTimezone` instead.", false)]
-        public override string TimeZone { get; set; }
-
     }
 }

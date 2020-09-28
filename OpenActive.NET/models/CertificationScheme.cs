@@ -49,24 +49,24 @@ namespace OpenActive.NET
         
         /// <summary>
         /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
-        /// From within a CertificationScheme, points to other CertificationSchemes considered valid and trusted in order to allow the creation of a trust network.
-        /// 
-        /// If you are using this property, please join the discussion at proposal [#217](https://github.com/openactive/modelling-opportunity-data/issues/217).
-        /// </summary>
-        [DataMember(Name = "beta:trustedCertificationSchemes", EmitDefaultValue = false, Order = 1006)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public virtual Uri TrustedCertificationSchemes { get; set; }
-
-
-        /// <summary>
-        /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
         /// Property containing an array of CertificationLevels
         /// 
         /// If you are using this property, please join the discussion at proposal [#217](https://github.com/openactive/modelling-opportunity-data/issues/217).
         /// </summary>
-        [DataMember(Name = "beta:certificationLevel", EmitDefaultValue = false, Order = 1007)]
+        [DataMember(Name = "beta:certificationLevel", EmitDefaultValue = false, Order = 1006)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual CertificationLevel CertificationLevel { get; set; }
+
+
+        /// <summary>
+        /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
+        /// From within a CertificationScheme, points to other CertificationSchemes considered valid and trusted in order to allow the creation of a trust network.
+        /// 
+        /// If you are using this property, please join the discussion at proposal [#217](https://github.com/openactive/modelling-opportunity-data/issues/217).
+        /// </summary>
+        [DataMember(Name = "beta:trustedCertificationSchemes", EmitDefaultValue = false, Order = 1007)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public virtual Uri TrustedCertificationSchemes { get; set; }
 
     }
 }

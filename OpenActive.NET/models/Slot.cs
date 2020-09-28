@@ -275,7 +275,7 @@ namespace OpenActive.NET
         /// </summary>
         [DataMember(Name = "beta:sportsActivityLocation", EmitDefaultValue = false, Order = 1042)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override List<SportsActivityLocation> SportsActivityLocation { get; set; }
+        public override List<Schema.NET.SportsActivityLocation> SportsActivityLocation { get; set; }
 
     }
 }

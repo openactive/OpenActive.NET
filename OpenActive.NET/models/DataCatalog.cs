@@ -8,7 +8,7 @@ namespace OpenActive.NET
 {
     /// <summary>
     /// 
-    /// EARLY RELEASE NOTICE: In order to expedite the OpenActive tooling work, this class has been added to the model for the purposes of testing. IT IS SUBJECT TO CHANGE, as the [Dataset API Discovery specification](https://www.openactive.io/dataset-api-discovery/EditorsDraft/) evolves.
+    /// EARLY RELEASE NOTICE: This class represents a draft that is designed to inform the OpenActive specification work with implementation feedback. It is mostly stable, as it based entirely on schema.org. HOWEVER, IT IS STILL SUBJECT TO CHANGE, as the [Dataset API Discovery specification](https://openactive.io/dataset-api-discovery/EditorsDraft/) evolves.
     /// 
     /// This type is derived from https://schema.org/DataCatalog, which means that any of this type's properties within schema.org may also be used.
     /// </summary>
@@ -104,10 +104,26 @@ namespace OpenActive.NET
         public new virtual SingleValues<string, DateTimeOffset?> DatePublished { get; set; }
 
 
+        /// <summary>
+        /// The URLs of each smaller `DataCatalog` within this `DataCatalog` collection.
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// "hasPart": [
+        ///   "https://opendata.leisurecloud.live/api/datacatalog",
+        ///   "https://openactivedatacatalog.legendonlineservices.co.uk/api/DataCatalog"
+        /// ]
+        /// </code>
+        /// </example>
+        [DataMember(Name = "hasPart", EmitDefaultValue = false, Order = 11)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public new virtual List<Uri> HasPart { get; set; }
+
+
         /// Must always be present and set to <code>
         /// "license": "https://creativecommons.org/licenses/by/4.0/"
         /// </code>
-        [DataMember(Name = "license", EmitDefaultValue = false, Order = 11)]
+        [DataMember(Name = "license", EmitDefaultValue = false, Order = 12)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual Uri License { get; set; }
 
@@ -124,7 +140,7 @@ namespace OpenActive.NET
         /// }
         /// </code>
         /// </example>
-        [DataMember(Name = "publisher", EmitDefaultValue = false, Order = 12)]
+        [DataMember(Name = "publisher", EmitDefaultValue = false, Order = 13)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual Organization Publisher { get; set; }
 
