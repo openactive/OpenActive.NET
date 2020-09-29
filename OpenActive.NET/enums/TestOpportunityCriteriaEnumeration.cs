@@ -45,6 +45,8 @@ namespace OpenActive.NET
         [EnumMember(Value = "https://openactive.io/test-interface#TestOpportunityBookablePaidTaxGross")]
         TestOpportunityBookablePaidTaxGross,
         [EnumMember(Value = "https://openactive.io/test-interface#TestOpportunityBookablePaidTaxNet")]
-        TestOpportunityBookablePaidTaxNet
+        TestOpportunityBookablePaidTaxNet,
+        [EnumMember(Value = "https://openactive.io/test-interface#TestOpportunityBookableFlowRequirementOnlyApproval")]
+        TestOpportunityBookableFlowRequirementOnlyApproval
     }
 }
