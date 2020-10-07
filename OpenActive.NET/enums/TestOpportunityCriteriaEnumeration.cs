@@ -18,6 +18,8 @@ namespace OpenActive.NET
         TestOpportunityBookableNoSpaces,
         [EnumMember(Value = "https://openactive.io/test-interface#TestOpportunityBookableTwoSpaces")]
         TestOpportunityBookableTwoSpaces,
+        [EnumMember(Value = "https://openactive.io/test-interface#TestOpportunityBookableFiveSpaces")]
+        TestOpportunityBookableFiveSpaces,
         [EnumMember(Value = "https://openactive.io/test-interface#TestOpportunityBookableFree")]
         TestOpportunityBookableFree,
         [EnumMember(Value = "https://openactive.io/test-interface#TestOpportunityBookablePaid")]
