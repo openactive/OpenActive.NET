@@ -54,12 +54,12 @@ namespace OpenActive.NET
         /// </summary>
         /// <example>
         /// <code>
-        /// "name": "The 'orderedItem' and 'acceptedOffer' combination specified are not bookable, as defined in the Open Booking API specification."
+        /// "name": "The 'orderedItem' and 'acceptedOffer' combination specified are not "bookable", as defined in the Open Booking API specification."
         /// </code>
         /// </example>
         [DataMember(Name = "name", EmitDefaultValue = false, Order = 7)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override string Name { get; set; } = "The 'orderedItem' and 'acceptedOffer' combination specified are not bookable, as defined in the Open Booking API specification.";
+        public override string Name { get; set; } = "The 'orderedItem' and 'acceptedOffer' combination specified are not \"bookable\", as defined in the Open Booking API specification.";
 
 
         /// Must always be present and set to <code>

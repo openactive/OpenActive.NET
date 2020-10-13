@@ -548,7 +548,7 @@ function createPropertyFromField(field, models, enumMap, hasBaseClass) {
     var jsonConverter = renderJsonConverter(field, propertyType);
     var deprecated = field.betaDeprecated ? `\n        [Obsolete("${field.betaDeprecated}", false)]` : "";
     var defaultContent = field.defaultContent ?
-        (Number.isInteger(field.defaultContent) ? ` = ${field.defaultContent};` : ` = "${field.defaultContent.replace(/"/g, '\"')}";`)
+        (Number.isInteger(field.defaultContent) ? ` = ${field.defaultContent};` : ` = "${field.defaultContent.replace(/"/g, '\\"')}";`)
         : "";
     return !field.obsolete ? `
         /// ${createDescriptionWithExample(field).replace(/\n/g, '\n        /// ')}

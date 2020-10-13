@@ -8,6 +8,8 @@ namespace OpenActive.NET
 {
     /// <summary>
     /// 
+    /// Error Use Case: The Booking System does not recognise the specific HTTP verb used for the endpoint requested.
+    /// 
     /// This type is derived from https://schema.org/Thing, which means that any of this type's properties within schema.org may also be used.
     /// </summary>
     [DataContract]
@@ -47,5 +49,25 @@ namespace OpenActive.NET
         public override string Type => "MethodNotAllowedError";
 
         
+        /// <summary>
+        /// A short, human-readable summary of the problem type. It should not change from occurrence to occurrence of the problem, except for purposes of localization.
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// "name": "The Booking System does not recognise the specific HTTP verb used for the endpoint requested."
+        /// </code>
+        /// </example>
+        [DataMember(Name = "name", EmitDefaultValue = false, Order = 7)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public override string Name { get; set; } = "The Booking System does not recognise the specific HTTP verb used for the endpoint requested.";
+
+
+        /// Must always be present and set to <code>
+        /// "statusCode": 405
+        /// </code>
+        [DataMember(Name = "statusCode", EmitDefaultValue = false, Order = 8)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public override long? StatusCode { get; set; } = 405;
+
     }
 }
