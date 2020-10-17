@@ -13,7 +13,7 @@ namespace OpenActive.NET
     /// This type is derived from https://schema.org/Thing, which means that any of this type's properties within schema.org may also be used.
     /// </summary>
     [DataContract]
-    public partial class OpenBookingInternalError : OpenBookingError
+    public partial class InternalOpenBookingError : OpenBookingError
     {
         /// <summary>
         /// Returns the JSON-LD representation of this instance.
@@ -46,7 +46,7 @@ namespace OpenActive.NET
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
         [DataMember(Name = "@type", Order = 1)]
-        public override string Type => "OpenBookingInternalError";
+        public override string Type => "InternalOpenBookingError";
 
         
         /// <summary>
