@@ -44,10 +44,22 @@ namespace OpenActive.NET
         TestOpportunityBookablePaidAttendeeDetails,
         [EnumMember(Value = "https://openactive.io/test-interface#TestOpportunityBookableAdditionalDetails")]
         TestOpportunityBookableAdditionalDetails,
-        [EnumMember(Value = "https://openactive.io/test-interface#TestOpportunityBookablePrepaymentOptional")]
-        TestOpportunityBookablePrepaymentOptional,
-        [EnumMember(Value = "https://openactive.io/test-interface#TestOpportunityBookablePrepaymentUnavailable")]
-        TestOpportunityBookablePrepaymentUnavailable,
+        [EnumMember(Value = "https://openactive.io/test-interface#TestOpportunityBookableFreePrepaymentOptional")]
+        TestOpportunityBookableFreePrepaymentOptional,
+        [EnumMember(Value = "https://openactive.io/test-interface#TestOpportunityBookablePaidPrepaymentOptional")]
+        TestOpportunityBookablePaidPrepaymentOptional,
+        [EnumMember(Value = "https://openactive.io/test-interface#TestOpportunityBookableFreePrepaymentUnavailable")]
+        TestOpportunityBookableFreePrepaymentUnavailable,
+        [EnumMember(Value = "https://openactive.io/test-interface#TestOpportunityBookablePaidPrepaymentUnavailable")]
+        TestOpportunityBookablePaidPrepaymentUnavailable,
+        [EnumMember(Value = "https://openactive.io/test-interface#TestOpportunityBookableFreePrepaymentRequired")]
+        TestOpportunityBookableFreePrepaymentRequired,
+        [EnumMember(Value = "https://openactive.io/test-interface#TestOpportunityBookablePaidPrepaymentRequired")]
+        TestOpportunityBookablePaidPrepaymentRequired,
+        [EnumMember(Value = "https://openactive.io/test-interface#TestOpportunityBookableFreePrepaymentUnspecified")]
+        TestOpportunityBookableFreePrepaymentUnspecified,
+        [EnumMember(Value = "https://openactive.io/test-interface#TestOpportunityBookablePaidPrepaymentUnspecified")]
+        TestOpportunityBookablePaidPrepaymentUnspecified,
         [EnumMember(Value = "https://openactive.io/test-interface#TestOpportunityBookablePaidTaxGross")]
         TestOpportunityBookablePaidTaxGross,
         [EnumMember(Value = "https://openactive.io/test-interface#TestOpportunityBookablePaidTaxNet")]
