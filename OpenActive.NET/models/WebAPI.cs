@@ -76,6 +76,19 @@ namespace OpenActive.NET
 
 
         /// <summary>
+        /// The location of the OpenID Provider or other relevant authentication authority that may be used to access the API.
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// "authenticationAuthority": "https://auth.bookingsystem.com"
+        /// </code>
+        /// </example>
+        [DataMember(Name = "authenticationAuthority", EmitDefaultValue = false, Order = 9)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public virtual Uri AuthenticationAuthority { get; set; }
+
+
+        /// <summary>
         /// Indicates the version and profiles of OpenActive Open Booking Specification with which this WebAPI conforms, by specifying these as URLs.
         /// </summary>
         /// <example>
@@ -85,7 +98,7 @@ namespace OpenActive.NET
         /// ]
         /// </code>
         /// </example>
-        [DataMember(Name = "conformsTo", EmitDefaultValue = false, Order = 9)]
+        [DataMember(Name = "conformsTo", EmitDefaultValue = false, Order = 10)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual List<Uri> ConformsTo { get; set; }
 
@@ -98,7 +111,7 @@ namespace OpenActive.NET
         /// "documentation": "https://developer.openactive.io"
         /// </code>
         /// </example>
-        [DataMember(Name = "documentation", EmitDefaultValue = false, Order = 10)]
+        [DataMember(Name = "documentation", EmitDefaultValue = false, Order = 11)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual Uri Documentation { get; set; }
 
@@ -111,7 +124,7 @@ namespace OpenActive.NET
         /// "endpointDescription": "https://openactive.io/open-booking-api/1.0/swagger.json"
         /// </code>
         /// </example>
-        [DataMember(Name = "endpointDescription", EmitDefaultValue = false, Order = 11)]
+        [DataMember(Name = "endpointDescription", EmitDefaultValue = false, Order = 12)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual Uri EndpointDescription { get; set; }
 
@@ -124,7 +137,7 @@ namespace OpenActive.NET
         /// "endpointURL": "https://example.bookingsystem.com/api/openbooking"
         /// </code>
         /// </example>
-        [DataMember(Name = "endpointURL", EmitDefaultValue = false, Order = 12)]
+        [DataMember(Name = "endpointURL", EmitDefaultValue = false, Order = 13)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual Uri EndpointURL { get; set; }
 
@@ -137,7 +150,7 @@ namespace OpenActive.NET
         /// "landingPage": "https://exampleforms.com/get-me-an-api-access-key"
         /// </code>
         /// </example>
-        [DataMember(Name = "landingPage", EmitDefaultValue = false, Order = 13)]
+        [DataMember(Name = "landingPage", EmitDefaultValue = false, Order = 14)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual Uri LandingPage { get; set; }
 
@@ -150,7 +163,7 @@ namespace OpenActive.NET
         /// "termsOfService": "https://example.bookingsystem.com/terms"
         /// </code>
         /// </example>
-        [DataMember(Name = "termsOfService", EmitDefaultValue = false, Order = 14)]
+        [DataMember(Name = "termsOfService", EmitDefaultValue = false, Order = 15)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual Uri TermsOfService { get; set; }
 
