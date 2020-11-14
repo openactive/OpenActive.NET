@@ -1,11 +1,11 @@
-name: Deploy to Nuget
+name: Test and Deploy to Nuget
 
 on:
   push:
     branches: [ master ]
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
