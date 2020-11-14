@@ -6,7 +6,6 @@ on:
 
 jobs:
   publish:
-    if: "! contains(toJSON(github.event.commits.*.message), '[no-release]')"
     runs-on: ubuntu-latest
 
     steps:
@@ -37,9 +36,11 @@ jobs:
         run: dotnet pack  ./OpenActive.NET/OpenActive.NET.csproj  --configuration Release --include-source --no-build -p:IncludeSymbols=true -p:SymbolPackageFormat=snupkg
         
       - name: Push to Nuget
+        if: "! contains(toJSON(github.event.commits.*.message), '[no-release]')"
         run: dotnet nuget push "./OpenActive.NET/**/*.nupkg" -k ${{secrets.NUGET_API_KEY}} --skip-duplicate -s https://api.nuget.org/v3/index.json
         
       - name: Create Release
+        if: "! contains(toJSON(github.event.commits.*.message), '[no-release]')"
         id: create_release
         uses: actions/create-release@v1
         env:
