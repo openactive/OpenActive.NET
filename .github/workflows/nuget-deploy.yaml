@@ -30,7 +30,7 @@ jobs:
         run: dotnet build ./OpenActive.NET/OpenActive.NET.csproj --configuration Release --no-restore
         
       - name: Pack
-        run: dotnet pack  ./OpenActive.NET/OpenActive.NET.csproj  --configuration Release --include-symbols --include-source --no-build
+        run: dotnet pack  ./OpenActive.NET/OpenActive.NET.csproj  --configuration Release --include-source --no-build -p:IncludeSymbols=true -p:SymbolPackageFormat=snupkg
         
       - name: Push to Nuget
         run: dotnet nuget push "./OpenActive.NET/**/*.nupkg" -k ${{secrets.NUGET_API_KEY}}
