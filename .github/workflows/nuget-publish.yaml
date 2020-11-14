@@ -6,6 +6,7 @@ on:
 
 jobs:
   publish:
+    if: "! contains(toJSON(github.event.commits.*.message), '[no-release]')"
     runs-on: ubuntu-latest
 
     steps:
