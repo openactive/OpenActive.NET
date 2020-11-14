@@ -1,4 +1,4 @@
-# OpenActive.NET [![Nuget](https://img.shields.io/nuget/v/OpenActive.NET.svg)](https://www.nuget.org/packages/OpenActive.NET/)
+# OpenActive.NET [![Nuget](https://img.shields.io/nuget/v/OpenActive.NET.svg)](https://www.nuget.org/packages/OpenActive.NET/) ![Tested and Published on NuGet](https://github.com/openactive/OpenActive.NET/workflows/Tested%20and%20Published%20on%20NuGet/badge.svg?branch=master)
 .NET classes and resources supporting RPDE feed creation and Open Booking API implementation, to create something like the feeds available [here](https://opendata.fusion-lifestyle.com/OpenActive/) (or any of the other feeds available at the examples listed [here](http://status.openactive.io/)).
 
 This package is intended to simplify the creation of [OpenActive RPDE Feeds](https://developer.openactive.io/publishing-data/data-feeds/how-a-data-feed-works) using templates.

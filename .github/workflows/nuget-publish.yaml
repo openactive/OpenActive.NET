@@ -1,0 +1,54 @@
+name: Tested and Published on NuGet
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout OpenActive.NET
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # avoid shallow clone so nbgv can do its work.
+
+      - name: Get current version
+        uses: dotnet/nbgv@master
+        id: nbgv
+
+      - name: Setup .NET Core 3.1.x
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 3.1.x
+
+      - name: Install dependencies
+        run: dotnet restore
+        
+      - name: Test
+        run: dotnet test ./OpenActive.NET.Test/OpenActive.NET.Test.csproj --configuration Release --no-restore --verbosity normal
+        
+      - name: Build
+        run: dotnet build ./OpenActive.NET/OpenActive.NET.csproj --configuration Release --no-restore
+        
+      - name: Pack
+        run: dotnet pack  ./OpenActive.NET/OpenActive.NET.csproj  --configuration Release --include-source --no-build -p:IncludeSymbols=true -p:SymbolPackageFormat=snupkg
+        
+      - name: Push to Nuget
+        run: dotnet nuget push "./OpenActive.NET/**/*.nupkg" -k ${{secrets.NUGET_API_KEY}} --skip-duplicate -s https://api.nuget.org/v3/index.json
+        
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v${{ steps.nbgv.outputs.SimpleVersion }}
+          release_name: Release ${{ steps.nbgv.outputs.SimpleVersion }}
+          body: |
+            This release contains minor updates based on the updated [OpenActive Data Models](https://github.com/openactive/data-models/).
+            
+            Published to [Nuget](https://www.nuget.org/packages/OpenActive.NET/${{ steps.nbgv.outputs.SimpleVersion }}).
+          draft: false
+          prerelease: false
