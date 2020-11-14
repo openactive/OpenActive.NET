@@ -5,41 +5,29 @@ on: workflow_dispatch
 jobs:
   build:
 
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout OpenActive.NET
         uses: actions/checkout@v2
 
-      - name: Setup MSBuild path
-        uses: microsoft/setup-msbuild@v1.0.1
+      - name: Setup .NET Core 2.1.808
+        uses: actions/setup-dotnet@v1
         with:
-          vs-version: "[16.4,16.9)"
+          dotnet-version: 2.1.808
 
-      - name: Setup NuGet
-        uses: NuGet/setup-nuget@v1.0.2
-
-      - name: Install OpenActive.Server.NET dependencies
-        run: nuget restore
-
-      - name: Build .NET Framework Reference Implementation
-        run: msbuild .\OpenActive.NET\OpenActive.NET.csproj /p:Configuration=Release
+      - name: Install dependencies
+        run: dotnet restore
         
-      - name: Publish to Nuget on version change
-        uses: rohith/publish-nuget@v2
-        with:
-          # Filepath of the project to be packaged, relative to root of repository
-          PROJECT_FILE_PATH: .\OpenActive.NET\OpenActive.NET.csproj
-          PACKAGE_NAME: OpenActive.NET
-
-          # Flag to toggle git tagging, enabled by default
-          TAG_COMMIT: false
-
-          # Format of the git tag, [*] gets replaced with actual version
-          # TAG_FORMAT: v*
-
-          # API key to authenticate with NuGet server
-          NUGET_KEY: ${{secrets.NUGET_API_KEY}}
-
-          # Flag to toggle pushing symbols along with nuget package to the server, disabled by default
-          INCLUDE_SYMBOLS: true
+      - name: Test
+        run: dotnet test ./OpenActive.NET.Test/OpenActive.NET.Test.csproj --configuration Release --no-restore --verbosity normal
+        
+      - name: Build
+        run: dotnet build ./OpenActive.NET/OpenActive.NET.csproj --configuration Release --no-restore
+        
+      - name: Pack
+        run: dotnet pack  ./OpenActive.NET/OpenActive.NET.csproj --include-symbols --include-source --no-build
+        
+      - name: Push to Nuget
+        run: dotnet nuget push "./OpenActive.NET/**/*.nupkg" -k ${{secrets.NUGET_API_KEY}}
+        
