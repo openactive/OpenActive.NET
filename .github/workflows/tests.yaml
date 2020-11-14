@@ -1,0 +1,25 @@
+name: Tests
+
+on:
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout OpenActive.Server.NET
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0 # avoid shallow clone so nbgv can do its work.
+    - name: Setup .NET Core 3.1.x
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.x
+    - name: Install dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build ./OpenActive.NET.Test/OpenActive.NET.Test.csproj --no-restore --configuration Release
+    - name: Test
+      run: dotnet test ./OpenActive.NET.Test/OpenActive.NET.Test.csproj --configuration Release --no-restore --no-build --verbosity normal
