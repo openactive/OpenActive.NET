@@ -1,0 +1,24 @@
+name: Tests
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout OpenActive.Server.NET
+      uses: actions/checkout@v2
+    - name: Setup .NET Core 2.1.x
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 2.1.x
+    - name: Build OpenActive.NET.Test and dependencies
+      run: dotnet build ./OpenActive.NET.Test/OpenActive.NET.Test.csproj --configuration Release
+    - name: Run OpenActive.Server.NET.Tests
+      run: dotnet test ./OpenActive.NET.Test/OpenActive.NET.Testcsproj --configuration Release --no-build --verbosity normal
