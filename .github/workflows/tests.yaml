@@ -22,4 +22,4 @@ jobs:
     - name: Build OpenActive.NET.Test and dependencies
       run: dotnet build ./OpenActive.NET.Test/OpenActive.NET.Test.csproj --configuration Release
     - name: Run OpenActive.Server.NET.Tests
-      run: dotnet test ./OpenActive.NET.Test/OpenActive.NET.Testcsproj --configuration Release --no-build --verbosity normal
+      run: dotnet test ./OpenActive.NET.Test/OpenActive.NET.Test.csproj --configuration Release --no-build --verbosity normal
