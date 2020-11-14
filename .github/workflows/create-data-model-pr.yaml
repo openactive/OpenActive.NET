@@ -48,7 +48,7 @@ jobs:
           delete-branch: true
           title: 'Update data models'
           body: |
-            Update data models to the [latest version](https://github.com/openactive/data-models)
+            Update .NET data models to the latest version based on the [OpenActive Vocabulary](https://openactive.io/ns/) (codified by the [Data Models](https://github.com/openactive/data-models)), [Test Interface](https://openactive.io/test-interface/) and [Beta Namespace](https://openactive.io/ns-beta/).
           labels: |
             automated pr
           team-reviewers: |
