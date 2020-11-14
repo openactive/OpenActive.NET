@@ -7,13 +7,14 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
-
+  test:
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout OpenActive.Server.NET
       uses: actions/checkout@v2
+      with:
+        fetch-depth: 0 # avoid shallow clone so nbgv can do its work.
     - name: Setup .NET Core 2.1.x
       uses: actions/setup-dotnet@v1
       with:
