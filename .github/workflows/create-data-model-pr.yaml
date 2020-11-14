@@ -46,8 +46,6 @@ jobs:
             Update data models to [latest version](https://github.com/openactive/data-models)
           labels: |
             automated pr
-          assignees: nickevansuk
-          reviewers: nickevansuk
           team-reviewers: |
             owners
             maintainers
