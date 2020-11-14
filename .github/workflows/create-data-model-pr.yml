@@ -1,0 +1,56 @@
+name: Update Data Model
+
+on: workflow_dispatch
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout OpenActive.NET
+        uses: actions/checkout@v2
+          with: fetch-depth: 0
+
+      - name: Setup Node.js 12.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+        
+      - name: Install OpenActive.NET.Generator
+        run: npm install
+        working-directory: OpenActive.NET.Generator
+        
+      - name: Update OpenActive.NET.Generator
+        run: npm update @openactive/data-models
+        working-directory: OpenActive.NET.Generator
+
+      - name: Run OpenActive.NET.Generator
+        run: npm start
+        working-directory: OpenActive.NET.Generator
+        
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          commit-message: Update data models
+          committer: GitHub <noreply@github.com>
+          author: openactive-bot <openactive-bot@users.noreply.github.com>
+          signoff: false
+          branch: ci/update-data-models
+          delete-branch: true
+          title: 'Update data models'
+          body: |
+            Update data models to [latest version](https://github.com/openactive/data-models)
+          labels: |
+            automated pr
+          assignees: nickevansuk
+          reviewers: nickevansuk
+          team-reviewers: |
+            owners
+            maintainers
+          draft: false
+
+      - name: Check outputs
+        run: |
+          echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
+          echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
