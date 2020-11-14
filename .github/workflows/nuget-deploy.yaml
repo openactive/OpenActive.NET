@@ -1,6 +1,8 @@
 name: Deploy to Nuget
 
-on: workflow_dispatch
+on:
+  push:
+    branches: [ features/ci ]
 
 jobs:
   build:
