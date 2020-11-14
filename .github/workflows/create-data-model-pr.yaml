@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Checkout OpenActive.NET
         uses: actions/checkout@v2
+        with:
+          ref: master
 
       - name: Setup Node.js 12.x
         uses: actions/setup-node@v1
