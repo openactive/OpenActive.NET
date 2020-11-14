@@ -1,6 +1,7 @@
 name: Update Data Model
 
 on:
+  workflow_dispatch:
   repository_dispatch:
     types: [data-models-update]
 
@@ -36,6 +37,7 @@ jobs:
         run: git checkout OpenActive.NET/models/SportsActivityLocation.cs
     
       - name: Create Pull Request
+        id: cpr
         uses: peter-evans/create-pull-request@v3
         with:
           commit-message: Update data models
