@@ -49,7 +49,7 @@ jobs:
           tag_name: v${{ steps.nbgv.outputs.SimpleVersion }}
           release_name: Release ${{ steps.nbgv.outputs.SimpleVersion }}
           body: |
-            This release contains minor updates based on the updated [OpenActive Data Models](https://github.com/openactive/data-models/).
+            This release contains minor amendments based on updates to the [OpenActive Vocabulary](https://openactive.io/ns/) (codified by the [Data Models](https://github.com/openactive/data-models)), [Test Interface](https://openactive.io/test-interface/) and/or [Beta Namespace](https://openactive.io/ns-beta/).
             
             Published to [Nuget](https://www.nuget.org/packages/OpenActive.NET/${{ steps.nbgv.outputs.SimpleVersion }}).
           draft: false
