@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard1.1;netstandard2.0</TargetFrameworks>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <Copyright>OpenActive</Copyright>
     <Company>OpenActive</Company>
     <Authors>OpenActive Community</Authors>
@@ -33,6 +33,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Nerdbank.GitVersioning" Version="3.3.37">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Schema.NET" Version="7.0.1" />
   </ItemGroup>
 
