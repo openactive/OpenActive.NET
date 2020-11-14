@@ -41,7 +41,7 @@ jobs:
         uses: peter-evans/create-pull-request@v3
         with:
           commit-message: Update data models
-          committer: GitHub <noreply@github.com>
+          committer: openactive-bot <openactive-bot@users.noreply.github.com>
           author: openactive-bot <openactive-bot@users.noreply.github.com>
           signoff: false
           branch: ci/update-data-models
