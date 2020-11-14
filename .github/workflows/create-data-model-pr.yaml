@@ -32,6 +32,9 @@ jobs:
         run: npm start
         working-directory: OpenActive.NET.Generator
         
+      - name: Restore OpenActive.NET/models/SportsActivityLocation.cs (Gladstone workaround)
+        run: git checkout OpenActive.NET/models/SportsActivityLocation.cs
+    
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
@@ -43,7 +46,7 @@ jobs:
           delete-branch: true
           title: 'Update data models'
           body: |
-            Update data models to [latest version](https://github.com/openactive/data-models)
+            Update data models to the [latest version](https://github.com/openactive/data-models)
           labels: |
             automated pr
           team-reviewers: |
