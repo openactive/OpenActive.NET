@@ -1,4 +1,4 @@
-name: Tested and Published on Nuget
+name: Tested and Published on NuGet
 
 on:
   push:
