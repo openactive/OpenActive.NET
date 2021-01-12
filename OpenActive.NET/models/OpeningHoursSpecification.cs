@@ -48,7 +48,7 @@ namespace OpenActive.NET
 
         
         /// <summary>
-        /// The closing time.
+        /// The closing time. Set "00:00" for the value of `opens` and `closes` to indicated the `Place` is closed on the specified days.
         /// </summary>
         /// <example>
         /// <code>
@@ -61,20 +61,23 @@ namespace OpenActive.NET
 
 
         /// <summary>
-        /// Defines the day of the week upon which the Place is open
+        /// Defines the days of the week upon which the `opens` and `closes` values are specified.
         /// </summary>
         /// <example>
         /// <code>
-        /// "dayOfWeek": "https://schema.org/Monday"
+        /// "dayOfWeek": [
+        ///   "https://schema.org/Saturday",
+        ///   "https://schema.org/Sunday"
+        /// ]
         /// </code>
         /// </example>
         [DataMember(Name = "dayOfWeek", EmitDefaultValue = false, Order = 8)]
         [JsonConverter(typeof(ValuesConverter))]
-        public new virtual Schema.NET.DayOfWeek? DayOfWeek { get; set; }
+        public new virtual List<Schema.NET.DayOfWeek> DayOfWeek { get; set; }
 
 
         /// <summary>
-        /// The opening time.
+        /// The opening time. Set "00:00" for the value of `opens` and `closes` to indicated the `Place` is closed on the specified days.
         /// </summary>
         /// <example>
         /// <code>
