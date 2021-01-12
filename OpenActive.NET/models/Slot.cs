@@ -81,7 +81,15 @@ namespace OpenActive.NET
 
 
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
+        public override List<string> AdditionalAdmissionRestriction { get; set; }
+
+
+        [Obsolete("This property is disinherited in this type, and must not be used.", true)]
         public override QuantitativeValue AgeRange { get; set; }
+
+
+        [Obsolete("This property is disinherited in this type, and must not be used.", true)]
+        public override QuantitativeValue AgeRestriction { get; set; }
 
 
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
@@ -104,7 +112,7 @@ namespace OpenActive.NET
         /// "duration": "PT1H"
         /// </code>
         /// </example>
-        [DataMember(Name = "duration", EmitDefaultValue = false, Order = 17)]
+        [DataMember(Name = "duration", EmitDefaultValue = false, Order = 19)]
         [JsonConverter(typeof(OpenActiveTimeSpanToISO8601DurationValuesConverter))]
         public override TimeSpan? Duration { get; set; }
 
@@ -125,7 +133,7 @@ namespace OpenActive.NET
         /// "facilityUse": "https://example.com/facility-use/1"
         /// </code>
         /// </example>
-        [DataMember(Name = "facilityUse", EmitDefaultValue = false, Order = 20)]
+        [DataMember(Name = "facilityUse", EmitDefaultValue = false, Order = 22)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual SingleValues<Uri, IndividualFacilityUse, FacilityUse> FacilityUse { get; set; }
 
@@ -170,7 +178,7 @@ namespace OpenActive.NET
         /// "maximumUses": 16
         /// </code>
         /// </example>
-        [DataMember(Name = "maximumUses", EmitDefaultValue = false, Order = 29)]
+        [DataMember(Name = "maximumUses", EmitDefaultValue = false, Order = 31)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual long? MaximumUses { get; set; }
 
@@ -198,7 +206,7 @@ namespace OpenActive.NET
         /// }
         /// </code>
         /// </example>
-        [DataMember(Name = "offers", EmitDefaultValue = false, Order = 32)]
+        [DataMember(Name = "offers", EmitDefaultValue = false, Order = 34)]
         [JsonConverter(typeof(ValuesConverter))]
         public override List<Offer> Offers { get; set; }
 
@@ -219,7 +227,7 @@ namespace OpenActive.NET
         /// "remainingUses": 5
         /// </code>
         /// </example>
-        [DataMember(Name = "remainingUses", EmitDefaultValue = false, Order = 35)]
+        [DataMember(Name = "remainingUses", EmitDefaultValue = false, Order = 37)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual long? RemainingUses { get; set; }
 
@@ -236,7 +244,7 @@ namespace OpenActive.NET
         /// "startDate": "2018-01-27T12:00:00Z"
         /// </code>
         /// </example>
-        [DataMember(Name = "startDate", EmitDefaultValue = false, Order = 37)]
+        [DataMember(Name = "startDate", EmitDefaultValue = false, Order = 39)]
         [JsonConverter(typeof(ValuesConverter))]
         public override SingleValues<string, DateTimeOffset?> StartDate { get; set; }
 
@@ -250,7 +258,7 @@ namespace OpenActive.NET
         /// "endDate": "2018-01-27T12:00:00Z"
         /// </code>
         /// </example>
-        [DataMember(Name = "endDate", EmitDefaultValue = false, Order = 38)]
+        [DataMember(Name = "endDate", EmitDefaultValue = false, Order = 40)]
         [JsonConverter(typeof(ValuesConverter))]
         public override SingleValues<string, DateTimeOffset?> EndDate { get; set; }
 
@@ -273,7 +281,7 @@ namespace OpenActive.NET
         /// 
         /// If you are using this property, please join the discussion at proposal [#110](https://github.com/openactive/modelling-opportunity-data/issues/110).
         /// </summary>
-        [DataMember(Name = "beta:sportsActivityLocation", EmitDefaultValue = false, Order = 1042)]
+        [DataMember(Name = "beta:sportsActivityLocation", EmitDefaultValue = false, Order = 1044)]
         [JsonConverter(typeof(ValuesConverter))]
         public override List<Schema.NET.SportsActivityLocation> SportsActivityLocation { get; set; }
 

@@ -230,6 +230,14 @@ namespace OpenActive.NET
 
 
         /// <summary>
+        /// Explicitly override general opening hours brought in scope by `schema:openingHoursSpecification`.
+        /// </summary>
+        [DataMember(Name = "specialOpeningHoursSpecification", EmitDefaultValue = false, Order = 17)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public new virtual List<OpeningHoursSpecification> SpecialOpeningHoursSpecification { get; set; }
+
+
+        /// <summary>
         /// The telephone number for the Place
         /// </summary>
         /// <example>
@@ -237,7 +245,7 @@ namespace OpenActive.NET
         /// "telephone": "01253 473934"
         /// </code>
         /// </example>
-        [DataMember(Name = "telephone", EmitDefaultValue = false, Order = 17)]
+        [DataMember(Name = "telephone", EmitDefaultValue = false, Order = 18)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string Telephone { get; set; }
 
@@ -250,7 +258,7 @@ namespace OpenActive.NET
         /// "url": "http://www.rphs.org.uk/"
         /// </code>
         /// </example>
-        [DataMember(Name = "url", EmitDefaultValue = false, Order = 18)]
+        [DataMember(Name = "url", EmitDefaultValue = false, Order = 19)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual Uri Url { get; set; }
 
@@ -261,7 +269,7 @@ namespace OpenActive.NET
         /// 
         /// If you are using this property, please join the discussion at proposal [#2](https://github.com/openactive/ns-beta/issues/2).
         /// </summary>
-        [DataMember(Name = "beta:formattedDescription", EmitDefaultValue = false, Order = 1019)]
+        [DataMember(Name = "beta:formattedDescription", EmitDefaultValue = false, Order = 1020)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual string FormattedDescription { get; set; }
 

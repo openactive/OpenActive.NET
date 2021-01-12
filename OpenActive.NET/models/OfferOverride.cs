@@ -56,6 +56,10 @@ namespace OpenActive.NET
 
 
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
+        public override QuantitativeValue AgeRestriction { get; set; }
+
+
+        [Obsolete("This property is disinherited in this type, and must not be used.", true)]
         public override List<AvailableChannelType> AvailableChannel { get; set; }
 
 
