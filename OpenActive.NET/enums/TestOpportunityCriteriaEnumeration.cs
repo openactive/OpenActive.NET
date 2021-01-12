@@ -38,8 +38,8 @@ namespace OpenActive.NET
         TestOpportunityBookableWithinValidFromBeforeStartDateWindow,
         [EnumMember(Value = "https://openactive.io/test-interface#TestOpportunityBookableOutsideValidFromBeforeStartDateWindow")]
         TestOpportunityBookableOutsideValidFromBeforeStartDateWindow,
-        [EnumMember(Value = "https://openactive.io/test-interface#TestOpportunityBookableFreeAttendeeDetails")]
-        TestOpportunityBookableFreeAttendeeDetails,
+        [EnumMember(Value = "https://openactive.io/test-interface#TestOpportunityBookableAttendeeDetails")]
+        TestOpportunityBookableAttendeeDetails,
         [EnumMember(Value = "https://openactive.io/test-interface#TestOpportunityBookableAdditionalDetails")]
         TestOpportunityBookableAdditionalDetails,
         [EnumMember(Value = "https://openactive.io/test-interface#TestOpportunityBookableFreePrepaymentOptional")]

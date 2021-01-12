@@ -85,5 +85,31 @@ namespace OpenActive.NET
         [JsonConverter(typeof(OpenActiveDateTimeOffsetToISO8601TimeValuesConverter))]
         public new virtual DateTimeOffset? Opens { get; set; }
 
+
+        /// <summary>
+        /// The date when the item becomes valid. The item will be valid at the beginning of the specified day.
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// "validFrom": "2018-01-22"
+        /// </code>
+        /// </example>
+        [DataMember(Name = "validFrom", EmitDefaultValue = false, Order = 10)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public new virtual string ValidFrom { get; set; }
+
+
+        /// <summary>
+        /// The date after which the item is no longer valid. The item will cease to be valid at the end of the specified day.
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// "validThrough": "2018-01-27"
+        /// </code>
+        /// </example>
+        [DataMember(Name = "validThrough", EmitDefaultValue = false, Order = 11)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public new virtual string ValidThrough { get; set; }
+
     }
 }

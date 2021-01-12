@@ -76,7 +76,7 @@ namespace OpenActive.NET
 
 
         /// <summary>
-        /// The location of the OpenID Provider or other relevant authentication authority that may be used to access the API.
+        /// The location of the OpenID Provider or other relevant authentication authority that must be used to access the API.
         /// </summary>
         /// <example>
         /// <code>
