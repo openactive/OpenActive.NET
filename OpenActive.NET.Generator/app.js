@@ -1,7 +1,8 @@
 const DATA_MODEL_OUTPUT_DIR = "../OpenActive.NET/";
 const DATA_MODEL_DOCS_URL_PREFIX = "https://developer.openactive.io/data-model/types/";
 
-const { getModels, getEnums, getMetaData } = require('@openactive/data-models');
+const { getModels, getEnums, getMetaData, getSchemaOrgVocab } = require('@openactive/data-models');
+const {uniqBy} = require('lodash');
 var fs = require('fs');
 var fsExtra = require('fs-extra');
 var request = require('sync-request');
@@ -26,7 +27,81 @@ var EXTENSIONS = {
     }
 };
 
-generateModelClassFiles(DATA_MODEL_OUTPUT_DIR, EXTENSIONS);
+//generateModelClassFiles(DATA_MODEL_OUTPUT_DIR, EXTENSIONS);
+createAllPropertiesEnumFile()
+
+function createAllPropertiesEnumFile() {
+  const models = getModels();
+  const schemaOrgVocab = getSchemaOrgVocab();
+
+  // When this functionality is merged into models-lib in Openactive github, the below should use jsonld parser to parse the openactive context graph
+  // instead of parsing getModels()
+
+  let modelFields = [];
+  for (const [typeName, model] of Object.entries(models)) {
+    if (typeName != undefined) {
+      for (const [fieldName, fieldDefinition] of Object.entries(model.fields)) {
+        if (fieldName != undefined) {
+          if (fieldDefinition.sameAs !== undefined) {
+            modelFields.push({namespace: getNamespaceFromFQP(fieldDefinition.sameAs), value: getPropNameFromFQP(fieldDefinition.sameAs)});
+          }
+        }
+      }
+    }
+  }
+
+  const schemaContexts = schemaOrgVocab['@context'];
+  const schemaFields = schemaOrgVocab['@graph']
+    .filter(a => a['@type'] === 'rdf:Property')
+    .map((model) => {
+      const value = model['rdfs:label'];
+      let namespace;
+      for (const [short, full] of Object.entries(schemaContexts)) {
+        if(model['@id'].includes(short)) {
+          namespace = full;
+          break;
+        }
+      }
+      return {namespace, value};
+    });
+
+  const allFields = modelFields.concat(schemaFields);
+  // TODO sort alphabetically
+  // TODO check a property only exists in one namespace
+  // TODO fail generation if duplicate in difference namespaces exist
+  const allDistinctFields = uniqBy(allFields, 'value');
+
+  
+  
+  var pageName = "enums/AllFields.cs";
+  const allDistinctFieldsEnumFile = createAllFieldsEnumFile(allDistinctFields); 
+
+  console.log("NAME: " + pageName);
+
+  fs.writeFile(DATA_MODEL_OUTPUT_DIR + pageName, allDistinctFieldsEnumFile, function (err) {
+      if (err) {
+          return console.log(err);
+      }
+
+      console.log("FILE SAVED: " + pageName);
+  });
+  console.log('1');
+}
+
+function createAllFieldsEnumFile(fields) {
+  return `
+using System.Runtime.Serialization;
+
+namespace OpenActive.NET
+{
+  public enum AllFields
+  {
+      ${fields.map(field => createEnumValue(field.value, field)).join(',')}
+  }
+}
+`;
+
+}
 
 function generateModelClassFiles(dataModelDirectory, extensions) {
     // Empty output directories
@@ -603,6 +678,11 @@ function getPropNameFromFQP(prop) {
     if (lastIndex > -1) {
         return prop.substring(lastIndex + 1);
     } else return prop;
+}
+
+function getNamespaceFromFQP(prop) {
+  const propName = getPropNameFromFQP(prop);
+  return prop.replace(propName, '');
 }
 
 function createDescriptionWithExample(field) {

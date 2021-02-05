@@ -13,6 +13,7 @@
   "dependencies": {
     "@openactive/data-models": "^2.0.166",
     "fs-extra": "^7.0.1",
+    "lodash": "^4.17.20",
     "sync-request": "^6.0.0"
   }
 }
