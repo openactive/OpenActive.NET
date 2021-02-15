@@ -61,7 +61,7 @@ namespace OpenActive.NET
 
 
         /// <summary>
-        /// Defines the days of the week upon which the `opens` and `closes` values are specified.
+        /// Defines the days of the week upon which the `opens` and `closes` values are specified. Note this property is optional when used within `specialOpeningHoursSpecification`.
         /// </summary>
         /// <example>
         /// <code>
@@ -90,7 +90,7 @@ namespace OpenActive.NET
 
 
         /// <summary>
-        /// The date when the item becomes valid. The item will be valid at the beginning of the specified day.
+        /// The date when the item becomes valid. The item will be valid at the beginning of the specified day. Note this property is required when used within `specialOpeningHoursSpecification`.
         /// </summary>
         /// <example>
         /// <code>
@@ -103,7 +103,7 @@ namespace OpenActive.NET
 
 
         /// <summary>
-        /// The date after which the item is no longer valid. The item will cease to be valid at the end of the specified day.
+        /// The date after which the item is no longer valid. The item will cease to be valid at the end of the specified day. Note this property is required when used within `specialOpeningHoursSpecification`.
         /// </summary>
         /// <example>
         /// <code>
