@@ -59,6 +59,8 @@ namespace OpenActive.NET
         [EnumMember(Value = "https://openactive.io/test-interface#TestOpportunityBookableSellerTermsOfService")]
         TestOpportunityBookableSellerTermsOfService,
         [EnumMember(Value = "https://openactive.io/test-interface#TestOpportunityBookableFlowRequirementOnlyApproval")]
-        TestOpportunityBookableFlowRequirementOnlyApproval
+        TestOpportunityBookableFlowRequirementOnlyApproval,
+        [EnumMember(Value = "https://openactive.io/test-interface#TestOpportunityOnlineBookable")]
+        TestOpportunityOnlineBookable
     }
 }
