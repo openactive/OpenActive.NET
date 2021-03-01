@@ -461,7 +461,6 @@ npm start
 ### Pull requests
 Contributions are very welcome. Please raise an issue or pull request as appropriate.
 
-
 ### Publishing to nuget
 
 1. Bump the version number of OpenActive.NET
