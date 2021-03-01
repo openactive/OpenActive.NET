@@ -315,8 +315,8 @@ namespace OpenActive.NET
         /// <example>
         /// <code>
         /// "provider": {
-        ///   "name": "Central Speedball Association",
         ///   "@type": "Organization",
+        ///   "name": "Central Speedball Association",
         ///   "url": "http://www.speedball-world.com"
         /// }
         /// </code>

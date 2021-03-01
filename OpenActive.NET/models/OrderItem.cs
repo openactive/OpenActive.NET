@@ -56,9 +56,17 @@ namespace OpenActive.NET
 
 
         /// <summary>
+        /// Channel through which the user can participate in the Opportunity. Not applicable for an OrderQuote.
+        /// </summary>
+        [DataMember(Name = "accessChannel", EmitDefaultValue = false, Order = 8)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public virtual VirtualLocation AccessChannel { get; set; }
+
+
+        /// <summary>
         /// PropertyValue that contains a text value usable for entrance. Not applicable for an  OrderQuote.
         /// </summary>
-        [DataMember(Name = "accessCode", EmitDefaultValue = false, Order = 8)]
+        [DataMember(Name = "accessCode", EmitDefaultValue = false, Order = 9)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual List<PropertyValue> AccessCode { get; set; }
 
@@ -66,7 +74,7 @@ namespace OpenActive.NET
         /// <summary>
         /// ImageObject or Barcode that contains reference to an asset (e.g. Barcode, QR code image or PDF) usable for entrance. Not applicable for an OrderQuote.
         /// </summary>
-        [DataMember(Name = "accessPass", EmitDefaultValue = false, Order = 9)]
+        [DataMember(Name = "accessPass", EmitDefaultValue = false, Order = 10)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual List<ImageObject> AccessPass { get; set; }
 
@@ -74,39 +82,39 @@ namespace OpenActive.NET
         /// <summary>
         /// Whether the event can be cancelled.
         /// </summary>
-        [DataMember(Name = "allowCustomerCancellationFullRefund", EmitDefaultValue = false, Order = 10)]
+        [DataMember(Name = "allowCustomerCancellationFullRefund", EmitDefaultValue = false, Order = 11)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual bool? AllowCustomerCancellationFullRefund { get; set; }
 
 
         /// <summary>
-        /// 
+        /// The person attending the Opportunity related to the OrderItem.
         /// </summary>
-        [DataMember(Name = "attendee", EmitDefaultValue = false, Order = 11)]
+        [DataMember(Name = "attendee", EmitDefaultValue = false, Order = 12)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual Person Attendee { get; set; }
 
 
         /// <summary>
-        /// 
+        /// The properties of `schema:Person` that are required to describe an `attendee` for this `OrderItem`.
         /// </summary>
-        [DataMember(Name = "attendeeDetailsRequired", EmitDefaultValue = false, Order = 12)]
+        [DataMember(Name = "attendeeDetailsRequired", EmitDefaultValue = false, Order = 13)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual List<Uri> AttendeeDetailsRequired { get; set; }
 
 
         /// <summary>
-        /// A message set by the Seller in the event of Opportunity cancellation, only applicable for an  Order and where the OrderItem has  orderItemStatus set to  https://openactive.io/SellerCancelled
+        /// A message set by the Seller in the event of Opportunity cancellation, only applicable for an  `Order` and where the `OrderItem` has `orderItemStatus` set to `https://openactive.io/SellerCancelled`
         /// </summary>
-        [DataMember(Name = "cancellationMessage", EmitDefaultValue = false, Order = 13)]
+        [DataMember(Name = "cancellationMessage", EmitDefaultValue = false, Order = 14)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual string CancellationMessage { get; set; }
 
 
         /// <summary>
-        /// A message set by the Seller to trigger a notification to the Customer, only applicable for an Order and where the OrderItem has  orderItemStatus set to  https://openactive.io/OrderItemConfirmed or  https://openactive.io/CustomerAttended
+        /// A message set by the Seller to trigger a notification to the Customer, only applicable for an `Order` and where the `OrderItem` has `orderItemStatus` set to  `https://openactive.io/OrderItemConfirmed` or `https://openactive.io/CustomerAttended`
         /// </summary>
-        [DataMember(Name = "customerNotice", EmitDefaultValue = false, Order = 14)]
+        [DataMember(Name = "customerNotice", EmitDefaultValue = false, Order = 15)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual string CustomerNotice { get; set; }
 
@@ -114,7 +122,7 @@ namespace OpenActive.NET
         /// <summary>
         /// Array of errors related to the OrderItem being included in the Order, only applicable for an  OrderQuote.
         /// </summary>
-        [DataMember(Name = "error", EmitDefaultValue = false, Order = 15)]
+        [DataMember(Name = "error", EmitDefaultValue = false, Order = 16)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual List<OpenBookingError> Error { get; set; }
 
@@ -122,7 +130,7 @@ namespace OpenActive.NET
         /// <summary>
         /// The specific bookable Thing that has been selected by the Customer. See the [Modelling-Opportunity-Data] for more information on these types. Note that the Broker Request and Orders feed only require id within these objects to be included; in these contexts, all other properties are ignored.
         /// </summary>
-        [DataMember(Name = "orderedItem", EmitDefaultValue = false, Order = 16)]
+        [DataMember(Name = "orderedItem", EmitDefaultValue = false, Order = 17)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual Event OrderedItem { get; set; }
 
@@ -130,7 +138,7 @@ namespace OpenActive.NET
         /// <summary>
         /// PropertyValueSpecifications that describe fields in the orderItemIntakeForm.
         /// </summary>
-        [DataMember(Name = "orderItemIntakeForm", EmitDefaultValue = false, Order = 17)]
+        [DataMember(Name = "orderItemIntakeForm", EmitDefaultValue = false, Order = 18)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual List<PropertyValueSpecification> OrderItemIntakeForm { get; set; }
 
@@ -138,7 +146,7 @@ namespace OpenActive.NET
         /// <summary>
         /// PropertyValues that contains a text value responses to the orderItemIntakeForm.
         /// </summary>
-        [DataMember(Name = "orderItemIntakeFormResponse", EmitDefaultValue = false, Order = 18)]
+        [DataMember(Name = "orderItemIntakeFormResponse", EmitDefaultValue = false, Order = 19)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual List<PropertyValue> OrderItemIntakeFormResponse { get; set; }
 
@@ -146,7 +154,7 @@ namespace OpenActive.NET
         /// <summary>
         /// 
         /// </summary>
-        [DataMember(Name = "orderItemStatus", EmitDefaultValue = false, Order = 19)]
+        [DataMember(Name = "orderItemStatus", EmitDefaultValue = false, Order = 20)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual OrderItemStatus? OrderItemStatus { get; set; }
 
@@ -154,7 +162,7 @@ namespace OpenActive.NET
         /// <summary>
         /// An integer representing the order of OrderItems within the array.
         /// </summary>
-        [DataMember(Name = "position", EmitDefaultValue = false, Order = 20)]
+        [DataMember(Name = "position", EmitDefaultValue = false, Order = 21)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual long? Position { get; set; }
 
@@ -162,7 +170,7 @@ namespace OpenActive.NET
         /// <summary>
         /// Breakdown of tax payable for the OrderItem.
         /// </summary>
-        [DataMember(Name = "unitTaxSpecification", EmitDefaultValue = false, Order = 21)]
+        [DataMember(Name = "unitTaxSpecification", EmitDefaultValue = false, Order = 22)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual List<TaxChargeSpecification> UnitTaxSpecification { get; set; }
 

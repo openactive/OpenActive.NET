@@ -134,8 +134,8 @@ namespace OpenActive.NET
         /// <example>
         /// <code>
         /// "publisher": {
+        ///   "@type": "Organization",
         ///   "name": "Central Speedball Association",
-        ///   "type": "Organization",
         ///   "url": "http://www.speedball-world.com"
         /// }
         /// </code>

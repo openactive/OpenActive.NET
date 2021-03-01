@@ -48,11 +48,11 @@ namespace OpenActive.NET
 
         
         /// <summary>
-        /// The name of the livestream.
+        /// The name of the service that is providing remote access to the Opportunity.
         /// </summary>
         /// <example>
         /// <code>
-        /// "name": "Zoom Room"
+        /// "name": "Zoom"
         /// </code>
         /// </example>
         [DataMember(Name = "name", EmitDefaultValue = false, Order = 7)]
@@ -74,14 +74,40 @@ namespace OpenActive.NET
 
 
         /// <summary>
-        /// The URL for the livestream.
+        /// The password or pin required to access the `VirtualLocation` from any device, without requiring the URL, e.g. the meeting password.
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// "accessCode": "211277"
+        /// </code>
+        /// </example>
+        [DataMember(Name = "accessCode", EmitDefaultValue = false, Order = 9)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public virtual string AccessCode { get; set; }
+
+
+        /// <summary>
+        /// The identifier required to access the `VirtualLocation` from any device, without requiring the URL, e.g. the meeting ID.
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// "accessId": "123456789"
+        /// </code>
+        /// </example>
+        [DataMember(Name = "accessId", EmitDefaultValue = false, Order = 10)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public virtual string AccessId { get; set; }
+
+
+        /// <summary>
+        /// The URL that enables remote access to the Opportunity, which should include encoded access credentials where possible.
         /// </summary>
         /// <example>
         /// <code>
         /// "url": "https://zoom.us/room/3fbCs0GVjgQ"
         /// </code>
         /// </example>
-        [DataMember(Name = "url", EmitDefaultValue = false, Order = 9)]
+        [DataMember(Name = "url", EmitDefaultValue = false, Order = 11)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual Uri Url { get; set; }
 
