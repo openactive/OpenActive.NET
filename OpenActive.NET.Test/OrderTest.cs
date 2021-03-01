@@ -182,6 +182,7 @@ namespace OpenActive.NET.Test
                     "\"@id\":\"https://example.com/events/452#/offers/878\"," +
                     "\"name\":\"Speedball winger position\"," +
                     "\"description\":\"Winger space for Speedball.\"," +
+                    "\"allowCustomerCancellationFullRefund\":true," +
                     "\"latestCancellationBeforeStartDate\":\"P1D\"," +
                     "\"price\":0," +
                     "\"priceCurrency\":\"GBP\"," +
@@ -193,7 +194,6 @@ namespace OpenActive.NET.Test
                         "\"text\":\"0123456789\"" +
                     "}" +
                 "]," +
-                "\"allowCustomerCancellationFullRefund\":true," +
                 "\"orderedItem\":{" +
                     "\"@type\":\"ScheduledSession\"," +
                     "\"@id\":\"https://example.com/events/452/subEvents/132\"," +
