@@ -130,7 +130,8 @@ function augmentWithExtension(extModelGraph, models, extensionUrl, extensionPref
                 ],
                 "example": node.example,
                 "extensionPrefix": extensionPrefix,
-                "betaDeprecated": node.comment && node.comment.indexOf("[DEPRECATED") > -1 ? node.comment.substring(node.comment.indexOf("[DEPRECATED") + 1, node.comment.indexOf("]")) : null
+                "deprecated": !!node.supersededBy,
+                "deprecationGuidance": node.supersededBy ? `This term has graduated from the beta namespace and is highly likely to be removed in future versions of this library, please use \`${getPropNameFromFQP(node.supersededBy)}\` instead.` : null
             };
             node.domainIncludes.forEach(function (prop) {
                 var model = models[getPropNameFromFQP(prop)];
@@ -546,7 +547,7 @@ function createPropertyFromField(field, models, enumMap, hasBaseClass) {
     var propertyName = convertToCamelCase(field.fieldName);
     var propertyType = createTypeString(field, models, enumMap, isExtension);
     var jsonConverter = renderJsonConverter(field, propertyType);
-    var deprecated = field.betaDeprecated ? `\n        [Obsolete("${field.betaDeprecated}", false)]` : "";
+    var deprecated = field.deprecated ? `\n        [Obsolete("${field.deprecationGuidance}", false)]` : "";
     var defaultContent = field.defaultContent ?
         (Number.isInteger(field.defaultContent) ? ` = ${field.defaultContent};` : ` = "${field.defaultContent.replace(/"/g, '\\"')}";`)
         : "";
@@ -609,8 +610,9 @@ function createDescriptionWithExample(field) {
     if (field.requiredContent) {
         return "Must always be present and set to " + renderCode(field.requiredContent, field.fieldName, field.requiredType);
     } else {
+        var deprecationNotice = field.deprecated ? `[DEPRECATED: ${field.deprecationGuidance}]\n` : "";
         var propertyWarning = EXTENSIONS[field.extensionPrefix] ? EXTENSIONS[field.extensionPrefix].propertyWarning + "\n" : "";
-        return `<summary>\n${propertyWarning}${field.description.join(" \n")}\n</summary>`
+        return `<summary>\n${deprecationNotice ? deprecationNotice : propertyWarning}${field.description.join(" \n")}\n</summary>`
             + (field.example ? "\n<example>\n" + renderCode(field.example, field.fieldName, field.requiredType) + "\n</example>" : "");
     }
 }

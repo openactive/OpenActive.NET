@@ -116,17 +116,9 @@ namespace OpenActive.NET
 
 
         /// <summary>
-        /// DEPRECATED: Please use `oa:ageRestriction` instead when describing an `Offer`.
+        /// DEPRECATED: Please use `oa:ageRestriction` instead when describing an `Offer`. 
+        /// Indicates that an Offer is only applicable to a specific age range.
         /// </summary>
-        /// <example>
-        /// <code>
-        /// "ageRange": {
-        ///   "@type": "QuantitativeValue",
-        ///   "minValue": 15,
-        ///   "maxValue": 60
-        /// }
-        /// </code>
-        /// </example>
         [DataMember(Name = "ageRange", EmitDefaultValue = false, Order = 12)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual QuantitativeValue AgeRange { get; set; }
