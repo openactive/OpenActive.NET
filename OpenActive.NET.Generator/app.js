@@ -130,7 +130,6 @@ function augmentWithExtension(extModelGraph, models, extensionUrl, extensionPref
                 ],
                 "example": node.example,
                 "extensionPrefix": extensionPrefix,
-                "deprecated": !!node.supersededBy,
                 "deprecationGuidance": node.supersededBy ? `This term has graduated from the beta namespace and is highly likely to be removed in future versions of this library, please use \`${getPropNameFromFQP(node.supersededBy)}\` instead.` : null
             };
             node.domainIncludes.forEach(function (prop) {
@@ -547,13 +546,13 @@ function createPropertyFromField(field, models, enumMap, hasBaseClass) {
     var propertyName = convertToCamelCase(field.fieldName);
     var propertyType = createTypeString(field, models, enumMap, isExtension);
     var jsonConverter = renderJsonConverter(field, propertyType);
-    var deprecated = field.deprecated ? `\n        [Obsolete("${field.deprecationGuidance}", false)]` : "";
+    var obsolete = field.deprecationGuidance ? `\n        [Obsolete("${field.deprecationGuidance}", false)]` : "";
     var defaultContent = field.defaultContent ?
         (Number.isInteger(field.defaultContent) ? ` = ${field.defaultContent};` : ` = "${field.defaultContent.replace(/"/g, '\\"')}";`)
         : "";
     return !field.obsolete ? `
         /// ${createDescriptionWithExample(field).replace(/\n/g, '\n        /// ')}
-        [DataMember(Name = "${memberName}", EmitDefaultValue = false, Order = ${isExtension ? 1000 + field.order : field.order})]${jsonConverter}${deprecated}
+        [DataMember(Name = "${memberName}", EmitDefaultValue = false, Order = ${isExtension ? 1000 + field.order : field.order})]${jsonConverter}${obsolete}
         public ${field.override ? "override" : !isExtension && hasBaseClass && (isNew || field.override) ? "new virtual" : "virtual"} ${propertyType} ${propertyName} { get; set; }${defaultContent}
 ` : `
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
@@ -610,7 +609,7 @@ function createDescriptionWithExample(field) {
     if (field.requiredContent) {
         return "Must always be present and set to " + renderCode(field.requiredContent, field.fieldName, field.requiredType);
     } else {
-        var deprecationNotice = field.deprecated ? `[DEPRECATED: ${field.deprecationGuidance}]\n` : "";
+        var deprecationNotice = field.deprecationGuidance ? `[DEPRECATED: ${field.deprecationGuidance}]\n` : "";
         var propertyWarning = EXTENSIONS[field.extensionPrefix] ? EXTENSIONS[field.extensionPrefix].propertyWarning + "\n" : "";
         return `<summary>\n${deprecationNotice ? deprecationNotice : propertyWarning}${field.description.join(" \n")}\n</summary>`
             + (field.example ? "\n<example>\n" + renderCode(field.example, field.fieldName, field.requiredType) + "\n</example>" : "");
