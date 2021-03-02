@@ -116,10 +116,12 @@ namespace OpenActive.NET
 
 
         /// <summary>
+        /// [DEPRECATED: Use `ageRestriction` instead of `ageRange` within the `Offer` for cases where the `Offer` is age restricted.]
         /// Indicates that an Offer is only applicable to a specific age range.
         /// </summary>
         [DataMember(Name = "ageRange", EmitDefaultValue = false, Order = 12)]
         [JsonConverter(typeof(ValuesConverter))]
+        [Obsolete("Use `ageRestriction` instead of `ageRange` within the `Offer` for cases where the `Offer` is age restricted.", false)]
         public virtual QuantitativeValue AgeRange { get; set; }
 
 
