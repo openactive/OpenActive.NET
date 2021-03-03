@@ -14,23 +14,30 @@ jobs:
         uses: actions/checkout@v2
         with:
           ref: master
+          path: OpenActive.NET
 
-      - name: Setup Node.js 12.x
+      - name: Checkout models-lib
+        uses: actions/checkout@v2
+        with:
+          repository: openactive/models-lib
+          path: models-lib
+
+      - name: Setup Node.js 14.x
         uses: actions/setup-node@v1
         with:
-          node-version: 12.x
-        
-      - name: Install OpenActive.NET.Generator
-        run: npm install
-        working-directory: OpenActive.NET.Generator
-        
-      - name: Update OpenActive.NET.Generator
-        run: npm update @openactive/data-models
-        working-directory: OpenActive.NET.Generator
+          node-version: 14.x
 
-      - name: Run OpenActive.NET.Generator
-        run: npm start
-        working-directory: OpenActive.NET.Generator
+      - name: Install models-lib
+        run: npm install
+        working-directory: models-lib
+
+      - name: Update models-lib with latest data-models
+        run: npm update @openactive/data-models
+        working-directory: models-lib
+
+      - name: Run .NET models generator
+        run: npm start -- generate .NET --destination ../OpenActive.NET/OpenActive.NET/
+        working-directory: models-lib
         
       - name: Restore OpenActive.NET/models/SportsActivityLocation.cs (Gladstone workaround)
         run: git checkout OpenActive.NET/models/SportsActivityLocation.cs
@@ -39,6 +46,7 @@ jobs:
         id: cpr
         uses: peter-evans/create-pull-request@v3
         with:
+          path: OpenActive.NET
           token: ${{ secrets.PUBLIC_REPO_ACCESS_TOKEN }}
           commit-message: Update data models
           committer: openactive-bot <openactive-bot@users.noreply.github.com>
