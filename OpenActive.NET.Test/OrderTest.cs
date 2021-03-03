@@ -197,7 +197,9 @@ namespace OpenActive.NET.Test
                 "\"orderedItem\":{" +
                     "\"@type\":\"ScheduledSession\"," +
                     "\"@id\":\"https://example.com/events/452/subEvents/132\"," +
+                    "\"startDate\":\"2018-10-30T11:00:00+00:00\"," +
                     "\"identifier\":123," +
+                    "\"endDate\":\"2018-10-30T12:00:00+00:00\"," +
                     "\"superEvent\":{" +
                         "\"@type\":\"SessionSeries\"," +
                         "\"@id\":\"https://example.com/events/452\"," +
@@ -228,9 +230,7 @@ namespace OpenActive.NET.Test
                         "}" +
                     "}," +
                     "\"duration\":\"PT1H\"," +
-                    "\"eventStatus\":\"https://schema.org/EventScheduled\"," +
-                    "\"startDate\":\"2018-10-30T11:00:00+00:00\"," +
-                    "\"endDate\":\"2018-10-30T12:00:00+00:00\"" +
+                    "\"eventStatus\":\"https://schema.org/EventScheduled\"" +
                 "}," +
                 "\"orderItemStatus\":\"https://openactive.io/OrderItemConfirmed\"," +
                 "\"unitTaxSpecification\":[" +
@@ -331,7 +331,7 @@ namespace OpenActive.NET.Test
             Assert.Equal("Geoff", order?.Customer.GivenName);
             Assert.Equal("EUCODE", order?.OrderedItem?[0]?.UnitTaxSpecification?[0]?.Identifier.GetClass<List<PropertyValue>>()?[0].Name);
             Assert.Equal(new TimeSpan(6,0,0,0), order?.OrderedItem?[0]?.AcceptedOffer?.ValidFromBeforeStartDate);
-            Assert.Equal(new DateTimeOffset(2018, 10, 30, 11, 00, 00, 00, new TimeSpan()), order?.OrderedItem?[0]?.OrderedItem?.StartDate.GetPrimative<DateTimeOffset>());
+            Assert.Equal(new DateTimeOffset(2018, 10, 30, 11, 00, 00, 00, new TimeSpan()), ((ScheduledSession)order?.OrderedItem?[0]?.OrderedItem)?.StartDate);
         }
 
         [Fact]
