@@ -1,4 +1,3 @@
-
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -45,7 +44,6 @@ namespace OpenActive.NET
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "Organization";
 
-
         /// <summary>
         /// A local non-URI identifier for the resource
         /// </summary>
@@ -57,7 +55,6 @@ namespace OpenActive.NET
         [DataMember(Name = "identifier", EmitDefaultValue = false, Order = 7)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual SingleValues<long?, string, PropertyValue, List<PropertyValue>> Identifier { get; set; }
-
 
         /// <summary>
         /// The name of the Organization
@@ -71,7 +68,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string Name { get; set; }
 
-
         /// <summary>
         /// A plain text description of the Organization, which must not include HTML or other markup.
         /// </summary>
@@ -84,14 +80,12 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string Description { get; set; }
 
-
         /// <summary>
         /// Address of the Seller, used on tax receipts.
         /// </summary>
         [DataMember(Name = "address", EmitDefaultValue = false, Order = 10)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual PostalAddress Address { get; set; }
-
 
         /// <summary>
         /// General enquiries e-mail address for the organization.
@@ -105,7 +99,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string Email { get; set; }
 
-
         /// <summary>
         /// The official name of the organization, e.g. the registered company name.
         /// </summary>
@@ -117,7 +110,6 @@ namespace OpenActive.NET
         [DataMember(Name = "legalName", EmitDefaultValue = false, Order = 12)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string LegalName { get; set; }
-
 
         /// <summary>
         /// A logo for the Organization.
@@ -134,7 +126,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual ImageObject Logo { get; set; }
 
-
         /// <summary>
         /// Lists the URL(s) of the official social media profile pages associated with the organization.
         /// </summary>
@@ -150,14 +141,12 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual List<Uri> SameAs { get; set; }
 
-
         /// <summary>
         /// Either  https://openactive.io/TaxNet or  https://openactive.io/TaxGross
         /// </summary>
         [DataMember(Name = "taxMode", EmitDefaultValue = false, Order = 15)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual TaxMode? TaxMode { get; set; }
-
 
         /// <summary>
         /// The telephone number of the Organization
@@ -171,14 +160,12 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string Telephone { get; set; }
 
-
         /// <summary>
         /// The terms of service of the Seller.
         /// </summary>
         [DataMember(Name = "termsOfService", EmitDefaultValue = false, Order = 17)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual List<Terms> TermsOfService { get; set; }
-
 
         /// <summary>
         /// A definitive canonical URL for the Organization.
@@ -192,14 +179,12 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual Uri Url { get; set; }
 
-
         /// <summary>
         /// The Value-added Tax ID of the of the Seller.
         /// </summary>
         [DataMember(Name = "vatID", EmitDefaultValue = false, Order = 19)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string VatID { get; set; }
-
 
         /// <summary>
         /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
@@ -211,7 +196,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public virtual string FormattedDescription { get; set; }
 
-
         /// <summary>
         /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
         /// A related video object.
@@ -222,7 +206,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public virtual List<VideoObject> Video { get; set; }
 
-
         /// <summary>
         /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
         /// An array of URLs, each of which describe the formal criteria that are met by the organizer.
@@ -232,6 +215,5 @@ namespace OpenActive.NET
         [DataMember(Name = "beta:formalCriteriaMet", EmitDefaultValue = false, Order = 1022)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual List<Uri> FormalCriteriaMet { get; set; }
-
     }
 }

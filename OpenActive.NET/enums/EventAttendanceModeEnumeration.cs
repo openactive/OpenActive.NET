@@ -1,4 +1,3 @@
-
 using System.Runtime.Serialization;
 
 namespace OpenActive.NET
@@ -7,7 +6,6 @@ namespace OpenActive.NET
     /// </summary>
     public enum  EventAttendanceModeEnumeration
     {
-
         [EnumMember(Value = "https://schema.org/OfflineEventAttendanceMode")]
         OfflineEventAttendanceMode,
         [EnumMember(Value = "https://schema.org/MixedEventAttendanceMode")]

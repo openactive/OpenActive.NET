@@ -1,4 +1,3 @@
-
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -45,7 +44,6 @@ namespace OpenActive.NET
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "GeoCoordinates";
 
-
         /// <summary>
         /// The latitude of a location. For example 51.522338 (WGS 84).
         /// </summary>
@@ -58,7 +56,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual decimal? Latitude { get; set; }
 
-
         /// <summary>
         /// The longitude of a location. For example -0.083437 (WGS 84).
         /// </summary>
@@ -70,6 +67,5 @@ namespace OpenActive.NET
         [DataMember(Name = "longitude", EmitDefaultValue = false, Order = 8)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual decimal? Longitude { get; set; }
-
     }
 }

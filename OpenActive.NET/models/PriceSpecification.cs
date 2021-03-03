@@ -1,4 +1,3 @@
-
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -45,7 +44,6 @@ namespace OpenActive.NET
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "PriceSpecification";
 
-
         /// <summary>
         /// Indicates if proceeding with booking requires a Customer to pay in advance, pay when attending, or have the option to do either. Values must be one of  https://openactive.io/Required,  https://openactive.io/Optional or  https://openactive.io/Unavailable.
         /// </summary>
@@ -58,7 +56,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public virtual RequiredStatusType? Prepayment { get; set; }
 
-
         /// <summary>
         /// The total amount.
         /// </summary>
@@ -66,13 +63,11 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual decimal? Price { get; set; }
 
-
         /// <summary>
         /// The currency of the price. Specified as a 3-letter ISO 4217 value. If a  PriceSpecification has a zero price, then this property is not required. Otherwise the priceCurrency must be specified.
         /// </summary>
         [DataMember(Name = "priceCurrency", EmitDefaultValue = false, Order = 9)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string PriceCurrency { get; set; }
-
     }
 }

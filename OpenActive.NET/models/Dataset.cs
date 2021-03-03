@@ -1,4 +1,3 @@
-
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -48,7 +47,6 @@ namespace OpenActive.NET
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "Dataset";
 
-
         /// <summary>
         /// The name of the `Dataset`
         /// </summary>
@@ -60,7 +58,6 @@ namespace OpenActive.NET
         [DataMember(Name = "name", EmitDefaultValue = false, Order = 7)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string Name { get; set; }
-
 
         /// <summary>
         /// A plain text description of the `Dataset`, which must not include HTML or other markup.
@@ -74,14 +71,12 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string Description { get; set; }
 
-
         /// <summary>
         /// Information about the Open Booking API. Note this property is in EARLY RELEASE AND IS SUBJECT TO CHANGE.
         /// </summary>
         [DataMember(Name = "accessService", EmitDefaultValue = false, Order = 9)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual WebAPI AccessService { get; set; }
-
 
         /// <summary>
         /// A background image for the `Dataset`.
@@ -98,14 +93,12 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public virtual ImageObject BackgroundImage { get; set; }
 
-
         /// <summary>
         /// Information about the Booking System or publishing platform
         /// </summary>
         [DataMember(Name = "bookingService", EmitDefaultValue = false, Order = 11)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual BookingService BookingService { get; set; }
-
 
         /// <summary>
         /// The date this `Dataset` was last updated. For RPDE feeds this may simply be the date and time that the Dataset Site was rendered, which may be cached.
@@ -119,7 +112,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(OpenActiveDateTimeOffsetToISO8601DateTimeValuesConverter))]
         public new virtual DateTimeOffset? DateModified { get; set; }
 
-
         /// <summary>
         /// The date this `Dataset` was first published. Can be specified as a schema:Date or schema:DateTime.
         /// </summary>
@@ -132,7 +124,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual SingleValues<string, DateTimeOffset?> DatePublished { get; set; }
 
-
         /// <summary>
         /// A URL that can be used to raise issues related to the `Dataset` via a public forum.
         /// </summary>
@@ -144,7 +135,6 @@ namespace OpenActive.NET
         [DataMember(Name = "discussionUrl", EmitDefaultValue = false, Order = 14)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual Uri DiscussionUrl { get; set; }
-
 
         /// <summary>
         /// An array of feeds within the dataset
@@ -166,7 +156,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual List<DataDownload> Distribution { get; set; }
 
-
         /// <summary>
         /// A link to documentation related to the `Dataset`, or a link to the OpenActive developer documentation if no Dataset-specific documentation is available.
         /// </summary>
@@ -178,7 +167,6 @@ namespace OpenActive.NET
         [DataMember(Name = "documentation", EmitDefaultValue = false, Order = 16)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual Uri Documentation { get; set; }
-
 
         /// <summary>
         /// An array of languages included in the Dataset's content. Please use one of the language codes from the IETF BCP 47 standard.
@@ -193,7 +181,6 @@ namespace OpenActive.NET
         [DataMember(Name = "inLanguage", EmitDefaultValue = false, Order = 17)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual List<string> InLanguage { get; set; }
-
 
         /// <summary>
         /// Keywords for search engine optimisation
@@ -214,7 +201,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual List<string> Keywords { get; set; }
 
-
         /// <summary>
         /// Must always be present and set to <code>
         /// "license": "https://creativecommons.org/licenses/by/4.0/"
@@ -228,7 +214,6 @@ namespace OpenActive.NET
         [DataMember(Name = "license", EmitDefaultValue = false, Order = 19)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual Uri License { get; set; }
-
 
         /// <summary>
         /// The organization ultimately responsible for this `Dataset`.
@@ -246,7 +231,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual Organization Publisher { get; set; }
 
-
         /// <summary>
         /// Indicates the version of OpenActive Modelling Opportunity Data Specification with which this `Dataset` conforms, by specifying its URL.
         /// </summary>
@@ -259,7 +243,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual Uri SchemaVersion { get; set; }
 
-
         /// <summary>
         /// The URL of the dataset site.
         /// </summary>
@@ -271,6 +254,5 @@ namespace OpenActive.NET
         [DataMember(Name = "url", EmitDefaultValue = false, Order = 22)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual Uri Url { get; set; }
-
     }
 }

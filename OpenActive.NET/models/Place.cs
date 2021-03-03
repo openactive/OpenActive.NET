@@ -1,4 +1,3 @@
-
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -45,7 +44,6 @@ namespace OpenActive.NET
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "Place";
 
-
         /// <summary>
         /// A local non-URI identifier for the resource
         /// </summary>
@@ -57,7 +55,6 @@ namespace OpenActive.NET
         [DataMember(Name = "identifier", EmitDefaultValue = false, Order = 7)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual SingleValues<long?, string, PropertyValue, List<PropertyValue>> Identifier { get; set; }
-
 
         /// <summary>
         /// The name of the Place
@@ -71,7 +68,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string Name { get; set; }
 
-
         /// <summary>
         /// A plain text description of the Place, which must not include HTML or other markup.
         /// </summary>
@@ -83,7 +79,6 @@ namespace OpenActive.NET
         [DataMember(Name = "description", EmitDefaultValue = false, Order = 9)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string Description { get; set; }
-
 
         /// <summary>
         /// A structured PostalAddress object for the Place.
@@ -104,7 +99,6 @@ namespace OpenActive.NET
         [DataMember(Name = "address", EmitDefaultValue = false, Order = 10)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual SingleValues<string, PostalAddress> Address { get; set; }
-
 
         /// <summary>
         /// An array listing the Ammenities of the Place.
@@ -149,7 +143,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual List<LocationFeatureSpecification> AmenityFeature { get; set; }
 
-
         /// <summary>
         /// The place within which this Place exists
         /// </summary>
@@ -165,7 +158,6 @@ namespace OpenActive.NET
         [DataMember(Name = "containedInPlace", EmitDefaultValue = false, Order = 12)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual Place ContainedInPlace { get; set; }
-
 
         /// <summary>
         /// Places that exist within this place
@@ -183,7 +175,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual List<Place> ContainsPlace { get; set; }
 
-
         /// <summary>
         /// The geo coordinates of the Place.
         /// </summary>
@@ -199,7 +190,6 @@ namespace OpenActive.NET
         [DataMember(Name = "geo", EmitDefaultValue = false, Order = 14)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual GeoCoordinates Geo { get; set; }
-
 
         /// <summary>
         /// An image or photo that depicts the place, e.g. a photo taken at a previous event.
@@ -219,7 +209,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual List<ImageObject> Image { get; set; }
 
-
         /// <summary>
         /// The times the Place is open
         /// </summary>
@@ -227,14 +216,12 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual List<OpeningHoursSpecification> OpeningHoursSpecification { get; set; }
 
-
         /// <summary>
         /// Explicitly override general opening hours brought in scope by `schema:openingHoursSpecification`.
         /// </summary>
         [DataMember(Name = "specialOpeningHoursSpecification", EmitDefaultValue = false, Order = 17)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual List<OpeningHoursSpecification> SpecialOpeningHoursSpecification { get; set; }
-
 
         /// <summary>
         /// The telephone number for the Place
@@ -248,7 +235,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string Telephone { get; set; }
 
-
         /// <summary>
         /// The website for the Place
         /// </summary>
@@ -261,7 +247,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual Uri Url { get; set; }
 
-
         /// <summary>
         /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
         /// Sometimes a description is stored with formatting (e.g. href, bold, italics, embedded YouTube videos). This formatting can be useful for data consumers. This property must contain HTML.
@@ -271,6 +256,5 @@ namespace OpenActive.NET
         [DataMember(Name = "beta:formattedDescription", EmitDefaultValue = false, Order = 1020)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual string FormattedDescription { get; set; }
-
     }
 }

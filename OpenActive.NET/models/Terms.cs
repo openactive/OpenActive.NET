@@ -1,4 +1,3 @@
-
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -45,14 +44,12 @@ namespace OpenActive.NET
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "Terms";
 
-
         /// <summary>
         /// The name of the terms. The name must distinguish this from other terms fields provided, e.g. 'Terms and Conditions' or 'Privacy Policy'.
         /// </summary>
         [DataMember(Name = "name", EmitDefaultValue = false, Order = 7)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string Name { get; set; }
-
 
         /// <summary>
         /// The date and time at which the webpage containing the contents of the terms, located at the `url`, was last updated.
@@ -66,11 +63,9 @@ namespace OpenActive.NET
         [JsonConverter(typeof(OpenActiveDateTimeOffsetToISO8601DateTimeValuesConverter))]
         public new virtual DateTimeOffset? DateModified { get; set; }
 
-
         [DataMember(Name = "requiresExplicitConsent", EmitDefaultValue = false, Order = 9)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual bool? RequiresExplicitConsent { get; set; }
-
 
         /// <summary>
         /// The URL of the webpage containing the contents of the terms.
@@ -78,6 +73,5 @@ namespace OpenActive.NET
         [DataMember(Name = "url", EmitDefaultValue = false, Order = 10)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual Uri Url { get; set; }
-
     }
 }

@@ -1,4 +1,3 @@
-
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -45,7 +44,6 @@ namespace OpenActive.NET
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "Showers";
 
-
         /// <summary>
         /// A string, suitable for presentation in user interfaces.
         /// </summary>
@@ -57,6 +55,5 @@ namespace OpenActive.NET
         [DataMember(Name = "name", EmitDefaultValue = false, Order = 7)]
         [JsonConverter(typeof(ValuesConverter))]
         public override string Name { get; set; }
-
     }
 }

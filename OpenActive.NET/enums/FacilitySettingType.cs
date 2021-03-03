@@ -1,4 +1,3 @@
-
 using System.Runtime.Serialization;
 
 namespace OpenActive.NET
@@ -9,7 +8,6 @@ namespace OpenActive.NET
     /// </summary>
     public enum  FacilitySettingType
     {
-
         [EnumMember(Value = "https://openactive.io/ns-beta#IndoorFacility")]
         IndoorFacility,
         [EnumMember(Value = "https://openactive.io/ns-beta#OutdoorFacility")]

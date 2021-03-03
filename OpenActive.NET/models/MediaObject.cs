@@ -1,4 +1,3 @@
-
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -45,7 +44,6 @@ namespace OpenActive.NET
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "MediaObject";
 
-
         /// <summary>
         /// Actual bytes of the media object, for example the image file or video file.
         /// </summary>
@@ -57,7 +55,6 @@ namespace OpenActive.NET
         [DataMember(Name = "contentUrl", EmitDefaultValue = false, Order = 7)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual Uri ContentUrl { get; set; }
-
 
         /// <summary>
         /// A URL pointing to a player for a specific video. In general, this is the information in the src element of an embed tag and should not be the same as the content of the loc tag.
@@ -71,7 +68,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual Uri EmbedUrl { get; set; }
 
-
         /// <summary>
         /// The height of the media in pixels.
         /// </summary>
@@ -84,14 +80,12 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual long? Height { get; set; }
 
-
         /// <summary>
         /// The URL for a thumbnail image for the media.
         /// </summary>
         [DataMember(Name = "thumbnail", EmitDefaultValue = false, Order = 10)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual List<ImageObject> Thumbnail { get; set; }
-
 
         /// <summary>
         /// The URL for the page containing the media.
@@ -105,7 +99,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual Uri Url { get; set; }
 
-
         /// <summary>
         /// The width of the media in pixels.
         /// </summary>
@@ -117,6 +110,5 @@ namespace OpenActive.NET
         [DataMember(Name = "width", EmitDefaultValue = false, Order = 12)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual long? Width { get; set; }
-
     }
 }

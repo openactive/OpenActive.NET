@@ -1,4 +1,3 @@
-
 using System.Runtime.Serialization;
 
 namespace OpenActive.NET
@@ -7,7 +6,6 @@ namespace OpenActive.NET
     /// </summary>
     public enum  RequiredStatusType
     {
-
         [EnumMember(Value = "https://openactive.io/Required")]
         Required,
         [EnumMember(Value = "https://openactive.io/Optional")]

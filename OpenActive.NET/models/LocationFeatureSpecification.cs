@@ -1,4 +1,3 @@
-
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -45,7 +44,6 @@ namespace OpenActive.NET
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "LocationFeatureSpecification";
 
-
         /// <summary>
         /// A string, suitable for presentation in user interfaces.
         /// </summary>
@@ -58,13 +56,11 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string Name { get; set; }
 
-
         /// <summary>
         /// A boolean value indicating whether this ammenity is available.
         /// </summary>
         [DataMember(Name = "value", EmitDefaultValue = false, Order = 8)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual bool? Value { get; set; }
-
     }
 }

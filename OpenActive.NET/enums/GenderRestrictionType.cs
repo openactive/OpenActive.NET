@@ -1,4 +1,3 @@
-
 using System.Runtime.Serialization;
 
 namespace OpenActive.NET
@@ -8,7 +7,6 @@ namespace OpenActive.NET
     /// </summary>
     public enum  GenderRestrictionType
     {
-
         [EnumMember(Value = "https://openactive.io/NoRestriction")]
         NoRestriction,
         [EnumMember(Value = "https://openactive.io/MaleOnly")]

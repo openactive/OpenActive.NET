@@ -1,4 +1,3 @@
-
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -45,7 +44,6 @@ namespace OpenActive.NET
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "FacilityUse";
 
-
         /// <summary>
         /// A local non-URI identifier for the resource
         /// </summary>
@@ -57,7 +55,6 @@ namespace OpenActive.NET
         [DataMember(Name = "identifier", EmitDefaultValue = false, Order = 7)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual SingleValues<long?, string, PropertyValue, List<PropertyValue>> Identifier { get; set; }
-
 
         /// <summary>
         /// The name of the facility use
@@ -71,7 +68,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string Name { get; set; }
 
-
         /// <summary>
         /// A plain text description of the facility use, which must not include HTML or other markup.
         /// </summary>
@@ -84,7 +80,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string Description { get; set; }
 
-
         /// <summary>
         /// Provide additional, specific documentation for participants about how disabilities are, or can be supported at the Event.
         /// </summary>
@@ -96,7 +91,6 @@ namespace OpenActive.NET
         [DataMember(Name = "accessibilityInformation", EmitDefaultValue = false, Order = 10)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual string AccessibilityInformation { get; set; }
-
 
         /// <summary>
         /// Used to specify the types of disabilities or impairments that are supported at an event.
@@ -117,7 +111,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public virtual List<Concept> AccessibilitySupport { get; set; }
 
-
         /// <summary>
         /// Specifies the physical activity or activities that will take place during a facility use.
         /// </summary>
@@ -137,7 +130,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public virtual List<Concept> Activity { get; set; }
 
-
         /// <summary>
         /// Free text restrictions that must be displayed prominently to the user before booking. This property must only contain restrictions not described by `oa:ageRestriction` or `oa:genderRestriction`.
         /// </summary>
@@ -153,7 +145,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public virtual List<string> AdditionalAdmissionRestriction { get; set; }
 
-
         /// <summary>
         /// Provides additional notes and instructions for users of a facility, for example more information on how to find it, what to bring, etc. The value of this property must not include HTML or other markup.
         /// </summary>
@@ -165,7 +156,6 @@ namespace OpenActive.NET
         [DataMember(Name = "attendeeInstructions", EmitDefaultValue = false, Order = 14)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual string AttendeeInstructions { get; set; }
-
 
         /// <summary>
         /// Provides a set of tags that help categorise and describe a facility.
@@ -185,7 +175,6 @@ namespace OpenActive.NET
         [DataMember(Name = "category", EmitDefaultValue = false, Order = 15)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual SingleValues<List<string>, List<Concept>> Category { get; set; }
-
 
         /// <summary>
         /// An array of slots of availability of this FacilityUse.
@@ -209,14 +198,12 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual List<Slot> Event { get; set; }
 
-
         /// <summary>
         /// The times the facility use is available
         /// </summary>
         [DataMember(Name = "hoursAvailable", EmitDefaultValue = false, Order = 17)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual List<OpeningHoursSpecification> HoursAvailable { get; set; }
-
 
         /// <summary>
         /// An image or photo that depicts the facility use, e.g. a photo taken at a previous event.
@@ -236,7 +223,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual List<ImageObject> Image { get; set; }
 
-
         /// <summary>
         /// Inverse of the oa:aggregateFacilityUse property. Relates a oa:FacilityUse (e.g. an opportunity to play tennis at a specific location) to an oa:IndividualFacilityUse (e.g. an opportunity to play tennis on a specific court).
         /// </summary>
@@ -254,7 +240,6 @@ namespace OpenActive.NET
         [DataMember(Name = "individualFacilityUse", EmitDefaultValue = false, Order = 19)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual List<IndividualFacilityUse> IndividualFacilityUse { get; set; }
-
 
         /// <summary>
         /// The location at which the facility use will take place.
@@ -287,7 +272,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual Place Location { get; set; }
 
-
         /// <summary>
         /// An array of schema:Offer that include the price of booking.
         /// </summary>
@@ -307,7 +291,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual List<Offer> Offers { get; set; }
 
-
         /// <summary>
         /// The organisation responsible for providing the facility
         /// </summary>
@@ -324,7 +307,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual Organization Provider { get; set; }
 
-
         /// <summary>
         /// A URL to a web page (or section of a page) that describes the facility use.
         /// </summary>
@@ -337,7 +319,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual Uri Url { get; set; }
 
-
         /// <summary>
         /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
         /// Sometimes a description is stored with formatting (e.g. href, bold, italics, embedded YouTube videos). This formatting can be useful for data consumers. This property must contain HTML.
@@ -347,7 +328,6 @@ namespace OpenActive.NET
         [DataMember(Name = "beta:formattedDescription", EmitDefaultValue = false, Order = 1024)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual string FormattedDescription { get; set; }
-
 
         /// <summary>
         /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
@@ -359,7 +339,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public virtual bool? IsWheelchairAccessible { get; set; }
 
-
         /// <summary>
         /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
         /// A related video object.
@@ -369,7 +348,6 @@ namespace OpenActive.NET
         [DataMember(Name = "beta:video", EmitDefaultValue = false, Order = 1026)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual List<VideoObject> Video { get; set; }
-
 
         /// <summary>
         /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
@@ -381,7 +359,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public virtual List<Schema.NET.SportsActivityLocation> SportsActivityLocation { get; set; }
 
-
         /// <summary>
         /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
         /// Duration before the event for which the associated Offers are valid
@@ -391,7 +368,6 @@ namespace OpenActive.NET
         [DataMember(Name = "beta:offerValidityPeriod", EmitDefaultValue = false, Order = 1028)]
         [JsonConverter(typeof(OpenActiveTimeSpanToISO8601DurationValuesConverter))]
         public virtual TimeSpan? OfferValidityPeriod { get; set; }
-
 
         /// <summary>
         /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
@@ -403,7 +379,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public virtual List<Concept> FacilityType { get; set; }
 
-
         /// <summary>
         /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
         /// Whether the event or facility is indoor or outdoor.
@@ -413,6 +388,5 @@ namespace OpenActive.NET
         [DataMember(Name = "beta:facilitySetting", EmitDefaultValue = false, Order = 1030)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual FacilitySettingType? FacilitySetting { get; set; }
-
     }
 }

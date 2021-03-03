@@ -1,4 +1,3 @@
-
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -45,50 +44,38 @@ namespace OpenActive.NET
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "OnDemandEvent";
 
-
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
         public override EventAttendanceModeEnumeration? EventAttendanceMode { get; set; }
-
 
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
         public override Schema.NET.EventStatusType? EventStatus { get; set; }
 
-
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
         public override Place Location { get; set; }
-
 
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
         public override long? MaximumAttendeeCapacity { get; set; }
 
-
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
         public override long? MaximumVirtualAttendeeCapacity { get; set; }
-
 
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
         public override string MeetingPoint { get; set; }
 
-
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
         public override long? RemainingAttendeeCapacity { get; set; }
-
 
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
         public override string SchedulingNote { get; set; }
 
-
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
         public override SingleValues<string, DateTimeOffset?> StartDate { get; set; }
-
 
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
         public override SingleValues<string, DateTimeOffset?> EndDate { get; set; }
 
-
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
         public override List<Event> SubEvent { get; set; }
-
 
         /// <summary>
         /// Relates an `OnDemandEvent` to an `EventSeries`.
@@ -96,7 +83,6 @@ namespace OpenActive.NET
         [DataMember(Name = "superEvent", EmitDefaultValue = false, Order = 18)]
         [JsonConverter(typeof(ValuesConverter))]
         public override Event SuperEvent { get; set; }
-
 
         /// <summary>
         /// A video, audio or other media that represents the actual recording of the `OnDemandEvent`.
@@ -119,6 +105,5 @@ namespace OpenActive.NET
         [DataMember(Name = "workFeatured", EmitDefaultValue = false, Order = 19)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual MediaObject WorkFeatured { get; set; }
-
     }
 }

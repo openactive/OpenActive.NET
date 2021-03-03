@@ -1,4 +1,3 @@
-
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -45,7 +44,6 @@ namespace OpenActive.NET
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "Course";
 
-
         /// <summary>
         /// A local non-URI identifier for the resource
         /// </summary>
@@ -58,7 +56,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual SingleValues<long?, string, PropertyValue, List<PropertyValue>> Identifier { get; set; }
 
-
         /// <summary>
         /// The name of the Course
         /// </summary>
@@ -70,7 +67,6 @@ namespace OpenActive.NET
         [DataMember(Name = "name", EmitDefaultValue = false, Order = 8)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string Name { get; set; }
-
 
         /// <summary>
         /// A plain text description of the Course, which must not include HTML or other markup.
@@ -87,7 +83,6 @@ namespace OpenActive.NET
         [DataMember(Name = "description", EmitDefaultValue = false, Order = 9)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string Description { get; set; }
-
 
         /// <summary>
         /// Specifies the physical activity or activities that will take place during a Course.
@@ -108,7 +103,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public virtual List<Concept> Activity { get; set; }
 
-
         /// <summary>
         /// The person or organization who have created the Course. An author might be an schema:Organization or a schema:Person.
         /// </summary>
@@ -125,7 +119,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual ILegalEntity Author { get; set; }
 
-
         /// <summary>
         /// A definitive canonical URL for the Course.
         /// </summary>
@@ -138,7 +131,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual Uri Url { get; set; }
 
-
         /// <summary>
         /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
         /// An associated logo for a course.
@@ -149,7 +141,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public virtual ImageObject Logo { get; set; }
 
-
         /// <summary>
         /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
         /// A related video object.
@@ -159,6 +150,5 @@ namespace OpenActive.NET
         [DataMember(Name = "beta:video", EmitDefaultValue = false, Order = 1014)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual List<VideoObject> Video { get; set; }
-
     }
 }

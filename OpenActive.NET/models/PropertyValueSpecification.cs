@@ -1,4 +1,3 @@
-
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -45,14 +44,12 @@ namespace OpenActive.NET
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "PropertyValueSpecification";
 
-
         /// <summary>
         /// Display label for the field.
         /// </summary>
         [DataMember(Name = "name", EmitDefaultValue = false, Order = 7)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string Name { get; set; }
-
 
         /// <summary>
         /// Descriptive help plain text for the field, which must not include HTML or other markup.
@@ -61,13 +58,11 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string Description { get; set; }
 
-
         /// <summary>
         /// Specifies that a value for the field is required to proceed with the booking.
         /// </summary>
         [DataMember(Name = "valueRequired", EmitDefaultValue = false, Order = 9)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string ValueRequired { get; set; }
-
     }
 }

@@ -1,4 +1,3 @@
-
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -45,10 +44,8 @@ namespace OpenActive.NET
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "ScheduledSession";
 
-
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
         public override List<Event> SubEvent { get; set; }
-
 
         /// <summary>
         /// Relates a child event to a parent event. Properties describing the parent event can be assumed to apply to the child, unless otherwise specified. A parent event might specify a recurring schedule, of which the child event is one specific instance
@@ -56,6 +53,5 @@ namespace OpenActive.NET
         [DataMember(Name = "superEvent", EmitDefaultValue = false, Order = 8)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual SingleValues<Uri, Event> SuperEvent { get; set; }
-
     }
 }

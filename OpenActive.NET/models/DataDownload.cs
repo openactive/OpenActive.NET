@@ -1,4 +1,3 @@
-
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -48,7 +47,6 @@ namespace OpenActive.NET
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "DataDownload";
 
-
         /// <summary>
         /// A local non-URI identifier for the resource
         /// </summary>
@@ -60,7 +58,6 @@ namespace OpenActive.NET
         [DataMember(Name = "identifier", EmitDefaultValue = false, Order = 7)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string Identifier { get; set; }
-
 
         /// <summary>
         /// The name of the type of feed
@@ -74,7 +71,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string Name { get; set; }
 
-
         /// <summary>
         /// A fully qualified reference to the class that is at the root of the items in the RPDE feed.
         /// </summary>
@@ -87,7 +83,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual Uri AdditionalType { get; set; }
 
-
         /// <summary>
         /// The URL of the RPDE data feed.
         /// </summary>
@@ -99,7 +94,6 @@ namespace OpenActive.NET
         [DataMember(Name = "contentUrl", EmitDefaultValue = false, Order = 10)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual Uri ContentUrl { get; set; }
-
 
         /// <summary>
         /// Must always be present and set to <code>
@@ -114,6 +108,5 @@ namespace OpenActive.NET
         [DataMember(Name = "encodingFormat", EmitDefaultValue = false, Order = 11)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string EncodingFormat { get; set; }
-
     }
 }

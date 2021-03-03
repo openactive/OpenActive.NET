@@ -1,4 +1,3 @@
-
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -45,14 +44,12 @@ namespace OpenActive.NET
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "IndividualFacilityUse";
 
-
         /// <summary>
         /// Inverse of the oa:individualFacilityUse property. Relates an oa:IndividualFacilityUse (e.g. an opportunity to play tennis on a specific court) to a oa:FacilityUse (e.g. an opportunity to play tennis at a specific location).
         /// </summary>
         [DataMember(Name = "aggregateFacilityUse", EmitDefaultValue = false, Order = 7)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual FacilityUse AggregateFacilityUse { get; set; }
-
 
         /// <summary>
         /// An array of slots of availability of this IndividualFacilityUse.
@@ -75,6 +72,5 @@ namespace OpenActive.NET
         [DataMember(Name = "event", EmitDefaultValue = false, Order = 8)]
         [JsonConverter(typeof(ValuesConverter))]
         public override List<Slot> Event { get; set; }
-
     }
 }

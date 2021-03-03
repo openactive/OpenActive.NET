@@ -1,4 +1,3 @@
-
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -46,7 +45,6 @@ namespace OpenActive.NET
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "beta:TrustCertification";
 
-
         /// <summary>
         /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
         /// Property containing an array of CertificationLevels
@@ -56,6 +54,5 @@ namespace OpenActive.NET
         [DataMember(Name = "beta:certificationLevel", EmitDefaultValue = false, Order = 1006)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual CertificationLevel CertificationLevel { get; set; }
-
     }
 }

@@ -1,4 +1,3 @@
-
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -45,7 +44,6 @@ namespace OpenActive.NET
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "Action";
 
-
         /// <summary>
         /// The object upon which the action is carried out, whose state is kept intact or changed.
         /// </summary>
@@ -60,6 +58,5 @@ namespace OpenActive.NET
         [DataMember(Name = "object", EmitDefaultValue = false, Order = 7)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual SingleValues<Order, Event> Object { get; set; }
-
     }
 }

@@ -1,4 +1,3 @@
-
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -45,7 +44,6 @@ namespace OpenActive.NET
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "Person";
 
-
         /// <summary>
         /// A local non-URI identifier for the resource
         /// </summary>
@@ -57,7 +55,6 @@ namespace OpenActive.NET
         [DataMember(Name = "identifier", EmitDefaultValue = false, Order = 7)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual SingleValues<long?, string, PropertyValue, List<PropertyValue>> Identifier { get; set; }
-
 
         /// <summary>
         /// A full name for the person.
@@ -72,7 +69,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string Name { get; set; }
 
-
         /// <summary>
         /// A plain text description of the Person, which must not include HTML or other markup.
         /// </summary>
@@ -85,14 +81,12 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string Description { get; set; }
 
-
         /// <summary>
         /// Address of the Seller, used on tax receipts.
         /// </summary>
         [DataMember(Name = "address", EmitDefaultValue = false, Order = 10)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual PostalAddress Address { get; set; }
-
 
         /// <summary>
         /// The e-mail address of the person.
@@ -107,7 +101,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string Email { get; set; }
 
-
         /// <summary>
         /// A last name for the person.
         /// This person must have given permission for their personal information to be shared as part of the open data.
@@ -121,7 +114,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string FamilyName { get; set; }
 
-
         /// <summary>
         /// Indicates the gender of the person.
         /// </summary>
@@ -133,7 +125,6 @@ namespace OpenActive.NET
         [DataMember(Name = "gender", EmitDefaultValue = false, Order = 13)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual Schema.NET.GenderType? Gender { get; set; }
-
 
         /// <summary>
         /// A first name for the person.
@@ -148,7 +139,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string GivenName { get; set; }
 
-
         /// <summary>
         /// The job title of a person
         /// This person must have given permission for their personal information to be shared as part of the open data.
@@ -162,7 +152,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public virtual string JobTitle { get; set; }
 
-
         /// <summary>
         /// The official name of the organization, e.g. the registered company name.
         /// </summary>
@@ -174,7 +163,6 @@ namespace OpenActive.NET
         [DataMember(Name = "legalName", EmitDefaultValue = false, Order = 16)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string LegalName { get; set; }
-
 
         /// <summary>
         /// A logo for the person.
@@ -191,7 +179,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual ImageObject Logo { get; set; }
 
-
         /// <summary>
         /// Lists the URL(s) of the official social media profile pages associated with the person.
         /// </summary>
@@ -204,14 +191,12 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual List<Uri> SameAs { get; set; }
 
-
         /// <summary>
         /// Either  https://openactive.io/TaxNet or  https://openactive.io/TaxGross
         /// </summary>
         [DataMember(Name = "taxMode", EmitDefaultValue = false, Order = 19)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual TaxMode? TaxMode { get; set; }
-
 
         /// <summary>
         /// The telephone number of the person
@@ -226,14 +211,12 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string Telephone { get; set; }
 
-
         /// <summary>
         /// The terms of service of the Seller.
         /// </summary>
         [DataMember(Name = "termsOfService", EmitDefaultValue = false, Order = 21)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual List<Terms> TermsOfService { get; set; }
-
 
         /// <summary>
         /// A URL where more information about the person may be found
@@ -247,14 +230,12 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual Uri Url { get; set; }
 
-
         /// <summary>
         /// The Value-added Tax ID of the of the Seller.
         /// </summary>
         [DataMember(Name = "vatID", EmitDefaultValue = false, Order = 23)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string VatID { get; set; }
-
 
         /// <summary>
         /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
@@ -266,7 +247,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public virtual string FormattedDescription { get; set; }
 
-
         /// <summary>
         /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
         /// An array of URLs, each of which describe the formal criteria that are met by the organizer.
@@ -276,6 +256,5 @@ namespace OpenActive.NET
         [DataMember(Name = "beta:formalCriteriaMet", EmitDefaultValue = false, Order = 1025)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual List<Uri> FormalCriteriaMet { get; set; }
-
     }
 }

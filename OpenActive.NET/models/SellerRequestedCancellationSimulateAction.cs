@@ -1,4 +1,3 @@
-
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -45,6 +44,5 @@ namespace OpenActive.NET
         /// </summary>
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "test:SellerRequestedCancellationSimulateAction";
-
     }
 }

@@ -1,4 +1,3 @@
-
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -48,7 +47,6 @@ namespace OpenActive.NET
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "TemporarilyUnableToDeleteOrderError";
 
-
         /// <summary>
         /// A short, human-readable summary of the problem type. It should not change from occurrence to occurrence of the problem, except for purposes of localization.
         /// </summary>
@@ -61,7 +59,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public override string Name { get; set; } = "The Booking System is unable for technical reasons to delete an 'Order' where the data provided to it is sufficient to allow it to do so.";
 
-
         /// <summary>
         /// Must always be present and set to <code>
         /// "statusCode": 503
@@ -70,6 +67,5 @@ namespace OpenActive.NET
         [DataMember(Name = "statusCode", EmitDefaultValue = false, Order = 8)]
         [JsonConverter(typeof(ValuesConverter))]
         public override long? StatusCode { get; set; } = 503;
-
     }
 }

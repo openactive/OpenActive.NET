@@ -1,4 +1,3 @@
-
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -48,7 +47,6 @@ namespace OpenActive.NET
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "OrderAlreadyExistsError";
 
-
         /// <summary>
         /// A short, human-readable summary of the problem type. It should not change from occurrence to occurrence of the problem, except for purposes of localization.
         /// </summary>
@@ -61,7 +59,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public override string Name { get; set; } = "The Order UUID used for an 'OrderQuote' already represents a completed 'Order' with a different set of 'OrderItem's to those specified (note call to B is idempotent for the case where 'OrderItem's match). This happens in the rare event of a Order UUID clash.";
 
-
         /// <summary>
         /// Must always be present and set to <code>
         /// "statusCode": 500
@@ -70,6 +67,5 @@ namespace OpenActive.NET
         [DataMember(Name = "statusCode", EmitDefaultValue = false, Order = 8)]
         [JsonConverter(typeof(ValuesConverter))]
         public override long? StatusCode { get; set; } = 500;
-
     }
 }

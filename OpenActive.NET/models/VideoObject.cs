@@ -1,4 +1,3 @@
-
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -45,14 +44,12 @@ namespace OpenActive.NET
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "VideoObject";
 
-
         /// <summary>
         /// The URL for a thumbnail image for the video.
         /// </summary>
         [DataMember(Name = "thumbnail", EmitDefaultValue = false, Order = 7)]
         [JsonConverter(typeof(ValuesConverter))]
         public override List<ImageObject> Thumbnail { get; set; }
-
 
         /// <summary>
         /// The URL for the video.
@@ -65,6 +62,5 @@ namespace OpenActive.NET
         [DataMember(Name = "url", EmitDefaultValue = false, Order = 8)]
         [JsonConverter(typeof(ValuesConverter))]
         public override Uri Url { get; set; }
-
     }
 }

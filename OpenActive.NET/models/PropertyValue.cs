@@ -1,4 +1,3 @@
-
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -45,7 +44,6 @@ namespace OpenActive.NET
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "PropertyValue";
 
-
         /// <summary>
         /// The name of this PropertyValue
         /// </summary>
@@ -58,14 +56,12 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string Name { get; set; }
 
-
         /// <summary>
         /// Additional human-readable version of the value of the property.
         /// </summary>
         [DataMember(Name = "description", EmitDefaultValue = false, Order = 8)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string Description { get; set; }
-
 
         /// <summary>
         /// A commonly used identifier for the characteristic represented by the property
@@ -79,7 +75,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual SingleValues<string, Uri> PropertyID { get; set; }
 
-
         /// <summary>
         /// The actual value of this identifier
         /// </summary>
@@ -91,6 +86,5 @@ namespace OpenActive.NET
         [DataMember(Name = "value", EmitDefaultValue = false, Order = 10)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual SingleValues<long?, string> Value { get; set; }
-
     }
 }

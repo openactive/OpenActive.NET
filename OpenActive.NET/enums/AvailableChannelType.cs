@@ -1,4 +1,3 @@
-
 using System.Runtime.Serialization;
 
 namespace OpenActive.NET
@@ -7,7 +6,6 @@ namespace OpenActive.NET
     /// </summary>
     public enum  AvailableChannelType
     {
-
         [EnumMember(Value = "https://openactive.io/OpenBookingPrepayment")]
         OpenBookingPrepayment,
         [EnumMember(Value = "https://openactive.io/TelephoneAdvanceBooking")]

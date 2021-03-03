@@ -1,4 +1,3 @@
-
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -48,7 +47,6 @@ namespace OpenActive.NET
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "WebAPI";
 
-
         /// <summary>
         /// The name of the WebAPI
         /// </summary>
@@ -60,7 +58,6 @@ namespace OpenActive.NET
         [DataMember(Name = "name", EmitDefaultValue = false, Order = 7)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual string Name { get; set; }
-
 
         /// <summary>
         /// A plain text description of the Dataset, which must not include HTML or other markup.
@@ -74,7 +71,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public virtual string Description { get; set; }
 
-
         /// <summary>
         /// The location of the OpenID Provider or other relevant authentication authority that must be used to access the API.
         /// </summary>
@@ -86,7 +82,6 @@ namespace OpenActive.NET
         [DataMember(Name = "authenticationAuthority", EmitDefaultValue = false, Order = 9)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual Uri AuthenticationAuthority { get; set; }
-
 
         /// <summary>
         /// Indicates the version and profiles of OpenActive Open Booking Specification with which this WebAPI conforms, by specifying these as URLs.
@@ -102,7 +97,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public virtual List<Uri> ConformsTo { get; set; }
 
-
         /// <summary>
         /// A link to documentation related to the Dataset, or a link to the OpenActive developer documentation if no Dataset-specific documentation is available.
         /// </summary>
@@ -114,7 +108,6 @@ namespace OpenActive.NET
         [DataMember(Name = "documentation", EmitDefaultValue = false, Order = 11)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual Uri Documentation { get; set; }
-
 
         /// <summary>
         /// The Open API document associated with this version of the Open Booking API
@@ -128,7 +121,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public virtual Uri EndpointDescription { get; set; }
 
-
         /// <summary>
         /// The base URL of the Open Booking API
         /// </summary>
@@ -140,7 +132,6 @@ namespace OpenActive.NET
         [DataMember(Name = "endpointURL", EmitDefaultValue = false, Order = 13)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual Uri EndpointURL { get; set; }
-
 
         /// <summary>
         /// The web page the broker uses to obtain access to the API, e.g. via a web form.
@@ -154,7 +145,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public virtual Uri LandingPage { get; set; }
 
-
         /// <summary>
         /// A link to terms of service related to the use of this API.
         /// </summary>
@@ -166,6 +156,5 @@ namespace OpenActive.NET
         [DataMember(Name = "termsOfService", EmitDefaultValue = false, Order = 15)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual Uri TermsOfService { get; set; }
-
     }
 }

@@ -1,4 +1,3 @@
-
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -45,7 +44,6 @@ namespace OpenActive.NET
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "Event";
 
-
         /// <summary>
         /// A local non-URI identifier for the resource
         /// </summary>
@@ -57,7 +55,6 @@ namespace OpenActive.NET
         [DataMember(Name = "identifier", EmitDefaultValue = false, Order = 7)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual SingleValues<long?, string, PropertyValue, List<PropertyValue>> Identifier { get; set; }
-
 
         /// <summary>
         /// The name of the event
@@ -71,7 +68,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string Name { get; set; }
 
-
         /// <summary>
         /// A plain text description of the event, which must not include HTML or other markup.
         /// </summary>
@@ -84,7 +80,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string Description { get; set; }
 
-
         /// <summary>
         /// Provide additional, specific documentation for participants about how disabilities are, or can be supported at the Event.
         /// </summary>
@@ -96,7 +91,6 @@ namespace OpenActive.NET
         [DataMember(Name = "accessibilityInformation", EmitDefaultValue = false, Order = 10)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual string AccessibilityInformation { get; set; }
-
 
         /// <summary>
         /// Used to specify the types of disabilities or impairments that are supported at an event.
@@ -117,7 +111,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public virtual List<Concept> AccessibilitySupport { get; set; }
 
-
         /// <summary>
         /// Specifies the physical activity or activities that will take place during an event.
         /// </summary>
@@ -137,7 +130,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public virtual List<Concept> Activity { get; set; }
 
-
         /// <summary>
         /// Free text restrictions that must be displayed prominently to the user before booking. This property must only contain restrictions not described by `oa:ageRestriction` or `oa:genderRestriction`.
         /// </summary>
@@ -152,7 +144,6 @@ namespace OpenActive.NET
         [DataMember(Name = "additionalAdmissionRestriction", EmitDefaultValue = false, Order = 13)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual List<string> AdditionalAdmissionRestriction { get; set; }
-
 
         /// <summary>
         /// Indicates that an event is recommended as being suitable for or is targetted at a specific age range.
@@ -170,7 +161,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public virtual QuantitativeValue AgeRange { get; set; }
 
-
         /// <summary>
         /// The enforced attendee age range requirement of the Event or Offer, that must be displayed prominently to the user before booking.
         /// </summary>
@@ -187,7 +177,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public virtual QuantitativeValue AgeRestriction { get; set; }
 
-
         /// <summary>
         /// Provides additional notes and instructions for event attendees, for example more information on how to find the event, what to bring, etc. The value of this property must not include HTML or other markup.
         /// </summary>
@@ -199,7 +188,6 @@ namespace OpenActive.NET
         [DataMember(Name = "attendeeInstructions", EmitDefaultValue = false, Order = 16)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual string AttendeeInstructions { get; set; }
-
 
         /// <summary>
         /// Provides a set of tags that help categorise and describe an event, e.g. its intensity, purpose, etc.
@@ -214,7 +202,6 @@ namespace OpenActive.NET
         [DataMember(Name = "category", EmitDefaultValue = false, Order = 17)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual SingleValues<List<string>, List<Concept>> Category { get; set; }
-
 
         /// <summary>
         /// A Person who contributes to the facilitation of the Event.
@@ -236,7 +223,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual List<Person> Contributor { get; set; }
 
-
         /// <summary>
         /// The duration of the event given in [ISO8601] format.
         /// </summary>
@@ -248,7 +234,6 @@ namespace OpenActive.NET
         [DataMember(Name = "duration", EmitDefaultValue = false, Order = 19)]
         [JsonConverter(typeof(OpenActiveTimeSpanToISO8601DurationValuesConverter))]
         public new virtual TimeSpan? Duration { get; set; }
-
 
         /// <summary>
         /// The eventAttendanceMode of an event indicates whether it occurs online, offline, or a mix.
@@ -262,7 +247,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public virtual EventAttendanceModeEnumeration? EventAttendanceMode { get; set; }
 
-
         /// <summary>
         /// The status of an event. Can be used to indicate rescheduled or cancelled events
         /// </summary>
@@ -275,7 +259,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual Schema.NET.EventStatusType? EventStatus { get; set; }
 
-
         /// <summary>
         /// Indicates that an event is restricted to male, female or a mixed audience. This information must be displayed prominently to the user before booking. If a gender restriction isn't specified then applications should assume that an event is suitable for a mixed audience.
         /// </summary>
@@ -287,7 +270,6 @@ namespace OpenActive.NET
         [DataMember(Name = "genderRestriction", EmitDefaultValue = false, Order = 22)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual GenderRestrictionType? GenderRestriction { get; set; }
-
 
         /// <summary>
         /// An image or photo that depicts the event, e.g. a photo taken at a previous event.
@@ -312,7 +294,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual List<ImageObject> Image { get; set; }
 
-
         /// <summary>
         /// Whether the Event is accessible without charge.
         /// </summary>
@@ -325,7 +306,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual bool? IsAccessibleForFree { get; set; }
 
-
         /// <summary>
         /// A boolean property that indicates whether an Event will be coached. This flag allows an Event to be marked as being coached without having to specify a named individual as a coach. This addresses both privacy concerns and also scenarios where the actual coach may only be decided on the day.
         /// </summary>
@@ -337,7 +317,6 @@ namespace OpenActive.NET
         [DataMember(Name = "isCoached", EmitDefaultValue = false, Order = 25)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual bool? IsCoached { get; set; }
-
 
         /// <summary>
         /// Refers to a person (schema:Person) who will be leading an event. E.g. a coach. This is a more specific role than an organiser or a contributor. The person will need to have given their consent for their personal information to be present in the Open Data.
@@ -360,7 +339,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public virtual List<Person> Leader { get; set; }
 
-
         /// <summary>
         /// A general purpose property for specifying the suitability of an event for different participant “levels”. E.g. `Beginner`, `Intermediate`, `Advanced`. Or in the case of martial arts, specific belt requirements.
         /// </summary>
@@ -374,7 +352,6 @@ namespace OpenActive.NET
         [DataMember(Name = "level", EmitDefaultValue = false, Order = 27)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual SingleValues<List<string>, List<Concept>> Level { get; set; }
-
 
         /// <summary>
         /// The location at which the event will take place. Or, in the case of events that may span multiple locations, the initial meeting or starting point.
@@ -410,7 +387,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual Place Location { get; set; }
 
-
         /// <summary>
         /// The maximum capacity of the Event.
         /// </summary>
@@ -422,7 +398,6 @@ namespace OpenActive.NET
         [DataMember(Name = "maximumAttendeeCapacity", EmitDefaultValue = false, Order = 29)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual long? MaximumAttendeeCapacity { get; set; }
-
 
         /// <summary>
         /// Indicates the maximum number of connections to a shared virtual space.
@@ -436,7 +411,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public virtual long? MaximumVirtualAttendeeCapacity { get; set; }
 
-
         /// <summary>
         /// Instructions for the attendees of an Event about where they should meet the organizer or leader at the start of the event. Some larger locations may have several possible meeting points, so this property provides additional more specific directions.
         /// </summary>
@@ -448,7 +422,6 @@ namespace OpenActive.NET
         [DataMember(Name = "meetingPoint", EmitDefaultValue = false, Order = 31)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual string MeetingPoint { get; set; }
-
 
         /// <summary>
         /// An array of schema:Offer that include the price of attending.
@@ -471,7 +444,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual List<Offer> Offers { get; set; }
 
-
         /// <summary>
         /// The person or organization ultimately responsible for an event. An organizer might be an  schema:Organization or a schema:Person.
         /// </summary>
@@ -487,7 +459,6 @@ namespace OpenActive.NET
         [DataMember(Name = "organizer", EmitDefaultValue = false, Order = 33)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual ILegalEntity Organizer { get; set; }
-
 
         /// <summary>
         /// Indicates that an event will be organised according to a specific Programme.
@@ -505,7 +476,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public virtual Brand Programme { get; set; }
 
-
         /// <summary>
         /// The number of places that are still available for the Event.
         /// </summary>
@@ -517,7 +487,6 @@ namespace OpenActive.NET
         [DataMember(Name = "remainingAttendeeCapacity", EmitDefaultValue = false, Order = 35)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual long? RemainingAttendeeCapacity { get; set; }
-
 
         /// <summary>
         /// Provides a note from an organizer relating to how this Event is scheduled.
@@ -531,7 +500,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public virtual string SchedulingNote { get; set; }
 
-
         /// <summary>
         /// The start date and time of the event. Can be specified as a schema:Date or schema:DateTime.
         /// </summary>
@@ -543,7 +511,6 @@ namespace OpenActive.NET
         [DataMember(Name = "startDate", EmitDefaultValue = false, Order = 37)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual SingleValues<string, DateTimeOffset?> StartDate { get; set; }
-
 
         /// <summary>
         /// The end date and time of the event. Can be specified as a schema:Date or  schema:DateTime
@@ -558,7 +525,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual SingleValues<string, DateTimeOffset?> EndDate { get; set; }
 
-
         /// <summary>
         /// Relates a parent event to a child event. Properties describing the parent event can be assumed to apply to the child, unless otherwise specified. A child event might be a specific instance of an Event within a schedule
         /// </summary>
@@ -566,14 +532,12 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual List<Event> SubEvent { get; set; }
 
-
         /// <summary>
         /// Relates a child event to a parent event. Properties describing the parent event can be assumed to apply to the child, unless otherwise specified. A parent event might specify a recurring schedule, of which the child event is one specific instance
         /// </summary>
         [DataMember(Name = "superEvent", EmitDefaultValue = false, Order = 40)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual Event SuperEvent { get; set; }
-
 
         /// <summary>
         /// A URL to a web page (or section of a page) that describes the event.
@@ -587,7 +551,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual Uri Url { get; set; }
 
-
         /// <summary>
         /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
         /// Sometimes a description is stored with formatting (e.g. href, bold, italics, embedded YouTube videos). This formatting can be useful for data consumers. This property must contain HTML.
@@ -597,7 +560,6 @@ namespace OpenActive.NET
         [DataMember(Name = "beta:formattedDescription", EmitDefaultValue = false, Order = 1042)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual string FormattedDescription { get; set; }
-
 
         /// <summary>
         /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
@@ -609,7 +571,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public virtual QuantitativeValue Distance { get; set; }
 
-
         /// <summary>
         /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
         /// For events that have an unlimited number of tickets, captures the number of attendees (actual attendance).
@@ -619,7 +580,6 @@ namespace OpenActive.NET
         [DataMember(Name = "beta:attendeeCount", EmitDefaultValue = false, Order = 1044)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual long? AttendeeCount { get; set; }
-
 
         /// <summary>
         /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
@@ -631,7 +591,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public virtual long? RegistrationCount { get; set; }
 
-
         /// <summary>
         /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
         /// A property that details whether the event is suitable for wheelchair access. Placed on Event as this field could be used to detail whether the Event is suitable, as well as the Place.
@@ -641,7 +600,6 @@ namespace OpenActive.NET
         [DataMember(Name = "beta:isWheelchairAccessible", EmitDefaultValue = false, Order = 1046)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual bool? IsWheelchairAccessible { get; set; }
-
 
         /// <summary>
         /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
@@ -653,7 +611,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public virtual QuantitativeValue EstimatedDuration { get; set; }
 
-
         /// <summary>
         /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
         /// A related video object.
@@ -663,7 +620,6 @@ namespace OpenActive.NET
         [DataMember(Name = "beta:video", EmitDefaultValue = false, Order = 1048)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual List<VideoObject> Video { get; set; }
-
 
         /// <summary>
         /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
@@ -675,7 +631,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public virtual List<Schema.NET.SportsActivityLocation> SportsActivityLocation { get; set; }
 
-
         /// <summary>
         /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
         /// Duration before the event for which the associated Offers are valid
@@ -685,7 +640,6 @@ namespace OpenActive.NET
         [DataMember(Name = "beta:offerValidityPeriod", EmitDefaultValue = false, Order = 1050)]
         [JsonConverter(typeof(OpenActiveTimeSpanToISO8601DurationValuesConverter))]
         public virtual TimeSpan? OfferValidityPeriod { get; set; }
-
 
         /// <summary>
         /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
@@ -697,7 +651,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public virtual FacilitySettingType? FacilitySetting { get; set; }
 
-
         /// <summary>
         /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
         /// A property that indicates whether the event is led by a virtual coach. Only relevant if an event `isCoached`. If not provided is assumed to be `false`.
@@ -707,7 +660,6 @@ namespace OpenActive.NET
         [DataMember(Name = "beta:isVirtuallyCoached", EmitDefaultValue = false, Order = 1052)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual bool? IsVirtuallyCoached { get; set; }
-
 
         /// <summary>
         /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
@@ -719,7 +671,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public virtual VirtualLocation VirtualLocation { get; set; }
 
-
         /// <summary>
         /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
         /// The physical location affiliated with the virtual event, for example the original location of the event before it was moved online.
@@ -729,7 +680,6 @@ namespace OpenActive.NET
         [DataMember(Name = "beta:affiliatedLocation", EmitDefaultValue = false, Order = 1054)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual Place AffiliatedLocation { get; set; }
-
 
         /// <summary>
         /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
@@ -741,7 +691,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public virtual bool? IsInteractivityPreferred { get; set; }
 
-
         /// <summary>
         /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
         /// Indicates whether the participant must or may supply equipment for use in the Event.
@@ -751,7 +700,6 @@ namespace OpenActive.NET
         [DataMember(Name = "beta:participantSuppliedEquipment", EmitDefaultValue = false, Order = 1056)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual RequiredStatusType? ParticipantSuppliedEquipment { get; set; }
-
 
         /// <summary>
         /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
@@ -763,7 +711,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public virtual Uri DonationPaymentUrl { get; set; }
 
-
         /// <summary>
         /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
         /// A property that indicates whether the first session is free.
@@ -773,7 +720,6 @@ namespace OpenActive.NET
         [DataMember(Name = "beta:isFirstSessionAccessibleForFree", EmitDefaultValue = false, Order = 1058)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual bool? IsFirstSessionAccessibleForFree { get; set; }
-
 
         /// <summary>
         /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
@@ -785,7 +731,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public virtual Schema.NET.ContactPoint ContactPoint { get; set; }
 
-
         /// <summary>
         /// [NOTICE: This property is part of the Open Booking API Test Interface, and MUST NOT be used in production.]
         /// The opportunity criteria which the Event conforms to.
@@ -793,6 +738,5 @@ namespace OpenActive.NET
         [DataMember(Name = "test:testOpportunityCriteria", EmitDefaultValue = false, Order = 1060)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual TestOpportunityCriteriaEnumeration? TestOpportunityCriteria { get; set; }
-
     }
 }

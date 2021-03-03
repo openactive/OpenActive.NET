@@ -1,4 +1,3 @@
-
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -45,7 +44,6 @@ namespace OpenActive.NET
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "VirtualLocation";
 
-
         /// <summary>
         /// The name of the service that is providing remote access to the Opportunity.
         /// </summary>
@@ -57,7 +55,6 @@ namespace OpenActive.NET
         [DataMember(Name = "name", EmitDefaultValue = false, Order = 7)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual string Name { get; set; }
-
 
         /// <summary>
         /// A plain text description of the live stream, including any instructions to join. This description must not include HTML or other markup.
@@ -71,7 +68,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public virtual string Description { get; set; }
 
-
         /// <summary>
         /// The password or pin required to access the `VirtualLocation` from any device, without requiring the URL, e.g. the meeting password.
         /// </summary>
@@ -83,7 +79,6 @@ namespace OpenActive.NET
         [DataMember(Name = "accessCode", EmitDefaultValue = false, Order = 9)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual string AccessCode { get; set; }
-
 
         /// <summary>
         /// The identifier required to access the `VirtualLocation` from any device, without requiring the URL, e.g. the meeting ID.
@@ -97,7 +92,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public virtual string AccessId { get; set; }
 
-
         /// <summary>
         /// The URL that enables remote access to the Opportunity, which should include encoded access credentials where possible.
         /// </summary>
@@ -109,6 +103,5 @@ namespace OpenActive.NET
         [DataMember(Name = "url", EmitDefaultValue = false, Order = 11)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual Uri Url { get; set; }
-
     }
 }
