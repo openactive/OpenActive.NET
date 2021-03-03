@@ -7,7 +7,6 @@ using System.Runtime.Serialization;
 namespace OpenActive.NET
 {
     /// <summary>
-    /// 
     /// This type is derived from https://pending.schema.org/EventSeries.
     /// </summary>
     [DataContract]
@@ -46,7 +45,7 @@ namespace OpenActive.NET
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "EventSeries";
 
-        
+
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
         public override SingleValues<string, DateTimeOffset?> StartDate { get; set; }
 

@@ -7,7 +7,6 @@ using System.Runtime.Serialization;
 namespace OpenActive.NET
 {
     /// <summary>
-    /// 
     /// This type is derived from https://schema.org/PropertyValue, which means that any of this type's properties within schema.org may also be used.
     /// </summary>
     [DataContract]
@@ -46,7 +45,7 @@ namespace OpenActive.NET
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "PropertyValue";
 
-        
+
         /// <summary>
         /// The name of this PropertyValue
         /// </summary>
@@ -73,7 +72,7 @@ namespace OpenActive.NET
         /// </summary>
         /// <example>
         /// <code>
-        /// "propertyID": "ActivePlaces"
+        /// "propertyID": "https://example.com/photoconsent"
         /// </code>
         /// </example>
         [DataMember(Name = "propertyID", EmitDefaultValue = false, Order = 9)]

@@ -7,7 +7,6 @@ using System.Runtime.Serialization;
 namespace OpenActive.NET
 {
     /// <summary>
-    /// 
     /// This type is derived from https://schema.org/Place, which means that any of this type's properties within schema.org may also be used.
     /// </summary>
     [DataContract]
@@ -46,7 +45,7 @@ namespace OpenActive.NET
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "Place";
 
-        
+
         /// <summary>
         /// A local non-URI identifier for the resource
         /// </summary>
@@ -87,7 +86,7 @@ namespace OpenActive.NET
 
 
         /// <summary>
-        /// A structured PostalAddress object for the Place. 
+        /// A structured PostalAddress object for the Place.
         /// Ideally the address should be provided using the PostalAddress structured format. Google Reserve requires https://schema.org/PostalAddress and will not accept plain text addresses.
         /// </summary>
         /// <example>

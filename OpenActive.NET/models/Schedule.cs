@@ -7,7 +7,6 @@ using System.Runtime.Serialization;
 namespace OpenActive.NET
 {
     /// <summary>
-    /// 
     /// This type is derived from https://pending.schema.org/Schedule.
     /// </summary>
     [DataContract]
@@ -46,9 +45,9 @@ namespace OpenActive.NET
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "Schedule";
 
-        
+
         /// <summary>
-        /// Defines the day of the week upon which the Event takes place. 
+        /// Defines the day of the week upon which the Event takes place.
         /// When using string values, this MUST conform to iCal BYDAY rule.
         /// </summary>
         /// <example>

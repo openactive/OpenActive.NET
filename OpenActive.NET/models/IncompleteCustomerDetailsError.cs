@@ -48,7 +48,7 @@ namespace OpenActive.NET
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "IncompleteCustomerDetailsError";
 
-        
+
         /// <summary>
         /// A short, human-readable summary of the problem type. It should not change from occurrence to occurrence of the problem, except for purposes of localization.
         /// </summary>
@@ -62,9 +62,11 @@ namespace OpenActive.NET
         public override string Name { get; set; } = "The 'email' address of the Customer is not supplied within a 'Person' object; or the 'customer' property supplied is not a valid 'Person' or 'Organization' object.";
 
 
+        /// <summary>
         /// Must always be present and set to <code>
         /// "statusCode": 400
         /// </code>
+        /// </summary>
         [DataMember(Name = "statusCode", EmitDefaultValue = false, Order = 8)]
         [JsonConverter(typeof(ValuesConverter))]
         public override long? StatusCode { get; set; } = 400;

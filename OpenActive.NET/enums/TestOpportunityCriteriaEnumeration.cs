@@ -9,7 +9,7 @@ namespace OpenActive.NET
     /// </summary>
     public enum  TestOpportunityCriteriaEnumeration
     {
-        
+
         [EnumMember(Value = "https://openactive.io/test-interface#TestOpportunityBookable")]
         TestOpportunityBookable,
         [EnumMember(Value = "https://openactive.io/test-interface#TestOpportunityNotBookableViaAvailableChannel")]

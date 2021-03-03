@@ -7,7 +7,6 @@ using System.Runtime.Serialization;
 namespace OpenActive.NET
 {
     /// <summary>
-    /// 
     /// This type is derived from https://schema.org/Person, which means that any of this type's properties within schema.org may also be used.
     /// </summary>
     [DataContract]
@@ -46,7 +45,7 @@ namespace OpenActive.NET
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "Person";
 
-        
+
         /// <summary>
         /// A local non-URI identifier for the resource
         /// </summary>
@@ -61,7 +60,7 @@ namespace OpenActive.NET
 
 
         /// <summary>
-        /// A full name for the person. 
+        /// A full name for the person.
         /// This person must have given permission for their personal information to be shared as part of the open data.
         /// </summary>
         /// <example>
@@ -96,7 +95,7 @@ namespace OpenActive.NET
 
 
         /// <summary>
-        /// The e-mail address of the person. 
+        /// The e-mail address of the person.
         /// This person must have given permission for their personal information to be shared as part of the open data.
         /// </summary>
         /// <example>
@@ -110,7 +109,7 @@ namespace OpenActive.NET
 
 
         /// <summary>
-        /// A last name for the person. 
+        /// A last name for the person.
         /// This person must have given permission for their personal information to be shared as part of the open data.
         /// </summary>
         /// <example>
@@ -137,7 +136,7 @@ namespace OpenActive.NET
 
 
         /// <summary>
-        /// A first name for the person. 
+        /// A first name for the person.
         /// This person must have given permission for their personal information to be shared as part of the open data.
         /// </summary>
         /// <example>
@@ -151,7 +150,7 @@ namespace OpenActive.NET
 
 
         /// <summary>
-        /// The job title of a person 
+        /// The job title of a person
         /// This person must have given permission for their personal information to be shared as part of the open data.
         /// </summary>
         /// <example>
@@ -215,7 +214,7 @@ namespace OpenActive.NET
 
 
         /// <summary>
-        /// The telephone number of the person 
+        /// The telephone number of the person
         /// This person must have given permission for their personal information to be shared as part of the open data.
         /// </summary>
         /// <example>

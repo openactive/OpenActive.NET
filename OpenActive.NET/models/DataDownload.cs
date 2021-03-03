@@ -48,7 +48,7 @@ namespace OpenActive.NET
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "DataDownload";
 
-        
+
         /// <summary>
         /// A local non-URI identifier for the resource
         /// </summary>
@@ -101,9 +101,16 @@ namespace OpenActive.NET
         public new virtual Uri ContentUrl { get; set; }
 
 
+        /// <summary>
         /// Must always be present and set to <code>
         /// "encodingFormat": "application/vnd.openactive.rpde+json; version=1"
         /// </code>
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// "encodingFormat": "application/vnd.openactive.rpde+json; version=1"
+        /// </code>
+        /// </example>
         [DataMember(Name = "encodingFormat", EmitDefaultValue = false, Order = 11)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string EncodingFormat { get; set; }

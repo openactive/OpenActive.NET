@@ -7,7 +7,6 @@ using System.Runtime.Serialization;
 namespace OpenActive.NET
 {
     /// <summary>
-    /// 
     /// This type is derived from https://schema.org/Event, which means that any of this type's properties within schema.org may also be used.
     /// </summary>
     [DataContract]
@@ -46,7 +45,7 @@ namespace OpenActive.NET
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "Slot";
 
-        
+
         /// <summary>
         /// A local non-URI identifier for the resource
         /// </summary>
@@ -250,7 +249,7 @@ namespace OpenActive.NET
 
 
         /// <summary>
-        /// The end date and time of the slot. Can be specified as a schema:Date or schema:DateTime 
+        /// The end date and time of the slot. Can be specified as a schema:Date or schema:DateTime
         /// It is recommended that publishers provide either an schema:endDate or a schema:duration for an slot.
         /// </summary>
         /// <example>

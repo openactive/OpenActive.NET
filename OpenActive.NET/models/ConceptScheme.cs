@@ -7,7 +7,6 @@ using System.Runtime.Serialization;
 namespace OpenActive.NET
 {
     /// <summary>
-    /// 
     /// This type is derived from http://www.w3.org/2004/02/skos/core#ConceptScheme.
     /// </summary>
     [DataContract]
@@ -46,7 +45,7 @@ namespace OpenActive.NET
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "ConceptScheme";
 
-        
+
         /// <summary>
         /// The title of the scheme
         /// </summary>
