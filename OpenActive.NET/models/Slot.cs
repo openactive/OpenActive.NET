@@ -202,7 +202,7 @@ namespace OpenActive.NET
         public override string SchedulingNote { get; set; }
 
         /// <summary>
-        /// The start date and time of the slot. Can be specified as a schema:Date or schema:DateTime
+        /// The start date and time of the slot.
         /// </summary>
         /// <example>
         /// <code>
@@ -210,11 +210,11 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "startDate", EmitDefaultValue = false, Order = 39)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public override SingleValues<string, DateTimeOffset?> StartDate { get; set; }
+        [JsonConverter(typeof(OpenActiveDateTimeOffsetToISO8601DateTimeValuesConverter))]
+        public new virtual DateTimeOffset? StartDate { get; set; }
 
         /// <summary>
-        /// The end date and time of the slot. Can be specified as a schema:Date or schema:DateTime
+        /// The end date and time of the slot.
         /// It is recommended that publishers provide either an schema:endDate or a schema:duration for an slot.
         /// </summary>
         /// <example>
@@ -223,8 +223,8 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "endDate", EmitDefaultValue = false, Order = 40)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public override SingleValues<string, DateTimeOffset?> EndDate { get; set; }
+        [JsonConverter(typeof(OpenActiveDateTimeOffsetToISO8601DateTimeValuesConverter))]
+        public new virtual DateTimeOffset? EndDate { get; set; }
 
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
         public override List<Event> SubEvent { get; set; }
