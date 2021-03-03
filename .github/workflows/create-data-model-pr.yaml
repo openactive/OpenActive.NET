@@ -29,24 +29,25 @@ jobs:
 
       - name: Install models-lib
         run: npm install
-        working-directory: models-lib
+        working-directory: ./models-lib/
 
       - name: Update models-lib with latest data-models
         run: npm update @openactive/data-models
-        working-directory: models-lib
+        working-directory: ./models-lib/
 
       - name: Run .NET models generator
         run: npm start -- generate .NET --destination ../OpenActive.NET/OpenActive.NET/
-        working-directory: models-lib
+        working-directory: ./models-lib/
         
       - name: Restore OpenActive.NET/models/SportsActivityLocation.cs (Gladstone workaround)
         run: git checkout OpenActive.NET/models/SportsActivityLocation.cs
+        working-directory: ./OpenActive.NET/
     
       - name: Create Pull Request
         id: cpr
         uses: peter-evans/create-pull-request@v3
         with:
-          path: OpenActive.NET
+          path: ./OpenActive.NET/
           token: ${{ secrets.PUBLIC_REPO_ACCESS_TOKEN }}
           commit-message: Update data models
           committer: openactive-bot <openactive-bot@users.noreply.github.com>
