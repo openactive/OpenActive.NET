@@ -7,7 +7,6 @@ using System.Runtime.Serialization;
 namespace OpenActive.NET
 {
     /// <summary>
-    /// 
     /// This type is derived from https://schema.org/DigitalDocument, which means that any of this type's properties within schema.org may also be used.
     /// </summary>
     [DataContract]
@@ -46,7 +45,7 @@ namespace OpenActive.NET
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "Terms";
 
-        
+
         /// <summary>
         /// The name of the terms. The name must distinguish this from other terms fields provided, e.g. 'Terms and Conditions' or 'Privacy Policy'.
         /// </summary>
@@ -68,9 +67,6 @@ namespace OpenActive.NET
         public new virtual DateTimeOffset? DateModified { get; set; }
 
 
-        /// <summary>
-        /// 
-        /// </summary>
         [DataMember(Name = "requiresExplicitConsent", EmitDefaultValue = false, Order = 9)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual bool? RequiresExplicitConsent { get; set; }

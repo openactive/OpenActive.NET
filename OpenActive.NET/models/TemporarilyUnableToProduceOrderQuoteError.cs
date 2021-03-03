@@ -48,7 +48,7 @@ namespace OpenActive.NET
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "TemporarilyUnableToProduceOrderQuoteError";
 
-        
+
         /// <summary>
         /// A short, human-readable summary of the problem type. It should not change from occurrence to occurrence of the problem, except for purposes of localization.
         /// </summary>
@@ -62,9 +62,11 @@ namespace OpenActive.NET
         public override string Name { get; set; } = "The Booking System is unable for technical reasons to produce an 'OrderQuote' where the data provided to it is sufficient to allow it to do so.";
 
 
+        /// <summary>
         /// Must always be present and set to <code>
         /// "statusCode": 503
         /// </code>
+        /// </summary>
         [DataMember(Name = "statusCode", EmitDefaultValue = false, Order = 8)]
         [JsonConverter(typeof(ValuesConverter))]
         public override long? StatusCode { get; set; } = 503;

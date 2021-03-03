@@ -46,6 +46,5 @@ namespace OpenActive.NET
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "test:ReplacementSimulateAction";
 
-        
     }
 }

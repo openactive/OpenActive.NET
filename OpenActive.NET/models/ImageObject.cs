@@ -7,7 +7,6 @@ using System.Runtime.Serialization;
 namespace OpenActive.NET
 {
     /// <summary>
-    /// 
     /// This type is derived from https://schema.org/ImageObject, which means that any of this type's properties within schema.org may also be used.
     /// </summary>
     [DataContract]
@@ -46,7 +45,7 @@ namespace OpenActive.NET
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "ImageObject";
 
-        
+
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
         public override Uri ContentUrl { get; set; }
 

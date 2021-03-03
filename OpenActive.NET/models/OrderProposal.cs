@@ -7,7 +7,6 @@ using System.Runtime.Serialization;
 namespace OpenActive.NET
 {
     /// <summary>
-    /// 
     /// This type is derived from https://schema.org/Order, which means that any of this type's properties within schema.org may also be used.
     /// </summary>
     [DataContract]
@@ -46,18 +45,12 @@ namespace OpenActive.NET
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "OrderProposal";
 
-        
-        /// <summary>
-        /// 
-        /// </summary>
+
         [DataMember(Name = "orderCustomerNote", EmitDefaultValue = false, Order = 7)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual string OrderCustomerNote { get; set; }
 
 
-        /// <summary>
-        /// 
-        /// </summary>
         [DataMember(Name = "orderProposalStatus", EmitDefaultValue = false, Order = 8)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual OrderProposalStatus? OrderProposalStatus { get; set; }
@@ -67,9 +60,6 @@ namespace OpenActive.NET
         public override bool? OrderRequiresApproval { get; set; }
 
 
-        /// <summary>
-        /// 
-        /// </summary>
         [DataMember(Name = "orderSellerNote", EmitDefaultValue = false, Order = 10)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual string OrderSellerNote { get; set; }

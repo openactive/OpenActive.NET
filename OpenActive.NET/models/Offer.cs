@@ -7,7 +7,6 @@ using System.Runtime.Serialization;
 namespace OpenActive.NET
 {
     /// <summary>
-    /// 
     /// This type is derived from https://schema.org/Offer, which means that any of this type's properties within schema.org may also be used.
     /// </summary>
     [DataContract]
@@ -46,7 +45,7 @@ namespace OpenActive.NET
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "Offer";
 
-        
+
         /// <summary>
         /// A local non-URI identifier for the resource
         /// </summary>
@@ -188,9 +187,9 @@ namespace OpenActive.NET
 
 
         /// <summary>
-        /// The offer price of the activity. 
-        /// This price should be specified without currency symbols and as a floating point number with two decimal places. 
-        /// The currency of the price should be expressed in the priceCurrency field. 
+        /// The offer price of the activity.
+        /// This price should be specified without currency symbols and as a floating point number with two decimal places.
+        /// The currency of the price should be expressed in the priceCurrency field.
         /// Includes or excludes tax depending on the taxMode of the seller.
         /// </summary>
         /// <example>

@@ -48,7 +48,7 @@ namespace OpenActive.NET
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "Dataset";
 
-        
+
         /// <summary>
         /// The name of the `Dataset`
         /// </summary>
@@ -215,9 +215,16 @@ namespace OpenActive.NET
         public new virtual List<string> Keywords { get; set; }
 
 
+        /// <summary>
         /// Must always be present and set to <code>
         /// "license": "https://creativecommons.org/licenses/by/4.0/"
         /// </code>
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// "license": "https://creativecommons.org/licenses/by/4.0/"
+        /// </code>
+        /// </example>
         [DataMember(Name = "license", EmitDefaultValue = false, Order = 19)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual Uri License { get; set; }

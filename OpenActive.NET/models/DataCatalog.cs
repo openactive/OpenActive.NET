@@ -48,7 +48,7 @@ namespace OpenActive.NET
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "DataCatalog";
 
-        
+
         /// <summary>
         /// The name of the `DataCatalog`
         /// </summary>
@@ -120,9 +120,16 @@ namespace OpenActive.NET
         public new virtual List<Uri> HasPart { get; set; }
 
 
+        /// <summary>
         /// Must always be present and set to <code>
         /// "license": "https://creativecommons.org/licenses/by/4.0/"
         /// </code>
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// "license": "https://creativecommons.org/licenses/by/4.0/"
+        /// </code>
+        /// </example>
         [DataMember(Name = "license", EmitDefaultValue = false, Order = 12)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual Uri License { get; set; }

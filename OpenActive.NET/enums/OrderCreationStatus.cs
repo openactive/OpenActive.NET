@@ -4,11 +4,10 @@ using System.Runtime.Serialization;
 namespace OpenActive.NET
 {
     /// <summary>
-    /// 
     /// </summary>
     public enum  OrderCreationStatus
     {
-        
+
         [EnumMember(Value = "https://openactive.io/OrderCreationPaymentAuthorized")]
         OrderCreationPaymentAuthorized,
         [EnumMember(Value = "https://openactive.io/OrderCreationPaymentCaptured")]

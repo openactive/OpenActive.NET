@@ -7,7 +7,6 @@ using System.Runtime.Serialization;
 namespace OpenActive.NET
 {
     /// <summary>
-    /// 
     /// This type is derived from https://schema.org/Event, which means that any of this type's properties within schema.org may also be used.
     /// </summary>
     [DataContract]
@@ -46,7 +45,7 @@ namespace OpenActive.NET
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "Event";
 
-        
+
         /// <summary>
         /// A local non-URI identifier for the resource
         /// </summary>
@@ -378,9 +377,9 @@ namespace OpenActive.NET
 
 
         /// <summary>
-        /// The location at which the event will take place. Or, in the case of events that may span multiple locations, the initial meeting or starting point. 
-        /// It is recommended that locations should be specified as a [Place](/models/place) complete with a fully described geographic location and/or address. 
-        /// If only an address is available then this should be described as a [PostalAddress](/models/postaladdress). 
+        /// The location at which the event will take place. Or, in the case of events that may span multiple locations, the initial meeting or starting point.
+        /// It is recommended that locations should be specified as a [Place](/models/place) complete with a fully described geographic location and/or address.
+        /// If only an address is available then this should be described as a [PostalAddress](/models/postaladdress).
         /// Applications may use [schema:Text](https://schema.org/Text) to provide a more general description of a location ("In Victoria Park, near the lake"), but this is not recommended: consuming applications will be unable to help users discover opportunities based on their location.
         /// </summary>
         /// <example>
@@ -547,7 +546,7 @@ namespace OpenActive.NET
 
 
         /// <summary>
-        /// The end date and time of the event. Can be specified as a schema:Date or  schema:DateTime 
+        /// The end date and time of the event. Can be specified as a schema:Date or  schema:DateTime
         /// It is recommended that publishers provide either an schema:endDate or a schema:duration for an event.
         /// </summary>
         /// <example>

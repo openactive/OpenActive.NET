@@ -7,7 +7,6 @@ using System.Runtime.Serialization;
 namespace OpenActive.NET
 {
     /// <summary>
-    /// 
     /// This type is derived from https://pending.schema.org/VirtualLocation.
     /// </summary>
     [DataContract]
@@ -46,7 +45,7 @@ namespace OpenActive.NET
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "VirtualLocation";
 
-        
+
         /// <summary>
         /// The name of the service that is providing remote access to the Opportunity.
         /// </summary>

@@ -46,7 +46,7 @@ namespace OpenActive.NET
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "beta:TrustCertification";
 
-        
+
         /// <summary>
         /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
         /// Property containing an array of CertificationLevels
