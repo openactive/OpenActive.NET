@@ -1,4 +1,3 @@
-
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -45,7 +44,6 @@ namespace OpenActive.NET
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "Schedule";
 
-
         /// <summary>
         /// Defines the day of the week upon which the Event takes place.
         /// When using string values, this MUST conform to iCal BYDAY rule.
@@ -61,7 +59,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public virtual SingleValues<List<string>, List<Schema.NET.DayOfWeek>> ByDay { get; set; }
 
-
         /// <summary>
         /// Defines the months of the year on which the Event takes place. Specified as an integer between 1 and 12, with 1 representing January.
         /// </summary>
@@ -75,7 +72,6 @@ namespace OpenActive.NET
         [DataMember(Name = "byMonth", EmitDefaultValue = false, Order = 8)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual List<long> ByMonth { get; set; }
-
 
         /// <summary>
         /// Defines the days of the month on which the Event takes place. Specified as an integer between 1 and 31
@@ -91,7 +87,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public virtual List<long> ByMonthDay { get; set; }
 
-
         /// <summary>
         /// The duration of the event given in [ISO8601] format.
         /// </summary>
@@ -104,7 +99,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(OpenActiveTimeSpanToISO8601DurationValuesConverter))]
         public virtual TimeSpan? Duration { get; set; }
 
-
         /// <summary>
         /// The end time of the event.
         /// </summary>
@@ -116,7 +110,6 @@ namespace OpenActive.NET
         [DataMember(Name = "endTime", EmitDefaultValue = false, Order = 11)]
         [JsonConverter(typeof(OpenActiveDateTimeOffsetToISO8601TimeValuesConverter))]
         public virtual DateTimeOffset? EndTime { get; set; }
-
 
         /// <summary>
         /// Exception dates where the schedule should not generate an event.
@@ -137,7 +130,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public virtual SingleValues<List<DateTimeOffset>, List<string>> ExceptDate { get; set; }
 
-
         /// <summary>
         /// An RFC6570 compliant URI template that can be used to generate a unique identifier (`@id`) for every event described by the schedule. This property is required if the data provider is supporting third-party booking via the Open Booking API, or providing complimentary individual `subEvent`s.
         /// </summary>
@@ -149,7 +141,6 @@ namespace OpenActive.NET
         [DataMember(Name = "idTemplate", EmitDefaultValue = false, Order = 13)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual string IdTemplate { get; set; }
-
 
         /// <summary>
         /// Defines the number of times a recurring Event will take place.
@@ -163,7 +154,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public virtual long? RepeatCount { get; set; }
 
-
         /// <summary>
         /// Defines the frequency at which Events will occur according to a Schedule. The intervals between events should be defined as a Duration of time.
         /// </summary>
@@ -175,7 +165,6 @@ namespace OpenActive.NET
         [DataMember(Name = "repeatFrequency", EmitDefaultValue = false, Order = 15)]
         [JsonConverter(typeof(OpenActiveTimeSpanToISO8601DurationValuesConverter))]
         public virtual TimeSpan? RepeatFrequency { get; set; }
-
 
         /// <summary>
         /// The type of event this schedule related to.
@@ -189,7 +178,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public virtual string ScheduledEventType { get; set; }
 
-
         /// <summary>
         /// Indicates the timezone for which the time(s) indicated in the Schedule are given. The value provided should be among those listed in the IANA Time Zone Database.
         /// </summary>
@@ -201,7 +189,6 @@ namespace OpenActive.NET
         [DataMember(Name = "scheduleTimezone", EmitDefaultValue = false, Order = 17)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual string ScheduleTimezone { get; set; }
-
 
         /// <summary>
         /// The start date of the event.
@@ -215,7 +202,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public virtual string StartDate { get; set; }
 
-
         /// <summary>
         /// The end date of the schedule.
         /// </summary>
@@ -227,7 +213,6 @@ namespace OpenActive.NET
         [DataMember(Name = "endDate", EmitDefaultValue = false, Order = 19)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual string EndDate { get; set; }
-
 
         /// <summary>
         /// The start time of the event.
@@ -241,7 +226,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(OpenActiveDateTimeOffsetToISO8601TimeValuesConverter))]
         public virtual DateTimeOffset? StartTime { get; set; }
 
-
         /// <summary>
         /// An RFC6570 compliant URI template that can be used to generate a unique `url` for every event described by the schedule. This property is required if the data provider wants to provide participants with a unique URL to book to attend an event.
         /// </summary>
@@ -254,7 +238,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public virtual string UrlTemplate { get; set; }
 
-
         /// <summary>
         /// [DEPRECATED: This term has graduated from the beta namespace and is highly likely to be removed in future versions of this library, please use `scheduleTimezone` instead.]
         /// The time zone used to generate occurrences, same as iCal TZID. E.g. 'Europe/London'.
@@ -265,6 +248,5 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         [Obsolete("This term has graduated from the beta namespace and is highly likely to be removed in future versions of this library, please use `scheduleTimezone` instead.", false)]
         public virtual string TimeZone { get; set; }
-
     }
 }

@@ -1,4 +1,3 @@
-
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -45,24 +44,19 @@ namespace OpenActive.NET
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "OrderProposal";
 
-
         [DataMember(Name = "orderCustomerNote", EmitDefaultValue = false, Order = 7)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual string OrderCustomerNote { get; set; }
-
 
         [DataMember(Name = "orderProposalStatus", EmitDefaultValue = false, Order = 8)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual OrderProposalStatus? OrderProposalStatus { get; set; }
 
-
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
         public override bool? OrderRequiresApproval { get; set; }
-
 
         [DataMember(Name = "orderSellerNote", EmitDefaultValue = false, Order = 10)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual string OrderSellerNote { get; set; }
-
     }
 }

@@ -1,4 +1,3 @@
-
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -45,7 +44,6 @@ namespace OpenActive.NET
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "SessionSeries";
 
-
         /// <summary>
         /// A an array of oa:Schedule or oa:PartialSchedule, which represents a recurrence pattern.
         /// </summary>
@@ -69,10 +67,8 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public virtual List<Schedule> EventSchedule { get; set; }
 
-
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
         public override long? RemainingAttendeeCapacity { get; set; }
-
 
         /// <summary>
         /// Relates a parent event to a child event. Properties describing the parent event can be assumed to apply to the child, unless otherwise specified. A child event might be a specific instance of an Event within a schedule
@@ -80,6 +76,5 @@ namespace OpenActive.NET
         [DataMember(Name = "subEvent", EmitDefaultValue = false, Order = 9)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual List<ScheduledSession> SubEvent { get; set; }
-
     }
 }

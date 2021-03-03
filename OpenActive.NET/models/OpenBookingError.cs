@@ -1,4 +1,3 @@
-
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -45,7 +44,6 @@ namespace OpenActive.NET
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "OpenBookingError";
 
-
         /// <summary>
         /// A short, human-readable summary of the problem type. It should not change from occurrence to occurrence of the problem, except for purposes of localization.
         /// </summary>
@@ -57,7 +55,6 @@ namespace OpenActive.NET
         [DataMember(Name = "name", EmitDefaultValue = false, Order = 7)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string Name { get; set; }
-
 
         /// <summary>
         /// A plain-text human-readable explanation specific to this occurrence of the problem, providing specific information about why the error occurred in this particular case. This description must not include HTML or other markup.
@@ -71,14 +68,12 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string Description { get; set; }
 
-
         /// <summary>
         /// A URI reference that identifies the specific occurrence of the problem. It may or may not yield further information if dereferenced.
         /// </summary>
         [DataMember(Name = "instance", EmitDefaultValue = false, Order = 9)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual Uri Instance { get; set; }
-
 
         /// <summary>
         /// Used by technical support for diagnostics purposes.
@@ -87,13 +82,11 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public virtual string RequestId { get; set; }
 
-
         /// <summary>
         /// An integer representing the HTTP status code.
         /// </summary>
         [DataMember(Name = "statusCode", EmitDefaultValue = false, Order = 11)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual long? StatusCode { get; set; }
-
     }
 }

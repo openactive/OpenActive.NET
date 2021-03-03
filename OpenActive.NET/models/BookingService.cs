@@ -1,4 +1,3 @@
-
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -45,14 +44,12 @@ namespace OpenActive.NET
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "BookingService";
 
-
         /// <summary>
         /// The name of the Booking System.
         /// </summary>
         [DataMember(Name = "name", EmitDefaultValue = false, Order = 7)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string Name { get; set; }
-
 
         /// <summary>
         /// The version of the application, useful for on-premise installations. Note this property is in EARLY RELEASE AND IS SUBJECT TO CHANGE, as the [Dataset API Discovery specification](https://openactive.io/dataset-api-discovery/EditorsDraft/) evolves.
@@ -61,7 +58,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string SoftwareVersion { get; set; }
 
-
         /// <summary>
         /// The terms of service of the Booking System.
         /// </summary>
@@ -69,13 +65,11 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public virtual List<Terms> TermsOfService { get; set; }
 
-
         /// <summary>
         /// The URL of the website of the Booking System.
         /// </summary>
         [DataMember(Name = "url", EmitDefaultValue = false, Order = 10)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual Uri Url { get; set; }
-
     }
 }

@@ -1,4 +1,3 @@
-
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -45,7 +44,6 @@ namespace OpenActive.NET
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "Payment";
 
-
         /// <summary>
         /// The identifier of the payment held by the Broker and/or Payment Provider.
         /// </summary>
@@ -58,14 +56,12 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string Identifier { get; set; }
 
-
         /// <summary>
         /// Optional free text description of the payment method for the Booking System, to help the Seller in discussions with the Customer (e.g. 'AcmeBroker Points' or 'AcmeBroker via Credit Card').
         /// </summary>
         [DataMember(Name = "name", EmitDefaultValue = false, Order = 8)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string Name { get; set; }
-
 
         /// <summary>
         /// A reference used by the Seller to group transactions, which is used to aid reconciliation.
@@ -74,14 +70,12 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string AccountId { get; set; }
 
-
         /// <summary>
         /// PropertyValue that contains a text value useful for reconciliation.
         /// </summary>
         [DataMember(Name = "additionalProperty", EmitDefaultValue = false, Order = 10)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual List<PropertyValue> AdditionalProperty { get; set; }
-
 
         /// <summary>
         /// paymentMethod must not be used, and is reserved for future versions of this specification.
@@ -90,13 +84,11 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual PaymentMethod? PaymentMethod { get; set; }
 
-
         /// <summary>
         /// A reference to the specific Payment Provider that is used.
         /// </summary>
         [DataMember(Name = "paymentProviderId", EmitDefaultValue = false, Order = 12)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual string PaymentProviderId { get; set; }
-
     }
 }

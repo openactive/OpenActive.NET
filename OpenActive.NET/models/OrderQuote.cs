@@ -1,4 +1,3 @@
-
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -45,7 +44,6 @@ namespace OpenActive.NET
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "OrderQuote";
 
-
         /// <summary>
         /// The Lease on the OrderItems which lasts for the duration specified by the Booking System.
         /// </summary>
@@ -53,13 +51,11 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public virtual Lease Lease { get; set; }
 
-
         /// <summary>
         /// Whether the Booking Flow with Approval must be used to book the set of OrderItems included. must be true if any of the OrderItems require approval.
         /// </summary>
         [DataMember(Name = "orderRequiresApproval", EmitDefaultValue = false, Order = 8)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual bool? OrderRequiresApproval { get; set; }
-
     }
 }

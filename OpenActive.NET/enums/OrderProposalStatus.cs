@@ -1,4 +1,3 @@
-
 using System.Runtime.Serialization;
 
 namespace OpenActive.NET
@@ -7,7 +6,6 @@ namespace OpenActive.NET
     /// </summary>
     public enum  OrderProposalStatus
     {
-
         [EnumMember(Value = "https://openactive.io/AwaitingSellerConfirmation")]
         AwaitingSellerConfirmation,
         [EnumMember(Value = "https://openactive.io/SellerAccepted")]

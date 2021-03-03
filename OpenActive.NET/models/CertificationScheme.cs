@@ -1,4 +1,3 @@
-
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -46,7 +45,6 @@ namespace OpenActive.NET
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "beta:CertificationScheme";
 
-
         /// <summary>
         /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
         /// Property containing an array of CertificationLevels
@@ -57,7 +55,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public virtual CertificationLevel CertificationLevel { get; set; }
 
-
         /// <summary>
         /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
         /// From within a CertificationScheme, points to other CertificationSchemes considered valid and trusted in order to allow the creation of a trust network.
@@ -67,6 +64,5 @@ namespace OpenActive.NET
         [DataMember(Name = "beta:trustedCertificationSchemes", EmitDefaultValue = false, Order = 1007)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual Uri TrustedCertificationSchemes { get; set; }
-
     }
 }

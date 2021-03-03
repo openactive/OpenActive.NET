@@ -1,4 +1,3 @@
-
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -45,14 +44,11 @@ namespace OpenActive.NET
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "PartialSchedule";
 
-
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
         public override string IdTemplate { get; set; }
 
-
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
         public override string UrlTemplate { get; set; }
-
 
         /// <summary>
         /// [DEPRECATED: This term has graduated from the beta namespace and is highly likely to be removed in future versions of this library, please use `scheduleTimezone` instead.]
@@ -64,6 +60,5 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         [Obsolete("This term has graduated from the beta namespace and is highly likely to be removed in future versions of this library, please use `scheduleTimezone` instead.", false)]
         public override string TimeZone { get; set; }
-
     }
 }

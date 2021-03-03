@@ -1,4 +1,3 @@
-
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -45,7 +44,6 @@ namespace OpenActive.NET
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "QuantitativeValue";
 
-
         /// <summary>
         /// The maximum value.
         /// </summary>
@@ -58,7 +56,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual long? MaxValue { get; set; }
 
-
         /// <summary>
         /// The minimum value.
         /// </summary>
@@ -70,6 +67,5 @@ namespace OpenActive.NET
         [DataMember(Name = "minValue", EmitDefaultValue = false, Order = 8)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual long? MinValue { get; set; }
-
     }
 }

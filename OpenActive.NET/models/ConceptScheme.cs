@@ -1,4 +1,3 @@
-
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -45,7 +44,6 @@ namespace OpenActive.NET
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "ConceptScheme";
 
-
         /// <summary>
         /// The title of the scheme
         /// </summary>
@@ -58,7 +56,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public virtual string Title { get; set; }
 
-
         /// <summary>
         /// A plain text description of the taxonomy, which must not include HTML or other markup.
         /// </summary>
@@ -70,7 +67,6 @@ namespace OpenActive.NET
         [DataMember(Name = "description", EmitDefaultValue = false, Order = 8)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual string Description { get; set; }
-
 
         /// <summary>
         /// A collection of concepts that are part of this scheme
@@ -92,7 +88,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public virtual List<Concept> Concept { get; set; }
 
-
         /// <summary>
         /// Reference to the license under which the activity list has been published.
         /// </summary>
@@ -105,7 +100,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public virtual Uri License { get; set; }
 
-
         /// <summary>
         /// A URL to a web page (or section of a page) that describes the concept scheme.
         /// </summary>
@@ -117,6 +111,5 @@ namespace OpenActive.NET
         [DataMember(Name = "url", EmitDefaultValue = false, Order = 11)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual Uri Url { get; set; }
-
     }
 }

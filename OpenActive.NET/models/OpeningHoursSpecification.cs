@@ -1,4 +1,3 @@
-
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -45,7 +44,6 @@ namespace OpenActive.NET
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "OpeningHoursSpecification";
 
-
         /// <summary>
         /// The closing time. Set "00:00" for the value of `opens` and `closes` to indicated the `Place` is closed on the specified days.
         /// </summary>
@@ -57,7 +55,6 @@ namespace OpenActive.NET
         [DataMember(Name = "closes", EmitDefaultValue = false, Order = 7)]
         [JsonConverter(typeof(OpenActiveDateTimeOffsetToISO8601TimeValuesConverter))]
         public new virtual DateTimeOffset? Closes { get; set; }
-
 
         /// <summary>
         /// Defines the days of the week upon which the `opens` and `closes` values are specified. Note this property is optional when used within `specialOpeningHoursSpecification`.
@@ -74,7 +71,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual List<Schema.NET.DayOfWeek> DayOfWeek { get; set; }
 
-
         /// <summary>
         /// The opening time. Set "00:00" for the value of `opens` and `closes` to indicated the `Place` is closed on the specified days.
         /// </summary>
@@ -86,7 +82,6 @@ namespace OpenActive.NET
         [DataMember(Name = "opens", EmitDefaultValue = false, Order = 9)]
         [JsonConverter(typeof(OpenActiveDateTimeOffsetToISO8601TimeValuesConverter))]
         public new virtual DateTimeOffset? Opens { get; set; }
-
 
         /// <summary>
         /// The date when the item becomes valid. The item will be valid at the beginning of the specified day. Note this property is required when used within `specialOpeningHoursSpecification`.
@@ -100,7 +95,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string ValidFrom { get; set; }
 
-
         /// <summary>
         /// The date after which the item is no longer valid. The item will cease to be valid at the end of the specified day. Note this property is required when used within `specialOpeningHoursSpecification`.
         /// </summary>
@@ -112,6 +106,5 @@ namespace OpenActive.NET
         [DataMember(Name = "validThrough", EmitDefaultValue = false, Order = 11)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string ValidThrough { get; set; }
-
     }
 }

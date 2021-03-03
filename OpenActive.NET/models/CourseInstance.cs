@@ -1,4 +1,3 @@
-
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -45,7 +44,6 @@ namespace OpenActive.NET
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "CourseInstance";
 
-
         /// <summary>
         /// A an array of oa:Schedule or oa:PartialSchedule, which represents a recurrence pattern.
         /// </summary>
@@ -69,7 +67,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public virtual List<Schedule> EventSchedule { get; set; }
 
-
         /// <summary>
         /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
         /// This course for which this is an offering.
@@ -79,6 +76,5 @@ namespace OpenActive.NET
         [DataMember(Name = "beta:course", EmitDefaultValue = false, Order = 1008)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual Course Course { get; set; }
-
     }
 }

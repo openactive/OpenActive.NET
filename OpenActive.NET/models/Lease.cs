@@ -1,4 +1,3 @@
-
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -45,7 +44,6 @@ namespace OpenActive.NET
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "Lease";
 
-
         /// <summary>
         /// Optional identifier of the Lease if useful for audit or debugging purposes.
         /// </summary>
@@ -58,13 +56,11 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual SingleValues<long?, string, PropertyValue, List<PropertyValue>> Identifier { get; set; }
 
-
         /// <summary>
         /// Expiry DateTime of the Lease in ISO 8601 format
         /// </summary>
         [DataMember(Name = "leaseExpires", EmitDefaultValue = false, Order = 8)]
         [JsonConverter(typeof(OpenActiveDateTimeOffsetToISO8601DateTimeValuesConverter))]
         public virtual DateTimeOffset? LeaseExpires { get; set; }
-
     }
 }

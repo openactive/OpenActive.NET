@@ -1,4 +1,3 @@
-
 using System.Runtime.Serialization;
 
 namespace OpenActive.NET
@@ -9,7 +8,6 @@ namespace OpenActive.NET
     /// </summary>
     public enum  TestOpportunityCriteriaEnumeration
     {
-
         [EnumMember(Value = "https://openactive.io/test-interface#TestOpportunityBookable")]
         TestOpportunityBookable,
         [EnumMember(Value = "https://openactive.io/test-interface#TestOpportunityNotBookableViaAvailableChannel")]
@@ -30,6 +28,8 @@ namespace OpenActive.NET
         TestOpportunityBookableOutsideValidFromBeforeStartDate,
         [EnumMember(Value = "https://openactive.io/test-interface#TestOpportunityBookableCancellable")]
         TestOpportunityBookableCancellable,
+        [EnumMember(Value = "https://openactive.io/test-interface#TestOpportunityBookableNotCancellable")]
+        TestOpportunityBookableNotCancellable,
         [EnumMember(Value = "https://openactive.io/test-interface#TestOpportunityBookableCancellableWithinWindow")]
         TestOpportunityBookableCancellableWithinWindow,
         [EnumMember(Value = "https://openactive.io/test-interface#TestOpportunityBookableCancellableOutsideWindow")]

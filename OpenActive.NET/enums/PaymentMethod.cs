@@ -1,4 +1,3 @@
-
 using System.Runtime.Serialization;
 
 namespace OpenActive.NET
@@ -7,7 +6,6 @@ namespace OpenActive.NET
     /// </summary>
     public enum  PaymentMethod
     {
-
         [EnumMember(Value = "http://purl.org/goodrelations/v1#Cash")]
         Cash,
         [EnumMember(Value = "http://purl.org/goodrelations/v1#PaymentMethodCreditCard")]

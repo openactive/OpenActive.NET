@@ -1,4 +1,3 @@
-
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -45,7 +44,6 @@ namespace OpenActive.NET
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "Barcode";
 
-
         /// <summary>
         /// The barcode number
         /// </summary>
@@ -57,7 +55,6 @@ namespace OpenActive.NET
         [DataMember(Name = "text", EmitDefaultValue = false, Order = 7)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string Text { get; set; }
-
 
         /// <summary>
         /// A fallback rendered barcode image url in addition to the raw barcode details.
@@ -71,7 +68,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public override Uri Url { get; set; }
 
-
         /// <summary>
         /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
         /// Type of barcode, e.g. 'Code39'
@@ -81,6 +77,5 @@ namespace OpenActive.NET
         [DataMember(Name = "beta:codeType", EmitDefaultValue = false, Order = 1009)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual string CodeType { get; set; }
-
     }
 }

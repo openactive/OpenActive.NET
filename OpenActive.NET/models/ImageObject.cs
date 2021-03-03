@@ -1,4 +1,3 @@
-
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -45,14 +44,11 @@ namespace OpenActive.NET
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "ImageObject";
 
-
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
         public override Uri ContentUrl { get; set; }
 
-
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
         public override Uri EmbedUrl { get; set; }
-
 
         /// <summary>
         /// The URL for a thumbnail image for an image.
@@ -60,7 +56,6 @@ namespace OpenActive.NET
         [DataMember(Name = "thumbnail", EmitDefaultValue = false, Order = 9)]
         [JsonConverter(typeof(ValuesConverter))]
         public override List<ImageObject> Thumbnail { get; set; }
-
 
         /// <summary>
         /// The URL for the display resolution image.
@@ -73,6 +68,5 @@ namespace OpenActive.NET
         [DataMember(Name = "url", EmitDefaultValue = false, Order = 10)]
         [JsonConverter(typeof(ValuesConverter))]
         public override Uri Url { get; set; }
-
     }
 }

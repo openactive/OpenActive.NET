@@ -1,4 +1,3 @@
-
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -45,7 +44,6 @@ namespace OpenActive.NET
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "PostalAddress";
 
-
         /// <summary>
         /// The country, expressed as a two-letter ISO 3166-1 alpha-2 country code.
         /// </summary>
@@ -57,7 +55,6 @@ namespace OpenActive.NET
         [DataMember(Name = "addressCountry", EmitDefaultValue = false, Order = 7)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string AddressCountry { get; set; }
-
 
         /// <summary>
         /// The locality, a suburb within a city or a town within a county or district.
@@ -71,7 +68,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string AddressLocality { get; set; }
 
-
         /// <summary>
         /// The region, either a city or a county or district.
         /// </summary>
@@ -83,7 +79,6 @@ namespace OpenActive.NET
         [DataMember(Name = "addressRegion", EmitDefaultValue = false, Order = 9)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string AddressRegion { get; set; }
-
 
         /// <summary>
         /// The postal code.
@@ -97,7 +92,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string PostalCode { get; set; }
 
-
         /// <summary>
         /// The street address.
         /// </summary>
@@ -109,6 +103,5 @@ namespace OpenActive.NET
         [DataMember(Name = "streetAddress", EmitDefaultValue = false, Order = 11)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string StreetAddress { get; set; }
-
     }
 }

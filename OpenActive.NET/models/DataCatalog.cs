@@ -1,4 +1,3 @@
-
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -48,7 +47,6 @@ namespace OpenActive.NET
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "DataCatalog";
 
-
         /// <summary>
         /// The name of the `DataCatalog`
         /// </summary>
@@ -60,7 +58,6 @@ namespace OpenActive.NET
         [DataMember(Name = "name", EmitDefaultValue = false, Order = 7)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string Name { get; set; }
-
 
         /// <summary>
         /// The URLs of the dataset sites within this `DataCatalog`.
@@ -77,7 +74,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual List<Uri> Dataset { get; set; }
 
-
         /// <summary>
         /// The date this `DataCatalog` was last updated.
         /// </summary>
@@ -90,7 +86,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(OpenActiveDateTimeOffsetToISO8601DateTimeValuesConverter))]
         public new virtual DateTimeOffset? DateModified { get; set; }
 
-
         /// <summary>
         /// The date this `DataCatalog` was first published. Can be specified as a schema:Date or schema:DateTime.
         /// </summary>
@@ -102,7 +97,6 @@ namespace OpenActive.NET
         [DataMember(Name = "datePublished", EmitDefaultValue = false, Order = 10)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual SingleValues<string, DateTimeOffset?> DatePublished { get; set; }
-
 
         /// <summary>
         /// The URLs of each smaller `DataCatalog` within this `DataCatalog` collection.
@@ -119,7 +113,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual List<Uri> HasPart { get; set; }
 
-
         /// <summary>
         /// Must always be present and set to <code>
         /// "license": "https://creativecommons.org/licenses/by/4.0/"
@@ -133,7 +126,6 @@ namespace OpenActive.NET
         [DataMember(Name = "license", EmitDefaultValue = false, Order = 12)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual Uri License { get; set; }
-
 
         /// <summary>
         /// The organization ultimately responsible for maintaining this `DataCatalog`.
@@ -150,6 +142,5 @@ namespace OpenActive.NET
         [DataMember(Name = "publisher", EmitDefaultValue = false, Order = 13)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual Organization Publisher { get; set; }
-
     }
 }

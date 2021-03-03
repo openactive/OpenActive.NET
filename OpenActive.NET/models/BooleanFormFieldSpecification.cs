@@ -1,4 +1,3 @@
-
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -45,9 +44,7 @@ namespace OpenActive.NET
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "BooleanFormFieldSpecification";
 
-
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
         public override string ValueRequired { get; set; }
-
     }
 }

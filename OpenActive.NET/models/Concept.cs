@@ -1,4 +1,3 @@
-
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -45,7 +44,6 @@ namespace OpenActive.NET
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "Concept";
 
-
         /// <summary>
         /// An alternative human readable string for use in user interfaces.
         /// </summary>
@@ -59,7 +57,6 @@ namespace OpenActive.NET
         [DataMember(Name = "altLabel", EmitDefaultValue = false, Order = 7)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual List<string> AltLabel { get; set; }
-
 
         /// <summary>
         /// A broader Concept URI
@@ -75,7 +72,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public virtual List<Uri> Broader { get; set; }
 
-
         /// <summary>
         /// A human readable string that unambiguously defines the Concept, for use in user interfaces.
         /// </summary>
@@ -87,7 +83,6 @@ namespace OpenActive.NET
         [DataMember(Name = "definition", EmitDefaultValue = false, Order = 9)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual string Definition { get; set; }
-
 
         /// <summary>
         /// An alternative human readable string used to drive autocomplete search matches, that is hidden from the user.
@@ -103,7 +98,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public virtual List<string> HiddenLabel { get; set; }
 
-
         /// <summary>
         /// A stable URL reference for the taxonomy, which must be `https://openactive.io/activity-list` to reference the OpenActive Activity List.
         /// </summary>
@@ -115,7 +109,6 @@ namespace OpenActive.NET
         [DataMember(Name = "inScheme", EmitDefaultValue = false, Order = 11)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual Uri InScheme { get; set; }
-
 
         /// <summary>
         /// A more specific concept URI
@@ -131,7 +124,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public virtual List<Uri> Narrower { get; set; }
 
-
         /// <summary>
         /// A human-readable identifier for the concept.
         /// </summary>
@@ -144,7 +136,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public virtual string Notation { get; set; }
 
-
         /// <summary>
         /// A human readable string that minimally describes the Concept, for use in user interfaces.
         /// </summary>
@@ -156,7 +147,6 @@ namespace OpenActive.NET
         [DataMember(Name = "prefLabel", EmitDefaultValue = false, Order = 14)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual string PrefLabel { get; set; }
-
 
         /// <summary>
         /// A related Concept URI
@@ -172,7 +162,6 @@ namespace OpenActive.NET
         [JsonConverter(typeof(ValuesConverter))]
         public virtual List<Uri> Related { get; set; }
 
-
         /// <summary>
         /// A reference to the Scheme URI, the existence of which indicates that this Concept is at the top level of the hierarchy.
         /// </summary>
@@ -184,6 +173,5 @@ namespace OpenActive.NET
         [DataMember(Name = "topConceptOf", EmitDefaultValue = false, Order = 16)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual Uri TopConceptOf { get; set; }
-
     }
 }

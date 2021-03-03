@@ -1,4 +1,3 @@
-
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -45,37 +44,28 @@ namespace OpenActive.NET
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "OfferOverride";
 
-
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
         public override RequiredStatusType? AdvanceBooking { get; set; }
-
 
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
         public override QuantitativeValue AgeRange { get; set; }
 
-
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
         public override QuantitativeValue AgeRestriction { get; set; }
-
 
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
         public override bool? AllowCustomerCancellationFullRefund { get; set; }
 
-
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
         public override List<AvailableChannelType> AvailableChannel { get; set; }
-
 
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
         public override TimeSpan? LatestCancellationBeforeStartDate { get; set; }
 
-
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
         public override RequiredStatusType? Prepayment { get; set; }
 
-
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
         public override TimeSpan? ValidFromBeforeStartDate { get; set; }
-
     }
 }

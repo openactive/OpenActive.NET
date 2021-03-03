@@ -1,4 +1,3 @@
-
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -45,13 +44,11 @@ namespace OpenActive.NET
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "DropdownFormFieldSpecification";
 
-
         /// <summary>
         /// Specifies an array of display values for the dropdown.
         /// </summary>
         [DataMember(Name = "valueOption", EmitDefaultValue = false, Order = 7)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual List<string> ValueOption { get; set; }
-
     }
 }
