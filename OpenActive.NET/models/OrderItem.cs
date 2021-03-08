@@ -49,7 +49,7 @@ namespace OpenActive.NET
         /// </summary>
         [DataMember(Name = "acceptedOffer", EmitDefaultValue = false, Order = 7)]
         [JsonConverter(typeof(ValuesConverter))]
-        public new virtual Offer AcceptedOffer { get; set; }
+        public new virtual ReferenceValue<Offer> AcceptedOffer { get; set; }
 
         /// <summary>
         /// Channel through which the user can participate in the Opportunity. Not applicable for an OrderQuote.
@@ -112,7 +112,7 @@ namespace OpenActive.NET
         /// </summary>
         [DataMember(Name = "orderedItem", EmitDefaultValue = false, Order = 16)]
         [JsonConverter(typeof(ValuesConverter))]
-        public new virtual Event OrderedItem { get; set; }
+        public new virtual ReferenceValue<Event> OrderedItem { get; set; }
 
         /// <summary>
         /// PropertyValueSpecifications that describe fields in the orderItemIntakeForm.

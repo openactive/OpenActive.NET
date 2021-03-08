@@ -77,6 +77,6 @@ namespace OpenActive.NET
         /// </summary>
         [DataMember(Name = "superEvent", EmitDefaultValue = false, Order = 10)]
         [JsonConverter(typeof(ValuesConverter))]
-        public new virtual SingleValues<Uri, Event> SuperEvent { get; set; }
+        public new virtual ReferenceValue<Event> SuperEvent { get; set; }
     }
 }
