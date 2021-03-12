@@ -11,7 +11,13 @@ namespace OpenActive.NET
         /// Gets the non-null object representing the instance, useful for switch statements
         /// </summary>
         object Value { get; }
+    }
 
+    /// <summary>
+    /// Get a single value from one or more values.
+    /// </summary>
+    public interface IValueAccessor
+    {
         /// <summary>
         /// Gets the nullable primative representing the instance, if it is of the type specified.
         /// </summary>

@@ -48,12 +48,12 @@ namespace OpenActive.NET.Test
             Assert.Equal(15, decode.MaximumAttendeeCapacity);
 
             // Test superEvent
-            Assert.IsType<SessionSeries>(decode.SuperEvent.GetClass<SessionSeries>());
-            Assert.Equal("Adult Supervised11-15yrs", decode.SuperEvent.GetClass<SessionSeries>().Name);
+            Assert.IsType<SessionSeries>(decode.SuperEvent.Object);
+            Assert.Equal("Adult Supervised11-15yrs", decode.SuperEvent.Object?.Name);
 
             // Test superEvent.superEvent
-            Assert.IsType<EventSeries>(decode.SuperEvent.GetClass<SessionSeries>().SuperEvent);
-            Assert.Equal("11-15 Years Supervised Gym Sessions", decode.SuperEvent.GetClass<SessionSeries>().SuperEvent.Name);
+            Assert.IsType<EventSeries>(decode.SuperEvent.Object?.SuperEvent);
+            Assert.Equal("11-15 Years Supervised Gym Sessions", decode.SuperEvent.Object?.SuperEvent.Name);
         }
 
         [Fact]
