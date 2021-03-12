@@ -14,7 +14,7 @@ namespace OpenActive.NET
     public struct ReferenceValue<T> : IValue, IEquatable<ReferenceValue<T>> where T : class
     {
         private readonly T valueObject;
-        private readonly Uri valueId;
+        private readonly Uri valueIdReference;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ReferenceValue{T}"/> class.
@@ -23,9 +23,9 @@ namespace OpenActive.NET
         public ReferenceValue(T value)
         {
             this.valueObject = value;
-            this.valueId = default;
+            this.valueIdReference = default;
             this.HasValueObject = true;
-            this.HasValueId = false;
+            this.HasValueIdReference = false;
         }
 
         /// <summary>
@@ -35,9 +35,9 @@ namespace OpenActive.NET
         public ReferenceValue(Uri value)
         {
             this.valueObject = default;
-            this.valueId = value;
+            this.valueIdReference = value;
             this.HasValueObject = false;
-            this.HasValueId = true;
+            this.HasValueIdReference = true;
         }
 
         /// <summary>
@@ -59,13 +59,13 @@ namespace OpenActive.NET
         /// <summary>
         /// Gets the Url representing the instance.
         /// </summary>
-        public Uri Id
+        public Uri IdReference
         {
             get
             {
-                if (HasValueId)
+                if (HasValueIdReference)
                 {
-                    return this.valueId;
+                    return this.valueIdReference;
                 }
 
                 return null;
@@ -83,9 +83,9 @@ namespace OpenActive.NET
                 {
                     return this.valueObject;
                 }
-                else if (HasValueId)
+                else if (HasValueIdReference)
                 {
-                    return this.valueId;
+                    return this.valueIdReference;
                 }
 
                 return null;
@@ -95,7 +95,7 @@ namespace OpenActive.NET
         /// <summary>
         /// Gets a value indicating whether this instance has a value.
         /// </summary>
-        public bool HasValue => this.HasValueObject || this.HasValueId;
+        public bool HasValue => this.HasValueObject || this.HasValueIdReference;
 
         /// <summary>
         /// Gets whether the value of type <typeparamref name="T" /> has a value. This is internal as the order of values may change over time.
@@ -105,7 +105,7 @@ namespace OpenActive.NET
         /// <summary>
         /// Gets whether the value of type Uri has a value. This is internal as the order of values may change over time.
         /// </summary>
-        internal bool HasValueId { get; }
+        internal bool HasValueIdReference { get; }
 
         /// <summary>
         /// Performs an implicit conversion from <typeparamref name="T"/> to <see cref="ReferenceValue{T}"/>.
@@ -158,11 +158,11 @@ namespace OpenActive.NET
                     return this.valueObject.Equals(other.valueObject);
                 }
             }
-            else if (other.HasValueId)
+            else if (other.HasValueIdReference)
             {
-                if (this.HasValueId)
+                if (this.HasValueIdReference)
                 {
-                    return this.valueId.Equals(other.valueId);
+                    return this.valueIdReference.Equals(other.valueIdReference);
                 }
             }
             else if (!other.HasValue && !this.HasValue)
@@ -194,9 +194,9 @@ namespace OpenActive.NET
             {
                 return this.valueObject.ToString();
             }
-            else if (this.HasValueId)
+            else if (this.HasValueIdReference)
             {
-                return this.valueId.ToString();
+                return this.valueIdReference.ToString();
             }
             return ((string)null).ToString();
         }
@@ -207,6 +207,6 @@ namespace OpenActive.NET
         /// <returns>
         /// A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
         /// </returns>
-        public override int GetHashCode() => Schema.NET.HashCode.Of(this.valueObject).And(this.valueId);
+        public override int GetHashCode() => Schema.NET.HashCode.Of(this.valueObject).And(this.valueIdReference);
     }
 }

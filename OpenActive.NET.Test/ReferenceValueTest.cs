@@ -80,7 +80,7 @@ namespace OpenActive.NET.Test
 
             // Test superEvent
             Assert.False(decode.SuperEvent.HasValue);
-            Assert.Null(decode.SuperEvent.Id);
+            Assert.Null(decode.SuperEvent.IdReference);
             Assert.Null(decode.SuperEvent.Object);
         }
 
@@ -95,7 +95,7 @@ namespace OpenActive.NET.Test
 
             // Test superEvent
             Assert.True(decode.SuperEvent.HasValue);
-            Assert.Equal(new Uri("https://opensessions.io/api/session-series/1402CBP20150217"), decode.SuperEvent.Id);
+            Assert.Equal(new Uri("https://opensessions.io/api/session-series/1402CBP20150217"), decode.SuperEvent.IdReference);
             Assert.Null(decode.SuperEvent.Object);
         }
 
