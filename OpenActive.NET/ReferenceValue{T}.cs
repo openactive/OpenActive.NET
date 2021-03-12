@@ -57,7 +57,7 @@ namespace OpenActive.NET
         }
 
         /// <summary>
-        /// Gets the Url representing the instance.
+        /// Gets the JSON-LD @id reference representing the instance.
         /// </summary>
         public Uri IdReference
         {
@@ -73,7 +73,7 @@ namespace OpenActive.NET
         }
 
         /// <summary>
-        /// Gets the Url or JSON-LD object representing the instance.
+        /// Gets the JSON-LD @id reference or JSON-LD object representing the instance.
         /// </summary>
         public object Value
         {
