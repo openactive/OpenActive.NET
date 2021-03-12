@@ -117,7 +117,7 @@ namespace OpenActive.NET
         /// </example>
         [DataMember(Name = "facilityUse", EmitDefaultValue = false, Order = 22)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual SingleValues<Uri, IndividualFacilityUse, FacilityUse> FacilityUse { get; set; }
+        public virtual ReferenceValue<FacilityUse> FacilityUse { get; set; }
 
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
         public override GenderRestrictionType? GenderRestriction { get; set; }

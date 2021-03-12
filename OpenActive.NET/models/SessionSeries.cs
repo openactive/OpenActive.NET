@@ -70,16 +70,10 @@ namespace OpenActive.NET
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
         public override long? RemainingAttendeeCapacity { get; set; }
 
-        [Obsolete("This property is disinherited in this type, and must not be used.", true)]
-        public override SingleValues<string, DateTimeOffset?> StartDate { get; set; }
-
-        [Obsolete("This property is disinherited in this type, and must not be used.", true)]
-        public override SingleValues<string, DateTimeOffset?> EndDate { get; set; }
-
         /// <summary>
         /// Relates a parent event to a child event. Properties describing the parent event can be assumed to apply to the child, unless otherwise specified. A child event might be a specific instance of an Event within a schedule
         /// </summary>
-        [DataMember(Name = "subEvent", EmitDefaultValue = false, Order = 11)]
+        [DataMember(Name = "subEvent", EmitDefaultValue = false, Order = 9)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual List<ScheduledSession> SubEvent { get; set; }
     }

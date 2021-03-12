@@ -193,8 +193,6 @@
                             }*/
                         }
                     }
-
-                    
                 }
                 else
                 {
@@ -226,6 +224,23 @@
                             // return first valid argument, going from right to left in generic type arguments
                             break;
                         }
+                    }
+
+                    // If brute force fails, test if Uri for the case of this being a ReferenceValue<>
+                    if (argument == null && mainType.GetGenericTypeDefinition() == typeof(ReferenceValue<>))
+                    {
+                        try
+                        {
+                            argument = ParseTokenArguments(token, tokenType, typeof(Uri), value);
+                        }
+#pragma warning disable CA1031 // Do not catch general exception types
+                        catch (Exception e)
+                        {
+                            // Nasty, but we're trying brute force as a last resort, to
+                            // see which type has the right constructor for this value
+                            Debug.WriteLine(e);
+                        }
+#pragma warning restore CA1031 // Do not catch general exception types
                     }
                 }
             }
@@ -574,8 +589,9 @@
                 var typeName = GetTypeNameFromToken(childToken);
                 if (string.IsNullOrEmpty(typeName))
                 {
-                    // Edge case for strings, to ensure assignment to objects is not attempted if the object is not a string or enum
-                    if (childToken.Type == JTokenType.String && classType != typeof(string) && !classType.GetTypeInfo().IsEnum)
+                    // Edge case for strings and Uris, to ensure assignment to objects is not attempted if the object is not a string, Uri or enum
+                    // Note this means that only primative arrays of strings, Uris, and enums are supported
+                    if (childToken.Type == JTokenType.String && classType != typeof(string) && classType != typeof(Uri) && !classType.GetTypeInfo().IsEnum)
                     {
                         // Do nothing, as this child type does not match
                     }

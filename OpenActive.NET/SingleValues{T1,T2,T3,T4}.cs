@@ -13,7 +13,7 @@ namespace OpenActive.NET
     /// <typeparam name="T3">The third type the values can take.</typeparam>
     /// <typeparam name="T4">The fourth type the values can take.</typeparam>
     /// <seealso cref="IValue" />
-    public struct SingleValues<T1, T2, T3, T4> : IValue, IEquatable<SingleValues<T1, T2, T3, T4>>
+    public struct SingleValues<T1, T2, T3, T4> : IValue, IValueAccessor, IEquatable<SingleValues<T1, T2, T3, T4>>
     {
         private readonly T1 value1;
         private readonly T2 value2;
