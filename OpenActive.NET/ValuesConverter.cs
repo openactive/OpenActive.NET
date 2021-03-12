@@ -589,7 +589,8 @@
                 var typeName = GetTypeNameFromToken(childToken);
                 if (string.IsNullOrEmpty(typeName))
                 {
-                    // Edge case for strings, to ensure assignment to objects is not attempted if the object is not a string or enum
+                    // Edge case for strings and Uris, to ensure assignment to objects is not attempted if the object is not a string, Uri or enum
+                    // Note this means that only primative arrays of strings, Uris, and enums are supported
                     if (childToken.Type == JTokenType.String && classType != typeof(string) && classType != typeof(Uri) && !classType.GetTypeInfo().IsEnum)
                     {
                         // Do nothing, as this child type does not match
