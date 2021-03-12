@@ -11,7 +11,7 @@ namespace OpenActive.NET
     /// <typeparam name="T1">The first type the values can take.</typeparam>
     /// <typeparam name="T2">The second type the values can take.</typeparam>
     /// <seealso cref="IValue" />
-    public struct SingleValues<T1, T2> : IValue, IEquatable<SingleValues<T1, T2>>
+    public struct SingleValues<T1, T2> : IValue, IValueAccessor, IEquatable<SingleValues<T1, T2>>
     {
         private readonly T1 value1;
         private readonly T2 value2;

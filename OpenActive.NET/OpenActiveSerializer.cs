@@ -197,9 +197,13 @@ namespace OpenActive.NET
             var startIndex = json[0] == '[' ?
                 0 : // If the result is an array, remove all "@context"
                 ContextPropertyJson.Length + 1; // We add the one to represent the opening curly brace.
-            // Replace OpenActive context and properties
-            stringBuilder.Replace(ContextPropertyJson, string.Empty, startIndex, stringBuilder.Length - startIndex);
-            stringBuilder.Replace(ContextPropertyJson, contextString, 0, startIndex);
+            if (startIndex < stringBuilder.Length)
+            {
+                // Remove OpenActive context from embedded objects
+                stringBuilder.Replace(ContextPropertyJson, string.Empty, startIndex, stringBuilder.Length - startIndex);
+                // Replace OpenActive context in root object
+                stringBuilder.Replace(ContextPropertyJson, contextString, 0, startIndex);
+            }
             return stringBuilder.ToString();
         }
 

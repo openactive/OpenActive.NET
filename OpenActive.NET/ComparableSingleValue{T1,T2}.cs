@@ -10,7 +10,7 @@ namespace OpenActive.NET
     /// <typeparam name="T1">The first type the values can take.</typeparam>
     /// <typeparam name="T2">The second type the values can take.</typeparam>
     /// <seealso cref="IValue" />
-    public readonly struct ComparableSingleValue<T1, T2> : IValue, IEquatable<ComparableSingleValue<T1, T2>>, IComparable<ComparableSingleValue<T1, T2>> where T1 : IComparable<T1> where T2 : IComparable<T2>
+    public readonly struct ComparableSingleValue<T1, T2> : IValue, IValueAccessor, IEquatable<ComparableSingleValue<T1, T2>>, IComparable<ComparableSingleValue<T1, T2>> where T1 : IComparable<T1> where T2 : IComparable<T2>
     {
         private readonly T1 value1;
         private readonly T2 value2;

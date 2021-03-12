@@ -76,7 +76,13 @@ namespace OpenActive.NET.Test
             Organizer = NullPerson,
             AttendeeInstructions = "Ensure you bring trainers and a bottle of water.",
             MeetingPoint = "",
-            AccessibilityInformation = NullString
+            AccessibilityInformation = NullString,
+            Leader = new List<Person> {
+                new Person
+                {
+                    SameAs = new List<Uri> { new Uri("https://www.twitter.com/SportsUnlimited"), new Uri("https://www.facebook.com/SportsUnlimited") }
+                }
+            }
         };
 
         private readonly string json =
@@ -106,6 +112,12 @@ namespace OpenActive.NET.Test
                 "{" +
                     "\"@type\":\"ImageObject\"," +
                     "\"url\":\"http://www.example.com/event_image/12345\"" +
+                "}" +
+            "]," +
+            "\"leader\":[" +
+                "{" +
+                    "\"@type\":\"Person\"," +
+                    "\"sameAs\":[\"https://www.twitter.com/SportsUnlimited\",\"https://www.facebook.com/SportsUnlimited\"]" +
                 "}" +
             "]," +
             "\"location\":{" +
@@ -286,6 +298,16 @@ namespace OpenActive.NET.Test
             Assert.Equal(encode, reencode);
         }
 
+        [Fact]
+        public void ToString_Serialize_Null()
+        {
+            var encode = OpenActiveSerializer.Serialize((ScheduledSession)null);
+
+            output.WriteLine(encode);
+            Assert.Equal("null", encode);
+        }
+
+
 
         private readonly SessionSeries nestedEvent = new OpenActive.NET.SessionSeries()
         {
@@ -317,6 +339,23 @@ namespace OpenActive.NET.Test
 
             output.WriteLine(encode);
             Assert.Equal(nestedJson, encode);
+        }
+
+        private readonly string organizationJson =
+        "{\"@context\":\"https://openactive.io/\"," +
+            "\"@type\":\"Organization\"," +
+             "\"sameAs\":[\"https://www.twitter.com/SportsUnlimited\",\"https://www.facebook.com/SportsUnlimited\"]" +
+        "}";
+
+        [Fact]
+        public void ToString_EncodeDecode_SameAs()
+        {
+            var decode = OpenActiveSerializer.Deserialize<Organization>(organizationJson);
+            var encode = OpenActiveSerializer.Serialize(decode);
+
+            output.WriteLine(organizationJson);
+            output.WriteLine(encode);
+            Assert.Equal(organizationJson, encode);
         }
     }
 }

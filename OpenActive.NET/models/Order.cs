@@ -45,16 +45,16 @@ namespace OpenActive.NET
         public override string Type => "Order";
 
         /// <summary>
-        /// A local non-URI identifier for the resource
+        /// The Order UUID of the Order, OrderQuote or OrderProposal, which is required within the Orders feed.
         /// </summary>
         /// <example>
         /// <code>
-        /// "identifier": "SB1234"
+        /// "identifier": "123e4567-e89b-12d3-a456-426614174000"
         /// </code>
         /// </example>
         [DataMember(Name = "identifier", EmitDefaultValue = false, Order = 7)]
         [JsonConverter(typeof(ValuesConverter))]
-        public new virtual SingleValues<long?, string, PropertyValue, List<PropertyValue>> Identifier { get; set; }
+        public new virtual Guid? Identifier { get; set; }
 
         /// <summary>
         /// Details about the Booking System
@@ -124,7 +124,7 @@ namespace OpenActive.NET
         /// </summary>
         [DataMember(Name = "seller", EmitDefaultValue = false, Order = 17)]
         [JsonConverter(typeof(ValuesConverter))]
-        public new virtual ILegalEntity Seller { get; set; }
+        public new virtual ReferenceValue<ILegalEntity> Seller { get; set; }
 
         /// <summary>
         /// Set to true when business-to-business tax calculation is required by the seller or brokerRole settings, but not supported by the Broker.

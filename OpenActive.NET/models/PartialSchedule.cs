@@ -48,6 +48,9 @@ namespace OpenActive.NET
         public override string IdTemplate { get; set; }
 
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
+        public override string ScheduledEventType { get; set; }
+
+        [Obsolete("This property is disinherited in this type, and must not be used.", true)]
         public override string UrlTemplate { get; set; }
 
         /// <summary>
@@ -56,7 +59,7 @@ namespace OpenActive.NET
         /// 
         /// If you are using this property, please join the discussion at proposal [#197](https://github.com/openactive/modelling-opportunity-data/issues/197).
         /// </summary>
-        [DataMember(Name = "beta:timeZone", EmitDefaultValue = false, Order = 1009)]
+        [DataMember(Name = "beta:timeZone", EmitDefaultValue = false, Order = 1010)]
         [JsonConverter(typeof(ValuesConverter))]
         [Obsolete("This term has graduated from the beta namespace and is highly likely to be removed in future versions of this library, please use `scheduleTimezone` instead.", false)]
         public override string TimeZone { get; set; }
