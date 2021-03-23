@@ -45,6 +45,6 @@ namespace OpenActive.NET
         public override string Type => "BooleanFormFieldSpecification";
 
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
-        public override string ValueRequired { get; set; }
+        public override bool? ValueRequired { get; set; }
     }
 }
