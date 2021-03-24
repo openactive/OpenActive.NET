@@ -63,6 +63,6 @@ namespace OpenActive.NET
         /// </summary>
         [DataMember(Name = "valueRequired", EmitDefaultValue = false, Order = 9)]
         [JsonConverter(typeof(ValuesConverter))]
-        public new virtual string ValueRequired { get; set; }
+        public new virtual bool? ValueRequired { get; set; }
     }
 }

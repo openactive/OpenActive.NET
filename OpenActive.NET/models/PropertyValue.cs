@@ -85,6 +85,6 @@ namespace OpenActive.NET
         /// </example>
         [DataMember(Name = "value", EmitDefaultValue = false, Order = 10)]
         [JsonConverter(typeof(ValuesConverter))]
-        public new virtual SingleValues<long?, string> Value { get; set; }
+        public new virtual SingleValues<bool?, string> Value { get; set; }
     }
 }
