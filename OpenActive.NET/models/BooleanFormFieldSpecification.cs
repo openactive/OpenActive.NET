@@ -43,8 +43,5 @@ namespace OpenActive.NET
         /// </summary>
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "BooleanFormFieldSpecification";
-
-        [Obsolete("This property is disinherited in this type, and must not be used.", true)]
-        public override bool? ValueRequired { get; set; }
     }
 }
