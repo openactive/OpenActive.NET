@@ -460,7 +460,7 @@ The `models-lib` code generator is used to generate the model classes in this re
 
 Contributions are very welcome. Please raise an issue or pull request as appropriate.
 
-Please note that updates to the data models themselves will not be accepted as pull requests, and must instead be made upstream in the [Data Models](https://github.com/openactive/data-models), [Test Interface](https://openactive.io/test-interface/) or [Beta Namespace](https://openactive.io/ns-beta/) repositories.
+Please note that updates to the data models themselves will not be accepted as pull requests if made separately from automatic model regeneration, and must instead be made upstream in the [Data Models](https://github.com/openactive/data-models), [Test Interface](https://openactive.io/test-interface/) or [Beta Namespace](https://openactive.io/ns-beta/) repositories.
 
 ### Publishing to NuGet through CI
 
