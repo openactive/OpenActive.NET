@@ -7,8 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenActive.NET", "OpenActiv
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenActive.NET.Test", "OpenActive.NET.Test\OpenActive.NET.Test.csproj", "{5138F0B6-8F17-42B9-B774-14488A307529}"
 EndProject
-Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "OpenActive.NET.Generator", "OpenActive.NET.Generator\OpenActive.NET.Generator.njsproj", "{74756AC9-D78C-4022-AECF-91FC3E2B45D6}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{5138F0B6-8F17-42B9-B774-14488A307529}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5138F0B6-8F17-42B9-B774-14488A307529}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5138F0B6-8F17-42B9-B774-14488A307529}.Release|Any CPU.Build.0 = Release|Any CPU
-		{74756AC9-D78C-4022-AECF-91FC3E2B45D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{74756AC9-D78C-4022-AECF-91FC3E2B45D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{74756AC9-D78C-4022-AECF-91FC3E2B45D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{74756AC9-D78C-4022-AECF-91FC3E2B45D6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
