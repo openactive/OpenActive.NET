@@ -464,7 +464,7 @@ Please note that updates to the data models themselves will not be accepted as p
 
 ### Publishing to NuGet through CI
 
-New commits to the `master` branch will trigger an automatic patch version bump and push to NuGet. To increment the major or version of the library, update [this file](https://github.com/openactive/OpenActive.NET/blob/master/version.json#L3) within your PR.
+New commits to the `master` branch will trigger an automatic patch version bump and push to NuGet. To increment the major or minor version of the library, update [this file](https://github.com/openactive/OpenActive.NET/blob/master/version.json#L3) within your PR.
 
 ### Publishing to NuGet
 
