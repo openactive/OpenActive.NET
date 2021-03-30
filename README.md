@@ -454,7 +454,7 @@ Returns a strongly typed model of the RPDE page provided.
 
 Data model updates automatically trigger [model regeneration in CI](https://github.com/openactive/OpenActive.NET/actions/workflows/create-data-model-pr.yaml), which generates a new PR with the changes.
 
-The `models-lib` code generator is used to generate the model classes in this repository. See [here](https://github.com/openactive/models-lib#specific-examples) for more information.
+The [`models-lib`](https://github.com/openactive/models-lib#specific-examples) code generator is used to generate the model classes in this repository.
 
 ### Pull requests
 
