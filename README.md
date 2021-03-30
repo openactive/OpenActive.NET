@@ -450,18 +450,23 @@ Returns a strongly typed model of the RPDE page provided.
 
 ## Contributing
 
-### Model regeneration
-Running `npm start` in the `OpenActive.NET.Generator` project will regenerate the models from the [OpenActive model files](https://github.com/openactive/data-models).
+### Automatic model regeneration
 
-```bash
-npm install
-npm start
-```
+Data model updates automatically trigger [model regeneration in CI](https://github.com/openactive/OpenActive.NET/actions/workflows/create-data-model-pr.yaml), which generates a new PR with the changes.
+
+The `models-lib` code generator is used to generate the model classes in this repository. See [here](https://github.com/openactive/models-lib#specific-examples) for more information.
 
 ### Pull requests
+
 Contributions are very welcome. Please raise an issue or pull request as appropriate.
 
-### Publishing to nuget
+Please note that updates to the data models themselves will not be accepted as pull requests, and must instead be made upstream in the [Data Models](https://github.com/openactive/data-models), [Test Interface](https://openactive.io/test-interface/) or [Beta Namespace](https://openactive.io/ns-beta/) repositories.
+
+### Publishing to NuGet through CI
+
+New commits to the `master` branch will trigger an automatic patch version bump and push to NuGet. To increment the major or version of the library, update [this file](https://github.com/openactive/OpenActive.NET/blob/master/version.json#L3) within your PR.
+
+### Publishing to NuGet
 
 1. Bump the version number of OpenActive.NET
 2. Rebuild OpenActive.NET
