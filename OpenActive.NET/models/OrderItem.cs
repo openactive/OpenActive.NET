@@ -84,7 +84,7 @@ namespace OpenActive.NET
         /// </summary>
         [DataMember(Name = "attendeeDetailsRequired", EmitDefaultValue = false, Order = 12)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual List<Uri> AttendeeDetailsRequired { get; set; }
+        public virtual List<PropertyEnumeration> AttendeeDetailsRequired { get; set; }
 
         /// <summary>
         /// A message set by the Seller in the event of Opportunity cancellation, only applicable for an  `Order` and where the `OrderItem` has `orderItemStatus` set to `https://openactive.io/SellerCancelled`
