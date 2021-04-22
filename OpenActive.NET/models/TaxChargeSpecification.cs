@@ -64,7 +64,7 @@ namespace OpenActive.NET
         public new virtual string Name { get; set; }
 
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
-        public override RequiredStatusType? Prepayment { get; set; }
+        public override RequiredStatusType? OpenBookingPrepayment { get; set; }
 
         /// <summary>
         /// The total amount.

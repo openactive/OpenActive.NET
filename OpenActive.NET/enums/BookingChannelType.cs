@@ -4,10 +4,8 @@ namespace OpenActive.NET
 {
     /// <summary>
     /// </summary>
-    public enum  AvailableChannelType
+    public enum  BookingChannelType
     {
-        [EnumMember(Value = "https://openactive.io/OpenBookingPrepayment")]
-        OpenBookingPrepayment,
         [EnumMember(Value = "https://openactive.io/TelephoneAdvanceBooking")]
         TelephoneAdvanceBooking,
         [EnumMember(Value = "https://openactive.io/TelephonePrepayment")]

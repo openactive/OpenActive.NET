@@ -25,7 +25,7 @@ namespace OpenActive.NET.Test
         private readonly SessionSeries @event = new OpenActive.NET.SessionSeries()
         {
             Name = "Virtual BODYPUMP",
-            Description = "This is the virtual version of the original barbell class, which will help you get lean, toned and fit - fast. Les Mills™ Virtual classes are designed for people who cannot get access to our live classes or who want to get a ‘taste’ of a Les Mills™ class before taking a live class with an instructor. The classes are played on a big video screen, with dimmed lighting and pumping surround sound, and are led onscreen by the people who actually choreograph the classes.",
+            Description = "This is the virtual version of the original barbell class, which will help you get lean, toned and fit - fast. Les Mills? Virtual classes are designed for people who cannot get access to our live classes or who want to get a ?taste? of a Les Mills? class before taking a live class with an instructor. The classes are played on a big video screen, with dimmed lighting and pumping surround sound, and are led onscreen by the people who actually choreograph the classes.",
             Duration = TimeSpan.FromDays(1),
             StartDate = new DateTimeOffset(2017, 4, 24, 19, 30, 0, TimeSpan.FromHours(-8)),
             Location = new Place()
@@ -45,7 +45,6 @@ namespace OpenActive.NET.Test
             EndDate = new DateTimeOffset(2017, 4, 24, 23, 0, 0, TimeSpan.FromHours(-8)),
             Offers = new List<Offer>() { new Offer()
             {
-                AdvanceBooking = NullRequiredStatusType,
                 Url = new Uri("https://www.example.com/event_offer/12345_201803180430"),
                 Price = 30,
                 PriceCurrency = "USD",
@@ -105,7 +104,7 @@ namespace OpenActive.NET.Test
               "}" +
             "]," +
             "\"name\":\"Virtual BODYPUMP\"," +
-            "\"description\":\"This is the virtual version of the original barbell class, which will help you get lean, toned and fit - fast. Les Mills™ Virtual classes are designed for people who cannot get access to our live classes or who want to get a ‘taste’ of a Les Mills™ class before taking a live class with an instructor. The classes are played on a big video screen, with dimmed lighting and pumping surround sound, and are led onscreen by the people who actually choreograph the classes.\"," +
+            "\"description\":\"This is the virtual version of the original barbell class, which will help you get lean, toned and fit - fast. Les Mills? Virtual classes are designed for people who cannot get access to our live classes or who want to get a ?taste? of a Les Mills? class before taking a live class with an instructor. The classes are played on a big video screen, with dimmed lighting and pumping surround sound, and are led onscreen by the people who actually choreograph the classes.\"," +
             "\"attendeeInstructions\":\"Ensure you bring trainers and a bottle of water.\"," +
             "\"duration\":\"P1D\"," +
             "\"image\":[" +
@@ -149,7 +148,8 @@ namespace OpenActive.NET.Test
         "}";
 
         [Fact]
-        public void ToString_EventGoogleStructuredData_ReturnsExpectedJsonLd() {
+        public void ToString_EventGoogleStructuredData_ReturnsExpectedJsonLd()
+        {
             output.WriteLine(this.@event.ToString());
             Assert.Equal(this.json, this.@event.ToString());
         }
@@ -185,7 +185,7 @@ namespace OpenActive.NET.Test
             Assert.IsType<SessionSeries>(OpenActiveSerializer.Deserialize<SessionSeries>(rootSessionSeriesJson));
             Assert.IsType<SessionSeries>(OpenActiveSerializer.Deserialize<Event>(rootSessionSeriesJson));
             Assert.IsType<Event>(OpenActiveSerializer.Deserialize<Event>(rootEventJson));
-            
+
             // Note assignment fails if attempting to cast downwards
             Assert.Null(OpenActiveSerializer.Deserialize<SessionSeries>(rootEventJson));
 
@@ -203,7 +203,7 @@ namespace OpenActive.NET.Test
         public void ToString_OfferCast()
         {
             var json =
-            "{" + 
+            "{" +
                 "\"@context\":[" +
                     "\"https://openactive.io/\"," +
                     "\"https://openactive.io/ns-beta\"" +
@@ -230,13 +230,13 @@ namespace OpenActive.NET.Test
                     ValidFrom = new DateTimeOffset(2017, 1, 20, 16, 20, 0, TimeSpan.FromHours(-8))
                 } }).Cast<Offer>().ToList()
             };
-            
+
             output.WriteLine(ev.ToString());
             Assert.Equal(json, ev.ToString());
         }
 
         [Fact]
-        public void ToString_EncodeDecode ()
+        public void ToString_EncodeDecode()
         {
             var original = "{\"@context\":\"https://openactive.io/\",\"@type\":\"Concept\",\"@id\":\"https://openactive.io/facility-types#37bbed12-270b-42b1-9af2-70f0273990dd\",\"inScheme\":\"https://openactive.io/facility-types\",\"prefLabel\":\"Grass\"}";
             var decode = OpenActiveSerializer.Deserialize<Concept>(original);

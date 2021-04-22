@@ -49,12 +49,12 @@ namespace OpenActive.NET
         /// </summary>
         /// <example>
         /// <code>
-        /// "prepayment": "https://openactive.io/Required"
+        /// "openBookingPrepayment": "https://openactive.io/Required"
         /// </code>
         /// </example>
-        [DataMember(Name = "prepayment", EmitDefaultValue = false, Order = 7)]
+        [DataMember(Name = "openBookingPrepayment", EmitDefaultValue = false, Order = 7)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual RequiredStatusType? Prepayment { get; set; }
+        public virtual RequiredStatusType? OpenBookingPrepayment { get; set; }
 
         /// <summary>
         /// The total amount.

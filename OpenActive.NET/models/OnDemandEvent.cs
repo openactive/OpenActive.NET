@@ -44,6 +44,13 @@ namespace OpenActive.NET
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "OnDemandEvent";
 
+        /// <summary>
+        /// The channels through which a booking can be made.
+        /// </summary>
+        [DataMember(Name = "bookingChannel", EmitDefaultValue = false, Order = 7)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public override List<BookingChannelType> BookingChannel { get; set; }
+
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
         public override EventAttendanceModeEnumeration? EventAttendanceMode { get; set; }
 
@@ -80,7 +87,7 @@ namespace OpenActive.NET
         /// <summary>
         /// Relates an `OnDemandEvent` to an `EventSeries`.
         /// </summary>
-        [DataMember(Name = "superEvent", EmitDefaultValue = false, Order = 18)]
+        [DataMember(Name = "superEvent", EmitDefaultValue = false, Order = 19)]
         [JsonConverter(typeof(ValuesConverter))]
         public override Event SuperEvent { get; set; }
 
@@ -102,7 +109,7 @@ namespace OpenActive.NET
         /// }
         /// </code>
         /// </example>
-        [DataMember(Name = "workFeatured", EmitDefaultValue = false, Order = 19)]
+        [DataMember(Name = "workFeatured", EmitDefaultValue = false, Order = 20)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual MediaObject WorkFeatured { get; set; }
     }

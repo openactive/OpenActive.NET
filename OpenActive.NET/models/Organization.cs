@@ -88,6 +88,18 @@ namespace OpenActive.NET
         public new virtual PostalAddress Address { get; set; }
 
         /// <summary>
+        /// Indicates whether the Seller allows open booking
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// "allowOpenBooking": "true"
+        /// </code>
+        /// </example>
+        [DataMember(Name = "allowOpenBooking", EmitDefaultValue = false, Order = 11)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public virtual bool? AllowOpenBooking { get; set; }
+
+        /// <summary>
         /// General enquiries e-mail address for the organization.
         /// </summary>
         /// <example>
@@ -95,7 +107,7 @@ namespace OpenActive.NET
         /// "email": "info@example.com"
         /// </code>
         /// </example>
-        [DataMember(Name = "email", EmitDefaultValue = false, Order = 11)]
+        [DataMember(Name = "email", EmitDefaultValue = false, Order = 12)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string Email { get; set; }
 
@@ -107,7 +119,7 @@ namespace OpenActive.NET
         /// "legalName": "Central Speedball Ltd"
         /// </code>
         /// </example>
-        [DataMember(Name = "legalName", EmitDefaultValue = false, Order = 12)]
+        [DataMember(Name = "legalName", EmitDefaultValue = false, Order = 13)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string LegalName { get; set; }
 
@@ -122,7 +134,7 @@ namespace OpenActive.NET
         /// }
         /// </code>
         /// </example>
-        [DataMember(Name = "logo", EmitDefaultValue = false, Order = 13)]
+        [DataMember(Name = "logo", EmitDefaultValue = false, Order = 14)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual ImageObject Logo { get; set; }
 
@@ -137,14 +149,14 @@ namespace OpenActive.NET
         /// ]
         /// </code>
         /// </example>
-        [DataMember(Name = "sameAs", EmitDefaultValue = false, Order = 14)]
+        [DataMember(Name = "sameAs", EmitDefaultValue = false, Order = 15)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual List<Uri> SameAs { get; set; }
 
         /// <summary>
         /// Either  https://openactive.io/TaxNet or  https://openactive.io/TaxGross
         /// </summary>
-        [DataMember(Name = "taxMode", EmitDefaultValue = false, Order = 15)]
+        [DataMember(Name = "taxMode", EmitDefaultValue = false, Order = 16)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual TaxMode? TaxMode { get; set; }
 
@@ -156,14 +168,14 @@ namespace OpenActive.NET
         /// "telephone": "01234 567890"
         /// </code>
         /// </example>
-        [DataMember(Name = "telephone", EmitDefaultValue = false, Order = 16)]
+        [DataMember(Name = "telephone", EmitDefaultValue = false, Order = 17)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string Telephone { get; set; }
 
         /// <summary>
         /// The terms of service of the Seller.
         /// </summary>
-        [DataMember(Name = "termsOfService", EmitDefaultValue = false, Order = 17)]
+        [DataMember(Name = "termsOfService", EmitDefaultValue = false, Order = 18)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual List<Terms> TermsOfService { get; set; }
 
@@ -175,14 +187,14 @@ namespace OpenActive.NET
         /// "url": "http://www.speedball-world.com"
         /// </code>
         /// </example>
-        [DataMember(Name = "url", EmitDefaultValue = false, Order = 18)]
+        [DataMember(Name = "url", EmitDefaultValue = false, Order = 19)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual Uri Url { get; set; }
 
         /// <summary>
         /// The Value-added Tax ID of the of the Seller.
         /// </summary>
-        [DataMember(Name = "vatID", EmitDefaultValue = false, Order = 19)]
+        [DataMember(Name = "vatID", EmitDefaultValue = false, Order = 20)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string VatID { get; set; }
 
@@ -192,7 +204,7 @@ namespace OpenActive.NET
         /// 
         /// If you are using this property, please join the discussion at proposal [#2](https://github.com/openactive/ns-beta/issues/2).
         /// </summary>
-        [DataMember(Name = "beta:formattedDescription", EmitDefaultValue = false, Order = 1020)]
+        [DataMember(Name = "beta:formattedDescription", EmitDefaultValue = false, Order = 1021)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual string FormattedDescription { get; set; }
 
@@ -202,7 +214,7 @@ namespace OpenActive.NET
         /// 
         /// If you are using this property, please join the discussion at proposal [#88](https://github.com/openactive/modelling-opportunity-data/issues/88).
         /// </summary>
-        [DataMember(Name = "beta:video", EmitDefaultValue = false, Order = 1021)]
+        [DataMember(Name = "beta:video", EmitDefaultValue = false, Order = 1022)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual List<VideoObject> Video { get; set; }
 
@@ -212,7 +224,7 @@ namespace OpenActive.NET
         /// 
         /// If you are using this property, please join the discussion at proposal [#236](https://github.com/openactive/modelling-opportunity-data/issues/236).
         /// </summary>
-        [DataMember(Name = "beta:formalCriteriaMet", EmitDefaultValue = false, Order = 1022)]
+        [DataMember(Name = "beta:formalCriteriaMet", EmitDefaultValue = false, Order = 1023)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual List<Uri> FormalCriteriaMet { get; set; }
     }
