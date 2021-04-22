@@ -22,7 +22,7 @@ namespace OpenActive.NET.Test
         private static readonly SessionSeries @event = new OpenActive.NET.SessionSeries()
         {
             Name = "Virtual BODYPUMP",
-            Description = "This is the virtual version of the original barbell class, which will help you get lean, toned and fit - fast. Les Mills™ Virtual classes are designed for people who cannot get access to our live classes or who want to get a ‘taste’ of a Les Mills™ class before taking a live class with an instructor. The classes are played on a big video screen, with dimmed lighting and pumping surround sound, and are led onscreen by the people who actually choreograph the classes.",
+            Description = "This is the virtual version of the original barbell class, which will help you get lean, toned and fit - fast. Les Mills? Virtual classes are designed for people who cannot get access to our live classes or who want to get a ?taste? of a Les Mills? class before taking a live class with an instructor. The classes are played on a big video screen, with dimmed lighting and pumping surround sound, and are led onscreen by the people who actually choreograph the classes.",
             Duration = TimeSpan.FromDays(1),
             StartDate = new DateTimeOffset(2017, 4, 24, 19, 30, 0, TimeSpan.FromHours(-8)),
             Location = new Place()
@@ -133,20 +133,20 @@ namespace OpenActive.NET.Test
             Level = new List<string> { "" },
             Image = new List<ImageObject> { new ImageObject() { Url = new Uri("https://example.com") } },
             Programme = new Brand()
-              {
-                  Id = new Uri("https://example.com"),
-                  Name = "",
-                  Description = "",
-                  Url = new Uri("https://example.com"),
-                  Logo =  new ImageObject() { Url = new Uri("https://example.com") },
-                  Video = new List<VideoObject> { new VideoObject() { Url = new Uri("https://example.com") } }
-              },
+            {
+                Id = new Uri("https://example.com"),
+                Name = "",
+                Description = "",
+                Url = new Uri("https://example.com"),
+                Logo = new ImageObject() { Url = new Uri("https://example.com") },
+                Video = new List<VideoObject> { new VideoObject() { Url = new Uri("https://example.com") } }
+            },
             AgeRange = new QuantitativeValue()
-              {
-                  Name = (string)null,
-                  MaxValue = 0,
-                  MinValue = 2
-              },
+            {
+                Name = (string)null,
+                MaxValue = 0,
+                MinValue = 2
+            },
             Activity = new List<Concept>() {
                     new Concept()
                     {
@@ -206,10 +206,10 @@ namespace OpenActive.NET.Test
         };
 
         private readonly string jsonRpde =
-        "{\"next\":\"https://www.example.com/feed?afterTimestamp=5&afterId=1\",\"items\":[{\"state\":\"updated\",\"kind\":\"SessionSeries\",\"id\":\"2\",\"modified\":4,\"data\":{\"@context\":\"https://openactive.io/\",\"@type\":\"SessionSeries\",\"name\":\"Virtual BODYPUMP\",\"description\":\"This is the virtual version of the original barbell class, which will help you get lean, toned and fit - fast. Les Mills™ Virtual classes are designed for people who cannot get access to our live classes or who want to get a ‘taste’ of a Les Mills™ class before taking a live class with an instructor. The classes are played on a big video screen, with dimmed lighting and pumping surround sound, and are led onscreen by the people who actually choreograph the classes.\",\"attendeeInstructions\":\"Ensure you bring trainers and a bottle of water.\",\"duration\":\"P1D\",\"image\":[{\"@type\":\"ImageObject\",\"url\":\"http://www.example.com/event_image/12345\"}],\"location\":{\"@type\":\"Place\",\"name\":\"Santa Clara City Library, Central Park Library\",\"address\":{\"@type\":\"PostalAddress\",\"addressCountry\":\"US\",\"addressLocality\":\"Santa Clara\",\"addressRegion\":\"CA\",\"postalCode\":\"95051\",\"streetAddress\":\"2635 Homestead Rd\"}},\"offers\":[{\"@type\":\"Offer\",\"price\":30.0,\"priceCurrency\":\"USD\",\"url\":\"https://www.example.com/event_offer/12345_201803180430\",\"validFrom\":\"2017-01-20T16:20:00-08:00\"}],\"startDate\":\"2017-04-24T19:30:00-08:00\",\"endDate\":\"2017-04-24T23:00:00-08:00\"}},{\"state\":\"deleted\",\"kind\":\"SessionSeries\",\"id\":\"1\",\"modified\":5}],\"license\":\"https://creativecommons.org/licenses/by/4.0/\"}";
+        "{\"next\":\"https://www.example.com/feed?afterTimestamp=5&afterId=1\",\"items\":[{\"state\":\"updated\",\"kind\":\"SessionSeries\",\"id\":\"2\",\"modified\":4,\"data\":{\"@context\":\"https://openactive.io/\",\"@type\":\"SessionSeries\",\"name\":\"Virtual BODYPUMP\",\"description\":\"This is the virtual version of the original barbell class, which will help you get lean, toned and fit - fast. Les Mills? Virtual classes are designed for people who cannot get access to our live classes or who want to get a ?taste? of a Les Mills? class before taking a live class with an instructor. The classes are played on a big video screen, with dimmed lighting and pumping surround sound, and are led onscreen by the people who actually choreograph the classes.\",\"attendeeInstructions\":\"Ensure you bring trainers and a bottle of water.\",\"duration\":\"P1D\",\"image\":[{\"@type\":\"ImageObject\",\"url\":\"http://www.example.com/event_image/12345\"}],\"location\":{\"@type\":\"Place\",\"name\":\"Santa Clara City Library, Central Park Library\",\"address\":{\"@type\":\"PostalAddress\",\"addressCountry\":\"US\",\"addressLocality\":\"Santa Clara\",\"addressRegion\":\"CA\",\"postalCode\":\"95051\",\"streetAddress\":\"2635 Homestead Rd\"}},\"offers\":[{\"@type\":\"Offer\",\"price\":30.0,\"priceCurrency\":\"USD\",\"url\":\"https://www.example.com/event_offer/12345_201803180430\",\"validFrom\":\"2017-01-20T16:20:00-08:00\"}],\"startDate\":\"2017-04-24T19:30:00-08:00\",\"endDate\":\"2017-04-24T23:00:00-08:00\"}},{\"state\":\"deleted\",\"kind\":\"SessionSeries\",\"id\":\"1\",\"modified\":5}],\"license\":\"https://creativecommons.org/licenses/by/4.0/\"}";
 
         private readonly string jsonRpdeEveryoneActive =
-        "{\"next\":\"https://opendata.leisurecloud.live/api/feeds/EveryoneActive-test-session-series?afterTimestamp=28577192&afterId=1217CRP17000217\",\"items\":[{\"state\":\"updated\",\"kind\":\"SessionSeries\",\"id\" :\"1502CMX20000216\",\"modified\":15529138,\"data\":{\"@context\":[\"https://openactive.io/\",\"https://openactive.io/ns-beta\"],\"type\":\"SessionSeries\",\"id\":\"https://tst.myeveryoneactive.com/OpenActive/api/session-series/2011CAQ15150119\",\"eventSchedule\":[{\"type\":\"PartialSchedule\",\"byDay\":[\"http://schema.org/Monday\"],\"duration\":\"PT45M\",\"endTime\":\"16:00\",\"startDate\":\"2019-04-01\",\"endDate\":\"2022-12-31\",\"startTime\":\"15:15\",\"beta:timeZone\":\"Europe/London\"}],\"identifier\":\"2011CAQ15150119\",\"name\":\"Active Aqua Mon 15:15\",\"category\":[\"Group Exercise 16+ Yrs\"],\"duration\":\"PT45M\",\"location\":{\"type\":\"Place\",\"identifier\":\"0201\",\"name\":\"Wythenshawe Forum Leisure\",\"address\":{\"type\":\"PostalAddress\",\"addressCountry\":\"GB\",\"addressLocality\":\"Wythenshawe\",\"addressRegion\":\"Manchester\",\"postalCode\":\"M22 5RX\",\"streetAddress\":\"Forum Square\"},\"amenityFeature\":[{\"type\":\"ChangingFacilities\",\"name\":\"Changing Facilities\",\"value\":true},{\"type\":\"Showers\",\"name\":\"Showers\",\"value\":true},{\"type\":\"Toilets\",\"name\":\"Toilets\",\"value\":true},{\"type\":\"Lockers\",\"name\":\"Lockers\",\"value\":true},{\"type\":\"Towels\",\"name\":\"Towels\",\"value\":false},{\"type\":\"Creche\",\"name\":\"Creche\",\"value\":false},{\"type\":\"Parking\",\"name\":\"Parking\",\"value\":false},{\"type\":\"BabyChanging\",\"name\":\"Baby Changing\",\"value\":true},{\"type\":\"beta:Cafe\",\"name\":\"Cafe\",\"value\":false},{\"type\":\"beta:Bar\",\"name\":\"Bar\",\"value\":false}],\"geo\":{\"type\":\"GeoCoordinates\",\"latitude\":53.380323,\"longitude\":-2.265142},\"telephone\":\"0161 935 4020\",\"url\":\"https://www-everyoneactive-dev.mediablazegroup.com/centre/wythenshawe-forum/\",\"beta:formattedDescription\":\"<p><br></p>\"},\"offers\":[{\"type\":\"Offer\",\"identifier\":\"STAND\",\"name\":\"Adult\",\"description\":\"Grp Ex - Aqua\",\"acceptedPaymentMethod\":[\"http://purl.org/goodrelations/v1#Cash\",\"http://purl.org/goodrelations/v1#PaymentMethodCreditCard\"],\"price\":1.0,\"priceCurrency\":\"GBP\"}],\"superEvent\":{\"type\":\"EventSeries\",\"identifier\":93,\"name\":\"Aqua Aerobics\",\"description\":\"A dedicated instructor led session for pregnant women or new mums only that provides an invigorating and safe all-over body work-out in the water with minimal impact.\",\"activity\":[{\"type\":\"Concept\",\"id\":\"https://openactive.io/activity-list#6e31262b-ce37-4fc7-b3e3-d827ac5e8b42\",\"inScheme\":\"https://openactive.io/activity-list\",\"prefLabel\":\"aqua_aerobics\"}],\"ageRange\":{\"type\":\"QuantitativeValue\",\"maxValue\":100,\"minValue\":16},\"isCoached\":true,\"organizer\":{\"type\":\"Organization\",\"name\":\"EveryoneActive\",\"legalName\":\"EveryoneActive\"}}}}],\"license\":\"https://creativecommons.org/licenses/by/4.0/\"}";
+        "{\"next\":\"https://opendata.leisurecloud.live/api/feeds/EveryoneActive-test-session-series?afterTimestamp=28577192&afterId=1217CRP17000217\",\"items\":[{\"state\":\"updated\",\"kind\":\"SessionSeries\",\"id\" :\"1502CMX20000216\",\"modified\":15529138,\"data\":{\"@context\":[\"https://openactive.io/\",\"https://openactive.io/ns-beta\"],\"type\":\"SessionSeries\",\"id\":\"https://tst.myeveryoneactive.com/OpenActive/api/session-series/2011CAQ15150119\",\"identifier\":\"2011CAQ15150119\",\"eventSchedule\":[{\"type\":\"PartialSchedule\",\"byDay\":[\"http://schema.org/Monday\"],\"duration\":\"PT45M\",\"endTime\":\"16:00\",\"startDate\":\"2019-04-01\",\"endDate\":\"2022-12-31\",\"startTime\":\"15:15\",\"beta:timeZone\":\"Europe/London\"}],\"name\":\"Active Aqua Mon 15:15\",\"category\":[\"Group Exercise 16+ Yrs\"],\"duration\":\"PT45M\",\"location\":{\"type\":\"Place\",\"identifier\":\"0201\",\"name\":\"Wythenshawe Forum Leisure\",\"address\":{\"type\":\"PostalAddress\",\"addressCountry\":\"GB\",\"addressLocality\":\"Wythenshawe\",\"addressRegion\":\"Manchester\",\"postalCode\":\"M22 5RX\",\"streetAddress\":\"Forum Square\"},\"amenityFeature\":[{\"type\":\"ChangingFacilities\",\"name\":\"Changing Facilities\",\"value\":true},{\"type\":\"Showers\",\"name\":\"Showers\",\"value\":true},{\"type\":\"Toilets\",\"name\":\"Toilets\",\"value\":true},{\"type\":\"Lockers\",\"name\":\"Lockers\",\"value\":true},{\"type\":\"Towels\",\"name\":\"Towels\",\"value\":false},{\"type\":\"Creche\",\"name\":\"Creche\",\"value\":false},{\"type\":\"Parking\",\"name\":\"Parking\",\"value\":false},{\"type\":\"BabyChanging\",\"name\":\"Baby Changing\",\"value\":true},{\"type\":\"beta:Cafe\",\"name\":\"Cafe\",\"value\":false},{\"type\":\"beta:Bar\",\"name\":\"Bar\",\"value\":false}],\"geo\":{\"type\":\"GeoCoordinates\",\"latitude\":53.380323,\"longitude\":-2.265142},\"telephone\":\"0161 935 4020\",\"url\":\"https://www-everyoneactive-dev.mediablazegroup.com/centre/wythenshawe-forum/\",\"beta:formattedDescription\":\"<p><br></p>\"},\"offers\":[{\"type\":\"Offer\",\"identifier\":\"STAND\",\"name\":\"Adult\",\"description\":\"Grp Ex - Aqua\",\"acceptedPaymentMethod\":[\"http://purl.org/goodrelations/v1#Cash\",\"http://purl.org/goodrelations/v1#PaymentMethodCreditCard\"],\"price\":1.0,\"priceCurrency\":\"GBP\"}],\"superEvent\":{\"type\":\"EventSeries\",\"identifier\":93,\"name\":\"Aqua Aerobics\",\"description\":\"A dedicated instructor led session for pregnant women or new mums only that provides an invigorating and safe all-over body work-out in the water with minimal impact.\",\"activity\":[{\"type\":\"Concept\",\"id\":\"https://openactive.io/activity-list#6e31262b-ce37-4fc7-b3e3-d827ac5e8b42\",\"inScheme\":\"https://openactive.io/activity-list\",\"prefLabel\":\"aqua_aerobics\"}],\"ageRange\":{\"type\":\"QuantitativeValue\",\"maxValue\":100,\"minValue\":16},\"isCoached\":true,\"organizer\":{\"type\":\"Organization\",\"name\":\"EveryoneActive\",\"legalName\":\"EveryoneActive\"}}}}],\"license\":\"https://creativecommons.org/licenses/by/4.0/\"}";
 
         private readonly string jsonRpdeSlotEveryoneActive =
         "{\"next\":\"https://opendata.leisurecloud.live/api/feeds/EveryoneActive-test-slots?afterTimestamp=2564761380&afterId=162OUTDOOR10_2020-03-04T18-30-00\",\"items\":[{\"state\":\"updated\",\"kind\":\"FacilityUse/Slot\",\"id\" :\"161ASTRO001_2020-03-04T16-00-00\",\"modified\":2564739554,\"data\":{\"@context\":[\"https://openactive.io/\",\"https://openactive.io/ns-beta\"],\"type\":\"Slot\",\"id\":\"https://tst.myeveryoneactive.com/OpenActive/api/slots/161ASTRO001_2020-03-04T16-00-00\",\"identifier\":\"161ASTRO001_2020-03-04T16-00-00\",\"duration\":\"PT1H\",\"facilityUse\":\"https://tst.myeveryoneactive.com/OpenActive/api/facility-uses/161ASTRO001\",\"maximumUses\":1,\"offers\":[{\"type\":\"Offer\",\"price\":169.3,\"priceCurrency\":\"GBP\"}],\"remainingUses\":1,\"startDate\":\"2020-03-04T16:00:00+00:00\",\"endDate\":\"2020-03-04T17:00:00+00:00\",\"beta:sportsActivityLocation\":[{\"type\":\"SportsActivityLocation\",\"name\":[\"Burgess Park Astroturf 1\",\"Burgess Park Astroturf 2\",\"Burgess Park Astroturf 3\"],\"identifier\":[\"161ZOUA001\",\"161ZOUA002\",\"161ZOUA003\"]}]}}],\"license\":\"https://creativecommons.org/licenses/by/4.0/\"}";
@@ -284,7 +284,7 @@ namespace OpenActive.NET.Test
                 }
             })).ToString());
 
-            
+
             Assert.StartsWith("Items must be ordered", ex.Message);
         }
 
@@ -311,7 +311,7 @@ namespace OpenActive.NET.Test
                 }
             })).ToString());
 
-            
+
             Assert.StartsWith("Items must be ordered", ex.Message);
         }
 
@@ -366,7 +366,7 @@ namespace OpenActive.NET.Test
                 }
             })).ToString());
 
-            
+
             Assert.StartsWith("First item in the feed must never have same", ex.Message);
         }
 
@@ -398,7 +398,7 @@ namespace OpenActive.NET.Test
                 }
             })).ToString());
 
-            
+
             Assert.StartsWith("Items must be ordered", ex.Message);
         }
 
@@ -425,7 +425,7 @@ namespace OpenActive.NET.Test
                 }
             })).ToString());
 
-            
+
             Assert.StartsWith("Items must be ordered", ex.Message);
         }
 
@@ -452,7 +452,7 @@ namespace OpenActive.NET.Test
                 }
             })).ToString());
 
-            
+
             Assert.StartsWith("Deleted items must not contain data", ex.Message);
         }
 
@@ -480,7 +480,7 @@ namespace OpenActive.NET.Test
                 }
             })).ToString());
 
-            
+
             Assert.StartsWith("First item in the feed must never have same", ex.Message);
         }
 
@@ -515,7 +515,7 @@ namespace OpenActive.NET.Test
                 }
             })).ToString());
 
-            
+
             Assert.StartsWith("Items must be ordered", ex.Message);
         }
 
@@ -542,7 +542,7 @@ namespace OpenActive.NET.Test
                 }
             })).ToString());
 
-            
+
             Assert.StartsWith("Items must be ordered", ex.Message);
         }
 
@@ -569,7 +569,7 @@ namespace OpenActive.NET.Test
                 }
             })).ToString());
 
-            
+
             Assert.StartsWith("Deleted items must not contain data", ex.Message);
         }
 
@@ -597,7 +597,7 @@ namespace OpenActive.NET.Test
                 }
             })).ToString());
 
-            
+
             Assert.StartsWith("First item in the feed must never have same", ex.Message);
         }
 
