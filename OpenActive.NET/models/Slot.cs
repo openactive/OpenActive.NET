@@ -84,6 +84,9 @@ namespace OpenActive.NET
         public override string AttendeeInstructions { get; set; }
 
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
+        public override List<BookingChannelType> BookingChannel { get; set; }
+
+        [Obsolete("This property is disinherited in this type, and must not be used.", true)]
         public override SingleValues<List<string>, List<Concept>> Category { get; set; }
 
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
@@ -97,7 +100,7 @@ namespace OpenActive.NET
         /// "duration": "PT1H"
         /// </code>
         /// </example>
-        [DataMember(Name = "duration", EmitDefaultValue = false, Order = 19)]
+        [DataMember(Name = "duration", EmitDefaultValue = false, Order = 20)]
         [JsonConverter(typeof(OpenActiveTimeSpanToISO8601DurationValuesConverter))]
         public override TimeSpan? Duration { get; set; }
 
@@ -115,7 +118,7 @@ namespace OpenActive.NET
         /// "facilityUse": "https://example.com/facility-use/1"
         /// </code>
         /// </example>
-        [DataMember(Name = "facilityUse", EmitDefaultValue = false, Order = 22)]
+        [DataMember(Name = "facilityUse", EmitDefaultValue = false, Order = 23)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual ReferenceValue<FacilityUse> FacilityUse { get; set; }
 
@@ -151,7 +154,7 @@ namespace OpenActive.NET
         /// "maximumUses": 16
         /// </code>
         /// </example>
-        [DataMember(Name = "maximumUses", EmitDefaultValue = false, Order = 31)]
+        [DataMember(Name = "maximumUses", EmitDefaultValue = false, Order = 32)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual long? MaximumUses { get; set; }
 
@@ -176,7 +179,7 @@ namespace OpenActive.NET
         /// }
         /// </code>
         /// </example>
-        [DataMember(Name = "offers", EmitDefaultValue = false, Order = 34)]
+        [DataMember(Name = "offers", EmitDefaultValue = false, Order = 35)]
         [JsonConverter(typeof(ValuesConverter))]
         public override List<Offer> Offers { get; set; }
 
@@ -194,7 +197,7 @@ namespace OpenActive.NET
         /// "remainingUses": 5
         /// </code>
         /// </example>
-        [DataMember(Name = "remainingUses", EmitDefaultValue = false, Order = 37)]
+        [DataMember(Name = "remainingUses", EmitDefaultValue = false, Order = 38)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual long? RemainingUses { get; set; }
 
@@ -209,7 +212,7 @@ namespace OpenActive.NET
         /// "startDate": "2018-01-27T12:00:00Z"
         /// </code>
         /// </example>
-        [DataMember(Name = "startDate", EmitDefaultValue = false, Order = 39)]
+        [DataMember(Name = "startDate", EmitDefaultValue = false, Order = 40)]
         [JsonConverter(typeof(OpenActiveDateTimeOffsetToISO8601DateTimeValuesConverter))]
         public new virtual DateTimeOffset? StartDate { get; set; }
 
@@ -222,7 +225,7 @@ namespace OpenActive.NET
         /// "endDate": "2018-01-27T12:00:00Z"
         /// </code>
         /// </example>
-        [DataMember(Name = "endDate", EmitDefaultValue = false, Order = 40)]
+        [DataMember(Name = "endDate", EmitDefaultValue = false, Order = 41)]
         [JsonConverter(typeof(OpenActiveDateTimeOffsetToISO8601DateTimeValuesConverter))]
         public new virtual DateTimeOffset? EndDate { get; set; }
 
@@ -241,7 +244,7 @@ namespace OpenActive.NET
         /// 
         /// If you are using this property, please join the discussion at proposal [#110](https://github.com/openactive/modelling-opportunity-data/issues/110).
         /// </summary>
-        [DataMember(Name = "beta:sportsActivityLocation", EmitDefaultValue = false, Order = 1044)]
+        [DataMember(Name = "beta:sportsActivityLocation", EmitDefaultValue = false, Order = 1045)]
         [JsonConverter(typeof(ValuesConverter))]
         public override List<Schema.NET.SportsActivityLocation> SportsActivityLocation { get; set; }
     }

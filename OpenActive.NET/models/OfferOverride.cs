@@ -45,9 +45,6 @@ namespace OpenActive.NET
         public override string Type => "OfferOverride";
 
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
-        public override RequiredStatusType? AdvanceBooking { get; set; }
-
-        [Obsolete("This property is disinherited in this type, and must not be used.", true)]
         public override QuantitativeValue AgeRange { get; set; }
 
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
@@ -57,13 +54,13 @@ namespace OpenActive.NET
         public override bool? AllowCustomerCancellationFullRefund { get; set; }
 
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
-        public override List<AvailableChannelType> AvailableChannel { get; set; }
-
-        [Obsolete("This property is disinherited in this type, and must not be used.", true)]
         public override TimeSpan? LatestCancellationBeforeStartDate { get; set; }
 
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
-        public override RequiredStatusType? Prepayment { get; set; }
+        public override RequiredStatusType? OpenBookingInAdvance { get; set; }
+
+        [Obsolete("This property is disinherited in this type, and must not be used.", true)]
+        public override RequiredStatusType? OpenBookingPrepayment { get; set; }
 
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
         public override TimeSpan? ValidFromBeforeStartDate { get; set; }

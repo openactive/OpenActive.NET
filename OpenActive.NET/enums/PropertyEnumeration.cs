@@ -21,8 +21,6 @@ namespace OpenActive.NET
         Activity,
         [EnumMember(Value = "https://openactive.io/additionalAdmissionRestriction")]
         AdditionalAdmissionRestriction,
-        [EnumMember(Value = "https://openactive.io/advanceBooking")]
-        AdvanceBooking,
         [EnumMember(Value = "https://openactive.io/ageRange")]
         AgeRange,
         [EnumMember(Value = "https://openactive.io/ageRestriction")]
@@ -31,6 +29,8 @@ namespace OpenActive.NET
         AggregateFacilityUse,
         [EnumMember(Value = "https://openactive.io/allowCustomerCancellationFullRefund")]
         AllowCustomerCancellationFullRefund,
+        [EnumMember(Value = "https://openactive.io/allowOpenBooking")]
+        AllowOpenBooking,
         [EnumMember(Value = "https://openactive.io/attendeeDetailsRequired")]
         AttendeeDetailsRequired,
         [EnumMember(Value = "https://openactive.io/attendeeInstructions")]
@@ -39,6 +39,8 @@ namespace OpenActive.NET
         AuthenticationAuthority,
         [EnumMember(Value = "https://openactive.io/backgroundImage")]
         BackgroundImage,
+        [EnumMember(Value = "https://openactive.io/bookingChannel")]
+        BookingChannel,
         [EnumMember(Value = "https://openactive.io/bookingService")]
         BookingService,
         [EnumMember(Value = "https://openactive.io/brokerRole")]
@@ -77,6 +79,10 @@ namespace OpenActive.NET
         MeetingPoint,
         [EnumMember(Value = "https://openactive.io/openBookingFlowRequirement")]
         OpenBookingFlowRequirement,
+        [EnumMember(Value = "https://openactive.io/openBookingInAdvance")]
+        OpenBookingInAdvance,
+        [EnumMember(Value = "https://openactive.io/openBookingPrepayment")]
+        OpenBookingPrepayment,
         [EnumMember(Value = "https://openactive.io/orderCreationStatus")]
         OrderCreationStatus,
         [EnumMember(Value = "https://openactive.io/orderCustomerNote")]
@@ -97,8 +103,6 @@ namespace OpenActive.NET
         Payment,
         [EnumMember(Value = "https://openactive.io/paymentProviderId")]
         PaymentProviderId,
-        [EnumMember(Value = "https://openactive.io/prepayment")]
-        Prepayment,
         [EnumMember(Value = "https://openactive.io/programme")]
         Programme,
         [EnumMember(Value = "https://openactive.io/rate")]
