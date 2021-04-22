@@ -25,7 +25,7 @@ namespace OpenActive.NET.Test
         private readonly SessionSeries @event = new OpenActive.NET.SessionSeries()
         {
             Name = "Virtual BODYPUMP",
-            Description = "This is the virtual version of the original barbell class, which will help you get lean, toned and fit - fast. Les Mills™ Virtual classes are designed for people who cannot get access to our live classes or who want to get a ‘taste’ of a Les Mills™ class before taking a live class with an instructor. The classes are played on a big video screen, with dimmed lighting and pumping surround sound, and are led onscreen by the people who actually choreograph the classes.",
+            Description = "This is the virtual version of the original barbell class, which will help you get lean, toned and fit - fast. Les Mills? Virtual classes are designed for people who cannot get access to our live classes or who want to get a ?taste? of a Les Mills? class before taking a live class with an instructor. The classes are played on a big video screen, with dimmed lighting and pumping surround sound, and are led onscreen by the people who actually choreograph the classes.",
             Duration = TimeSpan.FromDays(1),
             StartDate = new DateTimeOffset(2017, 4, 24, 19, 30, 0, TimeSpan.FromHours(-8)),
             Location = new Place()
@@ -45,7 +45,6 @@ namespace OpenActive.NET.Test
             EndDate = new DateTimeOffset(2017, 4, 24, 23, 0, 0, TimeSpan.FromHours(-8)),
             Offers = new List<Offer>() { new Offer()
             {
-                AdvanceBooking = NullRequiredStatusType,
                 Url = new Uri("https://www.example.com/event_offer/12345_201803180430"),
                 Price = 30,
                 PriceCurrency = "USD",
@@ -105,10 +104,11 @@ namespace OpenActive.NET.Test
             "\"@type\":\"Organization\"," +
             "\"@id\":\"https://www.example.com/seller/1\"" +
             "}" +
-        "}"; 
+        "}";
 
         [Fact]
-        public void OrderQuote_Deserialize_Accessors() {
+        public void OrderQuote_Deserialize_Accessors()
+        {
             OrderQuote orderQuote = OpenActiveSerializer.Deserialize<OrderQuote>(json);
             Assert.Equal(new Uri("https://www.example.com/offer/1"), orderQuote.OrderedItem[0].AcceptedOffer.Object.Id);
             Assert.Equal(new Uri("https://www.example.com/sessionseries/1"), orderQuote.OrderedItem[0].OrderedItem.Object.Id);
@@ -127,7 +127,7 @@ namespace OpenActive.NET.Test
             // Should cast this to ScheduledSession instead of Event
             Assert.IsType<ScheduledSession>(decode.OrderedItem[0].OrderedItem.Object);
 
-           output.WriteLine(json);
+            output.WriteLine(json);
             output.WriteLine(encode);
             Assert.Equal(json, encode);
         }
@@ -332,7 +332,7 @@ namespace OpenActive.NET.Test
             Assert.Equal("Alan Peacock Way", order?.Broker?.Address?.StreetAddress);
             Assert.Equal("Geoff", order?.Customer.GivenName);
             Assert.Equal("EUCODE", order?.OrderedItem?[0]?.UnitTaxSpecification?[0]?.Identifier.GetClass<List<PropertyValue>>()?[0].Name);
-            Assert.Equal(new TimeSpan(6,0,0,0), order?.OrderedItem?[0]?.AcceptedOffer.Object?.ValidFromBeforeStartDate);
+            Assert.Equal(new TimeSpan(6, 0, 0, 0), order?.OrderedItem?[0]?.AcceptedOffer.Object?.ValidFromBeforeStartDate);
             Assert.Equal(new DateTimeOffset(2018, 10, 30, 11, 00, 00, 00, new TimeSpan()), ((ScheduledSession)order?.OrderedItem?[0]?.OrderedItem.Object)?.StartDate);
         }
 
@@ -351,8 +351,8 @@ namespace OpenActive.NET.Test
         public void Order_LeaseEncode()
         {
             var leaseExpires = DateTimeOffset.UtcNow + new TimeSpan(0, 5, 0);
-            var encode = OpenActiveSerializer.Serialize(new OrderQuote { Lease = new Lease { LeaseExpires = leaseExpires } } );
-            
+            var encode = OpenActiveSerializer.Serialize(new OrderQuote { Lease = new Lease { LeaseExpires = leaseExpires } });
+
             var expectedLeaseJson = "{" +
             "\"@context\":\"https://openactive.io/\"," +
             "\"@type\":\"OrderQuote\"," +
