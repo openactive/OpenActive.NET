@@ -89,18 +89,6 @@ namespace OpenActive.NET
         public new virtual PostalAddress Address { get; set; }
 
         /// <summary>
-        /// Indicates whether the Seller allows open booking
-        /// </summary>
-        /// <example>
-        /// <code>
-        /// "allowOpenBooking": "true"
-        /// </code>
-        /// </example>
-        [DataMember(Name = "allowOpenBooking", EmitDefaultValue = false, Order = 11)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public virtual bool? AllowOpenBooking { get; set; }
-
-        /// <summary>
         /// The e-mail address of the person.
         /// This person must have given permission for their personal information to be shared as part of the open data.
         /// </summary>
@@ -109,7 +97,7 @@ namespace OpenActive.NET
         /// "email": "jane.smith@example.com"
         /// </code>
         /// </example>
-        [DataMember(Name = "email", EmitDefaultValue = false, Order = 12)]
+        [DataMember(Name = "email", EmitDefaultValue = false, Order = 11)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string Email { get; set; }
 
@@ -122,7 +110,7 @@ namespace OpenActive.NET
         /// "familyName": "Thompson"
         /// </code>
         /// </example>
-        [DataMember(Name = "familyName", EmitDefaultValue = false, Order = 13)]
+        [DataMember(Name = "familyName", EmitDefaultValue = false, Order = 12)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string FamilyName { get; set; }
 
@@ -134,7 +122,7 @@ namespace OpenActive.NET
         /// "gender": "https://schema.org/Female"
         /// </code>
         /// </example>
-        [DataMember(Name = "gender", EmitDefaultValue = false, Order = 14)]
+        [DataMember(Name = "gender", EmitDefaultValue = false, Order = 13)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual Schema.NET.GenderType? Gender { get; set; }
 
@@ -147,9 +135,21 @@ namespace OpenActive.NET
         /// "givenName": "Daley"
         /// </code>
         /// </example>
-        [DataMember(Name = "givenName", EmitDefaultValue = false, Order = 15)]
+        [DataMember(Name = "givenName", EmitDefaultValue = false, Order = 14)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string GivenName { get; set; }
+
+        /// <summary>
+        /// Indicates whether the Seller allows open booking
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// "isOpenBookingAllowed": "true"
+        /// </code>
+        /// </example>
+        [DataMember(Name = "isOpenBookingAllowed", EmitDefaultValue = false, Order = 15)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public virtual bool? IsOpenBookingAllowed { get; set; }
 
         /// <summary>
         /// The job title of a person

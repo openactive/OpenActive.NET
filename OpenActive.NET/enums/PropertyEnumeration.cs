@@ -29,8 +29,6 @@ namespace OpenActive.NET
         AggregateFacilityUse,
         [EnumMember(Value = "https://openactive.io/allowCustomerCancellationFullRefund")]
         AllowCustomerCancellationFullRefund,
-        [EnumMember(Value = "https://openactive.io/allowOpenBooking")]
-        AllowOpenBooking,
         [EnumMember(Value = "https://openactive.io/attendeeDetailsRequired")]
         AttendeeDetailsRequired,
         [EnumMember(Value = "https://openactive.io/attendeeInstructions")]
@@ -63,6 +61,8 @@ namespace OpenActive.NET
         Instance,
         [EnumMember(Value = "https://openactive.io/isCoached")]
         IsCoached,
+        [EnumMember(Value = "https://openactive.io/isOpenBookingAllowed")]
+        IsOpenBookingAllowed,
         [EnumMember(Value = "https://openactive.io/latestCancellationBeforeStartDate")]
         LatestCancellationBeforeStartDate,
         [EnumMember(Value = "https://openactive.io/leader")]
