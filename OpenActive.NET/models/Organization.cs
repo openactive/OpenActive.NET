@@ -88,18 +88,6 @@ namespace OpenActive.NET
         public new virtual PostalAddress Address { get; set; }
 
         /// <summary>
-        /// Indicates whether the Seller allows open booking
-        /// </summary>
-        /// <example>
-        /// <code>
-        /// "allowOpenBooking": "true"
-        /// </code>
-        /// </example>
-        [DataMember(Name = "allowOpenBooking", EmitDefaultValue = false, Order = 11)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public virtual bool? AllowOpenBooking { get; set; }
-
-        /// <summary>
         /// General enquiries e-mail address for the organization.
         /// </summary>
         /// <example>
@@ -107,9 +95,21 @@ namespace OpenActive.NET
         /// "email": "info@example.com"
         /// </code>
         /// </example>
-        [DataMember(Name = "email", EmitDefaultValue = false, Order = 12)]
+        [DataMember(Name = "email", EmitDefaultValue = false, Order = 11)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string Email { get; set; }
+
+        /// <summary>
+        /// Indicates whether the Seller allows open booking
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// "isOpenBookingAllowed": "true"
+        /// </code>
+        /// </example>
+        [DataMember(Name = "isOpenBookingAllowed", EmitDefaultValue = false, Order = 12)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public virtual bool? IsOpenBookingAllowed { get; set; }
 
         /// <summary>
         /// The official name of the organization, e.g. the registered company name.
