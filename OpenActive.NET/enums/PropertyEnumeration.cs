@@ -37,8 +37,6 @@ namespace OpenActive.NET
         AuthenticationAuthority,
         [EnumMember(Value = "https://openactive.io/backgroundImage")]
         BackgroundImage,
-        [EnumMember(Value = "https://openactive.io/bookingChannel")]
-        BookingChannel,
         [EnumMember(Value = "https://openactive.io/bookingService")]
         BookingService,
         [EnumMember(Value = "https://openactive.io/brokerRole")]

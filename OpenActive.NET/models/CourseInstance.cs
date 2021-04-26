@@ -45,13 +45,6 @@ namespace OpenActive.NET
         public override string Type => "CourseInstance";
 
         /// <summary>
-        /// The channels through which a booking can be made.
-        /// </summary>
-        [DataMember(Name = "bookingChannel", EmitDefaultValue = false, Order = 7)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public override List<BookingChannelType> BookingChannel { get; set; }
-
-        /// <summary>
         /// A an array of oa:Schedule or oa:PartialSchedule, which represents a recurrence pattern.
         /// </summary>
         /// <example>
@@ -70,7 +63,7 @@ namespace OpenActive.NET
         /// ]
         /// </code>
         /// </example>
-        [DataMember(Name = "eventSchedule", EmitDefaultValue = false, Order = 8)]
+        [DataMember(Name = "eventSchedule", EmitDefaultValue = false, Order = 7)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual List<Schedule> EventSchedule { get; set; }
 
@@ -82,7 +75,7 @@ namespace OpenActive.NET
         /// "startDate": "2018-01-06"
         /// </code>
         /// </example>
-        [DataMember(Name = "startDate", EmitDefaultValue = false, Order = 9)]
+        [DataMember(Name = "startDate", EmitDefaultValue = false, Order = 8)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string StartDate { get; set; }
 
@@ -94,7 +87,7 @@ namespace OpenActive.NET
         /// "endDate": "2018-01-27"
         /// </code>
         /// </example>
-        [DataMember(Name = "endDate", EmitDefaultValue = false, Order = 10)]
+        [DataMember(Name = "endDate", EmitDefaultValue = false, Order = 9)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string EndDate { get; set; }
 
@@ -104,7 +97,7 @@ namespace OpenActive.NET
         /// 
         /// If you are using this property, please join the discussion at proposal [#164](https://github.com/openactive/modelling-opportunity-data/issues/164).
         /// </summary>
-        [DataMember(Name = "beta:course", EmitDefaultValue = false, Order = 1011)]
+        [DataMember(Name = "beta:course", EmitDefaultValue = false, Order = 1010)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual Course Course { get; set; }
     }
