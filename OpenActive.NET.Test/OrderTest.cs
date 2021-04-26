@@ -45,6 +45,7 @@ namespace OpenActive.NET.Test
             EndDate = new DateTimeOffset(2017, 4, 24, 23, 0, 0, TimeSpan.FromHours(-8)),
             Offers = new List<Offer>() { new Offer()
             {
+                OpenBookingInAdvance = NullRequiredStatusType, // Test that null types are deserialised correctly
                 Url = new Uri("https://www.example.com/event_offer/12345_201803180430"),
                 Price = 30,
                 PriceCurrency = "USD",
