@@ -743,9 +743,16 @@ namespace OpenActive.NET
 
         /// <summary>
         /// [NOTICE: This property is part of the Open Booking API Test Interface, and MUST NOT be used in production.]
+        /// </summary>
+        [DataMember(Name = "test:testOpenBookingFlow", EmitDefaultValue = false, Order = 1061)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public virtual TestOpenBookingFlowEnumeration? TestOpenBookingFlow { get; set; }
+
+        /// <summary>
+        /// [NOTICE: This property is part of the Open Booking API Test Interface, and MUST NOT be used in production.]
         /// The opportunity criteria which the Event conforms to.
         /// </summary>
-        [DataMember(Name = "test:testOpportunityCriteria", EmitDefaultValue = false, Order = 1061)]
+        [DataMember(Name = "test:testOpportunityCriteria", EmitDefaultValue = false, Order = 1062)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual TestOpportunityCriteriaEnumeration? TestOpportunityCriteria { get; set; }
     }
