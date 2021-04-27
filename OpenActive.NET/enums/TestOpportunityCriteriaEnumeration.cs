@@ -61,6 +61,8 @@ namespace OpenActive.NET
         [EnumMember(Value = "https://openactive.io/test-interface#TestOpportunityOnlineBookable")]
         TestOpportunityOnlineBookable,
         [EnumMember(Value = "https://openactive.io/test-interface#TestOpportunityOfflineBookable")]
-        TestOpportunityOfflineBookable
+        TestOpportunityOfflineBookable,
+        [EnumMember(Value = "https://openactive.io/test-interface#TestOpportunityBookableWithNegotiation")]
+        TestOpportunityBookableWithNegotiation
     }
 }
