@@ -10,8 +10,6 @@ namespace OpenActive.NET
         SellerCancelled,
         [EnumMember(Value = "https://openactive.io/CustomerCancelled")]
         CustomerCancelled,
-        [EnumMember(Value = "https://openactive.io/OrderItemProposed")]
-        OrderItemProposed,
         [EnumMember(Value = "https://openactive.io/OrderItemConfirmed")]
         OrderItemConfirmed,
         [EnumMember(Value = "https://openactive.io/CustomerAttended")]

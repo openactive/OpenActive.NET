@@ -355,9 +355,7 @@ namespace OpenActive.NET
 
         /// <summary>
         /// The location at which the event will take place. Or, in the case of events that may span multiple locations, the initial meeting or starting point.
-        /// It is recommended that locations should be specified as a [Place](/models/place) complete with a fully described geographic location and/or address.
-        /// If only an address is available then this should be described as a [PostalAddress](/models/postaladdress).
-        /// Applications may use [schema:Text](https://schema.org/Text) to provide a more general description of a location ("In Victoria Park, near the lake"), but this is not recommended: consuming applications will be unable to help users discover opportunities based on their location.
+        /// Locations must be specified as a [Place](/models/place) complete with a fully described geographic location and/or address.
         /// </summary>
         /// <example>
         /// <code>
