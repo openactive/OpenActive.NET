@@ -38,10 +38,6 @@ jobs:
       - name: Run .NET models generator
         run: npm start -- generate .NET --destination ../OpenActive.NET/OpenActive.NET/
         working-directory: ./models-lib/
-        
-      - name: Restore OpenActive.NET/models/SportsActivityLocation.cs (Gladstone workaround)
-        run: git checkout OpenActive.NET/models/SportsActivityLocation.cs
-        working-directory: ./OpenActive.NET/
     
       - name: Create Pull Request
         id: cpr
