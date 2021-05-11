@@ -17,7 +17,10 @@
     public class ValuesConverter : JsonConverter
     {
 
-        private const string NamespacePrefix = "OpenActive.NET.";
+        private static readonly List<Func<string, Type>> TypeResolver = new List<Func<string, Type>> {
+            (string typeName) => Type.GetType($"OpenActive.NET.{typeName}"),
+            (string typeName) => Type.GetType($"Schema.NET.{typeName}, Schema.NET"),
+        };
 
         /// <summary>
         /// Determines whether this instance can convert the specified object type.
@@ -43,7 +46,7 @@
                 var values = (IValue)value;
                 obj = values.Value;
             }
-
+            
             if (obj == null)
             {
                 writer.WriteNull();
@@ -382,11 +385,16 @@
             }
             else
             {
-                var builtType = Type.GetType($"{NamespacePrefix}{typeName}");
-                if (builtType != null && type.GetTypeInfo().IsAssignableFrom(builtType.GetTypeInfo()))
+                foreach (var resolver in TypeResolver)
                 {
-                    args = token.ToObjectWithoutContext(builtType);
+                    var builtType = resolver(typeName);
+                    if (builtType != null && type.GetTypeInfo().IsAssignableFrom(builtType.GetTypeInfo()))
+                    {
+                        args = token.ToObjectWithoutContext(builtType);
+                        break;
+                    }
                 }
+
             }
 
             return args;
@@ -612,17 +620,21 @@
                 }
                 else
                 {
-                    var builtType = Type.GetType($"{NamespacePrefix}{typeName}");
-                    if (builtType != null && type.GetTypeInfo().IsAssignableFrom(builtType.GetTypeInfo()))
+                    foreach (var resolver in TypeResolver)
                     {
-                        var child = (Schema.NET.JsonLdObject)childToken.ToObjectWithoutContext(builtType);
-                        var method = listType.GetRuntimeMethod(nameof(List<object>.Add), new[] { classType });
-
-                        if (method != null)
+                        var builtType = resolver(typeName);
+                        if (builtType != null && type.GetTypeInfo().IsAssignableFrom(builtType.GetTypeInfo()))
                         {
-                            method.Invoke(list, new object[] { child });
+                            var child = (Schema.NET.JsonLdObject)childToken.ToObjectWithoutContext(builtType);
+                            var method = listType.GetRuntimeMethod(nameof(List<object>.Add), new[] { classType });
 
-                            i++;
+                            if (method != null)
+                            {
+                                method.Invoke(list, new object[] { child });
+
+                                i++;
+                                break;
+                            }
                         }
                     }
                 }
