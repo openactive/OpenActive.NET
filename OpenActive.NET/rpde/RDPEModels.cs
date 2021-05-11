@@ -43,7 +43,8 @@ namespace OpenActive.NET.Rpde.Version1
         [DataMember(Name = "state", EmitDefaultValue = false, Order = 1)]
         public RpdeState? State { get; set; }
         [DataMember(Name = "kind", EmitDefaultValue = false, Order = 2)]
-        public RpdeKind? Kind { get; set; }
+        [JsonConverter(typeof(ValuesConverter))]
+        public SingleValues<string, RpdeKind?> Kind { get; set; }
         [DataMember(Name = "id", EmitDefaultValue = false, Order = 3)]
         [JsonConverter(typeof(ValuesConverter))]
         public ComparableSingleValue<long, string>? Id { get; set; }
