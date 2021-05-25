@@ -92,12 +92,19 @@ namespace OpenActive.NET
         public new virtual string EndDate { get; set; }
 
         /// <summary>
+        /// The occurrences of this CourseInstance.
+        /// </summary>
+        [DataMember(Name = "subEvent", EmitDefaultValue = false, Order = 10)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public override List<Event> SubEvent { get; set; }
+
+        /// <summary>
         /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
         /// This course for which this is an offering.
         /// 
         /// If you are using this property, please join the discussion at proposal [#164](https://github.com/openactive/modelling-opportunity-data/issues/164).
         /// </summary>
-        [DataMember(Name = "beta:course", EmitDefaultValue = false, Order = 1010)]
+        [DataMember(Name = "beta:course", EmitDefaultValue = false, Order = 1011)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual Course Course { get; set; }
     }
