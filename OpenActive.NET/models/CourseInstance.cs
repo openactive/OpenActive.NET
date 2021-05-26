@@ -68,6 +68,13 @@ namespace OpenActive.NET
         public virtual List<Schedule> EventSchedule { get; set; }
 
         /// <summary>
+        /// The description of the Course for which this is a distinct instance.
+        /// </summary>
+        [DataMember(Name = "instanceOfCourse", EmitDefaultValue = false, Order = 8)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public virtual Course InstanceOfCourse { get; set; }
+
+        /// <summary>
         /// The start date of this course.
         /// </summary>
         /// <example>
@@ -75,7 +82,7 @@ namespace OpenActive.NET
         /// "startDate": "2018-01-06"
         /// </code>
         /// </example>
-        [DataMember(Name = "startDate", EmitDefaultValue = false, Order = 8)]
+        [DataMember(Name = "startDate", EmitDefaultValue = false, Order = 9)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string StartDate { get; set; }
 
@@ -87,25 +94,29 @@ namespace OpenActive.NET
         /// "endDate": "2018-01-27"
         /// </code>
         /// </example>
-        [DataMember(Name = "endDate", EmitDefaultValue = false, Order = 9)]
+        [DataMember(Name = "endDate", EmitDefaultValue = false, Order = 10)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string EndDate { get; set; }
 
         /// <summary>
         /// The occurrences of this CourseInstance.
         /// </summary>
-        [DataMember(Name = "subEvent", EmitDefaultValue = false, Order = 10)]
+        [DataMember(Name = "subEvent", EmitDefaultValue = false, Order = 11)]
         [JsonConverter(typeof(ValuesConverter))]
         public override List<Event> SubEvent { get; set; }
 
+        [Obsolete("This property is disinherited in this type, and must not be used.", true)]
+        public override Event SuperEvent { get; set; }
+
         /// <summary>
-        /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
+        /// [DEPRECATED: This term has graduated from the beta namespace and is highly likely to be removed in future versions of this library, please use `instanceOfCourse` instead.]
         /// This course for which this is an offering.
         /// 
         /// If you are using this property, please join the discussion at proposal [#164](https://github.com/openactive/modelling-opportunity-data/issues/164).
         /// </summary>
-        [DataMember(Name = "beta:course", EmitDefaultValue = false, Order = 1011)]
+        [DataMember(Name = "beta:course", EmitDefaultValue = false, Order = 1013)]
         [JsonConverter(typeof(ValuesConverter))]
+        [Obsolete("This term has graduated from the beta namespace and is highly likely to be removed in future versions of this library, please use `instanceOfCourse` instead.", false)]
         public virtual Course Course { get; set; }
     }
 }
