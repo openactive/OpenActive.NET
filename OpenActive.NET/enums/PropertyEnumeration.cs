@@ -57,6 +57,8 @@ namespace OpenActive.NET
         IndividualFacilityUse,
         [EnumMember(Value = "https://openactive.io/instance")]
         Instance,
+        [EnumMember(Value = "https://openactive.io/instanceOfCourse")]
+        InstanceOfCourse,
         [EnumMember(Value = "https://openactive.io/isCoached")]
         IsCoached,
         [EnumMember(Value = "https://openactive.io/isOpenBookingAllowed")]
