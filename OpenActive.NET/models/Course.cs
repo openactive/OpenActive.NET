@@ -85,6 +85,37 @@ namespace OpenActive.NET
         public new virtual string Description { get; set; }
 
         /// <summary>
+        /// Provide additional, specific documentation for participants about how disabilities are, or can be supported at the Event.
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// "accessibilityInformation": "This route has been British Cycling assessed as an accessible route, meaning it is suitable for the majority of adaptive bikes. The route will have no or low levels of traffic, there will be plenty of space and will have a good surface throughout. If you have any questions about using this route on an adaptive bike on this ride, please use visit https://www.letsride.co.uk/accessibility or call 0123 456 7000 and ask for the Recreation team."
+        /// </code>
+        /// </example>
+        [DataMember(Name = "accessibilityInformation", EmitDefaultValue = false, Order = 10)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public virtual string AccessibilityInformation { get; set; }
+
+        /// <summary>
+        /// Used to specify the types of disabilities or impairments that are supported at an event.
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// "accessibilitySupport": [
+        ///   {
+        ///     "@type": "Concept",
+        ///     "@id": "https://openactive.io/accessibility-support#1393f2dc-3fcc-4be9-a99f-f1e51f5ad277",
+        ///     "prefLabel": "Visual impairment",
+        ///     "inScheme": "https://openactive.io/accessibility-support"
+        ///   }
+        /// ]
+        /// </code>
+        /// </example>
+        [DataMember(Name = "accessibilitySupport", EmitDefaultValue = false, Order = 11)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public virtual List<Concept> AccessibilitySupport { get; set; }
+
+        /// <summary>
         /// Specifies the physical activity or activities that will take place during a Course.
         /// </summary>
         /// <example>
@@ -99,25 +130,106 @@ namespace OpenActive.NET
         /// ]
         /// </code>
         /// </example>
-        [DataMember(Name = "activity", EmitDefaultValue = false, Order = 10)]
+        [DataMember(Name = "activity", EmitDefaultValue = false, Order = 12)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual List<Concept> Activity { get; set; }
 
         /// <summary>
-        /// The person or organization who have created the Course. An author might be an schema:Organization or a schema:Person.
+        /// Indicates that an event is recommended as being suitable for or is targetted at a specific age range.
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// "ageRange": {
+        ///   "@type": "QuantitativeValue",
+        ///   "minValue": 50,
+        ///   "maxValue": 60
+        /// }
+        /// </code>
+        /// </example>
+        [DataMember(Name = "ageRange", EmitDefaultValue = false, Order = 13)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public virtual QuantitativeValue AgeRange { get; set; }
+
+        /// <summary>
+        /// The person or organization who designed the Course. An author might be an schema:Organization or a schema:Person.
+        /// This property may reference the `@id` of the `organizer` of the `CourseInstance` within which this `Course` is embedded, to reduce data duplication.
         /// </summary>
         /// <example>
         /// <code>
         /// "author": {
         ///   "@type": "Organization",
+        ///   "@id": "https://id.bookingsystem.example.com/organizers/1",
         ///   "name": "Central Speedball Association",
         ///   "url": "http://www.speedball-world.com"
         /// }
         /// </code>
         /// </example>
-        [DataMember(Name = "author", EmitDefaultValue = false, Order = 11)]
+        [DataMember(Name = "author", EmitDefaultValue = false, Order = 14)]
         [JsonConverter(typeof(ValuesConverter))]
-        public new virtual ILegalEntity Author { get; set; }
+        public new virtual ReferenceValue<ILegalEntity> Author { get; set; }
+
+        /// <summary>
+        /// Provides a set of tags that help categorise and describe an event, e.g. its intensity, purpose, etc.
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// "category": [
+        ///   "High Intensity"
+        /// ]
+        /// </code>
+        /// </example>
+        [DataMember(Name = "category", EmitDefaultValue = false, Order = 15)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public new virtual SingleValues<List<string>, List<Concept>> Category { get; set; }
+
+        /// <summary>
+        /// Indicates that an event is restricted to male, female or a mixed audience. This information must be displayed prominently to the user before booking. If a gender restriction isn't specified then applications should assume that an event is suitable for a mixed audience.
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// "genderRestriction": "https://openactive.io/FemaleOnly"
+        /// </code>
+        /// </example>
+        [DataMember(Name = "genderRestriction", EmitDefaultValue = false, Order = 16)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public virtual GenderRestrictionType? GenderRestriction { get; set; }
+
+        /// <summary>
+        /// An image or photo that depicts the event, e.g. a photo taken at a previous event.
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// "image": [
+        ///   {
+        ///     "@type": "ImageObject",
+        ///     "url": "http://example.com/static/image/speedball_large.jpg",
+        ///     "thumbnail": [
+        ///       {
+        ///         "@type": "ImageObject",
+        ///         "url": "http://example.com/static/image/speedball_thumbnail.jpg"
+        ///       }
+        ///     ]
+        ///   }
+        /// ]
+        /// </code>
+        /// </example>
+        [DataMember(Name = "image", EmitDefaultValue = false, Order = 17)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public new virtual List<ImageObject> Image { get; set; }
+
+        /// <summary>
+        /// A general purpose property for specifying the suitability of an event for different participant “levels”. E.g. `Beginner`, `Intermediate`, `Advanced`. Or in the case of martial arts, specific belt requirements.
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// "level": [
+        ///   "Beginner"
+        /// ]
+        /// </code>
+        /// </example>
+        [DataMember(Name = "level", EmitDefaultValue = false, Order = 18)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public virtual SingleValues<List<string>, List<Concept>> Level { get; set; }
 
         /// <summary>
         /// A definitive canonical URL for the Course.
@@ -127,19 +239,9 @@ namespace OpenActive.NET
         /// "url": "http://www.speedball-world.com/beginners-course"
         /// </code>
         /// </example>
-        [DataMember(Name = "url", EmitDefaultValue = false, Order = 12)]
+        [DataMember(Name = "url", EmitDefaultValue = false, Order = 19)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual Uri Url { get; set; }
-
-        /// <summary>
-        /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
-        /// An associated logo for a course.
-        /// 
-        /// If you are using this property, please join the discussion at proposal [#164](https://github.com/openactive/modelling-opportunity-data/issues/164).
-        /// </summary>
-        [DataMember(Name = "beta:logo", EmitDefaultValue = false, Order = 1013)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public virtual ImageObject Logo { get; set; }
 
         /// <summary>
         /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
@@ -147,7 +249,7 @@ namespace OpenActive.NET
         /// 
         /// If you are using this property, please join the discussion at proposal [#88](https://github.com/openactive/modelling-opportunity-data/issues/88).
         /// </summary>
-        [DataMember(Name = "beta:video", EmitDefaultValue = false, Order = 1014)]
+        [DataMember(Name = "beta:video", EmitDefaultValue = false, Order = 1020)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual List<VideoObject> Video { get; set; }
     }
