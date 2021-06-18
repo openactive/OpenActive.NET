@@ -10,7 +10,7 @@ namespace OpenActive.NET
     /// This type is derived from https://schema.org/Action, which means that any of this type's properties within schema.org may also be used.
     /// </summary>
     [DataContract]
-    public partial class SellerRequestedCancellationWithMessageSimulateAction : SellerRequestedCancellationSimulateAction
+    public partial class SellerRequestedCancellationWithMessageSimulateAction : OpenBookingSimulateAction
     {
         /// <summary>
         /// Returns the JSON-LD representation of this instance.
