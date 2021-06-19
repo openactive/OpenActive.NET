@@ -10,8 +10,8 @@ namespace OpenActive.NET
     {
         [EnumMember(Value = "https://openactive.io/test-interface#TestOpportunityBookable")]
         TestOpportunityBookable,
-        [EnumMember(Value = "https://openactive.io/test-interface#TestOpportunityOpenBookingNotAllowed")]
-        TestOpportunityOpenBookingNotAllowed,
+        [EnumMember(Value = "https://openactive.io/test-interface#TestOpportunityBookableInPast")]
+        TestOpportunityBookableInPast,
         [EnumMember(Value = "https://openactive.io/test-interface#TestOpportunityBookableNoSpaces")]
         TestOpportunityBookableNoSpaces,
         [EnumMember(Value = "https://openactive.io/test-interface#TestOpportunityBookableFiveSpaces")]
