@@ -94,5 +94,22 @@ namespace OpenActive.NET.Test
             Assert.Equal(2019, @event.StartDate.Value.Year);
             Assert.Equal(3, @event.StartDate.Value.Month);
         }
+
+        [Fact]
+        public void ToString_DateTimeValue_Exception()
+        {
+            var json =
+            "{" +
+                "\"@context\":\"https://openactive.io/\"," +
+                "\"@type\":\"ScheduledSession\"," +
+                "\"startDate\":\"2019-03-01\"" +
+            "}";
+
+            Assert.Throws(typeof(JsonSerializationException), () => OpenActiveSerializer.Deserialize<Event>(json));
+            Assert.Throws(typeof(ArgumentOutOfRangeException), () => new ScheduledSession
+            {
+                StartDate = "2019-03-01"
+            });
+        }
     }
 }
