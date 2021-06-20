@@ -46,18 +46,18 @@ namespace OpenActive.NET
         }
         
 
-    /// <summary>
-    /// Gets the value of the current DateTimeValue object if it has been assigned an underlying value.
-    /// </summary>
-    public DateTimeOffset Value { get => NullableValue.Value; }
+        /// <summary>
+        /// Gets the value of the current DateTimeValue object if it has been assigned an underlying value.
+        /// </summary>
+        public DateTimeOffset Value { get => NullableValue.Value; }
 
         /// <summary>
-        /// Gets the value of the current DateTimeValue object as a Nullable<> type.
+        /// Gets the value of the underlying DateTimeOffset? object as a Nullable<> type.
         /// </summary>
         public DateTimeOffset? NullableValue { get; private set; }
 
         /// <summary>
-        /// Gets the value indicating whether the DateTimeValue object has a valid value of its underlying type
+        /// Gets the value indicating whether the DateTimeValue object has a valid value
         /// </summary>
         public bool HasValue { get => NullableValue.HasValue; }
 
@@ -78,7 +78,7 @@ namespace OpenActive.NET
         }
 
         /// <summary>
-        /// Gets a value indicating whether this instance has a value.
+        /// Indicating whether the value represents only a date (true) or a date with time (false).
         /// </summary>
         public bool IsDateOnly { get; set; }
 
@@ -135,7 +135,7 @@ namespace OpenActive.NET
         public override bool Equals(object obj) => obj is DateTimeValue ? this.Equals((DateTimeValue)obj) : false;
 
         /// <summary>
-        /// Implements ToString
+        /// Returns the value in "yyyy-MM-dd" format (if IsDateOnly) or "yyyy-MM-ddTHH:mm:sszzz" format otherwise
         /// </summary>
         /// <returns>
         /// A string representing the relevant value

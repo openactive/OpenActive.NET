@@ -56,7 +56,7 @@ namespace OpenActive.NET
         public DateTimeOffset Value { get => NullableValue.Value; }
 
         /// <summary>
-        /// Gets the value of the current TimeValue object as a Nullable<> type.
+        /// Gets the value of the underlying DateTimeOffset? object as a Nullable<> type.
         /// </summary>
         public DateTimeOffset? NullableValue { get; private set; }
 
@@ -134,7 +134,7 @@ namespace OpenActive.NET
         public override bool Equals(object obj) => obj is TimeValue ? this.Equals((TimeValue)obj) : false;
 
         /// <summary>
-        /// Implements ToString
+        /// Returns the value in "HH:mm" format
         /// </summary>
         /// <returns>
         /// A string representing the relevant value
