@@ -95,8 +95,8 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "datePublished", EmitDefaultValue = false, Order = 10)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public new virtual SingleValues<string, DateTimeOffset?> DatePublished { get; set; }
+        [JsonConverter(typeof(OpenActiveDateTimeValuesConverter))]
+        public new virtual DateTimeValue DatePublished { get; set; }
 
         /// <summary>
         /// The URLs of each smaller `DataCatalog` within this `DataCatalog` collection.

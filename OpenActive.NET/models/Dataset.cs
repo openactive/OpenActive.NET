@@ -121,8 +121,8 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "datePublished", EmitDefaultValue = false, Order = 13)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public new virtual SingleValues<string, DateTimeOffset?> DatePublished { get; set; }
+        [JsonConverter(typeof(OpenActiveDateTimeValuesConverter))]
+        public new virtual DateTimeValue DatePublished { get; set; }
 
         /// <summary>
         /// A URL that can be used to raise issues related to the `Dataset` via a public forum.

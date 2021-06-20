@@ -508,8 +508,8 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "startDate", EmitDefaultValue = false, Order = 37)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public new virtual SingleValues<string, DateTimeOffset?> StartDate { get; set; }
+        [JsonConverter(typeof(OpenActiveDateTimeValuesConverter))]
+        public new virtual DateTimeValue StartDate { get; set; }
 
         /// <summary>
         /// The end date and time of the event. Can be specified as a schema:Date or  schema:DateTime
@@ -521,8 +521,8 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "endDate", EmitDefaultValue = false, Order = 38)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public new virtual SingleValues<string, DateTimeOffset?> EndDate { get; set; }
+        [JsonConverter(typeof(OpenActiveDateTimeValuesConverter))]
+        public new virtual DateTimeValue EndDate { get; set; }
 
         /// <summary>
         /// Relates a parent event to a child event. Properties describing the parent event can be assumed to apply to the child, unless otherwise specified. A child event might be a specific instance of an Event within a schedule
