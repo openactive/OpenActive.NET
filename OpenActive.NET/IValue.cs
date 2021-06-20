@@ -16,6 +16,17 @@ namespace OpenActive.NET
     /// <summary>
     /// Get a single value from one or more values.
     /// </summary>
+    public interface INullableValue
+    {
+        /// <summary>
+        /// Gets the non-null object representing the instance, useful for switch statements
+        /// </summary>
+        bool HasValue { get; }
+    }
+
+    /// <summary>
+    /// Get a single value from one or more values.
+    /// </summary>
     public interface IValueAccessor
     {
         /// <summary>

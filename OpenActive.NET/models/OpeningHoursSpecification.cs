@@ -53,8 +53,8 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "closes", EmitDefaultValue = false, Order = 7)]
-        [JsonConverter(typeof(OpenActiveDateTimeOffsetToISO8601TimeValuesConverter))]
-        public new virtual DateTimeOffset? Closes { get; set; }
+        [JsonConverter(typeof(OpenActiveDateTimeValuesConverter))]
+        public new virtual TimeValue Closes { get; set; }
 
         /// <summary>
         /// Defines the days of the week upon which the `opens` and `closes` values are specified. Note this property is optional when used within `specialOpeningHoursSpecification`.
@@ -80,8 +80,8 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "opens", EmitDefaultValue = false, Order = 9)]
-        [JsonConverter(typeof(OpenActiveDateTimeOffsetToISO8601TimeValuesConverter))]
-        public new virtual DateTimeOffset? Opens { get; set; }
+        [JsonConverter(typeof(OpenActiveDateTimeValuesConverter))]
+        public new virtual TimeValue Opens { get; set; }
 
         /// <summary>
         /// The date when the item becomes valid. The item will be valid at the beginning of the specified day. Note this property is required when used within `specialOpeningHoursSpecification`.
@@ -92,8 +92,8 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "validFrom", EmitDefaultValue = false, Order = 10)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public new virtual string ValidFrom { get; set; }
+        [JsonConverter(typeof(OpenActiveDateTimeValuesConverter))]
+        public new virtual DateValue ValidFrom { get; set; }
 
         /// <summary>
         /// The date after which the item is no longer valid. The item will cease to be valid at the end of the specified day. Note this property is required when used within `specialOpeningHoursSpecification`.
@@ -104,7 +104,7 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "validThrough", EmitDefaultValue = false, Order = 11)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public new virtual string ValidThrough { get; set; }
+        [JsonConverter(typeof(OpenActiveDateTimeValuesConverter))]
+        public new virtual DateValue ValidThrough { get; set; }
     }
 }

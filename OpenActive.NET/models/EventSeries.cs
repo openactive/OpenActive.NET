@@ -45,9 +45,9 @@ namespace OpenActive.NET
         public override string Type => "EventSeries";
 
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
-        public override SingleValues<string, DateTimeOffset?> StartDate { get; set; }
+        public override DateTimeValue StartDate { get; set; }
 
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
-        public override SingleValues<string, DateTimeOffset?> EndDate { get; set; }
+        public override DateTimeValue EndDate { get; set; }
     }
 }

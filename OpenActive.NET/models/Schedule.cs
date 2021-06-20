@@ -108,8 +108,8 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "endTime", EmitDefaultValue = false, Order = 11)]
-        [JsonConverter(typeof(OpenActiveDateTimeOffsetToISO8601TimeValuesConverter))]
-        public virtual DateTimeOffset? EndTime { get; set; }
+        [JsonConverter(typeof(OpenActiveDateTimeValuesConverter))]
+        public virtual TimeValue EndTime { get; set; }
 
         /// <summary>
         /// Exception dates where the schedule should not generate an event.
@@ -128,7 +128,7 @@ namespace OpenActive.NET
         /// </example>
         [DataMember(Name = "exceptDate", EmitDefaultValue = false, Order = 12)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual SingleValues<List<DateTimeOffset>, List<string>> ExceptDate { get; set; }
+        public virtual List<DateTimeOffset> ExceptDate { get; set; }
 
         /// <summary>
         /// An RFC6570 compliant URI template that can be used to generate a unique identifier (`@id`) for every event described by the schedule. This property is required if the data provider is supporting third-party booking via the Open Booking API, or providing complimentary individual `subEvent`s.
@@ -199,8 +199,8 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "startDate", EmitDefaultValue = false, Order = 18)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public virtual string StartDate { get; set; }
+        [JsonConverter(typeof(OpenActiveDateTimeValuesConverter))]
+        public virtual DateTimeValue StartDate { get; set; }
 
         /// <summary>
         /// The end date of the schedule.
@@ -211,8 +211,8 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "endDate", EmitDefaultValue = false, Order = 19)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public virtual string EndDate { get; set; }
+        [JsonConverter(typeof(OpenActiveDateTimeValuesConverter))]
+        public virtual DateTimeValue EndDate { get; set; }
 
         /// <summary>
         /// The start time of the event.
@@ -223,8 +223,8 @@ namespace OpenActive.NET
         /// </code>
         /// </example>
         [DataMember(Name = "startTime", EmitDefaultValue = false, Order = 20)]
-        [JsonConverter(typeof(OpenActiveDateTimeOffsetToISO8601TimeValuesConverter))]
-        public virtual DateTimeOffset? StartTime { get; set; }
+        [JsonConverter(typeof(OpenActiveDateTimeValuesConverter))]
+        public virtual TimeValue StartTime { get; set; }
 
         /// <summary>
         /// An RFC6570 compliant URI template that can be used to generate a unique `url` for every event described by the schedule. This property is required if the data provider wants to provide participants with a unique URL to book to attend an event.
