@@ -54,7 +54,7 @@ namespace OpenActive.NET
         /// </example>
         [DataMember(Name = "startDate", EmitDefaultValue = false, Order = 7)]
         [JsonConverter(typeof(OpenActiveDateTimeValuesConverter))]
-        public override DateTimeValue StartDate { get { return base.StartDate; } set { if (value.IsDateOnly) throw new ArgumentOutOfRangeException("This property must be set to a DateTimeOffset, including a time"); base.StartDate = value; } }
+        public override DateTimeValue StartDate { get { return base.StartDate; } set { if (value.IsDateOnly) throw new ArgumentOutOfRangeException("StartDate", "This property must be set to a DateTimeOffset, including a time"); base.StartDate = value; } }
 
         /// <summary>
         /// The end date and time of the event.
@@ -67,7 +67,7 @@ namespace OpenActive.NET
         /// </example>
         [DataMember(Name = "endDate", EmitDefaultValue = false, Order = 8)]
         [JsonConverter(typeof(OpenActiveDateTimeValuesConverter))]
-        public override DateTimeValue EndDate { get { return base.EndDate; } set { if (value.IsDateOnly) throw new ArgumentOutOfRangeException("This property must be set to a DateTimeOffset, including a time"); base.EndDate = value; } }
+        public override DateTimeValue EndDate { get { return base.EndDate; } set { if (value.IsDateOnly) throw new ArgumentOutOfRangeException("EndDate", "This property must be set to a DateTimeOffset, including a time"); base.EndDate = value; } }
 
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
         public override List<Event> SubEvent { get; set; }

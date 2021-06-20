@@ -84,7 +84,7 @@ namespace OpenActive.NET
         /// </example>
         [DataMember(Name = "startDate", EmitDefaultValue = false, Order = 9)]
         [JsonConverter(typeof(OpenActiveDateTimeValuesConverter))]
-        public override DateTimeValue StartDate { get { return base.StartDate; } set { if (!value.IsDateOnly) throw new ArgumentOutOfRangeException("This property must be set to a date without a time"); base.StartDate = value; } }
+        public override DateTimeValue StartDate { get { return base.StartDate; } set { if (!value.IsDateOnly) throw new ArgumentOutOfRangeException("StartDate", "This property must be set to a date without a time"); base.StartDate = value; } }
 
         /// <summary>
         /// The end date of this course.
@@ -96,7 +96,7 @@ namespace OpenActive.NET
         /// </example>
         [DataMember(Name = "endDate", EmitDefaultValue = false, Order = 10)]
         [JsonConverter(typeof(OpenActiveDateTimeValuesConverter))]
-        public override DateTimeValue EndDate { get { return base.EndDate; } set { if (!value.IsDateOnly) throw new ArgumentOutOfRangeException("This property must be set to a date without a time"); base.EndDate = value; } }
+        public override DateTimeValue EndDate { get { return base.EndDate; } set { if (!value.IsDateOnly) throw new ArgumentOutOfRangeException("EndDate", "This property must be set to a date without a time"); base.EndDate = value; } }
 
         /// <summary>
         /// The occurrences of this CourseInstance.
