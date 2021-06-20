@@ -200,7 +200,7 @@ namespace OpenActive.NET
         /// </example>
         [DataMember(Name = "startDate", EmitDefaultValue = false, Order = 18)]
         [JsonConverter(typeof(OpenActiveDateTimeValuesConverter))]
-        public virtual DateTimeValue StartDate { get; set; }
+        public virtual DateValue StartDate { get; set; }
 
         /// <summary>
         /// The end date of the schedule.
@@ -212,7 +212,7 @@ namespace OpenActive.NET
         /// </example>
         [DataMember(Name = "endDate", EmitDefaultValue = false, Order = 19)]
         [JsonConverter(typeof(OpenActiveDateTimeValuesConverter))]
-        public virtual DateTimeValue EndDate { get; set; }
+        public virtual DateValue EndDate { get; set; }
 
         /// <summary>
         /// The start time of the event.
