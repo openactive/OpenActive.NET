@@ -10,7 +10,7 @@ namespace OpenActive.NET
     /// This type is derived from https://schema.org/Action, which means that any of this type's properties within schema.org may also be used.
     /// </summary>
     [DataContract]
-    public partial class OpportunityAttendanceUpdateSimulateAction : OpenBookingSimulateAction
+    public partial class AttendeeAbsentSimulateAction : OpenBookingSimulateAction
     {
         /// <summary>
         /// Returns the JSON-LD representation of this instance.
@@ -43,6 +43,6 @@ namespace OpenActive.NET
         /// Gets the name of the type as specified by schema.org.
         /// </summary>
         [DataMember(Name = "@type", Order = 1)]
-        public override string Type => "test:OpportunityAttendanceUpdateSimulateAction";
+        public override string Type => "test:AttendeeAbsentSimulateAction";
     }
 }
