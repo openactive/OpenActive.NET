@@ -14,19 +14,20 @@ namespace OpenActive.NET
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="DateTimeValue"/> class.
+        /// If isDateOnly is true the time component of the supplied DateTimeOffset will be truncated.
         /// </summary>
         /// <param name="value">The value of property.</param>
         /// <param name="isDateOnly">Whether or not the value represents only a date.</param>
         public DateTimeValue(DateTimeOffset? value, bool isDateOnly)
         {
-            if (isDateOnly && value.HasValue && (value.Value.Hour != 0 || value.Value.Minute != 0 || value.Value.Second != 0 || value.Value.Millisecond != 0))
-            {
-                throw new ArgumentOutOfRangeException(nameof(value), "Value must not include a time component if isDateOnly is used.");
-            }
-            this.NullableValue = value;
+            this.NullableValue = isDateOnly && value.HasValue ? new DateTimeOffset(value.Value.Year, value.Value.Month, value.Value.Day, 0, 0, 0, TimeSpan.Zero) : value;
             this.IsDateOnly = isDateOnly;
         }
 
+        /// <summary>
+        /// Attempts to parse a date or date/time value, setting the value of `isDateOnly` accordingly.
+        /// </summary>
+        /// <param name="value">An ISO 8601 date string.</param>
         public DateTimeValue(string value)
         {
             if (DateTime.TryParseExact(value, "yyyy-MM-dd", CultureInfo.InvariantCulture.DateTimeFormat, DateTimeStyles.NoCurrentDateDefault | DateTimeStyles.AssumeLocal | DateTimeStyles.AllowWhiteSpaces, out var result))
@@ -94,7 +95,14 @@ namespace OpenActive.NET
         /// </summary>
         /// <param name="item">The single item value.</param>
         /// <returns>The result of the conversion.</returns>
-        public static implicit operator DateTimeValue(string item) => item.IsNullEmptyOrWhiteSpace() ? default : new DateTimeValue(new DateTimeOffset(DateTime.ParseExact(item, "yyyy-MM-dd", CultureInfo.InvariantCulture.DateTimeFormat, DateTimeStyles.NoCurrentDateDefault | DateTimeStyles.AssumeLocal | DateTimeStyles.AllowWhiteSpaces)), true);
+        public static implicit operator DateTimeValue(string item) => item.IsNullEmptyOrWhiteSpace() ? default : new DateTimeValue(item);
+
+        /// <summary>
+        /// Performs an implicit conversion from DateTimeValue to DateTimeOffset.
+        /// </summary>
+        /// <param name="item">The single item value.</param>
+        /// <returns>The result of the conversion.</returns>
+        public static implicit operator DateTimeOffset?(DateTimeValue item) => item.NullableValue;
 
         /// <summary>
         /// Implements the operator ==.

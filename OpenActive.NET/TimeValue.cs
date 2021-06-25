@@ -14,21 +14,24 @@ namespace OpenActive.NET
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="TimeValue"/> class.
+        /// The date and timezone component of the supplied DateTimeOffset will be truncated.
         /// </summary>
         /// <param name="value">The value of property.</param>
         public TimeValue(DateTimeOffset? value)
         {
-            DateTimeOffset emptyDateTime = default;
-            if (value.HasValue && (value.Value.Year != emptyDateTime.Year || value.Value.Month != emptyDateTime.Month || value.Value.Day != emptyDateTime.Day || value.Value.Offset != emptyDateTime.Offset))
+            if (value.HasValue)
             {
-                throw new ArgumentOutOfRangeException(nameof(value), "Value must not include date or offset components.");
+                this.NullableValue = new DateTimeOffset(1, 1, 1, value.Value.Hour, value.Value.Minute, 0, TimeSpan.Zero);
             }
-            this.NullableValue = value;
+            else
+            {
+                this.NullableValue = null;
+            }
         }
 
         public TimeValue(int hours, int minutes)
         {
-            DateTimeOffset dateTime = default;
+            DateTimeOffset dateTime = DateTimeOffset.MinValue;
             dateTime.AddHours(hours);
             dateTime.AddMinutes(minutes);
             this.NullableValue = dateTime;
@@ -54,6 +57,16 @@ namespace OpenActive.NET
         /// Gets the value of the current TimeValue object if it has been assigned an underlying value.
         /// </summary>
         public DateTimeOffset Value { get => NullableValue.Value; }
+
+        /// <summary>
+        /// Gets the value of Hour of the current TimeValue object if it has been assigned an underlying value.
+        /// </summary>
+        public int? Hour { get => NullableValue?.Hour; }
+
+        /// <summary>
+        /// Gets the value of Minute of the current TimeValue object if it has been assigned an underlying value.
+        /// </summary>
+        public int? Minute { get => NullableValue?.Minute; }
 
         /// <summary>
         /// Gets the value of the underlying DateTimeOffset? object as a Nullable<> type.
@@ -93,7 +106,7 @@ namespace OpenActive.NET
         /// </summary>
         /// <param name="item">The single item value.</param>
         /// <returns>The result of the conversion.</returns>
-        public static implicit operator TimeValue(string item) => item.IsNullEmptyOrWhiteSpace() ? default : new TimeValue(new DateTimeOffset(DateTime.ParseExact(item, "HH:mm", CultureInfo.InvariantCulture.DateTimeFormat, DateTimeStyles.NoCurrentDateDefault | DateTimeStyles.AssumeLocal | DateTimeStyles.AllowWhiteSpaces)));
+        public static implicit operator TimeValue(string item) => item.IsNullEmptyOrWhiteSpace() ? default : new TimeValue(item);
 
         /// <summary>
         /// Implements the operator ==.

@@ -84,7 +84,14 @@ namespace OpenActive.NET
         /// </summary>
         /// <param name="item">The single item value.</param>
         /// <returns>The result of the conversion.</returns>
-        public static implicit operator DateValue(string item) => item.IsNullEmptyOrWhiteSpace() ? default : new DateValue(new DateTimeOffset(DateTime.ParseExact(item, "yyyy-MM-dd", CultureInfo.InvariantCulture.DateTimeFormat, DateTimeStyles.NoCurrentDateDefault | DateTimeStyles.AssumeLocal | DateTimeStyles.AllowWhiteSpaces)));
+        public static implicit operator DateValue(string item) => item.IsNullEmptyOrWhiteSpace() ? default : new DateValue(item);
+
+        /// <summary>
+        /// Performs an implicit conversion from DateValue to DateTimeOffset.
+        /// </summary>
+        /// <param name="item">The single item value.</param>
+        /// <returns>The result of the conversion.</returns>
+        public static implicit operator DateTimeOffset?(DateValue item) => item.NullableValue;
 
         /// <summary>
         /// Implements the operator ==.
