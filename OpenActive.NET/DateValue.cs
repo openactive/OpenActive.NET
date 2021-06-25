@@ -14,15 +14,12 @@ namespace OpenActive.NET
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="DateValue"/> class.
+        /// The time component of the supplied DateTimeOffset will be truncated.
         /// </summary>
         /// <param name="value">The value of property.</param>
         public DateValue(DateTimeOffset? value)
         {
-            if (value.HasValue && (value.Value.Hour != 0 || value.Value.Minute != 0 || value.Value.Second != 0 || value.Value.Millisecond != 0))
-            {
-                throw new ArgumentOutOfRangeException(nameof(value), "Value must not include a time component.");
-            }
-            this.NullableValue = value;
+            this.NullableValue = value.HasValue ? new DateTimeOffset(value.Value.Year, value.Value.Month, value.Value.Day, 0, 0, 0, TimeSpan.Zero) : value;
         }
 
         public DateValue(int year, int month, int day) : this(new DateTimeOffset(year, month, day, 0, 0, 0, new TimeSpan()))
@@ -84,7 +81,14 @@ namespace OpenActive.NET
         /// </summary>
         /// <param name="item">The single item value.</param>
         /// <returns>The result of the conversion.</returns>
-        public static implicit operator DateValue(string item) => item.IsNullEmptyOrWhiteSpace() ? default : new DateValue(new DateTimeOffset(DateTime.ParseExact(item, "yyyy-MM-dd", CultureInfo.InvariantCulture.DateTimeFormat, DateTimeStyles.NoCurrentDateDefault | DateTimeStyles.AssumeLocal | DateTimeStyles.AllowWhiteSpaces)));
+        public static implicit operator DateValue(string item) => item.IsNullEmptyOrWhiteSpace() ? default : new DateValue(item);
+
+        /// <summary>
+        /// Performs an implicit conversion from DateValue to DateTimeOffset.
+        /// </summary>
+        /// <param name="item">The single item value.</param>
+        /// <returns>The result of the conversion.</returns>
+        public static implicit operator DateTimeOffset?(DateValue item) => item.NullableValue;
 
         /// <summary>
         /// Implements the operator ==.
