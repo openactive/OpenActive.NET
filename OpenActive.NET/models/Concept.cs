@@ -54,7 +54,7 @@ namespace OpenActive.NET
         /// ]
         /// </code>
         /// </example>
-        [DataMember(Name = "altLabel", EmitDefaultValue = false, Order = 7)]
+        [DataMember(Name = "altLabel", EmitDefaultValue = false, Order = 8)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual List<string> AltLabel { get; set; }
 
@@ -68,7 +68,7 @@ namespace OpenActive.NET
         /// ]
         /// </code>
         /// </example>
-        [DataMember(Name = "broader", EmitDefaultValue = false, Order = 8)]
+        [DataMember(Name = "broader", EmitDefaultValue = false, Order = 9)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual List<Uri> Broader { get; set; }
 
@@ -80,7 +80,7 @@ namespace OpenActive.NET
         /// "definition": "Latin American style of dance with Cuban origins."
         /// </code>
         /// </example>
-        [DataMember(Name = "definition", EmitDefaultValue = false, Order = 9)]
+        [DataMember(Name = "definition", EmitDefaultValue = false, Order = 10)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual string Definition { get; set; }
 
@@ -94,19 +94,19 @@ namespace OpenActive.NET
         /// ]
         /// </code>
         /// </example>
-        [DataMember(Name = "hiddenLabel", EmitDefaultValue = false, Order = 10)]
+        [DataMember(Name = "hiddenLabel", EmitDefaultValue = false, Order = 11)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual List<string> HiddenLabel { get; set; }
 
         /// <summary>
-        /// A stable URL reference for the taxonomy, which must be `https://openactive.io/activity-list` to reference the OpenActive Activity List.
+        /// A stable URL reference for the taxonomy, which must be `https://openactive.io/activity-list` to [reference the OpenActive Activity List](https://developer.openactive.io/publishing-data/activity-list-references).
         /// </summary>
         /// <example>
         /// <code>
         /// "inScheme": "https://openactive.io/activity-list"
         /// </code>
         /// </example>
-        [DataMember(Name = "inScheme", EmitDefaultValue = false, Order = 11)]
+        [DataMember(Name = "inScheme", EmitDefaultValue = false, Order = 12)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual Uri InScheme { get; set; }
 
@@ -120,7 +120,7 @@ namespace OpenActive.NET
         /// ]
         /// </code>
         /// </example>
-        [DataMember(Name = "narrower", EmitDefaultValue = false, Order = 12)]
+        [DataMember(Name = "narrower", EmitDefaultValue = false, Order = 13)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual List<Uri> Narrower { get; set; }
 
@@ -132,7 +132,7 @@ namespace OpenActive.NET
         /// "notation": "salsa"
         /// </code>
         /// </example>
-        [DataMember(Name = "notation", EmitDefaultValue = false, Order = 13)]
+        [DataMember(Name = "notation", EmitDefaultValue = false, Order = 14)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual string Notation { get; set; }
 
@@ -144,7 +144,7 @@ namespace OpenActive.NET
         /// "prefLabel": "Salsa"
         /// </code>
         /// </example>
-        [DataMember(Name = "prefLabel", EmitDefaultValue = false, Order = 14)]
+        [DataMember(Name = "prefLabel", EmitDefaultValue = false, Order = 15)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual string PrefLabel { get; set; }
 
@@ -158,7 +158,7 @@ namespace OpenActive.NET
         /// ]
         /// </code>
         /// </example>
-        [DataMember(Name = "related", EmitDefaultValue = false, Order = 15)]
+        [DataMember(Name = "related", EmitDefaultValue = false, Order = 16)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual List<Uri> Related { get; set; }
 
@@ -170,7 +170,7 @@ namespace OpenActive.NET
         /// "topConceptOf": "https://openactive.io/activity-list"
         /// </code>
         /// </example>
-        [DataMember(Name = "topConceptOf", EmitDefaultValue = false, Order = 16)]
+        [DataMember(Name = "topConceptOf", EmitDefaultValue = false, Order = 17)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual Uri TopConceptOf { get; set; }
     }
