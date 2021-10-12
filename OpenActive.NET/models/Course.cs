@@ -245,11 +245,21 @@ namespace OpenActive.NET
 
         /// <summary>
         /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
+        /// Sometimes a description is stored with formatting (e.g. href, bold, italics, embedded YouTube videos). This formatting can be useful for data consumers. This property must contain HTML.
+        /// 
+        /// If you are using this property, please join the discussion at proposal [#276](https://github.com/openactive/modelling-opportunity-data/issues/276).
+        /// </summary>
+        [DataMember(Name = "beta:formattedDescription", EmitDefaultValue = false, Order = 1020)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public virtual string FormattedDescription { get; set; }
+
+        /// <summary>
+        /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
         /// A related video object.
         /// 
         /// If you are using this property, please join the discussion at proposal [#88](https://github.com/openactive/modelling-opportunity-data/issues/88).
         /// </summary>
-        [DataMember(Name = "beta:video", EmitDefaultValue = false, Order = 1020)]
+        [DataMember(Name = "beta:video", EmitDefaultValue = false, Order = 1021)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual List<VideoObject> Video { get; set; }
     }
