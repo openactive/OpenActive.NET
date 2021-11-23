@@ -128,16 +128,36 @@ namespace OpenActive.NET
         public virtual bool? AllowCustomerCancellationFullRefund { get; set; }
 
         /// <summary>
+        /// Offers in open data can be marked as requiring an entitlement type via `eligibleEntitlementType`. The same Offer may be applicable to multiple entitlement types, and the Customer must have at least one matching entitlement type to qualify for the Offer.
+        /// Note that this property is in EARLY RELEASE AND IS SUBJECT TO CHANGE, as the [Customer Accounts proposal](https://github.com/openactive/customer-accounts) evolves.
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// "eligibleEntitlementType": [
+        ///   {
+        ///     "@type": "Concept",
+        ///     "@id": "https://data.mcractive.com/openactive/entitlement-list#5e78bcbe-36db-425a-9064-bf96d09cc351",
+        ///     "prefLabel": "MCRactive Adult Resident",
+        ///     "inScheme": "https://data.mcractive.com/openactive/entitlement-list"
+        ///   }
+        /// ]
+        /// </code>
+        /// </example>
+        [DataMember(Name = "eligibleEntitlementType", EmitDefaultValue = false, Order = 14)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public virtual List<Concept> EligibleEntitlementType { get; set; }
+
+        /// <summary>
         /// The duration before the startDate during which this Offer may not be cancelled, given in ISO 8601 format.
         /// </summary>
-        [DataMember(Name = "latestCancellationBeforeStartDate", EmitDefaultValue = false, Order = 14)]
+        [DataMember(Name = "latestCancellationBeforeStartDate", EmitDefaultValue = false, Order = 15)]
         [JsonConverter(typeof(OpenActiveTimeSpanToISO8601DurationValuesConverter))]
         public virtual TimeSpan? LatestCancellationBeforeStartDate { get; set; }
 
         /// <summary>
         /// Can include  https://openactive.io/OpenBookingIntakeForm,  https://openactive.io/OpenBookingAttendeeDetails,  https://openactive.io/OpenBookingApproval,  https://openactive.io/OpenBookingNegotiation,  https://openactive.io/OpenBookingMessageExchange
         /// </summary>
-        [DataMember(Name = "openBookingFlowRequirement", EmitDefaultValue = false, Order = 15)]
+        [DataMember(Name = "openBookingFlowRequirement", EmitDefaultValue = false, Order = 16)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual List<OpenBookingFlowRequirement> OpenBookingFlowRequirement { get; set; }
 
@@ -149,7 +169,7 @@ namespace OpenActive.NET
         /// "openBookingInAdvance": "https://openactive.io/Required"
         /// </code>
         /// </example>
-        [DataMember(Name = "openBookingInAdvance", EmitDefaultValue = false, Order = 16)]
+        [DataMember(Name = "openBookingInAdvance", EmitDefaultValue = false, Order = 17)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual RequiredStatusType? OpenBookingInAdvance { get; set; }
 
@@ -161,7 +181,7 @@ namespace OpenActive.NET
         /// "openBookingPrepayment": "https://openactive.io/Required"
         /// </code>
         /// </example>
-        [DataMember(Name = "openBookingPrepayment", EmitDefaultValue = false, Order = 17)]
+        [DataMember(Name = "openBookingPrepayment", EmitDefaultValue = false, Order = 18)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual RequiredStatusType? OpenBookingPrepayment { get; set; }
 
@@ -176,7 +196,7 @@ namespace OpenActive.NET
         /// "price": 33
         /// </code>
         /// </example>
-        [DataMember(Name = "price", EmitDefaultValue = false, Order = 18)]
+        [DataMember(Name = "price", EmitDefaultValue = false, Order = 19)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual decimal? Price { get; set; }
 
@@ -188,7 +208,7 @@ namespace OpenActive.NET
         /// "priceCurrency": "GBP"
         /// </code>
         /// </example>
-        [DataMember(Name = "priceCurrency", EmitDefaultValue = false, Order = 19)]
+        [DataMember(Name = "priceCurrency", EmitDefaultValue = false, Order = 20)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string PriceCurrency { get; set; }
 
@@ -200,14 +220,14 @@ namespace OpenActive.NET
         /// "url": "http://www.rphs.org.uk/"
         /// </code>
         /// </example>
-        [DataMember(Name = "url", EmitDefaultValue = false, Order = 20)]
+        [DataMember(Name = "url", EmitDefaultValue = false, Order = 21)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual Uri Url { get; set; }
 
         /// <summary>
         /// The duration before the startDate for which this Offer is valid, given in ISO 8601 format. This is a relatively-defined equivalent of schema:validFrom, to allow for Offer inheritance.
         /// </summary>
-        [DataMember(Name = "validFromBeforeStartDate", EmitDefaultValue = false, Order = 21)]
+        [DataMember(Name = "validFromBeforeStartDate", EmitDefaultValue = false, Order = 22)]
         [JsonConverter(typeof(OpenActiveTimeSpanToISO8601DurationValuesConverter))]
         public virtual TimeSpan? ValidFromBeforeStartDate { get; set; }
 
@@ -217,7 +237,7 @@ namespace OpenActive.NET
         /// 
         /// If you are using this property, please join the discussion at proposal [#250](https://github.com/openactive/modelling-opportunity-data/issues/250).
         /// </summary>
-        [DataMember(Name = "beta:partySize", EmitDefaultValue = false, Order = 1022)]
+        [DataMember(Name = "beta:partySize", EmitDefaultValue = false, Order = 1023)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual QuantitativeValue PartySize { get; set; }
     }

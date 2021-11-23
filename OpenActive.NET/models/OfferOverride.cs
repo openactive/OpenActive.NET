@@ -54,6 +54,9 @@ namespace OpenActive.NET
         public override bool? AllowCustomerCancellationFullRefund { get; set; }
 
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
+        public override List<Concept> EligibleEntitlementType { get; set; }
+
+        [Obsolete("This property is disinherited in this type, and must not be used.", true)]
         public override TimeSpan? LatestCancellationBeforeStartDate { get; set; }
 
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]

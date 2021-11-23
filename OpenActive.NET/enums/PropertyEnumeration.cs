@@ -17,6 +17,8 @@ namespace OpenActive.NET
         AccessibilityInformation,
         [EnumMember(Value = "https://openactive.io/accessibilitySupport")]
         AccessibilitySupport,
+        [EnumMember(Value = "https://openactive.io/accountNumber")]
+        AccountNumber,
         [EnumMember(Value = "https://openactive.io/activity")]
         Activity,
         [EnumMember(Value = "https://openactive.io/additionalAdmissionRestriction")]
@@ -45,14 +47,28 @@ namespace OpenActive.NET
         CancellationMessage,
         [EnumMember(Value = "https://openactive.io/concept")]
         Concept,
+        [EnumMember(Value = "https://openactive.io/customerAccountBookingRestriction")]
+        CustomerAccountBookingRestriction,
         [EnumMember(Value = "https://openactive.io/customerNotice")]
         CustomerNotice,
+        [EnumMember(Value = "https://openactive.io/eligibleEntitlementType")]
+        EligibleEntitlementType,
         [EnumMember(Value = "https://openactive.io/emergencyContact")]
         EmergencyContact,
+        [EnumMember(Value = "https://openactive.io/entitlement")]
+        Entitlement,
+        [EnumMember(Value = "https://openactive.io/entitlementType")]
+        EntitlementType,
+        [EnumMember(Value = "https://openactive.io/evidenceRequestAction")]
+        EvidenceRequestAction,
         [EnumMember(Value = "https://openactive.io/facilityUse")]
         FacilityUse,
         [EnumMember(Value = "https://openactive.io/genderRestriction")]
         GenderRestriction,
+        [EnumMember(Value = "https://openactive.io/hasAccount")]
+        HasAccount,
+        [EnumMember(Value = "https://openactive.io/hasHiddenEntitlements")]
+        HasHiddenEntitlements,
         [EnumMember(Value = "https://openactive.io/idTemplate")]
         IdTemplate,
         [EnumMember(Value = "https://openactive.io/individualFacilityUse")]
@@ -65,6 +81,8 @@ namespace OpenActive.NET
         IsCoached,
         [EnumMember(Value = "https://openactive.io/isOpenBookingAllowed")]
         IsOpenBookingAllowed,
+        [EnumMember(Value = "https://openactive.io/isOpenBookingWithCustomerAccountAllowed")]
+        IsOpenBookingWithCustomerAccountAllowed,
         [EnumMember(Value = "https://openactive.io/latestCancellationBeforeStartDate")]
         LatestCancellationBeforeStartDate,
         [EnumMember(Value = "https://openactive.io/leader")]
@@ -101,6 +119,8 @@ namespace OpenActive.NET
         OrderRequiresApproval,
         [EnumMember(Value = "https://openactive.io/orderSellerNote")]
         OrderSellerNote,
+        [EnumMember(Value = "https://openactive.io/outstandingAction")]
+        OutstandingAction,
         [EnumMember(Value = "https://openactive.io/payment")]
         Payment,
         [EnumMember(Value = "https://openactive.io/paymentProviderId")]
