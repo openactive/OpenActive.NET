@@ -152,7 +152,7 @@ namespace OpenActive.NET
         /// </summary>
         [DataMember(Name = "hasAccount", EmitDefaultValue = false, Order = 16)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual CustomerAccount HasAccount { get; set; }
+        public virtual ReferenceValue<CustomerAccount> HasAccount { get; set; }
 
         /// <summary>
         /// Indicates whether the Seller allows open booking
