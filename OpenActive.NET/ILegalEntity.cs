@@ -32,6 +32,7 @@ namespace OpenActive.NET
         List<Uri> SameAs { get; set; }
         string DisplayName { get; }
         bool? IsOpenBookingAllowed { get; set; }
+        ReferenceValue<CustomerAccount> HasAccount { get; set; }
     }
 
     public static class LegalEntityConverter
