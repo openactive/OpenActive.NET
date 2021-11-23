@@ -147,6 +147,14 @@ namespace OpenActive.NET
         public new virtual string GivenName { get; set; }
 
         /// <summary>
+        /// Reference to the CustomerAccount associated with this Customer, for use within the Open Booking API flow.
+        /// Note that this property is in EARLY RELEASE AND IS SUBJECT TO CHANGE, as the [Customer Accounts proposal](https://github.com/openactive/customer-accounts) evolves.
+        /// </summary>
+        [DataMember(Name = "hasAccount", EmitDefaultValue = false, Order = 16)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public virtual CustomerAccount HasAccount { get; set; }
+
+        /// <summary>
         /// Indicates whether the Seller allows open booking
         /// </summary>
         /// <example>
@@ -154,7 +162,7 @@ namespace OpenActive.NET
         /// "isOpenBookingAllowed": "true"
         /// </code>
         /// </example>
-        [DataMember(Name = "isOpenBookingAllowed", EmitDefaultValue = false, Order = 16)]
+        [DataMember(Name = "isOpenBookingAllowed", EmitDefaultValue = false, Order = 17)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual bool? IsOpenBookingAllowed { get; set; }
 
@@ -167,7 +175,7 @@ namespace OpenActive.NET
         /// "jobTitle": "Team Captain"
         /// </code>
         /// </example>
-        [DataMember(Name = "jobTitle", EmitDefaultValue = false, Order = 17)]
+        [DataMember(Name = "jobTitle", EmitDefaultValue = false, Order = 18)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual string JobTitle { get; set; }
 
@@ -179,7 +187,7 @@ namespace OpenActive.NET
         /// "legalName": "Central Speedball Ltd"
         /// </code>
         /// </example>
-        [DataMember(Name = "legalName", EmitDefaultValue = false, Order = 18)]
+        [DataMember(Name = "legalName", EmitDefaultValue = false, Order = 19)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string LegalName { get; set; }
 
@@ -194,7 +202,7 @@ namespace OpenActive.NET
         /// }
         /// </code>
         /// </example>
-        [DataMember(Name = "logo", EmitDefaultValue = false, Order = 19)]
+        [DataMember(Name = "logo", EmitDefaultValue = false, Order = 20)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual ImageObject Logo { get; set; }
 
@@ -206,14 +214,14 @@ namespace OpenActive.NET
         /// "sameAs": "https://example.org/example-org"
         /// </code>
         /// </example>
-        [DataMember(Name = "sameAs", EmitDefaultValue = false, Order = 20)]
+        [DataMember(Name = "sameAs", EmitDefaultValue = false, Order = 21)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual List<Uri> SameAs { get; set; }
 
         /// <summary>
         /// Either  https://openactive.io/TaxNet or  https://openactive.io/TaxGross
         /// </summary>
-        [DataMember(Name = "taxMode", EmitDefaultValue = false, Order = 21)]
+        [DataMember(Name = "taxMode", EmitDefaultValue = false, Order = 22)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual TaxMode? TaxMode { get; set; }
 
@@ -226,14 +234,14 @@ namespace OpenActive.NET
         /// "telephone": "01234 567890"
         /// </code>
         /// </example>
-        [DataMember(Name = "telephone", EmitDefaultValue = false, Order = 22)]
+        [DataMember(Name = "telephone", EmitDefaultValue = false, Order = 23)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string Telephone { get; set; }
 
         /// <summary>
         /// The terms of service of the Seller.
         /// </summary>
-        [DataMember(Name = "termsOfService", EmitDefaultValue = false, Order = 23)]
+        [DataMember(Name = "termsOfService", EmitDefaultValue = false, Order = 24)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual List<Terms> TermsOfService { get; set; }
 
@@ -245,14 +253,14 @@ namespace OpenActive.NET
         /// "url": "http://www.example.com/"
         /// </code>
         /// </example>
-        [DataMember(Name = "url", EmitDefaultValue = false, Order = 24)]
+        [DataMember(Name = "url", EmitDefaultValue = false, Order = 25)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual Uri Url { get; set; }
 
         /// <summary>
         /// The Value-added Tax ID of the of the Seller.
         /// </summary>
-        [DataMember(Name = "vatID", EmitDefaultValue = false, Order = 25)]
+        [DataMember(Name = "vatID", EmitDefaultValue = false, Order = 26)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string VatID { get; set; }
 
@@ -262,7 +270,7 @@ namespace OpenActive.NET
         /// 
         /// If you are using this property, please join the discussion at proposal [#276](https://github.com/openactive/modelling-opportunity-data/issues/276).
         /// </summary>
-        [DataMember(Name = "beta:formattedDescription", EmitDefaultValue = false, Order = 1026)]
+        [DataMember(Name = "beta:formattedDescription", EmitDefaultValue = false, Order = 1027)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual string FormattedDescription { get; set; }
 
@@ -272,7 +280,7 @@ namespace OpenActive.NET
         /// 
         /// If you are using this property, please join the discussion at proposal [#236](https://github.com/openactive/modelling-opportunity-data/issues/236).
         /// </summary>
-        [DataMember(Name = "beta:formalCriteriaMet", EmitDefaultValue = false, Order = 1027)]
+        [DataMember(Name = "beta:formalCriteriaMet", EmitDefaultValue = false, Order = 1028)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual List<Uri> FormalCriteriaMet { get; set; }
     }
