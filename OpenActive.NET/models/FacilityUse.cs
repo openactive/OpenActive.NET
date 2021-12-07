@@ -112,6 +112,7 @@ namespace OpenActive.NET
         public virtual List<Concept> AccessibilitySupport { get; set; }
 
         /// <summary>
+        /// [DEPRECATED: Use `facilityType` instead of `activity` within `FacilityUse` and `IndividualFacilityUse`, as the `facilityType` controlled vocabulary has been designed specifically for facilities.]
         /// Specifies the physical activity or activities that will take place during a facility use.
         /// </summary>
         /// <example>
@@ -128,6 +129,7 @@ namespace OpenActive.NET
         /// </example>
         [DataMember(Name = "activity", EmitDefaultValue = false, Order = 12)]
         [JsonConverter(typeof(ValuesConverter))]
+        [Obsolete("Use `facilityType` instead of `activity` within `FacilityUse` and `IndividualFacilityUse`, as the `facilityType` controlled vocabulary has been designed specifically for facilities.", false)]
         public virtual List<Concept> Activity { get; set; }
 
         /// <summary>
@@ -215,9 +217,29 @@ namespace OpenActive.NET
         public new virtual List<Slot> Event { get; set; }
 
         /// <summary>
+        /// Specifies the types of facility being described.
+        /// NOTE: this property has been added to tooling and documentation ahead of inclusion in the next point release of the OpenActive Modelling Opportunity Data specification, as agreed on [the W3C call 2021-06-02](https://github.com/openactive/facility-types/issues/1#issuecomment-853759213).
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// "facilityType": [
+        ///   {
+        ///     "@type": "Concept",
+        ///     "@id": "https://openactive.io/facility-types#bba8ae59-d152-40bc-85cc-88c5375696d4",
+        ///     "prefLabel": "Tennis Court",
+        ///     "inScheme": "https://openactive.io/facility-types"
+        ///   }
+        /// ]
+        /// </code>
+        /// </example>
+        [DataMember(Name = "facilityType", EmitDefaultValue = false, Order = 18)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public virtual List<Concept> FacilityType { get; set; }
+
+        /// <summary>
         /// The times the facility use is available
         /// </summary>
-        [DataMember(Name = "hoursAvailable", EmitDefaultValue = false, Order = 18)]
+        [DataMember(Name = "hoursAvailable", EmitDefaultValue = false, Order = 19)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual List<OpeningHoursSpecification> HoursAvailable { get; set; }
 
@@ -235,7 +257,7 @@ namespace OpenActive.NET
         /// ]
         /// </code>
         /// </example>
-        [DataMember(Name = "image", EmitDefaultValue = false, Order = 19)]
+        [DataMember(Name = "image", EmitDefaultValue = false, Order = 20)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual List<ImageObject> Image { get; set; }
 
@@ -247,13 +269,13 @@ namespace OpenActive.NET
         /// "individualFacilityUse": [
         ///   {
         ///     "@type": "IndividualFacilityUse",
-        ///     "@id": "http://www.example.org/facility-uses/1",
+        ///     "@id": "http://www.example.org/facility-uses/1/individual-facility-uses/1",
         ///     "name": "Tennis Court 1"
         ///   }
         /// ]
         /// </code>
         /// </example>
-        [DataMember(Name = "individualFacilityUse", EmitDefaultValue = false, Order = 20)]
+        [DataMember(Name = "individualFacilityUse", EmitDefaultValue = false, Order = 21)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual List<IndividualFacilityUse> IndividualFacilityUse { get; set; }
 
@@ -266,7 +288,7 @@ namespace OpenActive.NET
         /// "isOpenBookingWithCustomerAccountAllowed": "true"
         /// </code>
         /// </example>
-        [DataMember(Name = "isOpenBookingWithCustomerAccountAllowed", EmitDefaultValue = false, Order = 21)]
+        [DataMember(Name = "isOpenBookingWithCustomerAccountAllowed", EmitDefaultValue = false, Order = 22)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual bool? IsOpenBookingWithCustomerAccountAllowed { get; set; }
 
@@ -297,7 +319,7 @@ namespace OpenActive.NET
         /// }
         /// </code>
         /// </example>
-        [DataMember(Name = "location", EmitDefaultValue = false, Order = 22)]
+        [DataMember(Name = "location", EmitDefaultValue = false, Order = 23)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual Place Location { get; set; }
 
@@ -316,7 +338,7 @@ namespace OpenActive.NET
         /// }
         /// </code>
         /// </example>
-        [DataMember(Name = "offers", EmitDefaultValue = false, Order = 23)]
+        [DataMember(Name = "offers", EmitDefaultValue = false, Order = 24)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual List<Offer> Offers { get; set; }
 
@@ -332,7 +354,7 @@ namespace OpenActive.NET
         /// }
         /// </code>
         /// </example>
-        [DataMember(Name = "provider", EmitDefaultValue = false, Order = 24)]
+        [DataMember(Name = "provider", EmitDefaultValue = false, Order = 25)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual Organization Provider { get; set; }
 
@@ -344,7 +366,7 @@ namespace OpenActive.NET
         /// "url": "https://example.com/facility-use/1234"
         /// </code>
         /// </example>
-        [DataMember(Name = "url", EmitDefaultValue = false, Order = 25)]
+        [DataMember(Name = "url", EmitDefaultValue = false, Order = 26)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual Uri Url { get; set; }
 
@@ -354,7 +376,7 @@ namespace OpenActive.NET
         /// 
         /// If you are using this property, please join the discussion at proposal [#276](https://github.com/openactive/modelling-opportunity-data/issues/276).
         /// </summary>
-        [DataMember(Name = "beta:formattedDescription", EmitDefaultValue = false, Order = 1026)]
+        [DataMember(Name = "beta:formattedDescription", EmitDefaultValue = false, Order = 1027)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual string FormattedDescription { get; set; }
 
@@ -364,7 +386,7 @@ namespace OpenActive.NET
         /// 
         /// If you are using this property, please join the discussion at proposal [#166](https://github.com/openactive/modelling-opportunity-data/issues/166).
         /// </summary>
-        [DataMember(Name = "beta:isWheelchairAccessible", EmitDefaultValue = false, Order = 1027)]
+        [DataMember(Name = "beta:isWheelchairAccessible", EmitDefaultValue = false, Order = 1028)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual bool? IsWheelchairAccessible { get; set; }
 
@@ -374,7 +396,7 @@ namespace OpenActive.NET
         /// 
         /// If you are using this property, please join the discussion at proposal [#88](https://github.com/openactive/modelling-opportunity-data/issues/88).
         /// </summary>
-        [DataMember(Name = "beta:video", EmitDefaultValue = false, Order = 1028)]
+        [DataMember(Name = "beta:video", EmitDefaultValue = false, Order = 1029)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual List<VideoObject> Video { get; set; }
 
@@ -384,7 +406,7 @@ namespace OpenActive.NET
         /// 
         /// If you are using this property, please join the discussion at proposal [#110](https://github.com/openactive/modelling-opportunity-data/issues/110).
         /// </summary>
-        [DataMember(Name = "beta:sportsActivityLocation", EmitDefaultValue = false, Order = 1029)]
+        [DataMember(Name = "beta:sportsActivityLocation", EmitDefaultValue = false, Order = 1030)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual List<Schema.NET.SportsActivityLocation> SportsActivityLocation { get; set; }
 
@@ -394,19 +416,9 @@ namespace OpenActive.NET
         /// 
         /// If you are using this property, please join the discussion at proposal [#204](https://github.com/openactive/modelling-opportunity-data/issues/204).
         /// </summary>
-        [DataMember(Name = "beta:offerValidityPeriod", EmitDefaultValue = false, Order = 1030)]
+        [DataMember(Name = "beta:offerValidityPeriod", EmitDefaultValue = false, Order = 1031)]
         [JsonConverter(typeof(OpenActiveTimeSpanToISO8601DurationValuesConverter))]
         public virtual TimeSpan? OfferValidityPeriod { get; set; }
-
-        /// <summary>
-        /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
-        /// The type of facility in use. See https://openactive.io/facility-types/.
-        /// 
-        /// If you are using this property, please join the discussion at proposal [#1](https://github.com/openactive/facility-types/issues/1).
-        /// </summary>
-        [DataMember(Name = "beta:facilityType", EmitDefaultValue = false, Order = 1031)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public virtual List<Concept> FacilityType { get; set; }
 
         /// <summary>
         /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]

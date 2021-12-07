@@ -61,6 +61,8 @@ namespace OpenActive.NET
         EntitlementType,
         [EnumMember(Value = "https://openactive.io/evidenceRequestAction")]
         EvidenceRequestAction,
+        [EnumMember(Value = "https://openactive.io/facilityType")]
+        FacilityType,
         [EnumMember(Value = "https://openactive.io/facilityUse")]
         FacilityUse,
         [EnumMember(Value = "https://openactive.io/genderRestriction")]
