@@ -75,14 +75,14 @@ namespace OpenActive.NET
         /// The date the entitlement becomes valid. This must be in the past.
         /// </summary>
         [DataMember(Name = "validFrom", EmitDefaultValue = false, Order = 9)]
-        [JsonConverter(typeof(OpenActiveDateTimeOffsetToISO8601DateTimeValuesConverter))]
-        public new virtual DateTimeOffset? ValidFrom { get; set; }
+        [JsonConverter(typeof(OpenActiveDateTimeValuesConverter))]
+        public new virtual DateValue ValidFrom { get; set; }
 
         /// <summary>
         /// The date that the entitlement is no longer valid. This must be in the future.
         /// </summary>
         [DataMember(Name = "validUntil", EmitDefaultValue = false, Order = 10)]
-        [JsonConverter(typeof(OpenActiveDateTimeOffsetToISO8601DateTimeValuesConverter))]
-        public new virtual DateTimeOffset? ValidUntil { get; set; }
+        [JsonConverter(typeof(OpenActiveDateTimeValuesConverter))]
+        public new virtual DateValue ValidUntil { get; set; }
     }
 }

@@ -153,6 +153,8 @@ namespace OpenActive.NET
         UnitTaxSpecification,
         [EnumMember(Value = "https://openactive.io/validFromBeforeStartDate")]
         ValidFromBeforeStartDate,
+        [EnumMember(Value = "https://openactive.io/validThroughBeforeStartDate")]
+        ValidThroughBeforeStartDate,
         [EnumMember(Value = "https://openactive.io/valueOption")]
         ValueOption,
         [EnumMember(Value = "https://schema.org/about")]
@@ -309,6 +311,8 @@ namespace OpenActive.NET
         Antagonist,
         [EnumMember(Value = "https://schema.org/appearance")]
         Appearance,
+        [EnumMember(Value = "https://schema.org/applicableCountry")]
+        ApplicableCountry,
         [EnumMember(Value = "https://schema.org/applicableLocation")]
         ApplicableLocation,
         [EnumMember(Value = "https://schema.org/applicantLocationRequirements")]
@@ -1231,8 +1235,14 @@ namespace OpenActive.NET
         FundedItem,
         [EnumMember(Value = "https://schema.org/funder")]
         Funder,
+        [EnumMember(Value = "https://schema.org/funding")]
+        Funding,
         [EnumMember(Value = "https://schema.org/game")]
         Game,
+        [EnumMember(Value = "https://schema.org/gameAvailabilityType")]
+        GameAvailabilityType,
+        [EnumMember(Value = "https://schema.org/gameEdition")]
+        GameEdition,
         [EnumMember(Value = "https://schema.org/gameItem")]
         GameItem,
         [EnumMember(Value = "https://schema.org/gameLocation")]
@@ -1309,6 +1319,8 @@ namespace OpenActive.NET
         GuidelineSubject,
         [EnumMember(Value = "https://schema.org/handlingTime")]
         HandlingTime,
+        [EnumMember(Value = "https://schema.org/hasAdultConsideration")]
+        HasAdultConsideration,
         [EnumMember(Value = "https://schema.org/hasBioChemEntityPart")]
         HasBioChemEntityPart,
         [EnumMember(Value = "https://schema.org/hasBioPolymerSequence")]
@@ -1571,6 +1583,8 @@ namespace OpenActive.NET
         Isbn,
         [EnumMember(Value = "https://schema.org/isicV4")]
         IsicV4,
+        [EnumMember(Value = "https://schema.org/iso6523Code")]
+        Iso6523Code,
         [EnumMember(Value = "https://schema.org/isrcCode")]
         IsrcCode,
         [EnumMember(Value = "https://schema.org/issn")]

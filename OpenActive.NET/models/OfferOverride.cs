@@ -67,5 +67,8 @@ namespace OpenActive.NET
 
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
         public override TimeSpan? ValidFromBeforeStartDate { get; set; }
+
+        [Obsolete("This property is disinherited in this type, and must not be used.", true)]
+        public override TimeSpan? ValidThroughBeforeStartDate { get; set; }
     }
 }

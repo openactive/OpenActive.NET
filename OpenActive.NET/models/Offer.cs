@@ -225,11 +225,18 @@ namespace OpenActive.NET
         public new virtual Uri Url { get; set; }
 
         /// <summary>
-        /// The duration before the startDate for which this Offer is valid, given in ISO 8601 format. This is a relatively-defined equivalent of schema:validFrom, to allow for Offer inheritance.
+        /// The duration before the `startDate` for which this `Offer` is valid, given in ISO 8601 format. This is a relatively-defined equivalent of `schema:validFrom`, to allow for `Offer` inheritance.
         /// </summary>
         [DataMember(Name = "validFromBeforeStartDate", EmitDefaultValue = false, Order = 22)]
         [JsonConverter(typeof(OpenActiveTimeSpanToISO8601DurationValuesConverter))]
         public virtual TimeSpan? ValidFromBeforeStartDate { get; set; }
+
+        /// <summary>
+        /// The duration before the `startDate` after which the `Offer` is no longer valid, given in ISO 8601 format. This is a relatively-defined equivalent of `schema:validThrough`, to allow for `Offer` inheritance.
+        /// </summary>
+        [DataMember(Name = "validThroughBeforeStartDate", EmitDefaultValue = false, Order = 23)]
+        [JsonConverter(typeof(OpenActiveTimeSpanToISO8601DurationValuesConverter))]
+        public virtual TimeSpan? ValidThroughBeforeStartDate { get; set; }
 
         /// <summary>
         /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
@@ -237,7 +244,7 @@ namespace OpenActive.NET
         /// 
         /// If you are using this property, please join the discussion at proposal [#250](https://github.com/openactive/modelling-opportunity-data/issues/250).
         /// </summary>
-        [DataMember(Name = "beta:partySize", EmitDefaultValue = false, Order = 1023)]
+        [DataMember(Name = "beta:partySize", EmitDefaultValue = false, Order = 1024)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual QuantitativeValue PartySize { get; set; }
     }
