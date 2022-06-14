@@ -356,7 +356,7 @@ namespace OpenActive.NET
         /// </example>
         [DataMember(Name = "provider", EmitDefaultValue = false, Order = 25)]
         [JsonConverter(typeof(ValuesConverter))]
-        public new virtual Organization Provider { get; set; }
+        public virtual Organization Provider { get; set; }
 
         /// <summary>
         /// A URL to a web page (or section of a page) that describes the facility use.
@@ -422,11 +422,21 @@ namespace OpenActive.NET
 
         /// <summary>
         /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
+        /// Attributes associated with the facility in use. See https://openactive.io/facility-attribute-list/.
+        /// 
+        /// If you are using this property, please join the discussion at proposal [#1](https://github.com/openactive/facility-types/issues/1).
+        /// </summary>
+        [DataMember(Name = "beta:facilityAttribute", EmitDefaultValue = false, Order = 1032)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public virtual List<Concept> FacilityAttribute { get; set; }
+
+        /// <summary>
+        /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
         /// Whether the event or facility is indoor or outdoor.
         /// 
         /// If you are using this property, please join the discussion at proposal [#1](https://github.com/openactive/facility-types/issues/1).
         /// </summary>
-        [DataMember(Name = "beta:facilitySetting", EmitDefaultValue = false, Order = 1032)]
+        [DataMember(Name = "beta:facilitySetting", EmitDefaultValue = false, Order = 1033)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual FacilitySettingType? FacilitySetting { get; set; }
 
@@ -436,7 +446,7 @@ namespace OpenActive.NET
         /// 
         /// If you are using this property, please join the discussion at proposal [#161](https://github.com/openactive/modelling-opportunity-data/issues/161).
         /// </summary>
-        [DataMember(Name = "beta:bookingChannel", EmitDefaultValue = false, Order = 1033)]
+        [DataMember(Name = "beta:bookingChannel", EmitDefaultValue = false, Order = 1034)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual List<BookingChannelType> BookingChannel { get; set; }
     }

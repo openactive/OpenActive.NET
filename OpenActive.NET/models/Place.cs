@@ -157,7 +157,7 @@ namespace OpenActive.NET
         /// </example>
         [DataMember(Name = "containedInPlace", EmitDefaultValue = false, Order = 12)]
         [JsonConverter(typeof(ValuesConverter))]
-        public new virtual Place ContainedInPlace { get; set; }
+        public new virtual ReferenceValue<Place> ContainedInPlace { get; set; }
 
         /// <summary>
         /// Places that exist within this place
@@ -256,5 +256,25 @@ namespace OpenActive.NET
         [DataMember(Name = "beta:formattedDescription", EmitDefaultValue = false, Order = 1020)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual string FormattedDescription { get; set; }
+
+        /// <summary>
+        /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
+        /// A related video object.
+        /// 
+        /// If you are using this property, please join the discussion at proposal [#88](https://github.com/openactive/modelling-opportunity-data/issues/88).
+        /// </summary>
+        [DataMember(Name = "beta:video", EmitDefaultValue = false, Order = 1021)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public virtual List<VideoObject> Video { get; set; }
+
+        /// <summary>
+        /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
+        /// The type of Place. See https://openactive.io/place-types/.
+        /// 
+        /// If you are using this property, please join the discussion at proposal [#1](https://github.com/openactive/place-types/issues/1).
+        /// </summary>
+        [DataMember(Name = "beta:placeType", EmitDefaultValue = false, Order = 1022)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public virtual List<Concept> PlaceType { get; set; }
     }
 }

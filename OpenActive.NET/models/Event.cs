@@ -751,11 +751,21 @@ namespace OpenActive.NET
 
         /// <summary>
         /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
+        /// A property that indicates whether the event contains a high frequency of occurrences. Intended as a UI hint for interfaces that represent these occurrences.
+        /// 
+        /// If you are using this property, please join the discussion at proposal [#301](https://github.com/openactive/modelling-opportunity-data/issues/301).
+        /// </summary>
+        [DataMember(Name = "beta:isScheduledAsSlots", EmitDefaultValue = false, Order = 1061)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public virtual bool? IsScheduledAsSlots { get; set; }
+
+        /// <summary>
+        /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
         /// Contact details for an Event, where they are not specifically related to the `organizer` or `leader`.
         /// 
         /// If you are using this property, please join the discussion at proposal [#113](https://github.com/openactive/modelling-opportunity-data/issues/113).
         /// </summary>
-        [DataMember(Name = "beta:contactPoint", EmitDefaultValue = false, Order = 1061)]
+        [DataMember(Name = "beta:contactPoint", EmitDefaultValue = false, Order = 1062)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual Schema.NET.ContactPoint ContactPoint { get; set; }
 
@@ -765,14 +775,14 @@ namespace OpenActive.NET
         /// 
         /// If you are using this property, please join the discussion at proposal [#161](https://github.com/openactive/modelling-opportunity-data/issues/161).
         /// </summary>
-        [DataMember(Name = "beta:bookingChannel", EmitDefaultValue = false, Order = 1062)]
+        [DataMember(Name = "beta:bookingChannel", EmitDefaultValue = false, Order = 1063)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual List<BookingChannelType> BookingChannel { get; set; }
 
         /// <summary>
         /// [NOTICE: This property is part of the Open Booking API Test Interface, and MUST NOT be used in production.]
         /// </summary>
-        [DataMember(Name = "test:testOpenBookingFlow", EmitDefaultValue = false, Order = 1063)]
+        [DataMember(Name = "test:testOpenBookingFlow", EmitDefaultValue = false, Order = 1064)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual TestOpenBookingFlowEnumeration? TestOpenBookingFlow { get; set; }
 
@@ -780,7 +790,7 @@ namespace OpenActive.NET
         /// [NOTICE: This property is part of the Open Booking API Test Interface, and MUST NOT be used in production.]
         /// The opportunity criteria which the Event conforms to.
         /// </summary>
-        [DataMember(Name = "test:testOpportunityCriteria", EmitDefaultValue = false, Order = 1064)]
+        [DataMember(Name = "test:testOpportunityCriteria", EmitDefaultValue = false, Order = 1065)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual TestOpportunityCriteriaEnumeration? TestOpportunityCriteria { get; set; }
     }

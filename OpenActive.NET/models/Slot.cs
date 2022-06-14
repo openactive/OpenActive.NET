@@ -229,7 +229,16 @@ namespace OpenActive.NET
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
         public override Event SuperEvent { get; set; }
 
-        [Obsolete("This property is disinherited in this type, and must not be used.", true)]
+        /// <summary>
+        /// A URL to a web page (or section of a page) that describes the specific Slot.
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// "url": "https://example.com/slots/1234"
+        /// </code>
+        /// </example>
+        [DataMember(Name = "url", EmitDefaultValue = false, Order = 42)]
+        [JsonConverter(typeof(ValuesConverter))]
         public override Uri Url { get; set; }
 
         /// <summary>
