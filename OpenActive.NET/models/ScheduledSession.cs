@@ -44,6 +44,9 @@ namespace OpenActive.NET
         [DataMember(Name = "@type", Order = 1)]
         public override string Type => "ScheduledSession";
 
+        [Obsolete("This property is disinherited in this type, and must not be used.", true)]
+        public override ILegalEntity Organizer { get; set; }
+
         /// <summary>
         /// The start date and time of the event.
         /// </summary>
@@ -52,7 +55,7 @@ namespace OpenActive.NET
         /// "startDate": "2018-01-27T12:00:00Z"
         /// </code>
         /// </example>
-        [DataMember(Name = "startDate", EmitDefaultValue = false, Order = 7)]
+        [DataMember(Name = "startDate", EmitDefaultValue = false, Order = 8)]
         [JsonConverter(typeof(OpenActiveDateTimeValuesConverter))]
         public override DateTimeValue StartDate { get { return base.StartDate; } set { if (value.IsDateOnly) throw new ArgumentOutOfRangeException("StartDate", "This property must be set to a DateTimeOffset, including a time"); base.StartDate = value; } }
 
@@ -65,7 +68,7 @@ namespace OpenActive.NET
         /// "endDate": "2018-01-27T12:00:00Z"
         /// </code>
         /// </example>
-        [DataMember(Name = "endDate", EmitDefaultValue = false, Order = 8)]
+        [DataMember(Name = "endDate", EmitDefaultValue = false, Order = 9)]
         [JsonConverter(typeof(OpenActiveDateTimeValuesConverter))]
         public override DateTimeValue EndDate { get { return base.EndDate; } set { if (value.IsDateOnly) throw new ArgumentOutOfRangeException("EndDate", "This property must be set to a DateTimeOffset, including a time"); base.EndDate = value; } }
 
@@ -75,7 +78,7 @@ namespace OpenActive.NET
         /// <summary>
         /// Relates a child event to a parent event. Properties describing the parent event can be assumed to apply to the child, unless otherwise specified. A parent event might specify a recurring schedule, of which the child event is one specific instance
         /// </summary>
-        [DataMember(Name = "superEvent", EmitDefaultValue = false, Order = 10)]
+        [DataMember(Name = "superEvent", EmitDefaultValue = false, Order = 11)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual ReferenceValue<Event> SuperEvent { get; set; }
     }

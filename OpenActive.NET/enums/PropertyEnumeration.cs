@@ -55,6 +55,8 @@ namespace OpenActive.NET
         EligibleEntitlementType,
         [EnumMember(Value = "https://openactive.io/emergencyContact")]
         EmergencyContact,
+        [EnumMember(Value = "https://openactive.io/endpointUrl")]
+        EndpointUrl,
         [EnumMember(Value = "https://openactive.io/entitlement")]
         Entitlement,
         [EnumMember(Value = "https://openactive.io/entitlementType")]

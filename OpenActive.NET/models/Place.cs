@@ -101,7 +101,7 @@ namespace OpenActive.NET
         public new virtual SingleValues<string, PostalAddress> Address { get; set; }
 
         /// <summary>
-        /// An array listing the Ammenities of the Place.
+        /// An array listing the Amenities of the Place.
         /// </summary>
         /// <example>
         /// <code>
@@ -176,6 +176,18 @@ namespace OpenActive.NET
         public new virtual List<Place> ContainsPlace { get; set; }
 
         /// <summary>
+        /// General enquiries e-mail address for the Place.
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// "email": "info@example.com"
+        /// </code>
+        /// </example>
+        [DataMember(Name = "email", EmitDefaultValue = false, Order = 14)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public new virtual string Email { get; set; }
+
+        /// <summary>
         /// The geo coordinates of the Place.
         /// </summary>
         /// <example>
@@ -187,7 +199,7 @@ namespace OpenActive.NET
         /// }
         /// </code>
         /// </example>
-        [DataMember(Name = "geo", EmitDefaultValue = false, Order = 14)]
+        [DataMember(Name = "geo", EmitDefaultValue = false, Order = 15)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual GeoCoordinates Geo { get; set; }
 
@@ -205,21 +217,21 @@ namespace OpenActive.NET
         /// ]
         /// </code>
         /// </example>
-        [DataMember(Name = "image", EmitDefaultValue = false, Order = 15)]
+        [DataMember(Name = "image", EmitDefaultValue = false, Order = 16)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual List<ImageObject> Image { get; set; }
 
         /// <summary>
         /// The times the Place is open
         /// </summary>
-        [DataMember(Name = "openingHoursSpecification", EmitDefaultValue = false, Order = 16)]
+        [DataMember(Name = "openingHoursSpecification", EmitDefaultValue = false, Order = 17)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual List<OpeningHoursSpecification> OpeningHoursSpecification { get; set; }
 
         /// <summary>
         /// Explicitly override general opening hours brought in scope by `schema:openingHoursSpecification`.
         /// </summary>
-        [DataMember(Name = "specialOpeningHoursSpecification", EmitDefaultValue = false, Order = 17)]
+        [DataMember(Name = "specialOpeningHoursSpecification", EmitDefaultValue = false, Order = 18)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual List<OpeningHoursSpecification> SpecialOpeningHoursSpecification { get; set; }
 
@@ -231,7 +243,7 @@ namespace OpenActive.NET
         /// "telephone": "01253 473934"
         /// </code>
         /// </example>
-        [DataMember(Name = "telephone", EmitDefaultValue = false, Order = 18)]
+        [DataMember(Name = "telephone", EmitDefaultValue = false, Order = 19)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string Telephone { get; set; }
 
@@ -243,7 +255,7 @@ namespace OpenActive.NET
         /// "url": "http://www.rphs.org.uk/"
         /// </code>
         /// </example>
-        [DataMember(Name = "url", EmitDefaultValue = false, Order = 19)]
+        [DataMember(Name = "url", EmitDefaultValue = false, Order = 20)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual Uri Url { get; set; }
 
@@ -253,7 +265,7 @@ namespace OpenActive.NET
         /// 
         /// If you are using this property, please join the discussion at proposal [#276](https://github.com/openactive/modelling-opportunity-data/issues/276).
         /// </summary>
-        [DataMember(Name = "beta:formattedDescription", EmitDefaultValue = false, Order = 1020)]
+        [DataMember(Name = "beta:formattedDescription", EmitDefaultValue = false, Order = 1021)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual string FormattedDescription { get; set; }
 
@@ -263,9 +275,29 @@ namespace OpenActive.NET
         /// 
         /// If you are using this property, please join the discussion at proposal [#88](https://github.com/openactive/modelling-opportunity-data/issues/88).
         /// </summary>
-        [DataMember(Name = "beta:video", EmitDefaultValue = false, Order = 1021)]
+        [DataMember(Name = "beta:video", EmitDefaultValue = false, Order = 1022)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual List<VideoObject> Video { get; set; }
+
+        /// <summary>
+        /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
+        /// A related virtual tour.
+        /// 
+        /// If you are using this property, please join the discussion at proposal [#306](https://github.com/openactive/modelling-opportunity-data/issues/306).
+        /// </summary>
+        [DataMember(Name = "beta:virtualTour", EmitDefaultValue = false, Order = 1023)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public virtual List<Schema.NET.3DModel> VirtualTour { get; set; }
+
+        /// <summary>
+        /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
+        /// The organization responsible for the operation of the `Place`.
+        /// 
+        /// If you are using this property, please join the discussion at proposal [#307](https://github.com/openactive/modelling-opportunity-data/issues/307).
+        /// </summary>
+        [DataMember(Name = "beta:serviceOperator", EmitDefaultValue = false, Order = 1024)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public virtual Organization ServiceOperator { get; set; }
 
         /// <summary>
         /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
@@ -273,7 +305,7 @@ namespace OpenActive.NET
         /// 
         /// If you are using this property, please join the discussion at proposal [#1](https://github.com/openactive/place-types/issues/1).
         /// </summary>
-        [DataMember(Name = "beta:placeType", EmitDefaultValue = false, Order = 1022)]
+        [DataMember(Name = "beta:placeType", EmitDefaultValue = false, Order = 1025)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual List<Concept> PlaceType { get; set; }
     }

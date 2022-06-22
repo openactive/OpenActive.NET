@@ -51,7 +51,7 @@ namespace OpenActive.NET
         public override Schema.NET.EventStatusType? EventStatus { get; set; }
 
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
-        public override Place Location { get; set; }
+        public override ReferenceValue<Place> Location { get; set; }
 
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
         public override long? MaximumAttendeeCapacity { get; set; }

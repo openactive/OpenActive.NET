@@ -52,23 +52,30 @@ namespace OpenActive.NET
         public new virtual string Name { get; set; }
 
         /// <summary>
+        /// A human and machine-readable certification file that asserts the service's conformance to established standards. The value of this property should be a URL that resolves to a valid and up-to-date OpenActive Test Suite Conformance Certificate for this implementation. Note this property is in EARLY RELEASE AND IS SUBJECT TO CHANGE, as the [Dataset API Discovery specification](https://openactive.io/dataset-api-discovery/EditorsDraft/) evolves.
+        /// </summary>
+        [DataMember(Name = "hasCredential", EmitDefaultValue = false, Order = 8)]
+        [JsonConverter(typeof(ValuesConverter))]
+        public virtual Uri HasCredential { get; set; }
+
+        /// <summary>
         /// The version of the application, useful for on-premise installations. Note this property is in EARLY RELEASE AND IS SUBJECT TO CHANGE, as the [Dataset API Discovery specification](https://openactive.io/dataset-api-discovery/EditorsDraft/) evolves.
         /// </summary>
-        [DataMember(Name = "softwareVersion", EmitDefaultValue = false, Order = 8)]
+        [DataMember(Name = "softwareVersion", EmitDefaultValue = false, Order = 9)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual string SoftwareVersion { get; set; }
 
         /// <summary>
         /// The terms of service of the Booking System.
         /// </summary>
-        [DataMember(Name = "termsOfService", EmitDefaultValue = false, Order = 9)]
+        [DataMember(Name = "termsOfService", EmitDefaultValue = false, Order = 10)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual List<Terms> TermsOfService { get; set; }
 
         /// <summary>
         /// The URL of the website of the Booking System.
         /// </summary>
-        [DataMember(Name = "url", EmitDefaultValue = false, Order = 10)]
+        [DataMember(Name = "url", EmitDefaultValue = false, Order = 11)]
         [JsonConverter(typeof(ValuesConverter))]
         public new virtual Uri Url { get; set; }
     }
