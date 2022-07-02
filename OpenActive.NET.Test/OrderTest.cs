@@ -199,8 +199,8 @@ namespace OpenActive.NET.Test
                 "\"orderedItem\":{" +
                     "\"@type\":\"ScheduledSession\"," +
                     "\"@id\":\"https://example.com/events/452/subEvents/132\"," +
-                    "\"startDate\":\"2018-10-30T11:00:00+00:00\"," +
                     "\"identifier\":123," +
+                    "\"startDate\":\"2018-10-30T11:00:00+00:00\"," +
                     "\"endDate\":\"2018-10-30T12:00:00+00:00\"," +
                     "\"superEvent\":{" +
                         "\"@type\":\"SessionSeries\"," +
