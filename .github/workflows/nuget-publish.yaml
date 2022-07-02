@@ -54,3 +54,17 @@ jobs:
             Published to [Nuget](https://www.nuget.org/packages/OpenActive.NET/${{ steps.nbgv.outputs.SimpleVersion }}).
           draft: false
           prerelease: false
+
+  dispatch:
+    needs: publish
+    strategy:
+      matrix:
+        repo: ['OpenActive.DatasetSite.NET']
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger tooling update
+        uses: peter-evans/repository-dispatch@v1
+        with:
+          token: ${{ secrets.PUBLIC_REPO_ACCESS_TOKEN }}
+          repository: openactive/${{ matrix.repo }}
+          event-type: OpenActive.NET-update
