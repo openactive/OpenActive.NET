@@ -126,12 +126,12 @@ namespace OpenActive.NET
         /// </summary>
         /// <example>
         /// <code>
-        /// "endpointURL": "https://example.bookingsystem.com/api/openbooking"
+        /// "endpointUrl": "https://example.bookingsystem.com/api/openbooking"
         /// </code>
         /// </example>
-        [DataMember(Name = "endpointURL", EmitDefaultValue = false, Order = 13)]
+        [DataMember(Name = "endpointUrl", EmitDefaultValue = false, Order = 13)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual Uri EndpointURL { get; set; }
+        public virtual Uri EndpointUrl { get; set; }
 
         /// <summary>
         /// The web page the broker uses to obtain access to the API, e.g. via a web form.

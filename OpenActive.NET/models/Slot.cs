@@ -135,7 +135,7 @@ namespace OpenActive.NET
         public override SingleValues<List<string>, List<Concept>> Level { get; set; }
 
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
-        public override Place Location { get; set; }
+        public override ReferenceValue<Place> Location { get; set; }
 
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
         public override long? MaximumAttendeeCapacity { get; set; }
@@ -249,6 +249,6 @@ namespace OpenActive.NET
         /// </summary>
         [DataMember(Name = "beta:sportsActivityLocation", EmitDefaultValue = false, Order = 1043)]
         [JsonConverter(typeof(ValuesConverter))]
-        public override List<Schema.NET.SportsActivityLocation> SportsActivityLocation { get; set; }
+        public override List<SportsActivityLocation> SportsActivityLocation { get; set; }
     }
 }

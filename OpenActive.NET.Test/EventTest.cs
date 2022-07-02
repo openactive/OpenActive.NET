@@ -197,7 +197,7 @@ namespace OpenActive.NET.Test
         public void ToString_EventAccessor()
         {
             output.WriteLine(this.@event.ToString());
-            Assert.Equal("Santa Clara City Library, Central Park Library", this.@event.Location.Name);
+            Assert.Equal("Santa Clara City Library, Central Park Library", this.@event.Location.Object.Name);
         }
 
         [Fact]

@@ -321,7 +321,7 @@ namespace OpenActive.NET
         /// </example>
         [DataMember(Name = "location", EmitDefaultValue = false, Order = 23)]
         [JsonConverter(typeof(ValuesConverter))]
-        public new virtual Place Location { get; set; }
+        public new virtual ReferenceValue<Place> Location { get; set; }
 
         /// <summary>
         /// An array of schema:Offer that include the price of booking.
@@ -408,7 +408,7 @@ namespace OpenActive.NET
         /// </summary>
         [DataMember(Name = "beta:sportsActivityLocation", EmitDefaultValue = false, Order = 1030)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual List<Schema.NET.SportsActivityLocation> SportsActivityLocation { get; set; }
+        public virtual List<SportsActivityLocation> SportsActivityLocation { get; set; }
 
         /// <summary>
         /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
