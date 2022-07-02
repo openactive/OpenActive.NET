@@ -281,16 +281,6 @@ namespace OpenActive.NET
 
         /// <summary>
         /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
-        /// A related virtual tour.
-        /// 
-        /// If you are using this property, please join the discussion at proposal [#306](https://github.com/openactive/modelling-opportunity-data/issues/306).
-        /// </summary>
-        [DataMember(Name = "beta:virtualTour", EmitDefaultValue = false, Order = 1023)]
-        [JsonConverter(typeof(ValuesConverter))]
-        public virtual List<Schema.NET.3DModel> VirtualTour { get; set; }
-
-        /// <summary>
-        /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
         /// The organization responsible for the operation of the `Place`.
         /// 
         /// If you are using this property, please join the discussion at proposal [#307](https://github.com/openactive/modelling-opportunity-data/issues/307).
