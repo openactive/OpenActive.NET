@@ -55,8 +55,18 @@ jobs:
           draft: false
           prerelease: false
 
-  dispatch:
+  sleep:
     needs: publish
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Sleep for 10 minutes to wait for NuGet to update
+        uses: whatnick/wait-action@0.1.2
+        with:
+          time: '10m'
+
+  dispatch:
+    needs: sleep
     strategy:
       matrix:
         repo: ['OpenActive.DatasetSite.NET']
