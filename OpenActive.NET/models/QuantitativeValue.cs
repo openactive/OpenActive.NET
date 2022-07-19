@@ -45,7 +45,7 @@ namespace OpenActive.NET
         public override string Type => "QuantitativeValue";
 
         /// <summary>
-        /// The maximum value.
+        /// The maximum value, inclusive.
         /// </summary>
         /// <example>
         /// <code>
@@ -57,7 +57,7 @@ namespace OpenActive.NET
         public new virtual long? MaxValue { get; set; }
 
         /// <summary>
-        /// The minimum value.
+        /// The minimum value, inclusive.
         /// </summary>
         /// <example>
         /// <code>

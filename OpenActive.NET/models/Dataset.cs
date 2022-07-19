@@ -157,11 +157,11 @@ namespace OpenActive.NET
         public new virtual List<DataDownload> Distribution { get; set; }
 
         /// <summary>
-        /// A link to documentation related to the `Dataset`, or a link to the OpenActive developer documentation if no Dataset-specific documentation is available.
+        /// A link to documentation related to the `Dataset`, or a link to the OpenActive developer documentation using `https://permalink.openactive.io/dataset-site/open-data-documentation` if no Dataset-specific documentation is available.
         /// </summary>
         /// <example>
         /// <code>
-        /// "documentation": "https://developer.openactive.io"
+        /// "documentation": "https://permalink.openactive.io/dataset-site/open-data-documentation"
         /// </code>
         /// </example>
         [DataMember(Name = "documentation", EmitDefaultValue = false, Order = 16)]

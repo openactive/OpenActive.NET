@@ -72,7 +72,7 @@ namespace OpenActive.NET
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// The location of the OpenID Provider or other relevant authentication authority that must be used to access the API.
+        /// The location of the OpenID Provider that must be used to access the API.
         /// </summary>
         /// <example>
         /// <code>
@@ -98,11 +98,11 @@ namespace OpenActive.NET
         public virtual List<Uri> ConformsTo { get; set; }
 
         /// <summary>
-        /// A link to documentation related to the Dataset, or a link to the OpenActive developer documentation if no Dataset-specific documentation is available.
+        /// A link to documentation related to how to use the Open Booking API, or a link to the OpenActive developer documentation using `https://permalink.openactive.io/dataset-site/open-booking-api-documentation` if no system-specific documentation is available.
         /// </summary>
         /// <example>
         /// <code>
-        /// "documentation": "https://developer.openactive.io"
+        /// "documentation": "https://permalink.openactive.io/dataset-site/open-booking-api-documentation"
         /// </code>
         /// </example>
         [DataMember(Name = "documentation", EmitDefaultValue = false, Order = 11)]
@@ -122,7 +122,7 @@ namespace OpenActive.NET
         public virtual Uri EndpointDescription { get; set; }
 
         /// <summary>
-        /// The base URL of the Open Booking API
+        /// The Base URI of this implementation of the Open Booking API
         /// </summary>
         /// <example>
         /// <code>
@@ -134,7 +134,7 @@ namespace OpenActive.NET
         public virtual Uri EndpointUrl { get; set; }
 
         /// <summary>
-        /// The web page the broker uses to obtain access to the API, e.g. via a web form.
+        /// The URL of a web page that the Broker may use to obtain access to the API, e.g. via a web form.
         /// </summary>
         /// <example>
         /// <code>
