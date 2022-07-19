@@ -285,7 +285,7 @@ namespace OpenActive.NET
         /// 
         /// If you are using this property, please join the discussion at proposal [#307](https://github.com/openactive/modelling-opportunity-data/issues/307).
         /// </summary>
-        [DataMember(Name = "beta:serviceOperator", EmitDefaultValue = false, Order = 1024)]
+        [DataMember(Name = "beta:serviceOperator", EmitDefaultValue = false, Order = 1023)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual Organization ServiceOperator { get; set; }
 
@@ -295,7 +295,7 @@ namespace OpenActive.NET
         /// 
         /// If you are using this property, please join the discussion at proposal [#1](https://github.com/openactive/place-types/issues/1).
         /// </summary>
-        [DataMember(Name = "beta:placeType", EmitDefaultValue = false, Order = 1025)]
+        [DataMember(Name = "beta:placeType", EmitDefaultValue = false, Order = 1024)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual List<Concept> PlaceType { get; set; }
     }
