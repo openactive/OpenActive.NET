@@ -529,7 +529,7 @@ namespace OpenActive.NET
         public virtual string SchedulingNote { get; set; }
 
         /// <summary>
-        /// The start date and time of the event. Can be specified as a schema:Date or schema:DateTime.
+        /// The start date and time of the event. Can be specified as a schema:DateTime.
         /// </summary>
         /// <example>
         /// <code>
@@ -541,7 +541,7 @@ namespace OpenActive.NET
         public new virtual DateTimeValue StartDate { get; set; }
 
         /// <summary>
-        /// The end date and time of the event. Can be specified as a schema:Date or  schema:DateTime
+        /// The end date and time of the event. Can be specified as a schema:DateTime
         /// It is recommended that publishers provide either an schema:endDate or a schema:duration for an event.
         /// </summary>
         /// <example>
@@ -781,6 +781,7 @@ namespace OpenActive.NET
 
         /// <summary>
         /// [NOTICE: This property is part of the Open Booking API Test Interface, and MUST NOT be used in production.]
+        /// The [open booking flow](https://openactive.io/open-booking-api/EditorsDraft/1.0CR3/#booking-flows) that a created [Opportunity and Offer pair](https://openactive.io/open-booking-api/EditorsDraft/1.0CR3/#definition-of-a-bookable-opportunity-and-offer-pair) should support.
         /// </summary>
         [DataMember(Name = "test:testOpenBookingFlow", EmitDefaultValue = false, Order = 1064)]
         [JsonConverter(typeof(ValuesConverter))]
