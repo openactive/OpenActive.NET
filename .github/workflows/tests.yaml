@@ -7,7 +7,6 @@ on:
 jobs:
   test:
     runs-on: ubuntu-22.04
-
     steps:
     - name: Checkout OpenActive.Server.NET
       uses: actions/checkout@v2
