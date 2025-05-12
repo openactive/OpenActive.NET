@@ -72,9 +72,15 @@ jobs:
         repo: ['OpenActive.DatasetSite.NET']
     runs-on: ubuntu-latest
     steps:
+      - name: Generate GitHub App Token
+        uses: actions/create-github-app-token@v1
+        id: generate-token
+        with:
+          app-id: ${{ secrets.GH_APP_ID }}
+          private-key: ${{ secrets.GH_APP_PRIVATE_KEY }}
       - name: Trigger tooling update
         uses: peter-evans/repository-dispatch@v3
         with:
-          token: ${{ secrets.PUBLIC_REPO_ACCESS_TOKEN }}
+          token: ${{ steps.generate-token.outputs.token }}
           repository: openactive/${{ matrix.repo }}
           event-type: OpenActive.NET-update
