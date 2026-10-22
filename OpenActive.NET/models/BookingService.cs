@@ -56,7 +56,7 @@ namespace OpenActive.NET
         /// </summary>
         [DataMember(Name = "hasCredential", EmitDefaultValue = false, Order = 8)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual Uri HasCredential { get; set; }
+        public new virtual Uri HasCredential { get; set; }
 
         /// <summary>
         /// The version of the application, useful for on-premise installations. Note this property is in EARLY RELEASE AND IS SUBJECT TO CHANGE, as the [Dataset API Discovery specification](https://openactive.io/dataset-api-discovery/EditorsDraft/) evolves.
@@ -70,7 +70,7 @@ namespace OpenActive.NET
         /// </summary>
         [DataMember(Name = "termsOfService", EmitDefaultValue = false, Order = 10)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual List<Terms> TermsOfService { get; set; }
+        public new virtual List<Terms> TermsOfService { get; set; }
 
         /// <summary>
         /// The URL of the website of the Booking System.

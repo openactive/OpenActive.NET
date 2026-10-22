@@ -65,7 +65,7 @@ namespace OpenActive.NET
         /// </example>
         [DataMember(Name = "eventSchedule", EmitDefaultValue = false, Order = 7)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual List<Schedule> EventSchedule { get; set; }
+        public new virtual List<Schedule> EventSchedule { get; set; }
 
         /// <summary>
         /// The description of the Course for which this is a distinct instance.

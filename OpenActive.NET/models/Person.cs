@@ -131,7 +131,7 @@ namespace OpenActive.NET
         /// </example>
         [DataMember(Name = "gender", EmitDefaultValue = false, Order = 14)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual SingleValues<string, Schema.NET.GenderType?> Gender { get; set; }
+        public new virtual SingleValues<string, Schema.NET.GenderType?> Gender { get; set; }
 
         /// <summary>
         /// A first name for the person.
@@ -177,7 +177,7 @@ namespace OpenActive.NET
         /// </example>
         [DataMember(Name = "jobTitle", EmitDefaultValue = false, Order = 18)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual string JobTitle { get; set; }
+        public new virtual string JobTitle { get; set; }
 
         /// <summary>
         /// The official name of the organization, e.g. the registered company name.
@@ -243,7 +243,7 @@ namespace OpenActive.NET
         /// </summary>
         [DataMember(Name = "termsOfService", EmitDefaultValue = false, Order = 24)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual List<Terms> TermsOfService { get; set; }
+        public new virtual List<Terms> TermsOfService { get; set; }
 
         /// <summary>
         /// A URL where more information about the person may be found

@@ -185,7 +185,7 @@ namespace OpenActive.NET
         /// </summary>
         [DataMember(Name = "termsOfService", EmitDefaultValue = false, Order = 19)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual List<Terms> TermsOfService { get; set; }
+        public new virtual List<Terms> TermsOfService { get; set; }
 
         /// <summary>
         /// A definitive canonical URL for the Organization.
@@ -235,5 +235,15 @@ namespace OpenActive.NET
         [DataMember(Name = "beta:formalCriteriaMet", EmitDefaultValue = false, Order = 1024)]
         [JsonConverter(typeof(ValuesConverter))]
         public virtual List<Uri> FormalCriteriaMet { get; set; }
+
+        /// <summary>
+        /// [NOTICE: This is a beta property, and is highly likely to change in future versions of this library.]
+        /// The date on which the details of this organization were last verified as correct by the publisher. Unlike `schema:dateModified`, this changes when the details are confirmed, even if nothing in them has changed.
+        /// 
+        /// If you are using this property, please join the discussion at proposal [#313](https://github.com/openactive/modelling-opportunity-data/issues/313).
+        /// </summary>
+        [DataMember(Name = "beta:dateVerified", EmitDefaultValue = false, Order = 1025)]
+        [JsonConverter(typeof(OpenActiveDateTimeValuesConverter))]
+        public virtual DateValue DateVerified { get; set; }
     }
 }

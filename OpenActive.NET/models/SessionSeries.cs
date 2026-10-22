@@ -65,7 +65,7 @@ namespace OpenActive.NET
         /// </example>
         [DataMember(Name = "eventSchedule", EmitDefaultValue = false, Order = 7)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual List<Schedule> EventSchedule { get; set; }
+        public new virtual List<Schedule> EventSchedule { get; set; }
 
         [Obsolete("This property is disinherited in this type, and must not be used.", true)]
         public override long? RemainingAttendeeCapacity { get; set; }
