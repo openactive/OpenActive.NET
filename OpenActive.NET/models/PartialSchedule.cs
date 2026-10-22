@@ -6,7 +6,7 @@ using System.Runtime.Serialization;
 namespace OpenActive.NET
 {
     /// <summary>
-    /// This type is derived from https://pending.schema.org/Schedule.
+    /// This type is derived from https://schema.org/Schedule, which means that any of this type's properties within schema.org may also be used.
     /// </summary>
     [DataContract]
     public partial class PartialSchedule : Schedule

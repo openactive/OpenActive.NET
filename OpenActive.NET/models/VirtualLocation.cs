@@ -6,10 +6,10 @@ using System.Runtime.Serialization;
 namespace OpenActive.NET
 {
     /// <summary>
-    /// This type is derived from https://pending.schema.org/VirtualLocation.
+    /// This type is derived from https://schema.org/VirtualLocation, which means that any of this type's properties within schema.org may also be used.
     /// </summary>
     [DataContract]
-    public partial class VirtualLocation : Schema.NET.JsonLdObject
+    public partial class VirtualLocation : Schema.NET.VirtualLocation
     {
         /// <summary>
         /// Returns the JSON-LD representation of this instance.
@@ -54,7 +54,7 @@ namespace OpenActive.NET
         /// </example>
         [DataMember(Name = "name", EmitDefaultValue = false, Order = 7)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual string Name { get; set; }
+        public new virtual string Name { get; set; }
 
         /// <summary>
         /// A plain text description of the live stream, including any instructions to join. This description must not include HTML or other markup.
@@ -66,7 +66,7 @@ namespace OpenActive.NET
         /// </example>
         [DataMember(Name = "description", EmitDefaultValue = false, Order = 8)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual string Description { get; set; }
+        public new virtual string Description { get; set; }
 
         /// <summary>
         /// The password or pin required to access the `VirtualLocation` from any device, without requiring the URL, e.g. the meeting password.
@@ -78,7 +78,7 @@ namespace OpenActive.NET
         /// </example>
         [DataMember(Name = "accessCode", EmitDefaultValue = false, Order = 9)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual string AccessCode { get; set; }
+        public new virtual string AccessCode { get; set; }
 
         /// <summary>
         /// The identifier required to access the `VirtualLocation` from any device, without requiring the URL, e.g. the meeting ID.
@@ -102,6 +102,6 @@ namespace OpenActive.NET
         /// </example>
         [DataMember(Name = "url", EmitDefaultValue = false, Order = 11)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual Uri Url { get; set; }
+        public new virtual Uri Url { get; set; }
     }
 }
