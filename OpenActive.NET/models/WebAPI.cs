@@ -9,10 +9,10 @@ namespace OpenActive.NET
     /// 
     /// EARLY RELEASE NOTICE: This class represents a draft that is designed to inform the OpenActive specification work with implementation feedback. IT IS SUBJECT TO CHANGE, as the [Dataset API Discovery specification](https://openactive.io/dataset-api-discovery/EditorsDraft/) evolves.
     /// 
-    /// This type is derived from https://pending.schema.org/WebAPI.
+    /// This type is derived from https://schema.org/WebAPI, which means that any of this type's properties within schema.org may also be used.
     /// </summary>
     [DataContract]
-    public partial class WebAPI : Schema.NET.JsonLdObject
+    public partial class WebAPI : Schema.NET.WebAPI
     {
         /// <summary>
         /// Returns the JSON-LD representation of this instance.
@@ -57,7 +57,7 @@ namespace OpenActive.NET
         /// </example>
         [DataMember(Name = "name", EmitDefaultValue = false, Order = 7)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual string Name { get; set; }
+        public new virtual string Name { get; set; }
 
         /// <summary>
         /// A plain text description of the Dataset, which must not include HTML or other markup.
@@ -69,7 +69,7 @@ namespace OpenActive.NET
         /// </example>
         [DataMember(Name = "description", EmitDefaultValue = false, Order = 8)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual string Description { get; set; }
+        public new virtual string Description { get; set; }
 
         /// <summary>
         /// The location of the OpenID Provider that must be used to access the API.
@@ -107,7 +107,7 @@ namespace OpenActive.NET
         /// </example>
         [DataMember(Name = "documentation", EmitDefaultValue = false, Order = 11)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual Uri Documentation { get; set; }
+        public new virtual Uri Documentation { get; set; }
 
         /// <summary>
         /// The Open API document associated with this version of the Open Booking API
@@ -155,6 +155,6 @@ namespace OpenActive.NET
         /// </example>
         [DataMember(Name = "termsOfService", EmitDefaultValue = false, Order = 15)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual Uri TermsOfService { get; set; }
+        public new virtual Uri TermsOfService { get; set; }
     }
 }

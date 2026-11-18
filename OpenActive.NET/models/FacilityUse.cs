@@ -356,7 +356,7 @@ namespace OpenActive.NET
         /// </example>
         [DataMember(Name = "provider", EmitDefaultValue = false, Order = 25)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual Organization Provider { get; set; }
+        public new virtual Organization Provider { get; set; }
 
         /// <summary>
         /// A URL to a web page (or section of a page) that describes the facility use.
