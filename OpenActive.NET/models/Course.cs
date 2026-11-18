@@ -116,7 +116,7 @@ namespace OpenActive.NET
         public virtual List<Concept> AccessibilitySupport { get; set; }
 
         /// <summary>
-        /// Specifies the physical activity or activities that will take place during a Course.
+        /// Specifies the physical activity or activities associated with this resource.
         /// </summary>
         /// <example>
         /// <code>
@@ -135,7 +135,7 @@ namespace OpenActive.NET
         public virtual List<Concept> Activity { get; set; }
 
         /// <summary>
-        /// Indicates that an event is recommended as being suitable for or is targetted at a specific age range.
+        /// Indicates that this resource is recommended as being suitable for, or is targeted at, a specific age range.
         /// </summary>
         /// <example>
         /// <code>

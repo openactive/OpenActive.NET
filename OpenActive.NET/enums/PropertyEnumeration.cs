@@ -217,6 +217,8 @@ namespace OpenActive.NET
         ActionOption,
         [EnumMember(Value = "https://schema.org/actionPlatform")]
         ActionPlatform,
+        [EnumMember(Value = "https://schema.org/actionProcess")]
+        ActionProcess,
         [EnumMember(Value = "https://schema.org/actionStatus")]
         ActionStatus,
         [EnumMember(Value = "https://schema.org/actionableFeedbackPolicy")]
@@ -265,6 +267,10 @@ namespace OpenActive.NET
         AfterMedia,
         [EnumMember(Value = "https://schema.org/agent")]
         Agent,
+        [EnumMember(Value = "https://schema.org/agentInteractionStatistic")]
+        AgentInteractionStatistic,
+        [EnumMember(Value = "https://schema.org/aggregateElement")]
+        AggregateElement,
         [EnumMember(Value = "https://schema.org/aggregateRating")]
         AggregateRating,
         [EnumMember(Value = "https://schema.org/aircraft")]
@@ -377,6 +383,8 @@ namespace OpenActive.NET
         Artist,
         [EnumMember(Value = "https://schema.org/artworkSurface")]
         ArtworkSurface,
+        [EnumMember(Value = "https://schema.org/asin")]
+        Asin,
         [EnumMember(Value = "https://schema.org/aspect")]
         Aspect,
         [EnumMember(Value = "https://schema.org/assembly")]
@@ -413,10 +421,14 @@ namespace OpenActive.NET
         AudienceType,
         [EnumMember(Value = "https://schema.org/audio")]
         Audio,
+        [EnumMember(Value = "https://schema.org/auditDate")]
+        AuditDate,
         [EnumMember(Value = "https://schema.org/authenticator")]
         Authenticator,
         [EnumMember(Value = "https://schema.org/author")]
         Author,
+        [EnumMember(Value = "https://schema.org/authorizedRepresentative")]
+        AuthorizedRepresentative,
         [EnumMember(Value = "https://schema.org/availability")]
         Availability,
         [EnumMember(Value = "https://schema.org/availabilityEnds")]
@@ -603,10 +615,18 @@ namespace OpenActive.NET
         CatalogNumber,
         [EnumMember(Value = "https://schema.org/category")]
         Category,
+        [EnumMember(Value = "https://schema.org/cause")]
+        Cause,
         [EnumMember(Value = "https://schema.org/causeOf")]
         CauseOf,
         [EnumMember(Value = "https://schema.org/ccRecipient")]
         CcRecipient,
+        [EnumMember(Value = "https://schema.org/certificationIdentification")]
+        CertificationIdentification,
+        [EnumMember(Value = "https://schema.org/certificationRating")]
+        CertificationRating,
+        [EnumMember(Value = "https://schema.org/certificationStatus")]
+        CertificationStatus,
         [EnumMember(Value = "https://schema.org/character")]
         Character,
         [EnumMember(Value = "https://schema.org/characterAttribute")]
@@ -617,6 +637,8 @@ namespace OpenActive.NET
         CheatCode,
         [EnumMember(Value = "https://schema.org/checkinTime")]
         CheckinTime,
+        [EnumMember(Value = "https://schema.org/checkoutPageURLTemplate")]
+        CheckoutPageURLTemplate,
         [EnumMember(Value = "https://schema.org/checkoutTime")]
         CheckoutTime,
         [EnumMember(Value = "https://schema.org/chemicalComposition")]
@@ -671,6 +693,8 @@ namespace OpenActive.NET
         CollectionSize,
         [EnumMember(Value = "https://schema.org/color")]
         Color,
+        [EnumMember(Value = "https://schema.org/colorSwatch")]
+        ColorSwatch,
         [EnumMember(Value = "https://schema.org/colorist")]
         Colorist,
         [EnumMember(Value = "https://schema.org/comment")]
@@ -681,6 +705,8 @@ namespace OpenActive.NET
         CommentText,
         [EnumMember(Value = "https://schema.org/commentTime")]
         CommentTime,
+        [EnumMember(Value = "https://schema.org/companyRegistration")]
+        CompanyRegistration,
         [EnumMember(Value = "https://schema.org/competencyRequired")]
         CompetencyRequired,
         [EnumMember(Value = "https://schema.org/competitor")]
@@ -695,8 +721,10 @@ namespace OpenActive.NET
         ConfirmationNumber,
         [EnumMember(Value = "https://schema.org/connectedTo")]
         ConnectedTo,
-        [EnumMember(Value = "https://schema.org/constrainingProperty")]
-        ConstrainingProperty,
+        [EnumMember(Value = "https://schema.org/constraintProperty")]
+        ConstraintProperty,
+        [EnumMember(Value = "https://schema.org/consumerNotice")]
+        ConsumerNotice,
         [EnumMember(Value = "https://schema.org/contactOption")]
         ContactOption,
         [EnumMember(Value = "https://schema.org/contactPoint")]
@@ -771,6 +799,8 @@ namespace OpenActive.NET
         CourseMode,
         [EnumMember(Value = "https://schema.org/coursePrerequisites")]
         CoursePrerequisites,
+        [EnumMember(Value = "https://schema.org/courseSchedule")]
+        CourseSchedule,
         [EnumMember(Value = "https://schema.org/courseWorkload")]
         CourseWorkload,
         [EnumMember(Value = "https://schema.org/coverageEndTime")]
@@ -837,6 +867,8 @@ namespace OpenActive.NET
         CvdNumVent,
         [EnumMember(Value = "https://schema.org/cvdNumVentUse")]
         CvdNumVentUse,
+        [EnumMember(Value = "https://schema.org/data")]
+        Data,
         [EnumMember(Value = "https://schema.org/dataFeedElement")]
         DataFeedElement,
         [EnumMember(Value = "https://schema.org/dataset")]
@@ -919,6 +951,8 @@ namespace OpenActive.NET
         DietFeatures,
         [EnumMember(Value = "https://schema.org/differentialDiagnosis")]
         DifferentialDiagnosis,
+        [EnumMember(Value = "https://schema.org/digitalSourceType")]
+        DigitalSourceType,
         [EnumMember(Value = "https://schema.org/directApply")]
         DirectApply,
         [EnumMember(Value = "https://schema.org/director")]
@@ -941,6 +975,8 @@ namespace OpenActive.NET
         DiseasePreventionInfo,
         [EnumMember(Value = "https://schema.org/diseaseSpreadStatistics")]
         DiseaseSpreadStatistics,
+        [EnumMember(Value = "https://schema.org/displayLocation")]
+        DisplayLocation,
         [EnumMember(Value = "https://schema.org/dissolutionDate")]
         DissolutionDate,
         [EnumMember(Value = "https://schema.org/distance")]
@@ -1039,6 +1075,8 @@ namespace OpenActive.NET
         EligibleRegion,
         [EnumMember(Value = "https://schema.org/eligibleTransactionVolume")]
         EligibleTransactionVolume,
+        [EnumMember(Value = "https://schema.org/eligibleWithSupplier")]
+        EligibleWithSupplier,
         [EnumMember(Value = "https://schema.org/email")]
         Email,
         [EnumMember(Value = "https://schema.org/embedUrl")]
@@ -1103,6 +1141,8 @@ namespace OpenActive.NET
         Equal,
         [EnumMember(Value = "https://schema.org/error")]
         Error,
+        [EnumMember(Value = "https://schema.org/errorCode")]
+        ErrorCode,
         [EnumMember(Value = "https://schema.org/estimatedCost")]
         EstimatedCost,
         [EnumMember(Value = "https://schema.org/estimatedFlightDuration")]
@@ -1163,6 +1203,8 @@ namespace OpenActive.NET
         Expires,
         [EnumMember(Value = "https://schema.org/expressedIn")]
         ExpressedIn,
+        [EnumMember(Value = "https://schema.org/extendedAddress")]
+        ExtendedAddress,
         [EnumMember(Value = "https://schema.org/familyName")]
         FamilyName,
         [EnumMember(Value = "https://schema.org/fatContent")]
@@ -1231,6 +1273,8 @@ namespace OpenActive.NET
         FuelEfficiency,
         [EnumMember(Value = "https://schema.org/fuelType")]
         FuelType,
+        [EnumMember(Value = "https://schema.org/fulfillmentType")]
+        FulfillmentType,
         [EnumMember(Value = "https://schema.org/functionalClass")]
         FunctionalClass,
         [EnumMember(Value = "https://schema.org/fundedItem")]
@@ -1331,6 +1375,8 @@ namespace OpenActive.NET
         HasBroadcastChannel,
         [EnumMember(Value = "https://schema.org/hasCategoryCode")]
         HasCategoryCode,
+        [EnumMember(Value = "https://schema.org/hasCertification")]
+        HasCertification,
         [EnumMember(Value = "https://schema.org/hasCourse")]
         HasCourse,
         [EnumMember(Value = "https://schema.org/hasCourseInstance")]
@@ -1343,18 +1389,24 @@ namespace OpenActive.NET
         HasDeliveryMethod,
         [EnumMember(Value = "https://schema.org/hasDigitalDocumentPermission")]
         HasDigitalDocumentPermission,
+        [EnumMember(Value = "https://schema.org/hasDigitalProductPassport")]
+        HasDigitalProductPassport,
         [EnumMember(Value = "https://schema.org/hasDriveThroughService")]
         HasDriveThroughService,
         [EnumMember(Value = "https://schema.org/hasEnergyConsumptionDetails")]
         HasEnergyConsumptionDetails,
         [EnumMember(Value = "https://schema.org/hasEnergyEfficiencyCategory")]
         HasEnergyEfficiencyCategory,
+        [EnumMember(Value = "https://schema.org/hasGS1DigitalLink")]
+        HasGS1DigitalLink,
         [EnumMember(Value = "https://schema.org/hasHealthAspect")]
         HasHealthAspect,
         [EnumMember(Value = "https://schema.org/hasMap")]
         HasMap,
         [EnumMember(Value = "https://schema.org/hasMeasurement")]
         HasMeasurement,
+        [EnumMember(Value = "https://schema.org/hasMemberProgram")]
+        HasMemberProgram,
         [EnumMember(Value = "https://schema.org/hasMenu")]
         HasMenu,
         [EnumMember(Value = "https://schema.org/hasMenuItem")]
@@ -1373,8 +1425,24 @@ namespace OpenActive.NET
         HasPOS,
         [EnumMember(Value = "https://schema.org/hasPart")]
         HasPart,
+        [EnumMember(Value = "https://schema.org/hasParticipationOffer")]
+        HasParticipationOffer,
+        [EnumMember(Value = "https://schema.org/hasProductReturnPolicy")]
+        HasProductReturnPolicy,
         [EnumMember(Value = "https://schema.org/hasRepresentation")]
         HasRepresentation,
+        [EnumMember(Value = "https://schema.org/hasShippingService")]
+        HasShippingService,
+        [EnumMember(Value = "https://schema.org/hasSponsorshipOffer")]
+        HasSponsorshipOffer,
+        [EnumMember(Value = "https://schema.org/hasStore")]
+        HasStore,
+        [EnumMember(Value = "https://schema.org/hasTierBenefit")]
+        HasTierBenefit,
+        [EnumMember(Value = "https://schema.org/hasTierRequirement")]
+        HasTierRequirement,
+        [EnumMember(Value = "https://schema.org/hasTiers")]
+        HasTiers,
         [EnumMember(Value = "https://schema.org/hasVariant")]
         HasVariant,
         [EnumMember(Value = "https://schema.org/headline")]
@@ -1449,6 +1517,8 @@ namespace OpenActive.NET
         Image,
         [EnumMember(Value = "https://schema.org/imagingTechnique")]
         ImagingTechnique,
+        [EnumMember(Value = "https://schema.org/importer")]
+        Importer,
         [EnumMember(Value = "https://schema.org/inAlbum")]
         InAlbum,
         [EnumMember(Value = "https://schema.org/inBroadcastLineup")]
@@ -1471,10 +1541,18 @@ namespace OpenActive.NET
         InStoreReturnsOffered,
         [EnumMember(Value = "https://schema.org/inSupportOf")]
         InSupportOf,
+        [EnumMember(Value = "https://schema.org/incentiveAmount")]
+        IncentiveAmount,
         [EnumMember(Value = "https://schema.org/incentiveCompensation")]
         IncentiveCompensation,
+        [EnumMember(Value = "https://schema.org/incentiveStatus")]
+        IncentiveStatus,
+        [EnumMember(Value = "https://schema.org/incentiveType")]
+        IncentiveType,
         [EnumMember(Value = "https://schema.org/incentives")]
         Incentives,
+        [EnumMember(Value = "https://schema.org/incentivizedItem")]
+        IncentivizedItem,
         [EnumMember(Value = "https://schema.org/includedComposition")]
         IncludedComposition,
         [EnumMember(Value = "https://schema.org/includedDataCatalog")]
@@ -1493,6 +1571,8 @@ namespace OpenActive.NET
         IncludesHealthPlanNetwork,
         [EnumMember(Value = "https://schema.org/includesObject")]
         IncludesObject,
+        [EnumMember(Value = "https://schema.org/incomeLimit")]
+        IncomeLimit,
         [EnumMember(Value = "https://schema.org/increasesRiskOf")]
         IncreasesRiskOf,
         [EnumMember(Value = "https://schema.org/industry")]
@@ -1563,6 +1643,8 @@ namespace OpenActive.NET
         IsLiveBroadcast,
         [EnumMember(Value = "https://schema.org/isLocatedInSubcellularLocation")]
         IsLocatedInSubcellularLocation,
+        [EnumMember(Value = "https://schema.org/isOftenBoughtWith")]
+        IsOftenBoughtWith,
         [EnumMember(Value = "https://schema.org/isPartOf")]
         IsPartOf,
         [EnumMember(Value = "https://schema.org/isPartOfBioChemEntity")]
@@ -1577,6 +1659,10 @@ namespace OpenActive.NET
         IsResizable,
         [EnumMember(Value = "https://schema.org/isSimilarTo")]
         IsSimilarTo,
+        [EnumMember(Value = "https://schema.org/isStoreOn")]
+        IsStoreOn,
+        [EnumMember(Value = "https://schema.org/isTierOf")]
+        IsTierOf,
         [EnumMember(Value = "https://schema.org/isUnlabelledFallback")]
         IsUnlabelledFallback,
         [EnumMember(Value = "https://schema.org/isVariantOf")]
@@ -1617,6 +1703,8 @@ namespace OpenActive.NET
         ItemLocation,
         [EnumMember(Value = "https://schema.org/itemOffered")]
         ItemOffered,
+        [EnumMember(Value = "https://schema.org/itemPopularity")]
+        ItemPopularity,
         [EnumMember(Value = "https://schema.org/itemReviewed")]
         ItemReviewed,
         [EnumMember(Value = "https://schema.org/itemShipped")]
@@ -1627,6 +1715,8 @@ namespace OpenActive.NET
         IupacName,
         [EnumMember(Value = "https://schema.org/jobBenefits")]
         JobBenefits,
+        [EnumMember(Value = "https://schema.org/jobDuration")]
+        JobDuration,
         [EnumMember(Value = "https://schema.org/jobImmediateStart")]
         JobImmediateStart,
         [EnumMember(Value = "https://schema.org/jobLocation")]
@@ -1665,20 +1755,36 @@ namespace OpenActive.NET
         LearningResourceType,
         [EnumMember(Value = "https://schema.org/leaseLength")]
         LeaseLength,
+        [EnumMember(Value = "https://schema.org/legalAddress")]
+        LegalAddress,
         [EnumMember(Value = "https://schema.org/legalName")]
         LegalName,
+        [EnumMember(Value = "https://schema.org/legalRepresentative")]
+        LegalRepresentative,
         [EnumMember(Value = "https://schema.org/legalStatus")]
         LegalStatus,
+        [EnumMember(Value = "https://schema.org/legislationAmends")]
+        LegislationAmends,
         [EnumMember(Value = "https://schema.org/legislationApplies")]
         LegislationApplies,
         [EnumMember(Value = "https://schema.org/legislationChanges")]
         LegislationChanges,
+        [EnumMember(Value = "https://schema.org/legislationCommences")]
+        LegislationCommences,
         [EnumMember(Value = "https://schema.org/legislationConsolidates")]
         LegislationConsolidates,
+        [EnumMember(Value = "https://schema.org/legislationCorrects")]
+        LegislationCorrects,
+        [EnumMember(Value = "https://schema.org/legislationCountersignedBy")]
+        LegislationCountersignedBy,
         [EnumMember(Value = "https://schema.org/legislationDate")]
         LegislationDate,
+        [EnumMember(Value = "https://schema.org/legislationDateOfApplicability")]
+        LegislationDateOfApplicability,
         [EnumMember(Value = "https://schema.org/legislationDateVersion")]
         LegislationDateVersion,
+        [EnumMember(Value = "https://schema.org/legislationEnsuresImplementationOf")]
+        LegislationEnsuresImplementationOf,
         [EnumMember(Value = "https://schema.org/legislationIdentifier")]
         LegislationIdentifier,
         [EnumMember(Value = "https://schema.org/legislationJurisdiction")]
@@ -1689,6 +1795,8 @@ namespace OpenActive.NET
         LegislationLegalValue,
         [EnumMember(Value = "https://schema.org/legislationPassedBy")]
         LegislationPassedBy,
+        [EnumMember(Value = "https://schema.org/legislationRepeals")]
+        LegislationRepeals,
         [EnumMember(Value = "https://schema.org/legislationResponsible")]
         LegislationResponsible,
         [EnumMember(Value = "https://schema.org/legislationTransposes")]
@@ -1707,6 +1815,8 @@ namespace OpenActive.NET
         Letterer,
         [EnumMember(Value = "https://schema.org/license")]
         License,
+        [EnumMember(Value = "https://schema.org/lifeEvent")]
+        LifeEvent,
         [EnumMember(Value = "https://schema.org/line")]
         Line,
         [EnumMember(Value = "https://schema.org/linkRelationship")]
@@ -1791,8 +1901,12 @@ namespace OpenActive.NET
         MealService,
         [EnumMember(Value = "https://schema.org/measuredProperty")]
         MeasuredProperty,
-        [EnumMember(Value = "https://schema.org/measuredValue")]
-        MeasuredValue,
+        [EnumMember(Value = "https://schema.org/measurementDenominator")]
+        MeasurementDenominator,
+        [EnumMember(Value = "https://schema.org/measurementMethod")]
+        MeasurementMethod,
+        [EnumMember(Value = "https://schema.org/measurementQualifier")]
+        MeasurementQualifier,
         [EnumMember(Value = "https://schema.org/measurementTechnique")]
         MeasurementTechnique,
         [EnumMember(Value = "https://schema.org/mechanismOfAction")]
@@ -1843,10 +1957,14 @@ namespace OpenActive.NET
         MinPrice,
         [EnumMember(Value = "https://schema.org/minValue")]
         MinValue,
+        [EnumMember(Value = "https://schema.org/minimumOrderValue")]
+        MinimumOrderValue,
         [EnumMember(Value = "https://schema.org/minimumPaymentDue")]
         MinimumPaymentDue,
         [EnumMember(Value = "https://schema.org/missionCoveragePrioritiesPolicy")]
         MissionCoveragePrioritiesPolicy,
+        [EnumMember(Value = "https://schema.org/mobileUrl")]
+        MobileUrl,
         [EnumMember(Value = "https://schema.org/model")]
         Model,
         [EnumMember(Value = "https://schema.org/modelDate")]
@@ -1921,6 +2039,8 @@ namespace OpenActive.NET
         NumChildren,
         [EnumMember(Value = "https://schema.org/numConstraints")]
         NumConstraints,
+        [EnumMember(Value = "https://schema.org/numItems")]
+        NumItems,
         [EnumMember(Value = "https://schema.org/numTracks")]
         NumTracks,
         [EnumMember(Value = "https://schema.org/numberOfAccommodationUnits")]
@@ -1971,10 +2091,12 @@ namespace OpenActive.NET
         Nutrition,
         [EnumMember(Value = "https://schema.org/object")]
         Object,
+        [EnumMember(Value = "https://schema.org/observationAbout")]
+        ObservationAbout,
         [EnumMember(Value = "https://schema.org/observationDate")]
         ObservationDate,
-        [EnumMember(Value = "https://schema.org/observedNode")]
-        ObservedNode,
+        [EnumMember(Value = "https://schema.org/observationPeriod")]
+        ObservationPeriod,
         [EnumMember(Value = "https://schema.org/occupancy")]
         Occupancy,
         [EnumMember(Value = "https://schema.org/occupationLocation")]
@@ -2013,10 +2135,14 @@ namespace OpenActive.NET
         OrderItemStatus,
         [EnumMember(Value = "https://schema.org/orderNumber")]
         OrderNumber,
+        [EnumMember(Value = "https://schema.org/orderPercentage")]
+        OrderPercentage,
         [EnumMember(Value = "https://schema.org/orderQuantity")]
         OrderQuantity,
         [EnumMember(Value = "https://schema.org/orderStatus")]
         OrderStatus,
+        [EnumMember(Value = "https://schema.org/orderValue")]
+        OrderValue,
         [EnumMember(Value = "https://schema.org/orderedItem")]
         OrderedItem,
         [EnumMember(Value = "https://schema.org/organizer")]
@@ -2035,6 +2161,8 @@ namespace OpenActive.NET
         OwnedFrom,
         [EnumMember(Value = "https://schema.org/ownedThrough")]
         OwnedThrough,
+        [EnumMember(Value = "https://schema.org/owner")]
+        Owner,
         [EnumMember(Value = "https://schema.org/ownershipFundingInfo")]
         OwnershipFundingInfo,
         [EnumMember(Value = "https://schema.org/owns")]
@@ -2097,6 +2225,8 @@ namespace OpenActive.NET
         PaymentMethod,
         [EnumMember(Value = "https://schema.org/paymentMethodId")]
         PaymentMethodId,
+        [EnumMember(Value = "https://schema.org/paymentMethodType")]
+        PaymentMethodType,
         [EnumMember(Value = "https://schema.org/paymentStatus")]
         PaymentStatus,
         [EnumMember(Value = "https://schema.org/paymentUrl")]
@@ -2179,6 +2309,8 @@ namespace OpenActive.NET
         PotentialAction,
         [EnumMember(Value = "https://schema.org/potentialUse")]
         PotentialUse,
+        [EnumMember(Value = "https://schema.org/practicesAt")]
+        PracticesAt,
         [EnumMember(Value = "https://schema.org/preOp")]
         PreOp,
         [EnumMember(Value = "https://schema.org/predecessorOf")]
@@ -2243,6 +2375,10 @@ namespace OpenActive.NET
         ProductGroupID,
         [EnumMember(Value = "https://schema.org/productID")]
         ProductID,
+        [EnumMember(Value = "https://schema.org/productReturnDays")]
+        ProductReturnDays,
+        [EnumMember(Value = "https://schema.org/productReturnLink")]
+        ProductReturnLink,
         [EnumMember(Value = "https://schema.org/productSupported")]
         ProductSupported,
         [EnumMember(Value = "https://schema.org/productionCompany")]
@@ -2251,6 +2387,8 @@ namespace OpenActive.NET
         ProductionDate,
         [EnumMember(Value = "https://schema.org/proficiencyLevel")]
         ProficiencyLevel,
+        [EnumMember(Value = "https://schema.org/program")]
+        Program,
         [EnumMember(Value = "https://schema.org/programMembershipUsed")]
         ProgramMembershipUsed,
         [EnumMember(Value = "https://schema.org/programName")]
@@ -2263,6 +2401,8 @@ namespace OpenActive.NET
         ProgrammingLanguage,
         [EnumMember(Value = "https://schema.org/programmingModel")]
         ProgrammingModel,
+        [EnumMember(Value = "https://schema.org/pronouns")]
+        Pronouns,
         [EnumMember(Value = "https://schema.org/propertyID")]
         PropertyID,
         [EnumMember(Value = "https://schema.org/proprietaryName")]
@@ -2297,8 +2437,14 @@ namespace OpenActive.NET
         PublishingPrinciples,
         [EnumMember(Value = "https://schema.org/purchaseDate")]
         PurchaseDate,
+        [EnumMember(Value = "https://schema.org/purchasePriceLimit")]
+        PurchasePriceLimit,
+        [EnumMember(Value = "https://schema.org/purchaseType")]
+        PurchaseType,
         [EnumMember(Value = "https://schema.org/qualifications")]
         Qualifications,
+        [EnumMember(Value = "https://schema.org/qualifiedExpense")]
+        QualifiedExpense,
         [EnumMember(Value = "https://schema.org/quarantineGuidelines")]
         QuarantineGuidelines,
         [EnumMember(Value = "https://schema.org/query")]
@@ -2355,6 +2501,10 @@ namespace OpenActive.NET
         RecordingOf,
         [EnumMember(Value = "https://schema.org/recourseLoan")]
         RecourseLoan,
+        [EnumMember(Value = "https://schema.org/recycledContentPercentage")]
+        RecycledContentPercentage,
+        [EnumMember(Value = "https://schema.org/referee")]
+        Referee,
         [EnumMember(Value = "https://schema.org/referenceQuantity")]
         ReferenceQuantity,
         [EnumMember(Value = "https://schema.org/referencesOrder")]
@@ -2527,6 +2677,8 @@ namespace OpenActive.NET
         Season,
         [EnumMember(Value = "https://schema.org/seasonNumber")]
         SeasonNumber,
+        [EnumMember(Value = "https://schema.org/seasonalOverride")]
+        SeasonalOverride,
         [EnumMember(Value = "https://schema.org/seasons")]
         Seasons,
         [EnumMember(Value = "https://schema.org/seatNumber")]
@@ -2589,12 +2741,16 @@ namespace OpenActive.NET
         Sha256,
         [EnumMember(Value = "https://schema.org/sharedContent")]
         SharedContent,
+        [EnumMember(Value = "https://schema.org/shippingConditions")]
+        ShippingConditions,
         [EnumMember(Value = "https://schema.org/shippingDestination")]
         ShippingDestination,
         [EnumMember(Value = "https://schema.org/shippingDetails")]
         ShippingDetails,
         [EnumMember(Value = "https://schema.org/shippingLabel")]
         ShippingLabel,
+        [EnumMember(Value = "https://schema.org/shippingOrigin")]
+        ShippingOrigin,
         [EnumMember(Value = "https://schema.org/shippingRate")]
         ShippingRate,
         [EnumMember(Value = "https://schema.org/shippingSettingsLink")]
@@ -2639,6 +2795,8 @@ namespace OpenActive.NET
         SoftwareRequirements,
         [EnumMember(Value = "https://schema.org/softwareVersion")]
         SoftwareVersion,
+        [EnumMember(Value = "https://schema.org/source")]
+        Source,
         [EnumMember(Value = "https://schema.org/sourceOrganization")]
         SourceOrganization,
         [EnumMember(Value = "https://schema.org/sourcedFrom")]
@@ -2655,6 +2813,8 @@ namespace OpenActive.NET
         SpecialOpeningHoursSpecification,
         [EnumMember(Value = "https://schema.org/specialty")]
         Specialty,
+        [EnumMember(Value = "https://schema.org/specification")]
+        Specification,
         [EnumMember(Value = "https://schema.org/speechToTextMarkup")]
         SpeechToTextMarkup,
         [EnumMember(Value = "https://schema.org/speed")]
@@ -2685,6 +2845,8 @@ namespace OpenActive.NET
         StartOffset,
         [EnumMember(Value = "https://schema.org/startTime")]
         StartTime,
+        [EnumMember(Value = "https://schema.org/statType")]
+        StatType,
         [EnumMember(Value = "https://schema.org/status")]
         Status,
         [EnumMember(Value = "https://schema.org/steeringPosition")]
@@ -2731,6 +2893,8 @@ namespace OpenActive.NET
         SubTrip,
         [EnumMember(Value = "https://schema.org/subjectOf")]
         SubjectOf,
+        [EnumMember(Value = "https://schema.org/substanceOfConcern")]
+        SubstanceOfConcern,
         [EnumMember(Value = "https://schema.org/subtitleLanguage")]
         SubtitleLanguage,
         [EnumMember(Value = "https://schema.org/successorOf")]
@@ -2763,6 +2927,8 @@ namespace OpenActive.NET
         SupportingData,
         [EnumMember(Value = "https://schema.org/surface")]
         Surface,
+        [EnumMember(Value = "https://schema.org/syllabusSections")]
+        SyllabusSections,
         [EnumMember(Value = "https://schema.org/target")]
         Target,
         [EnumMember(Value = "https://schema.org/targetCollection")]
@@ -2823,6 +2989,8 @@ namespace OpenActive.NET
         TimeRequired,
         [EnumMember(Value = "https://schema.org/timeToComplete")]
         TimeToComplete,
+        [EnumMember(Value = "https://schema.org/timestamp")]
+        Timestamp,
         [EnumMember(Value = "https://schema.org/tissueSample")]
         TissueSample,
         [EnumMember(Value = "https://schema.org/title")]
@@ -2843,6 +3011,8 @@ namespace OpenActive.NET
         Tool,
         [EnumMember(Value = "https://schema.org/torque")]
         Torque,
+        [EnumMember(Value = "https://schema.org/totalHistoricalEnrollment")]
+        TotalHistoricalEnrollment,
         [EnumMember(Value = "https://schema.org/totalJobOpenings")]
         TotalJobOpenings,
         [EnumMember(Value = "https://schema.org/totalPaymentDue")]
@@ -2893,6 +3063,8 @@ namespace OpenActive.NET
         TrialDesign,
         [EnumMember(Value = "https://schema.org/tributary")]
         Tributary,
+        [EnumMember(Value = "https://schema.org/tripOrigin")]
+        TripOrigin,
         [EnumMember(Value = "https://schema.org/typeOfBed")]
         TypeOfBed,
         [EnumMember(Value = "https://schema.org/typeOfGood")]
@@ -2921,6 +3093,8 @@ namespace OpenActive.NET
         Url,
         [EnumMember(Value = "https://schema.org/urlTemplate")]
         UrlTemplate,
+        [EnumMember(Value = "https://schema.org/usNPI")]
+        UsNPI,
         [EnumMember(Value = "https://schema.org/usageInfo")]
         UsageInfo,
         [EnumMember(Value = "https://schema.org/usedToDiagnose")]
@@ -2935,6 +3109,8 @@ namespace OpenActive.NET
         Utterances,
         [EnumMember(Value = "https://schema.org/validFor")]
         ValidFor,
+        [EnumMember(Value = "https://schema.org/validForMemberTier")]
+        ValidForMemberTier,
         [EnumMember(Value = "https://schema.org/validFrom")]
         ValidFrom,
         [EnumMember(Value = "https://schema.org/validIn")]
@@ -2947,6 +3123,8 @@ namespace OpenActive.NET
         Value,
         [EnumMember(Value = "https://schema.org/valueAddedTaxIncluded")]
         ValueAddedTaxIncluded,
+        [EnumMember(Value = "https://schema.org/valueGroup")]
+        ValueGroup,
         [EnumMember(Value = "https://schema.org/valueMaxLength")]
         ValueMaxLength,
         [EnumMember(Value = "https://schema.org/valueMinLength")]
@@ -3015,6 +3193,8 @@ namespace OpenActive.NET
         WebFeed,
         [EnumMember(Value = "https://schema.org/weight")]
         Weight,
+        [EnumMember(Value = "https://schema.org/weightPercentage")]
+        WeightPercentage,
         [EnumMember(Value = "https://schema.org/weightTotal")]
         WeightTotal,
         [EnumMember(Value = "https://schema.org/wheelbase")]

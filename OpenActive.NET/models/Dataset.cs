@@ -166,7 +166,7 @@ namespace OpenActive.NET
         /// </example>
         [DataMember(Name = "documentation", EmitDefaultValue = false, Order = 16)]
         [JsonConverter(typeof(ValuesConverter))]
-        public virtual Uri Documentation { get; set; }
+        public new virtual Uri Documentation { get; set; }
 
         /// <summary>
         /// An array of languages included in the Dataset's content. Please use one of the language codes from the IETF BCP 47 standard.
